@@ -7,9 +7,11 @@
  * graphic logo is a trademark of OpenMRS Inc.
  */
 
-// Because of the "import *" in redux-store each exported function will control a its own field in the global state
+// Because of the "import *" in redux-store each exported function will control
+// a its own field in the global state
 
-// For example this placeholder function will set your redux state to be { replaceThis: {} } upon the first action
-export function replaceThis(state = {}, action) {
+// For example this placeholder function will set your redux state to be
+// { replaceThis: {} } upon the first action
+export default function replaceThis(state = {}, action) {
   return state;
 }

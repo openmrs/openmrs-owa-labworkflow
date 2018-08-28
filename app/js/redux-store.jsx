@@ -7,14 +7,16 @@
  * graphic logo is a trademark of OpenMRS Inc.
  */
 
-import {createStore, applyMiddleware, combineReducers, compose} from 'redux'
+import {
+  createStore, applyMiddleware, combineReducers, compose,
+} from 'redux';
 import promiseMiddleware from 'redux-promise-middleware';
 import createSagaMiddleware from 'redux-saga';
 import thunkMiddleware from 'redux-thunk';
 import { sagas as openmrsSagas, reducers as openmrsReducers } from '@openmrs/react-components';
-import { reducer as reduxFormReducer } from 'redux-form'
+import { reducer as reduxFormReducer } from 'redux-form';
 
-import * as reducers from './reducers'
+import * as reducers from './reducers';
 
 const sagaMiddleware = createSagaMiddleware();
 
@@ -24,15 +26,16 @@ export default function () {
   const reducer = combineReducers({
     openmrs: openmrsReducers,
     form: reduxFormReducer,
-    labWorkflow: reducers
+    labWorkflow: reducers,
   });
   const store = createStore(
-    reducer, 
+    reducer,
     compose(
       applyMiddleware(...middlewares),
       window.devToolsExtension && process.env.NODE_ENV !== 'production'
         ? window.devToolsExtension() : f => f,
-    ));
-    sagaMiddleware.run(openmrsSagas);
+    ),
+  );
+  sagaMiddleware.run(openmrsSagas);
   return store;
 }

@@ -6,30 +6,25 @@
     "type": "git",
     "url": "https://github.com/openmrs/openmrs-owa-labworkflow.git"
   },
-  
   "dependencies": {
-	
-	
-  
-  "react": "^15.4.1",
-  "react-dom": "^15.4.1",
-    
-    "redux": "^3.6.0",
+    "@openmrs/react-components": "^0.2.0-SNAPSHOT.8",
+    "babel-polyfill": "^6.26.0",
+    "react": "^15.4.1",
+    "react-dom": "^15.4.1",
     "react-redux": "^5.0.1",
+    "react-router": "^3.0.0",
+    "react-router-dom": "^4.3.1",
+    "redux": "^3.6.0",
+    "redux-form": "^7.4.2",
     "redux-promise-middleware": "^4.2.0",
-    "redux-thunk": "^2.1.0",
-    
-  "react-router": "^3.0.0"
-  
-},
+    "redux-saga": "^0.16.0",
+    "redux-thunk": "^2.1.0"
+  },
   "devDependencies": {
-    
     "babel-core": "^6.2.1",
     "babel-loader": "^6.2.0",
     "babel-preset-es2015": "^6.1.18",
-    
     "babel-preset-react": "^6.16.0",
-    
     "browser-sync": "^2.11.1",
     "browser-sync-webpack-plugin": "^1.0.1",
     "copy-webpack-plugin": "^4.0.1",
@@ -64,7 +59,9 @@
     "build:deploy": "webpack --progress --colors --mode=deploy --target=web",
     "watch": "webpack --progress --colors --watch --mode=deploy --target=web",
     "test": "karma start --singleRun=true",
-    "test:debug": "karma start"
+    "test:debug": "karma start",
+    "lint": "./node_modules/.bin/eslint app/js/**",
+    "lint:fix": "./node_modules/.bin/eslint --fix  app/js/**"
   },
   "keywords": [
     "OpenMRS",

@@ -1,0 +1,9 @@
+node_modules/**
+dist/**
+*.config.js
+coverage
+*.md
+LICENSE
+*.yml
+*.zip
+*.json

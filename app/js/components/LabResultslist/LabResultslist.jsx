@@ -12,8 +12,8 @@ export default class LabResultslist extends React.Component {
   render() {
     return (
       <div>
-        <h1>Welcome to LabResultslist Page</h1>
+        <h1>Welcome to LabResultslist Page/Component</h1>
       </div>
-    )
+    );
   }
 }
