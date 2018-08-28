@@ -11,13 +11,11 @@
 const webpack = require('webpack');
 const path = require('path');
 const fs = require('fs');
-const env = require('yargs').argv.mode;
 const target = require('yargs').argv.target;
 const targetPort = require('yargs').argv.targetPort;
 
 const UglifyPlugin = webpack.optimize.UglifyJsPlugin;
 const CommonsChunkPlugin =  webpack.optimize.CommonsChunkPlugin;
-const DedupePlugin = webpack.optimize.DedupePlugin;
 
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const BrowserSyncPlugin = require('browser-sync-webpack-plugin');
@@ -25,7 +23,7 @@ const CopyWebpackPlugin = require('copy-webpack-plugin');
 const WebpackOnBuildPlugin = require('on-build-webpack');
 
 
-const nodeModulesDir = path.resolve(__dirname, '../node_modules');
+const env = process.env.NODE_ENV;
 
 const THIS_APP_ID = 'openmrs-owa-labworkflow';
 
@@ -35,10 +33,6 @@ const nodeModules = {};
 let outputFile = `.bundle`;
 let vendorOutputFile;
 let outputPath;
-
-var configJson;
-let appEntryPoint;
-let localOwaFolder;
 
 let devtool;
 
@@ -75,6 +69,42 @@ var resolveBrowserSyncTarget = function () {
 };
 var browserSyncTarget = resolveBrowserSyncTarget();
 
+const rules = [
+	{
+		test: /\.jsx?$/,
+		loader: 'babel-loader',
+		exclude: /node_modules/,
+		query: {
+			presets: ['env', 'react'],
+			cacheDirectory: true,
+			plugins: ['transform-class-properties', 'transform-object-rest-spread']
+	}
+}, {
+		test: /\.(png|jpg|jpeg|gif|svg|eot|ttf|woff|woff2)$/,
+		loader: 'url-loader'
+}, {
+		test: /\.s?css$/,
+		include: [/node_modules/],
+		use: [
+		'style-loader',
+		'css-loader'
+		]
+}, {
+		test: /\.html$/,
+		loader: 'html-loader'
+}, {
+		test: /\.s?css$/,
+		exclude: [/node_modules/],
+		use: [
+			'style-loader?sourceMap',
+			{
+				loader: 'css-loader',
+			},
+			'postcss-loader',
+			'sass-loader?sourcemap&sourceMapContents&outputStyle=expanded'
+		]
+}];
+
 /** Minify for production */
 if (env === 'production') {
 
@@ -88,7 +118,6 @@ if (env === 'production') {
 	        warnings: false
 	    }
 	  }));
-	  plugins.push(new DedupePlugin());
 	  outputFile = `${outputFile}.min.[chunkhash].js`;
 	  vendorOutputFile = "vendor.bundle.[chunkhash].js";
 	  outputPath = `${__dirname}/dist/`;
@@ -111,15 +140,15 @@ if (env === 'production') {
       archive.directory(`${outputPath}`, '');
 
 			archive.finalize();
-		 }))
-
-} else if (env === 'deploy') {
-	  outputFile = `${outputFile}.js`;
+		 }));
+		}
+	if (env === 'deploy') {
+		outputFile = `${outputFile}.js`;
 	  vendorOutputFile = "vendor.bundle.js";
 	  outputPath = `${config.LOCAL_OWA_FOLDER}${config.LOCAL_OWA_FOLDER.slice(-1) != '/' ? '/' : ''}${THIS_APP_ID}`;
 	  devtool = 'source-map';
-
-} else if (env === 'dev') {
+	}
+if (env === 'development') {
 	  outputFile = `${outputFile}.js`;
 	  vendorOutputFile = "vendor.bundle.js";
 	  outputPath = `${__dirname}/dist/`;
@@ -129,12 +158,23 @@ if (env === 'production') {
 plugins.push(new BrowserSyncPlugin({
     proxy: {
     	target : browserSyncTarget
-    }
+		},
+		reload: true
 }));
 
 plugins.push(new CommonsChunkPlugin({
     name: 'vendor',
     filename: vendorOutputFile
+}));
+
+plugins.push(new webpack.ProvidePlugin({
+	React: 'react',
+}));
+
+plugins.push(new webpack.LoaderOptionsPlugin({
+	options: {
+		postcss: [ ]
+	}
 }));
 
 plugins.push(new HtmlWebpackPlugin({
@@ -154,7 +194,6 @@ plugins.push(new CopyWebpackPlugin([{
 
 
 var webpackConfig = {
-  quiet: false,
   entry: {
 	  app : `${__dirname}/app/js/openmrs-owa-labworkflow`,
 	  css: `${__dirname}/app/css/openmrs-owa-labworkflow.css`,
@@ -165,30 +204,14 @@ var webpackConfig = {
   output: {
     path: outputPath,
     filename: '[name]'+outputFile,
-  },
+	},
+	target: 'web',
   module: {
-    loaders: [{
-	    test: /\.jsx?$/,
-	    loader: 'babel-loader',
-	    exclude: /node_modules/,
-	    query: {
-	        presets: [ 'es2015', 'react' ],
-	        cacheDirectory : true
-	    }
-    },{
-	    test: /\.css$/,
-	    loader: 'style-loader!css-loader'
-	}, {
-	    test: /\.(png|jpg|jpeg|gif|svg)$/,
-	    loader: 'url'
-	}, {
-	    test: /\.html$/,
-	    loader: 'html'
-	}],
+		rules
   },
   resolve: {
-    root: path.resolve('./src'),
-    extensions: ['', '.js', '.jsx'],
+		modules: [path.resolve(__dirname), 'node_modules'],
+		extensions: ['.js', '.jsx', '.css', '.scss'],
   },
   plugins,
   externals: nodeModules,
