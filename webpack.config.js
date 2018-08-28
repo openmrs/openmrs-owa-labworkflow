@@ -158,16 +158,7 @@ var webpackConfig = {
   entry: {
 	  app : `${__dirname}/app/js/openmrs-owa-labworkflow`,
 	  css: `${__dirname}/app/css/openmrs-owa-labworkflow.css`,
-	  vendor : [
-	        	
-	        	
-                
-                    'react', 'react-router'
-                    
-                        , 'redux', 'redux-promise-middleware', 'redux-thunk', 'react-redux'
-                    
-                
-	            ]
+	  vendor : [ 'react', 'react-router', 'redux', 'redux-promise-middleware', 'react-redux' ]
   },
   devtool: devtool,
   target,

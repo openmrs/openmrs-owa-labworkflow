@@ -8,7 +8,7 @@
  */
 import React from 'react';
 import { Route, Switch } from 'react-router-dom';
-import { AuthenticatedRoute, LoginPage, Header } from '@openmrs/react-components';
+import { Header } from '@openmrs/react-components';
 
 import App from './components/App';
 
@@ -16,8 +16,7 @@ export default store => (
   <div>
     <Header />
     <Switch>
-      <Route path="/login" component={LoginPage} />
-      <AuthenticatedRoute path="/" component={App} />
+      <Route path="/" component={App} />
     </Switch>
   </div>
 );

@@ -8,14 +8,14 @@
  */
 import React from 'react';
 
-import LabResultslist from '../components/LabResultslist/LabResultslist';
+import LabOrdersList from '../components/LabOrdersList/LabOrdersList';
 
 export default class App extends React.Component {
   render() {
     return (
       <div>
-        <LabResultslist />
+        <LabOrdersList />
       </div>
-    )
+    );
   }
 }

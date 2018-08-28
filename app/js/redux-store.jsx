@@ -12,7 +12,6 @@ import {
 } from 'redux';
 import promiseMiddleware from 'redux-promise-middleware';
 import createSagaMiddleware from 'redux-saga';
-import thunkMiddleware from 'redux-thunk';
 import { sagas as openmrsSagas, reducers as openmrsReducers } from '@openmrs/react-components';
 import { reducer as reduxFormReducer } from 'redux-form';
 
@@ -20,7 +19,7 @@ import * as reducers from './reducers';
 
 const sagaMiddleware = createSagaMiddleware();
 
-const middlewares = [sagaMiddleware, thunkMiddleware, promiseMiddleware()];
+const middlewares = [sagaMiddleware, promiseMiddleware()];
 
 export default function () {
   const reducer = combineReducers({

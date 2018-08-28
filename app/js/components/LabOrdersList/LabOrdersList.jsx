@@ -8,11 +8,11 @@
  */
 import React from 'react';
 
-export default class LabResultslist extends React.Component {
+export default class LabOrdersList extends React.Component {
   render() {
     return (
       <div>
-        <h1>Welcome to LabResultslist Page/Component</h1>
+        <h1>Welcome to LabOrdersList Page/Component</h1>
       </div>
     );
   }
