@@ -7,6 +7,7 @@
  * graphic logo is a trademark of OpenMRS Inc.
  */
 import React from 'react';
+
 import LabResultslist from '../components/LabResultslist/LabResultslist';
 
 export default class App extends React.Component {

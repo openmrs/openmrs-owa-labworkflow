@@ -8,8 +8,9 @@
  */
 import React from 'react';
 import {render} from 'react-dom';
-import {Router, Route, hashHistory} from 'react-router'
+import { BrowserRouter } from 'react-router-dom';
 import {Provider} from 'react-redux'
+import 'babel-polyfill';
 
 import createStore from './redux-store'
 import routes from './routes'
@@ -18,8 +19,8 @@ let store = createStore();
 
 render((
          <Provider store={store}>
-           <Router history={hashHistory}>
-             {routes(store)}
-           </Router>
+           <BrowserRouter>
+            {routes(store)}
+          </BrowserRouter>
          </Provider>
        ), document.getElementById('app'));

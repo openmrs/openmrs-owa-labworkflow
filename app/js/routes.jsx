@@ -7,7 +7,9 @@
  * graphic logo is a trademark of OpenMRS Inc.
  */
 import React from 'react'
-import {Route} from 'react-router'
+import {Route, Switch} from 'react-router-dom'
+import { AuthenticatedRoute, LoginPage, Header } from '@openmrs/react-components';
+
 import App from './components/App'
 
 export default (store) => {
@@ -15,7 +17,12 @@ export default (store) => {
   //   onEnter={ (nextState) => {store.dispatch(loadPatientAction(nextState.params.patientUuid)} }
 
   return (
-    <Route path="/" component={App}>
-    </Route>
+    <div>
+      <Header />
+      <Switch>
+        <Route path="/login" component={LoginPage}/>
+        <AuthenticatedRoute path="/" component={App}/>
+      </Switch>
+  </div>
   );
 }
