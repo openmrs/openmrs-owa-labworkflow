@@ -9,14 +9,23 @@
 import React from 'react';
 import { Route, Switch } from 'react-router-dom';
 import { Header } from '@openmrs/react-components';
+import BreadCrumb from './components/shared/BreadCrumb/BreadCrumb';
 
 import App from './components/App';
 
+// Demo page as placeholder for breadcrumb
+const FakeBreadcrumbPage = () => (
+  <div>FakeBreadcrumbPage</div>
+);
+
+// eslint-disable-next-line
 export default store => (
   <div>
     <Header />
+    <BreadCrumb />
     <Switch>
-      <Route path="/" component={App} />
+      <Route exact path="/" component={App} />
+      <Route exact path="/FakeBreadcrumbPage" component={FakeBreadcrumbPage} />
     </Switch>
   </div>
 );
