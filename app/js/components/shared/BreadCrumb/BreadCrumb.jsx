@@ -19,8 +19,7 @@ class BreadCrumb extends Component {
     super(props);
 
     this.state = {
-      homePage: false,
-      FakeBreadcrumbPage: false,
+      currentTab: '',
     };
   }
 
@@ -28,57 +27,35 @@ class BreadCrumb extends Component {
     const { history } = this.props;
     history.listen((location) => {
       const currentTab = location.pathname.split('/').pop();
-      if (!currentTab) {
-        this.setState(() => ({
-          homePage: true,
-          FakeBreadcrumbPage: false,
-        }));
-      } else if (currentTab === 'FakeBreadcrumbPage') {
-        this.setState(() => ({
-          FakeBreadcrumbPage: true,
-          homePage: false,
-        }));
-      }
+      this.setState({
+        currentTab,
+      });
     });
   }
 
+
   render() {
     const {
-      homePage,
-      FakeBreadcrumbPage,
+      currentTab,
     } = this.state;
+    let outputBreadcrumb;
 
-    return (
-      <div className="breadcrumb">
-        <a href="../../" className="breadcrumb-item">
-          <span className="glyphicon glyphicon-home breadcrumb-item" aria-hidden="true" />
-        </a>
-        {
-          FakeBreadcrumbPage
-            ? (
-              <Link to="/">
-                <span
-                  className="glyphicon glyphicon-chevron-right breadcrumb-item separator"
-                  aria-hidden="true" />
-                <span className="title breadcrumb-item">
-                  <u>Lab workflow</u>
-                </span>
-              </Link>
-            )
-            : (
-              <Link to="/">
-                <span
-                  className="glyphicon glyphicon-chevron-right breadcrumb-item separator"
-                  aria-hidden="true" />
-                <span className="title breadcrumb-item">
-                  <strong>Lab workflow</strong>
-                </span>
-              </Link>
-            )
-        }
-        {
-          FakeBreadcrumbPage
-          && (
+    const homePageBreadcrumb = (
+      <Link to="/">
+        <span
+          className="glyphicon glyphicon-chevron-right breadcrumb-item separator"
+          aria-hidden="true" />
+        <span className="title breadcrumb-item">
+          <u>Lab workflow</u>
+        </span>
+      </Link>
+    );
+
+    switch (currentTab) {
+      case 'FakeBreadcrumbPage':
+        outputBreadcrumb = (
+          <span>
+            <span>{ homePageBreadcrumb }</span>
             <Link to="FakeBreadcrumbPage">
               <span
                 className="glyphicon glyphicon-chevron-right breadcrumb-item separator"
@@ -87,8 +64,29 @@ class BreadCrumb extends Component {
                 <u>FakeBreadcrumbPage</u>
               </span>
             </Link>
-          )
-        }
+          </span>
+        );
+        break;
+
+      default:
+        outputBreadcrumb = (
+          <Link to="/">
+            <span
+              className="glyphicon glyphicon-chevron-right breadcrumb-item separator"
+              aria-hidden="true" />
+            <span className="title breadcrumb-item">
+              <u>Lab workflow</u>
+            </span>
+          </Link>
+        );
+    }
+
+    return (
+      <div className="breadcrumb">
+        <a href="../../" className="breadcrumb-item">
+          <span className="glyphicon glyphicon-home breadcrumb-item" aria-hidden="true" />
+        </a>
+        { outputBreadcrumb }
       </div>
     );
   }

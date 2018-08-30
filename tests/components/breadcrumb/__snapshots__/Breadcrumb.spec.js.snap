@@ -120,9 +120,9 @@ exports[`Breadcrumb component should take a snapshot on initial render 1`] = `
                 <span
                   className="title breadcrumb-item"
                 >
-                  <strong>
+                  <u>
                     Lab workflow
-                  </strong>
+                  </u>
                 </span>
               </a>
             </Link>

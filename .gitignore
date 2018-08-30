@@ -3,3 +3,4 @@ bower_components
 dist
 config.json
 npm-debug.log**
+*.zip
