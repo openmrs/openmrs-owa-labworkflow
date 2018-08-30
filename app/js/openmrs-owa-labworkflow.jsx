@@ -8,7 +8,7 @@
  */
 import React from 'react';
 import { render } from 'react-dom';
-import { BrowserRouter } from 'react-router-dom';
+import { HashRouter } from 'react-router-dom';
 import { Provider } from 'react-redux';
 import 'babel-polyfill';
 
@@ -19,8 +19,8 @@ const store = createStore();
 
 render((
   <Provider store={store}>
-    <BrowserRouter>
+    <HashRouter>
       {routes(store)}
-    </BrowserRouter>
+    </HashRouter>
   </Provider>
 ), document.getElementById('app'));

@@ -1,0 +1,135 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Breadcrumb component should take a snapshot on initial render 1`] = `
+<MemoryRouter
+  initialEntries={
+    Array [
+      Object {
+        "key": "testKey",
+        "pathname": "/",
+      },
+    ]
+  }
+>
+  <Router
+    history={
+      Object {
+        "action": "POP",
+        "block": [Function],
+        "canGo": [Function],
+        "createHref": [Function],
+        "entries": Array [
+          Object {
+            "hash": "",
+            "key": "testKey",
+            "pathname": "/",
+            "search": "",
+          },
+        ],
+        "go": [Function],
+        "goBack": [Function],
+        "goForward": [Function],
+        "index": 0,
+        "length": 1,
+        "listen": [Function],
+        "location": Object {
+          "hash": "",
+          "key": "testKey",
+          "pathname": "/",
+          "search": "",
+        },
+        "push": [Function],
+        "replace": [Function],
+      }
+    }
+  >
+    <withRouter(BreadCrumb)>
+      <Route>
+        <BreadCrumb
+          history={
+            Object {
+              "action": "POP",
+              "block": [Function],
+              "canGo": [Function],
+              "createHref": [Function],
+              "entries": Array [
+                Object {
+                  "hash": "",
+                  "key": "testKey",
+                  "pathname": "/",
+                  "search": "",
+                },
+              ],
+              "go": [Function],
+              "goBack": [Function],
+              "goForward": [Function],
+              "index": 0,
+              "length": 1,
+              "listen": [Function],
+              "location": Object {
+                "hash": "",
+                "key": "testKey",
+                "pathname": "/",
+                "search": "",
+              },
+              "push": [Function],
+              "replace": [Function],
+            }
+          }
+          location={
+            Object {
+              "hash": "",
+              "key": "testKey",
+              "pathname": "/",
+              "search": "",
+            }
+          }
+          match={
+            Object {
+              "isExact": true,
+              "params": Object {},
+              "path": "/",
+              "url": "/",
+            }
+          }
+        >
+          <div
+            className="breadcrumb"
+          >
+            <a
+              className="breadcrumb-item"
+              href="../../"
+            >
+              <span
+                aria-hidden="true"
+                className="glyphicon glyphicon-home breadcrumb-item"
+              />
+            </a>
+            <Link
+              replace={false}
+              to="/"
+            >
+              <a
+                href="/"
+                onClick={[Function]}
+              >
+                <span
+                  aria-hidden="true"
+                  className="glyphicon glyphicon-chevron-right breadcrumb-item separator"
+                />
+                <span
+                  className="title breadcrumb-item"
+                >
+                  <u>
+                    Lab workflow
+                  </u>
+                </span>
+              </a>
+            </Link>
+          </div>
+        </BreadCrumb>
+      </Route>
+    </withRouter(BreadCrumb)>
+  </Router>
+</MemoryRouter>
+`;
