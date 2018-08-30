@@ -69,16 +69,7 @@ class BreadCrumb extends Component {
         break;
 
       default:
-        outputBreadcrumb = (
-          <Link to="/">
-            <span
-              className="glyphicon glyphicon-chevron-right breadcrumb-item separator"
-              aria-hidden="true" />
-            <span className="title breadcrumb-item">
-              <u>Lab workflow</u>
-            </span>
-          </Link>
-        );
+        outputBreadcrumb = homePageBreadcrumb;
     }
 
     return (
