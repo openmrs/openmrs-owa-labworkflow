@@ -13,7 +13,7 @@ import BreadCrumb from './components/shared/BreadCrumb/BreadCrumb';
 
 import App from './components/App';
 
-// Demo page as placeholder for breadcrumb
+// Demo component as placeholder for fake breadcrumb page
 const FakeBreadcrumbPage = () => (
   <div>FakeBreadcrumbPage</div>
 );

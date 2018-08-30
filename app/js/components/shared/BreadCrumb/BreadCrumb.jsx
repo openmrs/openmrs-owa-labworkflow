@@ -27,7 +27,6 @@ class BreadCrumb extends Component {
   componentWillMount() {
     const { history } = this.props;
     history.listen((location) => {
-      console.log('----', location);
       const currentTab = location.pathname.split('/').pop();
       if (!currentTab) {
         this.setState(() => ({
