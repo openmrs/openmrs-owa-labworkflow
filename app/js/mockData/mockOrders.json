@@ -1,0 +1,1253 @@
+{
+    "results": [
+        {
+            "uuid": "bb225aed-5806-46fd-addf-28de21d35ebb",
+            "orderNumber": "ORD-1",
+            "accessionNumber": null,
+            "patient": {
+                "uuid": "49287a9d-256b-4f52-9a92-ec61f9166f25",
+                "display": "Y2A7LR - williams willy john",
+                "links": [
+                    {
+                        "rel": "self",
+                        "uri": "http://localhost:8080/openmrs/ws/rest/v1/patient/49287a9d-256b-4f52-9a92-ec61f9166f25"
+                    }
+                ]
+            },
+            "concept": {
+                "uuid": "d9520d86-6042-4b82-a324-2abf3d4fdfa5",
+                "display": "Hémogramme automatisé",
+                "links": [
+                    {
+                        "rel": "self",
+                        "uri": "http://localhost:8080/openmrs/ws/rest/v1/concept/d9520d86-6042-4b82-a324-2abf3d4fdfa5"
+                    }
+                ]
+            },
+            "action": "NEW",
+            "careSetting": {
+                "uuid": "c365e560-c3ec-11e3-9c1a-0800200c9a66",
+                "name": "Inpatient",
+                "description": "In-patient care setting",
+                "retired": false,
+                "careSettingType": "INPATIENT",
+                "display": "Inpatient",
+                "links": [
+                    {
+                        "rel": "self",
+                        "uri": "http://localhost:8080/openmrs/ws/rest/v1/caresetting/c365e560-c3ec-11e3-9c1a-0800200c9a66"
+                    },
+                    {
+                        "rel": "full",
+                        "uri": "http://localhost:8080/openmrs/ws/rest/v1/caresetting/c365e560-c3ec-11e3-9c1a-0800200c9a66?v=full"
+                    }
+                ],
+                "resourceVersion": "1.10"
+            },
+            "previousOrder": null,
+            "dateActivated": "2018-08-30T17:34:19.000+0100",
+            "scheduledDate": null,
+            "dateStopped": null,
+            "autoExpireDate": null,
+            "encounter": {
+                "uuid": "dc1132f8-bc27-4f19-adfa-78297cad71af",
+                "display": "Test Order 30/08/2018",
+                "links": [
+                    {
+                        "rel": "self",
+                        "uri": "http://localhost:8080/openmrs/ws/rest/v1/encounter/dc1132f8-bc27-4f19-adfa-78297cad71af"
+                    }
+                ]
+            },
+            "orderer": {
+                "uuid": "4a854ae9-5fd9-4aa8-80ef-9074ff7b6fb4",
+                "display": "MAADH - rowland henshaw",
+                "links": [
+                    {
+                        "rel": "self",
+                        "uri": "http://localhost:8080/openmrs/ws/rest/v1/provider/4a854ae9-5fd9-4aa8-80ef-9074ff7b6fb4"
+                    }
+                ]
+            },
+            "orderReason": null,
+            "orderReasonNonCoded": null,
+            "urgency": "ROUTINE",
+            "instructions": null,
+            "commentToFulfiller": null,
+            "display": "Hémogramme automatisé",
+            "auditInfo": {
+                "creator": {
+                    "uuid": "e7ff2a99-a819-4d9d-8b07-9778c5b164a8",
+                    "display": "sudo",
+                    "links": [
+                        {
+                            "rel": "self",
+                            "uri": "http://localhost:8080/openmrs/ws/rest/v1/user/e7ff2a99-a819-4d9d-8b07-9778c5b164a8"
+                        }
+                    ]
+                },
+                "dateCreated": "2018-08-30T17:34:19.000+0100",
+                "changedBy": null,
+                "dateChanged": null
+            },
+            "specimenSource": null,
+            "laterality": null,
+            "clinicalHistory": null,
+            "frequency": null,
+            "numberOfRepeats": null,
+            "links": [
+                {
+                    "rel": "self",
+                    "uri": "http://localhost:8080/openmrs/ws/rest/v1/order/bb225aed-5806-46fd-addf-28de21d35ebb"
+                }
+            ],
+            "type": "testorder",
+            "resourceVersion": "1.10"
+        },
+        {
+            "uuid": "69ae3d2f-3ed2-46ff-9209-abc333e28eff",
+            "orderNumber": "ORD-2",
+            "accessionNumber": null,
+            "patient": {
+                "uuid": "49287a9d-256b-4f52-9a92-ec61f9166f25",
+                "display": "Y2A7LR - williams willy john",
+                "links": [
+                    {
+                        "rel": "self",
+                        "uri": "http://localhost:8080/openmrs/ws/rest/v1/patient/49287a9d-256b-4f52-9a92-ec61f9166f25"
+                    }
+                ]
+            },
+            "concept": {
+                "uuid": "3ccf4090-26fe-102b-80cb-0017a47871b2",
+                "display": "Groupe sanguin",
+                "links": [
+                    {
+                        "rel": "self",
+                        "uri": "http://localhost:8080/openmrs/ws/rest/v1/concept/3ccf4090-26fe-102b-80cb-0017a47871b2"
+                    }
+                ]
+            },
+            "action": "NEW",
+            "careSetting": {
+                "uuid": "c365e560-c3ec-11e3-9c1a-0800200c9a66",
+                "name": "Inpatient",
+                "description": "In-patient care setting",
+                "retired": false,
+                "careSettingType": "INPATIENT",
+                "display": "Inpatient",
+                "links": [
+                    {
+                        "rel": "self",
+                        "uri": "http://localhost:8080/openmrs/ws/rest/v1/caresetting/c365e560-c3ec-11e3-9c1a-0800200c9a66"
+                    },
+                    {
+                        "rel": "full",
+                        "uri": "http://localhost:8080/openmrs/ws/rest/v1/caresetting/c365e560-c3ec-11e3-9c1a-0800200c9a66?v=full"
+                    }
+                ],
+                "resourceVersion": "1.10"
+            },
+            "previousOrder": null,
+            "dateActivated": "2018-08-30T17:34:19.000+0100",
+            "scheduledDate": null,
+            "dateStopped": null,
+            "autoExpireDate": null,
+            "encounter": {
+                "uuid": "dc1132f8-bc27-4f19-adfa-78297cad71af",
+                "display": "Test Order 30/08/2018",
+                "links": [
+                    {
+                        "rel": "self",
+                        "uri": "http://localhost:8080/openmrs/ws/rest/v1/encounter/dc1132f8-bc27-4f19-adfa-78297cad71af"
+                    }
+                ]
+            },
+            "orderer": {
+                "uuid": "4a854ae9-5fd9-4aa8-80ef-9074ff7b6fb4",
+                "display": "MAADH - rowland henshaw",
+                "links": [
+                    {
+                        "rel": "self",
+                        "uri": "http://localhost:8080/openmrs/ws/rest/v1/provider/4a854ae9-5fd9-4aa8-80ef-9074ff7b6fb4"
+                    }
+                ]
+            },
+            "orderReason": null,
+            "orderReasonNonCoded": null,
+            "urgency": "ROUTINE",
+            "instructions": null,
+            "commentToFulfiller": null,
+            "display": "Groupe sanguin",
+            "auditInfo": {
+                "creator": {
+                    "uuid": "e7ff2a99-a819-4d9d-8b07-9778c5b164a8",
+                    "display": "sudo",
+                    "links": [
+                        {
+                            "rel": "self",
+                            "uri": "http://localhost:8080/openmrs/ws/rest/v1/user/e7ff2a99-a819-4d9d-8b07-9778c5b164a8"
+                        }
+                    ]
+                },
+                "dateCreated": "2018-08-30T17:34:19.000+0100",
+                "changedBy": null,
+                "dateChanged": null
+            },
+            "specimenSource": null,
+            "laterality": null,
+            "clinicalHistory": null,
+            "frequency": null,
+            "numberOfRepeats": null,
+            "links": [
+                {
+                    "rel": "self",
+                    "uri": "http://localhost:8080/openmrs/ws/rest/v1/order/69ae3d2f-3ed2-46ff-9209-abc333e28eff"
+                }
+            ],
+            "type": "testorder",
+            "resourceVersion": "1.10"
+        },
+        {
+            "uuid": "b3f1b964-854b-46db-9486-59a62a8789de",
+            "orderNumber": "ORD-3",
+            "accessionNumber": null,
+            "patient": {
+                "uuid": "009683b6-2b75-4bca-ac31-111842fdc4d2",
+                "display": "Y2EAA3 - vera jamie",
+                "links": [
+                    {
+                        "rel": "self",
+                        "uri": "http://localhost:8080/openmrs/ws/rest/v1/patient/009683b6-2b75-4bca-ac31-111842fdc4d2"
+                    }
+                ]
+            },
+            "concept": {
+                "uuid": "3ccf4090-26fe-102b-80cb-0017a47871b2",
+                "display": "Groupe sanguin",
+                "links": [
+                    {
+                        "rel": "self",
+                        "uri": "http://localhost:8080/openmrs/ws/rest/v1/concept/3ccf4090-26fe-102b-80cb-0017a47871b2"
+                    }
+                ]
+            },
+            "action": "NEW",
+            "careSetting": {
+                "uuid": "c365e560-c3ec-11e3-9c1a-0800200c9a66",
+                "name": "Inpatient",
+                "description": "In-patient care setting",
+                "retired": false,
+                "careSettingType": "INPATIENT",
+                "display": "Inpatient",
+                "links": [
+                    {
+                        "rel": "self",
+                        "uri": "http://localhost:8080/openmrs/ws/rest/v1/caresetting/c365e560-c3ec-11e3-9c1a-0800200c9a66"
+                    },
+                    {
+                        "rel": "full",
+                        "uri": "http://localhost:8080/openmrs/ws/rest/v1/caresetting/c365e560-c3ec-11e3-9c1a-0800200c9a66?v=full"
+                    }
+                ],
+                "resourceVersion": "1.10"
+            },
+            "previousOrder": null,
+            "dateActivated": "2018-08-30T17:57:58.000+0100",
+            "scheduledDate": null,
+            "dateStopped": null,
+            "autoExpireDate": null,
+            "encounter": {
+                "uuid": "4ef110d7-ea75-491f-8cfd-0a194a009586",
+                "display": "Test Order 30/08/2018",
+                "links": [
+                    {
+                        "rel": "self",
+                        "uri": "http://localhost:8080/openmrs/ws/rest/v1/encounter/4ef110d7-ea75-491f-8cfd-0a194a009586"
+                    }
+                ]
+            },
+            "orderer": {
+                "uuid": "4a854ae9-5fd9-4aa8-80ef-9074ff7b6fb4",
+                "display": "MAADH - rowland henshaw",
+                "links": [
+                    {
+                        "rel": "self",
+                        "uri": "http://localhost:8080/openmrs/ws/rest/v1/provider/4a854ae9-5fd9-4aa8-80ef-9074ff7b6fb4"
+                    }
+                ]
+            },
+            "orderReason": null,
+            "orderReasonNonCoded": null,
+            "urgency": "ROUTINE",
+            "instructions": null,
+            "commentToFulfiller": null,
+            "display": "Groupe sanguin",
+            "auditInfo": {
+                "creator": {
+                    "uuid": "e7ff2a99-a819-4d9d-8b07-9778c5b164a8",
+                    "display": "sudo",
+                    "links": [
+                        {
+                            "rel": "self",
+                            "uri": "http://localhost:8080/openmrs/ws/rest/v1/user/e7ff2a99-a819-4d9d-8b07-9778c5b164a8"
+                        }
+                    ]
+                },
+                "dateCreated": "2018-08-30T17:57:58.000+0100",
+                "changedBy": null,
+                "dateChanged": null
+            },
+            "specimenSource": null,
+            "laterality": null,
+            "clinicalHistory": null,
+            "frequency": null,
+            "numberOfRepeats": null,
+            "links": [
+                {
+                    "rel": "self",
+                    "uri": "http://localhost:8080/openmrs/ws/rest/v1/order/b3f1b964-854b-46db-9486-59a62a8789de"
+                }
+            ],
+            "type": "testorder",
+            "resourceVersion": "1.10"
+        },
+        {
+            "uuid": "5953b6c0-aba4-48cb-a7a6-cb27c6cfa3c1",
+            "orderNumber": "ORD-4",
+            "accessionNumber": null,
+            "patient": {
+                "uuid": "009683b6-2b75-4bca-ac31-111842fdc4d2",
+                "display": "Y2EAA3 - vera jamie",
+                "links": [
+                    {
+                        "rel": "self",
+                        "uri": "http://localhost:8080/openmrs/ws/rest/v1/patient/009683b6-2b75-4bca-ac31-111842fdc4d2"
+                    }
+                ]
+            },
+            "concept": {
+                "uuid": "163436AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+                "display": "Panel coagulation",
+                "links": [
+                    {
+                        "rel": "self",
+                        "uri": "http://localhost:8080/openmrs/ws/rest/v1/concept/163436AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+                    }
+                ]
+            },
+            "action": "NEW",
+            "careSetting": {
+                "uuid": "c365e560-c3ec-11e3-9c1a-0800200c9a66",
+                "name": "Inpatient",
+                "description": "In-patient care setting",
+                "retired": false,
+                "careSettingType": "INPATIENT",
+                "display": "Inpatient",
+                "links": [
+                    {
+                        "rel": "self",
+                        "uri": "http://localhost:8080/openmrs/ws/rest/v1/caresetting/c365e560-c3ec-11e3-9c1a-0800200c9a66"
+                    },
+                    {
+                        "rel": "full",
+                        "uri": "http://localhost:8080/openmrs/ws/rest/v1/caresetting/c365e560-c3ec-11e3-9c1a-0800200c9a66?v=full"
+                    }
+                ],
+                "resourceVersion": "1.10"
+            },
+            "previousOrder": null,
+            "dateActivated": "2018-08-30T17:57:58.000+0100",
+            "scheduledDate": null,
+            "dateStopped": null,
+            "autoExpireDate": null,
+            "encounter": {
+                "uuid": "4ef110d7-ea75-491f-8cfd-0a194a009586",
+                "display": "Test Order 30/08/2018",
+                "links": [
+                    {
+                        "rel": "self",
+                        "uri": "http://localhost:8080/openmrs/ws/rest/v1/encounter/4ef110d7-ea75-491f-8cfd-0a194a009586"
+                    }
+                ]
+            },
+            "orderer": {
+                "uuid": "4a854ae9-5fd9-4aa8-80ef-9074ff7b6fb4",
+                "display": "MAADH - rowland henshaw",
+                "links": [
+                    {
+                        "rel": "self",
+                        "uri": "http://localhost:8080/openmrs/ws/rest/v1/provider/4a854ae9-5fd9-4aa8-80ef-9074ff7b6fb4"
+                    }
+                ]
+            },
+            "orderReason": null,
+            "orderReasonNonCoded": null,
+            "urgency": "ROUTINE",
+            "instructions": null,
+            "commentToFulfiller": null,
+            "display": "Panel coagulation",
+            "auditInfo": {
+                "creator": {
+                    "uuid": "e7ff2a99-a819-4d9d-8b07-9778c5b164a8",
+                    "display": "sudo",
+                    "links": [
+                        {
+                            "rel": "self",
+                            "uri": "http://localhost:8080/openmrs/ws/rest/v1/user/e7ff2a99-a819-4d9d-8b07-9778c5b164a8"
+                        }
+                    ]
+                },
+                "dateCreated": "2018-08-30T17:57:58.000+0100",
+                "changedBy": null,
+                "dateChanged": null
+            },
+            "specimenSource": null,
+            "laterality": null,
+            "clinicalHistory": null,
+            "frequency": null,
+            "numberOfRepeats": null,
+            "links": [
+                {
+                    "rel": "self",
+                    "uri": "http://localhost:8080/openmrs/ws/rest/v1/order/5953b6c0-aba4-48cb-a7a6-cb27c6cfa3c1"
+                }
+            ],
+            "type": "testorder",
+            "resourceVersion": "1.10"
+        },
+        {
+            "uuid": "bb225aed-5806-46fd-addf-28de21d35ebb",
+            "orderNumber": "ORD-1",
+            "accessionNumber": null,
+            "patient": {
+                "uuid": "49287a9d-256b-4f52-9a92-ec61f9166f25",
+                "display": "Y2A7LR - williams willy john",
+                "links": [
+                    {
+                        "rel": "self",
+                        "uri": "http://localhost:8080/openmrs/ws/rest/v1/patient/49287a9d-256b-4f52-9a92-ec61f9166f25"
+                    }
+                ]
+            },
+            "concept": {
+                "uuid": "d9520d86-6042-4b82-a324-2abf3d4fdfa5",
+                "display": "Hémogramme automatisé",
+                "links": [
+                    {
+                        "rel": "self",
+                        "uri": "http://localhost:8080/openmrs/ws/rest/v1/concept/d9520d86-6042-4b82-a324-2abf3d4fdfa5"
+                    }
+                ]
+            },
+            "action": "NEW",
+            "careSetting": {
+                "uuid": "c365e560-c3ec-11e3-9c1a-0800200c9a66",
+                "name": "Inpatient",
+                "description": "In-patient care setting",
+                "retired": false,
+                "careSettingType": "INPATIENT",
+                "display": "Inpatient",
+                "links": [
+                    {
+                        "rel": "self",
+                        "uri": "http://localhost:8080/openmrs/ws/rest/v1/caresetting/c365e560-c3ec-11e3-9c1a-0800200c9a66"
+                    },
+                    {
+                        "rel": "full",
+                        "uri": "http://localhost:8080/openmrs/ws/rest/v1/caresetting/c365e560-c3ec-11e3-9c1a-0800200c9a66?v=full"
+                    }
+                ],
+                "resourceVersion": "1.10"
+            },
+            "previousOrder": null,
+            "dateActivated": "2018-08-30T17:34:19.000+0100",
+            "scheduledDate": null,
+            "dateStopped": null,
+            "autoExpireDate": null,
+            "encounter": {
+                "uuid": "dc1132f8-bc27-4f19-adfa-78297cad71af",
+                "display": "Test Order 30/08/2018",
+                "links": [
+                    {
+                        "rel": "self",
+                        "uri": "http://localhost:8080/openmrs/ws/rest/v1/encounter/dc1132f8-bc27-4f19-adfa-78297cad71af"
+                    }
+                ]
+            },
+            "orderer": {
+                "uuid": "4a854ae9-5fd9-4aa8-80ef-9074ff7b6fb4",
+                "display": "MAADH - rowland henshaw",
+                "links": [
+                    {
+                        "rel": "self",
+                        "uri": "http://localhost:8080/openmrs/ws/rest/v1/provider/4a854ae9-5fd9-4aa8-80ef-9074ff7b6fb4"
+                    }
+                ]
+            },
+            "orderReason": null,
+            "orderReasonNonCoded": null,
+            "urgency": "ROUTINE",
+            "instructions": null,
+            "commentToFulfiller": null,
+            "display": "Hémogramme automatisé",
+            "auditInfo": {
+                "creator": {
+                    "uuid": "e7ff2a99-a819-4d9d-8b07-9778c5b164a8",
+                    "display": "sudo",
+                    "links": [
+                        {
+                            "rel": "self",
+                            "uri": "http://localhost:8080/openmrs/ws/rest/v1/user/e7ff2a99-a819-4d9d-8b07-9778c5b164a8"
+                        }
+                    ]
+                },
+                "dateCreated": "2018-08-30T17:34:19.000+0100",
+                "changedBy": null,
+                "dateChanged": null
+            },
+            "specimenSource": null,
+            "laterality": null,
+            "clinicalHistory": null,
+            "frequency": null,
+            "numberOfRepeats": null,
+            "links": [
+                {
+                    "rel": "self",
+                    "uri": "http://localhost:8080/openmrs/ws/rest/v1/order/bb225aed-5806-46fd-addf-28de21d35ebb"
+                }
+            ],
+            "type": "testorder",
+            "resourceVersion": "1.10"
+        },
+        {
+            "uuid": "69ae3d2f-3ed2-46ff-9209-abc333e28eff",
+            "orderNumber": "ORD-2",
+            "accessionNumber": null,
+            "patient": {
+                "uuid": "49287a9d-256b-4f52-9a92-ec61f9166f25",
+                "display": "Y2A7LR - williams willy john",
+                "links": [
+                    {
+                        "rel": "self",
+                        "uri": "http://localhost:8080/openmrs/ws/rest/v1/patient/49287a9d-256b-4f52-9a92-ec61f9166f25"
+                    }
+                ]
+            },
+            "concept": {
+                "uuid": "3ccf4090-26fe-102b-80cb-0017a47871b2",
+                "display": "Groupe sanguin",
+                "links": [
+                    {
+                        "rel": "self",
+                        "uri": "http://localhost:8080/openmrs/ws/rest/v1/concept/3ccf4090-26fe-102b-80cb-0017a47871b2"
+                    }
+                ]
+            },
+            "action": "NEW",
+            "careSetting": {
+                "uuid": "c365e560-c3ec-11e3-9c1a-0800200c9a66",
+                "name": "Inpatient",
+                "description": "In-patient care setting",
+                "retired": false,
+                "careSettingType": "INPATIENT",
+                "display": "Inpatient",
+                "links": [
+                    {
+                        "rel": "self",
+                        "uri": "http://localhost:8080/openmrs/ws/rest/v1/caresetting/c365e560-c3ec-11e3-9c1a-0800200c9a66"
+                    },
+                    {
+                        "rel": "full",
+                        "uri": "http://localhost:8080/openmrs/ws/rest/v1/caresetting/c365e560-c3ec-11e3-9c1a-0800200c9a66?v=full"
+                    }
+                ],
+                "resourceVersion": "1.10"
+            },
+            "previousOrder": null,
+            "dateActivated": "2018-08-30T17:34:19.000+0100",
+            "scheduledDate": null,
+            "dateStopped": null,
+            "autoExpireDate": null,
+            "encounter": {
+                "uuid": "dc1132f8-bc27-4f19-adfa-78297cad71af",
+                "display": "Test Order 30/08/2018",
+                "links": [
+                    {
+                        "rel": "self",
+                        "uri": "http://localhost:8080/openmrs/ws/rest/v1/encounter/dc1132f8-bc27-4f19-adfa-78297cad71af"
+                    }
+                ]
+            },
+            "orderer": {
+                "uuid": "4a854ae9-5fd9-4aa8-80ef-9074ff7b6fb4",
+                "display": "MAADH - rowland henshaw",
+                "links": [
+                    {
+                        "rel": "self",
+                        "uri": "http://localhost:8080/openmrs/ws/rest/v1/provider/4a854ae9-5fd9-4aa8-80ef-9074ff7b6fb4"
+                    }
+                ]
+            },
+            "orderReason": null,
+            "orderReasonNonCoded": null,
+            "urgency": "ROUTINE",
+            "instructions": null,
+            "commentToFulfiller": null,
+            "display": "Groupe sanguin",
+            "auditInfo": {
+                "creator": {
+                    "uuid": "e7ff2a99-a819-4d9d-8b07-9778c5b164a8",
+                    "display": "sudo",
+                    "links": [
+                        {
+                            "rel": "self",
+                            "uri": "http://localhost:8080/openmrs/ws/rest/v1/user/e7ff2a99-a819-4d9d-8b07-9778c5b164a8"
+                        }
+                    ]
+                },
+                "dateCreated": "2018-08-30T17:34:19.000+0100",
+                "changedBy": null,
+                "dateChanged": null
+            },
+            "specimenSource": null,
+            "laterality": null,
+            "clinicalHistory": null,
+            "frequency": null,
+            "numberOfRepeats": null,
+            "links": [
+                {
+                    "rel": "self",
+                    "uri": "http://localhost:8080/openmrs/ws/rest/v1/order/69ae3d2f-3ed2-46ff-9209-abc333e28eff"
+                }
+            ],
+            "type": "testorder",
+            "resourceVersion": "1.10"
+        },
+        {
+            "uuid": "b3f1b964-854b-46db-9486-59a62a8789de",
+            "orderNumber": "ORD-3",
+            "accessionNumber": null,
+            "patient": {
+                "uuid": "009683b6-2b75-4bca-ac31-111842fdc4d2",
+                "display": "Y2EAA3 - vera jamie",
+                "links": [
+                    {
+                        "rel": "self",
+                        "uri": "http://localhost:8080/openmrs/ws/rest/v1/patient/009683b6-2b75-4bca-ac31-111842fdc4d2"
+                    }
+                ]
+            },
+            "concept": {
+                "uuid": "3ccf4090-26fe-102b-80cb-0017a47871b2",
+                "display": "Groupe sanguin",
+                "links": [
+                    {
+                        "rel": "self",
+                        "uri": "http://localhost:8080/openmrs/ws/rest/v1/concept/3ccf4090-26fe-102b-80cb-0017a47871b2"
+                    }
+                ]
+            },
+            "action": "NEW",
+            "careSetting": {
+                "uuid": "c365e560-c3ec-11e3-9c1a-0800200c9a66",
+                "name": "Inpatient",
+                "description": "In-patient care setting",
+                "retired": false,
+                "careSettingType": "INPATIENT",
+                "display": "Inpatient",
+                "links": [
+                    {
+                        "rel": "self",
+                        "uri": "http://localhost:8080/openmrs/ws/rest/v1/caresetting/c365e560-c3ec-11e3-9c1a-0800200c9a66"
+                    },
+                    {
+                        "rel": "full",
+                        "uri": "http://localhost:8080/openmrs/ws/rest/v1/caresetting/c365e560-c3ec-11e3-9c1a-0800200c9a66?v=full"
+                    }
+                ],
+                "resourceVersion": "1.10"
+            },
+            "previousOrder": null,
+            "dateActivated": "2018-08-30T17:57:58.000+0100",
+            "scheduledDate": null,
+            "dateStopped": null,
+            "autoExpireDate": null,
+            "encounter": {
+                "uuid": "4ef110d7-ea75-491f-8cfd-0a194a009586",
+                "display": "Test Order 30/08/2018",
+                "links": [
+                    {
+                        "rel": "self",
+                        "uri": "http://localhost:8080/openmrs/ws/rest/v1/encounter/4ef110d7-ea75-491f-8cfd-0a194a009586"
+                    }
+                ]
+            },
+            "orderer": {
+                "uuid": "4a854ae9-5fd9-4aa8-80ef-9074ff7b6fb4",
+                "display": "MAADH - rowland henshaw",
+                "links": [
+                    {
+                        "rel": "self",
+                        "uri": "http://localhost:8080/openmrs/ws/rest/v1/provider/4a854ae9-5fd9-4aa8-80ef-9074ff7b6fb4"
+                    }
+                ]
+            },
+            "orderReason": null,
+            "orderReasonNonCoded": null,
+            "urgency": "ROUTINE",
+            "instructions": null,
+            "commentToFulfiller": null,
+            "display": "Groupe sanguin",
+            "auditInfo": {
+                "creator": {
+                    "uuid": "e7ff2a99-a819-4d9d-8b07-9778c5b164a8",
+                    "display": "sudo",
+                    "links": [
+                        {
+                            "rel": "self",
+                            "uri": "http://localhost:8080/openmrs/ws/rest/v1/user/e7ff2a99-a819-4d9d-8b07-9778c5b164a8"
+                        }
+                    ]
+                },
+                "dateCreated": "2018-08-30T17:57:58.000+0100",
+                "changedBy": null,
+                "dateChanged": null
+            },
+            "specimenSource": null,
+            "laterality": null,
+            "clinicalHistory": null,
+            "frequency": null,
+            "numberOfRepeats": null,
+            "links": [
+                {
+                    "rel": "self",
+                    "uri": "http://localhost:8080/openmrs/ws/rest/v1/order/b3f1b964-854b-46db-9486-59a62a8789de"
+                }
+            ],
+            "type": "testorder",
+            "resourceVersion": "1.10"
+        },
+        {
+            "uuid": "5953b6c0-aba4-48cb-a7a6-cb27c6cfa3c1",
+            "orderNumber": "ORD-4",
+            "accessionNumber": null,
+            "patient": {
+                "uuid": "009683b6-2b75-4bca-ac31-111842fdc4d2",
+                "display": "Y2EAA3 - vera jamie",
+                "links": [
+                    {
+                        "rel": "self",
+                        "uri": "http://localhost:8080/openmrs/ws/rest/v1/patient/009683b6-2b75-4bca-ac31-111842fdc4d2"
+                    }
+                ]
+            },
+            "concept": {
+                "uuid": "163436AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+                "display": "Panel coagulation",
+                "links": [
+                    {
+                        "rel": "self",
+                        "uri": "http://localhost:8080/openmrs/ws/rest/v1/concept/163436AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+                    }
+                ]
+            },
+            "action": "NEW",
+            "careSetting": {
+                "uuid": "c365e560-c3ec-11e3-9c1a-0800200c9a66",
+                "name": "Inpatient",
+                "description": "In-patient care setting",
+                "retired": false,
+                "careSettingType": "INPATIENT",
+                "display": "Inpatient",
+                "links": [
+                    {
+                        "rel": "self",
+                        "uri": "http://localhost:8080/openmrs/ws/rest/v1/caresetting/c365e560-c3ec-11e3-9c1a-0800200c9a66"
+                    },
+                    {
+                        "rel": "full",
+                        "uri": "http://localhost:8080/openmrs/ws/rest/v1/caresetting/c365e560-c3ec-11e3-9c1a-0800200c9a66?v=full"
+                    }
+                ],
+                "resourceVersion": "1.10"
+            },
+            "previousOrder": null,
+            "dateActivated": "2018-08-30T17:57:58.000+0100",
+            "scheduledDate": null,
+            "dateStopped": null,
+            "autoExpireDate": null,
+            "encounter": {
+                "uuid": "4ef110d7-ea75-491f-8cfd-0a194a009586",
+                "display": "Test Order 30/08/2018",
+                "links": [
+                    {
+                        "rel": "self",
+                        "uri": "http://localhost:8080/openmrs/ws/rest/v1/encounter/4ef110d7-ea75-491f-8cfd-0a194a009586"
+                    }
+                ]
+            },
+            "orderer": {
+                "uuid": "4a854ae9-5fd9-4aa8-80ef-9074ff7b6fb4",
+                "display": "MAADH - rowland henshaw",
+                "links": [
+                    {
+                        "rel": "self",
+                        "uri": "http://localhost:8080/openmrs/ws/rest/v1/provider/4a854ae9-5fd9-4aa8-80ef-9074ff7b6fb4"
+                    }
+                ]
+            },
+            "orderReason": null,
+            "orderReasonNonCoded": null,
+            "urgency": "ROUTINE",
+            "instructions": null,
+            "commentToFulfiller": null,
+            "display": "Panel coagulation",
+            "auditInfo": {
+                "creator": {
+                    "uuid": "e7ff2a99-a819-4d9d-8b07-9778c5b164a8",
+                    "display": "sudo",
+                    "links": [
+                        {
+                            "rel": "self",
+                            "uri": "http://localhost:8080/openmrs/ws/rest/v1/user/e7ff2a99-a819-4d9d-8b07-9778c5b164a8"
+                        }
+                    ]
+                },
+                "dateCreated": "2018-08-30T17:57:58.000+0100",
+                "changedBy": null,
+                "dateChanged": null
+            },
+            "specimenSource": null,
+            "laterality": null,
+            "clinicalHistory": null,
+            "frequency": null,
+            "numberOfRepeats": null,
+            "links": [
+                {
+                    "rel": "self",
+                    "uri": "http://localhost:8080/openmrs/ws/rest/v1/order/5953b6c0-aba4-48cb-a7a6-cb27c6cfa3c1"
+                }
+            ],
+            "type": "testorder",
+            "resourceVersion": "1.10"
+        },
+        {
+            "uuid": "bb225aed-5806-46fd-addf-28de21d35ebb",
+            "orderNumber": "ORD-1",
+            "accessionNumber": null,
+            "patient": {
+                "uuid": "49287a9d-256b-4f52-9a92-ec61f9166f25",
+                "display": "Y2A7LR - williams willy john",
+                "links": [
+                    {
+                        "rel": "self",
+                        "uri": "http://localhost:8080/openmrs/ws/rest/v1/patient/49287a9d-256b-4f52-9a92-ec61f9166f25"
+                    }
+                ]
+            },
+            "concept": {
+                "uuid": "d9520d86-6042-4b82-a324-2abf3d4fdfa5",
+                "display": "Hémogramme automatisé",
+                "links": [
+                    {
+                        "rel": "self",
+                        "uri": "http://localhost:8080/openmrs/ws/rest/v1/concept/d9520d86-6042-4b82-a324-2abf3d4fdfa5"
+                    }
+                ]
+            },
+            "action": "NEW",
+            "careSetting": {
+                "uuid": "c365e560-c3ec-11e3-9c1a-0800200c9a66",
+                "name": "Inpatient",
+                "description": "In-patient care setting",
+                "retired": false,
+                "careSettingType": "INPATIENT",
+                "display": "Inpatient",
+                "links": [
+                    {
+                        "rel": "self",
+                        "uri": "http://localhost:8080/openmrs/ws/rest/v1/caresetting/c365e560-c3ec-11e3-9c1a-0800200c9a66"
+                    },
+                    {
+                        "rel": "full",
+                        "uri": "http://localhost:8080/openmrs/ws/rest/v1/caresetting/c365e560-c3ec-11e3-9c1a-0800200c9a66?v=full"
+                    }
+                ],
+                "resourceVersion": "1.10"
+            },
+            "previousOrder": null,
+            "dateActivated": "2018-08-30T17:34:19.000+0100",
+            "scheduledDate": null,
+            "dateStopped": null,
+            "autoExpireDate": null,
+            "encounter": {
+                "uuid": "dc1132f8-bc27-4f19-adfa-78297cad71af",
+                "display": "Test Order 30/08/2018",
+                "links": [
+                    {
+                        "rel": "self",
+                        "uri": "http://localhost:8080/openmrs/ws/rest/v1/encounter/dc1132f8-bc27-4f19-adfa-78297cad71af"
+                    }
+                ]
+            },
+            "orderer": {
+                "uuid": "4a854ae9-5fd9-4aa8-80ef-9074ff7b6fb4",
+                "display": "MAADH - rowland henshaw",
+                "links": [
+                    {
+                        "rel": "self",
+                        "uri": "http://localhost:8080/openmrs/ws/rest/v1/provider/4a854ae9-5fd9-4aa8-80ef-9074ff7b6fb4"
+                    }
+                ]
+            },
+            "orderReason": null,
+            "orderReasonNonCoded": null,
+            "urgency": "ROUTINE",
+            "instructions": null,
+            "commentToFulfiller": null,
+            "display": "Hémogramme automatisé",
+            "auditInfo": {
+                "creator": {
+                    "uuid": "e7ff2a99-a819-4d9d-8b07-9778c5b164a8",
+                    "display": "sudo",
+                    "links": [
+                        {
+                            "rel": "self",
+                            "uri": "http://localhost:8080/openmrs/ws/rest/v1/user/e7ff2a99-a819-4d9d-8b07-9778c5b164a8"
+                        }
+                    ]
+                },
+                "dateCreated": "2018-08-30T17:34:19.000+0100",
+                "changedBy": null,
+                "dateChanged": null
+            },
+            "specimenSource": null,
+            "laterality": null,
+            "clinicalHistory": null,
+            "frequency": null,
+            "numberOfRepeats": null,
+            "links": [
+                {
+                    "rel": "self",
+                    "uri": "http://localhost:8080/openmrs/ws/rest/v1/order/bb225aed-5806-46fd-addf-28de21d35ebb"
+                }
+            ],
+            "type": "testorder",
+            "resourceVersion": "1.10"
+        },
+        {
+            "uuid": "69ae3d2f-3ed2-46ff-9209-abc333e28eff",
+            "orderNumber": "ORD-2",
+            "accessionNumber": null,
+            "patient": {
+                "uuid": "49287a9d-256b-4f52-9a92-ec61f9166f25",
+                "display": "Y2A7LR - williams willy john",
+                "links": [
+                    {
+                        "rel": "self",
+                        "uri": "http://localhost:8080/openmrs/ws/rest/v1/patient/49287a9d-256b-4f52-9a92-ec61f9166f25"
+                    }
+                ]
+            },
+            "concept": {
+                "uuid": "3ccf4090-26fe-102b-80cb-0017a47871b2",
+                "display": "Groupe sanguin",
+                "links": [
+                    {
+                        "rel": "self",
+                        "uri": "http://localhost:8080/openmrs/ws/rest/v1/concept/3ccf4090-26fe-102b-80cb-0017a47871b2"
+                    }
+                ]
+            },
+            "action": "NEW",
+            "careSetting": {
+                "uuid": "c365e560-c3ec-11e3-9c1a-0800200c9a66",
+                "name": "Inpatient",
+                "description": "In-patient care setting",
+                "retired": false,
+                "careSettingType": "INPATIENT",
+                "display": "Inpatient",
+                "links": [
+                    {
+                        "rel": "self",
+                        "uri": "http://localhost:8080/openmrs/ws/rest/v1/caresetting/c365e560-c3ec-11e3-9c1a-0800200c9a66"
+                    },
+                    {
+                        "rel": "full",
+                        "uri": "http://localhost:8080/openmrs/ws/rest/v1/caresetting/c365e560-c3ec-11e3-9c1a-0800200c9a66?v=full"
+                    }
+                ],
+                "resourceVersion": "1.10"
+            },
+            "previousOrder": null,
+            "dateActivated": "2018-08-30T17:34:19.000+0100",
+            "scheduledDate": null,
+            "dateStopped": null,
+            "autoExpireDate": null,
+            "encounter": {
+                "uuid": "dc1132f8-bc27-4f19-adfa-78297cad71af",
+                "display": "Test Order 30/08/2018",
+                "links": [
+                    {
+                        "rel": "self",
+                        "uri": "http://localhost:8080/openmrs/ws/rest/v1/encounter/dc1132f8-bc27-4f19-adfa-78297cad71af"
+                    }
+                ]
+            },
+            "orderer": {
+                "uuid": "4a854ae9-5fd9-4aa8-80ef-9074ff7b6fb4",
+                "display": "MAADH - rowland henshaw",
+                "links": [
+                    {
+                        "rel": "self",
+                        "uri": "http://localhost:8080/openmrs/ws/rest/v1/provider/4a854ae9-5fd9-4aa8-80ef-9074ff7b6fb4"
+                    }
+                ]
+            },
+            "orderReason": null,
+            "orderReasonNonCoded": null,
+            "urgency": "ROUTINE",
+            "instructions": null,
+            "commentToFulfiller": null,
+            "display": "Groupe sanguin",
+            "auditInfo": {
+                "creator": {
+                    "uuid": "e7ff2a99-a819-4d9d-8b07-9778c5b164a8",
+                    "display": "sudo",
+                    "links": [
+                        {
+                            "rel": "self",
+                            "uri": "http://localhost:8080/openmrs/ws/rest/v1/user/e7ff2a99-a819-4d9d-8b07-9778c5b164a8"
+                        }
+                    ]
+                },
+                "dateCreated": "2018-08-30T17:34:19.000+0100",
+                "changedBy": null,
+                "dateChanged": null
+            },
+            "specimenSource": null,
+            "laterality": null,
+            "clinicalHistory": null,
+            "frequency": null,
+            "numberOfRepeats": null,
+            "links": [
+                {
+                    "rel": "self",
+                    "uri": "http://localhost:8080/openmrs/ws/rest/v1/order/69ae3d2f-3ed2-46ff-9209-abc333e28eff"
+                }
+            ],
+            "type": "testorder",
+            "resourceVersion": "1.10"
+        },
+        {
+            "uuid": "b3f1b964-854b-46db-9486-59a62a8789de",
+            "orderNumber": "ORD-3",
+            "accessionNumber": null,
+            "patient": {
+                "uuid": "009683b6-2b75-4bca-ac31-111842fdc4d2",
+                "display": "Y2EAA3 - vera jamie",
+                "links": [
+                    {
+                        "rel": "self",
+                        "uri": "http://localhost:8080/openmrs/ws/rest/v1/patient/009683b6-2b75-4bca-ac31-111842fdc4d2"
+                    }
+                ]
+            },
+            "concept": {
+                "uuid": "3ccf4090-26fe-102b-80cb-0017a47871b2",
+                "display": "Groupe sanguin",
+                "links": [
+                    {
+                        "rel": "self",
+                        "uri": "http://localhost:8080/openmrs/ws/rest/v1/concept/3ccf4090-26fe-102b-80cb-0017a47871b2"
+                    }
+                ]
+            },
+            "action": "NEW",
+            "careSetting": {
+                "uuid": "c365e560-c3ec-11e3-9c1a-0800200c9a66",
+                "name": "Inpatient",
+                "description": "In-patient care setting",
+                "retired": false,
+                "careSettingType": "INPATIENT",
+                "display": "Inpatient",
+                "links": [
+                    {
+                        "rel": "self",
+                        "uri": "http://localhost:8080/openmrs/ws/rest/v1/caresetting/c365e560-c3ec-11e3-9c1a-0800200c9a66"
+                    },
+                    {
+                        "rel": "full",
+                        "uri": "http://localhost:8080/openmrs/ws/rest/v1/caresetting/c365e560-c3ec-11e3-9c1a-0800200c9a66?v=full"
+                    }
+                ],
+                "resourceVersion": "1.10"
+            },
+            "previousOrder": null,
+            "dateActivated": "2018-08-30T17:57:58.000+0100",
+            "scheduledDate": null,
+            "dateStopped": null,
+            "autoExpireDate": null,
+            "encounter": {
+                "uuid": "4ef110d7-ea75-491f-8cfd-0a194a009586",
+                "display": "Test Order 30/08/2018",
+                "links": [
+                    {
+                        "rel": "self",
+                        "uri": "http://localhost:8080/openmrs/ws/rest/v1/encounter/4ef110d7-ea75-491f-8cfd-0a194a009586"
+                    }
+                ]
+            },
+            "orderer": {
+                "uuid": "4a854ae9-5fd9-4aa8-80ef-9074ff7b6fb4",
+                "display": "MAADH - rowland henshaw",
+                "links": [
+                    {
+                        "rel": "self",
+                        "uri": "http://localhost:8080/openmrs/ws/rest/v1/provider/4a854ae9-5fd9-4aa8-80ef-9074ff7b6fb4"
+                    }
+                ]
+            },
+            "orderReason": null,
+            "orderReasonNonCoded": null,
+            "urgency": "ROUTINE",
+            "instructions": null,
+            "commentToFulfiller": null,
+            "display": "Groupe sanguin",
+            "auditInfo": {
+                "creator": {
+                    "uuid": "e7ff2a99-a819-4d9d-8b07-9778c5b164a8",
+                    "display": "sudo",
+                    "links": [
+                        {
+                            "rel": "self",
+                            "uri": "http://localhost:8080/openmrs/ws/rest/v1/user/e7ff2a99-a819-4d9d-8b07-9778c5b164a8"
+                        }
+                    ]
+                },
+                "dateCreated": "2018-08-30T17:57:58.000+0100",
+                "changedBy": null,
+                "dateChanged": null
+            },
+            "specimenSource": null,
+            "laterality": null,
+            "clinicalHistory": null,
+            "frequency": null,
+            "numberOfRepeats": null,
+            "links": [
+                {
+                    "rel": "self",
+                    "uri": "http://localhost:8080/openmrs/ws/rest/v1/order/b3f1b964-854b-46db-9486-59a62a8789de"
+                }
+            ],
+            "type": "testorder",
+            "resourceVersion": "1.10"
+        },
+        {
+            "uuid": "5953b6c0-aba4-48cb-a7a6-cb27c6cfa3c1",
+            "orderNumber": "ORD-4",
+            "accessionNumber": null,
+            "patient": {
+                "uuid": "009683b6-2b75-4bca-ac31-111842fdc4d2",
+                "display": "Y2EAA3 - vera jamie",
+                "links": [
+                    {
+                        "rel": "self",
+                        "uri": "http://localhost:8080/openmrs/ws/rest/v1/patient/009683b6-2b75-4bca-ac31-111842fdc4d2"
+                    }
+                ]
+            },
+            "concept": {
+                "uuid": "163436AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+                "display": "Panel coagulation",
+                "links": [
+                    {
+                        "rel": "self",
+                        "uri": "http://localhost:8080/openmrs/ws/rest/v1/concept/163436AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+                    }
+                ]
+            },
+            "action": "NEW",
+            "careSetting": {
+                "uuid": "c365e560-c3ec-11e3-9c1a-0800200c9a66",
+                "name": "Inpatient",
+                "description": "In-patient care setting",
+                "retired": false,
+                "careSettingType": "INPATIENT",
+                "display": "Inpatient",
+                "links": [
+                    {
+                        "rel": "self",
+                        "uri": "http://localhost:8080/openmrs/ws/rest/v1/caresetting/c365e560-c3ec-11e3-9c1a-0800200c9a66"
+                    },
+                    {
+                        "rel": "full",
+                        "uri": "http://localhost:8080/openmrs/ws/rest/v1/caresetting/c365e560-c3ec-11e3-9c1a-0800200c9a66?v=full"
+                    }
+                ],
+                "resourceVersion": "1.10"
+            },
+            "previousOrder": null,
+            "dateActivated": "2018-08-30T17:57:58.000+0100",
+            "scheduledDate": null,
+            "dateStopped": null,
+            "autoExpireDate": null,
+            "encounter": {
+                "uuid": "4ef110d7-ea75-491f-8cfd-0a194a009586",
+                "display": "Test Order 30/08/2018",
+                "links": [
+                    {
+                        "rel": "self",
+                        "uri": "http://localhost:8080/openmrs/ws/rest/v1/encounter/4ef110d7-ea75-491f-8cfd-0a194a009586"
+                    }
+                ]
+            },
+            "orderer": {
+                "uuid": "4a854ae9-5fd9-4aa8-80ef-9074ff7b6fb4",
+                "display": "MAADH - rowland henshaw",
+                "links": [
+                    {
+                        "rel": "self",
+                        "uri": "http://localhost:8080/openmrs/ws/rest/v1/provider/4a854ae9-5fd9-4aa8-80ef-9074ff7b6fb4"
+                    }
+                ]
+            },
+            "orderReason": null,
+            "orderReasonNonCoded": null,
+            "urgency": "ROUTINE",
+            "instructions": null,
+            "commentToFulfiller": null,
+            "display": "Panel coagulation",
+            "auditInfo": {
+                "creator": {
+                    "uuid": "e7ff2a99-a819-4d9d-8b07-9778c5b164a8",
+                    "display": "sudo",
+                    "links": [
+                        {
+                            "rel": "self",
+                            "uri": "http://localhost:8080/openmrs/ws/rest/v1/user/e7ff2a99-a819-4d9d-8b07-9778c5b164a8"
+                        }
+                    ]
+                },
+                "dateCreated": "2018-08-30T17:57:58.000+0100",
+                "changedBy": null,
+                "dateChanged": null
+            },
+            "specimenSource": null,
+            "laterality": null,
+            "clinicalHistory": null,
+            "frequency": null,
+            "numberOfRepeats": null,
+            "links": [
+                {
+                    "rel": "self",
+                    "uri": "http://localhost:8080/openmrs/ws/rest/v1/order/5953b6c0-aba4-48cb-a7a6-cb27c6cfa3c1"
+                }
+            ],
+            "type": "testorder",
+            "resourceVersion": "1.10"
+        }
+    ],
+    "totalCount": 4
+}

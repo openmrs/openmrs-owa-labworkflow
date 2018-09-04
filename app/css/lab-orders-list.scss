@@ -1,0 +1,48 @@
+
+.lab-order-list {
+    position: relative;
+    top: 250px;
+}
+.table_cell {
+    font-size: 15px;
+    text-transform: capitalize;
+    &.urgency {
+        &.stat {
+            text-transform: uppercase !important;
+        }
+        &.routine {
+            text-transform: lowercase !important;
+        }
+    }
+}
+
+.labs-order-table-head {
+    font-size: 16px;
+    font-weight: 800;
+}
+
+.lab-order-list-cell-emr-id,
+.lab-order-list-header-emr-id {
+    max-width: 80px;
+}
+
+.lab-order-list-cell-order-id,
+.lab-order-list-header-order-id {
+    max-width: 90px;
+}
+
+.lab-order-list-cell-order-date,
+.lab-order-list-header-order-date {
+    max-width: 130px;
+}
+
+.lab-order-list-cell-collection-date,
+.lab-order-list-header-collection-date {
+    max-width: 160px;
+}
+
+.lab-order-list-cell-urgency,
+.lab-order-list-header-urgency {
+    max-width: 90px;
+}
+

@@ -8,7 +8,7 @@
  */
 import React from 'react';
 
-import LabOrdersList from '../components/LabOrdersList/LabOrdersList';
+import LabOrdersList from './LabOrdersList';
 
 export default class App extends React.Component {
   render() {

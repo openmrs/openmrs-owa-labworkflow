@@ -6,14 +6,15 @@
  * Copyright (C) OpenMRS Inc. OpenMRS is a registered trademark and the OpenMRS
  * graphic logo is a trademark of OpenMRS Inc.
  */
-import React from 'react';
 
-export default class LabOrdersList extends React.Component {
-  render() {
-    return (
-      <div>
-        <h1>Welcome to LabOrdersList Page/Component</h1>
-      </div>
-    );
-  }
-}
+import { combineReducers } from 'redux';
+import { reducer as reduxFormReducer } from 'redux-form';
+import { reducers as openmrsReducers } from '@openmrs/react-components'; // eslint-disable-line
+import labOrderReducer from './labOrdersReducer';
+
+
+export default combineReducers({
+  openmrs: openmrsReducers,
+  form: reduxFormReducer,
+  labOrders: labOrderReducer,
+});

@@ -11,29 +11,33 @@ import {
   createStore, applyMiddleware, combineReducers, compose,
 } from 'redux';
 import createSagaMiddleware from 'redux-saga';
-import { sagas as openmrsSagas, reducers as openmrsReducers } from '@openmrs/react-components';
-import { reducer as reduxFormReducer } from 'redux-form';
-
-import * as reducers from './reducers';
+import promiseMiddleware from 'redux-promise-middleware';
+import { createLogger } from 'redux-logger';
+import reducers from './reducers';
+import initSagas from './sagas';
 
 const sagaMiddleware = createSagaMiddleware();
 
-const middlewares = [sagaMiddleware];
+const promiseTypeSuffixes = ['LOADING', 'SUCCESS', 'FAILURE'];
+
+const middlewares = [
+  promiseMiddleware({ promiseTypeSuffixes }),
+  sagaMiddleware,
+];
+
+if (process.env.NODE_ENV !== 'production') {
+  middlewares.push(createLogger({ collapsed: true }));
+}
 
 export default function () {
-  const reducer = combineReducers({
-    openmrs: openmrsReducers,
-    form: reduxFormReducer,
-    labWorkflow: reducers,
-  });
   const store = createStore(
-    reducer,
+    reducers,
     compose(
       applyMiddleware(...middlewares),
       window.devToolsExtension && process.env.NODE_ENV !== 'production'
         ? window.devToolsExtension() : f => f,
     ),
   );
-  sagaMiddleware.run(openmrsSagas);
+  initSagas(sagaMiddleware);
   return store;
 }
