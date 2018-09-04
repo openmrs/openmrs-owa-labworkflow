@@ -7,7 +7,7 @@ export default {
       message: null,
     },
   },
-  defaultPatient: {
+  patientReducer: {
     patient: {
       person: {
         personName: {
@@ -19,6 +19,11 @@ export default {
       patientIdentifier: {
         identifier: '',
       },
+    },
+    isLoading: false,
+    error: {
+      status: false,
+      message: null,
     },
   },
   patientNoteReducer: {
