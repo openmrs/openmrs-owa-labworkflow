@@ -21,9 +21,12 @@ export default {
       },
     },
   },
-  defaultNote: {
-    results: {
-      patientNote: {},
+  patientNoteReducer: {
+    patientNote: {},
+    isLoading: false,
+    error: {
+      status: false,
+      message: null,
     },
   },
 };
