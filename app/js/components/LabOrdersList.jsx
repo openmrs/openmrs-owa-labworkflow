@@ -12,9 +12,14 @@ import cn from 'classnames';
 import moment from 'moment';
 import PropTypes from 'prop-types';
 import SortableTable from './shared/SortableTable';
-import { fetchLabOrders } from '../actions/labOrdersAction';
 import "react-table/react-table.css";
 import { DEFAULT_DATE_FORMAT } from '../utils/constants';
+
+import SortableTable from './shared/SortableTable';
+import { fetchLabOrders } from '../actions/labOrderAction';
+
+import { DEFAULT_DATE_FORMAT } from '../utils/constants';
+import "react-table/react-table.css";
 import "../../css/lab-orders-list.scss";
 
 
