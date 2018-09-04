@@ -84,6 +84,6 @@ class BreadCrumb extends Component {
 }
 
 BreadCrumb.propTypes = {
-  history: PropTypes.func.isRequired,
+  history: PropTypes.shape({}).isRequired,
 };
 export default withRouter(BreadCrumb);
