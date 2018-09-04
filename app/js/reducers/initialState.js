@@ -23,7 +23,7 @@ export default {
   },
   defaultNote: {
     results: {
-      patientNote: [],
+      patientNote: {},
     },
   },
 };

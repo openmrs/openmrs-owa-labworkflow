@@ -34,8 +34,8 @@ export class App extends React.Component {
 }
 
 App.propTypes = {
-  patientHeaderDetail: PropTypes.arrayOf(PropTypes.shape({})).isRequired,
-  patientNote: PropTypes.arrayOf(PropTypes.shape({})).isRequired,
+  patientHeaderDetail: PropTypes.object.isRequired,
+  patientNote: PropTypes.object.isRequired,
 };
 
 const mapStateToProps = ({
