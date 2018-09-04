@@ -1,4 +1,3 @@
-
 import actionTypes from "./actionTypes";
 
 const getPatientRecord = patientUuid => ({
