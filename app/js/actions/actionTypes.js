@@ -6,7 +6,6 @@ const BASIC_TYPES = [
   'REQUESTED',
 ];
 
-// TODO: Convert this to SAGA format
 export const FETCH_LAB_ORDERS = 'FETCH_LAB_ORDERS';
 
 export default {
