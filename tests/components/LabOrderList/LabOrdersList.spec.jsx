@@ -1,5 +1,5 @@
 import React from 'react';
-import LabOrdersListContainer,
+import
 {
   LabOrdersList,
   mapStateToProps,
@@ -9,10 +9,12 @@ let mountedComponent;
 
 const { mount } = global;
 
-const orders =[
+const orders = [
   {
     orderNumber: "ORD-1",
-    display: "Hémogramme automatisé",
+    concept: {
+      display: "Hémogramme automatisé",
+    },
     urgency: 'ROUTINE',
     dateActivated: "2018-08-30T17:34:19.000+0100",
     patient: {
@@ -23,10 +25,9 @@ const orders =[
 
 const props = {
   dispatch: jest.fn(),
-  labOrders: {
-    orders,
-    isLoading: false,
-  },
+  orders,
+  isLoading: false,
+  labTests: ['Hémogramme automatisé']
 };
 
 const getComponent = () => {

@@ -14,6 +14,8 @@ module.exports = {
     '/templates/',
     '/tests/mocks',
     '/tests/setup.js',
+    '/app/js/openmrs-owa-labworkflow.jsx',
+    '/app/js/redux-store.jsx'
   ],
 
   // An array of file extensions your modules use
@@ -43,5 +45,14 @@ module.exports = {
   testMatch: [
     "**/__tests__/**/*.js?(x)",
     "**/?(*.)+(spec|test).js?(x)"
+  ],
+
+  "moduleDirectories": [
+    "node_modules",
+  ],
+
+  // node modules dependencies that needs ignoring in tests
+  transformIgnorePatterns: [
+    "node_modules/(?!ramda)"
   ],
 };

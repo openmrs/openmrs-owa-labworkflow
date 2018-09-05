@@ -12,12 +12,12 @@ import cn from 'classnames';
 import moment from 'moment';
 import { withRouter } from 'react-router-dom'
 import PropTypes from 'prop-types';
-
-import SortableTable from './shared/SortableTable';
+import matchSorter from 'match-sorter';
+import { SortableTable } from '@openmrs/react-components';
+import LabOrderListFilters from './LabOrdersListFilters';
 import { fetchLabOrders } from '../actions/labOrdersAction';
-
 import { DEFAULT_DATE_FORMAT } from '../utils/constants';
-import "react-table/react-table.css";
+import { getDateRange } from '../utils/helpers';
 import "../../css/lab-orders-list.scss";
 
 
@@ -74,7 +74,7 @@ const Cell = ({ columnName, value }) => {
     case 'TEST TYPE':
       return (
         <div className="table_cell test-type">
-          <span>{value.display}</span>
+          <span>{value.concept.display}</span>
         </div>
       );
     default:
@@ -84,8 +84,18 @@ const Cell = ({ columnName, value }) => {
 
 
 export class LabOrdersList extends PureComponent {
-  constructor(props) {
-    super(props);
+  constructor() {
+    super();
+    this.state = {
+      filters: {
+        nameField: "",
+        dateToField: moment(),
+        dateFromField: moment().subtract(8, 'days'),
+        testTypeField: "All",
+      },
+    };
+    this.handleFilterChange = this.handleFilterChange.bind(this);
+    this.clearNameEMRField = this.clearNameEMRField.bind(this);
     this.handleShowResultsEntryPage = this.handleShowResultsEntryPage.bind(this);
   }
 
@@ -103,8 +113,51 @@ export class LabOrdersList extends PureComponent {
     });
   }
 
+
+  clearNameEMRField() {
+    this.setState({
+      filters: {
+        nameField: "",
+      },
+    });
+  }
+
+  handleFilterChange(field, value) {
+    const { filters } = this.state;
+    this.setState({
+      filters: {
+        ...filters,
+        [field]: value,
+      },
+    });
+  }
+
+  renderDataWithFilters = (filters, data) => {
+    let originalData = data;
+
+    if (filters.nameField !== "") {
+      const inputValue = filters.nameField;
+      const filteredData = matchSorter(originalData, inputValue, { keys: ['patient.display'] });
+      originalData = filteredData;
+    }
+
+    if (filters.dateToField && filters.dateFromField) {
+      const filteredData = getDateRange(originalData, filters.dateFromField, filters.dateToField, 'dateActivated')
+      originalData = filteredData;
+    }
+
+    if (filters.testTypeField !== "All") {
+      const inputValue = filters.testTypeField;
+      const filteredData = matchSorter(originalData, inputValue, { keys: ['concept.display'] });
+      originalData = filteredData;
+    }
+
+    return originalData;
+  }
+
   renderDraftOrderTable() {
-    const { labOrders: { orders } } = this.props;
+    const { orders } = this.props;
+    const { filters } = this.state;
     const fields = ["EMR ID", "NAME", "ORDER ID", "ORDER DATE", "COLLECTION DATE", "URGENCY", "TEST TYPE"];
 
     const columnMetadata = fields.map(columnName => ({
@@ -118,6 +171,8 @@ export class LabOrdersList extends PureComponent {
       <div className="lab-order-list">
         <SortableTable
           data={orders}
+          filters={filters}
+          getDataWithFilters={this.renderDataWithFilters}
           columnMetadata={columnMetadata}
           filteredFields={fields}
           filterType="none"
@@ -130,12 +185,27 @@ export class LabOrdersList extends PureComponent {
   }
 
   render() {
-    const { labOrders } = this.props;
+    const { labTests, isLoading } = this.props;
+    const { filters: { dateFromField, dateToField, nameField } } = this.state;
     return (
       <div>
         <h1>Welcome to LabOrdersList Page/Component</h1>
         <React.Fragment>
-          {labOrders.isLoading
+          <div>
+            {!isLoading
+              && (
+                <LabOrderListFilters
+                  handleFieldChange={this.handleFilterChange}
+                  clearNameEMRField={this.clearNameEMRField}
+                  labTests={labTests}
+                  dateFromField={dateFromField}
+                  dateToField={dateToField}
+                  nameField={nameField}
+
+                />
+              )}
+          </div>
+          {isLoading
             ? <div className="loader lab-order-list" />
             : this.renderDraftOrderTable()
           }
@@ -146,14 +216,18 @@ export class LabOrdersList extends PureComponent {
 }
 
 LabOrdersList.propTypes = {
-  labOrders: PropTypes.shape({}).isRequired,
+  orders: PropTypes.array.isRequired,
+  labTests: PropTypes.array.isRequired,
+  isLoading: PropTypes.bool.isRequired,
 };
 
 
 export const mapStateToProps = ({
-  labOrders,
+  labOrders: { orders, labTests, isLoading },
 }) => ({
-  labOrders,
+  orders,
+  labTests,
+  isLoading,
 });
 
 

@@ -20,27 +20,401 @@ exports[`<LabOrdersList /> component renders correctly 1`] = `
       ],
     }
   }
-  labOrders={
-    Object {
-      "isLoading": false,
-      "orders": Array [
-        Object {
-          "dateActivated": "2018-08-30T17:34:19.000+0100",
+  isLoading={false}
+  labTests={
+    Array [
+      "Hémogramme automatisé",
+    ]
+  }
+  orders={
+    Array [
+      Object {
+        "concept": Object {
           "display": "Hémogramme automatisé",
-          "orderNumber": "ORD-1",
-          "patient": Object {
-            "display": "Y2A7LR - williams willy john",
-          },
-          "urgency": "ROUTINE",
         },
-      ],
-    }
+        "dateActivated": "2018-08-30T17:34:19.000+0100",
+        "orderNumber": "ORD-1",
+        "patient": Object {
+          "display": "Y2A7LR - williams willy john",
+        },
+        "urgency": "ROUTINE",
+      },
+    ]
   }
 >
   <div>
     <h1>
       Welcome to LabOrdersList Page/Component
     </h1>
+    <div>
+      <LabOrderListFilters
+        clearNameEMRField={[Function]}
+        dateFromField={"2018-08-29T21:15:55.835Z"}
+        dateToField={"2018-09-06T21:15:55.835Z"}
+        handleFieldChange={[Function]}
+        labTests={
+          Array [
+            "Hémogramme automatisé",
+          ]
+        }
+        nameField=""
+      >
+        <div
+          className="order-list-filters"
+        >
+          <span
+            className="top-filters"
+          >
+            <span
+              className="date-picker-filter"
+            >
+              <span>
+                <CustomDatePicker
+                  defaultDate={"2018-08-29T21:15:55.838Z"}
+                  field="dateFromField"
+                  handleDateChange={[Function]}
+                  label="From: "
+                  labelClassName="line"
+                >
+                  <DatePicker
+                    allowSameDay={false}
+                    customInput={<DateDisplayComponent />}
+                    dateFormat="L"
+                    dateFormatCalendar="MMMM YYYY"
+                    disabled={false}
+                    disabledKeyboardNavigation={false}
+                    dropdownMode="scroll"
+                    monthsShown={1}
+                    nextMonthButtonLabel="Next month"
+                    onBlur={[Function]}
+                    onChange={[Function]}
+                    onClickOutside={[Function]}
+                    onFocus={[Function]}
+                    onKeyDown={[Function]}
+                    onMonthChange={[Function]}
+                    onSelect={[Function]}
+                    onYearChange={[Function]}
+                    preventOpenOnFocus={false}
+                    previousMonthButtonLabel="Previous Month"
+                    readOnly={false}
+                    selected={"2018-08-29T21:15:55.838Z"}
+                    shouldCloseOnSelect={true}
+                    showTimeSelect={false}
+                    timeCaption="Time"
+                    timeIntervals={30}
+                    withPortal={false}
+                  >
+                    <PopperComponent
+                      hidePopper={true}
+                      popperComponent={null}
+                      popperModifiers={
+                        Object {
+                          "preventOverflow": Object {
+                            "boundariesElement": "viewport",
+                            "enabled": true,
+                            "escapeWithReference": true,
+                          },
+                        }
+                      }
+                      popperPlacement="bottom-start"
+                      targetComponent={
+                        <div
+                          className="react-datepicker__input-container"
+                        >
+                          <DateDisplayComponent
+                            className=""
+                            disabled={false}
+                            onBlur={[Function]}
+                            onChange={[Function]}
+                            onClick={[Function]}
+                            onFocus={[Function]}
+                            onKeyDown={[Function]}
+                            readOnly={false}
+                            value="08/29/2018"
+                          />
+                        </div>
+                      }
+                    >
+                      <Manager
+                        tag="div"
+                      >
+                        <div>
+                          <Target
+                            className="react-datepicker-wrapper"
+                          >
+                            <div
+                              className="react-datepicker-wrapper"
+                            >
+                              <div
+                                className="react-datepicker__input-container"
+                              >
+                                <DateDisplayComponent
+                                  className=""
+                                  disabled={false}
+                                  onBlur={[Function]}
+                                  onChange={[Function]}
+                                  onClick={[Function]}
+                                  onFocus={[Function]}
+                                  onKeyDown={[Function]}
+                                  readOnly={false}
+                                  value="08/29/2018"
+                                >
+                                  <span
+                                    className="date-picker-container"
+                                  >
+                                    <span
+                                      className="line"
+                                    >
+                                      From: 
+                                    </span>
+                                    <FormControl
+                                      bsClass="form-control"
+                                      componentClass="input"
+                                      placeholder=""
+                                      type="text"
+                                      value="08/29/2018"
+                                    >
+                                      <input
+                                        className="form-control"
+                                        placeholder=""
+                                        type="text"
+                                        value="08/29/2018"
+                                      />
+                                    </FormControl>
+                                    <i
+                                      className="icon-calendar scale small add-on"
+                                      onClick={[Function]}
+                                      role="toolbar"
+                                    />
+                                  </span>
+                                </DateDisplayComponent>
+                              </div>
+                            </div>
+                          </Target>
+                        </div>
+                      </Manager>
+                    </PopperComponent>
+                  </DatePicker>
+                </CustomDatePicker>
+              </span>
+              <span>
+                <CustomDatePicker
+                  defaultDate={"2018-09-06T21:15:55.802Z"}
+                  field="dateToField"
+                  handleDateChange={[Function]}
+                  label="To: "
+                  labelClassName="line"
+                >
+                  <DatePicker
+                    allowSameDay={false}
+                    customInput={<DateDisplayComponent />}
+                    dateFormat="L"
+                    dateFormatCalendar="MMMM YYYY"
+                    disabled={false}
+                    disabledKeyboardNavigation={false}
+                    dropdownMode="scroll"
+                    monthsShown={1}
+                    nextMonthButtonLabel="Next month"
+                    onBlur={[Function]}
+                    onChange={[Function]}
+                    onClickOutside={[Function]}
+                    onFocus={[Function]}
+                    onKeyDown={[Function]}
+                    onMonthChange={[Function]}
+                    onSelect={[Function]}
+                    onYearChange={[Function]}
+                    preventOpenOnFocus={false}
+                    previousMonthButtonLabel="Previous Month"
+                    readOnly={false}
+                    selected={"2018-09-06T21:15:55.802Z"}
+                    shouldCloseOnSelect={true}
+                    showTimeSelect={false}
+                    timeCaption="Time"
+                    timeIntervals={30}
+                    withPortal={false}
+                  >
+                    <PopperComponent
+                      hidePopper={true}
+                      popperComponent={null}
+                      popperModifiers={
+                        Object {
+                          "preventOverflow": Object {
+                            "boundariesElement": "viewport",
+                            "enabled": true,
+                            "escapeWithReference": true,
+                          },
+                        }
+                      }
+                      popperPlacement="bottom-start"
+                      targetComponent={
+                        <div
+                          className="react-datepicker__input-container"
+                        >
+                          <DateDisplayComponent
+                            className=""
+                            disabled={false}
+                            onBlur={[Function]}
+                            onChange={[Function]}
+                            onClick={[Function]}
+                            onFocus={[Function]}
+                            onKeyDown={[Function]}
+                            readOnly={false}
+                            value="09/06/2018"
+                          />
+                        </div>
+                      }
+                    >
+                      <Manager
+                        tag="div"
+                      >
+                        <div>
+                          <Target
+                            className="react-datepicker-wrapper"
+                          >
+                            <div
+                              className="react-datepicker-wrapper"
+                            >
+                              <div
+                                className="react-datepicker__input-container"
+                              >
+                                <DateDisplayComponent
+                                  className=""
+                                  disabled={false}
+                                  onBlur={[Function]}
+                                  onChange={[Function]}
+                                  onClick={[Function]}
+                                  onFocus={[Function]}
+                                  onKeyDown={[Function]}
+                                  readOnly={false}
+                                  value="09/06/2018"
+                                >
+                                  <span
+                                    className="date-picker-container"
+                                  >
+                                    <span
+                                      className="line"
+                                    >
+                                      To: 
+                                    </span>
+                                    <FormControl
+                                      bsClass="form-control"
+                                      componentClass="input"
+                                      placeholder=""
+                                      type="text"
+                                      value="09/06/2018"
+                                    >
+                                      <input
+                                        className="form-control"
+                                        placeholder=""
+                                        type="text"
+                                        value="09/06/2018"
+                                      />
+                                    </FormControl>
+                                    <i
+                                      className="icon-calendar scale small add-on"
+                                      onClick={[Function]}
+                                      role="toolbar"
+                                    />
+                                  </span>
+                                </DateDisplayComponent>
+                              </div>
+                            </div>
+                          </Target>
+                        </div>
+                      </Manager>
+                    </PopperComponent>
+                  </DatePicker>
+                </CustomDatePicker>
+              </span>
+            </span>
+          </span>
+          <span
+            className="bottom-filters"
+          >
+            <span
+              className="form-filter-group one-third"
+            >
+              <span>
+                Search for a sample
+              </span>
+              <span
+                className="name-emrid-order-filter"
+              >
+                <i
+                  className="small icon-search"
+                />
+                <FormControl
+                  bsClass="form-control"
+                  componentClass="input"
+                  onChange={[Function]}
+                  placeholder="search by ID or name, or scan sample"
+                  type="text"
+                  value=""
+                >
+                  <input
+                    className="form-control"
+                    onChange={[Function]}
+                    placeholder="search by ID or name, or scan sample"
+                    type="text"
+                    value=""
+                  />
+                </FormControl>
+                <i
+                  className="small scale icon-remove-sign"
+                  onClick={[Function]}
+                  role="toolbar"
+                />
+              </span>
+            </span>
+            <Dropdown
+              className="form-filter-group quater"
+              defaultValue="All"
+              field="testTypeField"
+              handleSelect={[Function]}
+              label="Test Type"
+              labelClassName=""
+              list={
+                Array [
+                  "Hémogramme automatisé",
+                ]
+              }
+            >
+              <span
+                className="form-filter-group quater"
+              >
+                <span
+                  className=""
+                >
+                  Test Type
+                </span>
+                <select
+                  onChange={[Function]}
+                  style={
+                    Object {
+                      "height": "45px",
+                      "width": "100%",
+                    }
+                  }
+                >
+                  <option
+                    key="All"
+                    value="All"
+                  >
+                    All
+                  </option>
+                  <option
+                    key="Hémogramme automatisé"
+                    value="Hémogramme automatisé"
+                  >
+                    Hémogramme automatisé
+                  </option>
+                </select>
+              </span>
+            </Dropdown>
+          </span>
+        </div>
+      </LabOrderListFilters>
+    </div>
     <div
       className="lab-order-list"
     >
@@ -129,8 +503,10 @@ exports[`<LabOrdersList /> component renders correctly 1`] = `
         data={
           Array [
             Object {
+              "concept": Object {
+                "display": "Hémogramme automatisé",
+              },
               "dateActivated": "2018-08-30T17:34:19.000+0100",
-              "display": "Hémogramme automatisé",
               "orderNumber": "ORD-1",
               "patient": Object {
                 "display": "Y2A7LR - williams willy john",
@@ -151,6 +527,14 @@ exports[`<LabOrdersList /> component renders correctly 1`] = `
             "URGENCY",
             "TEST TYPE",
           ]
+        }
+        filters={
+          Object {
+            "dateFromField": "2018-08-29T21:15:55.835Z",
+            "dateToField": "2018-09-06T21:15:55.835Z",
+            "nameField": "",
+            "testTypeField": "All",
+          }
         }
         isFilterable={false}
         isResizeable={true}
@@ -311,8 +695,10 @@ exports[`<LabOrdersList /> component renders correctly 1`] = `
             data={
               Array [
                 Object {
+                  "concept": Object {
+                    "display": "Hémogramme automatisé",
+                  },
                   "dateActivated": "2018-08-30T17:34:19.000+0100",
-                  "display": "Hémogramme automatisé",
                   "orderNumber": "ORD-1",
                   "patient": Object {
                     "display": "Y2A7LR - williams willy john",
@@ -371,7 +757,7 @@ exports[`<LabOrdersList /> component renders correctly 1`] = `
             nextText="Next"
             noDataText={
               <span
-                className="loader sortableTable-noDataText"
+                className="sortableTable-noDataText"
               >
                 No results found
               </span>
@@ -881,8 +1267,10 @@ exports[`<LabOrdersList /> component renders correctly 1`] = `
                                     }
                                     original={
                                       Object {
+                                        "concept": Object {
+                                          "display": "Hémogramme automatisé",
+                                        },
                                         "dateActivated": "2018-08-30T17:34:19.000+0100",
-                                        "display": "Hémogramme automatisé",
                                         "orderNumber": "ORD-1",
                                         "patient": Object {
                                           "display": "Y2A7LR - williams willy john",
@@ -896,8 +1284,10 @@ exports[`<LabOrdersList /> component renders correctly 1`] = `
                                     row={
                                       Object {
                                         "": Object {
+                                          "concept": Object {
+                                            "display": "Hémogramme automatisé",
+                                          },
                                           "dateActivated": "2018-08-30T17:34:19.000+0100",
-                                          "display": "Hémogramme automatisé",
                                           "orderNumber": "ORD-1",
                                           "patient": Object {
                                             "display": "Y2A7LR - williams willy john",
@@ -907,8 +1297,10 @@ exports[`<LabOrdersList /> component renders correctly 1`] = `
                                         "_index": 0,
                                         "_nestingLevel": 0,
                                         "_original": Object {
+                                          "concept": Object {
+                                            "display": "Hémogramme automatisé",
+                                          },
                                           "dateActivated": "2018-08-30T17:34:19.000+0100",
-                                          "display": "Hémogramme automatisé",
                                           "orderNumber": "ORD-1",
                                           "patient": Object {
                                             "display": "Y2A7LR - williams willy john",
@@ -930,8 +1322,10 @@ exports[`<LabOrdersList /> component renders correctly 1`] = `
                                     }
                                     value={
                                       Object {
+                                        "concept": Object {
+                                          "display": "Hémogramme automatisé",
+                                        },
                                         "dateActivated": "2018-08-30T17:34:19.000+0100",
-                                        "display": "Hémogramme automatisé",
                                         "orderNumber": "ORD-1",
                                         "patient": Object {
                                           "display": "Y2A7LR - williams willy john",
@@ -1036,8 +1430,10 @@ exports[`<LabOrdersList /> component renders correctly 1`] = `
                                     }
                                     original={
                                       Object {
+                                        "concept": Object {
+                                          "display": "Hémogramme automatisé",
+                                        },
                                         "dateActivated": "2018-08-30T17:34:19.000+0100",
-                                        "display": "Hémogramme automatisé",
                                         "orderNumber": "ORD-1",
                                         "patient": Object {
                                           "display": "Y2A7LR - williams willy john",
@@ -1051,8 +1447,10 @@ exports[`<LabOrdersList /> component renders correctly 1`] = `
                                     row={
                                       Object {
                                         "": Object {
+                                          "concept": Object {
+                                            "display": "Hémogramme automatisé",
+                                          },
                                           "dateActivated": "2018-08-30T17:34:19.000+0100",
-                                          "display": "Hémogramme automatisé",
                                           "orderNumber": "ORD-1",
                                           "patient": Object {
                                             "display": "Y2A7LR - williams willy john",
@@ -1062,8 +1460,10 @@ exports[`<LabOrdersList /> component renders correctly 1`] = `
                                         "_index": 0,
                                         "_nestingLevel": 0,
                                         "_original": Object {
+                                          "concept": Object {
+                                            "display": "Hémogramme automatisé",
+                                          },
                                           "dateActivated": "2018-08-30T17:34:19.000+0100",
-                                          "display": "Hémogramme automatisé",
                                           "orderNumber": "ORD-1",
                                           "patient": Object {
                                             "display": "Y2A7LR - williams willy john",
@@ -1085,8 +1485,10 @@ exports[`<LabOrdersList /> component renders correctly 1`] = `
                                     }
                                     value={
                                       Object {
+                                        "concept": Object {
+                                          "display": "Hémogramme automatisé",
+                                        },
                                         "dateActivated": "2018-08-30T17:34:19.000+0100",
-                                        "display": "Hémogramme automatisé",
                                         "orderNumber": "ORD-1",
                                         "patient": Object {
                                           "display": "Y2A7LR - williams willy john",
@@ -1191,8 +1593,10 @@ exports[`<LabOrdersList /> component renders correctly 1`] = `
                                     }
                                     original={
                                       Object {
+                                        "concept": Object {
+                                          "display": "Hémogramme automatisé",
+                                        },
                                         "dateActivated": "2018-08-30T17:34:19.000+0100",
-                                        "display": "Hémogramme automatisé",
                                         "orderNumber": "ORD-1",
                                         "patient": Object {
                                           "display": "Y2A7LR - williams willy john",
@@ -1206,8 +1610,10 @@ exports[`<LabOrdersList /> component renders correctly 1`] = `
                                     row={
                                       Object {
                                         "": Object {
+                                          "concept": Object {
+                                            "display": "Hémogramme automatisé",
+                                          },
                                           "dateActivated": "2018-08-30T17:34:19.000+0100",
-                                          "display": "Hémogramme automatisé",
                                           "orderNumber": "ORD-1",
                                           "patient": Object {
                                             "display": "Y2A7LR - williams willy john",
@@ -1217,8 +1623,10 @@ exports[`<LabOrdersList /> component renders correctly 1`] = `
                                         "_index": 0,
                                         "_nestingLevel": 0,
                                         "_original": Object {
+                                          "concept": Object {
+                                            "display": "Hémogramme automatisé",
+                                          },
                                           "dateActivated": "2018-08-30T17:34:19.000+0100",
-                                          "display": "Hémogramme automatisé",
                                           "orderNumber": "ORD-1",
                                           "patient": Object {
                                             "display": "Y2A7LR - williams willy john",
@@ -1240,8 +1648,10 @@ exports[`<LabOrdersList /> component renders correctly 1`] = `
                                     }
                                     value={
                                       Object {
+                                        "concept": Object {
+                                          "display": "Hémogramme automatisé",
+                                        },
                                         "dateActivated": "2018-08-30T17:34:19.000+0100",
-                                        "display": "Hémogramme automatisé",
                                         "orderNumber": "ORD-1",
                                         "patient": Object {
                                           "display": "Y2A7LR - williams willy john",
@@ -1346,8 +1756,10 @@ exports[`<LabOrdersList /> component renders correctly 1`] = `
                                     }
                                     original={
                                       Object {
+                                        "concept": Object {
+                                          "display": "Hémogramme automatisé",
+                                        },
                                         "dateActivated": "2018-08-30T17:34:19.000+0100",
-                                        "display": "Hémogramme automatisé",
                                         "orderNumber": "ORD-1",
                                         "patient": Object {
                                           "display": "Y2A7LR - williams willy john",
@@ -1361,8 +1773,10 @@ exports[`<LabOrdersList /> component renders correctly 1`] = `
                                     row={
                                       Object {
                                         "": Object {
+                                          "concept": Object {
+                                            "display": "Hémogramme automatisé",
+                                          },
                                           "dateActivated": "2018-08-30T17:34:19.000+0100",
-                                          "display": "Hémogramme automatisé",
                                           "orderNumber": "ORD-1",
                                           "patient": Object {
                                             "display": "Y2A7LR - williams willy john",
@@ -1372,8 +1786,10 @@ exports[`<LabOrdersList /> component renders correctly 1`] = `
                                         "_index": 0,
                                         "_nestingLevel": 0,
                                         "_original": Object {
+                                          "concept": Object {
+                                            "display": "Hémogramme automatisé",
+                                          },
                                           "dateActivated": "2018-08-30T17:34:19.000+0100",
-                                          "display": "Hémogramme automatisé",
                                           "orderNumber": "ORD-1",
                                           "patient": Object {
                                             "display": "Y2A7LR - williams willy john",
@@ -1395,8 +1811,10 @@ exports[`<LabOrdersList /> component renders correctly 1`] = `
                                     }
                                     value={
                                       Object {
+                                        "concept": Object {
+                                          "display": "Hémogramme automatisé",
+                                        },
                                         "dateActivated": "2018-08-30T17:34:19.000+0100",
-                                        "display": "Hémogramme automatisé",
                                         "orderNumber": "ORD-1",
                                         "patient": Object {
                                           "display": "Y2A7LR - williams willy john",
@@ -1501,8 +1919,10 @@ exports[`<LabOrdersList /> component renders correctly 1`] = `
                                     }
                                     original={
                                       Object {
+                                        "concept": Object {
+                                          "display": "Hémogramme automatisé",
+                                        },
                                         "dateActivated": "2018-08-30T17:34:19.000+0100",
-                                        "display": "Hémogramme automatisé",
                                         "orderNumber": "ORD-1",
                                         "patient": Object {
                                           "display": "Y2A7LR - williams willy john",
@@ -1516,8 +1936,10 @@ exports[`<LabOrdersList /> component renders correctly 1`] = `
                                     row={
                                       Object {
                                         "": Object {
+                                          "concept": Object {
+                                            "display": "Hémogramme automatisé",
+                                          },
                                           "dateActivated": "2018-08-30T17:34:19.000+0100",
-                                          "display": "Hémogramme automatisé",
                                           "orderNumber": "ORD-1",
                                           "patient": Object {
                                             "display": "Y2A7LR - williams willy john",
@@ -1527,8 +1949,10 @@ exports[`<LabOrdersList /> component renders correctly 1`] = `
                                         "_index": 0,
                                         "_nestingLevel": 0,
                                         "_original": Object {
+                                          "concept": Object {
+                                            "display": "Hémogramme automatisé",
+                                          },
                                           "dateActivated": "2018-08-30T17:34:19.000+0100",
-                                          "display": "Hémogramme automatisé",
                                           "orderNumber": "ORD-1",
                                           "patient": Object {
                                             "display": "Y2A7LR - williams willy john",
@@ -1550,8 +1974,10 @@ exports[`<LabOrdersList /> component renders correctly 1`] = `
                                     }
                                     value={
                                       Object {
+                                        "concept": Object {
+                                          "display": "Hémogramme automatisé",
+                                        },
                                         "dateActivated": "2018-08-30T17:34:19.000+0100",
-                                        "display": "Hémogramme automatisé",
                                         "orderNumber": "ORD-1",
                                         "patient": Object {
                                           "display": "Y2A7LR - williams willy john",
@@ -1656,8 +2082,10 @@ exports[`<LabOrdersList /> component renders correctly 1`] = `
                                     }
                                     original={
                                       Object {
+                                        "concept": Object {
+                                          "display": "Hémogramme automatisé",
+                                        },
                                         "dateActivated": "2018-08-30T17:34:19.000+0100",
-                                        "display": "Hémogramme automatisé",
                                         "orderNumber": "ORD-1",
                                         "patient": Object {
                                           "display": "Y2A7LR - williams willy john",
@@ -1671,8 +2099,10 @@ exports[`<LabOrdersList /> component renders correctly 1`] = `
                                     row={
                                       Object {
                                         "": Object {
+                                          "concept": Object {
+                                            "display": "Hémogramme automatisé",
+                                          },
                                           "dateActivated": "2018-08-30T17:34:19.000+0100",
-                                          "display": "Hémogramme automatisé",
                                           "orderNumber": "ORD-1",
                                           "patient": Object {
                                             "display": "Y2A7LR - williams willy john",
@@ -1682,8 +2112,10 @@ exports[`<LabOrdersList /> component renders correctly 1`] = `
                                         "_index": 0,
                                         "_nestingLevel": 0,
                                         "_original": Object {
+                                          "concept": Object {
+                                            "display": "Hémogramme automatisé",
+                                          },
                                           "dateActivated": "2018-08-30T17:34:19.000+0100",
-                                          "display": "Hémogramme automatisé",
                                           "orderNumber": "ORD-1",
                                           "patient": Object {
                                             "display": "Y2A7LR - williams willy john",
@@ -1705,8 +2137,10 @@ exports[`<LabOrdersList /> component renders correctly 1`] = `
                                     }
                                     value={
                                       Object {
+                                        "concept": Object {
+                                          "display": "Hémogramme automatisé",
+                                        },
                                         "dateActivated": "2018-08-30T17:34:19.000+0100",
-                                        "display": "Hémogramme automatisé",
                                         "orderNumber": "ORD-1",
                                         "patient": Object {
                                           "display": "Y2A7LR - williams willy john",
@@ -1811,8 +2245,10 @@ exports[`<LabOrdersList /> component renders correctly 1`] = `
                                     }
                                     original={
                                       Object {
+                                        "concept": Object {
+                                          "display": "Hémogramme automatisé",
+                                        },
                                         "dateActivated": "2018-08-30T17:34:19.000+0100",
-                                        "display": "Hémogramme automatisé",
                                         "orderNumber": "ORD-1",
                                         "patient": Object {
                                           "display": "Y2A7LR - williams willy john",
@@ -1826,8 +2262,10 @@ exports[`<LabOrdersList /> component renders correctly 1`] = `
                                     row={
                                       Object {
                                         "": Object {
+                                          "concept": Object {
+                                            "display": "Hémogramme automatisé",
+                                          },
                                           "dateActivated": "2018-08-30T17:34:19.000+0100",
-                                          "display": "Hémogramme automatisé",
                                           "orderNumber": "ORD-1",
                                           "patient": Object {
                                             "display": "Y2A7LR - williams willy john",
@@ -1837,8 +2275,10 @@ exports[`<LabOrdersList /> component renders correctly 1`] = `
                                         "_index": 0,
                                         "_nestingLevel": 0,
                                         "_original": Object {
+                                          "concept": Object {
+                                            "display": "Hémogramme automatisé",
+                                          },
                                           "dateActivated": "2018-08-30T17:34:19.000+0100",
-                                          "display": "Hémogramme automatisé",
                                           "orderNumber": "ORD-1",
                                           "patient": Object {
                                             "display": "Y2A7LR - williams willy john",
@@ -1860,8 +2300,10 @@ exports[`<LabOrdersList /> component renders correctly 1`] = `
                                     }
                                     value={
                                       Object {
+                                        "concept": Object {
+                                          "display": "Hémogramme automatisé",
+                                        },
                                         "dateActivated": "2018-08-30T17:34:19.000+0100",
-                                        "display": "Hémogramme automatisé",
                                         "orderNumber": "ORD-1",
                                         "patient": Object {
                                           "display": "Y2A7LR - williams willy john",
@@ -2522,8 +2964,10 @@ exports[`<LabOrdersList /> component renders correctly 1`] = `
                   data={
                     Array [
                       Object {
+                        "concept": Object {
+                          "display": "Hémogramme automatisé",
+                        },
                         "dateActivated": "2018-08-30T17:34:19.000+0100",
-                        "display": "Hémogramme automatisé",
                         "orderNumber": "ORD-1",
                         "patient": Object {
                           "display": "Y2A7LR - williams willy john",
@@ -2587,7 +3031,7 @@ exports[`<LabOrdersList /> component renders correctly 1`] = `
                   nextText="Next"
                   noDataText={
                     <span
-                      className="loader sortableTable-noDataText"
+                      className="sortableTable-noDataText"
                     >
                       No results found
                     </span>
@@ -2622,8 +3066,10 @@ exports[`<LabOrdersList /> component renders correctly 1`] = `
                     Array [
                       Object {
                         "": Object {
+                          "concept": Object {
+                            "display": "Hémogramme automatisé",
+                          },
                           "dateActivated": "2018-08-30T17:34:19.000+0100",
-                          "display": "Hémogramme automatisé",
                           "orderNumber": "ORD-1",
                           "patient": Object {
                             "display": "Y2A7LR - williams willy john",
@@ -2633,8 +3079,10 @@ exports[`<LabOrdersList /> component renders correctly 1`] = `
                         "_index": 0,
                         "_nestingLevel": 0,
                         "_original": Object {
+                          "concept": Object {
+                            "display": "Hémogramme automatisé",
+                          },
                           "dateActivated": "2018-08-30T17:34:19.000+0100",
-                          "display": "Hémogramme automatisé",
                           "orderNumber": "ORD-1",
                           "patient": Object {
                             "display": "Y2A7LR - williams willy john",
@@ -2658,8 +3106,10 @@ exports[`<LabOrdersList /> component renders correctly 1`] = `
                     Array [
                       Object {
                         "": Object {
+                          "concept": Object {
+                            "display": "Hémogramme automatisé",
+                          },
                           "dateActivated": "2018-08-30T17:34:19.000+0100",
-                          "display": "Hémogramme automatisé",
                           "orderNumber": "ORD-1",
                           "patient": Object {
                             "display": "Y2A7LR - williams willy john",
@@ -2669,8 +3119,10 @@ exports[`<LabOrdersList /> component renders correctly 1`] = `
                         "_index": 0,
                         "_nestingLevel": 0,
                         "_original": Object {
+                          "concept": Object {
+                            "display": "Hémogramme automatisé",
+                          },
                           "dateActivated": "2018-08-30T17:34:19.000+0100",
-                          "display": "Hémogramme automatisé",
                           "orderNumber": "ORD-1",
                           "patient": Object {
                             "display": "Y2A7LR - williams willy john",
@@ -2835,27 +3287,401 @@ exports[`<LabOrdersList /> component renders correctly 1`] = `
 exports[`LabOrdersListContainer container should pass required props from state to <LabOrdersList /> component 1`] = `
 <LabOrdersList
   dispatch={[MockFunction]}
-  labOrders={
-    Object {
-      "isLoading": false,
-      "orders": Array [
-        Object {
-          "dateActivated": "2018-08-30T17:34:19.000+0100",
+  isLoading={false}
+  labTests={
+    Array [
+      "Hémogramme automatisé",
+    ]
+  }
+  orders={
+    Array [
+      Object {
+        "concept": Object {
           "display": "Hémogramme automatisé",
-          "orderNumber": "ORD-1",
-          "patient": Object {
-            "display": "Y2A7LR - williams willy john",
-          },
-          "urgency": "ROUTINE",
         },
-      ],
-    }
+        "dateActivated": "2018-08-30T17:34:19.000+0100",
+        "orderNumber": "ORD-1",
+        "patient": Object {
+          "display": "Y2A7LR - williams willy john",
+        },
+        "urgency": "ROUTINE",
+      },
+    ]
   }
 >
   <div>
     <h1>
       Welcome to LabOrdersList Page/Component
     </h1>
+    <div>
+      <LabOrderListFilters
+        clearNameEMRField={[Function]}
+        dateFromField={"2018-08-29T21:15:55.835Z"}
+        dateToField={"2018-09-06T21:15:55.835Z"}
+        handleFieldChange={[Function]}
+        labTests={
+          Array [
+            "Hémogramme automatisé",
+          ]
+        }
+        nameField=""
+      >
+        <div
+          className="order-list-filters"
+        >
+          <span
+            className="top-filters"
+          >
+            <span
+              className="date-picker-filter"
+            >
+              <span>
+                <CustomDatePicker
+                  defaultDate={"2018-08-29T21:15:55.838Z"}
+                  field="dateFromField"
+                  handleDateChange={[Function]}
+                  label="From: "
+                  labelClassName="line"
+                >
+                  <DatePicker
+                    allowSameDay={false}
+                    customInput={<DateDisplayComponent />}
+                    dateFormat="L"
+                    dateFormatCalendar="MMMM YYYY"
+                    disabled={false}
+                    disabledKeyboardNavigation={false}
+                    dropdownMode="scroll"
+                    monthsShown={1}
+                    nextMonthButtonLabel="Next month"
+                    onBlur={[Function]}
+                    onChange={[Function]}
+                    onClickOutside={[Function]}
+                    onFocus={[Function]}
+                    onKeyDown={[Function]}
+                    onMonthChange={[Function]}
+                    onSelect={[Function]}
+                    onYearChange={[Function]}
+                    preventOpenOnFocus={false}
+                    previousMonthButtonLabel="Previous Month"
+                    readOnly={false}
+                    selected={"2018-08-29T21:15:55.838Z"}
+                    shouldCloseOnSelect={true}
+                    showTimeSelect={false}
+                    timeCaption="Time"
+                    timeIntervals={30}
+                    withPortal={false}
+                  >
+                    <PopperComponent
+                      hidePopper={true}
+                      popperComponent={null}
+                      popperModifiers={
+                        Object {
+                          "preventOverflow": Object {
+                            "boundariesElement": "viewport",
+                            "enabled": true,
+                            "escapeWithReference": true,
+                          },
+                        }
+                      }
+                      popperPlacement="bottom-start"
+                      targetComponent={
+                        <div
+                          className="react-datepicker__input-container"
+                        >
+                          <DateDisplayComponent
+                            className=""
+                            disabled={false}
+                            onBlur={[Function]}
+                            onChange={[Function]}
+                            onClick={[Function]}
+                            onFocus={[Function]}
+                            onKeyDown={[Function]}
+                            readOnly={false}
+                            value="08/29/2018"
+                          />
+                        </div>
+                      }
+                    >
+                      <Manager
+                        tag="div"
+                      >
+                        <div>
+                          <Target
+                            className="react-datepicker-wrapper"
+                          >
+                            <div
+                              className="react-datepicker-wrapper"
+                            >
+                              <div
+                                className="react-datepicker__input-container"
+                              >
+                                <DateDisplayComponent
+                                  className=""
+                                  disabled={false}
+                                  onBlur={[Function]}
+                                  onChange={[Function]}
+                                  onClick={[Function]}
+                                  onFocus={[Function]}
+                                  onKeyDown={[Function]}
+                                  readOnly={false}
+                                  value="08/29/2018"
+                                >
+                                  <span
+                                    className="date-picker-container"
+                                  >
+                                    <span
+                                      className="line"
+                                    >
+                                      From: 
+                                    </span>
+                                    <FormControl
+                                      bsClass="form-control"
+                                      componentClass="input"
+                                      placeholder=""
+                                      type="text"
+                                      value="08/29/2018"
+                                    >
+                                      <input
+                                        className="form-control"
+                                        placeholder=""
+                                        type="text"
+                                        value="08/29/2018"
+                                      />
+                                    </FormControl>
+                                    <i
+                                      className="icon-calendar scale small add-on"
+                                      onClick={[Function]}
+                                      role="toolbar"
+                                    />
+                                  </span>
+                                </DateDisplayComponent>
+                              </div>
+                            </div>
+                          </Target>
+                        </div>
+                      </Manager>
+                    </PopperComponent>
+                  </DatePicker>
+                </CustomDatePicker>
+              </span>
+              <span>
+                <CustomDatePicker
+                  defaultDate={"2018-09-06T21:15:55.802Z"}
+                  field="dateToField"
+                  handleDateChange={[Function]}
+                  label="To: "
+                  labelClassName="line"
+                >
+                  <DatePicker
+                    allowSameDay={false}
+                    customInput={<DateDisplayComponent />}
+                    dateFormat="L"
+                    dateFormatCalendar="MMMM YYYY"
+                    disabled={false}
+                    disabledKeyboardNavigation={false}
+                    dropdownMode="scroll"
+                    monthsShown={1}
+                    nextMonthButtonLabel="Next month"
+                    onBlur={[Function]}
+                    onChange={[Function]}
+                    onClickOutside={[Function]}
+                    onFocus={[Function]}
+                    onKeyDown={[Function]}
+                    onMonthChange={[Function]}
+                    onSelect={[Function]}
+                    onYearChange={[Function]}
+                    preventOpenOnFocus={false}
+                    previousMonthButtonLabel="Previous Month"
+                    readOnly={false}
+                    selected={"2018-09-06T21:15:55.802Z"}
+                    shouldCloseOnSelect={true}
+                    showTimeSelect={false}
+                    timeCaption="Time"
+                    timeIntervals={30}
+                    withPortal={false}
+                  >
+                    <PopperComponent
+                      hidePopper={true}
+                      popperComponent={null}
+                      popperModifiers={
+                        Object {
+                          "preventOverflow": Object {
+                            "boundariesElement": "viewport",
+                            "enabled": true,
+                            "escapeWithReference": true,
+                          },
+                        }
+                      }
+                      popperPlacement="bottom-start"
+                      targetComponent={
+                        <div
+                          className="react-datepicker__input-container"
+                        >
+                          <DateDisplayComponent
+                            className=""
+                            disabled={false}
+                            onBlur={[Function]}
+                            onChange={[Function]}
+                            onClick={[Function]}
+                            onFocus={[Function]}
+                            onKeyDown={[Function]}
+                            readOnly={false}
+                            value="09/06/2018"
+                          />
+                        </div>
+                      }
+                    >
+                      <Manager
+                        tag="div"
+                      >
+                        <div>
+                          <Target
+                            className="react-datepicker-wrapper"
+                          >
+                            <div
+                              className="react-datepicker-wrapper"
+                            >
+                              <div
+                                className="react-datepicker__input-container"
+                              >
+                                <DateDisplayComponent
+                                  className=""
+                                  disabled={false}
+                                  onBlur={[Function]}
+                                  onChange={[Function]}
+                                  onClick={[Function]}
+                                  onFocus={[Function]}
+                                  onKeyDown={[Function]}
+                                  readOnly={false}
+                                  value="09/06/2018"
+                                >
+                                  <span
+                                    className="date-picker-container"
+                                  >
+                                    <span
+                                      className="line"
+                                    >
+                                      To: 
+                                    </span>
+                                    <FormControl
+                                      bsClass="form-control"
+                                      componentClass="input"
+                                      placeholder=""
+                                      type="text"
+                                      value="09/06/2018"
+                                    >
+                                      <input
+                                        className="form-control"
+                                        placeholder=""
+                                        type="text"
+                                        value="09/06/2018"
+                                      />
+                                    </FormControl>
+                                    <i
+                                      className="icon-calendar scale small add-on"
+                                      onClick={[Function]}
+                                      role="toolbar"
+                                    />
+                                  </span>
+                                </DateDisplayComponent>
+                              </div>
+                            </div>
+                          </Target>
+                        </div>
+                      </Manager>
+                    </PopperComponent>
+                  </DatePicker>
+                </CustomDatePicker>
+              </span>
+            </span>
+          </span>
+          <span
+            className="bottom-filters"
+          >
+            <span
+              className="form-filter-group one-third"
+            >
+              <span>
+                Search for a sample
+              </span>
+              <span
+                className="name-emrid-order-filter"
+              >
+                <i
+                  className="small icon-search"
+                />
+                <FormControl
+                  bsClass="form-control"
+                  componentClass="input"
+                  onChange={[Function]}
+                  placeholder="search by ID or name, or scan sample"
+                  type="text"
+                  value=""
+                >
+                  <input
+                    className="form-control"
+                    onChange={[Function]}
+                    placeholder="search by ID or name, or scan sample"
+                    type="text"
+                    value=""
+                  />
+                </FormControl>
+                <i
+                  className="small scale icon-remove-sign"
+                  onClick={[Function]}
+                  role="toolbar"
+                />
+              </span>
+            </span>
+            <Dropdown
+              className="form-filter-group quater"
+              defaultValue="All"
+              field="testTypeField"
+              handleSelect={[Function]}
+              label="Test Type"
+              labelClassName=""
+              list={
+                Array [
+                  "Hémogramme automatisé",
+                ]
+              }
+            >
+              <span
+                className="form-filter-group quater"
+              >
+                <span
+                  className=""
+                >
+                  Test Type
+                </span>
+                <select
+                  onChange={[Function]}
+                  style={
+                    Object {
+                      "height": "45px",
+                      "width": "100%",
+                    }
+                  }
+                >
+                  <option
+                    key="All"
+                    value="All"
+                  >
+                    All
+                  </option>
+                  <option
+                    key="Hémogramme automatisé"
+                    value="Hémogramme automatisé"
+                  >
+                    Hémogramme automatisé
+                  </option>
+                </select>
+              </span>
+            </Dropdown>
+          </span>
+        </div>
+      </LabOrderListFilters>
+    </div>
     <div
       className="lab-order-list"
     >
@@ -2944,8 +3770,10 @@ exports[`LabOrdersListContainer container should pass required props from state 
         data={
           Array [
             Object {
+              "concept": Object {
+                "display": "Hémogramme automatisé",
+              },
               "dateActivated": "2018-08-30T17:34:19.000+0100",
-              "display": "Hémogramme automatisé",
               "orderNumber": "ORD-1",
               "patient": Object {
                 "display": "Y2A7LR - williams willy john",
@@ -2966,6 +3794,14 @@ exports[`LabOrdersListContainer container should pass required props from state 
             "URGENCY",
             "TEST TYPE",
           ]
+        }
+        filters={
+          Object {
+            "dateFromField": "2018-08-29T21:15:55.835Z",
+            "dateToField": "2018-09-06T21:15:55.835Z",
+            "nameField": "",
+            "testTypeField": "All",
+          }
         }
         isFilterable={false}
         isResizeable={true}
@@ -3126,8 +3962,10 @@ exports[`LabOrdersListContainer container should pass required props from state 
             data={
               Array [
                 Object {
+                  "concept": Object {
+                    "display": "Hémogramme automatisé",
+                  },
                   "dateActivated": "2018-08-30T17:34:19.000+0100",
-                  "display": "Hémogramme automatisé",
                   "orderNumber": "ORD-1",
                   "patient": Object {
                     "display": "Y2A7LR - williams willy john",
@@ -3186,7 +4024,7 @@ exports[`LabOrdersListContainer container should pass required props from state 
             nextText="Next"
             noDataText={
               <span
-                className="loader sortableTable-noDataText"
+                className="sortableTable-noDataText"
               >
                 No results found
               </span>
@@ -3696,8 +4534,10 @@ exports[`LabOrdersListContainer container should pass required props from state 
                                     }
                                     original={
                                       Object {
+                                        "concept": Object {
+                                          "display": "Hémogramme automatisé",
+                                        },
                                         "dateActivated": "2018-08-30T17:34:19.000+0100",
-                                        "display": "Hémogramme automatisé",
                                         "orderNumber": "ORD-1",
                                         "patient": Object {
                                           "display": "Y2A7LR - williams willy john",
@@ -3711,8 +4551,10 @@ exports[`LabOrdersListContainer container should pass required props from state 
                                     row={
                                       Object {
                                         "": Object {
+                                          "concept": Object {
+                                            "display": "Hémogramme automatisé",
+                                          },
                                           "dateActivated": "2018-08-30T17:34:19.000+0100",
-                                          "display": "Hémogramme automatisé",
                                           "orderNumber": "ORD-1",
                                           "patient": Object {
                                             "display": "Y2A7LR - williams willy john",
@@ -3722,8 +4564,10 @@ exports[`LabOrdersListContainer container should pass required props from state 
                                         "_index": 0,
                                         "_nestingLevel": 0,
                                         "_original": Object {
+                                          "concept": Object {
+                                            "display": "Hémogramme automatisé",
+                                          },
                                           "dateActivated": "2018-08-30T17:34:19.000+0100",
-                                          "display": "Hémogramme automatisé",
                                           "orderNumber": "ORD-1",
                                           "patient": Object {
                                             "display": "Y2A7LR - williams willy john",
@@ -3745,8 +4589,10 @@ exports[`LabOrdersListContainer container should pass required props from state 
                                     }
                                     value={
                                       Object {
+                                        "concept": Object {
+                                          "display": "Hémogramme automatisé",
+                                        },
                                         "dateActivated": "2018-08-30T17:34:19.000+0100",
-                                        "display": "Hémogramme automatisé",
                                         "orderNumber": "ORD-1",
                                         "patient": Object {
                                           "display": "Y2A7LR - williams willy john",
@@ -3851,8 +4697,10 @@ exports[`LabOrdersListContainer container should pass required props from state 
                                     }
                                     original={
                                       Object {
+                                        "concept": Object {
+                                          "display": "Hémogramme automatisé",
+                                        },
                                         "dateActivated": "2018-08-30T17:34:19.000+0100",
-                                        "display": "Hémogramme automatisé",
                                         "orderNumber": "ORD-1",
                                         "patient": Object {
                                           "display": "Y2A7LR - williams willy john",
@@ -3866,8 +4714,10 @@ exports[`LabOrdersListContainer container should pass required props from state 
                                     row={
                                       Object {
                                         "": Object {
+                                          "concept": Object {
+                                            "display": "Hémogramme automatisé",
+                                          },
                                           "dateActivated": "2018-08-30T17:34:19.000+0100",
-                                          "display": "Hémogramme automatisé",
                                           "orderNumber": "ORD-1",
                                           "patient": Object {
                                             "display": "Y2A7LR - williams willy john",
@@ -3877,8 +4727,10 @@ exports[`LabOrdersListContainer container should pass required props from state 
                                         "_index": 0,
                                         "_nestingLevel": 0,
                                         "_original": Object {
+                                          "concept": Object {
+                                            "display": "Hémogramme automatisé",
+                                          },
                                           "dateActivated": "2018-08-30T17:34:19.000+0100",
-                                          "display": "Hémogramme automatisé",
                                           "orderNumber": "ORD-1",
                                           "patient": Object {
                                             "display": "Y2A7LR - williams willy john",
@@ -3900,8 +4752,10 @@ exports[`LabOrdersListContainer container should pass required props from state 
                                     }
                                     value={
                                       Object {
+                                        "concept": Object {
+                                          "display": "Hémogramme automatisé",
+                                        },
                                         "dateActivated": "2018-08-30T17:34:19.000+0100",
-                                        "display": "Hémogramme automatisé",
                                         "orderNumber": "ORD-1",
                                         "patient": Object {
                                           "display": "Y2A7LR - williams willy john",
@@ -4006,8 +4860,10 @@ exports[`LabOrdersListContainer container should pass required props from state 
                                     }
                                     original={
                                       Object {
+                                        "concept": Object {
+                                          "display": "Hémogramme automatisé",
+                                        },
                                         "dateActivated": "2018-08-30T17:34:19.000+0100",
-                                        "display": "Hémogramme automatisé",
                                         "orderNumber": "ORD-1",
                                         "patient": Object {
                                           "display": "Y2A7LR - williams willy john",
@@ -4021,8 +4877,10 @@ exports[`LabOrdersListContainer container should pass required props from state 
                                     row={
                                       Object {
                                         "": Object {
+                                          "concept": Object {
+                                            "display": "Hémogramme automatisé",
+                                          },
                                           "dateActivated": "2018-08-30T17:34:19.000+0100",
-                                          "display": "Hémogramme automatisé",
                                           "orderNumber": "ORD-1",
                                           "patient": Object {
                                             "display": "Y2A7LR - williams willy john",
@@ -4032,8 +4890,10 @@ exports[`LabOrdersListContainer container should pass required props from state 
                                         "_index": 0,
                                         "_nestingLevel": 0,
                                         "_original": Object {
+                                          "concept": Object {
+                                            "display": "Hémogramme automatisé",
+                                          },
                                           "dateActivated": "2018-08-30T17:34:19.000+0100",
-                                          "display": "Hémogramme automatisé",
                                           "orderNumber": "ORD-1",
                                           "patient": Object {
                                             "display": "Y2A7LR - williams willy john",
@@ -4055,8 +4915,10 @@ exports[`LabOrdersListContainer container should pass required props from state 
                                     }
                                     value={
                                       Object {
+                                        "concept": Object {
+                                          "display": "Hémogramme automatisé",
+                                        },
                                         "dateActivated": "2018-08-30T17:34:19.000+0100",
-                                        "display": "Hémogramme automatisé",
                                         "orderNumber": "ORD-1",
                                         "patient": Object {
                                           "display": "Y2A7LR - williams willy john",
@@ -4161,8 +5023,10 @@ exports[`LabOrdersListContainer container should pass required props from state 
                                     }
                                     original={
                                       Object {
+                                        "concept": Object {
+                                          "display": "Hémogramme automatisé",
+                                        },
                                         "dateActivated": "2018-08-30T17:34:19.000+0100",
-                                        "display": "Hémogramme automatisé",
                                         "orderNumber": "ORD-1",
                                         "patient": Object {
                                           "display": "Y2A7LR - williams willy john",
@@ -4176,8 +5040,10 @@ exports[`LabOrdersListContainer container should pass required props from state 
                                     row={
                                       Object {
                                         "": Object {
+                                          "concept": Object {
+                                            "display": "Hémogramme automatisé",
+                                          },
                                           "dateActivated": "2018-08-30T17:34:19.000+0100",
-                                          "display": "Hémogramme automatisé",
                                           "orderNumber": "ORD-1",
                                           "patient": Object {
                                             "display": "Y2A7LR - williams willy john",
@@ -4187,8 +5053,10 @@ exports[`LabOrdersListContainer container should pass required props from state 
                                         "_index": 0,
                                         "_nestingLevel": 0,
                                         "_original": Object {
+                                          "concept": Object {
+                                            "display": "Hémogramme automatisé",
+                                          },
                                           "dateActivated": "2018-08-30T17:34:19.000+0100",
-                                          "display": "Hémogramme automatisé",
                                           "orderNumber": "ORD-1",
                                           "patient": Object {
                                             "display": "Y2A7LR - williams willy john",
@@ -4210,8 +5078,10 @@ exports[`LabOrdersListContainer container should pass required props from state 
                                     }
                                     value={
                                       Object {
+                                        "concept": Object {
+                                          "display": "Hémogramme automatisé",
+                                        },
                                         "dateActivated": "2018-08-30T17:34:19.000+0100",
-                                        "display": "Hémogramme automatisé",
                                         "orderNumber": "ORD-1",
                                         "patient": Object {
                                           "display": "Y2A7LR - williams willy john",
@@ -4316,8 +5186,10 @@ exports[`LabOrdersListContainer container should pass required props from state 
                                     }
                                     original={
                                       Object {
+                                        "concept": Object {
+                                          "display": "Hémogramme automatisé",
+                                        },
                                         "dateActivated": "2018-08-30T17:34:19.000+0100",
-                                        "display": "Hémogramme automatisé",
                                         "orderNumber": "ORD-1",
                                         "patient": Object {
                                           "display": "Y2A7LR - williams willy john",
@@ -4331,8 +5203,10 @@ exports[`LabOrdersListContainer container should pass required props from state 
                                     row={
                                       Object {
                                         "": Object {
+                                          "concept": Object {
+                                            "display": "Hémogramme automatisé",
+                                          },
                                           "dateActivated": "2018-08-30T17:34:19.000+0100",
-                                          "display": "Hémogramme automatisé",
                                           "orderNumber": "ORD-1",
                                           "patient": Object {
                                             "display": "Y2A7LR - williams willy john",
@@ -4342,8 +5216,10 @@ exports[`LabOrdersListContainer container should pass required props from state 
                                         "_index": 0,
                                         "_nestingLevel": 0,
                                         "_original": Object {
+                                          "concept": Object {
+                                            "display": "Hémogramme automatisé",
+                                          },
                                           "dateActivated": "2018-08-30T17:34:19.000+0100",
-                                          "display": "Hémogramme automatisé",
                                           "orderNumber": "ORD-1",
                                           "patient": Object {
                                             "display": "Y2A7LR - williams willy john",
@@ -4365,8 +5241,10 @@ exports[`LabOrdersListContainer container should pass required props from state 
                                     }
                                     value={
                                       Object {
+                                        "concept": Object {
+                                          "display": "Hémogramme automatisé",
+                                        },
                                         "dateActivated": "2018-08-30T17:34:19.000+0100",
-                                        "display": "Hémogramme automatisé",
                                         "orderNumber": "ORD-1",
                                         "patient": Object {
                                           "display": "Y2A7LR - williams willy john",
@@ -4471,8 +5349,10 @@ exports[`LabOrdersListContainer container should pass required props from state 
                                     }
                                     original={
                                       Object {
+                                        "concept": Object {
+                                          "display": "Hémogramme automatisé",
+                                        },
                                         "dateActivated": "2018-08-30T17:34:19.000+0100",
-                                        "display": "Hémogramme automatisé",
                                         "orderNumber": "ORD-1",
                                         "patient": Object {
                                           "display": "Y2A7LR - williams willy john",
@@ -4486,8 +5366,10 @@ exports[`LabOrdersListContainer container should pass required props from state 
                                     row={
                                       Object {
                                         "": Object {
+                                          "concept": Object {
+                                            "display": "Hémogramme automatisé",
+                                          },
                                           "dateActivated": "2018-08-30T17:34:19.000+0100",
-                                          "display": "Hémogramme automatisé",
                                           "orderNumber": "ORD-1",
                                           "patient": Object {
                                             "display": "Y2A7LR - williams willy john",
@@ -4497,8 +5379,10 @@ exports[`LabOrdersListContainer container should pass required props from state 
                                         "_index": 0,
                                         "_nestingLevel": 0,
                                         "_original": Object {
+                                          "concept": Object {
+                                            "display": "Hémogramme automatisé",
+                                          },
                                           "dateActivated": "2018-08-30T17:34:19.000+0100",
-                                          "display": "Hémogramme automatisé",
                                           "orderNumber": "ORD-1",
                                           "patient": Object {
                                             "display": "Y2A7LR - williams willy john",
@@ -4520,8 +5404,10 @@ exports[`LabOrdersListContainer container should pass required props from state 
                                     }
                                     value={
                                       Object {
+                                        "concept": Object {
+                                          "display": "Hémogramme automatisé",
+                                        },
                                         "dateActivated": "2018-08-30T17:34:19.000+0100",
-                                        "display": "Hémogramme automatisé",
                                         "orderNumber": "ORD-1",
                                         "patient": Object {
                                           "display": "Y2A7LR - williams willy john",
@@ -4626,8 +5512,10 @@ exports[`LabOrdersListContainer container should pass required props from state 
                                     }
                                     original={
                                       Object {
+                                        "concept": Object {
+                                          "display": "Hémogramme automatisé",
+                                        },
                                         "dateActivated": "2018-08-30T17:34:19.000+0100",
-                                        "display": "Hémogramme automatisé",
                                         "orderNumber": "ORD-1",
                                         "patient": Object {
                                           "display": "Y2A7LR - williams willy john",
@@ -4641,8 +5529,10 @@ exports[`LabOrdersListContainer container should pass required props from state 
                                     row={
                                       Object {
                                         "": Object {
+                                          "concept": Object {
+                                            "display": "Hémogramme automatisé",
+                                          },
                                           "dateActivated": "2018-08-30T17:34:19.000+0100",
-                                          "display": "Hémogramme automatisé",
                                           "orderNumber": "ORD-1",
                                           "patient": Object {
                                             "display": "Y2A7LR - williams willy john",
@@ -4652,8 +5542,10 @@ exports[`LabOrdersListContainer container should pass required props from state 
                                         "_index": 0,
                                         "_nestingLevel": 0,
                                         "_original": Object {
+                                          "concept": Object {
+                                            "display": "Hémogramme automatisé",
+                                          },
                                           "dateActivated": "2018-08-30T17:34:19.000+0100",
-                                          "display": "Hémogramme automatisé",
                                           "orderNumber": "ORD-1",
                                           "patient": Object {
                                             "display": "Y2A7LR - williams willy john",
@@ -4675,8 +5567,10 @@ exports[`LabOrdersListContainer container should pass required props from state 
                                     }
                                     value={
                                       Object {
+                                        "concept": Object {
+                                          "display": "Hémogramme automatisé",
+                                        },
                                         "dateActivated": "2018-08-30T17:34:19.000+0100",
-                                        "display": "Hémogramme automatisé",
                                         "orderNumber": "ORD-1",
                                         "patient": Object {
                                           "display": "Y2A7LR - williams willy john",
@@ -5337,8 +6231,10 @@ exports[`LabOrdersListContainer container should pass required props from state 
                   data={
                     Array [
                       Object {
+                        "concept": Object {
+                          "display": "Hémogramme automatisé",
+                        },
                         "dateActivated": "2018-08-30T17:34:19.000+0100",
-                        "display": "Hémogramme automatisé",
                         "orderNumber": "ORD-1",
                         "patient": Object {
                           "display": "Y2A7LR - williams willy john",
@@ -5402,7 +6298,7 @@ exports[`LabOrdersListContainer container should pass required props from state 
                   nextText="Next"
                   noDataText={
                     <span
-                      className="loader sortableTable-noDataText"
+                      className="sortableTable-noDataText"
                     >
                       No results found
                     </span>
@@ -5437,8 +6333,10 @@ exports[`LabOrdersListContainer container should pass required props from state 
                     Array [
                       Object {
                         "": Object {
+                          "concept": Object {
+                            "display": "Hémogramme automatisé",
+                          },
                           "dateActivated": "2018-08-30T17:34:19.000+0100",
-                          "display": "Hémogramme automatisé",
                           "orderNumber": "ORD-1",
                           "patient": Object {
                             "display": "Y2A7LR - williams willy john",
@@ -5448,8 +6346,10 @@ exports[`LabOrdersListContainer container should pass required props from state 
                         "_index": 0,
                         "_nestingLevel": 0,
                         "_original": Object {
+                          "concept": Object {
+                            "display": "Hémogramme automatisé",
+                          },
                           "dateActivated": "2018-08-30T17:34:19.000+0100",
-                          "display": "Hémogramme automatisé",
                           "orderNumber": "ORD-1",
                           "patient": Object {
                             "display": "Y2A7LR - williams willy john",
@@ -5473,8 +6373,10 @@ exports[`LabOrdersListContainer container should pass required props from state 
                     Array [
                       Object {
                         "": Object {
+                          "concept": Object {
+                            "display": "Hémogramme automatisé",
+                          },
                           "dateActivated": "2018-08-30T17:34:19.000+0100",
-                          "display": "Hémogramme automatisé",
                           "orderNumber": "ORD-1",
                           "patient": Object {
                             "display": "Y2A7LR - williams willy john",
@@ -5484,8 +6386,10 @@ exports[`LabOrdersListContainer container should pass required props from state 
                         "_index": 0,
                         "_nestingLevel": 0,
                         "_original": Object {
+                          "concept": Object {
+                            "display": "Hémogramme automatisé",
+                          },
                           "dateActivated": "2018-08-30T17:34:19.000+0100",
-                          "display": "Hémogramme automatisé",
                           "orderNumber": "ORD-1",
                           "patient": Object {
                             "display": "Y2A7LR - williams willy john",
