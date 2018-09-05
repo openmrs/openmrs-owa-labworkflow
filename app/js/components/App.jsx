@@ -21,11 +21,11 @@ export class App extends React.Component {
   }
 
   render() {
-    const { patientHeaderDetail, patientNote } = this.props;
+    const { patientHeaderDetail } = this.props;
     return (
       <div>
         {/* TODO: Work on conditionally rendering the patient header based on the route */}
-        <PatientHeader patient={patientHeaderDetail} note={patientNote} />
+        <PatientHeader patient={patientHeaderDetail} />
         <LabOrdersList />
       </div>
     );
@@ -34,15 +34,12 @@ export class App extends React.Component {
 
 App.propTypes = {
   patientHeaderDetail: PropTypes.object.isRequired,
-  patientNote: PropTypes.object.isRequired,
 };
 
 const mapStateToProps = ({
   patient: { patient },
-  patientNote: { patientNote },
 }) => ({
   patientHeaderDetail: patient,
-  patientNote,
 });
 
 export default connect(mapStateToProps)(App);
