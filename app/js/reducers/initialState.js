@@ -26,12 +26,4 @@ export default {
       message: null,
     },
   },
-  patientNoteReducer: {
-    patientNote: {},
-    isLoading: false,
-    error: {
-      status: false,
-      message: null,
-    },
-  },
 };

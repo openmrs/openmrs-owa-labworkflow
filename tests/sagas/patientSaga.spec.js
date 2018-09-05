@@ -17,11 +17,4 @@ describe('patientSaga', () => {
     sagaTester.dispatch({ type: actionTypes.SET_PATIENT.REQUESTED });
     expect(sagaTester.wasCalled(actionTypes.SET_PATIENT.REQUESTED)).toEqual(true);
   });
-
-  it('should run getPatientNote() saga', () => {
-    expect(sagaTester.getCalledActions()).toEqual([]);
-    expect(sagaTester.wasCalled(actionTypes.SET_PATIENT_NOTE.REQUESTED)).toEqual(false);
-    sagaTester.dispatch({ type: actionTypes.SET_PATIENT_NOTE.REQUESTED });
-    expect(sagaTester.wasCalled(actionTypes.SET_PATIENT_NOTE.REQUESTED)).toEqual(true);
-  });
 });
