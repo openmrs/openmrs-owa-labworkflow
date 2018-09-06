@@ -16,8 +16,8 @@ import LabOrdersList from './LabOrdersList';
 
 export class App extends React.Component {
   componentDidMount() {
-    const { dispatch } = this.props;
-    dispatch(patientAction.getPatient('da5e210f-a3c4-4c49-80f2-e2e5386db8ad'));
+    // const { dispatch } = this.props;
+    // dispatch(patientAction.getPatient('da5e210f-a3c4-4c49-80f2-e2e5386db8ad'));
   }
 
   render() {
@@ -25,7 +25,7 @@ export class App extends React.Component {
     return (
       <div>
         {/* TODO: Work on conditionally rendering the patient header based on the route */}
-        <PatientHeader patient={patientHeaderDetail} />
+        {/* <PatientHeader patient={patientHeaderDetail} /> */}
         <LabOrdersList />
       </div>
     );
