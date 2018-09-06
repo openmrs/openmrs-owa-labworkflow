@@ -1,0 +1,42 @@
+legend {
+    width: auto;
+    font-size: 15px;
+}
+
+fieldset {
+    border: 1px solid black;
+}
+
+.result-input {
+    width: 70px;
+    border: 1px solid black;
+    padding: 0px 5px;
+}
+
+.result-detail-range {
+    font-size: 13px;
+}
+
+.fieldset-container {
+    background-color: lightgrey;
+}
+
+input[type="checkbox"] {
+    transform: scale(2);
+}
+
+span.test-details {
+  font-size: 20px;
+}
+
+a.link-cancel {
+  color: white
+}
+
+.swal-button--NO {
+  background: #f66;
+ }
+.swal-button--YES,
+.swal-button--confirm {
+  background: #8eb82a;
+} 

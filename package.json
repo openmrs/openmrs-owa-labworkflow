@@ -28,6 +28,7 @@
     "ramda": "^0.24.0",
     "react": "^16.4.2",
     "react-bootstrap": "^0.32.3",
+    "react-datepicker": "^1.6.0",
     "react-dom": "^16.4.2",
     "react-intl": "^2.4.0",
     "react-redux": "^5.0.1",
@@ -40,7 +41,8 @@
     "redux-promise-middleware": "^5.1.1",
     "redux-saga": "^0.16.0",
     "redux-types": "^2.0.3",
-    "sinon": "^4.4.6"
+    "sinon": "^4.4.6",
+    "sweetalert": "^2.1.0"
   },
   "devDependencies": {
     "archiver": "^1.0.0",
