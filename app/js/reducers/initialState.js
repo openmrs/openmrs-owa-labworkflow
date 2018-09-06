@@ -7,4 +7,23 @@ export default {
       message: null,
     },
   },
+  patientReducer: {
+    patient: {
+      person: {
+        personName: {
+          givenName: '',
+          familyName: '',
+        },
+        preferredAddress: {},
+      },
+      patientIdentifier: {
+        identifier: '',
+      },
+    },
+    isLoading: false,
+    error: {
+      status: false,
+      message: null,
+    },
+  },
 };

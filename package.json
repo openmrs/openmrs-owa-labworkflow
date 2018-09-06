@@ -37,7 +37,8 @@
     "redux-logger": "^3.0.6",
     "redux-promise-middleware": "^5.1.1",
     "redux-saga": "^0.16.0",
-    "sinon": "^4.4.6"
+    "sinon": "^4.4.6",
+    "redux-types": "^2.0.3"
   },
   "devDependencies": {
     "archiver": "^1.0.0",

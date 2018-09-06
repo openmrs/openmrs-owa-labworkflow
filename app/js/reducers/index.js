@@ -11,10 +11,12 @@ import { combineReducers } from 'redux';
 import { reducer as reduxFormReducer } from 'redux-form';
 import { reducers as openmrsReducers } from '@openmrs/react-components'; // eslint-disable-line
 import labOrderReducer from './labOrdersReducer';
+import patientReducer from './patientReducer';
 
 
 export default combineReducers({
   openmrs: openmrsReducers,
   form: reduxFormReducer,
   labOrders: labOrderReducer,
+  patient: patientReducer,
 });
