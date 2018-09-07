@@ -164,7 +164,13 @@ export class LabOrdersList extends PureComponent {
     const fields = ["EMR ID", "NAME", "ORDER ID", "ORDER DATE", "COLLECTION DATE", "URGENCY", "TEST TYPE"];
 
     const columnMetadata = fields.map(columnName => ({
-      Header: <span className="labs-order-table-head">{columnName}</span>,
+      Header:
+  <span className="labs-order-table-head">
+    <FormattedMessage
+      id={`app.labOrdersList.${columnName.replace(" ", "_")}`}
+      defaultMessage={`${columnName}`}
+      description={`LabOrderList table header for ${columnName}`} />
+  </span>,
       accessor: "",
       Cell: data => <Cell {...data} columnName={columnName} />,
       className: `lab-order-list-cell-${columnName.replace(' ', '-').toLocaleLowerCase()}`,
