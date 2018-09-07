@@ -1,3 +1,4 @@
 {
-    "app.labOrdersList.title": "Bienvenue sur la page / composant LabOrdersList"
+    "app.labOrdersList.title": "Bienvenue sur la page / composant LabOrdersList",
+    "app.breadCrumb.homePageBreadcrumb.title": "Flux de travail de laboratoire"
 }

@@ -1,3 +1,4 @@
 {
-    "app.labOrdersList.title": "Welcome to LabOrdersList Page/Component"
+    "app.labOrdersList.title": "Welcome to LabOrdersList Page/Component",
+    "app.breadCrumb.homePageBreadcrumb.title": "Lab workflow"
 }
