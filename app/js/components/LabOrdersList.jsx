@@ -11,6 +11,7 @@ import { connect } from 'react-redux';
 import cn from 'classnames';
 import moment from 'moment';
 import PropTypes from 'prop-types';
+import { FormattedMessage } from 'react-intl';
 
 import SortableTable from './shared/SortableTable';
 import { fetchLabOrders } from '../actions/labOrdersAction';
@@ -117,7 +118,12 @@ export class LabOrdersList extends PureComponent {
     const { labOrders } = this.props;
     return (
       <div>
-        <h1>Welcome to LabOrdersList Page/Component</h1>
+        <h1>
+          <FormattedMessage
+            id="app.labOrdersList.title"
+            defaultMessage="Welcome to LabOrdersList Page/Component"
+            description="Welcome header on LabOrdersList page" />
+        </h1>
         <React.Fragment>
           {labOrders.isLoading
             ? <div className="loader lab-order-list" />
