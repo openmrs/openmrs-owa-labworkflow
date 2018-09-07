@@ -15,6 +15,9 @@ import PropTypes from 'prop-types';
 import matchSorter from 'match-sorter';
 import { SortableTable } from '@openmrs/react-components';
 import LabOrderListFilters from './LabOrdersListFilters';
+import { FormattedMessage } from 'react-intl';
+
+import SortableTable from './shared/SortableTable';
 import { fetchLabOrders } from '../actions/labOrdersAction';
 import { DEFAULT_DATE_FORMAT } from '../utils/constants';
 import { getDateRange } from '../utils/helpers';
@@ -189,7 +192,12 @@ export class LabOrdersList extends PureComponent {
     const { filters: { dateFromField, dateToField, nameField } } = this.state;
     return (
       <div>
-        <h1>Welcome to LabOrdersList Page/Component</h1>
+        <h1>
+          <FormattedMessage
+            id="app.labOrdersList.title"
+            defaultMessage="Welcome to LabOrdersList Page/Component"
+            description="Welcome header on LabOrdersList page" />
+        </h1>
         <React.Fragment>
           <div>
             {!isLoading
