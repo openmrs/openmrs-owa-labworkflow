@@ -20,6 +20,7 @@
     "enzyme-to-json": "^3.3.4",
     "expect": "^23.5.0",
     "identity-obj-proxy": "^3.0.0",
+    "intl": "^1.2.5",
     "jest": "^23.5.0",
     "match-sorter": "^2.3.0",
     "moment": "^2.22.2",
