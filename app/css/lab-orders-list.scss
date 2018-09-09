@@ -46,3 +46,11 @@
     max-width: 90px;
 }
 
+// style for making sure each row in the
+// sortableTablecomponent have a cursor pointer
+// instead of an arrow...
+// target class is .rt-tr-group
+.rt-tr-group {
+  cursor: pointer;
+}
+

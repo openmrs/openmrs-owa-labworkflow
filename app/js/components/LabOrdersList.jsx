@@ -10,6 +10,7 @@ import React, { PureComponent } from 'react';
 import { connect } from 'react-redux';
 import cn from 'classnames';
 import moment from 'moment';
+import { withRouter } from 'react-router-dom'
 import PropTypes from 'prop-types';
 
 import SortableTable from './shared/SortableTable';
@@ -83,9 +84,23 @@ const Cell = ({ columnName, value }) => {
 
 
 export class LabOrdersList extends PureComponent {
+  constructor(props) {
+    super(props);
+    this.handleShowResultsEntryPage = this.handleShowResultsEntryPage.bind(this);
+  }
+
   componentDidMount() {
     const { dispatch } = this.props;
     dispatch(fetchLabOrders());
+  }
+
+  handleShowResultsEntryPage(order) {
+    const { history } = this.props;
+    history.push({
+      pathname: "/LabResultEntry",
+      search: `?patientId=${order.patient.uuid}`,
+      state: order,
+    });
   }
 
   renderDraftOrderTable() {
@@ -108,6 +123,7 @@ export class LabOrdersList extends PureComponent {
           filterType="none"
           showFilter={false}
           isSortable={false}
+          rowOnClick={this.handleShowResultsEntryPage}
         />
       </div>
     );
@@ -141,6 +157,9 @@ export const mapStateToProps = ({
 });
 
 
-const LabOrdersListContainer = (propsFromState, Component) => connect(propsFromState)(Component);
+const LabOrdersListContainer = (
+  propsFromState,
+  Component,
+) => withRouter(connect(propsFromState)(Component));
 
 export default LabOrdersListContainer(mapStateToProps, LabOrdersList);

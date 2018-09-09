@@ -7,9 +7,13 @@
  * graphic logo is a trademark of OpenMRS Inc.
  */
 import React from 'react';
-import { Route, Switch } from 'react-router-dom';
+import {
+  Route,
+  Switch,
+} from 'react-router-dom';
 import { Header } from '@openmrs/react-components';
 import BreadCrumb from './components/shared/BreadCrumb/BreadCrumb';
+import LabResultEntry from './components/LabResultEntry/LabResultEntry';
 
 import App from './components/App';
 
@@ -25,6 +29,7 @@ export default store => (
     <BreadCrumb />
     <Switch>
       <Route exact path="/" component={App} />
+      <Route path="/LabResultEntry" component={LabResultEntry} />
       <Route exact path="/FakeBreadcrumbPage" component={FakeBreadcrumbPage} />
     </Switch>
   </div>
