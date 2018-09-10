@@ -7,30 +7,36 @@
  * graphic logo is a trademark of OpenMRS Inc.
  */
 import React from 'react';
-import {
-  Route,
-  Switch,
-} from 'react-router-dom';
-import { Header } from '@openmrs/react-components';
+import { Route, Switch } from 'react-router-dom';
+import { Header, setLocaleMessages, withLocalisation } from '@openmrs/react-components';
 import BreadCrumb from './components/shared/BreadCrumb/BreadCrumb';
 import LabResultEntry from './components/LabResultEntry/LabResultEntry';
 
+import messagesEN from "./translations/en.json";
+import messagesFR from "./translations/fr.json";
 import App from './components/App';
+
+setLocaleMessages({
+  en: messagesEN,
+  fr: messagesFR,
+});
 
 // Demo component as placeholder for fake breadcrumb page
 const FakeBreadcrumbPage = () => (
   <div>FakeBreadcrumbPage</div>
 );
 
+const LocalizedBreadCrumb = withLocalisation(BreadCrumb);
+
 // eslint-disable-next-line
 export default store => (
   <div>
     <Header />
-    <BreadCrumb />
+    <LocalizedBreadCrumb />
     <Switch>
-      <Route exact path="/" component={App} />
+      <Route exact path="/" component={withLocalisation(App)} />
+      <Route exact path="/FakeBreadcrumbPage" component={withLocalisation(FakeBreadcrumbPage)} />
       <Route path="/LabResultEntry" component={LabResultEntry} />
-      <Route exact path="/FakeBreadcrumbPage" component={FakeBreadcrumbPage} />
     </Switch>
   </div>
 );
