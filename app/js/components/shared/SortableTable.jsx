@@ -130,8 +130,7 @@ class SortableTable extends Component {
 
             return {
               onClick: e => {
-                console.log('row infoe', rowInfo);
-                this.handleClick(rowInfo);
+                otherProps.rowOnClick(rowInfo.original);
               },
               className: this.selectedRowsClassName(rowInfo)
             };
