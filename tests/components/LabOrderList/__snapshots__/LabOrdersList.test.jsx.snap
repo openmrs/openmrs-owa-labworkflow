@@ -20,6 +20,33 @@ exports[`<LabOrdersList /> component renders correctly 1`] = `
       ],
     }
   }
+  intl={
+    Object {
+      "defaultFormats": Object {},
+      "defaultLocale": "en",
+      "formatDate": [Function],
+      "formatHTMLMessage": [Function],
+      "formatMessage": [Function],
+      "formatNumber": [Function],
+      "formatPlural": [Function],
+      "formatRelative": [Function],
+      "formatTime": [Function],
+      "formats": Object {},
+      "formatters": Object {
+        "getDateTimeFormat": [Function],
+        "getMessageFormat": [Function],
+        "getNumberFormat": [Function],
+        "getPluralFormat": [Function],
+        "getRelativeFormat": [Function],
+      },
+      "locale": "en",
+      "messages": Object {
+        "app.labOrdersList.title": "Welcome to LabOrdersList Page/Component",
+      },
+      "now": [Function],
+      "textComponent": "span",
+    }
+  }
   labOrders={
     Object {
       "isLoading": false,
@@ -39,7 +66,16 @@ exports[`<LabOrdersList /> component renders correctly 1`] = `
 >
   <div>
     <h1>
-      Welcome to LabOrdersList Page/Component
+      <FormattedMessage
+        defaultMessage="Welcome to LabOrdersList Page/Component"
+        description="Welcome header on LabOrdersList page"
+        id="app.labOrdersList.title"
+        values={Object {}}
+      >
+        <span>
+          Welcome to LabOrdersList Page/Component
+        </span>
+      </FormattedMessage>
     </h1>
     <div
       className="lab-order-list"
@@ -163,6 +199,7 @@ exports[`<LabOrdersList /> component renders correctly 1`] = `
         ofText="of"
         pageText="Page"
         previousText="Previous"
+        rowOnClick={[Function]}
         rowsText="rows"
         showFilter={false}
       >
@@ -2835,6 +2872,33 @@ exports[`<LabOrdersList /> component renders correctly 1`] = `
 exports[`LabOrdersListContainer container should pass required props from state to <LabOrdersList /> component 1`] = `
 <LabOrdersList
   dispatch={[MockFunction]}
+  intl={
+    Object {
+      "defaultFormats": Object {},
+      "defaultLocale": "en",
+      "formatDate": [Function],
+      "formatHTMLMessage": [Function],
+      "formatMessage": [Function],
+      "formatNumber": [Function],
+      "formatPlural": [Function],
+      "formatRelative": [Function],
+      "formatTime": [Function],
+      "formats": Object {},
+      "formatters": Object {
+        "getDateTimeFormat": [Function],
+        "getMessageFormat": [Function],
+        "getNumberFormat": [Function],
+        "getPluralFormat": [Function],
+        "getRelativeFormat": [Function],
+      },
+      "locale": "en",
+      "messages": Object {
+        "app.labOrdersList.title": "Welcome to LabOrdersList Page/Component",
+      },
+      "now": [Function],
+      "textComponent": "span",
+    }
+  }
   labOrders={
     Object {
       "isLoading": false,
@@ -2854,7 +2918,16 @@ exports[`LabOrdersListContainer container should pass required props from state 
 >
   <div>
     <h1>
-      Welcome to LabOrdersList Page/Component
+      <FormattedMessage
+        defaultMessage="Welcome to LabOrdersList Page/Component"
+        description="Welcome header on LabOrdersList page"
+        id="app.labOrdersList.title"
+        values={Object {}}
+      >
+        <span>
+          Welcome to LabOrdersList Page/Component
+        </span>
+      </FormattedMessage>
     </h1>
     <div
       className="lab-order-list"
@@ -2978,6 +3051,7 @@ exports[`LabOrdersListContainer container should pass required props from state 
         ofText="of"
         pageText="Page"
         previousText="Previous"
+        rowOnClick={[Function]}
         rowsText="rows"
         showFilter={false}
       >

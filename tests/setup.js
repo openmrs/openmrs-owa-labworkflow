@@ -8,8 +8,9 @@ import SagaTester from 'redux-saga-tester';
 import configureMockStore from 'redux-mock-store';
 import sinon from 'sinon';
 import moxios from 'moxios';
-import promiseMiddleware from 'redux-promise-middleware'
-import axiosInstance from '../app/js/config'
+import promiseMiddleware from 'redux-promise-middleware';
+import axiosInstance from '../app/js/config';
+import { mountWithIntl, shallowWithIntl } from "./helpers/intl-test";
 
 import store from '../app/js/redux-store';
 
@@ -38,6 +39,8 @@ global.sinon = sinon;
 global.shallow = shallow;
 global.mockStore = mockStore;
 global.SagaTester = SagaTester;
+global.mountWithIntl = mountWithIntl;
+global.shallowWithIntl = shallowWithIntl;
 
 global.navigator = {
   userAgent: 'node.js',

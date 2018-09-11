@@ -7,9 +7,9 @@ import LabOrdersListContainer,
 
 let mountedComponent;
 
-const { mount } = global;
+const { mountWithIntl } = global;
 
-const orders =[
+const orders = [
   {
     orderNumber: "ORD-1",
     display: "Hémogramme automatisé",
@@ -31,7 +31,7 @@ const props = {
 
 const getComponent = () => {
   if (!mountedComponent) {
-    mountedComponent = mount(<LabOrdersList {...props} />);
+    mountedComponent = mountWithIntl(<LabOrdersList {...props} />);
   }
   return mountedComponent;
 };
