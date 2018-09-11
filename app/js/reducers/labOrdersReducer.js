@@ -1,5 +1,5 @@
 import initialState from './initialState';
-import { FETCH_LAB_ORDERS } from '../actions/actionTypes';
+import { FETCH_LAB_ORDERS, SET_LAB_TEST } from '../actions/actionTypes';
 
 
 export default (state = initialState.labOrderReducer, action) => {
@@ -25,6 +25,13 @@ export default (state = initialState.labOrderReducer, action) => {
       return {
         ...state,
         isLoading: true,
+      };
+    }
+
+    case SET_LAB_TEST: {
+      return {
+        ...state,
+        labTests: action.testTypes,
       };
     }
 

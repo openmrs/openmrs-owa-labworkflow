@@ -1,6 +1,7 @@
 export default {
   labOrderReducer: {
     orders: [],
+    labTests: [],
     isLoading: false,
     error: {
       status: false,

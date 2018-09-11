@@ -8,7 +8,8 @@ import SagaTester from 'redux-saga-tester';
 import configureMockStore from 'redux-mock-store';
 import sinon from 'sinon';
 import moxios from 'moxios';
-import promiseMiddleware from 'redux-promise-middleware'
+import promiseMiddleware from 'redux-promise-middleware';
+import createSagaMiddleware from 'redux-saga';
 import axiosInstance from '../app/js/config'
 
 import store from '../app/js/redux-store';
@@ -17,9 +18,11 @@ process.env.NODE_ENV = 'test';
 
 configure({ adapter: new Adapter() });
 
+const sagaMiddleWare = createSagaMiddleware();
+
 const promiseTypeSuffixes = ['LOADING', 'SUCCESS', 'FAILURE'];
 
-const middlewares = [promiseMiddleware({ promiseTypeSuffixes })];
+const middlewares = [promiseMiddleware({ promiseTypeSuffixes }), sagaMiddleWare];
 const mockStore = configureMockStore(middlewares);
 moxios.install(axiosInstance);
 const contextPath = window.location.href.split('/')[3];

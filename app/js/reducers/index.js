@@ -9,7 +9,7 @@
 
 import { combineReducers } from 'redux';
 import { reducer as reduxFormReducer } from 'redux-form';
-import { reducers as openmrsReducers } from '@openmrs/react-components'; // eslint-disable-line
+import { reducers as openmrsReducers } from '@openmrs/react-components';
 import labOrderReducer from './labOrdersReducer';
 import patientReducer from './patientReducer';
 

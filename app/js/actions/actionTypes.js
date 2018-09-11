@@ -6,8 +6,8 @@ const BASIC_TYPES = [
   'REQUESTED',
 ];
 
-export const FETCH_LAB_ORDERS = 'FETCH_LAB_ORDERS';
-
 export default {
   SET_PATIENT: types('set_patient', BASIC_TYPES),
 };
+export const FETCH_LAB_ORDERS = 'FETCH_LAB_ORDERS';
+export const SET_LAB_TEST = 'SET_LAB_TEST';

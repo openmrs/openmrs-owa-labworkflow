@@ -200,7 +200,7 @@ plugins.push(new webpack.LoaderOptionsPlugin({
 var webpackConfig = {
 	entry: {
 		app: `${__dirname}/app/js/openmrs-owa-labworkflow`,
-		css: `${__dirname}/app/css/openmrs-owa-labworkflow.css`,
+		css: `${__dirname}/app/css/openmrs-owa-labworkflow.scss`,
 		vendor: [
 			'react',
 			'redux',
