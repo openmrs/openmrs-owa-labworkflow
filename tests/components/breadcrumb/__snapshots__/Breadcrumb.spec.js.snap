@@ -10,6 +10,31 @@ exports[`Breadcrumb component should take a snapshot on initial render 1`] = `
       },
     ]
   }
+  intl={
+    Object {
+      "defaultFormats": Object {},
+      "defaultLocale": "en",
+      "formatDate": [Function],
+      "formatHTMLMessage": [Function],
+      "formatMessage": [Function],
+      "formatNumber": [Function],
+      "formatPlural": [Function],
+      "formatRelative": [Function],
+      "formatTime": [Function],
+      "formats": Object {},
+      "formatters": Object {
+        "getDateTimeFormat": [Function],
+        "getMessageFormat": [Function],
+        "getNumberFormat": [Function],
+        "getPluralFormat": [Function],
+        "getRelativeFormat": [Function],
+      },
+      "locale": "en",
+      "messages": Object {},
+      "now": [Function],
+      "textComponent": "span",
+    }
+  }
 >
   <Router
     history={
@@ -121,7 +146,16 @@ exports[`Breadcrumb component should take a snapshot on initial render 1`] = `
                   className="title breadcrumb-item"
                 >
                   <u>
-                    Lab workflow
+                    <FormattedMessage
+                      defaultMessage="Lab workflow"
+                      description="the homepage breadcrumb title"
+                      id="app.breadCrumb.homePageBreadcrumb.title"
+                      values={Object {}}
+                    >
+                      <span>
+                        Lab workflow
+                      </span>
+                    </FormattedMessage>
                   </u>
                 </span>
               </a>

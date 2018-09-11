@@ -1,13 +1,13 @@
 import React from 'react';
-import
+import { mountWithIntl } from '@openmrs/react-components';
+import LabOrdersListContainer,
 {
   LabOrdersList,
   mapStateToProps,
 } from '../../../app/js/components/LabOrdersList';
 
-let mountedComponent;
 
-const { mount } = global;
+let mountedComponent;
 
 const orders = [
   {
@@ -32,7 +32,7 @@ const props = {
 
 const getComponent = () => {
   if (!mountedComponent) {
-    mountedComponent = mount(<LabOrdersList {...props} />);
+    mountedComponent = mountWithIntl(<LabOrdersList {...props} />);
   }
   return mountedComponent;
 };
