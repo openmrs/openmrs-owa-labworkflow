@@ -7,14 +7,37 @@
  * graphic logo is a trademark of OpenMRS Inc.
  */
 import React, { PureComponent } from 'react';
+import { connect } from 'react-redux';
+import PropTypes from 'prop-types';
+
 import moment from 'moment';
 import { Link } from 'react-router-dom';
 import swal from 'sweetalert';
 
-import { CustomDatePicker, Dropdown } from '@openmrs/react-components';
+import { CustomDatePicker, PatientHeader } from '@openmrs/react-components';
 import './LabResultEntry.scss';
+import patientAction from '../../actions/patientAction';
+
 
 export class LabResultEntry extends PureComponent {
+  state = {
+    patientHeaderDetail: false,
+  }
+
+  componentDidMount() {
+    const { dispatch, history } = this.props;
+    dispatch(patientAction.getPatient(history.location.state.patient.uuid));
+  }
+
+  componentWillReceiveProps(nextProps) {
+    const { patientHeaderDetail } = this.state;
+    if (nextProps.patientHeaderDetail.uuid !== patientHeaderDetail.uuid) {
+      this.setState({
+        patientHeaderDetail: nextProps.patientHeaderDetail,
+      });
+    }
+  }
+
   saveEncounter = async () => {
     const { history } = this.props;
     const saveEncounter = await swal("Are you sure you want to save this encounter ?", {
@@ -31,6 +54,7 @@ export class LabResultEntry extends PureComponent {
   }
 
   render() {
+    const { patientHeaderDetail } = this.state;
     const mockData = [{
       name: 'Hematocrit',
       value: 48,
@@ -50,14 +74,16 @@ export class LabResultEntry extends PureComponent {
     ];
     return (
       <div className="container-fluid">
+        {patientHeaderDetail && <PatientHeader patient={patientHeaderDetail} />}
         <h1>Test Results</h1>
         <div className="fieldset-container">
           <fieldset>
             <legend>Specimen Details:</legend>
             <div className="col-xs-12">
               <CustomDatePicker
-                labelClassName="line"
-                label="Speciemen Collection Date "
+                handleDateChange={() => {}}
+                labelClassName="date-picker-label"
+                label="Specimen Collection Date:"
                 defaultDate={moment().subtract(7, 'days')}
                 field="dateFromField"
               />
@@ -83,7 +109,8 @@ export class LabResultEntry extends PureComponent {
         <br />
         <br />
         <br />
-        <div className="fieldset-container">
+        {/* TODO: make bottom panel dynamic */}
+        {/* <div className="fieldset-container">
           <fieldset>
             <legend>Result Details:</legend>
             <div className="col-xs-12">
@@ -157,7 +184,7 @@ export class LabResultEntry extends PureComponent {
             </div>
           </fieldset>
         </div>
-        <br />
+        <br /> */}
         <button type="reset" className="cancel">
           <Link to="/" className="link-cancel">Cancel</Link>
         </button>
@@ -170,6 +197,15 @@ export class LabResultEntry extends PureComponent {
 }
 
 LabResultEntry.propTypes = {
+  patientHeaderDetail: PropTypes.object.isRequired,
+  history: PropTypes.object.isRequired,
+  dispatch: PropTypes.func.isRequired,
 };
 
-export default LabResultEntry;
+const mapStateToProps = ({
+  patient: { patient },
+}) => ({
+  patientHeaderDetail: patient,
+});
+
+export default connect(mapStateToProps)(LabResultEntry);

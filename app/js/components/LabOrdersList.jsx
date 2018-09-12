@@ -10,7 +10,7 @@ import React, { PureComponent } from 'react';
 import { connect } from 'react-redux';
 import cn from 'classnames';
 import moment from 'moment';
-import { withRouter } from 'react-router-dom'
+import { withRouter } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import matchSorter from 'match-sorter';
 import { FormattedMessage } from 'react-intl';
@@ -110,7 +110,6 @@ export class LabOrdersList extends PureComponent {
     const { history } = this.props;
     history.push({
       pathname: "/LabResultEntry",
-      search: `?patientId=${order.patient.uuid}`,
       state: order,
     });
   }
@@ -144,7 +143,7 @@ export class LabOrdersList extends PureComponent {
     }
 
     if (filters.dateToField && filters.dateFromField) {
-      const filteredData = getDateRange(originalData, filters.dateFromField, filters.dateToField, 'dateActivated')
+      const filteredData = getDateRange(originalData, filters.dateFromField, filters.dateToField, 'dateActivated');
       originalData = filteredData;
     }
 
