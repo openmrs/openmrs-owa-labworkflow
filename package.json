@@ -28,7 +28,6 @@
     "ramda": "^0.24.0",
     "react": "^16.4.2",
     "react-bootstrap": "^0.32.3",
-    "react-datepicker": "^1.6.0",
     "react-dom": "^16.4.2",
     "react-intl": "^2.4.0",
     "react-redux": "^5.0.1",
