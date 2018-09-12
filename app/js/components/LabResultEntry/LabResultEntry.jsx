@@ -11,8 +11,7 @@ import moment from 'moment';
 import { Link } from 'react-router-dom';
 import swal from 'sweetalert';
 
-import CustomDatePicker from '../shared/CustomDatepicker';
-import Dropdown from '../shared/Dropdown';
+import { CustomDatePicker, Dropdown } from '@openmrs/react-components';
 import './LabResultEntry.scss';
 
 export class LabResultEntry extends PureComponent {
