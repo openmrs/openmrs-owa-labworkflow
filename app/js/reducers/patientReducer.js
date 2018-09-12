@@ -6,6 +6,7 @@ export default (state = initialState.patientReducer, action) => {
     case actionTypes.SET_PATIENT.SUCCEEDED:
       return {
         ...state,
+        isLoading: false,
         patient: action.payload,
       };
     case actionTypes.SET_PATIENT.REQUESTED:

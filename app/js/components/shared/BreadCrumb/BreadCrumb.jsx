@@ -74,6 +74,22 @@ class BreadCrumb extends Component {
         );
         break;
 
+      case 'LabResultEntry':
+        outputBreadcrumb = (
+          <span>
+            <span>{ homePageBreadcrumb }</span>
+            <Link to="LabResultEntry">
+              <span
+                className="glyphicon glyphicon-chevron-right breadcrumb-item separator"
+                aria-hidden="true" />
+              <span className="title breadcrumb-item">
+                <u>LabResultEntry</u>
+              </span>
+            </Link>
+          </span>
+        );
+        break;
+
       default:
         outputBreadcrumb = homePageBreadcrumb;
     }

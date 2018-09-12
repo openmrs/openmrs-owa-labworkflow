@@ -10,7 +10,7 @@ import React from 'react';
 import { Route, Switch } from 'react-router-dom';
 import { Header, setLocaleMessages, withLocalisation } from '@openmrs/react-components';
 import BreadCrumb from './components/shared/BreadCrumb/BreadCrumb';
-import LabResultEntry from './components/LabResultEntry/LabResultEntry';
+import LabResultEntry from './components/LabResultEntry';
 import LabOrdersList from './components/LabOrdersList';
 
 import messagesEN from "./translations/en.json";

@@ -7,11 +7,7 @@
  * graphic logo is a trademark of OpenMRS Inc.
  */
 import React from 'react';
-import { connect } from 'react-redux';
-import PropTypes from 'prop-types';
-import { PatientHeader } from '@openmrs/react-components';
 
-import patientAction from '../actions/patientAction';
 import LabOrdersList from './LabOrdersList';
 
 export class App extends React.Component {
@@ -21,25 +17,13 @@ export class App extends React.Component {
   }
 
   render() {
-    const { patientHeaderDetail } = this.props;
     return (
       <div>
-        {/* TODO: Work on conditionally rendering the patient header based on the route */}
-        {/* <PatientHeader patient={patientHeaderDetail} /> */}
+        
         <LabOrdersList />
       </div>
     );
   }
 }
 
-App.propTypes = {
-  patientHeaderDetail: PropTypes.object.isRequired,
-};
-
-const mapStateToProps = ({
-  patient: { patient },
-}) => ({
-  patientHeaderDetail: patient,
-});
-
-export default connect(mapStateToProps)(App);
+export default App;

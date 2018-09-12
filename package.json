@@ -40,7 +40,8 @@
     "redux-promise-middleware": "^5.1.1",
     "redux-saga": "^0.16.0",
     "redux-types": "^2.0.3",
-    "sinon": "^4.4.6"
+    "sinon": "^4.4.6",
+    "sweetalert": "^2.1.0"
   },
   "devDependencies": {
     "archiver": "^1.0.0",
