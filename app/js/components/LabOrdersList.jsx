@@ -99,6 +99,7 @@ export class LabOrdersList extends PureComponent {
     this.handleFilterChange = this.handleFilterChange.bind(this);
     this.clearNameEMRField = this.clearNameEMRField.bind(this);
     this.handleShowResultsEntryPage = this.handleShowResultsEntryPage.bind(this);
+    this.renderDataWithFilters = this.renderDataWithFilters.bind(this);
   }
 
   componentDidMount() {
@@ -133,7 +134,7 @@ export class LabOrdersList extends PureComponent {
     });
   }
 
-  renderDataWithFilters = (filters, data) => {
+  renderDataWithFilters(filters, data) {
     let originalData = data;
 
     if (filters.nameField !== "") {

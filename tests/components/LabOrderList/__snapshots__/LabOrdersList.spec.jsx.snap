@@ -45,12 +45,16 @@ exports[`<LabOrdersList /> component renders correctly 1`] = `
       "textComponent": "span",
     }
   }
-  labOrders={
-    Object {
-      "isLoading": false,
-      "orders": Array [
-        Object {
-          "dateActivated": "2018-08-30T17:34:19.000+0100",
+  isLoading={false}
+  labTests={
+    Array [
+      "Hémogramme automatisé",
+    ]
+  }
+  orders={
+    Array [
+      Object {
+        "concept": Object {
           "display": "Hémogramme automatisé",
         },
         "dateActivated": "2018-08-30T17:34:19.000+0100",
@@ -79,8 +83,8 @@ exports[`<LabOrdersList /> component renders correctly 1`] = `
     <div>
       <LabOrderListFilters
         clearNameEMRField={[Function]}
-        dateFromField={"2018-08-29T21:15:55.835Z"}
-        dateToField={"2018-09-06T21:15:55.835Z"}
+        dateFromField={"2018-09-04T17:31:07.294Z"}
+        dateToField={"2018-09-12T17:31:07.293Z"}
         handleFieldChange={[Function]}
         labTests={
           Array [
@@ -100,7 +104,7 @@ exports[`<LabOrdersList /> component renders correctly 1`] = `
             >
               <span>
                 <CustomDatePicker
-                  defaultDate={"2018-08-29T21:15:55.838Z"}
+                  defaultDate={"2018-09-04T17:31:07.298Z"}
                   field="dateFromField"
                   handleDateChange={[Function]}
                   label="From: "
@@ -127,7 +131,7 @@ exports[`<LabOrdersList /> component renders correctly 1`] = `
                     preventOpenOnFocus={false}
                     previousMonthButtonLabel="Previous Month"
                     readOnly={false}
-                    selected={"2018-08-29T21:15:55.838Z"}
+                    selected={"2018-09-04T17:31:07.298Z"}
                     shouldCloseOnSelect={true}
                     showTimeSelect={false}
                     timeCaption="Time"
@@ -160,7 +164,7 @@ exports[`<LabOrdersList /> component renders correctly 1`] = `
                             onFocus={[Function]}
                             onKeyDown={[Function]}
                             readOnly={false}
-                            value="08/29/2018"
+                            value="09/04/2018"
                           />
                         </div>
                       }
@@ -187,10 +191,15 @@ exports[`<LabOrdersList /> component renders correctly 1`] = `
                                   onFocus={[Function]}
                                   onKeyDown={[Function]}
                                   readOnly={false}
-                                  value="08/29/2018"
+                                  value="09/04/2018"
                                 >
                                   <span
-                                    className="date-picker-container"
+                                    style={
+                                      Object {
+                                        "display": "flex",
+                                        "justifyContent": "space-around",
+                                      }
+                                    }
                                   >
                                     <span
                                       className="line"
@@ -201,14 +210,24 @@ exports[`<LabOrdersList /> component renders correctly 1`] = `
                                       bsClass="form-control"
                                       componentClass="input"
                                       placeholder=""
+                                      style={
+                                        Object {
+                                          "marginRight": "5px",
+                                        }
+                                      }
                                       type="text"
-                                      value="08/29/2018"
+                                      value="09/04/2018"
                                     >
                                       <input
                                         className="form-control"
                                         placeholder=""
+                                        style={
+                                          Object {
+                                            "marginRight": "5px",
+                                          }
+                                        }
                                         type="text"
-                                        value="08/29/2018"
+                                        value="09/04/2018"
                                       />
                                     </FormControl>
                                     <i
@@ -229,7 +248,7 @@ exports[`<LabOrdersList /> component renders correctly 1`] = `
               </span>
               <span>
                 <CustomDatePicker
-                  defaultDate={"2018-09-06T21:15:55.802Z"}
+                  defaultDate={"2018-09-12T17:31:06.302Z"}
                   field="dateToField"
                   handleDateChange={[Function]}
                   label="To: "
@@ -256,7 +275,7 @@ exports[`<LabOrdersList /> component renders correctly 1`] = `
                     preventOpenOnFocus={false}
                     previousMonthButtonLabel="Previous Month"
                     readOnly={false}
-                    selected={"2018-09-06T21:15:55.802Z"}
+                    selected={"2018-09-12T17:31:06.302Z"}
                     shouldCloseOnSelect={true}
                     showTimeSelect={false}
                     timeCaption="Time"
@@ -289,7 +308,7 @@ exports[`<LabOrdersList /> component renders correctly 1`] = `
                             onFocus={[Function]}
                             onKeyDown={[Function]}
                             readOnly={false}
-                            value="09/06/2018"
+                            value="09/12/2018"
                           />
                         </div>
                       }
@@ -316,10 +335,15 @@ exports[`<LabOrdersList /> component renders correctly 1`] = `
                                   onFocus={[Function]}
                                   onKeyDown={[Function]}
                                   readOnly={false}
-                                  value="09/06/2018"
+                                  value="09/12/2018"
                                 >
                                   <span
-                                    className="date-picker-container"
+                                    style={
+                                      Object {
+                                        "display": "flex",
+                                        "justifyContent": "space-around",
+                                      }
+                                    }
                                   >
                                     <span
                                       className="line"
@@ -330,14 +354,24 @@ exports[`<LabOrdersList /> component renders correctly 1`] = `
                                       bsClass="form-control"
                                       componentClass="input"
                                       placeholder=""
+                                      style={
+                                        Object {
+                                          "marginRight": "5px",
+                                        }
+                                      }
                                       type="text"
-                                      value="09/06/2018"
+                                      value="09/12/2018"
                                     >
                                       <input
                                         className="form-control"
                                         placeholder=""
+                                        style={
+                                          Object {
+                                            "marginRight": "5px",
+                                          }
+                                        }
                                         type="text"
-                                        value="09/06/2018"
+                                        value="09/12/2018"
                                       />
                                     </FormControl>
                                     <i
@@ -595,12 +629,13 @@ exports[`<LabOrdersList /> component renders correctly 1`] = `
         }
         filters={
           Object {
-            "dateFromField": "2018-08-29T21:15:55.835Z",
-            "dateToField": "2018-09-06T21:15:55.835Z",
+            "dateFromField": "2018-09-04T17:31:07.294Z",
+            "dateToField": "2018-09-12T17:31:07.293Z",
             "nameField": "",
             "testTypeField": "All",
           }
         }
+        getDataWithFilters={[Function]}
         isFilterable={false}
         isResizeable={true}
         isSortable={false}
@@ -614,6 +649,7 @@ exports[`<LabOrdersList /> component renders correctly 1`] = `
         previousText="Previous"
         rowOnClick={[Function]}
         rowsText="rows"
+        selectedRows={Array []}
         showFilter={false}
       >
         <div>
@@ -793,21 +829,7 @@ exports[`<LabOrdersList /> component renders correctly 1`] = `
                 },
               ]
             }
-            data={
-              Array [
-                Object {
-                  "concept": Object {
-                    "display": "Hémogramme automatisé",
-                  },
-                  "dateActivated": "2018-08-30T17:34:19.000+0100",
-                  "orderNumber": "ORD-1",
-                  "patient": Object {
-                    "display": "Y2A7LR - williams willy john",
-                  },
-                  "urgency": "ROUTINE",
-                },
-              ]
-            }
+            data={Array []}
             defaultExpanded={Object {}}
             defaultFilterMethod={[Function]}
             defaultFiltered={Array []}
@@ -1329,1204 +1351,7 @@ exports[`<LabOrdersList /> component renders correctly 1`] = `
                           "minWidth": "NaNpx",
                         }
                       }
-                    >
-                      <TrGroupComponent
-                        key="0"
-                      >
-                        <div
-                          className="rt-tr-group"
-                          role="rowgroup"
-                        >
-                          <TrComponent
-                            className="-odd"
-                            onClick={[Function]}
-                          >
-                            <div
-                              className="rt-tr -odd"
-                              onClick={[Function]}
-                              role="row"
-                            >
-                              <TdComponent
-                                className="lab-order-list-cell-emr-id"
-                                key="0-"
-                                onClick={[Function]}
-                                style={
-                                  Object {
-                                    "flex": "undefined 0 auto",
-                                    "maxWidth": null,
-                                    "width": null,
-                                  }
-                                }
-                              >
-                                <div
-                                  className="rt-td lab-order-list-cell-emr-id"
-                                  onClick={[Function]}
-                                  role="gridcell"
-                                  style={
-                                    Object {
-                                      "flex": "undefined 0 auto",
-                                      "maxWidth": null,
-                                      "width": null,
-                                    }
-                                  }
-                                >
-                                  <_Cell
-                                    classes={
-                                      Array [
-                                        undefined,
-                                        "lab-order-list-cell-emr-id",
-                                        undefined,
-                                      ]
-                                    }
-                                    column={
-                                      Object {
-                                        "Aggregated": undefined,
-                                        "Cell": [Function],
-                                        "Expander": undefined,
-                                        "Filter": undefined,
-                                        "Footer": undefined,
-                                        "Header": <span
-                                          className="labs-order-table-head"
-                                        >
-                                          <FormattedMessage
-                                            defaultMessage="EMR ID"
-                                            description="LabOrderList table header for EMR ID"
-                                            id="app.labOrdersList.EMR_ID"
-                                            values={Object {}}
-                                          />
-                                        </span>,
-                                        "Pivot": undefined,
-                                        "PivotValue": undefined,
-                                        "accessor": [Function],
-                                        "aggregate": undefined,
-                                        "className": "lab-order-list-cell-emr-id",
-                                        "filterAll": false,
-                                        "filterMethod": undefined,
-                                        "filterable": undefined,
-                                        "footerClassName": "",
-                                        "footerStyle": Object {},
-                                        "getFooterProps": [Function],
-                                        "getHeaderProps": [Function],
-                                        "getProps": [Function],
-                                        "headerClassName": "lab-order-list-header-emr-id",
-                                        "headerStyle": Object {},
-                                        "id": "",
-                                        "minWidth": undefined,
-                                        "resizable": undefined,
-                                        "show": true,
-                                        "sortMethod": undefined,
-                                        "sortable": undefined,
-                                        "style": Object {},
-                                      }
-                                    }
-                                    columnName="EMR ID"
-                                    columnProps={
-                                      Object {
-                                        "className": undefined,
-                                        "rest": Object {},
-                                        "style": undefined,
-                                      }
-                                    }
-                                    index={0}
-                                    level={0}
-                                    nestingPath={
-                                      Array [
-                                        0,
-                                      ]
-                                    }
-                                    original={
-                                      Object {
-                                        "concept": Object {
-                                          "display": "Hémogramme automatisé",
-                                        },
-                                        "dateActivated": "2018-08-30T17:34:19.000+0100",
-                                        "orderNumber": "ORD-1",
-                                        "patient": Object {
-                                          "display": "Y2A7LR - williams willy john",
-                                        },
-                                        "urgency": "ROUTINE",
-                                      }
-                                    }
-                                    page={0}
-                                    pageSize={10}
-                                    resized={Array []}
-                                    row={
-                                      Object {
-                                        "": Object {
-                                          "concept": Object {
-                                            "display": "Hémogramme automatisé",
-                                          },
-                                          "dateActivated": "2018-08-30T17:34:19.000+0100",
-                                          "orderNumber": "ORD-1",
-                                          "patient": Object {
-                                            "display": "Y2A7LR - williams willy john",
-                                          },
-                                          "urgency": "ROUTINE",
-                                        },
-                                        "_index": 0,
-                                        "_nestingLevel": 0,
-                                        "_original": Object {
-                                          "concept": Object {
-                                            "display": "Hémogramme automatisé",
-                                          },
-                                          "dateActivated": "2018-08-30T17:34:19.000+0100",
-                                          "orderNumber": "ORD-1",
-                                          "patient": Object {
-                                            "display": "Y2A7LR - williams willy john",
-                                          },
-                                          "urgency": "ROUTINE",
-                                        },
-                                        "_subRows": undefined,
-                                        "_viewIndex": 0,
-                                      }
-                                    }
-                                    show={true}
-                                    styles={Object {}}
-                                    tdProps={
-                                      Object {
-                                        "className": undefined,
-                                        "rest": Object {},
-                                        "style": undefined,
-                                      }
-                                    }
-                                    value={
-                                      Object {
-                                        "concept": Object {
-                                          "display": "Hémogramme automatisé",
-                                        },
-                                        "dateActivated": "2018-08-30T17:34:19.000+0100",
-                                        "orderNumber": "ORD-1",
-                                        "patient": Object {
-                                          "display": "Y2A7LR - williams willy john",
-                                        },
-                                        "urgency": "ROUTINE",
-                                      }
-                                    }
-                                    viewIndex={0}
-                                  >
-                                    <div
-                                      className="table_cell emr-id"
-                                    >
-                                      <span>
-                                        Y2A7LR 
-                                      </span>
-                                    </div>
-                                  </_Cell>
-                                </div>
-                              </TdComponent>
-                              <TdComponent
-                                className="lab-order-list-cell-name"
-                                key="1-"
-                                onClick={[Function]}
-                                style={
-                                  Object {
-                                    "flex": "undefined 0 auto",
-                                    "maxWidth": null,
-                                    "width": null,
-                                  }
-                                }
-                              >
-                                <div
-                                  className="rt-td lab-order-list-cell-name"
-                                  onClick={[Function]}
-                                  role="gridcell"
-                                  style={
-                                    Object {
-                                      "flex": "undefined 0 auto",
-                                      "maxWidth": null,
-                                      "width": null,
-                                    }
-                                  }
-                                >
-                                  <_Cell
-                                    classes={
-                                      Array [
-                                        undefined,
-                                        "lab-order-list-cell-name",
-                                        undefined,
-                                      ]
-                                    }
-                                    column={
-                                      Object {
-                                        "Aggregated": undefined,
-                                        "Cell": [Function],
-                                        "Expander": undefined,
-                                        "Filter": undefined,
-                                        "Footer": undefined,
-                                        "Header": <span
-                                          className="labs-order-table-head"
-                                        >
-                                          <FormattedMessage
-                                            defaultMessage="NAME"
-                                            description="LabOrderList table header for NAME"
-                                            id="app.labOrdersList.NAME"
-                                            values={Object {}}
-                                          />
-                                        </span>,
-                                        "Pivot": undefined,
-                                        "PivotValue": undefined,
-                                        "accessor": [Function],
-                                        "aggregate": undefined,
-                                        "className": "lab-order-list-cell-name",
-                                        "filterAll": false,
-                                        "filterMethod": undefined,
-                                        "filterable": undefined,
-                                        "footerClassName": "",
-                                        "footerStyle": Object {},
-                                        "getFooterProps": [Function],
-                                        "getHeaderProps": [Function],
-                                        "getProps": [Function],
-                                        "headerClassName": "lab-order-list-header-name",
-                                        "headerStyle": Object {},
-                                        "id": "",
-                                        "minWidth": undefined,
-                                        "resizable": undefined,
-                                        "show": true,
-                                        "sortMethod": undefined,
-                                        "sortable": undefined,
-                                        "style": Object {},
-                                      }
-                                    }
-                                    columnName="NAME"
-                                    columnProps={
-                                      Object {
-                                        "className": undefined,
-                                        "rest": Object {},
-                                        "style": undefined,
-                                      }
-                                    }
-                                    index={0}
-                                    level={0}
-                                    nestingPath={
-                                      Array [
-                                        0,
-                                      ]
-                                    }
-                                    original={
-                                      Object {
-                                        "concept": Object {
-                                          "display": "Hémogramme automatisé",
-                                        },
-                                        "dateActivated": "2018-08-30T17:34:19.000+0100",
-                                        "orderNumber": "ORD-1",
-                                        "patient": Object {
-                                          "display": "Y2A7LR - williams willy john",
-                                        },
-                                        "urgency": "ROUTINE",
-                                      }
-                                    }
-                                    page={0}
-                                    pageSize={10}
-                                    resized={Array []}
-                                    row={
-                                      Object {
-                                        "": Object {
-                                          "concept": Object {
-                                            "display": "Hémogramme automatisé",
-                                          },
-                                          "dateActivated": "2018-08-30T17:34:19.000+0100",
-                                          "orderNumber": "ORD-1",
-                                          "patient": Object {
-                                            "display": "Y2A7LR - williams willy john",
-                                          },
-                                          "urgency": "ROUTINE",
-                                        },
-                                        "_index": 0,
-                                        "_nestingLevel": 0,
-                                        "_original": Object {
-                                          "concept": Object {
-                                            "display": "Hémogramme automatisé",
-                                          },
-                                          "dateActivated": "2018-08-30T17:34:19.000+0100",
-                                          "orderNumber": "ORD-1",
-                                          "patient": Object {
-                                            "display": "Y2A7LR - williams willy john",
-                                          },
-                                          "urgency": "ROUTINE",
-                                        },
-                                        "_subRows": undefined,
-                                        "_viewIndex": 0,
-                                      }
-                                    }
-                                    show={true}
-                                    styles={Object {}}
-                                    tdProps={
-                                      Object {
-                                        "className": undefined,
-                                        "rest": Object {},
-                                        "style": undefined,
-                                      }
-                                    }
-                                    value={
-                                      Object {
-                                        "concept": Object {
-                                          "display": "Hémogramme automatisé",
-                                        },
-                                        "dateActivated": "2018-08-30T17:34:19.000+0100",
-                                        "orderNumber": "ORD-1",
-                                        "patient": Object {
-                                          "display": "Y2A7LR - williams willy john",
-                                        },
-                                        "urgency": "ROUTINE",
-                                      }
-                                    }
-                                    viewIndex={0}
-                                  >
-                                    <div
-                                      className="table_cell order-date"
-                                    >
-                                      <span>
-                                         williams willy john
-                                      </span>
-                                    </div>
-                                  </_Cell>
-                                </div>
-                              </TdComponent>
-                              <TdComponent
-                                className="lab-order-list-cell-order-id"
-                                key="2-"
-                                onClick={[Function]}
-                                style={
-                                  Object {
-                                    "flex": "undefined 0 auto",
-                                    "maxWidth": null,
-                                    "width": null,
-                                  }
-                                }
-                              >
-                                <div
-                                  className="rt-td lab-order-list-cell-order-id"
-                                  onClick={[Function]}
-                                  role="gridcell"
-                                  style={
-                                    Object {
-                                      "flex": "undefined 0 auto",
-                                      "maxWidth": null,
-                                      "width": null,
-                                    }
-                                  }
-                                >
-                                  <_Cell
-                                    classes={
-                                      Array [
-                                        undefined,
-                                        "lab-order-list-cell-order-id",
-                                        undefined,
-                                      ]
-                                    }
-                                    column={
-                                      Object {
-                                        "Aggregated": undefined,
-                                        "Cell": [Function],
-                                        "Expander": undefined,
-                                        "Filter": undefined,
-                                        "Footer": undefined,
-                                        "Header": <span
-                                          className="labs-order-table-head"
-                                        >
-                                          <FormattedMessage
-                                            defaultMessage="ORDER ID"
-                                            description="LabOrderList table header for ORDER ID"
-                                            id="app.labOrdersList.ORDER_ID"
-                                            values={Object {}}
-                                          />
-                                        </span>,
-                                        "Pivot": undefined,
-                                        "PivotValue": undefined,
-                                        "accessor": [Function],
-                                        "aggregate": undefined,
-                                        "className": "lab-order-list-cell-order-id",
-                                        "filterAll": false,
-                                        "filterMethod": undefined,
-                                        "filterable": undefined,
-                                        "footerClassName": "",
-                                        "footerStyle": Object {},
-                                        "getFooterProps": [Function],
-                                        "getHeaderProps": [Function],
-                                        "getProps": [Function],
-                                        "headerClassName": "lab-order-list-header-order-id",
-                                        "headerStyle": Object {},
-                                        "id": "",
-                                        "minWidth": undefined,
-                                        "resizable": undefined,
-                                        "show": true,
-                                        "sortMethod": undefined,
-                                        "sortable": undefined,
-                                        "style": Object {},
-                                      }
-                                    }
-                                    columnName="ORDER ID"
-                                    columnProps={
-                                      Object {
-                                        "className": undefined,
-                                        "rest": Object {},
-                                        "style": undefined,
-                                      }
-                                    }
-                                    index={0}
-                                    level={0}
-                                    nestingPath={
-                                      Array [
-                                        0,
-                                      ]
-                                    }
-                                    original={
-                                      Object {
-                                        "concept": Object {
-                                          "display": "Hémogramme automatisé",
-                                        },
-                                        "dateActivated": "2018-08-30T17:34:19.000+0100",
-                                        "orderNumber": "ORD-1",
-                                        "patient": Object {
-                                          "display": "Y2A7LR - williams willy john",
-                                        },
-                                        "urgency": "ROUTINE",
-                                      }
-                                    }
-                                    page={0}
-                                    pageSize={10}
-                                    resized={Array []}
-                                    row={
-                                      Object {
-                                        "": Object {
-                                          "concept": Object {
-                                            "display": "Hémogramme automatisé",
-                                          },
-                                          "dateActivated": "2018-08-30T17:34:19.000+0100",
-                                          "orderNumber": "ORD-1",
-                                          "patient": Object {
-                                            "display": "Y2A7LR - williams willy john",
-                                          },
-                                          "urgency": "ROUTINE",
-                                        },
-                                        "_index": 0,
-                                        "_nestingLevel": 0,
-                                        "_original": Object {
-                                          "concept": Object {
-                                            "display": "Hémogramme automatisé",
-                                          },
-                                          "dateActivated": "2018-08-30T17:34:19.000+0100",
-                                          "orderNumber": "ORD-1",
-                                          "patient": Object {
-                                            "display": "Y2A7LR - williams willy john",
-                                          },
-                                          "urgency": "ROUTINE",
-                                        },
-                                        "_subRows": undefined,
-                                        "_viewIndex": 0,
-                                      }
-                                    }
-                                    show={true}
-                                    styles={Object {}}
-                                    tdProps={
-                                      Object {
-                                        "className": undefined,
-                                        "rest": Object {},
-                                        "style": undefined,
-                                      }
-                                    }
-                                    value={
-                                      Object {
-                                        "concept": Object {
-                                          "display": "Hémogramme automatisé",
-                                        },
-                                        "dateActivated": "2018-08-30T17:34:19.000+0100",
-                                        "orderNumber": "ORD-1",
-                                        "patient": Object {
-                                          "display": "Y2A7LR - williams willy john",
-                                        },
-                                        "urgency": "ROUTINE",
-                                      }
-                                    }
-                                    viewIndex={0}
-                                  >
-                                    <div
-                                      className="table_cell order-id"
-                                    >
-                                      <span>
-                                        ORD-1
-                                      </span>
-                                    </div>
-                                  </_Cell>
-                                </div>
-                              </TdComponent>
-                              <TdComponent
-                                className="lab-order-list-cell-order-date"
-                                key="3-"
-                                onClick={[Function]}
-                                style={
-                                  Object {
-                                    "flex": "undefined 0 auto",
-                                    "maxWidth": null,
-                                    "width": null,
-                                  }
-                                }
-                              >
-                                <div
-                                  className="rt-td lab-order-list-cell-order-date"
-                                  onClick={[Function]}
-                                  role="gridcell"
-                                  style={
-                                    Object {
-                                      "flex": "undefined 0 auto",
-                                      "maxWidth": null,
-                                      "width": null,
-                                    }
-                                  }
-                                >
-                                  <_Cell
-                                    classes={
-                                      Array [
-                                        undefined,
-                                        "lab-order-list-cell-order-date",
-                                        undefined,
-                                      ]
-                                    }
-                                    column={
-                                      Object {
-                                        "Aggregated": undefined,
-                                        "Cell": [Function],
-                                        "Expander": undefined,
-                                        "Filter": undefined,
-                                        "Footer": undefined,
-                                        "Header": <span
-                                          className="labs-order-table-head"
-                                        >
-                                          <FormattedMessage
-                                            defaultMessage="ORDER DATE"
-                                            description="LabOrderList table header for ORDER DATE"
-                                            id="app.labOrdersList.ORDER_DATE"
-                                            values={Object {}}
-                                          />
-                                        </span>,
-                                        "Pivot": undefined,
-                                        "PivotValue": undefined,
-                                        "accessor": [Function],
-                                        "aggregate": undefined,
-                                        "className": "lab-order-list-cell-order-date",
-                                        "filterAll": false,
-                                        "filterMethod": undefined,
-                                        "filterable": undefined,
-                                        "footerClassName": "",
-                                        "footerStyle": Object {},
-                                        "getFooterProps": [Function],
-                                        "getHeaderProps": [Function],
-                                        "getProps": [Function],
-                                        "headerClassName": "lab-order-list-header-order-date",
-                                        "headerStyle": Object {},
-                                        "id": "",
-                                        "minWidth": undefined,
-                                        "resizable": undefined,
-                                        "show": true,
-                                        "sortMethod": undefined,
-                                        "sortable": undefined,
-                                        "style": Object {},
-                                      }
-                                    }
-                                    columnName="ORDER DATE"
-                                    columnProps={
-                                      Object {
-                                        "className": undefined,
-                                        "rest": Object {},
-                                        "style": undefined,
-                                      }
-                                    }
-                                    index={0}
-                                    level={0}
-                                    nestingPath={
-                                      Array [
-                                        0,
-                                      ]
-                                    }
-                                    original={
-                                      Object {
-                                        "concept": Object {
-                                          "display": "Hémogramme automatisé",
-                                        },
-                                        "dateActivated": "2018-08-30T17:34:19.000+0100",
-                                        "orderNumber": "ORD-1",
-                                        "patient": Object {
-                                          "display": "Y2A7LR - williams willy john",
-                                        },
-                                        "urgency": "ROUTINE",
-                                      }
-                                    }
-                                    page={0}
-                                    pageSize={10}
-                                    resized={Array []}
-                                    row={
-                                      Object {
-                                        "": Object {
-                                          "concept": Object {
-                                            "display": "Hémogramme automatisé",
-                                          },
-                                          "dateActivated": "2018-08-30T17:34:19.000+0100",
-                                          "orderNumber": "ORD-1",
-                                          "patient": Object {
-                                            "display": "Y2A7LR - williams willy john",
-                                          },
-                                          "urgency": "ROUTINE",
-                                        },
-                                        "_index": 0,
-                                        "_nestingLevel": 0,
-                                        "_original": Object {
-                                          "concept": Object {
-                                            "display": "Hémogramme automatisé",
-                                          },
-                                          "dateActivated": "2018-08-30T17:34:19.000+0100",
-                                          "orderNumber": "ORD-1",
-                                          "patient": Object {
-                                            "display": "Y2A7LR - williams willy john",
-                                          },
-                                          "urgency": "ROUTINE",
-                                        },
-                                        "_subRows": undefined,
-                                        "_viewIndex": 0,
-                                      }
-                                    }
-                                    show={true}
-                                    styles={Object {}}
-                                    tdProps={
-                                      Object {
-                                        "className": undefined,
-                                        "rest": Object {},
-                                        "style": undefined,
-                                      }
-                                    }
-                                    value={
-                                      Object {
-                                        "concept": Object {
-                                          "display": "Hémogramme automatisé",
-                                        },
-                                        "dateActivated": "2018-08-30T17:34:19.000+0100",
-                                        "orderNumber": "ORD-1",
-                                        "patient": Object {
-                                          "display": "Y2A7LR - williams willy john",
-                                        },
-                                        "urgency": "ROUTINE",
-                                      }
-                                    }
-                                    viewIndex={0}
-                                  >
-                                    <div
-                                      className="table_cell order-date"
-                                    >
-                                      <span>
-                                        30-Aug-2018
-                                      </span>
-                                    </div>
-                                  </_Cell>
-                                </div>
-                              </TdComponent>
-                              <TdComponent
-                                className="lab-order-list-cell-collection-date"
-                                key="4-"
-                                onClick={[Function]}
-                                style={
-                                  Object {
-                                    "flex": "undefined 0 auto",
-                                    "maxWidth": null,
-                                    "width": null,
-                                  }
-                                }
-                              >
-                                <div
-                                  className="rt-td lab-order-list-cell-collection-date"
-                                  onClick={[Function]}
-                                  role="gridcell"
-                                  style={
-                                    Object {
-                                      "flex": "undefined 0 auto",
-                                      "maxWidth": null,
-                                      "width": null,
-                                    }
-                                  }
-                                >
-                                  <_Cell
-                                    classes={
-                                      Array [
-                                        undefined,
-                                        "lab-order-list-cell-collection-date",
-                                        undefined,
-                                      ]
-                                    }
-                                    column={
-                                      Object {
-                                        "Aggregated": undefined,
-                                        "Cell": [Function],
-                                        "Expander": undefined,
-                                        "Filter": undefined,
-                                        "Footer": undefined,
-                                        "Header": <span
-                                          className="labs-order-table-head"
-                                        >
-                                          <FormattedMessage
-                                            defaultMessage="COLLECTION DATE"
-                                            description="LabOrderList table header for COLLECTION DATE"
-                                            id="app.labOrdersList.COLLECTION_DATE"
-                                            values={Object {}}
-                                          />
-                                        </span>,
-                                        "Pivot": undefined,
-                                        "PivotValue": undefined,
-                                        "accessor": [Function],
-                                        "aggregate": undefined,
-                                        "className": "lab-order-list-cell-collection-date",
-                                        "filterAll": false,
-                                        "filterMethod": undefined,
-                                        "filterable": undefined,
-                                        "footerClassName": "",
-                                        "footerStyle": Object {},
-                                        "getFooterProps": [Function],
-                                        "getHeaderProps": [Function],
-                                        "getProps": [Function],
-                                        "headerClassName": "lab-order-list-header-collection-date",
-                                        "headerStyle": Object {},
-                                        "id": "",
-                                        "minWidth": undefined,
-                                        "resizable": undefined,
-                                        "show": true,
-                                        "sortMethod": undefined,
-                                        "sortable": undefined,
-                                        "style": Object {},
-                                      }
-                                    }
-                                    columnName="COLLECTION DATE"
-                                    columnProps={
-                                      Object {
-                                        "className": undefined,
-                                        "rest": Object {},
-                                        "style": undefined,
-                                      }
-                                    }
-                                    index={0}
-                                    level={0}
-                                    nestingPath={
-                                      Array [
-                                        0,
-                                      ]
-                                    }
-                                    original={
-                                      Object {
-                                        "concept": Object {
-                                          "display": "Hémogramme automatisé",
-                                        },
-                                        "dateActivated": "2018-08-30T17:34:19.000+0100",
-                                        "orderNumber": "ORD-1",
-                                        "patient": Object {
-                                          "display": "Y2A7LR - williams willy john",
-                                        },
-                                        "urgency": "ROUTINE",
-                                      }
-                                    }
-                                    page={0}
-                                    pageSize={10}
-                                    resized={Array []}
-                                    row={
-                                      Object {
-                                        "": Object {
-                                          "concept": Object {
-                                            "display": "Hémogramme automatisé",
-                                          },
-                                          "dateActivated": "2018-08-30T17:34:19.000+0100",
-                                          "orderNumber": "ORD-1",
-                                          "patient": Object {
-                                            "display": "Y2A7LR - williams willy john",
-                                          },
-                                          "urgency": "ROUTINE",
-                                        },
-                                        "_index": 0,
-                                        "_nestingLevel": 0,
-                                        "_original": Object {
-                                          "concept": Object {
-                                            "display": "Hémogramme automatisé",
-                                          },
-                                          "dateActivated": "2018-08-30T17:34:19.000+0100",
-                                          "orderNumber": "ORD-1",
-                                          "patient": Object {
-                                            "display": "Y2A7LR - williams willy john",
-                                          },
-                                          "urgency": "ROUTINE",
-                                        },
-                                        "_subRows": undefined,
-                                        "_viewIndex": 0,
-                                      }
-                                    }
-                                    show={true}
-                                    styles={Object {}}
-                                    tdProps={
-                                      Object {
-                                        "className": undefined,
-                                        "rest": Object {},
-                                        "style": undefined,
-                                      }
-                                    }
-                                    value={
-                                      Object {
-                                        "concept": Object {
-                                          "display": "Hémogramme automatisé",
-                                        },
-                                        "dateActivated": "2018-08-30T17:34:19.000+0100",
-                                        "orderNumber": "ORD-1",
-                                        "patient": Object {
-                                          "display": "Y2A7LR - williams willy john",
-                                        },
-                                        "urgency": "ROUTINE",
-                                      }
-                                    }
-                                    viewIndex={0}
-                                  >
-                                    <div
-                                      className="table_cell collection-date"
-                                    >
-                                      <span>
-                                        30-Aug-2018
-                                      </span>
-                                    </div>
-                                  </_Cell>
-                                </div>
-                              </TdComponent>
-                              <TdComponent
-                                className="lab-order-list-cell-urgency"
-                                key="5-"
-                                onClick={[Function]}
-                                style={
-                                  Object {
-                                    "flex": "undefined 0 auto",
-                                    "maxWidth": null,
-                                    "width": null,
-                                  }
-                                }
-                              >
-                                <div
-                                  className="rt-td lab-order-list-cell-urgency"
-                                  onClick={[Function]}
-                                  role="gridcell"
-                                  style={
-                                    Object {
-                                      "flex": "undefined 0 auto",
-                                      "maxWidth": null,
-                                      "width": null,
-                                    }
-                                  }
-                                >
-                                  <_Cell
-                                    classes={
-                                      Array [
-                                        undefined,
-                                        "lab-order-list-cell-urgency",
-                                        undefined,
-                                      ]
-                                    }
-                                    column={
-                                      Object {
-                                        "Aggregated": undefined,
-                                        "Cell": [Function],
-                                        "Expander": undefined,
-                                        "Filter": undefined,
-                                        "Footer": undefined,
-                                        "Header": <span
-                                          className="labs-order-table-head"
-                                        >
-                                          <FormattedMessage
-                                            defaultMessage="URGENCY"
-                                            description="LabOrderList table header for URGENCY"
-                                            id="app.labOrdersList.URGENCY"
-                                            values={Object {}}
-                                          />
-                                        </span>,
-                                        "Pivot": undefined,
-                                        "PivotValue": undefined,
-                                        "accessor": [Function],
-                                        "aggregate": undefined,
-                                        "className": "lab-order-list-cell-urgency",
-                                        "filterAll": false,
-                                        "filterMethod": undefined,
-                                        "filterable": undefined,
-                                        "footerClassName": "",
-                                        "footerStyle": Object {},
-                                        "getFooterProps": [Function],
-                                        "getHeaderProps": [Function],
-                                        "getProps": [Function],
-                                        "headerClassName": "lab-order-list-header-urgency",
-                                        "headerStyle": Object {},
-                                        "id": "",
-                                        "minWidth": undefined,
-                                        "resizable": undefined,
-                                        "show": true,
-                                        "sortMethod": undefined,
-                                        "sortable": undefined,
-                                        "style": Object {},
-                                      }
-                                    }
-                                    columnName="URGENCY"
-                                    columnProps={
-                                      Object {
-                                        "className": undefined,
-                                        "rest": Object {},
-                                        "style": undefined,
-                                      }
-                                    }
-                                    index={0}
-                                    level={0}
-                                    nestingPath={
-                                      Array [
-                                        0,
-                                      ]
-                                    }
-                                    original={
-                                      Object {
-                                        "concept": Object {
-                                          "display": "Hémogramme automatisé",
-                                        },
-                                        "dateActivated": "2018-08-30T17:34:19.000+0100",
-                                        "orderNumber": "ORD-1",
-                                        "patient": Object {
-                                          "display": "Y2A7LR - williams willy john",
-                                        },
-                                        "urgency": "ROUTINE",
-                                      }
-                                    }
-                                    page={0}
-                                    pageSize={10}
-                                    resized={Array []}
-                                    row={
-                                      Object {
-                                        "": Object {
-                                          "concept": Object {
-                                            "display": "Hémogramme automatisé",
-                                          },
-                                          "dateActivated": "2018-08-30T17:34:19.000+0100",
-                                          "orderNumber": "ORD-1",
-                                          "patient": Object {
-                                            "display": "Y2A7LR - williams willy john",
-                                          },
-                                          "urgency": "ROUTINE",
-                                        },
-                                        "_index": 0,
-                                        "_nestingLevel": 0,
-                                        "_original": Object {
-                                          "concept": Object {
-                                            "display": "Hémogramme automatisé",
-                                          },
-                                          "dateActivated": "2018-08-30T17:34:19.000+0100",
-                                          "orderNumber": "ORD-1",
-                                          "patient": Object {
-                                            "display": "Y2A7LR - williams willy john",
-                                          },
-                                          "urgency": "ROUTINE",
-                                        },
-                                        "_subRows": undefined,
-                                        "_viewIndex": 0,
-                                      }
-                                    }
-                                    show={true}
-                                    styles={Object {}}
-                                    tdProps={
-                                      Object {
-                                        "className": undefined,
-                                        "rest": Object {},
-                                        "style": undefined,
-                                      }
-                                    }
-                                    value={
-                                      Object {
-                                        "concept": Object {
-                                          "display": "Hémogramme automatisé",
-                                        },
-                                        "dateActivated": "2018-08-30T17:34:19.000+0100",
-                                        "orderNumber": "ORD-1",
-                                        "patient": Object {
-                                          "display": "Y2A7LR - williams willy john",
-                                        },
-                                        "urgency": "ROUTINE",
-                                      }
-                                    }
-                                    viewIndex={0}
-                                  >
-                                    <div
-                                      className="table_cell urgency routine"
-                                    >
-                                      <span>
-                                        ROUTINE
-                                      </span>
-                                    </div>
-                                  </_Cell>
-                                </div>
-                              </TdComponent>
-                              <TdComponent
-                                className="lab-order-list-cell-test-type"
-                                key="6-"
-                                onClick={[Function]}
-                                style={
-                                  Object {
-                                    "flex": "undefined 0 auto",
-                                    "maxWidth": null,
-                                    "width": null,
-                                  }
-                                }
-                              >
-                                <div
-                                  className="rt-td lab-order-list-cell-test-type"
-                                  onClick={[Function]}
-                                  role="gridcell"
-                                  style={
-                                    Object {
-                                      "flex": "undefined 0 auto",
-                                      "maxWidth": null,
-                                      "width": null,
-                                    }
-                                  }
-                                >
-                                  <_Cell
-                                    classes={
-                                      Array [
-                                        undefined,
-                                        "lab-order-list-cell-test-type",
-                                        undefined,
-                                      ]
-                                    }
-                                    column={
-                                      Object {
-                                        "Aggregated": undefined,
-                                        "Cell": [Function],
-                                        "Expander": undefined,
-                                        "Filter": undefined,
-                                        "Footer": undefined,
-                                        "Header": <span
-                                          className="labs-order-table-head"
-                                        >
-                                          <FormattedMessage
-                                            defaultMessage="TEST TYPE"
-                                            description="LabOrderList table header for TEST TYPE"
-                                            id="app.labOrdersList.TEST_TYPE"
-                                            values={Object {}}
-                                          />
-                                        </span>,
-                                        "Pivot": undefined,
-                                        "PivotValue": undefined,
-                                        "accessor": [Function],
-                                        "aggregate": undefined,
-                                        "className": "lab-order-list-cell-test-type",
-                                        "filterAll": false,
-                                        "filterMethod": undefined,
-                                        "filterable": undefined,
-                                        "footerClassName": "",
-                                        "footerStyle": Object {},
-                                        "getFooterProps": [Function],
-                                        "getHeaderProps": [Function],
-                                        "getProps": [Function],
-                                        "headerClassName": "lab-order-list-header-test-type",
-                                        "headerStyle": Object {},
-                                        "id": "",
-                                        "minWidth": undefined,
-                                        "resizable": undefined,
-                                        "show": true,
-                                        "sortMethod": undefined,
-                                        "sortable": undefined,
-                                        "style": Object {},
-                                      }
-                                    }
-                                    columnName="TEST TYPE"
-                                    columnProps={
-                                      Object {
-                                        "className": undefined,
-                                        "rest": Object {},
-                                        "style": undefined,
-                                      }
-                                    }
-                                    index={0}
-                                    level={0}
-                                    nestingPath={
-                                      Array [
-                                        0,
-                                      ]
-                                    }
-                                    original={
-                                      Object {
-                                        "concept": Object {
-                                          "display": "Hémogramme automatisé",
-                                        },
-                                        "dateActivated": "2018-08-30T17:34:19.000+0100",
-                                        "orderNumber": "ORD-1",
-                                        "patient": Object {
-                                          "display": "Y2A7LR - williams willy john",
-                                        },
-                                        "urgency": "ROUTINE",
-                                      }
-                                    }
-                                    page={0}
-                                    pageSize={10}
-                                    resized={Array []}
-                                    row={
-                                      Object {
-                                        "": Object {
-                                          "concept": Object {
-                                            "display": "Hémogramme automatisé",
-                                          },
-                                          "dateActivated": "2018-08-30T17:34:19.000+0100",
-                                          "orderNumber": "ORD-1",
-                                          "patient": Object {
-                                            "display": "Y2A7LR - williams willy john",
-                                          },
-                                          "urgency": "ROUTINE",
-                                        },
-                                        "_index": 0,
-                                        "_nestingLevel": 0,
-                                        "_original": Object {
-                                          "concept": Object {
-                                            "display": "Hémogramme automatisé",
-                                          },
-                                          "dateActivated": "2018-08-30T17:34:19.000+0100",
-                                          "orderNumber": "ORD-1",
-                                          "patient": Object {
-                                            "display": "Y2A7LR - williams willy john",
-                                          },
-                                          "urgency": "ROUTINE",
-                                        },
-                                        "_subRows": undefined,
-                                        "_viewIndex": 0,
-                                      }
-                                    }
-                                    show={true}
-                                    styles={Object {}}
-                                    tdProps={
-                                      Object {
-                                        "className": undefined,
-                                        "rest": Object {},
-                                        "style": undefined,
-                                      }
-                                    }
-                                    value={
-                                      Object {
-                                        "concept": Object {
-                                          "display": "Hémogramme automatisé",
-                                        },
-                                        "dateActivated": "2018-08-30T17:34:19.000+0100",
-                                        "orderNumber": "ORD-1",
-                                        "patient": Object {
-                                          "display": "Y2A7LR - williams willy john",
-                                        },
-                                        "urgency": "ROUTINE",
-                                      }
-                                    }
-                                    viewIndex={0}
-                                  >
-                                    <div
-                                      className="table_cell test-type"
-                                    >
-                                      <span>
-                                        Hémogramme automatisé
-                                      </span>
-                                    </div>
-                                  </_Cell>
-                                </div>
-                              </TdComponent>
-                            </div>
-                          </TrComponent>
-                        </div>
-                      </TrGroupComponent>
-                    </div>
+                    />
                   </Tbody>
                 </div>
               </TableComponent>
@@ -3265,21 +2090,7 @@ exports[`<LabOrdersList /> component renders correctly 1`] = `
                     ]
                   }
                   currentlyResizing={false}
-                  data={
-                    Array [
-                      Object {
-                        "concept": Object {
-                          "display": "Hémogramme automatisé",
-                        },
-                        "dateActivated": "2018-08-30T17:34:19.000+0100",
-                        "orderNumber": "ORD-1",
-                        "patient": Object {
-                          "display": "Y2A7LR - williams willy john",
-                        },
-                        "urgency": "ROUTINE",
-                      },
-                    ]
-                  }
+                  data={Array []}
                   defaultExpanded={Object {}}
                   defaultFilterMethod={[Function]}
                   defaultFiltered={Array []}
@@ -3358,7 +2169,7 @@ exports[`<LabOrdersList /> component renders correctly 1`] = `
                     ]
                   }
                   pageText="Page"
-                  pages={1}
+                  pages={0}
                   pivotDefaults={Object {}}
                   pivotIDKey="_pivotID"
                   pivotValKey="_pivotVal"
@@ -3366,37 +2177,7 @@ exports[`<LabOrdersList /> component renders correctly 1`] = `
                   resizable={true}
                   resized={Array []}
                   resolveData={[Function]}
-                  resolvedData={
-                    Array [
-                      Object {
-                        "": Object {
-                          "concept": Object {
-                            "display": "Hémogramme automatisé",
-                          },
-                          "dateActivated": "2018-08-30T17:34:19.000+0100",
-                          "orderNumber": "ORD-1",
-                          "patient": Object {
-                            "display": "Y2A7LR - williams willy john",
-                          },
-                          "urgency": "ROUTINE",
-                        },
-                        "_index": 0,
-                        "_nestingLevel": 0,
-                        "_original": Object {
-                          "concept": Object {
-                            "display": "Hémogramme automatisé",
-                          },
-                          "dateActivated": "2018-08-30T17:34:19.000+0100",
-                          "orderNumber": "ORD-1",
-                          "patient": Object {
-                            "display": "Y2A7LR - williams willy john",
-                          },
-                          "urgency": "ROUTINE",
-                        },
-                        "_subRows": undefined,
-                      },
-                    ]
-                  }
+                  resolvedData={Array []}
                   rowsText="rows"
                   showPageJump={true}
                   showPageSizeOptions={true}
@@ -3406,37 +2187,7 @@ exports[`<LabOrdersList /> component renders correctly 1`] = `
                   skipNextSort={false}
                   sortable={false}
                   sorted={Array []}
-                  sortedData={
-                    Array [
-                      Object {
-                        "": Object {
-                          "concept": Object {
-                            "display": "Hémogramme automatisé",
-                          },
-                          "dateActivated": "2018-08-30T17:34:19.000+0100",
-                          "orderNumber": "ORD-1",
-                          "patient": Object {
-                            "display": "Y2A7LR - williams willy john",
-                          },
-                          "urgency": "ROUTINE",
-                        },
-                        "_index": 0,
-                        "_nestingLevel": 0,
-                        "_original": Object {
-                          "concept": Object {
-                            "display": "Hémogramme automatisé",
-                          },
-                          "dateActivated": "2018-08-30T17:34:19.000+0100",
-                          "orderNumber": "ORD-1",
-                          "patient": Object {
-                            "display": "Y2A7LR - williams willy john",
-                          },
-                          "urgency": "ROUTINE",
-                        },
-                        "_subRows": undefined,
-                      },
-                    ]
-                  }
+                  sortedData={Array []}
                   subRowsKey="_subRows"
                 >
                   <div
@@ -3565,6 +2316,17 @@ exports[`<LabOrdersList /> component renders correctly 1`] = `
                   </div>
                 </ReactTablePagination>
               </div>
+              <NoData>
+                <div
+                  className="rt-noData"
+                >
+                  <span
+                    className="sortableTable-noDataText"
+                  >
+                    No results found
+                  </span>
+                </div>
+              </NoData>
               <LoadingComponent
                 loading={false}
                 loadingText="Loading..."
@@ -3616,12 +2378,16 @@ exports[`LabOrdersListContainer container should pass required props from state 
       "textComponent": "span",
     }
   }
-  labOrders={
-    Object {
-      "isLoading": false,
-      "orders": Array [
-        Object {
-          "dateActivated": "2018-08-30T17:34:19.000+0100",
+  isLoading={false}
+  labTests={
+    Array [
+      "Hémogramme automatisé",
+    ]
+  }
+  orders={
+    Array [
+      Object {
+        "concept": Object {
           "display": "Hémogramme automatisé",
         },
         "dateActivated": "2018-08-30T17:34:19.000+0100",
@@ -3650,8 +2416,8 @@ exports[`LabOrdersListContainer container should pass required props from state 
     <div>
       <LabOrderListFilters
         clearNameEMRField={[Function]}
-        dateFromField={"2018-08-29T21:15:55.835Z"}
-        dateToField={"2018-09-06T21:15:55.835Z"}
+        dateFromField={"2018-09-04T17:31:07.294Z"}
+        dateToField={"2018-09-12T17:31:07.293Z"}
         handleFieldChange={[Function]}
         labTests={
           Array [
@@ -3671,7 +2437,7 @@ exports[`LabOrdersListContainer container should pass required props from state 
             >
               <span>
                 <CustomDatePicker
-                  defaultDate={"2018-08-29T21:15:55.838Z"}
+                  defaultDate={"2018-09-04T17:31:07.298Z"}
                   field="dateFromField"
                   handleDateChange={[Function]}
                   label="From: "
@@ -3698,7 +2464,7 @@ exports[`LabOrdersListContainer container should pass required props from state 
                     preventOpenOnFocus={false}
                     previousMonthButtonLabel="Previous Month"
                     readOnly={false}
-                    selected={"2018-08-29T21:15:55.838Z"}
+                    selected={"2018-09-04T17:31:07.298Z"}
                     shouldCloseOnSelect={true}
                     showTimeSelect={false}
                     timeCaption="Time"
@@ -3731,7 +2497,7 @@ exports[`LabOrdersListContainer container should pass required props from state 
                             onFocus={[Function]}
                             onKeyDown={[Function]}
                             readOnly={false}
-                            value="08/29/2018"
+                            value="09/04/2018"
                           />
                         </div>
                       }
@@ -3758,10 +2524,15 @@ exports[`LabOrdersListContainer container should pass required props from state 
                                   onFocus={[Function]}
                                   onKeyDown={[Function]}
                                   readOnly={false}
-                                  value="08/29/2018"
+                                  value="09/04/2018"
                                 >
                                   <span
-                                    className="date-picker-container"
+                                    style={
+                                      Object {
+                                        "display": "flex",
+                                        "justifyContent": "space-around",
+                                      }
+                                    }
                                   >
                                     <span
                                       className="line"
@@ -3772,14 +2543,24 @@ exports[`LabOrdersListContainer container should pass required props from state 
                                       bsClass="form-control"
                                       componentClass="input"
                                       placeholder=""
+                                      style={
+                                        Object {
+                                          "marginRight": "5px",
+                                        }
+                                      }
                                       type="text"
-                                      value="08/29/2018"
+                                      value="09/04/2018"
                                     >
                                       <input
                                         className="form-control"
                                         placeholder=""
+                                        style={
+                                          Object {
+                                            "marginRight": "5px",
+                                          }
+                                        }
                                         type="text"
-                                        value="08/29/2018"
+                                        value="09/04/2018"
                                       />
                                     </FormControl>
                                     <i
@@ -3800,7 +2581,7 @@ exports[`LabOrdersListContainer container should pass required props from state 
               </span>
               <span>
                 <CustomDatePicker
-                  defaultDate={"2018-09-06T21:15:55.802Z"}
+                  defaultDate={"2018-09-12T17:31:06.302Z"}
                   field="dateToField"
                   handleDateChange={[Function]}
                   label="To: "
@@ -3827,7 +2608,7 @@ exports[`LabOrdersListContainer container should pass required props from state 
                     preventOpenOnFocus={false}
                     previousMonthButtonLabel="Previous Month"
                     readOnly={false}
-                    selected={"2018-09-06T21:15:55.802Z"}
+                    selected={"2018-09-12T17:31:06.302Z"}
                     shouldCloseOnSelect={true}
                     showTimeSelect={false}
                     timeCaption="Time"
@@ -3860,7 +2641,7 @@ exports[`LabOrdersListContainer container should pass required props from state 
                             onFocus={[Function]}
                             onKeyDown={[Function]}
                             readOnly={false}
-                            value="09/06/2018"
+                            value="09/12/2018"
                           />
                         </div>
                       }
@@ -3887,10 +2668,15 @@ exports[`LabOrdersListContainer container should pass required props from state 
                                   onFocus={[Function]}
                                   onKeyDown={[Function]}
                                   readOnly={false}
-                                  value="09/06/2018"
+                                  value="09/12/2018"
                                 >
                                   <span
-                                    className="date-picker-container"
+                                    style={
+                                      Object {
+                                        "display": "flex",
+                                        "justifyContent": "space-around",
+                                      }
+                                    }
                                   >
                                     <span
                                       className="line"
@@ -3901,14 +2687,24 @@ exports[`LabOrdersListContainer container should pass required props from state 
                                       bsClass="form-control"
                                       componentClass="input"
                                       placeholder=""
+                                      style={
+                                        Object {
+                                          "marginRight": "5px",
+                                        }
+                                      }
                                       type="text"
-                                      value="09/06/2018"
+                                      value="09/12/2018"
                                     >
                                       <input
                                         className="form-control"
                                         placeholder=""
+                                        style={
+                                          Object {
+                                            "marginRight": "5px",
+                                          }
+                                        }
                                         type="text"
-                                        value="09/06/2018"
+                                        value="09/12/2018"
                                       />
                                     </FormControl>
                                     <i
@@ -4166,12 +2962,13 @@ exports[`LabOrdersListContainer container should pass required props from state 
         }
         filters={
           Object {
-            "dateFromField": "2018-08-29T21:15:55.835Z",
-            "dateToField": "2018-09-06T21:15:55.835Z",
+            "dateFromField": "2018-09-04T17:31:07.294Z",
+            "dateToField": "2018-09-12T17:31:07.293Z",
             "nameField": "",
             "testTypeField": "All",
           }
         }
+        getDataWithFilters={[Function]}
         isFilterable={false}
         isResizeable={true}
         isSortable={false}
@@ -4185,6 +2982,7 @@ exports[`LabOrdersListContainer container should pass required props from state 
         previousText="Previous"
         rowOnClick={[Function]}
         rowsText="rows"
+        selectedRows={Array []}
         showFilter={false}
       >
         <div>
@@ -4364,21 +3162,7 @@ exports[`LabOrdersListContainer container should pass required props from state 
                 },
               ]
             }
-            data={
-              Array [
-                Object {
-                  "concept": Object {
-                    "display": "Hémogramme automatisé",
-                  },
-                  "dateActivated": "2018-08-30T17:34:19.000+0100",
-                  "orderNumber": "ORD-1",
-                  "patient": Object {
-                    "display": "Y2A7LR - williams willy john",
-                  },
-                  "urgency": "ROUTINE",
-                },
-              ]
-            }
+            data={Array []}
             defaultExpanded={Object {}}
             defaultFilterMethod={[Function]}
             defaultFiltered={Array []}
@@ -4900,1204 +3684,7 @@ exports[`LabOrdersListContainer container should pass required props from state 
                           "minWidth": "NaNpx",
                         }
                       }
-                    >
-                      <TrGroupComponent
-                        key="0"
-                      >
-                        <div
-                          className="rt-tr-group"
-                          role="rowgroup"
-                        >
-                          <TrComponent
-                            className="-odd"
-                            onClick={[Function]}
-                          >
-                            <div
-                              className="rt-tr -odd"
-                              onClick={[Function]}
-                              role="row"
-                            >
-                              <TdComponent
-                                className="lab-order-list-cell-emr-id"
-                                key="0-"
-                                onClick={[Function]}
-                                style={
-                                  Object {
-                                    "flex": "undefined 0 auto",
-                                    "maxWidth": null,
-                                    "width": null,
-                                  }
-                                }
-                              >
-                                <div
-                                  className="rt-td lab-order-list-cell-emr-id"
-                                  onClick={[Function]}
-                                  role="gridcell"
-                                  style={
-                                    Object {
-                                      "flex": "undefined 0 auto",
-                                      "maxWidth": null,
-                                      "width": null,
-                                    }
-                                  }
-                                >
-                                  <_Cell
-                                    classes={
-                                      Array [
-                                        undefined,
-                                        "lab-order-list-cell-emr-id",
-                                        undefined,
-                                      ]
-                                    }
-                                    column={
-                                      Object {
-                                        "Aggregated": undefined,
-                                        "Cell": [Function],
-                                        "Expander": undefined,
-                                        "Filter": undefined,
-                                        "Footer": undefined,
-                                        "Header": <span
-                                          className="labs-order-table-head"
-                                        >
-                                          <FormattedMessage
-                                            defaultMessage="EMR ID"
-                                            description="LabOrderList table header for EMR ID"
-                                            id="app.labOrdersList.EMR_ID"
-                                            values={Object {}}
-                                          />
-                                        </span>,
-                                        "Pivot": undefined,
-                                        "PivotValue": undefined,
-                                        "accessor": [Function],
-                                        "aggregate": undefined,
-                                        "className": "lab-order-list-cell-emr-id",
-                                        "filterAll": false,
-                                        "filterMethod": undefined,
-                                        "filterable": undefined,
-                                        "footerClassName": "",
-                                        "footerStyle": Object {},
-                                        "getFooterProps": [Function],
-                                        "getHeaderProps": [Function],
-                                        "getProps": [Function],
-                                        "headerClassName": "lab-order-list-header-emr-id",
-                                        "headerStyle": Object {},
-                                        "id": "",
-                                        "minWidth": undefined,
-                                        "resizable": undefined,
-                                        "show": true,
-                                        "sortMethod": undefined,
-                                        "sortable": undefined,
-                                        "style": Object {},
-                                      }
-                                    }
-                                    columnName="EMR ID"
-                                    columnProps={
-                                      Object {
-                                        "className": undefined,
-                                        "rest": Object {},
-                                        "style": undefined,
-                                      }
-                                    }
-                                    index={0}
-                                    level={0}
-                                    nestingPath={
-                                      Array [
-                                        0,
-                                      ]
-                                    }
-                                    original={
-                                      Object {
-                                        "concept": Object {
-                                          "display": "Hémogramme automatisé",
-                                        },
-                                        "dateActivated": "2018-08-30T17:34:19.000+0100",
-                                        "orderNumber": "ORD-1",
-                                        "patient": Object {
-                                          "display": "Y2A7LR - williams willy john",
-                                        },
-                                        "urgency": "ROUTINE",
-                                      }
-                                    }
-                                    page={0}
-                                    pageSize={10}
-                                    resized={Array []}
-                                    row={
-                                      Object {
-                                        "": Object {
-                                          "concept": Object {
-                                            "display": "Hémogramme automatisé",
-                                          },
-                                          "dateActivated": "2018-08-30T17:34:19.000+0100",
-                                          "orderNumber": "ORD-1",
-                                          "patient": Object {
-                                            "display": "Y2A7LR - williams willy john",
-                                          },
-                                          "urgency": "ROUTINE",
-                                        },
-                                        "_index": 0,
-                                        "_nestingLevel": 0,
-                                        "_original": Object {
-                                          "concept": Object {
-                                            "display": "Hémogramme automatisé",
-                                          },
-                                          "dateActivated": "2018-08-30T17:34:19.000+0100",
-                                          "orderNumber": "ORD-1",
-                                          "patient": Object {
-                                            "display": "Y2A7LR - williams willy john",
-                                          },
-                                          "urgency": "ROUTINE",
-                                        },
-                                        "_subRows": undefined,
-                                        "_viewIndex": 0,
-                                      }
-                                    }
-                                    show={true}
-                                    styles={Object {}}
-                                    tdProps={
-                                      Object {
-                                        "className": undefined,
-                                        "rest": Object {},
-                                        "style": undefined,
-                                      }
-                                    }
-                                    value={
-                                      Object {
-                                        "concept": Object {
-                                          "display": "Hémogramme automatisé",
-                                        },
-                                        "dateActivated": "2018-08-30T17:34:19.000+0100",
-                                        "orderNumber": "ORD-1",
-                                        "patient": Object {
-                                          "display": "Y2A7LR - williams willy john",
-                                        },
-                                        "urgency": "ROUTINE",
-                                      }
-                                    }
-                                    viewIndex={0}
-                                  >
-                                    <div
-                                      className="table_cell emr-id"
-                                    >
-                                      <span>
-                                        Y2A7LR 
-                                      </span>
-                                    </div>
-                                  </_Cell>
-                                </div>
-                              </TdComponent>
-                              <TdComponent
-                                className="lab-order-list-cell-name"
-                                key="1-"
-                                onClick={[Function]}
-                                style={
-                                  Object {
-                                    "flex": "undefined 0 auto",
-                                    "maxWidth": null,
-                                    "width": null,
-                                  }
-                                }
-                              >
-                                <div
-                                  className="rt-td lab-order-list-cell-name"
-                                  onClick={[Function]}
-                                  role="gridcell"
-                                  style={
-                                    Object {
-                                      "flex": "undefined 0 auto",
-                                      "maxWidth": null,
-                                      "width": null,
-                                    }
-                                  }
-                                >
-                                  <_Cell
-                                    classes={
-                                      Array [
-                                        undefined,
-                                        "lab-order-list-cell-name",
-                                        undefined,
-                                      ]
-                                    }
-                                    column={
-                                      Object {
-                                        "Aggregated": undefined,
-                                        "Cell": [Function],
-                                        "Expander": undefined,
-                                        "Filter": undefined,
-                                        "Footer": undefined,
-                                        "Header": <span
-                                          className="labs-order-table-head"
-                                        >
-                                          <FormattedMessage
-                                            defaultMessage="NAME"
-                                            description="LabOrderList table header for NAME"
-                                            id="app.labOrdersList.NAME"
-                                            values={Object {}}
-                                          />
-                                        </span>,
-                                        "Pivot": undefined,
-                                        "PivotValue": undefined,
-                                        "accessor": [Function],
-                                        "aggregate": undefined,
-                                        "className": "lab-order-list-cell-name",
-                                        "filterAll": false,
-                                        "filterMethod": undefined,
-                                        "filterable": undefined,
-                                        "footerClassName": "",
-                                        "footerStyle": Object {},
-                                        "getFooterProps": [Function],
-                                        "getHeaderProps": [Function],
-                                        "getProps": [Function],
-                                        "headerClassName": "lab-order-list-header-name",
-                                        "headerStyle": Object {},
-                                        "id": "",
-                                        "minWidth": undefined,
-                                        "resizable": undefined,
-                                        "show": true,
-                                        "sortMethod": undefined,
-                                        "sortable": undefined,
-                                        "style": Object {},
-                                      }
-                                    }
-                                    columnName="NAME"
-                                    columnProps={
-                                      Object {
-                                        "className": undefined,
-                                        "rest": Object {},
-                                        "style": undefined,
-                                      }
-                                    }
-                                    index={0}
-                                    level={0}
-                                    nestingPath={
-                                      Array [
-                                        0,
-                                      ]
-                                    }
-                                    original={
-                                      Object {
-                                        "concept": Object {
-                                          "display": "Hémogramme automatisé",
-                                        },
-                                        "dateActivated": "2018-08-30T17:34:19.000+0100",
-                                        "orderNumber": "ORD-1",
-                                        "patient": Object {
-                                          "display": "Y2A7LR - williams willy john",
-                                        },
-                                        "urgency": "ROUTINE",
-                                      }
-                                    }
-                                    page={0}
-                                    pageSize={10}
-                                    resized={Array []}
-                                    row={
-                                      Object {
-                                        "": Object {
-                                          "concept": Object {
-                                            "display": "Hémogramme automatisé",
-                                          },
-                                          "dateActivated": "2018-08-30T17:34:19.000+0100",
-                                          "orderNumber": "ORD-1",
-                                          "patient": Object {
-                                            "display": "Y2A7LR - williams willy john",
-                                          },
-                                          "urgency": "ROUTINE",
-                                        },
-                                        "_index": 0,
-                                        "_nestingLevel": 0,
-                                        "_original": Object {
-                                          "concept": Object {
-                                            "display": "Hémogramme automatisé",
-                                          },
-                                          "dateActivated": "2018-08-30T17:34:19.000+0100",
-                                          "orderNumber": "ORD-1",
-                                          "patient": Object {
-                                            "display": "Y2A7LR - williams willy john",
-                                          },
-                                          "urgency": "ROUTINE",
-                                        },
-                                        "_subRows": undefined,
-                                        "_viewIndex": 0,
-                                      }
-                                    }
-                                    show={true}
-                                    styles={Object {}}
-                                    tdProps={
-                                      Object {
-                                        "className": undefined,
-                                        "rest": Object {},
-                                        "style": undefined,
-                                      }
-                                    }
-                                    value={
-                                      Object {
-                                        "concept": Object {
-                                          "display": "Hémogramme automatisé",
-                                        },
-                                        "dateActivated": "2018-08-30T17:34:19.000+0100",
-                                        "orderNumber": "ORD-1",
-                                        "patient": Object {
-                                          "display": "Y2A7LR - williams willy john",
-                                        },
-                                        "urgency": "ROUTINE",
-                                      }
-                                    }
-                                    viewIndex={0}
-                                  >
-                                    <div
-                                      className="table_cell order-date"
-                                    >
-                                      <span>
-                                         williams willy john
-                                      </span>
-                                    </div>
-                                  </_Cell>
-                                </div>
-                              </TdComponent>
-                              <TdComponent
-                                className="lab-order-list-cell-order-id"
-                                key="2-"
-                                onClick={[Function]}
-                                style={
-                                  Object {
-                                    "flex": "undefined 0 auto",
-                                    "maxWidth": null,
-                                    "width": null,
-                                  }
-                                }
-                              >
-                                <div
-                                  className="rt-td lab-order-list-cell-order-id"
-                                  onClick={[Function]}
-                                  role="gridcell"
-                                  style={
-                                    Object {
-                                      "flex": "undefined 0 auto",
-                                      "maxWidth": null,
-                                      "width": null,
-                                    }
-                                  }
-                                >
-                                  <_Cell
-                                    classes={
-                                      Array [
-                                        undefined,
-                                        "lab-order-list-cell-order-id",
-                                        undefined,
-                                      ]
-                                    }
-                                    column={
-                                      Object {
-                                        "Aggregated": undefined,
-                                        "Cell": [Function],
-                                        "Expander": undefined,
-                                        "Filter": undefined,
-                                        "Footer": undefined,
-                                        "Header": <span
-                                          className="labs-order-table-head"
-                                        >
-                                          <FormattedMessage
-                                            defaultMessage="ORDER ID"
-                                            description="LabOrderList table header for ORDER ID"
-                                            id="app.labOrdersList.ORDER_ID"
-                                            values={Object {}}
-                                          />
-                                        </span>,
-                                        "Pivot": undefined,
-                                        "PivotValue": undefined,
-                                        "accessor": [Function],
-                                        "aggregate": undefined,
-                                        "className": "lab-order-list-cell-order-id",
-                                        "filterAll": false,
-                                        "filterMethod": undefined,
-                                        "filterable": undefined,
-                                        "footerClassName": "",
-                                        "footerStyle": Object {},
-                                        "getFooterProps": [Function],
-                                        "getHeaderProps": [Function],
-                                        "getProps": [Function],
-                                        "headerClassName": "lab-order-list-header-order-id",
-                                        "headerStyle": Object {},
-                                        "id": "",
-                                        "minWidth": undefined,
-                                        "resizable": undefined,
-                                        "show": true,
-                                        "sortMethod": undefined,
-                                        "sortable": undefined,
-                                        "style": Object {},
-                                      }
-                                    }
-                                    columnName="ORDER ID"
-                                    columnProps={
-                                      Object {
-                                        "className": undefined,
-                                        "rest": Object {},
-                                        "style": undefined,
-                                      }
-                                    }
-                                    index={0}
-                                    level={0}
-                                    nestingPath={
-                                      Array [
-                                        0,
-                                      ]
-                                    }
-                                    original={
-                                      Object {
-                                        "concept": Object {
-                                          "display": "Hémogramme automatisé",
-                                        },
-                                        "dateActivated": "2018-08-30T17:34:19.000+0100",
-                                        "orderNumber": "ORD-1",
-                                        "patient": Object {
-                                          "display": "Y2A7LR - williams willy john",
-                                        },
-                                        "urgency": "ROUTINE",
-                                      }
-                                    }
-                                    page={0}
-                                    pageSize={10}
-                                    resized={Array []}
-                                    row={
-                                      Object {
-                                        "": Object {
-                                          "concept": Object {
-                                            "display": "Hémogramme automatisé",
-                                          },
-                                          "dateActivated": "2018-08-30T17:34:19.000+0100",
-                                          "orderNumber": "ORD-1",
-                                          "patient": Object {
-                                            "display": "Y2A7LR - williams willy john",
-                                          },
-                                          "urgency": "ROUTINE",
-                                        },
-                                        "_index": 0,
-                                        "_nestingLevel": 0,
-                                        "_original": Object {
-                                          "concept": Object {
-                                            "display": "Hémogramme automatisé",
-                                          },
-                                          "dateActivated": "2018-08-30T17:34:19.000+0100",
-                                          "orderNumber": "ORD-1",
-                                          "patient": Object {
-                                            "display": "Y2A7LR - williams willy john",
-                                          },
-                                          "urgency": "ROUTINE",
-                                        },
-                                        "_subRows": undefined,
-                                        "_viewIndex": 0,
-                                      }
-                                    }
-                                    show={true}
-                                    styles={Object {}}
-                                    tdProps={
-                                      Object {
-                                        "className": undefined,
-                                        "rest": Object {},
-                                        "style": undefined,
-                                      }
-                                    }
-                                    value={
-                                      Object {
-                                        "concept": Object {
-                                          "display": "Hémogramme automatisé",
-                                        },
-                                        "dateActivated": "2018-08-30T17:34:19.000+0100",
-                                        "orderNumber": "ORD-1",
-                                        "patient": Object {
-                                          "display": "Y2A7LR - williams willy john",
-                                        },
-                                        "urgency": "ROUTINE",
-                                      }
-                                    }
-                                    viewIndex={0}
-                                  >
-                                    <div
-                                      className="table_cell order-id"
-                                    >
-                                      <span>
-                                        ORD-1
-                                      </span>
-                                    </div>
-                                  </_Cell>
-                                </div>
-                              </TdComponent>
-                              <TdComponent
-                                className="lab-order-list-cell-order-date"
-                                key="3-"
-                                onClick={[Function]}
-                                style={
-                                  Object {
-                                    "flex": "undefined 0 auto",
-                                    "maxWidth": null,
-                                    "width": null,
-                                  }
-                                }
-                              >
-                                <div
-                                  className="rt-td lab-order-list-cell-order-date"
-                                  onClick={[Function]}
-                                  role="gridcell"
-                                  style={
-                                    Object {
-                                      "flex": "undefined 0 auto",
-                                      "maxWidth": null,
-                                      "width": null,
-                                    }
-                                  }
-                                >
-                                  <_Cell
-                                    classes={
-                                      Array [
-                                        undefined,
-                                        "lab-order-list-cell-order-date",
-                                        undefined,
-                                      ]
-                                    }
-                                    column={
-                                      Object {
-                                        "Aggregated": undefined,
-                                        "Cell": [Function],
-                                        "Expander": undefined,
-                                        "Filter": undefined,
-                                        "Footer": undefined,
-                                        "Header": <span
-                                          className="labs-order-table-head"
-                                        >
-                                          <FormattedMessage
-                                            defaultMessage="ORDER DATE"
-                                            description="LabOrderList table header for ORDER DATE"
-                                            id="app.labOrdersList.ORDER_DATE"
-                                            values={Object {}}
-                                          />
-                                        </span>,
-                                        "Pivot": undefined,
-                                        "PivotValue": undefined,
-                                        "accessor": [Function],
-                                        "aggregate": undefined,
-                                        "className": "lab-order-list-cell-order-date",
-                                        "filterAll": false,
-                                        "filterMethod": undefined,
-                                        "filterable": undefined,
-                                        "footerClassName": "",
-                                        "footerStyle": Object {},
-                                        "getFooterProps": [Function],
-                                        "getHeaderProps": [Function],
-                                        "getProps": [Function],
-                                        "headerClassName": "lab-order-list-header-order-date",
-                                        "headerStyle": Object {},
-                                        "id": "",
-                                        "minWidth": undefined,
-                                        "resizable": undefined,
-                                        "show": true,
-                                        "sortMethod": undefined,
-                                        "sortable": undefined,
-                                        "style": Object {},
-                                      }
-                                    }
-                                    columnName="ORDER DATE"
-                                    columnProps={
-                                      Object {
-                                        "className": undefined,
-                                        "rest": Object {},
-                                        "style": undefined,
-                                      }
-                                    }
-                                    index={0}
-                                    level={0}
-                                    nestingPath={
-                                      Array [
-                                        0,
-                                      ]
-                                    }
-                                    original={
-                                      Object {
-                                        "concept": Object {
-                                          "display": "Hémogramme automatisé",
-                                        },
-                                        "dateActivated": "2018-08-30T17:34:19.000+0100",
-                                        "orderNumber": "ORD-1",
-                                        "patient": Object {
-                                          "display": "Y2A7LR - williams willy john",
-                                        },
-                                        "urgency": "ROUTINE",
-                                      }
-                                    }
-                                    page={0}
-                                    pageSize={10}
-                                    resized={Array []}
-                                    row={
-                                      Object {
-                                        "": Object {
-                                          "concept": Object {
-                                            "display": "Hémogramme automatisé",
-                                          },
-                                          "dateActivated": "2018-08-30T17:34:19.000+0100",
-                                          "orderNumber": "ORD-1",
-                                          "patient": Object {
-                                            "display": "Y2A7LR - williams willy john",
-                                          },
-                                          "urgency": "ROUTINE",
-                                        },
-                                        "_index": 0,
-                                        "_nestingLevel": 0,
-                                        "_original": Object {
-                                          "concept": Object {
-                                            "display": "Hémogramme automatisé",
-                                          },
-                                          "dateActivated": "2018-08-30T17:34:19.000+0100",
-                                          "orderNumber": "ORD-1",
-                                          "patient": Object {
-                                            "display": "Y2A7LR - williams willy john",
-                                          },
-                                          "urgency": "ROUTINE",
-                                        },
-                                        "_subRows": undefined,
-                                        "_viewIndex": 0,
-                                      }
-                                    }
-                                    show={true}
-                                    styles={Object {}}
-                                    tdProps={
-                                      Object {
-                                        "className": undefined,
-                                        "rest": Object {},
-                                        "style": undefined,
-                                      }
-                                    }
-                                    value={
-                                      Object {
-                                        "concept": Object {
-                                          "display": "Hémogramme automatisé",
-                                        },
-                                        "dateActivated": "2018-08-30T17:34:19.000+0100",
-                                        "orderNumber": "ORD-1",
-                                        "patient": Object {
-                                          "display": "Y2A7LR - williams willy john",
-                                        },
-                                        "urgency": "ROUTINE",
-                                      }
-                                    }
-                                    viewIndex={0}
-                                  >
-                                    <div
-                                      className="table_cell order-date"
-                                    >
-                                      <span>
-                                        30-Aug-2018
-                                      </span>
-                                    </div>
-                                  </_Cell>
-                                </div>
-                              </TdComponent>
-                              <TdComponent
-                                className="lab-order-list-cell-collection-date"
-                                key="4-"
-                                onClick={[Function]}
-                                style={
-                                  Object {
-                                    "flex": "undefined 0 auto",
-                                    "maxWidth": null,
-                                    "width": null,
-                                  }
-                                }
-                              >
-                                <div
-                                  className="rt-td lab-order-list-cell-collection-date"
-                                  onClick={[Function]}
-                                  role="gridcell"
-                                  style={
-                                    Object {
-                                      "flex": "undefined 0 auto",
-                                      "maxWidth": null,
-                                      "width": null,
-                                    }
-                                  }
-                                >
-                                  <_Cell
-                                    classes={
-                                      Array [
-                                        undefined,
-                                        "lab-order-list-cell-collection-date",
-                                        undefined,
-                                      ]
-                                    }
-                                    column={
-                                      Object {
-                                        "Aggregated": undefined,
-                                        "Cell": [Function],
-                                        "Expander": undefined,
-                                        "Filter": undefined,
-                                        "Footer": undefined,
-                                        "Header": <span
-                                          className="labs-order-table-head"
-                                        >
-                                          <FormattedMessage
-                                            defaultMessage="COLLECTION DATE"
-                                            description="LabOrderList table header for COLLECTION DATE"
-                                            id="app.labOrdersList.COLLECTION_DATE"
-                                            values={Object {}}
-                                          />
-                                        </span>,
-                                        "Pivot": undefined,
-                                        "PivotValue": undefined,
-                                        "accessor": [Function],
-                                        "aggregate": undefined,
-                                        "className": "lab-order-list-cell-collection-date",
-                                        "filterAll": false,
-                                        "filterMethod": undefined,
-                                        "filterable": undefined,
-                                        "footerClassName": "",
-                                        "footerStyle": Object {},
-                                        "getFooterProps": [Function],
-                                        "getHeaderProps": [Function],
-                                        "getProps": [Function],
-                                        "headerClassName": "lab-order-list-header-collection-date",
-                                        "headerStyle": Object {},
-                                        "id": "",
-                                        "minWidth": undefined,
-                                        "resizable": undefined,
-                                        "show": true,
-                                        "sortMethod": undefined,
-                                        "sortable": undefined,
-                                        "style": Object {},
-                                      }
-                                    }
-                                    columnName="COLLECTION DATE"
-                                    columnProps={
-                                      Object {
-                                        "className": undefined,
-                                        "rest": Object {},
-                                        "style": undefined,
-                                      }
-                                    }
-                                    index={0}
-                                    level={0}
-                                    nestingPath={
-                                      Array [
-                                        0,
-                                      ]
-                                    }
-                                    original={
-                                      Object {
-                                        "concept": Object {
-                                          "display": "Hémogramme automatisé",
-                                        },
-                                        "dateActivated": "2018-08-30T17:34:19.000+0100",
-                                        "orderNumber": "ORD-1",
-                                        "patient": Object {
-                                          "display": "Y2A7LR - williams willy john",
-                                        },
-                                        "urgency": "ROUTINE",
-                                      }
-                                    }
-                                    page={0}
-                                    pageSize={10}
-                                    resized={Array []}
-                                    row={
-                                      Object {
-                                        "": Object {
-                                          "concept": Object {
-                                            "display": "Hémogramme automatisé",
-                                          },
-                                          "dateActivated": "2018-08-30T17:34:19.000+0100",
-                                          "orderNumber": "ORD-1",
-                                          "patient": Object {
-                                            "display": "Y2A7LR - williams willy john",
-                                          },
-                                          "urgency": "ROUTINE",
-                                        },
-                                        "_index": 0,
-                                        "_nestingLevel": 0,
-                                        "_original": Object {
-                                          "concept": Object {
-                                            "display": "Hémogramme automatisé",
-                                          },
-                                          "dateActivated": "2018-08-30T17:34:19.000+0100",
-                                          "orderNumber": "ORD-1",
-                                          "patient": Object {
-                                            "display": "Y2A7LR - williams willy john",
-                                          },
-                                          "urgency": "ROUTINE",
-                                        },
-                                        "_subRows": undefined,
-                                        "_viewIndex": 0,
-                                      }
-                                    }
-                                    show={true}
-                                    styles={Object {}}
-                                    tdProps={
-                                      Object {
-                                        "className": undefined,
-                                        "rest": Object {},
-                                        "style": undefined,
-                                      }
-                                    }
-                                    value={
-                                      Object {
-                                        "concept": Object {
-                                          "display": "Hémogramme automatisé",
-                                        },
-                                        "dateActivated": "2018-08-30T17:34:19.000+0100",
-                                        "orderNumber": "ORD-1",
-                                        "patient": Object {
-                                          "display": "Y2A7LR - williams willy john",
-                                        },
-                                        "urgency": "ROUTINE",
-                                      }
-                                    }
-                                    viewIndex={0}
-                                  >
-                                    <div
-                                      className="table_cell collection-date"
-                                    >
-                                      <span>
-                                        30-Aug-2018
-                                      </span>
-                                    </div>
-                                  </_Cell>
-                                </div>
-                              </TdComponent>
-                              <TdComponent
-                                className="lab-order-list-cell-urgency"
-                                key="5-"
-                                onClick={[Function]}
-                                style={
-                                  Object {
-                                    "flex": "undefined 0 auto",
-                                    "maxWidth": null,
-                                    "width": null,
-                                  }
-                                }
-                              >
-                                <div
-                                  className="rt-td lab-order-list-cell-urgency"
-                                  onClick={[Function]}
-                                  role="gridcell"
-                                  style={
-                                    Object {
-                                      "flex": "undefined 0 auto",
-                                      "maxWidth": null,
-                                      "width": null,
-                                    }
-                                  }
-                                >
-                                  <_Cell
-                                    classes={
-                                      Array [
-                                        undefined,
-                                        "lab-order-list-cell-urgency",
-                                        undefined,
-                                      ]
-                                    }
-                                    column={
-                                      Object {
-                                        "Aggregated": undefined,
-                                        "Cell": [Function],
-                                        "Expander": undefined,
-                                        "Filter": undefined,
-                                        "Footer": undefined,
-                                        "Header": <span
-                                          className="labs-order-table-head"
-                                        >
-                                          <FormattedMessage
-                                            defaultMessage="URGENCY"
-                                            description="LabOrderList table header for URGENCY"
-                                            id="app.labOrdersList.URGENCY"
-                                            values={Object {}}
-                                          />
-                                        </span>,
-                                        "Pivot": undefined,
-                                        "PivotValue": undefined,
-                                        "accessor": [Function],
-                                        "aggregate": undefined,
-                                        "className": "lab-order-list-cell-urgency",
-                                        "filterAll": false,
-                                        "filterMethod": undefined,
-                                        "filterable": undefined,
-                                        "footerClassName": "",
-                                        "footerStyle": Object {},
-                                        "getFooterProps": [Function],
-                                        "getHeaderProps": [Function],
-                                        "getProps": [Function],
-                                        "headerClassName": "lab-order-list-header-urgency",
-                                        "headerStyle": Object {},
-                                        "id": "",
-                                        "minWidth": undefined,
-                                        "resizable": undefined,
-                                        "show": true,
-                                        "sortMethod": undefined,
-                                        "sortable": undefined,
-                                        "style": Object {},
-                                      }
-                                    }
-                                    columnName="URGENCY"
-                                    columnProps={
-                                      Object {
-                                        "className": undefined,
-                                        "rest": Object {},
-                                        "style": undefined,
-                                      }
-                                    }
-                                    index={0}
-                                    level={0}
-                                    nestingPath={
-                                      Array [
-                                        0,
-                                      ]
-                                    }
-                                    original={
-                                      Object {
-                                        "concept": Object {
-                                          "display": "Hémogramme automatisé",
-                                        },
-                                        "dateActivated": "2018-08-30T17:34:19.000+0100",
-                                        "orderNumber": "ORD-1",
-                                        "patient": Object {
-                                          "display": "Y2A7LR - williams willy john",
-                                        },
-                                        "urgency": "ROUTINE",
-                                      }
-                                    }
-                                    page={0}
-                                    pageSize={10}
-                                    resized={Array []}
-                                    row={
-                                      Object {
-                                        "": Object {
-                                          "concept": Object {
-                                            "display": "Hémogramme automatisé",
-                                          },
-                                          "dateActivated": "2018-08-30T17:34:19.000+0100",
-                                          "orderNumber": "ORD-1",
-                                          "patient": Object {
-                                            "display": "Y2A7LR - williams willy john",
-                                          },
-                                          "urgency": "ROUTINE",
-                                        },
-                                        "_index": 0,
-                                        "_nestingLevel": 0,
-                                        "_original": Object {
-                                          "concept": Object {
-                                            "display": "Hémogramme automatisé",
-                                          },
-                                          "dateActivated": "2018-08-30T17:34:19.000+0100",
-                                          "orderNumber": "ORD-1",
-                                          "patient": Object {
-                                            "display": "Y2A7LR - williams willy john",
-                                          },
-                                          "urgency": "ROUTINE",
-                                        },
-                                        "_subRows": undefined,
-                                        "_viewIndex": 0,
-                                      }
-                                    }
-                                    show={true}
-                                    styles={Object {}}
-                                    tdProps={
-                                      Object {
-                                        "className": undefined,
-                                        "rest": Object {},
-                                        "style": undefined,
-                                      }
-                                    }
-                                    value={
-                                      Object {
-                                        "concept": Object {
-                                          "display": "Hémogramme automatisé",
-                                        },
-                                        "dateActivated": "2018-08-30T17:34:19.000+0100",
-                                        "orderNumber": "ORD-1",
-                                        "patient": Object {
-                                          "display": "Y2A7LR - williams willy john",
-                                        },
-                                        "urgency": "ROUTINE",
-                                      }
-                                    }
-                                    viewIndex={0}
-                                  >
-                                    <div
-                                      className="table_cell urgency routine"
-                                    >
-                                      <span>
-                                        ROUTINE
-                                      </span>
-                                    </div>
-                                  </_Cell>
-                                </div>
-                              </TdComponent>
-                              <TdComponent
-                                className="lab-order-list-cell-test-type"
-                                key="6-"
-                                onClick={[Function]}
-                                style={
-                                  Object {
-                                    "flex": "undefined 0 auto",
-                                    "maxWidth": null,
-                                    "width": null,
-                                  }
-                                }
-                              >
-                                <div
-                                  className="rt-td lab-order-list-cell-test-type"
-                                  onClick={[Function]}
-                                  role="gridcell"
-                                  style={
-                                    Object {
-                                      "flex": "undefined 0 auto",
-                                      "maxWidth": null,
-                                      "width": null,
-                                    }
-                                  }
-                                >
-                                  <_Cell
-                                    classes={
-                                      Array [
-                                        undefined,
-                                        "lab-order-list-cell-test-type",
-                                        undefined,
-                                      ]
-                                    }
-                                    column={
-                                      Object {
-                                        "Aggregated": undefined,
-                                        "Cell": [Function],
-                                        "Expander": undefined,
-                                        "Filter": undefined,
-                                        "Footer": undefined,
-                                        "Header": <span
-                                          className="labs-order-table-head"
-                                        >
-                                          <FormattedMessage
-                                            defaultMessage="TEST TYPE"
-                                            description="LabOrderList table header for TEST TYPE"
-                                            id="app.labOrdersList.TEST_TYPE"
-                                            values={Object {}}
-                                          />
-                                        </span>,
-                                        "Pivot": undefined,
-                                        "PivotValue": undefined,
-                                        "accessor": [Function],
-                                        "aggregate": undefined,
-                                        "className": "lab-order-list-cell-test-type",
-                                        "filterAll": false,
-                                        "filterMethod": undefined,
-                                        "filterable": undefined,
-                                        "footerClassName": "",
-                                        "footerStyle": Object {},
-                                        "getFooterProps": [Function],
-                                        "getHeaderProps": [Function],
-                                        "getProps": [Function],
-                                        "headerClassName": "lab-order-list-header-test-type",
-                                        "headerStyle": Object {},
-                                        "id": "",
-                                        "minWidth": undefined,
-                                        "resizable": undefined,
-                                        "show": true,
-                                        "sortMethod": undefined,
-                                        "sortable": undefined,
-                                        "style": Object {},
-                                      }
-                                    }
-                                    columnName="TEST TYPE"
-                                    columnProps={
-                                      Object {
-                                        "className": undefined,
-                                        "rest": Object {},
-                                        "style": undefined,
-                                      }
-                                    }
-                                    index={0}
-                                    level={0}
-                                    nestingPath={
-                                      Array [
-                                        0,
-                                      ]
-                                    }
-                                    original={
-                                      Object {
-                                        "concept": Object {
-                                          "display": "Hémogramme automatisé",
-                                        },
-                                        "dateActivated": "2018-08-30T17:34:19.000+0100",
-                                        "orderNumber": "ORD-1",
-                                        "patient": Object {
-                                          "display": "Y2A7LR - williams willy john",
-                                        },
-                                        "urgency": "ROUTINE",
-                                      }
-                                    }
-                                    page={0}
-                                    pageSize={10}
-                                    resized={Array []}
-                                    row={
-                                      Object {
-                                        "": Object {
-                                          "concept": Object {
-                                            "display": "Hémogramme automatisé",
-                                          },
-                                          "dateActivated": "2018-08-30T17:34:19.000+0100",
-                                          "orderNumber": "ORD-1",
-                                          "patient": Object {
-                                            "display": "Y2A7LR - williams willy john",
-                                          },
-                                          "urgency": "ROUTINE",
-                                        },
-                                        "_index": 0,
-                                        "_nestingLevel": 0,
-                                        "_original": Object {
-                                          "concept": Object {
-                                            "display": "Hémogramme automatisé",
-                                          },
-                                          "dateActivated": "2018-08-30T17:34:19.000+0100",
-                                          "orderNumber": "ORD-1",
-                                          "patient": Object {
-                                            "display": "Y2A7LR - williams willy john",
-                                          },
-                                          "urgency": "ROUTINE",
-                                        },
-                                        "_subRows": undefined,
-                                        "_viewIndex": 0,
-                                      }
-                                    }
-                                    show={true}
-                                    styles={Object {}}
-                                    tdProps={
-                                      Object {
-                                        "className": undefined,
-                                        "rest": Object {},
-                                        "style": undefined,
-                                      }
-                                    }
-                                    value={
-                                      Object {
-                                        "concept": Object {
-                                          "display": "Hémogramme automatisé",
-                                        },
-                                        "dateActivated": "2018-08-30T17:34:19.000+0100",
-                                        "orderNumber": "ORD-1",
-                                        "patient": Object {
-                                          "display": "Y2A7LR - williams willy john",
-                                        },
-                                        "urgency": "ROUTINE",
-                                      }
-                                    }
-                                    viewIndex={0}
-                                  >
-                                    <div
-                                      className="table_cell test-type"
-                                    >
-                                      <span>
-                                        Hémogramme automatisé
-                                      </span>
-                                    </div>
-                                  </_Cell>
-                                </div>
-                              </TdComponent>
-                            </div>
-                          </TrComponent>
-                        </div>
-                      </TrGroupComponent>
-                    </div>
+                    />
                   </Tbody>
                 </div>
               </TableComponent>
@@ -6836,21 +4423,7 @@ exports[`LabOrdersListContainer container should pass required props from state 
                     ]
                   }
                   currentlyResizing={false}
-                  data={
-                    Array [
-                      Object {
-                        "concept": Object {
-                          "display": "Hémogramme automatisé",
-                        },
-                        "dateActivated": "2018-08-30T17:34:19.000+0100",
-                        "orderNumber": "ORD-1",
-                        "patient": Object {
-                          "display": "Y2A7LR - williams willy john",
-                        },
-                        "urgency": "ROUTINE",
-                      },
-                    ]
-                  }
+                  data={Array []}
                   defaultExpanded={Object {}}
                   defaultFilterMethod={[Function]}
                   defaultFiltered={Array []}
@@ -6929,7 +4502,7 @@ exports[`LabOrdersListContainer container should pass required props from state 
                     ]
                   }
                   pageText="Page"
-                  pages={1}
+                  pages={0}
                   pivotDefaults={Object {}}
                   pivotIDKey="_pivotID"
                   pivotValKey="_pivotVal"
@@ -6937,37 +4510,7 @@ exports[`LabOrdersListContainer container should pass required props from state 
                   resizable={true}
                   resized={Array []}
                   resolveData={[Function]}
-                  resolvedData={
-                    Array [
-                      Object {
-                        "": Object {
-                          "concept": Object {
-                            "display": "Hémogramme automatisé",
-                          },
-                          "dateActivated": "2018-08-30T17:34:19.000+0100",
-                          "orderNumber": "ORD-1",
-                          "patient": Object {
-                            "display": "Y2A7LR - williams willy john",
-                          },
-                          "urgency": "ROUTINE",
-                        },
-                        "_index": 0,
-                        "_nestingLevel": 0,
-                        "_original": Object {
-                          "concept": Object {
-                            "display": "Hémogramme automatisé",
-                          },
-                          "dateActivated": "2018-08-30T17:34:19.000+0100",
-                          "orderNumber": "ORD-1",
-                          "patient": Object {
-                            "display": "Y2A7LR - williams willy john",
-                          },
-                          "urgency": "ROUTINE",
-                        },
-                        "_subRows": undefined,
-                      },
-                    ]
-                  }
+                  resolvedData={Array []}
                   rowsText="rows"
                   showPageJump={true}
                   showPageSizeOptions={true}
@@ -6977,37 +4520,7 @@ exports[`LabOrdersListContainer container should pass required props from state 
                   skipNextSort={false}
                   sortable={false}
                   sorted={Array []}
-                  sortedData={
-                    Array [
-                      Object {
-                        "": Object {
-                          "concept": Object {
-                            "display": "Hémogramme automatisé",
-                          },
-                          "dateActivated": "2018-08-30T17:34:19.000+0100",
-                          "orderNumber": "ORD-1",
-                          "patient": Object {
-                            "display": "Y2A7LR - williams willy john",
-                          },
-                          "urgency": "ROUTINE",
-                        },
-                        "_index": 0,
-                        "_nestingLevel": 0,
-                        "_original": Object {
-                          "concept": Object {
-                            "display": "Hémogramme automatisé",
-                          },
-                          "dateActivated": "2018-08-30T17:34:19.000+0100",
-                          "orderNumber": "ORD-1",
-                          "patient": Object {
-                            "display": "Y2A7LR - williams willy john",
-                          },
-                          "urgency": "ROUTINE",
-                        },
-                        "_subRows": undefined,
-                      },
-                    ]
-                  }
+                  sortedData={Array []}
                   subRowsKey="_subRows"
                 >
                   <div
@@ -7136,6 +4649,17 @@ exports[`LabOrdersListContainer container should pass required props from state 
                   </div>
                 </ReactTablePagination>
               </div>
+              <NoData>
+                <div
+                  className="rt-noData"
+                >
+                  <span
+                    className="sortableTable-noDataText"
+                  >
+                    No results found
+                  </span>
+                </div>
+              </NoData>
               <LoadingComponent
                 loading={false}
                 loadingText="Loading..."
