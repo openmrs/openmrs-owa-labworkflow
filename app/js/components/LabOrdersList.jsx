@@ -13,11 +13,10 @@ import moment from 'moment';
 import { withRouter } from 'react-router-dom'
 import PropTypes from 'prop-types';
 import matchSorter from 'match-sorter';
+import { FormattedMessage } from 'react-intl';
 import { SortableTable } from '@openmrs/react-components';
 import LabOrderListFilters from './LabOrdersListFilters';
-import { FormattedMessage } from 'react-intl';
 
-import SortableTable from './shared/SortableTable';
 import { fetchLabOrders } from '../actions/labOrdersAction';
 import { DEFAULT_DATE_FORMAT } from '../utils/constants';
 import { getDateRange } from '../utils/helpers';

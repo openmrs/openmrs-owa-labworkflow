@@ -11,10 +11,10 @@ import { Route, Switch } from 'react-router-dom';
 import { Header, setLocaleMessages, withLocalisation } from '@openmrs/react-components';
 import BreadCrumb from './components/shared/BreadCrumb/BreadCrumb';
 import LabResultEntry from './components/LabResultEntry/LabResultEntry';
+import LabOrdersList from './components/LabOrdersList';
 
 import messagesEN from "./translations/en.json";
 import messagesFR from "./translations/fr.json";
-import App from './components/App';
 
 setLocaleMessages({
   en: messagesEN,
@@ -34,7 +34,7 @@ export default store => (
     <Header />
     <LocalizedBreadCrumb />
     <Switch>
-      <Route exact path="/" component={withLocalisation(App)} />
+      <Route exact path="/" component={withLocalisation(LabOrdersList)} />
       <Route exact path="/FakeBreadcrumbPage" component={withLocalisation(FakeBreadcrumbPage)} />
       <Route path="/LabResultEntry" component={LabResultEntry} />
     </Switch>
