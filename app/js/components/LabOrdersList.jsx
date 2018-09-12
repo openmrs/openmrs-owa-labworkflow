@@ -13,8 +13,10 @@ import moment from 'moment';
 import { withRouter } from 'react-router-dom'
 import PropTypes from 'prop-types';
 import matchSorter from 'match-sorter';
+import { FormattedMessage } from 'react-intl';
 import { SortableTable } from '@openmrs/react-components';
 import LabOrderListFilters from './LabOrdersListFilters';
+
 import { fetchLabOrders } from '../actions/labOrdersAction';
 import { DEFAULT_DATE_FORMAT } from '../utils/constants';
 import { getDateRange } from '../utils/helpers';
@@ -161,7 +163,13 @@ export class LabOrdersList extends PureComponent {
     const fields = ["EMR ID", "NAME", "ORDER ID", "ORDER DATE", "COLLECTION DATE", "URGENCY", "TEST TYPE"];
 
     const columnMetadata = fields.map(columnName => ({
-      Header: <span className="labs-order-table-head">{columnName}</span>,
+      Header:
+  <span className="labs-order-table-head">
+    <FormattedMessage
+      id={`app.labOrdersList.${columnName.replace(" ", "_")}`}
+      defaultMessage={`${columnName}`}
+      description={`LabOrderList table header for ${columnName}`} />
+  </span>,
       accessor: "",
       Cell: data => <Cell {...data} columnName={columnName} />,
       className: `lab-order-list-cell-${columnName.replace(' ', '-').toLocaleLowerCase()}`,
@@ -189,7 +197,12 @@ export class LabOrdersList extends PureComponent {
     const { filters: { dateFromField, dateToField, nameField } } = this.state;
     return (
       <div>
-        <h1>Welcome to LabOrdersList Page/Component</h1>
+        <h1>
+          <FormattedMessage
+            id="app.labOrdersList.title"
+            defaultMessage="Welcome to LabOrdersList Page/Component"
+            description="Welcome header on LabOrdersList page" />
+        </h1>
         <React.Fragment>
           <div>
             {!isLoading

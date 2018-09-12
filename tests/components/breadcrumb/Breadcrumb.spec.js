@@ -2,14 +2,16 @@ import React from 'react';
 import { shallowToJson } from 'enzyme-to-json';
 import { mount } from 'enzyme';
 import { MemoryRouter } from 'react-router-dom';
+import { mountWithIntl } from '@openmrs/react-components';
+
 
 import BreadCrumb from '../../../app/js/components/shared/BreadCrumb/BreadCrumb';
 
 let mountedComponent;
 const getComponent = () => {
   if (!mountedComponent) {
-    mountedComponent = mount(
-      <MemoryRouter initialEntries={[ { pathname: '/', key: 'testKey' } ]}>
+    mountedComponent = mountWithIntl(
+      <MemoryRouter initialEntries={[{ pathname: '/', key: 'testKey' }]}>
         <BreadCrumb />
       </MemoryRouter>,
     );

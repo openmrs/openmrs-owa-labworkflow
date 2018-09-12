@@ -1,0 +1,11 @@
+{
+    "app.labOrdersList.title": "Welcome to LabOrdersList Page/Component",
+    "app.breadCrumb.homePageBreadcrumb.title": "Lab workflow",
+    "app.labOrdersList.EMR_ID": "EMR ID",
+    "app.labOrdersList.NAME": "NAME",
+    "app.labOrdersList.ORDER_ID": "ORDER ID",
+    "app.labOrdersList.COLLECTION_DATE": "COLLECTION DATE",
+    "app.labOrdersList.URGENCY": "URGENCY",
+    "app.labOrdersList.TEST_TYPE": "TEST TYPE",
+    "app.labOrdersList.ORDER_DATE": "ORDER DATE"
+}

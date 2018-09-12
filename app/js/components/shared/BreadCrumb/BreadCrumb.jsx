@@ -11,6 +11,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { Link, withRouter } from 'react-router-dom';
+import { FormattedMessage } from 'react-intl';
 
 import './breadCrumb.css';
 
@@ -46,7 +47,12 @@ class BreadCrumb extends Component {
           className="glyphicon glyphicon-chevron-right breadcrumb-item separator"
           aria-hidden="true" />
         <span className="title breadcrumb-item">
-          <u>Lab workflow</u>
+          <u>
+            <FormattedMessage
+              id="app.breadCrumb.homePageBreadcrumb.title"
+              defaultMessage="Lab workflow"
+              description="the homepage breadcrumb title" />
+          </u>
         </span>
       </Link>
     );

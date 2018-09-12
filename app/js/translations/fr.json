@@ -1,0 +1,11 @@
+{
+    "app.labOrdersList.title": "Bienvenue sur la page / composant LabOrdersList",
+    "app.breadCrumb.homePageBreadcrumb.title": "Flux de travail de laboratoire",
+    "app.labOrdersList.EMR_ID": "EMR ID",
+    "app.labOrdersList.NAME": "NOM",
+    "app.labOrdersList.ORDER_ID": "ID de commande",
+    "app.labOrdersList.COLLECTION_DATE": "DATE ​​DE COLLECTION",
+    "app.labOrdersList.URGENCY": "URGENCE",
+    "app.labOrdersList.TEST_TYPE": "TYPE DE TEST",
+    "app.labOrdersList.ORDER_DATE": "DATE DE COMMANDE"
+}
