@@ -16,7 +16,7 @@ import swal from 'sweetalert';
 
 import { CustomDatePicker, PatientHeader } from '@openmrs/react-components';
 import './LabResultEntry.scss';
-import patientAction from '../../actions/patientAction';
+import patientAction from '../actions/patientAction';
 
 
 export class LabResultEntry extends PureComponent {
@@ -55,23 +55,7 @@ export class LabResultEntry extends PureComponent {
 
   render() {
     const { patientHeaderDetail } = this.state;
-    const mockData = [{
-      name: 'Hematocrit',
-      value: 48,
-      measurement: '%',
-      range: '45% - 53%',
-    }, {
-      name: 'Platcelets',
-      value: 524000,
-      measurement: '10**3/mL',
-      range: '150,000 - 450,000',
-    }, {
-      name: 'Hematocrit',
-      value: 0,
-      measurement: '10`3/uL',
-      range: '4,500 - 11,00',
-    },
-    ];
+    const { location } = this.props;
     return (
       <div className="container-fluid">
         {patientHeaderDetail && <PatientHeader patient={patientHeaderDetail} />}
@@ -93,13 +77,13 @@ export class LabResultEntry extends PureComponent {
             <div className="col-xs-6">
               <span>
                 Test:&nbsp;
-                <span className="test-details">Hemogram</span>
+                <span className="test-details">{location.state.display}</span>
               </span>
             </div>
             <div className="col-xs-6">
               <span>
                 Urgency:&nbsp;
-                <span className="test-details">Routine</span>
+                <span className="test-details">{location.state.urgency}</span>
               </span>
             </div>
             <br />
