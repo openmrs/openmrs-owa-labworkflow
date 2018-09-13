@@ -25,7 +25,7 @@ const autoprefixer = require('autoprefixer');
 
 const env = process.env.NODE_ENV;
 
-const THIS_APP_ID = 'openmrs-owa-labworkflow';
+const THIS_APP_ID = 'labworkflow';
 
 var plugins = [];
 const nodeModules = {};
@@ -46,7 +46,7 @@ var getConfig = function () {
 		// create file with defaults if not found
 		config = {
 			'LOCAL_OWA_FOLDER': '/Users/your-user/referenceapplication-standalone-2.8.0/appdata\\owa/',
-			'APP_ENTRY_POINT': 'http://localhost:8081/openmrs/owa/openmrs-owa-labworkflow/index.html'
+			'APP_ENTRY_POINT': 'http://localhost:8081/openmrs/owa/labworkflow/index.html'
 		};
 
 		fs.writeFile('config.json', JSON.stringify(config));

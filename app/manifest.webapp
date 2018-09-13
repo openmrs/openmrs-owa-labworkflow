@@ -1,6 +1,6 @@
 {
   "version": "0.1.0",
-  "name": "openmrs-owa-labworkflow",
+  "name": "labworkflow",
   "description": "The is used to manage the workflow of lab orders",
   "launch_path": "index.html",
   "icons": {
