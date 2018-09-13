@@ -1,5 +1,5 @@
 {
-    "app.labOrdersList.title": "Welcome to LabOrdersList Page/Component",
+    "app.labOrdersList.title": "Lab Test Results",
     "app.breadCrumb.homePageBreadcrumb.title": "Lab workflow",
     "app.labOrdersList.EMR_ID": "EMR ID",
     "app.labOrdersList.NAME": "NAME",
