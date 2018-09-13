@@ -187,6 +187,7 @@ export class LabOrdersList extends PureComponent {
           showFilter={false}
           isSortable={false}
           rowOnClick={this.handleShowResultsEntryPage}
+          noDataMessage="No orders found"
         />
       </div>
     );
@@ -200,8 +201,8 @@ export class LabOrdersList extends PureComponent {
         <h1>
           <FormattedMessage
             id="app.labOrdersList.title"
-            defaultMessage="Welcome to LabOrdersList Page/Component"
-            description="Welcome header on LabOrdersList page" />
+            defaultMessage="Welcome to LabTestResult Page"
+            description="Welcome header on LabTestResult page" />
         </h1>
         <React.Fragment>
           <div>
