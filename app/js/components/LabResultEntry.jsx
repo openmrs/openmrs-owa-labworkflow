@@ -11,7 +11,7 @@ import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 
 import moment from 'moment';
-import { Link } from 'react-router-dom';
+import { Link, Redirect } from 'react-router-dom';
 import swal from 'sweetalert';
 
 import { CustomDatePicker, PatientHeader } from '@openmrs/react-components';
@@ -22,11 +22,16 @@ import patientAction from '../actions/patientAction';
 export class LabResultEntry extends PureComponent {
   state = {
     patientHeaderDetail: false,
+    redirect: false,
   }
 
   componentDidMount() {
     const { dispatch, history } = this.props;
-    dispatch(patientAction.getPatient(history.location.state.patient.uuid));
+    if (typeof history.location.state !== 'undefined') {
+      dispatch(patientAction.getPatient(history.location.state.patient.uuid));
+    } else {
+      this.shouldRedirect();
+    }
   }
 
   componentWillReceiveProps(nextProps) {
@@ -53,43 +58,55 @@ export class LabResultEntry extends PureComponent {
     }
   }
 
+  shouldRedirect() {
+    this.setState({ redirect: true });
+  }
+
   render() {
-    const { patientHeaderDetail } = this.state;
+    const { patientHeaderDetail, redirect } = this.state;
     const { location } = this.props;
+    if (redirect) {
+      return <Redirect to="/" />;
+    }
     return (
       <div className="container-fluid">
         {patientHeaderDetail && <PatientHeader patient={patientHeaderDetail} />}
-        <h1>Test Results</h1>
-        <div className="fieldset-container">
-          <fieldset>
-            <legend>Specimen Details:</legend>
-            <div className="col-xs-12">
-              <CustomDatePicker
-                handleDateChange={() => {}}
-                labelClassName="date-picker-label"
-                label="Specimen Collection Date:"
-                defaultDate={moment().subtract(7, 'days')}
-                field="dateFromField"
-              />
-            </div>
-            <br />
-            <br />
-            <div className="col-xs-6">
-              <span>
+        {location.state
+        && (
+          <div>
+            <h1>Test Results</h1>
+            <div className="fieldset-container">
+              <fieldset>
+                <legend>Specimen Details:</legend>
+                <div className="col-xs-12">
+                  <CustomDatePicker
+                    handleDateChange={() => {}}
+                    labelClassName="date-picker-label"
+                    label="Specimen Collection Date:"
+                    defaultDate={moment().subtract(7, 'days')}
+                    field="dateFromField"
+                  />
+                </div>
+                <br />
+                <br />
+                <div className="col-xs-6">
+                  <span>
                 Test:&nbsp;
-                <span className="test-details">{location.state.display}</span>
-              </span>
-            </div>
-            <div className="col-xs-6">
-              <span>
+                    <span className="test-details">{location.state.display}</span>
+                  </span>
+                </div>
+                <div className="col-xs-6">
+                  <span>
                 Urgency:&nbsp;
-                <span className="test-details">{location.state.urgency}</span>
-              </span>
+                    <span className="test-details">{location.state.urgency}</span>
+                  </span>
+                </div>
+                <br />
+                <br />
+              </fieldset>
             </div>
-            <br />
-            <br />
-          </fieldset>
-        </div>
+          </div>
+        )}
         <br />
         <br />
         <br />
