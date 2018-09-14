@@ -117,8 +117,10 @@ export class LabOrdersList extends PureComponent {
 
 
   clearNameEMRField() {
+    const { filters } = this.state;
     this.setState({
       filters: {
+        ...filters,
         nameField: "",
       },
     });
@@ -188,6 +190,7 @@ export class LabOrdersList extends PureComponent {
           isSortable={false}
           rowOnClick={this.handleShowResultsEntryPage}
           noDataMessage="No orders found"
+          defaultPageSize={15}
         />
       </div>
     );
@@ -197,7 +200,7 @@ export class LabOrdersList extends PureComponent {
     const { labTests, isLoading } = this.props;
     const { filters: { dateFromField, dateToField, nameField } } = this.state;
     return (
-      <div>
+      <div className="main-container">
         <h1>
           <FormattedMessage
             id="app.labOrdersList.title"
