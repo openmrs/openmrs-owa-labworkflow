@@ -11,3 +11,6 @@ export default {
 };
 export const FETCH_LAB_ORDERS = 'FETCH_LAB_ORDERS';
 export const SET_LAB_TEST = 'SET_LAB_TEST';
+export const SET_SELECTED_PATIENT = 'SET_SELECTED_PATIENT';
+export const ADD_PATIENT = 'ADD_PATIENT';
+export const FETCH_LAB_CONCEPTS = 'FETCH_LAB_CONCEPTS';

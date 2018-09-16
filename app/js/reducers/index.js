@@ -12,6 +12,11 @@ import { reducer as reduxFormReducer } from 'redux-form';
 import { reducers as openmrsReducers } from '@openmrs/react-components';
 import labOrderReducer from './labOrdersReducer';
 import patientReducer from './patientReducer';
+import {
+  patientsReducer,
+  selectedPatientReducer,
+  selectedLabConceptReducer,
+} from './patientsReducer';
 
 
 export default combineReducers({
@@ -19,4 +24,7 @@ export default combineReducers({
   form: reduxFormReducer,
   labOrders: labOrderReducer,
   patient: patientReducer,
+  patients: patientsReducer,
+  selectedPatient: selectedPatientReducer,
+  selectedLabConcept: selectedLabConceptReducer,
 });

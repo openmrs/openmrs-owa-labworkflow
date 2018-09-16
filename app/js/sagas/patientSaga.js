@@ -10,6 +10,8 @@ function* getPatient(action) {
     });
     if (response) {
       yield put(patientAction.getPatientSucceeded(response));
+      yield put(patientAction.addPatient(response));
+      yield put(patientAction.setSelectedPatient(response.uuid));
     }
   } catch (e) {
     yield put(patientAction.getPatientFailed(e.message));

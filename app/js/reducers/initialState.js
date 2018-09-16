@@ -8,6 +8,9 @@ export default {
       message: null,
     },
   },
+  selectedPatient: null,
+  selectedLabConcept: null,
+  patients: {},
   patientReducer: {
     patient: {
       person: {
