@@ -36,6 +36,10 @@ class LabOrderListFilters extends PureComponent {
             labelClassName="line"
             label="From: "
             defaultDate={moment().subtract(8, 'days')}
+            formControlStyle={{
+              marginRight: '5px',
+              width: '105px',
+            }}
             handleDateChange={(field, value) => handleFieldChange(field, value)}
             field="dateFromField"
           />
@@ -45,7 +49,10 @@ class LabOrderListFilters extends PureComponent {
             labelClassName="line"
             label="To: "
             field="dateToField"
-            
+            formControlStyle={{
+              marginRight: '5px',
+              width: '105px',
+            }}
             handleDateChange={(field, value) => handleFieldChange(field, value)}
           />
         </span>

@@ -59,3 +59,11 @@ body {
     margin: 15px;
 }
 
+input.form-control {
+    border: 1px solid lightgrey;
+}
+
+input.form-control:focus {
+    border: 2px solid #037fff;
+}
+
