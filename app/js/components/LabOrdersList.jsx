@@ -190,7 +190,7 @@ export class LabOrdersList extends PureComponent {
           isSortable={false}
           rowOnClick={this.handleShowResultsEntryPage}
           noDataMessage="No orders found"
-          defaultPageSize={15}
+          defaultPageSize={10}
         />
       </div>
     );
@@ -208,8 +208,7 @@ export class LabOrdersList extends PureComponent {
             description="Welcome header on LabTestResult page" />
         </h1>
         <React.Fragment>
-          <div>
-            {!isLoading
+          {!isLoading
               && (
                 <LabOrderListFilters
                   handleFieldChange={this.handleFilterChange}
@@ -221,7 +220,6 @@ export class LabOrdersList extends PureComponent {
 
                 />
               )}
-          </div>
           {isLoading
             ? <div className="loader lab-order-list" />
             : this.renderDraftOrderTable()
