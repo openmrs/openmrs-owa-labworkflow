@@ -111,8 +111,6 @@ Before using the Lab Workflow Application, the administrator should make the fol
 1. Create a setting `labworkflowowa.labResultsEncounterType`.
 2. Create a date format, setting `labworkflowowa.dateAndTimeFormat` as the name, with a value of the date format, e.g. `DD-MMM-YYYY HH:mm`, in the global properties
 
-**NB:** Not having any of the above configurations will result into an error notice. Please check more information [here](https://wiki.openmrs.org/display/projects/Order+Entry+UI+Administrator+Guide)
-
 See instructions [here](http://enable-cors.org/server_tomcat.html) for Tomcat 7 and [here](https://www.dforge.net/2013/09/16/enabling-cors-on-apache-tomcat-6/) for Tomcat 6.
 
 ## License
