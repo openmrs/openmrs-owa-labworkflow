@@ -27,7 +27,7 @@ const props = {
   dispatch: jest.fn(),
   orders,
   isLoading: false,
-  labTests: ['Hémogramme automatisé']
+  labTests: ['Hémogramme automatisé'],
 };
 
 const getComponent = () => {
@@ -48,6 +48,9 @@ describe('<LabOrdersList /> component', () => {
 describe('LabOrdersListContainer container', () => {
   it('should pass required props from state to <LabOrdersList /> component', () => {
     const state = {
+      CONSTANTS: {
+        dateAndTimeFormat: '',
+      },
       labOrders: {
         orders,
         isLoading: false,

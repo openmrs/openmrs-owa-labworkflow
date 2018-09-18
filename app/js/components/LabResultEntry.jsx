@@ -31,7 +31,7 @@ import {
 
 import patientAction from '../actions/patientAction';
 import labConceptsAction from '../actions/labConceptsAction';
-import labResultEncounterAction from '../actions/labResultEncounterAction';
+import constantsAction from '../actions/constantsAction';
 import '../../css/lab-result-entry.scss';
 
 
@@ -49,7 +49,7 @@ export class LabResultEntry extends PureComponent {
       const conceptUUID = state.concept.uuid;
       dispatch(patientAction.getPatient(state.patient.uuid));
       dispatch(labConceptsAction.fetchLabConcept(conceptUUID));
-      dispatch(labResultEncounterAction.fetchLabResultsEncounterType());
+      dispatch(constantsAction.fetchLabResultsEncounterType());
     } else {
       this.shouldRedirect();
     }

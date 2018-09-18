@@ -18,7 +18,7 @@ import { SortableTable } from '@openmrs/react-components';
 import LabOrderListFilters from './LabOrdersListFilters';
 
 import { fetchLabOrders } from '../actions/labOrdersAction';
-import { DEFAULT_DATE_FORMAT } from '../utils/constants';
+import constantsAction from '../actions/constantsAction';
 import { getDateRange } from '../utils/helpers';
 import "../../css/lab-orders-list.scss";
 
@@ -51,13 +51,13 @@ const Cell = ({ columnName, value }) => {
     case 'ORDER DATE':
       return (
         <div className="table_cell order-date">
-          <span>{moment(value.dateActivated).format(DEFAULT_DATE_FORMAT)}</span>
+          <span>{moment(value.dateActivated).format(this.props.dateAndTimeFormat || "D-MMM-YYYY")}</span>
         </div>
       );
     case 'COLLECTION DATE':
       return (
         <div className="table_cell collection-date">
-          <span>{moment(value.dateActivated).format("D-MMM-YYYY")}</span>
+          <span>{moment(value.dateActivated).format(this.props.dateAndTimeFormat || "D-MMM-YYYY")}</span>
         </div>
       );
     case 'URGENCY': {
@@ -105,6 +105,7 @@ export class LabOrdersList extends PureComponent {
   componentDidMount() {
     const { dispatch } = this.props;
     dispatch(fetchLabOrders());
+    dispatch(constantsAction.getDateFormat());
   }
 
   handleShowResultsEntryPage(order) {
@@ -234,15 +235,18 @@ LabOrdersList.propTypes = {
   orders: PropTypes.array.isRequired,
   labTests: PropTypes.array.isRequired,
   isLoading: PropTypes.bool.isRequired,
+  dateAndTimeFormat: PropTypes.string.isRequired,
 };
 
 
 export const mapStateToProps = ({
   labOrders: { orders, labTests, isLoading },
+  CONSTANTS: { dateAndTimeFormat },
 }) => ({
   orders,
   labTests,
   isLoading,
+  dateAndTimeFormat,
 });
 
 

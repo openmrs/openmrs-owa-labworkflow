@@ -32,6 +32,7 @@ export default {
   },
   CONSTANTS: {
     labResultsEncounterType: '',
+    dateAndTimeFormat: '',
     isLoading: false,
     error: {
       status: false,

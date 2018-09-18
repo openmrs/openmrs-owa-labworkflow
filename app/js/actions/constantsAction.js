@@ -1,5 +1,5 @@
 import { axiosInstance } from '../config';
-import { FETCH_LAB_RESULTS_ENCOUNTER_TYPE } from './actionTypes';
+import { FETCH_LAB_RESULTS_ENCOUNTER_TYPE, GET_DATE } from './actionTypes';
 
 
 const fetchLabResultsEncounterType = () => ({
@@ -7,6 +7,12 @@ const fetchLabResultsEncounterType = () => ({
   payload: axiosInstance.get(`systemsetting?v=custom:(value)&q=labworkflowowa.labResultsEncounterType`),
 });
 
+const getDateFormat = value => ({
+  type: GET_DATE,
+  payload: axiosInstance.get(`systemsetting?v=${value}&q=orderentryowa.dateAndTimeFormat`),
+});
+
 export default {
   fetchLabResultsEncounterType,
+  getDateFormat,
 };
