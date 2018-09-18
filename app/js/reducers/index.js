@@ -12,6 +12,7 @@ import { reducer as reduxFormReducer } from 'redux-form';
 import { reducers as openmrsReducers } from '@openmrs/react-components';
 import labOrderReducer from './labOrdersReducer';
 import patientReducer from './patientReducer';
+import constantsReducer from './constantsReducer';
 import {
   patientsReducer,
   selectedPatientReducer,
@@ -27,4 +28,5 @@ export default combineReducers({
   patients: patientsReducer,
   selectedPatient: selectedPatientReducer,
   selectedLabConcept: selectedLabConceptReducer,
+  CONSTANTS: constantsReducer,
 });

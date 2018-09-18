@@ -30,4 +30,13 @@ export default {
       message: null,
     },
   },
+  CONSTANTS: {
+    labResultsEncounterType: '',
+    dateAndTimeFormat: '',
+    isLoading: false,
+    error: {
+      status: false,
+      message: null,
+    },
+  },
 };
