@@ -23,7 +23,7 @@ import { getDateRange } from '../utils/helpers';
 import "../../css/lab-orders-list.scss";
 
 
-const Cell = ({ columnName, value }) => {
+const Cell = ({ columnName, value, dateAndTimeFormat }) => {
   switch (columnName) {
     case 'EMR ID': {
       // TODO: refactor this and name column to use React Components patientUtils
@@ -51,13 +51,13 @@ const Cell = ({ columnName, value }) => {
     case 'ORDER DATE':
       return (
         <div className="table_cell order-date">
-          <span>{moment(value.dateActivated).format(this.props.dateAndTimeFormat || "D-MMM-YYYY")}</span>
+          <span>{moment(value.dateActivated).format(dateAndTimeFormat || "D-MMM-YYYY")}</span>
         </div>
       );
     case 'COLLECTION DATE':
       return (
         <div className="table_cell collection-date">
-          <span>{moment(value.dateActivated).format(this.props.dateAndTimeFormat || "D-MMM-YYYY")}</span>
+          <span>{moment(value.dateActivated).format(dateAndTimeFormat || "D-MMM-YYYY")}</span>
         </div>
       );
     case 'URGENCY': {
@@ -174,7 +174,7 @@ export class LabOrdersList extends PureComponent {
       description={`LabOrderList table header for ${columnName}`} />
   </span>,
       accessor: "",
-      Cell: data => <Cell {...data} columnName={columnName} />,
+      Cell: data => <Cell {...data} columnName={columnName} dateAndTimeFormat={this.props.dateAndTimeFormat} />,
       className: `lab-order-list-cell-${columnName.replace(' ', '-').toLocaleLowerCase()}`,
       headerClassName: `lab-order-list-header-${columnName.replace(' ', '-').toLocaleLowerCase()}`,
     }));
