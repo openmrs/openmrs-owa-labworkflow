@@ -1,4 +1,9 @@
-import { SET_SELECTED_PATIENT, ADD_PATIENT, FETCH_LAB_CONCEPTS } from '../actions/actionTypes';
+import {
+  SET_SELECTED_PATIENT,
+  ADD_PATIENT,
+  FETCH_LAB_CONCEPTS,
+  SET_CONCEPT_MEMBER,
+} from '../actions/actionTypes';
 import initialState from './initialState';
 
 export const patientsReducer = (state = initialState.patients, action) => {
@@ -28,6 +33,18 @@ export const selectedLabConceptReducer = (state = initialState.selectedLabConcep
     case `${FETCH_LAB_CONCEPTS}_SUCCESS`: {
       const selectedLabConcept = action.payload.data;
       return selectedLabConcept;
+    }
+    default: return state;
+  }
+};
+
+export const conceptMembersReducer = (state = initialState.conceptMembers, action) => {
+  switch (action.type) {
+    case SET_CONCEPT_MEMBER: {
+      return {
+        [action.member.uuid]: action.member,
+        ...state,
+      };
     }
     default: return state;
   }

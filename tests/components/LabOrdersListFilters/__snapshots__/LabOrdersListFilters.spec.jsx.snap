@@ -1,0 +1,415 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<LabOrdersList /> component renders correctly 1`] = `
+<LabOrderListFilters
+  clearNameEMRField={[MockFunction]}
+  handleFieldChange={[MockFunction]}
+  labTests={
+    Array [
+      "Hémogramme automatisé",
+    ]
+  }
+  nameField=""
+>
+  <div
+    className="order-list-filters"
+  >
+    <span
+      className="top-filters"
+    >
+      <span
+        className="date-picker-filter"
+      >
+        <span>
+          <CustomDatePicker
+            defaultDate={"2018-09-11T18:19:26.047Z"}
+            field="dateFromField"
+            formControlStyle={
+              Object {
+                "marginRight": "5px",
+                "width": "105px",
+              }
+            }
+            handleDateChange={[Function]}
+            label="From: "
+            labelClassName="line"
+          >
+            <DatePicker
+              allowSameDay={false}
+              customInput={<DateDisplayComponent />}
+              dateFormat="L"
+              dateFormatCalendar="MMMM YYYY"
+              disabled={false}
+              disabledKeyboardNavigation={false}
+              dropdownMode="scroll"
+              monthsShown={1}
+              nextMonthButtonLabel="Next month"
+              onBlur={[Function]}
+              onChange={[Function]}
+              onClickOutside={[Function]}
+              onFocus={[Function]}
+              onKeyDown={[Function]}
+              onMonthChange={[Function]}
+              onSelect={[Function]}
+              onYearChange={[Function]}
+              preventOpenOnFocus={false}
+              previousMonthButtonLabel="Previous Month"
+              readOnly={false}
+              selected={"2018-09-11T18:19:26.047Z"}
+              shouldCloseOnSelect={true}
+              showTimeSelect={false}
+              timeCaption="Time"
+              timeIntervals={30}
+              withPortal={false}
+            >
+              <PopperComponent
+                hidePopper={true}
+                popperComponent={null}
+                popperModifiers={
+                  Object {
+                    "preventOverflow": Object {
+                      "boundariesElement": "viewport",
+                      "enabled": true,
+                      "escapeWithReference": true,
+                    },
+                  }
+                }
+                popperPlacement="bottom-start"
+                targetComponent={
+                  <div
+                    className="react-datepicker__input-container"
+                  >
+                    <DateDisplayComponent
+                      className=""
+                      disabled={false}
+                      onBlur={[Function]}
+                      onChange={[Function]}
+                      onClick={[Function]}
+                      onFocus={[Function]}
+                      onKeyDown={[Function]}
+                      readOnly={false}
+                      value="09/11/2018"
+                    />
+                  </div>
+                }
+              >
+                <Manager
+                  tag="div"
+                >
+                  <div>
+                    <Target
+                      className="react-datepicker-wrapper"
+                    >
+                      <div
+                        className="react-datepicker-wrapper"
+                      >
+                        <div
+                          className="react-datepicker__input-container"
+                        >
+                          <DateDisplayComponent
+                            className=""
+                            disabled={false}
+                            onBlur={[Function]}
+                            onChange={[Function]}
+                            onClick={[Function]}
+                            onFocus={[Function]}
+                            onKeyDown={[Function]}
+                            readOnly={false}
+                            value="09/11/2018"
+                          >
+                            <span
+                              style={
+                                Object {
+                                  "display": "flex",
+                                  "justifyContent": "space-around",
+                                }
+                              }
+                            >
+                              <span
+                                className="line"
+                              >
+                                From: 
+                              </span>
+                              <FormControl
+                                bsClass="form-control"
+                                componentClass="input"
+                                placeholder=""
+                                style={
+                                  Object {
+                                    "marginRight": "5px",
+                                    "width": "105px",
+                                  }
+                                }
+                                type="text"
+                                value="09/11/2018"
+                              >
+                                <input
+                                  className="form-control"
+                                  placeholder=""
+                                  style={
+                                    Object {
+                                      "marginRight": "5px",
+                                      "width": "105px",
+                                    }
+                                  }
+                                  type="text"
+                                  value="09/11/2018"
+                                />
+                              </FormControl>
+                              <i
+                                className="icon-calendar scale small add-on"
+                                onClick={[Function]}
+                                role="toolbar"
+                              />
+                            </span>
+                          </DateDisplayComponent>
+                        </div>
+                      </div>
+                    </Target>
+                  </div>
+                </Manager>
+              </PopperComponent>
+            </DatePicker>
+          </CustomDatePicker>
+        </span>
+        <span>
+          <CustomDatePicker
+            defaultDate={"2018-09-19T18:19:22.996Z"}
+            field="dateToField"
+            formControlStyle={
+              Object {
+                "marginRight": "5px",
+                "width": "105px",
+              }
+            }
+            handleDateChange={[Function]}
+            label="To: "
+            labelClassName="line"
+          >
+            <DatePicker
+              allowSameDay={false}
+              customInput={<DateDisplayComponent />}
+              dateFormat="L"
+              dateFormatCalendar="MMMM YYYY"
+              disabled={false}
+              disabledKeyboardNavigation={false}
+              dropdownMode="scroll"
+              monthsShown={1}
+              nextMonthButtonLabel="Next month"
+              onBlur={[Function]}
+              onChange={[Function]}
+              onClickOutside={[Function]}
+              onFocus={[Function]}
+              onKeyDown={[Function]}
+              onMonthChange={[Function]}
+              onSelect={[Function]}
+              onYearChange={[Function]}
+              preventOpenOnFocus={false}
+              previousMonthButtonLabel="Previous Month"
+              readOnly={false}
+              selected={"2018-09-19T18:19:22.996Z"}
+              shouldCloseOnSelect={true}
+              showTimeSelect={false}
+              timeCaption="Time"
+              timeIntervals={30}
+              withPortal={false}
+            >
+              <PopperComponent
+                hidePopper={true}
+                popperComponent={null}
+                popperModifiers={
+                  Object {
+                    "preventOverflow": Object {
+                      "boundariesElement": "viewport",
+                      "enabled": true,
+                      "escapeWithReference": true,
+                    },
+                  }
+                }
+                popperPlacement="bottom-start"
+                targetComponent={
+                  <div
+                    className="react-datepicker__input-container"
+                  >
+                    <DateDisplayComponent
+                      className=""
+                      disabled={false}
+                      onBlur={[Function]}
+                      onChange={[Function]}
+                      onClick={[Function]}
+                      onFocus={[Function]}
+                      onKeyDown={[Function]}
+                      readOnly={false}
+                      value="09/19/2018"
+                    />
+                  </div>
+                }
+              >
+                <Manager
+                  tag="div"
+                >
+                  <div>
+                    <Target
+                      className="react-datepicker-wrapper"
+                    >
+                      <div
+                        className="react-datepicker-wrapper"
+                      >
+                        <div
+                          className="react-datepicker__input-container"
+                        >
+                          <DateDisplayComponent
+                            className=""
+                            disabled={false}
+                            onBlur={[Function]}
+                            onChange={[Function]}
+                            onClick={[Function]}
+                            onFocus={[Function]}
+                            onKeyDown={[Function]}
+                            readOnly={false}
+                            value="09/19/2018"
+                          >
+                            <span
+                              style={
+                                Object {
+                                  "display": "flex",
+                                  "justifyContent": "space-around",
+                                }
+                              }
+                            >
+                              <span
+                                className="line"
+                              >
+                                To: 
+                              </span>
+                              <FormControl
+                                bsClass="form-control"
+                                componentClass="input"
+                                placeholder=""
+                                style={
+                                  Object {
+                                    "marginRight": "5px",
+                                    "width": "105px",
+                                  }
+                                }
+                                type="text"
+                                value="09/19/2018"
+                              >
+                                <input
+                                  className="form-control"
+                                  placeholder=""
+                                  style={
+                                    Object {
+                                      "marginRight": "5px",
+                                      "width": "105px",
+                                    }
+                                  }
+                                  type="text"
+                                  value="09/19/2018"
+                                />
+                              </FormControl>
+                              <i
+                                className="icon-calendar scale small add-on"
+                                onClick={[Function]}
+                                role="toolbar"
+                              />
+                            </span>
+                          </DateDisplayComponent>
+                        </div>
+                      </div>
+                    </Target>
+                  </div>
+                </Manager>
+              </PopperComponent>
+            </DatePicker>
+          </CustomDatePicker>
+        </span>
+      </span>
+    </span>
+    <span
+      className="bottom-filters"
+    >
+      <span
+        className="form-filter-group one-third"
+      >
+        <span>
+          Search for a sample
+        </span>
+        <span
+          className="name-emrid-order-filter"
+        >
+          <i
+            className="small icon-search"
+          />
+          <FormControl
+            bsClass="form-control"
+            componentClass="input"
+            onChange={[Function]}
+            placeholder="search by ID or name, or scan sample"
+            type="text"
+            value=""
+          >
+            <input
+              className="form-control"
+              onChange={[Function]}
+              placeholder="search by ID or name, or scan sample"
+              type="text"
+              value=""
+            />
+          </FormControl>
+          <i
+            className="small scale icon-remove-sign"
+            onClick={[Function]}
+            role="toolbar"
+          />
+        </span>
+      </span>
+      <Dropdown
+        className="form-filter-group quater"
+        defaultValue="All"
+        field="testTypeField"
+        handleSelect={[Function]}
+        label="Test Type"
+        labelClassName=""
+        list={
+          Array [
+            "Hémogramme automatisé",
+          ]
+        }
+      >
+        <span
+          className="form-filter-group quater"
+        >
+          <span
+            className=""
+          >
+            Test Type
+          </span>
+          <select
+            onChange={[Function]}
+            style={
+              Object {
+                "height": "45px",
+                "width": "100%",
+              }
+            }
+          >
+            <option
+              key="All"
+              value="All"
+            >
+              All
+            </option>
+            <option
+              key="Hémogramme automatisé"
+              value="Hémogramme automatisé"
+            >
+              Hémogramme automatisé
+            </option>
+          </select>
+        </span>
+      </Dropdown>
+    </span>
+  </div>
+</LabOrderListFilters>
+`;

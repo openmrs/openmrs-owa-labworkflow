@@ -7,9 +7,9 @@ const fetchLabResultsEncounterType = () => ({
   payload: axiosInstance.get(`systemsetting?v=custom:(value)&q=labworkflowowa.labResultsEncounterType`),
 });
 
-const getDateFormat = value => ({
+const getDateFormat = () => ({
   type: GET_DATE,
-  payload: axiosInstance.get(`systemsetting?v=${value}&q=orderentryowa.dateAndTimeFormat`),
+  payload: axiosInstance.get(`systemsetting?v=custom:(value)&q=orderentryowa.dateAndTimeFormat`),
 });
 
 export default {

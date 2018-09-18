@@ -55,3 +55,30 @@ button.pull-right.btn-success {
 .row {
     background-color: inherit !important;
 }
+
+.result-range-header {
+    position: relative;
+    top: 65px;
+}
+
+.range-header-text {
+    position: relative;
+    right: 120px;
+    font-weight: 900;
+    text-decoration: underline;
+    text-decoration: underline;
+}
+
+.units {
+    line-height: 40px;
+}
+
+.valid-range {
+    right: 120px;
+    position: relative;
+    line-height: 40px;
+}
+
+.control-label {
+    line-height: 13px;
+}

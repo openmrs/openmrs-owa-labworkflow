@@ -22,16 +22,18 @@ describe('constantsReducer', () => {
       const successAction = {
         type: `${FETCH_LAB_RESULTS_ENCOUNTER_TYPE}_SUCCESS`,
         payload: {
-          results: [
-            {
-              value: "some-valid-uuid",
-            },
-          ],
+          data: {
+            results: [
+              {
+                value: "some-valid-uuid",
+              },
+            ],
+          },
         },
       };
       const nextState = constantsReducer(initialState.CONSTANTS, successAction);
       expect(nextState.isLoading).toEqual(false);
-      expect(nextState.labResultsEncounterType).toEqual(successAction.payload.results[0].value);
+      expect(nextState.labResultsEncounterType).toEqual(successAction.payload.data.results[0].value);
       expect(nextState.error.status).toEqual(false);
       expect(nextState.error.message).toEqual(null);
     });
@@ -64,16 +66,18 @@ describe('constantsReducer', () => {
       const successAction = {
         type: `${GET_DATE}_SUCCESS`,
         payload: {
-          results: [
-            {
-              value: "some-valid-uuid",
-            },
-          ],
+          data: {
+            results: [
+              {
+                value: "some-valid-uuid",
+              },
+            ],
+          },
         },
       };
       const nextState = constantsReducer(initialState.CONSTANTS, successAction);
       expect(nextState.isLoading).toEqual(false);
-      expect(nextState.dateAndTimeFormat).toEqual(successAction.payload.results[0].value);
+      expect(nextState.dateAndTimeFormat).toEqual(successAction.payload.data.results[0].value);
       expect(nextState.error.status).toEqual(false);
       expect(nextState.error.message).toEqual(null);
     });

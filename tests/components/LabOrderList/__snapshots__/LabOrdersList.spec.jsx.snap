@@ -11,8 +11,18 @@ exports[`<LabOrdersList /> component renders correctly 1`] = `
             "type": "FETCH_LAB_ORDERS",
           },
         ],
+        Array [
+          Object {
+            "payload": Promise {},
+            "type": "GET_DATE",
+          },
+        ],
       ],
       "results": Array [
+        Object {
+          "isThrow": false,
+          "value": undefined,
+        },
         Object {
           "isThrow": false,
           "value": undefined,
@@ -82,409 +92,419 @@ exports[`<LabOrdersList /> component renders correctly 1`] = `
         </span>
       </FormattedMessage>
     </h1>
-    <div>
-      <LabOrderListFilters
-        clearNameEMRField={[Function]}
-        dateFromField={"2018-09-09T14:57:43.712Z"}
-        dateToField={"2018-09-17T14:57:43.711Z"}
-        handleFieldChange={[Function]}
-        labTests={
-          Array [
-            "Hémogramme automatisé",
-          ]
-        }
-        nameField=""
+    <LabOrderListFilters
+      clearNameEMRField={[Function]}
+      dateFromField={"2018-09-11T18:19:26.552Z"}
+      dateToField={"2018-09-19T18:19:26.552Z"}
+      handleFieldChange={[Function]}
+      labTests={
+        Array [
+          "Hémogramme automatisé",
+        ]
+      }
+      nameField=""
+    >
+      <div
+        className="order-list-filters"
       >
-        <div
-          className="order-list-filters"
+        <span
+          className="top-filters"
         >
           <span
-            className="top-filters"
+            className="date-picker-filter"
           >
-            <span
-              className="date-picker-filter"
-            >
-              <span>
-                <CustomDatePicker
-                  defaultDate={"2018-09-09T14:57:43.746Z"}
-                  field="dateFromField"
-                  handleDateChange={[Function]}
-                  label="From: "
-                  labelClassName="line"
+            <span>
+              <CustomDatePicker
+                defaultDate={"2018-09-11T18:19:26.569Z"}
+                field="dateFromField"
+                formControlStyle={
+                  Object {
+                    "marginRight": "5px",
+                    "width": "105px",
+                  }
+                }
+                handleDateChange={[Function]}
+                label="From: "
+                labelClassName="line"
+              >
+                <DatePicker
+                  allowSameDay={false}
+                  customInput={<DateDisplayComponent />}
+                  dateFormat="L"
+                  dateFormatCalendar="MMMM YYYY"
+                  disabled={false}
+                  disabledKeyboardNavigation={false}
+                  dropdownMode="scroll"
+                  monthsShown={1}
+                  nextMonthButtonLabel="Next month"
+                  onBlur={[Function]}
+                  onChange={[Function]}
+                  onClickOutside={[Function]}
+                  onFocus={[Function]}
+                  onKeyDown={[Function]}
+                  onMonthChange={[Function]}
+                  onSelect={[Function]}
+                  onYearChange={[Function]}
+                  preventOpenOnFocus={false}
+                  previousMonthButtonLabel="Previous Month"
+                  readOnly={false}
+                  selected={"2018-09-11T18:19:26.569Z"}
+                  shouldCloseOnSelect={true}
+                  showTimeSelect={false}
+                  timeCaption="Time"
+                  timeIntervals={30}
+                  withPortal={false}
                 >
-                  <DatePicker
-                    allowSameDay={false}
-                    customInput={<DateDisplayComponent />}
-                    dateFormat="L"
-                    dateFormatCalendar="MMMM YYYY"
-                    disabled={false}
-                    disabledKeyboardNavigation={false}
-                    dropdownMode="scroll"
-                    monthsShown={1}
-                    nextMonthButtonLabel="Next month"
-                    onBlur={[Function]}
-                    onChange={[Function]}
-                    onClickOutside={[Function]}
-                    onFocus={[Function]}
-                    onKeyDown={[Function]}
-                    onMonthChange={[Function]}
-                    onSelect={[Function]}
-                    onYearChange={[Function]}
-                    preventOpenOnFocus={false}
-                    previousMonthButtonLabel="Previous Month"
-                    readOnly={false}
-                    selected={"2018-09-09T14:57:43.746Z"}
-                    shouldCloseOnSelect={true}
-                    showTimeSelect={false}
-                    timeCaption="Time"
-                    timeIntervals={30}
-                    withPortal={false}
-                  >
-                    <PopperComponent
-                      hidePopper={true}
-                      popperComponent={null}
-                      popperModifiers={
-                        Object {
-                          "preventOverflow": Object {
-                            "boundariesElement": "viewport",
-                            "enabled": true,
-                            "escapeWithReference": true,
-                          },
-                        }
+                  <PopperComponent
+                    hidePopper={true}
+                    popperComponent={null}
+                    popperModifiers={
+                      Object {
+                        "preventOverflow": Object {
+                          "boundariesElement": "viewport",
+                          "enabled": true,
+                          "escapeWithReference": true,
+                        },
                       }
-                      popperPlacement="bottom-start"
-                      targetComponent={
-                        <div
-                          className="react-datepicker__input-container"
-                        >
-                          <DateDisplayComponent
-                            className=""
-                            disabled={false}
-                            onBlur={[Function]}
-                            onChange={[Function]}
-                            onClick={[Function]}
-                            onFocus={[Function]}
-                            onKeyDown={[Function]}
-                            readOnly={false}
-                            value="09/09/2018"
-                          />
-                        </div>
-                      }
-                    >
-                      <Manager
-                        tag="div"
+                    }
+                    popperPlacement="bottom-start"
+                    targetComponent={
+                      <div
+                        className="react-datepicker__input-container"
                       >
-                        <div>
-                          <Target
+                        <DateDisplayComponent
+                          className=""
+                          disabled={false}
+                          onBlur={[Function]}
+                          onChange={[Function]}
+                          onClick={[Function]}
+                          onFocus={[Function]}
+                          onKeyDown={[Function]}
+                          readOnly={false}
+                          value="09/11/2018"
+                        />
+                      </div>
+                    }
+                  >
+                    <Manager
+                      tag="div"
+                    >
+                      <div>
+                        <Target
+                          className="react-datepicker-wrapper"
+                        >
+                          <div
                             className="react-datepicker-wrapper"
                           >
                             <div
-                              className="react-datepicker-wrapper"
+                              className="react-datepicker__input-container"
                             >
-                              <div
-                                className="react-datepicker__input-container"
+                              <DateDisplayComponent
+                                className=""
+                                disabled={false}
+                                onBlur={[Function]}
+                                onChange={[Function]}
+                                onClick={[Function]}
+                                onFocus={[Function]}
+                                onKeyDown={[Function]}
+                                readOnly={false}
+                                value="09/11/2018"
                               >
-                                <DateDisplayComponent
-                                  className=""
-                                  disabled={false}
-                                  onBlur={[Function]}
-                                  onChange={[Function]}
-                                  onClick={[Function]}
-                                  onFocus={[Function]}
-                                  onKeyDown={[Function]}
-                                  readOnly={false}
-                                  value="09/09/2018"
+                                <span
+                                  style={
+                                    Object {
+                                      "display": "flex",
+                                      "justifyContent": "space-around",
+                                    }
+                                  }
                                 >
                                   <span
+                                    className="line"
+                                  >
+                                    From: 
+                                  </span>
+                                  <FormControl
+                                    bsClass="form-control"
+                                    componentClass="input"
+                                    placeholder=""
                                     style={
                                       Object {
-                                        "display": "flex",
-                                        "justifyContent": "space-around",
+                                        "marginRight": "5px",
+                                        "width": "105px",
                                       }
                                     }
+                                    type="text"
+                                    value="09/11/2018"
                                   >
-                                    <span
-                                      className="line"
-                                    >
-                                      From: 
-                                    </span>
-                                    <FormControl
-                                      bsClass="form-control"
-                                      componentClass="input"
+                                    <input
+                                      className="form-control"
                                       placeholder=""
                                       style={
                                         Object {
                                           "marginRight": "5px",
-                                          "width": "100px",
+                                          "width": "105px",
                                         }
                                       }
                                       type="text"
-                                      value="09/09/2018"
-                                    >
-                                      <input
-                                        className="form-control"
-                                        placeholder=""
-                                        style={
-                                          Object {
-                                            "marginRight": "5px",
-                                            "width": "100px",
-                                          }
-                                        }
-                                        type="text"
-                                        value="09/09/2018"
-                                      />
-                                    </FormControl>
-                                    <i
-                                      className="icon-calendar scale small add-on"
-                                      onClick={[Function]}
-                                      role="toolbar"
+                                      value="09/11/2018"
                                     />
-                                  </span>
-                                </DateDisplayComponent>
-                              </div>
+                                  </FormControl>
+                                  <i
+                                    className="icon-calendar scale small add-on"
+                                    onClick={[Function]}
+                                    role="toolbar"
+                                  />
+                                </span>
+                              </DateDisplayComponent>
                             </div>
-                          </Target>
-                        </div>
-                      </Manager>
-                    </PopperComponent>
-                  </DatePicker>
-                </CustomDatePicker>
-              </span>
-              <span>
-                <CustomDatePicker
-                  defaultDate={"2018-09-17T14:57:40.128Z"}
-                  field="dateToField"
-                  handleDateChange={[Function]}
-                  label="To: "
-                  labelClassName="line"
+                          </div>
+                        </Target>
+                      </div>
+                    </Manager>
+                  </PopperComponent>
+                </DatePicker>
+              </CustomDatePicker>
+            </span>
+            <span>
+              <CustomDatePicker
+                defaultDate={"2018-09-19T18:19:23.066Z"}
+                field="dateToField"
+                formControlStyle={
+                  Object {
+                    "marginRight": "5px",
+                    "width": "105px",
+                  }
+                }
+                handleDateChange={[Function]}
+                label="To: "
+                labelClassName="line"
+              >
+                <DatePicker
+                  allowSameDay={false}
+                  customInput={<DateDisplayComponent />}
+                  dateFormat="L"
+                  dateFormatCalendar="MMMM YYYY"
+                  disabled={false}
+                  disabledKeyboardNavigation={false}
+                  dropdownMode="scroll"
+                  monthsShown={1}
+                  nextMonthButtonLabel="Next month"
+                  onBlur={[Function]}
+                  onChange={[Function]}
+                  onClickOutside={[Function]}
+                  onFocus={[Function]}
+                  onKeyDown={[Function]}
+                  onMonthChange={[Function]}
+                  onSelect={[Function]}
+                  onYearChange={[Function]}
+                  preventOpenOnFocus={false}
+                  previousMonthButtonLabel="Previous Month"
+                  readOnly={false}
+                  selected={"2018-09-19T18:19:23.066Z"}
+                  shouldCloseOnSelect={true}
+                  showTimeSelect={false}
+                  timeCaption="Time"
+                  timeIntervals={30}
+                  withPortal={false}
                 >
-                  <DatePicker
-                    allowSameDay={false}
-                    customInput={<DateDisplayComponent />}
-                    dateFormat="L"
-                    dateFormatCalendar="MMMM YYYY"
-                    disabled={false}
-                    disabledKeyboardNavigation={false}
-                    dropdownMode="scroll"
-                    monthsShown={1}
-                    nextMonthButtonLabel="Next month"
-                    onBlur={[Function]}
-                    onChange={[Function]}
-                    onClickOutside={[Function]}
-                    onFocus={[Function]}
-                    onKeyDown={[Function]}
-                    onMonthChange={[Function]}
-                    onSelect={[Function]}
-                    onYearChange={[Function]}
-                    preventOpenOnFocus={false}
-                    previousMonthButtonLabel="Previous Month"
-                    readOnly={false}
-                    selected={"2018-09-17T14:57:40.128Z"}
-                    shouldCloseOnSelect={true}
-                    showTimeSelect={false}
-                    timeCaption="Time"
-                    timeIntervals={30}
-                    withPortal={false}
-                  >
-                    <PopperComponent
-                      hidePopper={true}
-                      popperComponent={null}
-                      popperModifiers={
-                        Object {
-                          "preventOverflow": Object {
-                            "boundariesElement": "viewport",
-                            "enabled": true,
-                            "escapeWithReference": true,
-                          },
-                        }
+                  <PopperComponent
+                    hidePopper={true}
+                    popperComponent={null}
+                    popperModifiers={
+                      Object {
+                        "preventOverflow": Object {
+                          "boundariesElement": "viewport",
+                          "enabled": true,
+                          "escapeWithReference": true,
+                        },
                       }
-                      popperPlacement="bottom-start"
-                      targetComponent={
-                        <div
-                          className="react-datepicker__input-container"
-                        >
-                          <DateDisplayComponent
-                            className=""
-                            disabled={false}
-                            onBlur={[Function]}
-                            onChange={[Function]}
-                            onClick={[Function]}
-                            onFocus={[Function]}
-                            onKeyDown={[Function]}
-                            readOnly={false}
-                            value="09/17/2018"
-                          />
-                        </div>
-                      }
-                    >
-                      <Manager
-                        tag="div"
+                    }
+                    popperPlacement="bottom-start"
+                    targetComponent={
+                      <div
+                        className="react-datepicker__input-container"
                       >
-                        <div>
-                          <Target
+                        <DateDisplayComponent
+                          className=""
+                          disabled={false}
+                          onBlur={[Function]}
+                          onChange={[Function]}
+                          onClick={[Function]}
+                          onFocus={[Function]}
+                          onKeyDown={[Function]}
+                          readOnly={false}
+                          value="09/19/2018"
+                        />
+                      </div>
+                    }
+                  >
+                    <Manager
+                      tag="div"
+                    >
+                      <div>
+                        <Target
+                          className="react-datepicker-wrapper"
+                        >
+                          <div
                             className="react-datepicker-wrapper"
                           >
                             <div
-                              className="react-datepicker-wrapper"
+                              className="react-datepicker__input-container"
                             >
-                              <div
-                                className="react-datepicker__input-container"
+                              <DateDisplayComponent
+                                className=""
+                                disabled={false}
+                                onBlur={[Function]}
+                                onChange={[Function]}
+                                onClick={[Function]}
+                                onFocus={[Function]}
+                                onKeyDown={[Function]}
+                                readOnly={false}
+                                value="09/19/2018"
                               >
-                                <DateDisplayComponent
-                                  className=""
-                                  disabled={false}
-                                  onBlur={[Function]}
-                                  onChange={[Function]}
-                                  onClick={[Function]}
-                                  onFocus={[Function]}
-                                  onKeyDown={[Function]}
-                                  readOnly={false}
-                                  value="09/17/2018"
+                                <span
+                                  style={
+                                    Object {
+                                      "display": "flex",
+                                      "justifyContent": "space-around",
+                                    }
+                                  }
                                 >
                                   <span
+                                    className="line"
+                                  >
+                                    To: 
+                                  </span>
+                                  <FormControl
+                                    bsClass="form-control"
+                                    componentClass="input"
+                                    placeholder=""
                                     style={
                                       Object {
-                                        "display": "flex",
-                                        "justifyContent": "space-around",
+                                        "marginRight": "5px",
+                                        "width": "105px",
                                       }
                                     }
+                                    type="text"
+                                    value="09/19/2018"
                                   >
-                                    <span
-                                      className="line"
-                                    >
-                                      To: 
-                                    </span>
-                                    <FormControl
-                                      bsClass="form-control"
-                                      componentClass="input"
+                                    <input
+                                      className="form-control"
                                       placeholder=""
                                       style={
                                         Object {
                                           "marginRight": "5px",
-                                          "width": "100px",
+                                          "width": "105px",
                                         }
                                       }
                                       type="text"
-                                      value="09/17/2018"
-                                    >
-                                      <input
-                                        className="form-control"
-                                        placeholder=""
-                                        style={
-                                          Object {
-                                            "marginRight": "5px",
-                                            "width": "100px",
-                                          }
-                                        }
-                                        type="text"
-                                        value="09/17/2018"
-                                      />
-                                    </FormControl>
-                                    <i
-                                      className="icon-calendar scale small add-on"
-                                      onClick={[Function]}
-                                      role="toolbar"
+                                      value="09/19/2018"
                                     />
-                                  </span>
-                                </DateDisplayComponent>
-                              </div>
+                                  </FormControl>
+                                  <i
+                                    className="icon-calendar scale small add-on"
+                                    onClick={[Function]}
+                                    role="toolbar"
+                                  />
+                                </span>
+                              </DateDisplayComponent>
                             </div>
-                          </Target>
-                        </div>
-                      </Manager>
-                    </PopperComponent>
-                  </DatePicker>
-                </CustomDatePicker>
-              </span>
+                          </div>
+                        </Target>
+                      </div>
+                    </Manager>
+                  </PopperComponent>
+                </DatePicker>
+              </CustomDatePicker>
             </span>
           </span>
+        </span>
+        <span
+          className="bottom-filters"
+        >
           <span
-            className="bottom-filters"
+            className="form-filter-group one-third"
           >
+            <span>
+              Search for a sample
+            </span>
             <span
-              className="form-filter-group one-third"
+              className="name-emrid-order-filter"
             >
-              <span>
-                Search for a sample
-              </span>
-              <span
-                className="name-emrid-order-filter"
+              <i
+                className="small icon-search"
+              />
+              <FormControl
+                bsClass="form-control"
+                componentClass="input"
+                onChange={[Function]}
+                placeholder="search by ID or name, or scan sample"
+                type="text"
+                value=""
               >
-                <i
-                  className="small icon-search"
-                />
-                <FormControl
-                  bsClass="form-control"
-                  componentClass="input"
+                <input
+                  className="form-control"
                   onChange={[Function]}
                   placeholder="search by ID or name, or scan sample"
                   type="text"
                   value=""
-                >
-                  <input
-                    className="form-control"
-                    onChange={[Function]}
-                    placeholder="search by ID or name, or scan sample"
-                    type="text"
-                    value=""
-                  />
-                </FormControl>
-                <i
-                  className="small scale icon-remove-sign"
-                  onClick={[Function]}
-                  role="toolbar"
                 />
-              </span>
+              </FormControl>
+              <i
+                className="small scale icon-remove-sign"
+                onClick={[Function]}
+                role="toolbar"
+              />
             </span>
-            <Dropdown
+          </span>
+          <Dropdown
+            className="form-filter-group quater"
+            defaultValue="All"
+            field="testTypeField"
+            handleSelect={[Function]}
+            label="Test Type"
+            labelClassName=""
+            list={
+              Array [
+                "Hémogramme automatisé",
+              ]
+            }
+          >
+            <span
               className="form-filter-group quater"
-              defaultValue="All"
-              field="testTypeField"
-              handleSelect={[Function]}
-              label="Test Type"
-              labelClassName=""
-              list={
-                Array [
-                  "Hémogramme automatisé",
-                ]
-              }
             >
               <span
-                className="form-filter-group quater"
+                className=""
               >
-                <span
-                  className=""
-                >
-                  Test Type
-                </span>
-                <select
-                  onChange={[Function]}
-                  style={
-                    Object {
-                      "height": "45px",
-                      "width": "100%",
-                    }
-                  }
-                >
-                  <option
-                    key="All"
-                    value="All"
-                  >
-                    All
-                  </option>
-                  <option
-                    key="Hémogramme automatisé"
-                    value="Hémogramme automatisé"
-                  >
-                    Hémogramme automatisé
-                  </option>
-                </select>
+                Test Type
               </span>
-            </Dropdown>
-          </span>
-        </div>
-      </LabOrderListFilters>
-    </div>
+              <select
+                onChange={[Function]}
+                style={
+                  Object {
+                    "height": "45px",
+                    "width": "100%",
+                  }
+                }
+              >
+                <option
+                  key="All"
+                  value="All"
+                >
+                  All
+                </option>
+                <option
+                  key="Hémogramme automatisé"
+                  value="Hémogramme automatisé"
+                >
+                  Hémogramme automatisé
+                </option>
+              </select>
+            </span>
+          </Dropdown>
+        </span>
+      </div>
+    </LabOrderListFilters>
     <div
       className="lab-order-list"
     >
@@ -620,7 +640,7 @@ exports[`<LabOrdersList /> component renders correctly 1`] = `
             },
           ]
         }
-        defaultPageSize={15}
+        defaultPageSize={10}
         filterType="none"
         filteredFields={
           Array [
@@ -635,8 +655,8 @@ exports[`<LabOrdersList /> component renders correctly 1`] = `
         }
         filters={
           Object {
-            "dateFromField": "2018-09-09T14:57:43.712Z",
-            "dateToField": "2018-09-17T14:57:43.711Z",
+            "dateFromField": "2018-09-11T18:19:26.552Z",
+            "dateToField": "2018-09-19T18:19:26.552Z",
             "nameField": "",
             "testTypeField": "All",
           }
@@ -839,7 +859,7 @@ exports[`<LabOrdersList /> component renders correctly 1`] = `
             defaultExpanded={Object {}}
             defaultFilterMethod={[Function]}
             defaultFiltered={Array []}
-            defaultPageSize={15}
+            defaultPageSize={10}
             defaultResized={Array []}
             defaultSortDesc={false}
             defaultSortMethod={[Function]}
@@ -880,7 +900,7 @@ exports[`<LabOrdersList /> component renders correctly 1`] = `
             indexKey="_index"
             loading={false}
             loadingText="Loading..."
-            minRows={15}
+            minRows={10}
             multiSort={true}
             nestingLevelKey="_nestingLevel"
             nextText="Next"
@@ -3448,1051 +3468,6 @@ exports[`<LabOrdersList /> component renders correctly 1`] = `
                           </TrComponent>
                         </div>
                       </TrGroupComponent>
-                      <TrGroupComponent
-                        key="10"
-                      >
-                        <div
-                          className="rt-tr-group"
-                          role="rowgroup"
-                        >
-                          <TrComponent
-                            className="-padRow -odd"
-                            style={Object {}}
-                          >
-                            <div
-                              className="rt-tr -padRow -odd"
-                              role="row"
-                              style={Object {}}
-                            >
-                              <TdComponent
-                                className="lab-order-list-cell-emr-id"
-                                key="0-"
-                                style={
-                                  Object {
-                                    "flex": "undefined 0 auto",
-                                    "maxWidth": null,
-                                    "width": null,
-                                  }
-                                }
-                              >
-                                <div
-                                  className="rt-td lab-order-list-cell-emr-id"
-                                  role="gridcell"
-                                  style={
-                                    Object {
-                                      "flex": "undefined 0 auto",
-                                      "maxWidth": null,
-                                      "width": null,
-                                    }
-                                  }
-                                >
-                                  <span>
-                                     
-                                  </span>
-                                </div>
-                              </TdComponent>
-                              <TdComponent
-                                className="lab-order-list-cell-name"
-                                key="1-"
-                                style={
-                                  Object {
-                                    "flex": "undefined 0 auto",
-                                    "maxWidth": null,
-                                    "width": null,
-                                  }
-                                }
-                              >
-                                <div
-                                  className="rt-td lab-order-list-cell-name"
-                                  role="gridcell"
-                                  style={
-                                    Object {
-                                      "flex": "undefined 0 auto",
-                                      "maxWidth": null,
-                                      "width": null,
-                                    }
-                                  }
-                                >
-                                  <span>
-                                     
-                                  </span>
-                                </div>
-                              </TdComponent>
-                              <TdComponent
-                                className="lab-order-list-cell-order-id"
-                                key="2-"
-                                style={
-                                  Object {
-                                    "flex": "undefined 0 auto",
-                                    "maxWidth": null,
-                                    "width": null,
-                                  }
-                                }
-                              >
-                                <div
-                                  className="rt-td lab-order-list-cell-order-id"
-                                  role="gridcell"
-                                  style={
-                                    Object {
-                                      "flex": "undefined 0 auto",
-                                      "maxWidth": null,
-                                      "width": null,
-                                    }
-                                  }
-                                >
-                                  <span>
-                                     
-                                  </span>
-                                </div>
-                              </TdComponent>
-                              <TdComponent
-                                className="lab-order-list-cell-order-date"
-                                key="3-"
-                                style={
-                                  Object {
-                                    "flex": "undefined 0 auto",
-                                    "maxWidth": null,
-                                    "width": null,
-                                  }
-                                }
-                              >
-                                <div
-                                  className="rt-td lab-order-list-cell-order-date"
-                                  role="gridcell"
-                                  style={
-                                    Object {
-                                      "flex": "undefined 0 auto",
-                                      "maxWidth": null,
-                                      "width": null,
-                                    }
-                                  }
-                                >
-                                  <span>
-                                     
-                                  </span>
-                                </div>
-                              </TdComponent>
-                              <TdComponent
-                                className="lab-order-list-cell-collection-date"
-                                key="4-"
-                                style={
-                                  Object {
-                                    "flex": "undefined 0 auto",
-                                    "maxWidth": null,
-                                    "width": null,
-                                  }
-                                }
-                              >
-                                <div
-                                  className="rt-td lab-order-list-cell-collection-date"
-                                  role="gridcell"
-                                  style={
-                                    Object {
-                                      "flex": "undefined 0 auto",
-                                      "maxWidth": null,
-                                      "width": null,
-                                    }
-                                  }
-                                >
-                                  <span>
-                                     
-                                  </span>
-                                </div>
-                              </TdComponent>
-                              <TdComponent
-                                className="lab-order-list-cell-urgency"
-                                key="5-"
-                                style={
-                                  Object {
-                                    "flex": "undefined 0 auto",
-                                    "maxWidth": null,
-                                    "width": null,
-                                  }
-                                }
-                              >
-                                <div
-                                  className="rt-td lab-order-list-cell-urgency"
-                                  role="gridcell"
-                                  style={
-                                    Object {
-                                      "flex": "undefined 0 auto",
-                                      "maxWidth": null,
-                                      "width": null,
-                                    }
-                                  }
-                                >
-                                  <span>
-                                     
-                                  </span>
-                                </div>
-                              </TdComponent>
-                              <TdComponent
-                                className="lab-order-list-cell-test-type"
-                                key="6-"
-                                style={
-                                  Object {
-                                    "flex": "undefined 0 auto",
-                                    "maxWidth": null,
-                                    "width": null,
-                                  }
-                                }
-                              >
-                                <div
-                                  className="rt-td lab-order-list-cell-test-type"
-                                  role="gridcell"
-                                  style={
-                                    Object {
-                                      "flex": "undefined 0 auto",
-                                      "maxWidth": null,
-                                      "width": null,
-                                    }
-                                  }
-                                >
-                                  <span>
-                                     
-                                  </span>
-                                </div>
-                              </TdComponent>
-                            </div>
-                          </TrComponent>
-                        </div>
-                      </TrGroupComponent>
-                      <TrGroupComponent
-                        key="11"
-                      >
-                        <div
-                          className="rt-tr-group"
-                          role="rowgroup"
-                        >
-                          <TrComponent
-                            className="-padRow -even"
-                            style={Object {}}
-                          >
-                            <div
-                              className="rt-tr -padRow -even"
-                              role="row"
-                              style={Object {}}
-                            >
-                              <TdComponent
-                                className="lab-order-list-cell-emr-id"
-                                key="0-"
-                                style={
-                                  Object {
-                                    "flex": "undefined 0 auto",
-                                    "maxWidth": null,
-                                    "width": null,
-                                  }
-                                }
-                              >
-                                <div
-                                  className="rt-td lab-order-list-cell-emr-id"
-                                  role="gridcell"
-                                  style={
-                                    Object {
-                                      "flex": "undefined 0 auto",
-                                      "maxWidth": null,
-                                      "width": null,
-                                    }
-                                  }
-                                >
-                                  <span>
-                                     
-                                  </span>
-                                </div>
-                              </TdComponent>
-                              <TdComponent
-                                className="lab-order-list-cell-name"
-                                key="1-"
-                                style={
-                                  Object {
-                                    "flex": "undefined 0 auto",
-                                    "maxWidth": null,
-                                    "width": null,
-                                  }
-                                }
-                              >
-                                <div
-                                  className="rt-td lab-order-list-cell-name"
-                                  role="gridcell"
-                                  style={
-                                    Object {
-                                      "flex": "undefined 0 auto",
-                                      "maxWidth": null,
-                                      "width": null,
-                                    }
-                                  }
-                                >
-                                  <span>
-                                     
-                                  </span>
-                                </div>
-                              </TdComponent>
-                              <TdComponent
-                                className="lab-order-list-cell-order-id"
-                                key="2-"
-                                style={
-                                  Object {
-                                    "flex": "undefined 0 auto",
-                                    "maxWidth": null,
-                                    "width": null,
-                                  }
-                                }
-                              >
-                                <div
-                                  className="rt-td lab-order-list-cell-order-id"
-                                  role="gridcell"
-                                  style={
-                                    Object {
-                                      "flex": "undefined 0 auto",
-                                      "maxWidth": null,
-                                      "width": null,
-                                    }
-                                  }
-                                >
-                                  <span>
-                                     
-                                  </span>
-                                </div>
-                              </TdComponent>
-                              <TdComponent
-                                className="lab-order-list-cell-order-date"
-                                key="3-"
-                                style={
-                                  Object {
-                                    "flex": "undefined 0 auto",
-                                    "maxWidth": null,
-                                    "width": null,
-                                  }
-                                }
-                              >
-                                <div
-                                  className="rt-td lab-order-list-cell-order-date"
-                                  role="gridcell"
-                                  style={
-                                    Object {
-                                      "flex": "undefined 0 auto",
-                                      "maxWidth": null,
-                                      "width": null,
-                                    }
-                                  }
-                                >
-                                  <span>
-                                     
-                                  </span>
-                                </div>
-                              </TdComponent>
-                              <TdComponent
-                                className="lab-order-list-cell-collection-date"
-                                key="4-"
-                                style={
-                                  Object {
-                                    "flex": "undefined 0 auto",
-                                    "maxWidth": null,
-                                    "width": null,
-                                  }
-                                }
-                              >
-                                <div
-                                  className="rt-td lab-order-list-cell-collection-date"
-                                  role="gridcell"
-                                  style={
-                                    Object {
-                                      "flex": "undefined 0 auto",
-                                      "maxWidth": null,
-                                      "width": null,
-                                    }
-                                  }
-                                >
-                                  <span>
-                                     
-                                  </span>
-                                </div>
-                              </TdComponent>
-                              <TdComponent
-                                className="lab-order-list-cell-urgency"
-                                key="5-"
-                                style={
-                                  Object {
-                                    "flex": "undefined 0 auto",
-                                    "maxWidth": null,
-                                    "width": null,
-                                  }
-                                }
-                              >
-                                <div
-                                  className="rt-td lab-order-list-cell-urgency"
-                                  role="gridcell"
-                                  style={
-                                    Object {
-                                      "flex": "undefined 0 auto",
-                                      "maxWidth": null,
-                                      "width": null,
-                                    }
-                                  }
-                                >
-                                  <span>
-                                     
-                                  </span>
-                                </div>
-                              </TdComponent>
-                              <TdComponent
-                                className="lab-order-list-cell-test-type"
-                                key="6-"
-                                style={
-                                  Object {
-                                    "flex": "undefined 0 auto",
-                                    "maxWidth": null,
-                                    "width": null,
-                                  }
-                                }
-                              >
-                                <div
-                                  className="rt-td lab-order-list-cell-test-type"
-                                  role="gridcell"
-                                  style={
-                                    Object {
-                                      "flex": "undefined 0 auto",
-                                      "maxWidth": null,
-                                      "width": null,
-                                    }
-                                  }
-                                >
-                                  <span>
-                                     
-                                  </span>
-                                </div>
-                              </TdComponent>
-                            </div>
-                          </TrComponent>
-                        </div>
-                      </TrGroupComponent>
-                      <TrGroupComponent
-                        key="12"
-                      >
-                        <div
-                          className="rt-tr-group"
-                          role="rowgroup"
-                        >
-                          <TrComponent
-                            className="-padRow -odd"
-                            style={Object {}}
-                          >
-                            <div
-                              className="rt-tr -padRow -odd"
-                              role="row"
-                              style={Object {}}
-                            >
-                              <TdComponent
-                                className="lab-order-list-cell-emr-id"
-                                key="0-"
-                                style={
-                                  Object {
-                                    "flex": "undefined 0 auto",
-                                    "maxWidth": null,
-                                    "width": null,
-                                  }
-                                }
-                              >
-                                <div
-                                  className="rt-td lab-order-list-cell-emr-id"
-                                  role="gridcell"
-                                  style={
-                                    Object {
-                                      "flex": "undefined 0 auto",
-                                      "maxWidth": null,
-                                      "width": null,
-                                    }
-                                  }
-                                >
-                                  <span>
-                                     
-                                  </span>
-                                </div>
-                              </TdComponent>
-                              <TdComponent
-                                className="lab-order-list-cell-name"
-                                key="1-"
-                                style={
-                                  Object {
-                                    "flex": "undefined 0 auto",
-                                    "maxWidth": null,
-                                    "width": null,
-                                  }
-                                }
-                              >
-                                <div
-                                  className="rt-td lab-order-list-cell-name"
-                                  role="gridcell"
-                                  style={
-                                    Object {
-                                      "flex": "undefined 0 auto",
-                                      "maxWidth": null,
-                                      "width": null,
-                                    }
-                                  }
-                                >
-                                  <span>
-                                     
-                                  </span>
-                                </div>
-                              </TdComponent>
-                              <TdComponent
-                                className="lab-order-list-cell-order-id"
-                                key="2-"
-                                style={
-                                  Object {
-                                    "flex": "undefined 0 auto",
-                                    "maxWidth": null,
-                                    "width": null,
-                                  }
-                                }
-                              >
-                                <div
-                                  className="rt-td lab-order-list-cell-order-id"
-                                  role="gridcell"
-                                  style={
-                                    Object {
-                                      "flex": "undefined 0 auto",
-                                      "maxWidth": null,
-                                      "width": null,
-                                    }
-                                  }
-                                >
-                                  <span>
-                                     
-                                  </span>
-                                </div>
-                              </TdComponent>
-                              <TdComponent
-                                className="lab-order-list-cell-order-date"
-                                key="3-"
-                                style={
-                                  Object {
-                                    "flex": "undefined 0 auto",
-                                    "maxWidth": null,
-                                    "width": null,
-                                  }
-                                }
-                              >
-                                <div
-                                  className="rt-td lab-order-list-cell-order-date"
-                                  role="gridcell"
-                                  style={
-                                    Object {
-                                      "flex": "undefined 0 auto",
-                                      "maxWidth": null,
-                                      "width": null,
-                                    }
-                                  }
-                                >
-                                  <span>
-                                     
-                                  </span>
-                                </div>
-                              </TdComponent>
-                              <TdComponent
-                                className="lab-order-list-cell-collection-date"
-                                key="4-"
-                                style={
-                                  Object {
-                                    "flex": "undefined 0 auto",
-                                    "maxWidth": null,
-                                    "width": null,
-                                  }
-                                }
-                              >
-                                <div
-                                  className="rt-td lab-order-list-cell-collection-date"
-                                  role="gridcell"
-                                  style={
-                                    Object {
-                                      "flex": "undefined 0 auto",
-                                      "maxWidth": null,
-                                      "width": null,
-                                    }
-                                  }
-                                >
-                                  <span>
-                                     
-                                  </span>
-                                </div>
-                              </TdComponent>
-                              <TdComponent
-                                className="lab-order-list-cell-urgency"
-                                key="5-"
-                                style={
-                                  Object {
-                                    "flex": "undefined 0 auto",
-                                    "maxWidth": null,
-                                    "width": null,
-                                  }
-                                }
-                              >
-                                <div
-                                  className="rt-td lab-order-list-cell-urgency"
-                                  role="gridcell"
-                                  style={
-                                    Object {
-                                      "flex": "undefined 0 auto",
-                                      "maxWidth": null,
-                                      "width": null,
-                                    }
-                                  }
-                                >
-                                  <span>
-                                     
-                                  </span>
-                                </div>
-                              </TdComponent>
-                              <TdComponent
-                                className="lab-order-list-cell-test-type"
-                                key="6-"
-                                style={
-                                  Object {
-                                    "flex": "undefined 0 auto",
-                                    "maxWidth": null,
-                                    "width": null,
-                                  }
-                                }
-                              >
-                                <div
-                                  className="rt-td lab-order-list-cell-test-type"
-                                  role="gridcell"
-                                  style={
-                                    Object {
-                                      "flex": "undefined 0 auto",
-                                      "maxWidth": null,
-                                      "width": null,
-                                    }
-                                  }
-                                >
-                                  <span>
-                                     
-                                  </span>
-                                </div>
-                              </TdComponent>
-                            </div>
-                          </TrComponent>
-                        </div>
-                      </TrGroupComponent>
-                      <TrGroupComponent
-                        key="13"
-                      >
-                        <div
-                          className="rt-tr-group"
-                          role="rowgroup"
-                        >
-                          <TrComponent
-                            className="-padRow -even"
-                            style={Object {}}
-                          >
-                            <div
-                              className="rt-tr -padRow -even"
-                              role="row"
-                              style={Object {}}
-                            >
-                              <TdComponent
-                                className="lab-order-list-cell-emr-id"
-                                key="0-"
-                                style={
-                                  Object {
-                                    "flex": "undefined 0 auto",
-                                    "maxWidth": null,
-                                    "width": null,
-                                  }
-                                }
-                              >
-                                <div
-                                  className="rt-td lab-order-list-cell-emr-id"
-                                  role="gridcell"
-                                  style={
-                                    Object {
-                                      "flex": "undefined 0 auto",
-                                      "maxWidth": null,
-                                      "width": null,
-                                    }
-                                  }
-                                >
-                                  <span>
-                                     
-                                  </span>
-                                </div>
-                              </TdComponent>
-                              <TdComponent
-                                className="lab-order-list-cell-name"
-                                key="1-"
-                                style={
-                                  Object {
-                                    "flex": "undefined 0 auto",
-                                    "maxWidth": null,
-                                    "width": null,
-                                  }
-                                }
-                              >
-                                <div
-                                  className="rt-td lab-order-list-cell-name"
-                                  role="gridcell"
-                                  style={
-                                    Object {
-                                      "flex": "undefined 0 auto",
-                                      "maxWidth": null,
-                                      "width": null,
-                                    }
-                                  }
-                                >
-                                  <span>
-                                     
-                                  </span>
-                                </div>
-                              </TdComponent>
-                              <TdComponent
-                                className="lab-order-list-cell-order-id"
-                                key="2-"
-                                style={
-                                  Object {
-                                    "flex": "undefined 0 auto",
-                                    "maxWidth": null,
-                                    "width": null,
-                                  }
-                                }
-                              >
-                                <div
-                                  className="rt-td lab-order-list-cell-order-id"
-                                  role="gridcell"
-                                  style={
-                                    Object {
-                                      "flex": "undefined 0 auto",
-                                      "maxWidth": null,
-                                      "width": null,
-                                    }
-                                  }
-                                >
-                                  <span>
-                                     
-                                  </span>
-                                </div>
-                              </TdComponent>
-                              <TdComponent
-                                className="lab-order-list-cell-order-date"
-                                key="3-"
-                                style={
-                                  Object {
-                                    "flex": "undefined 0 auto",
-                                    "maxWidth": null,
-                                    "width": null,
-                                  }
-                                }
-                              >
-                                <div
-                                  className="rt-td lab-order-list-cell-order-date"
-                                  role="gridcell"
-                                  style={
-                                    Object {
-                                      "flex": "undefined 0 auto",
-                                      "maxWidth": null,
-                                      "width": null,
-                                    }
-                                  }
-                                >
-                                  <span>
-                                     
-                                  </span>
-                                </div>
-                              </TdComponent>
-                              <TdComponent
-                                className="lab-order-list-cell-collection-date"
-                                key="4-"
-                                style={
-                                  Object {
-                                    "flex": "undefined 0 auto",
-                                    "maxWidth": null,
-                                    "width": null,
-                                  }
-                                }
-                              >
-                                <div
-                                  className="rt-td lab-order-list-cell-collection-date"
-                                  role="gridcell"
-                                  style={
-                                    Object {
-                                      "flex": "undefined 0 auto",
-                                      "maxWidth": null,
-                                      "width": null,
-                                    }
-                                  }
-                                >
-                                  <span>
-                                     
-                                  </span>
-                                </div>
-                              </TdComponent>
-                              <TdComponent
-                                className="lab-order-list-cell-urgency"
-                                key="5-"
-                                style={
-                                  Object {
-                                    "flex": "undefined 0 auto",
-                                    "maxWidth": null,
-                                    "width": null,
-                                  }
-                                }
-                              >
-                                <div
-                                  className="rt-td lab-order-list-cell-urgency"
-                                  role="gridcell"
-                                  style={
-                                    Object {
-                                      "flex": "undefined 0 auto",
-                                      "maxWidth": null,
-                                      "width": null,
-                                    }
-                                  }
-                                >
-                                  <span>
-                                     
-                                  </span>
-                                </div>
-                              </TdComponent>
-                              <TdComponent
-                                className="lab-order-list-cell-test-type"
-                                key="6-"
-                                style={
-                                  Object {
-                                    "flex": "undefined 0 auto",
-                                    "maxWidth": null,
-                                    "width": null,
-                                  }
-                                }
-                              >
-                                <div
-                                  className="rt-td lab-order-list-cell-test-type"
-                                  role="gridcell"
-                                  style={
-                                    Object {
-                                      "flex": "undefined 0 auto",
-                                      "maxWidth": null,
-                                      "width": null,
-                                    }
-                                  }
-                                >
-                                  <span>
-                                     
-                                  </span>
-                                </div>
-                              </TdComponent>
-                            </div>
-                          </TrComponent>
-                        </div>
-                      </TrGroupComponent>
-                      <TrGroupComponent
-                        key="14"
-                      >
-                        <div
-                          className="rt-tr-group"
-                          role="rowgroup"
-                        >
-                          <TrComponent
-                            className="-padRow -odd"
-                            style={Object {}}
-                          >
-                            <div
-                              className="rt-tr -padRow -odd"
-                              role="row"
-                              style={Object {}}
-                            >
-                              <TdComponent
-                                className="lab-order-list-cell-emr-id"
-                                key="0-"
-                                style={
-                                  Object {
-                                    "flex": "undefined 0 auto",
-                                    "maxWidth": null,
-                                    "width": null,
-                                  }
-                                }
-                              >
-                                <div
-                                  className="rt-td lab-order-list-cell-emr-id"
-                                  role="gridcell"
-                                  style={
-                                    Object {
-                                      "flex": "undefined 0 auto",
-                                      "maxWidth": null,
-                                      "width": null,
-                                    }
-                                  }
-                                >
-                                  <span>
-                                     
-                                  </span>
-                                </div>
-                              </TdComponent>
-                              <TdComponent
-                                className="lab-order-list-cell-name"
-                                key="1-"
-                                style={
-                                  Object {
-                                    "flex": "undefined 0 auto",
-                                    "maxWidth": null,
-                                    "width": null,
-                                  }
-                                }
-                              >
-                                <div
-                                  className="rt-td lab-order-list-cell-name"
-                                  role="gridcell"
-                                  style={
-                                    Object {
-                                      "flex": "undefined 0 auto",
-                                      "maxWidth": null,
-                                      "width": null,
-                                    }
-                                  }
-                                >
-                                  <span>
-                                     
-                                  </span>
-                                </div>
-                              </TdComponent>
-                              <TdComponent
-                                className="lab-order-list-cell-order-id"
-                                key="2-"
-                                style={
-                                  Object {
-                                    "flex": "undefined 0 auto",
-                                    "maxWidth": null,
-                                    "width": null,
-                                  }
-                                }
-                              >
-                                <div
-                                  className="rt-td lab-order-list-cell-order-id"
-                                  role="gridcell"
-                                  style={
-                                    Object {
-                                      "flex": "undefined 0 auto",
-                                      "maxWidth": null,
-                                      "width": null,
-                                    }
-                                  }
-                                >
-                                  <span>
-                                     
-                                  </span>
-                                </div>
-                              </TdComponent>
-                              <TdComponent
-                                className="lab-order-list-cell-order-date"
-                                key="3-"
-                                style={
-                                  Object {
-                                    "flex": "undefined 0 auto",
-                                    "maxWidth": null,
-                                    "width": null,
-                                  }
-                                }
-                              >
-                                <div
-                                  className="rt-td lab-order-list-cell-order-date"
-                                  role="gridcell"
-                                  style={
-                                    Object {
-                                      "flex": "undefined 0 auto",
-                                      "maxWidth": null,
-                                      "width": null,
-                                    }
-                                  }
-                                >
-                                  <span>
-                                     
-                                  </span>
-                                </div>
-                              </TdComponent>
-                              <TdComponent
-                                className="lab-order-list-cell-collection-date"
-                                key="4-"
-                                style={
-                                  Object {
-                                    "flex": "undefined 0 auto",
-                                    "maxWidth": null,
-                                    "width": null,
-                                  }
-                                }
-                              >
-                                <div
-                                  className="rt-td lab-order-list-cell-collection-date"
-                                  role="gridcell"
-                                  style={
-                                    Object {
-                                      "flex": "undefined 0 auto",
-                                      "maxWidth": null,
-                                      "width": null,
-                                    }
-                                  }
-                                >
-                                  <span>
-                                     
-                                  </span>
-                                </div>
-                              </TdComponent>
-                              <TdComponent
-                                className="lab-order-list-cell-urgency"
-                                key="5-"
-                                style={
-                                  Object {
-                                    "flex": "undefined 0 auto",
-                                    "maxWidth": null,
-                                    "width": null,
-                                  }
-                                }
-                              >
-                                <div
-                                  className="rt-td lab-order-list-cell-urgency"
-                                  role="gridcell"
-                                  style={
-                                    Object {
-                                      "flex": "undefined 0 auto",
-                                      "maxWidth": null,
-                                      "width": null,
-                                    }
-                                  }
-                                >
-                                  <span>
-                                     
-                                  </span>
-                                </div>
-                              </TdComponent>
-                              <TdComponent
-                                className="lab-order-list-cell-test-type"
-                                key="6-"
-                                style={
-                                  Object {
-                                    "flex": "undefined 0 auto",
-                                    "maxWidth": null,
-                                    "width": null,
-                                  }
-                                }
-                              >
-                                <div
-                                  className="rt-td lab-order-list-cell-test-type"
-                                  role="gridcell"
-                                  style={
-                                    Object {
-                                      "flex": "undefined 0 auto",
-                                      "maxWidth": null,
-                                      "width": null,
-                                    }
-                                  }
-                                >
-                                  <span>
-                                     
-                                  </span>
-                                </div>
-                              </TdComponent>
-                            </div>
-                          </TrComponent>
-                        </div>
-                      </TrGroupComponent>
                     </div>
                   </Tbody>
                 </div>
@@ -5236,7 +4211,7 @@ exports[`<LabOrdersList /> component renders correctly 1`] = `
                   defaultExpanded={Object {}}
                   defaultFilterMethod={[Function]}
                   defaultFiltered={Array []}
-                  defaultPageSize={15}
+                  defaultPageSize={10}
                   defaultResized={Array []}
                   defaultSortDesc={false}
                   defaultSortMethod={[Function]}
@@ -5282,7 +4257,7 @@ exports[`<LabOrdersList /> component renders correctly 1`] = `
                   indexKey="_index"
                   loading={false}
                   loadingText="Loading..."
-                  minRows={15}
+                  minRows={10}
                   multiSort={true}
                   nestingLevelKey="_nestingLevel"
                   nextText="Next"
@@ -5299,7 +4274,7 @@ exports[`<LabOrdersList /> component renders correctly 1`] = `
                   onPageSizeChange={[Function]}
                   originalKey="_original"
                   page={0}
-                  pageSize={15}
+                  pageSize={10}
                   pageSizeOptions={
                     Array [
                       5,
@@ -5385,7 +4360,7 @@ exports[`<LabOrdersList /> component renders correctly 1`] = `
                       >
                         <select
                           onChange={[Function]}
-                          value={15}
+                          value={10}
                         >
                           <option
                             key="0"
@@ -5557,409 +4532,419 @@ exports[`LabOrdersListContainer container should pass required props from state 
         </span>
       </FormattedMessage>
     </h1>
-    <div>
-      <LabOrderListFilters
-        clearNameEMRField={[Function]}
-        dateFromField={"2018-09-09T14:57:43.712Z"}
-        dateToField={"2018-09-17T14:57:43.711Z"}
-        handleFieldChange={[Function]}
-        labTests={
-          Array [
-            "Hémogramme automatisé",
-          ]
-        }
-        nameField=""
+    <LabOrderListFilters
+      clearNameEMRField={[Function]}
+      dateFromField={"2018-09-11T18:19:26.552Z"}
+      dateToField={"2018-09-19T18:19:26.552Z"}
+      handleFieldChange={[Function]}
+      labTests={
+        Array [
+          "Hémogramme automatisé",
+        ]
+      }
+      nameField=""
+    >
+      <div
+        className="order-list-filters"
       >
-        <div
-          className="order-list-filters"
+        <span
+          className="top-filters"
         >
           <span
-            className="top-filters"
+            className="date-picker-filter"
           >
-            <span
-              className="date-picker-filter"
-            >
-              <span>
-                <CustomDatePicker
-                  defaultDate={"2018-09-09T14:57:43.746Z"}
-                  field="dateFromField"
-                  handleDateChange={[Function]}
-                  label="From: "
-                  labelClassName="line"
+            <span>
+              <CustomDatePicker
+                defaultDate={"2018-09-11T18:19:26.569Z"}
+                field="dateFromField"
+                formControlStyle={
+                  Object {
+                    "marginRight": "5px",
+                    "width": "105px",
+                  }
+                }
+                handleDateChange={[Function]}
+                label="From: "
+                labelClassName="line"
+              >
+                <DatePicker
+                  allowSameDay={false}
+                  customInput={<DateDisplayComponent />}
+                  dateFormat="L"
+                  dateFormatCalendar="MMMM YYYY"
+                  disabled={false}
+                  disabledKeyboardNavigation={false}
+                  dropdownMode="scroll"
+                  monthsShown={1}
+                  nextMonthButtonLabel="Next month"
+                  onBlur={[Function]}
+                  onChange={[Function]}
+                  onClickOutside={[Function]}
+                  onFocus={[Function]}
+                  onKeyDown={[Function]}
+                  onMonthChange={[Function]}
+                  onSelect={[Function]}
+                  onYearChange={[Function]}
+                  preventOpenOnFocus={false}
+                  previousMonthButtonLabel="Previous Month"
+                  readOnly={false}
+                  selected={"2018-09-11T18:19:26.569Z"}
+                  shouldCloseOnSelect={true}
+                  showTimeSelect={false}
+                  timeCaption="Time"
+                  timeIntervals={30}
+                  withPortal={false}
                 >
-                  <DatePicker
-                    allowSameDay={false}
-                    customInput={<DateDisplayComponent />}
-                    dateFormat="L"
-                    dateFormatCalendar="MMMM YYYY"
-                    disabled={false}
-                    disabledKeyboardNavigation={false}
-                    dropdownMode="scroll"
-                    monthsShown={1}
-                    nextMonthButtonLabel="Next month"
-                    onBlur={[Function]}
-                    onChange={[Function]}
-                    onClickOutside={[Function]}
-                    onFocus={[Function]}
-                    onKeyDown={[Function]}
-                    onMonthChange={[Function]}
-                    onSelect={[Function]}
-                    onYearChange={[Function]}
-                    preventOpenOnFocus={false}
-                    previousMonthButtonLabel="Previous Month"
-                    readOnly={false}
-                    selected={"2018-09-09T14:57:43.746Z"}
-                    shouldCloseOnSelect={true}
-                    showTimeSelect={false}
-                    timeCaption="Time"
-                    timeIntervals={30}
-                    withPortal={false}
-                  >
-                    <PopperComponent
-                      hidePopper={true}
-                      popperComponent={null}
-                      popperModifiers={
-                        Object {
-                          "preventOverflow": Object {
-                            "boundariesElement": "viewport",
-                            "enabled": true,
-                            "escapeWithReference": true,
-                          },
-                        }
+                  <PopperComponent
+                    hidePopper={true}
+                    popperComponent={null}
+                    popperModifiers={
+                      Object {
+                        "preventOverflow": Object {
+                          "boundariesElement": "viewport",
+                          "enabled": true,
+                          "escapeWithReference": true,
+                        },
                       }
-                      popperPlacement="bottom-start"
-                      targetComponent={
-                        <div
-                          className="react-datepicker__input-container"
-                        >
-                          <DateDisplayComponent
-                            className=""
-                            disabled={false}
-                            onBlur={[Function]}
-                            onChange={[Function]}
-                            onClick={[Function]}
-                            onFocus={[Function]}
-                            onKeyDown={[Function]}
-                            readOnly={false}
-                            value="09/09/2018"
-                          />
-                        </div>
-                      }
-                    >
-                      <Manager
-                        tag="div"
+                    }
+                    popperPlacement="bottom-start"
+                    targetComponent={
+                      <div
+                        className="react-datepicker__input-container"
                       >
-                        <div>
-                          <Target
+                        <DateDisplayComponent
+                          className=""
+                          disabled={false}
+                          onBlur={[Function]}
+                          onChange={[Function]}
+                          onClick={[Function]}
+                          onFocus={[Function]}
+                          onKeyDown={[Function]}
+                          readOnly={false}
+                          value="09/11/2018"
+                        />
+                      </div>
+                    }
+                  >
+                    <Manager
+                      tag="div"
+                    >
+                      <div>
+                        <Target
+                          className="react-datepicker-wrapper"
+                        >
+                          <div
                             className="react-datepicker-wrapper"
                           >
                             <div
-                              className="react-datepicker-wrapper"
+                              className="react-datepicker__input-container"
                             >
-                              <div
-                                className="react-datepicker__input-container"
+                              <DateDisplayComponent
+                                className=""
+                                disabled={false}
+                                onBlur={[Function]}
+                                onChange={[Function]}
+                                onClick={[Function]}
+                                onFocus={[Function]}
+                                onKeyDown={[Function]}
+                                readOnly={false}
+                                value="09/11/2018"
                               >
-                                <DateDisplayComponent
-                                  className=""
-                                  disabled={false}
-                                  onBlur={[Function]}
-                                  onChange={[Function]}
-                                  onClick={[Function]}
-                                  onFocus={[Function]}
-                                  onKeyDown={[Function]}
-                                  readOnly={false}
-                                  value="09/09/2018"
+                                <span
+                                  style={
+                                    Object {
+                                      "display": "flex",
+                                      "justifyContent": "space-around",
+                                    }
+                                  }
                                 >
                                   <span
+                                    className="line"
+                                  >
+                                    From: 
+                                  </span>
+                                  <FormControl
+                                    bsClass="form-control"
+                                    componentClass="input"
+                                    placeholder=""
                                     style={
                                       Object {
-                                        "display": "flex",
-                                        "justifyContent": "space-around",
+                                        "marginRight": "5px",
+                                        "width": "105px",
                                       }
                                     }
+                                    type="text"
+                                    value="09/11/2018"
                                   >
-                                    <span
-                                      className="line"
-                                    >
-                                      From: 
-                                    </span>
-                                    <FormControl
-                                      bsClass="form-control"
-                                      componentClass="input"
+                                    <input
+                                      className="form-control"
                                       placeholder=""
                                       style={
                                         Object {
                                           "marginRight": "5px",
-                                          "width": "100px",
+                                          "width": "105px",
                                         }
                                       }
                                       type="text"
-                                      value="09/09/2018"
-                                    >
-                                      <input
-                                        className="form-control"
-                                        placeholder=""
-                                        style={
-                                          Object {
-                                            "marginRight": "5px",
-                                            "width": "100px",
-                                          }
-                                        }
-                                        type="text"
-                                        value="09/09/2018"
-                                      />
-                                    </FormControl>
-                                    <i
-                                      className="icon-calendar scale small add-on"
-                                      onClick={[Function]}
-                                      role="toolbar"
+                                      value="09/11/2018"
                                     />
-                                  </span>
-                                </DateDisplayComponent>
-                              </div>
+                                  </FormControl>
+                                  <i
+                                    className="icon-calendar scale small add-on"
+                                    onClick={[Function]}
+                                    role="toolbar"
+                                  />
+                                </span>
+                              </DateDisplayComponent>
                             </div>
-                          </Target>
-                        </div>
-                      </Manager>
-                    </PopperComponent>
-                  </DatePicker>
-                </CustomDatePicker>
-              </span>
-              <span>
-                <CustomDatePicker
-                  defaultDate={"2018-09-17T14:57:40.128Z"}
-                  field="dateToField"
-                  handleDateChange={[Function]}
-                  label="To: "
-                  labelClassName="line"
+                          </div>
+                        </Target>
+                      </div>
+                    </Manager>
+                  </PopperComponent>
+                </DatePicker>
+              </CustomDatePicker>
+            </span>
+            <span>
+              <CustomDatePicker
+                defaultDate={"2018-09-19T18:19:23.066Z"}
+                field="dateToField"
+                formControlStyle={
+                  Object {
+                    "marginRight": "5px",
+                    "width": "105px",
+                  }
+                }
+                handleDateChange={[Function]}
+                label="To: "
+                labelClassName="line"
+              >
+                <DatePicker
+                  allowSameDay={false}
+                  customInput={<DateDisplayComponent />}
+                  dateFormat="L"
+                  dateFormatCalendar="MMMM YYYY"
+                  disabled={false}
+                  disabledKeyboardNavigation={false}
+                  dropdownMode="scroll"
+                  monthsShown={1}
+                  nextMonthButtonLabel="Next month"
+                  onBlur={[Function]}
+                  onChange={[Function]}
+                  onClickOutside={[Function]}
+                  onFocus={[Function]}
+                  onKeyDown={[Function]}
+                  onMonthChange={[Function]}
+                  onSelect={[Function]}
+                  onYearChange={[Function]}
+                  preventOpenOnFocus={false}
+                  previousMonthButtonLabel="Previous Month"
+                  readOnly={false}
+                  selected={"2018-09-19T18:19:23.066Z"}
+                  shouldCloseOnSelect={true}
+                  showTimeSelect={false}
+                  timeCaption="Time"
+                  timeIntervals={30}
+                  withPortal={false}
                 >
-                  <DatePicker
-                    allowSameDay={false}
-                    customInput={<DateDisplayComponent />}
-                    dateFormat="L"
-                    dateFormatCalendar="MMMM YYYY"
-                    disabled={false}
-                    disabledKeyboardNavigation={false}
-                    dropdownMode="scroll"
-                    monthsShown={1}
-                    nextMonthButtonLabel="Next month"
-                    onBlur={[Function]}
-                    onChange={[Function]}
-                    onClickOutside={[Function]}
-                    onFocus={[Function]}
-                    onKeyDown={[Function]}
-                    onMonthChange={[Function]}
-                    onSelect={[Function]}
-                    onYearChange={[Function]}
-                    preventOpenOnFocus={false}
-                    previousMonthButtonLabel="Previous Month"
-                    readOnly={false}
-                    selected={"2018-09-17T14:57:40.128Z"}
-                    shouldCloseOnSelect={true}
-                    showTimeSelect={false}
-                    timeCaption="Time"
-                    timeIntervals={30}
-                    withPortal={false}
-                  >
-                    <PopperComponent
-                      hidePopper={true}
-                      popperComponent={null}
-                      popperModifiers={
-                        Object {
-                          "preventOverflow": Object {
-                            "boundariesElement": "viewport",
-                            "enabled": true,
-                            "escapeWithReference": true,
-                          },
-                        }
+                  <PopperComponent
+                    hidePopper={true}
+                    popperComponent={null}
+                    popperModifiers={
+                      Object {
+                        "preventOverflow": Object {
+                          "boundariesElement": "viewport",
+                          "enabled": true,
+                          "escapeWithReference": true,
+                        },
                       }
-                      popperPlacement="bottom-start"
-                      targetComponent={
-                        <div
-                          className="react-datepicker__input-container"
-                        >
-                          <DateDisplayComponent
-                            className=""
-                            disabled={false}
-                            onBlur={[Function]}
-                            onChange={[Function]}
-                            onClick={[Function]}
-                            onFocus={[Function]}
-                            onKeyDown={[Function]}
-                            readOnly={false}
-                            value="09/17/2018"
-                          />
-                        </div>
-                      }
-                    >
-                      <Manager
-                        tag="div"
+                    }
+                    popperPlacement="bottom-start"
+                    targetComponent={
+                      <div
+                        className="react-datepicker__input-container"
                       >
-                        <div>
-                          <Target
+                        <DateDisplayComponent
+                          className=""
+                          disabled={false}
+                          onBlur={[Function]}
+                          onChange={[Function]}
+                          onClick={[Function]}
+                          onFocus={[Function]}
+                          onKeyDown={[Function]}
+                          readOnly={false}
+                          value="09/19/2018"
+                        />
+                      </div>
+                    }
+                  >
+                    <Manager
+                      tag="div"
+                    >
+                      <div>
+                        <Target
+                          className="react-datepicker-wrapper"
+                        >
+                          <div
                             className="react-datepicker-wrapper"
                           >
                             <div
-                              className="react-datepicker-wrapper"
+                              className="react-datepicker__input-container"
                             >
-                              <div
-                                className="react-datepicker__input-container"
+                              <DateDisplayComponent
+                                className=""
+                                disabled={false}
+                                onBlur={[Function]}
+                                onChange={[Function]}
+                                onClick={[Function]}
+                                onFocus={[Function]}
+                                onKeyDown={[Function]}
+                                readOnly={false}
+                                value="09/19/2018"
                               >
-                                <DateDisplayComponent
-                                  className=""
-                                  disabled={false}
-                                  onBlur={[Function]}
-                                  onChange={[Function]}
-                                  onClick={[Function]}
-                                  onFocus={[Function]}
-                                  onKeyDown={[Function]}
-                                  readOnly={false}
-                                  value="09/17/2018"
+                                <span
+                                  style={
+                                    Object {
+                                      "display": "flex",
+                                      "justifyContent": "space-around",
+                                    }
+                                  }
                                 >
                                   <span
+                                    className="line"
+                                  >
+                                    To: 
+                                  </span>
+                                  <FormControl
+                                    bsClass="form-control"
+                                    componentClass="input"
+                                    placeholder=""
                                     style={
                                       Object {
-                                        "display": "flex",
-                                        "justifyContent": "space-around",
+                                        "marginRight": "5px",
+                                        "width": "105px",
                                       }
                                     }
+                                    type="text"
+                                    value="09/19/2018"
                                   >
-                                    <span
-                                      className="line"
-                                    >
-                                      To: 
-                                    </span>
-                                    <FormControl
-                                      bsClass="form-control"
-                                      componentClass="input"
+                                    <input
+                                      className="form-control"
                                       placeholder=""
                                       style={
                                         Object {
                                           "marginRight": "5px",
-                                          "width": "100px",
+                                          "width": "105px",
                                         }
                                       }
                                       type="text"
-                                      value="09/17/2018"
-                                    >
-                                      <input
-                                        className="form-control"
-                                        placeholder=""
-                                        style={
-                                          Object {
-                                            "marginRight": "5px",
-                                            "width": "100px",
-                                          }
-                                        }
-                                        type="text"
-                                        value="09/17/2018"
-                                      />
-                                    </FormControl>
-                                    <i
-                                      className="icon-calendar scale small add-on"
-                                      onClick={[Function]}
-                                      role="toolbar"
+                                      value="09/19/2018"
                                     />
-                                  </span>
-                                </DateDisplayComponent>
-                              </div>
+                                  </FormControl>
+                                  <i
+                                    className="icon-calendar scale small add-on"
+                                    onClick={[Function]}
+                                    role="toolbar"
+                                  />
+                                </span>
+                              </DateDisplayComponent>
                             </div>
-                          </Target>
-                        </div>
-                      </Manager>
-                    </PopperComponent>
-                  </DatePicker>
-                </CustomDatePicker>
-              </span>
+                          </div>
+                        </Target>
+                      </div>
+                    </Manager>
+                  </PopperComponent>
+                </DatePicker>
+              </CustomDatePicker>
             </span>
           </span>
+        </span>
+        <span
+          className="bottom-filters"
+        >
           <span
-            className="bottom-filters"
+            className="form-filter-group one-third"
           >
+            <span>
+              Search for a sample
+            </span>
             <span
-              className="form-filter-group one-third"
+              className="name-emrid-order-filter"
             >
-              <span>
-                Search for a sample
-              </span>
-              <span
-                className="name-emrid-order-filter"
+              <i
+                className="small icon-search"
+              />
+              <FormControl
+                bsClass="form-control"
+                componentClass="input"
+                onChange={[Function]}
+                placeholder="search by ID or name, or scan sample"
+                type="text"
+                value=""
               >
-                <i
-                  className="small icon-search"
-                />
-                <FormControl
-                  bsClass="form-control"
-                  componentClass="input"
+                <input
+                  className="form-control"
                   onChange={[Function]}
                   placeholder="search by ID or name, or scan sample"
                   type="text"
                   value=""
-                >
-                  <input
-                    className="form-control"
-                    onChange={[Function]}
-                    placeholder="search by ID or name, or scan sample"
-                    type="text"
-                    value=""
-                  />
-                </FormControl>
-                <i
-                  className="small scale icon-remove-sign"
-                  onClick={[Function]}
-                  role="toolbar"
                 />
-              </span>
+              </FormControl>
+              <i
+                className="small scale icon-remove-sign"
+                onClick={[Function]}
+                role="toolbar"
+              />
             </span>
-            <Dropdown
+          </span>
+          <Dropdown
+            className="form-filter-group quater"
+            defaultValue="All"
+            field="testTypeField"
+            handleSelect={[Function]}
+            label="Test Type"
+            labelClassName=""
+            list={
+              Array [
+                "Hémogramme automatisé",
+              ]
+            }
+          >
+            <span
               className="form-filter-group quater"
-              defaultValue="All"
-              field="testTypeField"
-              handleSelect={[Function]}
-              label="Test Type"
-              labelClassName=""
-              list={
-                Array [
-                  "Hémogramme automatisé",
-                ]
-              }
             >
               <span
-                className="form-filter-group quater"
+                className=""
               >
-                <span
-                  className=""
-                >
-                  Test Type
-                </span>
-                <select
-                  onChange={[Function]}
-                  style={
-                    Object {
-                      "height": "45px",
-                      "width": "100%",
-                    }
-                  }
-                >
-                  <option
-                    key="All"
-                    value="All"
-                  >
-                    All
-                  </option>
-                  <option
-                    key="Hémogramme automatisé"
-                    value="Hémogramme automatisé"
-                  >
-                    Hémogramme automatisé
-                  </option>
-                </select>
+                Test Type
               </span>
-            </Dropdown>
-          </span>
-        </div>
-      </LabOrderListFilters>
-    </div>
+              <select
+                onChange={[Function]}
+                style={
+                  Object {
+                    "height": "45px",
+                    "width": "100%",
+                  }
+                }
+              >
+                <option
+                  key="All"
+                  value="All"
+                >
+                  All
+                </option>
+                <option
+                  key="Hémogramme automatisé"
+                  value="Hémogramme automatisé"
+                >
+                  Hémogramme automatisé
+                </option>
+              </select>
+            </span>
+          </Dropdown>
+        </span>
+      </div>
+    </LabOrderListFilters>
     <div
       className="lab-order-list"
     >
@@ -6095,7 +5080,7 @@ exports[`LabOrdersListContainer container should pass required props from state 
             },
           ]
         }
-        defaultPageSize={15}
+        defaultPageSize={10}
         filterType="none"
         filteredFields={
           Array [
@@ -6110,8 +5095,8 @@ exports[`LabOrdersListContainer container should pass required props from state 
         }
         filters={
           Object {
-            "dateFromField": "2018-09-09T14:57:43.712Z",
-            "dateToField": "2018-09-17T14:57:43.711Z",
+            "dateFromField": "2018-09-11T18:19:26.552Z",
+            "dateToField": "2018-09-19T18:19:26.552Z",
             "nameField": "",
             "testTypeField": "All",
           }
@@ -6314,7 +5299,7 @@ exports[`LabOrdersListContainer container should pass required props from state 
             defaultExpanded={Object {}}
             defaultFilterMethod={[Function]}
             defaultFiltered={Array []}
-            defaultPageSize={15}
+            defaultPageSize={10}
             defaultResized={Array []}
             defaultSortDesc={false}
             defaultSortMethod={[Function]}
@@ -6355,7 +5340,7 @@ exports[`LabOrdersListContainer container should pass required props from state 
             indexKey="_index"
             loading={false}
             loadingText="Loading..."
-            minRows={15}
+            minRows={10}
             multiSort={true}
             nestingLevelKey="_nestingLevel"
             nextText="Next"
@@ -8923,1051 +7908,6 @@ exports[`LabOrdersListContainer container should pass required props from state 
                           </TrComponent>
                         </div>
                       </TrGroupComponent>
-                      <TrGroupComponent
-                        key="10"
-                      >
-                        <div
-                          className="rt-tr-group"
-                          role="rowgroup"
-                        >
-                          <TrComponent
-                            className="-padRow -odd"
-                            style={Object {}}
-                          >
-                            <div
-                              className="rt-tr -padRow -odd"
-                              role="row"
-                              style={Object {}}
-                            >
-                              <TdComponent
-                                className="lab-order-list-cell-emr-id"
-                                key="0-"
-                                style={
-                                  Object {
-                                    "flex": "undefined 0 auto",
-                                    "maxWidth": null,
-                                    "width": null,
-                                  }
-                                }
-                              >
-                                <div
-                                  className="rt-td lab-order-list-cell-emr-id"
-                                  role="gridcell"
-                                  style={
-                                    Object {
-                                      "flex": "undefined 0 auto",
-                                      "maxWidth": null,
-                                      "width": null,
-                                    }
-                                  }
-                                >
-                                  <span>
-                                     
-                                  </span>
-                                </div>
-                              </TdComponent>
-                              <TdComponent
-                                className="lab-order-list-cell-name"
-                                key="1-"
-                                style={
-                                  Object {
-                                    "flex": "undefined 0 auto",
-                                    "maxWidth": null,
-                                    "width": null,
-                                  }
-                                }
-                              >
-                                <div
-                                  className="rt-td lab-order-list-cell-name"
-                                  role="gridcell"
-                                  style={
-                                    Object {
-                                      "flex": "undefined 0 auto",
-                                      "maxWidth": null,
-                                      "width": null,
-                                    }
-                                  }
-                                >
-                                  <span>
-                                     
-                                  </span>
-                                </div>
-                              </TdComponent>
-                              <TdComponent
-                                className="lab-order-list-cell-order-id"
-                                key="2-"
-                                style={
-                                  Object {
-                                    "flex": "undefined 0 auto",
-                                    "maxWidth": null,
-                                    "width": null,
-                                  }
-                                }
-                              >
-                                <div
-                                  className="rt-td lab-order-list-cell-order-id"
-                                  role="gridcell"
-                                  style={
-                                    Object {
-                                      "flex": "undefined 0 auto",
-                                      "maxWidth": null,
-                                      "width": null,
-                                    }
-                                  }
-                                >
-                                  <span>
-                                     
-                                  </span>
-                                </div>
-                              </TdComponent>
-                              <TdComponent
-                                className="lab-order-list-cell-order-date"
-                                key="3-"
-                                style={
-                                  Object {
-                                    "flex": "undefined 0 auto",
-                                    "maxWidth": null,
-                                    "width": null,
-                                  }
-                                }
-                              >
-                                <div
-                                  className="rt-td lab-order-list-cell-order-date"
-                                  role="gridcell"
-                                  style={
-                                    Object {
-                                      "flex": "undefined 0 auto",
-                                      "maxWidth": null,
-                                      "width": null,
-                                    }
-                                  }
-                                >
-                                  <span>
-                                     
-                                  </span>
-                                </div>
-                              </TdComponent>
-                              <TdComponent
-                                className="lab-order-list-cell-collection-date"
-                                key="4-"
-                                style={
-                                  Object {
-                                    "flex": "undefined 0 auto",
-                                    "maxWidth": null,
-                                    "width": null,
-                                  }
-                                }
-                              >
-                                <div
-                                  className="rt-td lab-order-list-cell-collection-date"
-                                  role="gridcell"
-                                  style={
-                                    Object {
-                                      "flex": "undefined 0 auto",
-                                      "maxWidth": null,
-                                      "width": null,
-                                    }
-                                  }
-                                >
-                                  <span>
-                                     
-                                  </span>
-                                </div>
-                              </TdComponent>
-                              <TdComponent
-                                className="lab-order-list-cell-urgency"
-                                key="5-"
-                                style={
-                                  Object {
-                                    "flex": "undefined 0 auto",
-                                    "maxWidth": null,
-                                    "width": null,
-                                  }
-                                }
-                              >
-                                <div
-                                  className="rt-td lab-order-list-cell-urgency"
-                                  role="gridcell"
-                                  style={
-                                    Object {
-                                      "flex": "undefined 0 auto",
-                                      "maxWidth": null,
-                                      "width": null,
-                                    }
-                                  }
-                                >
-                                  <span>
-                                     
-                                  </span>
-                                </div>
-                              </TdComponent>
-                              <TdComponent
-                                className="lab-order-list-cell-test-type"
-                                key="6-"
-                                style={
-                                  Object {
-                                    "flex": "undefined 0 auto",
-                                    "maxWidth": null,
-                                    "width": null,
-                                  }
-                                }
-                              >
-                                <div
-                                  className="rt-td lab-order-list-cell-test-type"
-                                  role="gridcell"
-                                  style={
-                                    Object {
-                                      "flex": "undefined 0 auto",
-                                      "maxWidth": null,
-                                      "width": null,
-                                    }
-                                  }
-                                >
-                                  <span>
-                                     
-                                  </span>
-                                </div>
-                              </TdComponent>
-                            </div>
-                          </TrComponent>
-                        </div>
-                      </TrGroupComponent>
-                      <TrGroupComponent
-                        key="11"
-                      >
-                        <div
-                          className="rt-tr-group"
-                          role="rowgroup"
-                        >
-                          <TrComponent
-                            className="-padRow -even"
-                            style={Object {}}
-                          >
-                            <div
-                              className="rt-tr -padRow -even"
-                              role="row"
-                              style={Object {}}
-                            >
-                              <TdComponent
-                                className="lab-order-list-cell-emr-id"
-                                key="0-"
-                                style={
-                                  Object {
-                                    "flex": "undefined 0 auto",
-                                    "maxWidth": null,
-                                    "width": null,
-                                  }
-                                }
-                              >
-                                <div
-                                  className="rt-td lab-order-list-cell-emr-id"
-                                  role="gridcell"
-                                  style={
-                                    Object {
-                                      "flex": "undefined 0 auto",
-                                      "maxWidth": null,
-                                      "width": null,
-                                    }
-                                  }
-                                >
-                                  <span>
-                                     
-                                  </span>
-                                </div>
-                              </TdComponent>
-                              <TdComponent
-                                className="lab-order-list-cell-name"
-                                key="1-"
-                                style={
-                                  Object {
-                                    "flex": "undefined 0 auto",
-                                    "maxWidth": null,
-                                    "width": null,
-                                  }
-                                }
-                              >
-                                <div
-                                  className="rt-td lab-order-list-cell-name"
-                                  role="gridcell"
-                                  style={
-                                    Object {
-                                      "flex": "undefined 0 auto",
-                                      "maxWidth": null,
-                                      "width": null,
-                                    }
-                                  }
-                                >
-                                  <span>
-                                     
-                                  </span>
-                                </div>
-                              </TdComponent>
-                              <TdComponent
-                                className="lab-order-list-cell-order-id"
-                                key="2-"
-                                style={
-                                  Object {
-                                    "flex": "undefined 0 auto",
-                                    "maxWidth": null,
-                                    "width": null,
-                                  }
-                                }
-                              >
-                                <div
-                                  className="rt-td lab-order-list-cell-order-id"
-                                  role="gridcell"
-                                  style={
-                                    Object {
-                                      "flex": "undefined 0 auto",
-                                      "maxWidth": null,
-                                      "width": null,
-                                    }
-                                  }
-                                >
-                                  <span>
-                                     
-                                  </span>
-                                </div>
-                              </TdComponent>
-                              <TdComponent
-                                className="lab-order-list-cell-order-date"
-                                key="3-"
-                                style={
-                                  Object {
-                                    "flex": "undefined 0 auto",
-                                    "maxWidth": null,
-                                    "width": null,
-                                  }
-                                }
-                              >
-                                <div
-                                  className="rt-td lab-order-list-cell-order-date"
-                                  role="gridcell"
-                                  style={
-                                    Object {
-                                      "flex": "undefined 0 auto",
-                                      "maxWidth": null,
-                                      "width": null,
-                                    }
-                                  }
-                                >
-                                  <span>
-                                     
-                                  </span>
-                                </div>
-                              </TdComponent>
-                              <TdComponent
-                                className="lab-order-list-cell-collection-date"
-                                key="4-"
-                                style={
-                                  Object {
-                                    "flex": "undefined 0 auto",
-                                    "maxWidth": null,
-                                    "width": null,
-                                  }
-                                }
-                              >
-                                <div
-                                  className="rt-td lab-order-list-cell-collection-date"
-                                  role="gridcell"
-                                  style={
-                                    Object {
-                                      "flex": "undefined 0 auto",
-                                      "maxWidth": null,
-                                      "width": null,
-                                    }
-                                  }
-                                >
-                                  <span>
-                                     
-                                  </span>
-                                </div>
-                              </TdComponent>
-                              <TdComponent
-                                className="lab-order-list-cell-urgency"
-                                key="5-"
-                                style={
-                                  Object {
-                                    "flex": "undefined 0 auto",
-                                    "maxWidth": null,
-                                    "width": null,
-                                  }
-                                }
-                              >
-                                <div
-                                  className="rt-td lab-order-list-cell-urgency"
-                                  role="gridcell"
-                                  style={
-                                    Object {
-                                      "flex": "undefined 0 auto",
-                                      "maxWidth": null,
-                                      "width": null,
-                                    }
-                                  }
-                                >
-                                  <span>
-                                     
-                                  </span>
-                                </div>
-                              </TdComponent>
-                              <TdComponent
-                                className="lab-order-list-cell-test-type"
-                                key="6-"
-                                style={
-                                  Object {
-                                    "flex": "undefined 0 auto",
-                                    "maxWidth": null,
-                                    "width": null,
-                                  }
-                                }
-                              >
-                                <div
-                                  className="rt-td lab-order-list-cell-test-type"
-                                  role="gridcell"
-                                  style={
-                                    Object {
-                                      "flex": "undefined 0 auto",
-                                      "maxWidth": null,
-                                      "width": null,
-                                    }
-                                  }
-                                >
-                                  <span>
-                                     
-                                  </span>
-                                </div>
-                              </TdComponent>
-                            </div>
-                          </TrComponent>
-                        </div>
-                      </TrGroupComponent>
-                      <TrGroupComponent
-                        key="12"
-                      >
-                        <div
-                          className="rt-tr-group"
-                          role="rowgroup"
-                        >
-                          <TrComponent
-                            className="-padRow -odd"
-                            style={Object {}}
-                          >
-                            <div
-                              className="rt-tr -padRow -odd"
-                              role="row"
-                              style={Object {}}
-                            >
-                              <TdComponent
-                                className="lab-order-list-cell-emr-id"
-                                key="0-"
-                                style={
-                                  Object {
-                                    "flex": "undefined 0 auto",
-                                    "maxWidth": null,
-                                    "width": null,
-                                  }
-                                }
-                              >
-                                <div
-                                  className="rt-td lab-order-list-cell-emr-id"
-                                  role="gridcell"
-                                  style={
-                                    Object {
-                                      "flex": "undefined 0 auto",
-                                      "maxWidth": null,
-                                      "width": null,
-                                    }
-                                  }
-                                >
-                                  <span>
-                                     
-                                  </span>
-                                </div>
-                              </TdComponent>
-                              <TdComponent
-                                className="lab-order-list-cell-name"
-                                key="1-"
-                                style={
-                                  Object {
-                                    "flex": "undefined 0 auto",
-                                    "maxWidth": null,
-                                    "width": null,
-                                  }
-                                }
-                              >
-                                <div
-                                  className="rt-td lab-order-list-cell-name"
-                                  role="gridcell"
-                                  style={
-                                    Object {
-                                      "flex": "undefined 0 auto",
-                                      "maxWidth": null,
-                                      "width": null,
-                                    }
-                                  }
-                                >
-                                  <span>
-                                     
-                                  </span>
-                                </div>
-                              </TdComponent>
-                              <TdComponent
-                                className="lab-order-list-cell-order-id"
-                                key="2-"
-                                style={
-                                  Object {
-                                    "flex": "undefined 0 auto",
-                                    "maxWidth": null,
-                                    "width": null,
-                                  }
-                                }
-                              >
-                                <div
-                                  className="rt-td lab-order-list-cell-order-id"
-                                  role="gridcell"
-                                  style={
-                                    Object {
-                                      "flex": "undefined 0 auto",
-                                      "maxWidth": null,
-                                      "width": null,
-                                    }
-                                  }
-                                >
-                                  <span>
-                                     
-                                  </span>
-                                </div>
-                              </TdComponent>
-                              <TdComponent
-                                className="lab-order-list-cell-order-date"
-                                key="3-"
-                                style={
-                                  Object {
-                                    "flex": "undefined 0 auto",
-                                    "maxWidth": null,
-                                    "width": null,
-                                  }
-                                }
-                              >
-                                <div
-                                  className="rt-td lab-order-list-cell-order-date"
-                                  role="gridcell"
-                                  style={
-                                    Object {
-                                      "flex": "undefined 0 auto",
-                                      "maxWidth": null,
-                                      "width": null,
-                                    }
-                                  }
-                                >
-                                  <span>
-                                     
-                                  </span>
-                                </div>
-                              </TdComponent>
-                              <TdComponent
-                                className="lab-order-list-cell-collection-date"
-                                key="4-"
-                                style={
-                                  Object {
-                                    "flex": "undefined 0 auto",
-                                    "maxWidth": null,
-                                    "width": null,
-                                  }
-                                }
-                              >
-                                <div
-                                  className="rt-td lab-order-list-cell-collection-date"
-                                  role="gridcell"
-                                  style={
-                                    Object {
-                                      "flex": "undefined 0 auto",
-                                      "maxWidth": null,
-                                      "width": null,
-                                    }
-                                  }
-                                >
-                                  <span>
-                                     
-                                  </span>
-                                </div>
-                              </TdComponent>
-                              <TdComponent
-                                className="lab-order-list-cell-urgency"
-                                key="5-"
-                                style={
-                                  Object {
-                                    "flex": "undefined 0 auto",
-                                    "maxWidth": null,
-                                    "width": null,
-                                  }
-                                }
-                              >
-                                <div
-                                  className="rt-td lab-order-list-cell-urgency"
-                                  role="gridcell"
-                                  style={
-                                    Object {
-                                      "flex": "undefined 0 auto",
-                                      "maxWidth": null,
-                                      "width": null,
-                                    }
-                                  }
-                                >
-                                  <span>
-                                     
-                                  </span>
-                                </div>
-                              </TdComponent>
-                              <TdComponent
-                                className="lab-order-list-cell-test-type"
-                                key="6-"
-                                style={
-                                  Object {
-                                    "flex": "undefined 0 auto",
-                                    "maxWidth": null,
-                                    "width": null,
-                                  }
-                                }
-                              >
-                                <div
-                                  className="rt-td lab-order-list-cell-test-type"
-                                  role="gridcell"
-                                  style={
-                                    Object {
-                                      "flex": "undefined 0 auto",
-                                      "maxWidth": null,
-                                      "width": null,
-                                    }
-                                  }
-                                >
-                                  <span>
-                                     
-                                  </span>
-                                </div>
-                              </TdComponent>
-                            </div>
-                          </TrComponent>
-                        </div>
-                      </TrGroupComponent>
-                      <TrGroupComponent
-                        key="13"
-                      >
-                        <div
-                          className="rt-tr-group"
-                          role="rowgroup"
-                        >
-                          <TrComponent
-                            className="-padRow -even"
-                            style={Object {}}
-                          >
-                            <div
-                              className="rt-tr -padRow -even"
-                              role="row"
-                              style={Object {}}
-                            >
-                              <TdComponent
-                                className="lab-order-list-cell-emr-id"
-                                key="0-"
-                                style={
-                                  Object {
-                                    "flex": "undefined 0 auto",
-                                    "maxWidth": null,
-                                    "width": null,
-                                  }
-                                }
-                              >
-                                <div
-                                  className="rt-td lab-order-list-cell-emr-id"
-                                  role="gridcell"
-                                  style={
-                                    Object {
-                                      "flex": "undefined 0 auto",
-                                      "maxWidth": null,
-                                      "width": null,
-                                    }
-                                  }
-                                >
-                                  <span>
-                                     
-                                  </span>
-                                </div>
-                              </TdComponent>
-                              <TdComponent
-                                className="lab-order-list-cell-name"
-                                key="1-"
-                                style={
-                                  Object {
-                                    "flex": "undefined 0 auto",
-                                    "maxWidth": null,
-                                    "width": null,
-                                  }
-                                }
-                              >
-                                <div
-                                  className="rt-td lab-order-list-cell-name"
-                                  role="gridcell"
-                                  style={
-                                    Object {
-                                      "flex": "undefined 0 auto",
-                                      "maxWidth": null,
-                                      "width": null,
-                                    }
-                                  }
-                                >
-                                  <span>
-                                     
-                                  </span>
-                                </div>
-                              </TdComponent>
-                              <TdComponent
-                                className="lab-order-list-cell-order-id"
-                                key="2-"
-                                style={
-                                  Object {
-                                    "flex": "undefined 0 auto",
-                                    "maxWidth": null,
-                                    "width": null,
-                                  }
-                                }
-                              >
-                                <div
-                                  className="rt-td lab-order-list-cell-order-id"
-                                  role="gridcell"
-                                  style={
-                                    Object {
-                                      "flex": "undefined 0 auto",
-                                      "maxWidth": null,
-                                      "width": null,
-                                    }
-                                  }
-                                >
-                                  <span>
-                                     
-                                  </span>
-                                </div>
-                              </TdComponent>
-                              <TdComponent
-                                className="lab-order-list-cell-order-date"
-                                key="3-"
-                                style={
-                                  Object {
-                                    "flex": "undefined 0 auto",
-                                    "maxWidth": null,
-                                    "width": null,
-                                  }
-                                }
-                              >
-                                <div
-                                  className="rt-td lab-order-list-cell-order-date"
-                                  role="gridcell"
-                                  style={
-                                    Object {
-                                      "flex": "undefined 0 auto",
-                                      "maxWidth": null,
-                                      "width": null,
-                                    }
-                                  }
-                                >
-                                  <span>
-                                     
-                                  </span>
-                                </div>
-                              </TdComponent>
-                              <TdComponent
-                                className="lab-order-list-cell-collection-date"
-                                key="4-"
-                                style={
-                                  Object {
-                                    "flex": "undefined 0 auto",
-                                    "maxWidth": null,
-                                    "width": null,
-                                  }
-                                }
-                              >
-                                <div
-                                  className="rt-td lab-order-list-cell-collection-date"
-                                  role="gridcell"
-                                  style={
-                                    Object {
-                                      "flex": "undefined 0 auto",
-                                      "maxWidth": null,
-                                      "width": null,
-                                    }
-                                  }
-                                >
-                                  <span>
-                                     
-                                  </span>
-                                </div>
-                              </TdComponent>
-                              <TdComponent
-                                className="lab-order-list-cell-urgency"
-                                key="5-"
-                                style={
-                                  Object {
-                                    "flex": "undefined 0 auto",
-                                    "maxWidth": null,
-                                    "width": null,
-                                  }
-                                }
-                              >
-                                <div
-                                  className="rt-td lab-order-list-cell-urgency"
-                                  role="gridcell"
-                                  style={
-                                    Object {
-                                      "flex": "undefined 0 auto",
-                                      "maxWidth": null,
-                                      "width": null,
-                                    }
-                                  }
-                                >
-                                  <span>
-                                     
-                                  </span>
-                                </div>
-                              </TdComponent>
-                              <TdComponent
-                                className="lab-order-list-cell-test-type"
-                                key="6-"
-                                style={
-                                  Object {
-                                    "flex": "undefined 0 auto",
-                                    "maxWidth": null,
-                                    "width": null,
-                                  }
-                                }
-                              >
-                                <div
-                                  className="rt-td lab-order-list-cell-test-type"
-                                  role="gridcell"
-                                  style={
-                                    Object {
-                                      "flex": "undefined 0 auto",
-                                      "maxWidth": null,
-                                      "width": null,
-                                    }
-                                  }
-                                >
-                                  <span>
-                                     
-                                  </span>
-                                </div>
-                              </TdComponent>
-                            </div>
-                          </TrComponent>
-                        </div>
-                      </TrGroupComponent>
-                      <TrGroupComponent
-                        key="14"
-                      >
-                        <div
-                          className="rt-tr-group"
-                          role="rowgroup"
-                        >
-                          <TrComponent
-                            className="-padRow -odd"
-                            style={Object {}}
-                          >
-                            <div
-                              className="rt-tr -padRow -odd"
-                              role="row"
-                              style={Object {}}
-                            >
-                              <TdComponent
-                                className="lab-order-list-cell-emr-id"
-                                key="0-"
-                                style={
-                                  Object {
-                                    "flex": "undefined 0 auto",
-                                    "maxWidth": null,
-                                    "width": null,
-                                  }
-                                }
-                              >
-                                <div
-                                  className="rt-td lab-order-list-cell-emr-id"
-                                  role="gridcell"
-                                  style={
-                                    Object {
-                                      "flex": "undefined 0 auto",
-                                      "maxWidth": null,
-                                      "width": null,
-                                    }
-                                  }
-                                >
-                                  <span>
-                                     
-                                  </span>
-                                </div>
-                              </TdComponent>
-                              <TdComponent
-                                className="lab-order-list-cell-name"
-                                key="1-"
-                                style={
-                                  Object {
-                                    "flex": "undefined 0 auto",
-                                    "maxWidth": null,
-                                    "width": null,
-                                  }
-                                }
-                              >
-                                <div
-                                  className="rt-td lab-order-list-cell-name"
-                                  role="gridcell"
-                                  style={
-                                    Object {
-                                      "flex": "undefined 0 auto",
-                                      "maxWidth": null,
-                                      "width": null,
-                                    }
-                                  }
-                                >
-                                  <span>
-                                     
-                                  </span>
-                                </div>
-                              </TdComponent>
-                              <TdComponent
-                                className="lab-order-list-cell-order-id"
-                                key="2-"
-                                style={
-                                  Object {
-                                    "flex": "undefined 0 auto",
-                                    "maxWidth": null,
-                                    "width": null,
-                                  }
-                                }
-                              >
-                                <div
-                                  className="rt-td lab-order-list-cell-order-id"
-                                  role="gridcell"
-                                  style={
-                                    Object {
-                                      "flex": "undefined 0 auto",
-                                      "maxWidth": null,
-                                      "width": null,
-                                    }
-                                  }
-                                >
-                                  <span>
-                                     
-                                  </span>
-                                </div>
-                              </TdComponent>
-                              <TdComponent
-                                className="lab-order-list-cell-order-date"
-                                key="3-"
-                                style={
-                                  Object {
-                                    "flex": "undefined 0 auto",
-                                    "maxWidth": null,
-                                    "width": null,
-                                  }
-                                }
-                              >
-                                <div
-                                  className="rt-td lab-order-list-cell-order-date"
-                                  role="gridcell"
-                                  style={
-                                    Object {
-                                      "flex": "undefined 0 auto",
-                                      "maxWidth": null,
-                                      "width": null,
-                                    }
-                                  }
-                                >
-                                  <span>
-                                     
-                                  </span>
-                                </div>
-                              </TdComponent>
-                              <TdComponent
-                                className="lab-order-list-cell-collection-date"
-                                key="4-"
-                                style={
-                                  Object {
-                                    "flex": "undefined 0 auto",
-                                    "maxWidth": null,
-                                    "width": null,
-                                  }
-                                }
-                              >
-                                <div
-                                  className="rt-td lab-order-list-cell-collection-date"
-                                  role="gridcell"
-                                  style={
-                                    Object {
-                                      "flex": "undefined 0 auto",
-                                      "maxWidth": null,
-                                      "width": null,
-                                    }
-                                  }
-                                >
-                                  <span>
-                                     
-                                  </span>
-                                </div>
-                              </TdComponent>
-                              <TdComponent
-                                className="lab-order-list-cell-urgency"
-                                key="5-"
-                                style={
-                                  Object {
-                                    "flex": "undefined 0 auto",
-                                    "maxWidth": null,
-                                    "width": null,
-                                  }
-                                }
-                              >
-                                <div
-                                  className="rt-td lab-order-list-cell-urgency"
-                                  role="gridcell"
-                                  style={
-                                    Object {
-                                      "flex": "undefined 0 auto",
-                                      "maxWidth": null,
-                                      "width": null,
-                                    }
-                                  }
-                                >
-                                  <span>
-                                     
-                                  </span>
-                                </div>
-                              </TdComponent>
-                              <TdComponent
-                                className="lab-order-list-cell-test-type"
-                                key="6-"
-                                style={
-                                  Object {
-                                    "flex": "undefined 0 auto",
-                                    "maxWidth": null,
-                                    "width": null,
-                                  }
-                                }
-                              >
-                                <div
-                                  className="rt-td lab-order-list-cell-test-type"
-                                  role="gridcell"
-                                  style={
-                                    Object {
-                                      "flex": "undefined 0 auto",
-                                      "maxWidth": null,
-                                      "width": null,
-                                    }
-                                  }
-                                >
-                                  <span>
-                                     
-                                  </span>
-                                </div>
-                              </TdComponent>
-                            </div>
-                          </TrComponent>
-                        </div>
-                      </TrGroupComponent>
                     </div>
                   </Tbody>
                 </div>
@@ -10711,7 +8651,7 @@ exports[`LabOrdersListContainer container should pass required props from state 
                   defaultExpanded={Object {}}
                   defaultFilterMethod={[Function]}
                   defaultFiltered={Array []}
-                  defaultPageSize={15}
+                  defaultPageSize={10}
                   defaultResized={Array []}
                   defaultSortDesc={false}
                   defaultSortMethod={[Function]}
@@ -10757,7 +8697,7 @@ exports[`LabOrdersListContainer container should pass required props from state 
                   indexKey="_index"
                   loading={false}
                   loadingText="Loading..."
-                  minRows={15}
+                  minRows={10}
                   multiSort={true}
                   nestingLevelKey="_nestingLevel"
                   nextText="Next"
@@ -10774,7 +8714,7 @@ exports[`LabOrdersListContainer container should pass required props from state 
                   onPageSizeChange={[Function]}
                   originalKey="_original"
                   page={0}
-                  pageSize={15}
+                  pageSize={10}
                   pageSizeOptions={
                     Array [
                       5,
@@ -10860,7 +8800,7 @@ exports[`LabOrdersListContainer container should pass required props from state 
                       >
                         <select
                           onChange={[Function]}
-                          value={15}
+                          value={10}
                         >
                           <option
                             key="0"
