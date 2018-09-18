@@ -30,4 +30,12 @@ export default {
       message: null,
     },
   },
+  CONSTANTS: {
+    labResultsEncounterType: '',
+    isLoading: false,
+    error: {
+      status: false,
+      message: null,
+    },
+  },
 };

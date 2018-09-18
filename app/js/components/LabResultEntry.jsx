@@ -29,9 +29,9 @@ import {
   Submit,
 } from '@openmrs/react-components';
 
-import { ENCOUNTER_TYPES } from '../utils/constants';
 import patientAction from '../actions/patientAction';
 import labConceptsAction from '../actions/labConceptsAction';
+import labResultEncounterAction from '../actions/labResultEncounterAction';
 import '../../css/lab-result-entry.scss';
 
 
@@ -49,7 +49,7 @@ export class LabResultEntry extends PureComponent {
       const conceptUUID = state.concept.uuid;
       dispatch(patientAction.getPatient(state.patient.uuid));
       dispatch(labConceptsAction.fetchLabConcept(conceptUUID));
-      
+      dispatch(labResultEncounterAction.fetchLabResultsEncounterType());
     } else {
       this.shouldRedirect();
     }
@@ -86,6 +86,7 @@ export class LabResultEntry extends PureComponent {
 
   renderForm = () => {
     const { selectedLabConcept, patientHeaderDetail } = this.state;
+    const { CONSTANTS } = this.props;
 
     let observations;
 
@@ -112,7 +113,7 @@ export class LabResultEntry extends PureComponent {
           <EncounterFormPage
             afterSubmitLink="/"
             backLink="/"
-            encounterType={ENCOUNTER_TYPES.specimenCollectionEncounterType}
+            encounterType={CONSTANTS.labResultsEncounterType}
             formContent={observations}
             patient={patientHeaderDetail}
           />
@@ -128,6 +129,7 @@ export class LabResultEntry extends PureComponent {
   render() {
     const { patientHeaderDetail, redirect } = this.state;
     const { location } = this.props;
+
     if (redirect) {
       return <Redirect to="/" />;
     }
@@ -191,14 +193,17 @@ LabResultEntry.propTypes = {
   dispatch: PropTypes.func.isRequired,
   selectedLabConcept: PropTypes.object,
   location: PropTypes.object.isRequired,
+  CONSTANTS: PropTypes.string.isRequired,
 };
 
 const mapStateToProps = ({
   patient: { patient },
   selectedLabConcept,
+  CONSTANTS,
 }) => ({
   patientHeaderDetail: patient,
   selectedLabConcept,
+  CONSTANTS,
 });
 
 export default connect(mapStateToProps)(LabResultEntry);
