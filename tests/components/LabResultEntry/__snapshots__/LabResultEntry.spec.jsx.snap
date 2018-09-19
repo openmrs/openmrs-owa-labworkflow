@@ -1,0 +1,373 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<LabOrdersList /> component renders correctly 1`] = `
+<Connect(LabResultEntry)
+  clearNameEMRField={[MockFunction]}
+  history={
+    Object {
+      "location": Object {
+        "state": Object {
+          "concept": Object {
+            "display": "Hémogramme automatisé",
+          },
+          "dateActivated": "2018-08-30T17:34:19.000+0100",
+          "orderNumber": "ORD-1",
+          "patient": Object {
+            "display": "Y2A7LR - williams willy john",
+          },
+          "urgency": "ROUTINE",
+        },
+      },
+    }
+  }
+  labTests={
+    Array [
+      "Hémogramme automatisé",
+    ]
+  }
+  location={
+    Object {
+      "state": Object {
+        "concept": Object {
+          "display": "Hémogramme automatisé",
+        },
+        "dateActivated": "2018-08-30T17:34:19.000+0100",
+        "orderNumber": "ORD-1",
+        "patient": Object {
+          "display": "Y2A7LR - williams willy john",
+        },
+        "urgency": "ROUTINE",
+      },
+    }
+  }
+  nameField=""
+  patientHeaderDetail={
+    Object {
+      "display": "Y2A7LR - williams willy john",
+    }
+  }
+  selectedLAbConcept={
+    Object {
+      "setMembers": Array [
+        Object {
+          "display": "Height",
+          "uuid": "1234-abcd",
+        },
+        Object {
+          "display": "Weight",
+          "uuid": "pqrs-5678",
+        },
+      ],
+    }
+  }
+  store={
+    Object {
+      "clearActions": [Function],
+      "dispatch": [Function],
+      "getActions": [Function],
+      "getState": [Function],
+      "replaceReducer": [Function],
+      "subscribe": [Function],
+    }
+  }
+>
+  <LabResultEntry
+    clearNameEMRField={[MockFunction]}
+    dispatch={[Function]}
+    history={
+      Object {
+        "location": Object {
+          "state": Object {
+            "concept": Object {
+              "display": "Hémogramme automatisé",
+            },
+            "dateActivated": "2018-08-30T17:34:19.000+0100",
+            "orderNumber": "ORD-1",
+            "patient": Object {
+              "display": "Y2A7LR - williams willy john",
+            },
+            "urgency": "ROUTINE",
+          },
+        },
+      }
+    }
+    labTests={
+      Array [
+        "Hémogramme automatisé",
+      ]
+    }
+    location={
+      Object {
+        "state": Object {
+          "concept": Object {
+            "display": "Hémogramme automatisé",
+          },
+          "dateActivated": "2018-08-30T17:34:19.000+0100",
+          "orderNumber": "ORD-1",
+          "patient": Object {
+            "display": "Y2A7LR - williams willy john",
+          },
+          "urgency": "ROUTINE",
+        },
+      }
+    }
+    nameField=""
+    patientHeaderDetail={
+      Object {
+        "display": "Y2A7LR - williams willy john",
+      }
+    }
+    selectedLAbConcept={
+      Object {
+        "setMembers": Array [
+          Object {
+            "display": "Height",
+            "uuid": "1234-abcd",
+          },
+          Object {
+            "display": "Weight",
+            "uuid": "pqrs-5678",
+          },
+        ],
+      }
+    }
+    selectedLabConcept={null}
+    store={
+      Object {
+        "clearActions": [Function],
+        "dispatch": [Function],
+        "getActions": [Function],
+        "getState": [Function],
+        "replaceReducer": [Function],
+        "subscribe": [Function],
+      }
+    }
+    storeSubscription={
+      Subscription {
+        "listeners": Object {
+          "clear": [Function],
+          "get": [Function],
+          "notify": [Function],
+          "subscribe": [Function],
+        },
+        "onStateChange": [Function],
+        "parentSub": undefined,
+        "store": Object {
+          "clearActions": [Function],
+          "dispatch": [Function],
+          "getActions": [Function],
+          "getState": [Function],
+          "replaceReducer": [Function],
+          "subscribe": [Function],
+        },
+        "unsubscribe": [Function],
+      }
+    }
+  >
+    <div
+      className="container-fluid"
+    >
+      <div>
+        <h1>
+          Test Results
+        </h1>
+        <div
+          className="fieldset-container"
+        >
+          <fieldset>
+            <legend>
+              Specimen Details:
+            </legend>
+            <div
+              className="col-xs-12"
+            >
+              <CustomDatePicker
+                defaultDate={"2018-09-12T18:19:27.012Z"}
+                field="dateFromField"
+                formControlStyle={
+                  Object {
+                    "marginRight": "5px",
+                    "width": "100px",
+                  }
+                }
+                handleDateChange={[Function]}
+                label="Specimen Collection Date:"
+                labelClassName="date-picker-label"
+              >
+                <DatePicker
+                  allowSameDay={false}
+                  customInput={<DateDisplayComponent />}
+                  dateFormat="L"
+                  dateFormatCalendar="MMMM YYYY"
+                  disabled={false}
+                  disabledKeyboardNavigation={false}
+                  dropdownMode="scroll"
+                  monthsShown={1}
+                  nextMonthButtonLabel="Next month"
+                  onBlur={[Function]}
+                  onChange={[Function]}
+                  onClickOutside={[Function]}
+                  onFocus={[Function]}
+                  onKeyDown={[Function]}
+                  onMonthChange={[Function]}
+                  onSelect={[Function]}
+                  onYearChange={[Function]}
+                  preventOpenOnFocus={false}
+                  previousMonthButtonLabel="Previous Month"
+                  readOnly={false}
+                  selected={"2018-09-12T18:19:27.012Z"}
+                  shouldCloseOnSelect={true}
+                  showTimeSelect={false}
+                  timeCaption="Time"
+                  timeIntervals={30}
+                  withPortal={false}
+                >
+                  <PopperComponent
+                    hidePopper={true}
+                    popperComponent={null}
+                    popperModifiers={
+                      Object {
+                        "preventOverflow": Object {
+                          "boundariesElement": "viewport",
+                          "enabled": true,
+                          "escapeWithReference": true,
+                        },
+                      }
+                    }
+                    popperPlacement="bottom-start"
+                    targetComponent={
+                      <div
+                        className="react-datepicker__input-container"
+                      >
+                        <DateDisplayComponent
+                          className=""
+                          disabled={false}
+                          onBlur={[Function]}
+                          onChange={[Function]}
+                          onClick={[Function]}
+                          onFocus={[Function]}
+                          onKeyDown={[Function]}
+                          readOnly={false}
+                          value="09/12/2018"
+                        />
+                      </div>
+                    }
+                  >
+                    <Manager
+                      tag="div"
+                    >
+                      <div>
+                        <Target
+                          className="react-datepicker-wrapper"
+                        >
+                          <div
+                            className="react-datepicker-wrapper"
+                          >
+                            <div
+                              className="react-datepicker__input-container"
+                            >
+                              <DateDisplayComponent
+                                className=""
+                                disabled={false}
+                                onBlur={[Function]}
+                                onChange={[Function]}
+                                onClick={[Function]}
+                                onFocus={[Function]}
+                                onKeyDown={[Function]}
+                                readOnly={false}
+                                value="09/12/2018"
+                              >
+                                <span
+                                  style={
+                                    Object {
+                                      "display": "flex",
+                                      "justifyContent": "space-around",
+                                    }
+                                  }
+                                >
+                                  <span
+                                    className="date-picker-label"
+                                  >
+                                    Specimen Collection Date:
+                                  </span>
+                                  <FormControl
+                                    bsClass="form-control"
+                                    componentClass="input"
+                                    placeholder=""
+                                    style={
+                                      Object {
+                                        "marginRight": "5px",
+                                        "width": "100px",
+                                      }
+                                    }
+                                    type="text"
+                                    value="09/12/2018"
+                                  >
+                                    <input
+                                      className="form-control"
+                                      placeholder=""
+                                      style={
+                                        Object {
+                                          "marginRight": "5px",
+                                          "width": "100px",
+                                        }
+                                      }
+                                      type="text"
+                                      value="09/12/2018"
+                                    />
+                                  </FormControl>
+                                  <i
+                                    className="icon-calendar scale small add-on"
+                                    onClick={[Function]}
+                                    role="toolbar"
+                                  />
+                                </span>
+                              </DateDisplayComponent>
+                            </div>
+                          </div>
+                        </Target>
+                      </div>
+                    </Manager>
+                  </PopperComponent>
+                </DatePicker>
+              </CustomDatePicker>
+            </div>
+            <br />
+            <br />
+            <div
+              className="col-xs-6"
+            >
+              <span>
+                Test: 
+                <span
+                  className="test-details"
+                />
+              </span>
+            </div>
+            <div
+              className="col-xs-6"
+            >
+              <span>
+                Urgency: 
+                <span
+                  className="test-details"
+                >
+                  ROUTINE
+                </span>
+              </span>
+            </div>
+            <br />
+            <br />
+          </fieldset>
+        </div>
+      </div>
+      <br />
+      <br />
+      <br />
+      <div
+        className="fieldset-container"
+      />
+    </div>
+  </LabResultEntry>
+</Connect(LabResultEntry)>
+`;

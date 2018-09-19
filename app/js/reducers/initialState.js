@@ -10,6 +10,7 @@ export default {
   },
   selectedPatient: null,
   selectedLabConcept: null,
+  conceptMembers: {},
   patients: {},
   patientReducer: {
     patient: {

@@ -17,6 +17,7 @@ import {
   patientsReducer,
   selectedPatientReducer,
   selectedLabConceptReducer,
+  conceptMembersReducer,
 } from './patientsReducer';
 
 
@@ -29,4 +30,5 @@ export default combineReducers({
   selectedPatient: selectedPatientReducer,
   selectedLabConcept: selectedLabConceptReducer,
   CONSTANTS: constantsReducer,
+  conceptMembers: conceptMembersReducer,
 });

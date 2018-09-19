@@ -6,7 +6,7 @@ import {
 } from '../actions/actionTypes'
 import { setLabTestTypes } from '../actions/labOrdersAction';
 
-export function* setLabTestsSaga () {
+export function* setLabTestsSaga() {
   const { payload } = yield take(`${FETCH_LAB_ORDERS}_SUCCESS`);
 
   const labTestTypes = R.compose(

@@ -8,7 +8,7 @@ export default (state = initialState.CONSTANTS, action) => {
       return {
         ...state,
         isLoading: false,
-        labResultsEncounterType: action.payload.results[0].value,
+        labResultsEncounterType: action.payload.data.results[0].value,
       };
     }
     case `${FETCH_LAB_RESULTS_ENCOUNTER_TYPE}_FAILURE`: {
@@ -32,7 +32,7 @@ export default (state = initialState.CONSTANTS, action) => {
       return {
         ...state,
         isLoading: false,
-        dateAndTimeFormat: action.payload.results[0].value,
+        dateAndTimeFormat: action.payload.data.results[0].value,
       };
     }
     case `${GET_DATE}_FAILURE`: {
