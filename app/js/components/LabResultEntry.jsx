@@ -90,18 +90,25 @@ export class LabResultEntry extends PureComponent {
     this.setState({ redirect: true });
   }
 
-  renderForm() {
+  renderForm = () => {
     const { selectedLabConcept, patientHeaderDetail } = this.state;
     const { CONSTANTS } = this.props;
+    const encounterType = {
+      uuid: CONSTANTS.labResultsEncounterType,
+    };
 
-    if (selectedLabConcept) {
-      const observations = (
+    let observations;
+
+    if (!selectedLabConcept) {
+      observations = (<span />);
+    } else {
+      observations = (
         <Grid>
           <Row>
             {
-              selectedLabConcept.setMembers.map(
+              selectedLabConcept.set ? selectedLabConcept.setMembers.map(
                 member => this.renderFormContent(member),
-              )
+              ) : this.renderFormContent(selectedLabConcept, selectedLabConcept.answers)
             }
           </Row>
         </Grid>
@@ -122,7 +129,7 @@ export class LabResultEntry extends PureComponent {
             <EncounterFormPage
               afterSubmitLink="/"
               backLink="/"
-              encounterType={CONSTANTS.labResultsEncounterType}
+              encounterType={encounterType}
               formContent={observations}
               patient={patientHeaderDetail}
             />
@@ -133,7 +140,7 @@ export class LabResultEntry extends PureComponent {
     return null;
   }
 
-  renderFormContent(member) {
+  renderFormContent(member, selectedLabConceptAnswers) {
     const { conceptMembers } = this.props;
     const memberDetails = conceptMembers[member.uuid];
     if (memberDetails) {
@@ -181,6 +188,7 @@ export class LabResultEntry extends PureComponent {
           validate: validations,
         };
       }
+
       if (!R.isEmpty(warnings)) {
         obsProps = {
           ...obsProps,
@@ -210,7 +218,29 @@ export class LabResultEntry extends PureComponent {
         </FormGroup>
       );
     }
-    return null;
+    return (
+      <FormGroup controlId={member.display}>
+        <Col componentClass={ControlLabel} sm={3}>
+          {member.display}
+        </Col>
+        <Col sm={4}>
+          {selectedLabConceptAnswers
+            ? (
+              <Obs
+                conceptAnswers={selectedLabConceptAnswers}
+                widget="dropdown"
+                concept={member.uuid}
+                path={member.uuid}
+              />
+            ) : (
+              <Obs
+                concept={member.uuid}
+                path={member.uuid}
+              />
+            )}
+        </Col>
+      </FormGroup>
+    );
   }
 
   render() {
