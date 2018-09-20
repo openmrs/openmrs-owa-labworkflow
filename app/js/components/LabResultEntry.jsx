@@ -228,7 +228,7 @@ export class LabResultEntry extends PureComponent {
             ? (
               <Obs
                 conceptAnswers={selectedLabConceptAnswers}
-                displayComponent="dropdown"
+                widget="dropdown"
                 dropDownTitle={member.display}
                 concept={member.uuid}
                 path={member.uuid}
