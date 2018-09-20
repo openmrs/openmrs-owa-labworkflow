@@ -93,6 +93,9 @@ export class LabResultEntry extends PureComponent {
   renderForm = () => {
     const { selectedLabConcept, patientHeaderDetail } = this.state;
     const { CONSTANTS } = this.props;
+    const encounterType = {
+      uuid: CONSTANTS.labResultsEncounterType,
+    };
 
     let observations;
 
@@ -126,7 +129,7 @@ export class LabResultEntry extends PureComponent {
             <EncounterFormPage
               afterSubmitLink="/"
               backLink="/"
-              encounterType={CONSTANTS.labResultsEncounterType}
+              encounterType={encounterType}
               formContent={observations}
               patient={patientHeaderDetail}
             />
