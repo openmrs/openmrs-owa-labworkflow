@@ -12,6 +12,9 @@ export default {
   selectedLabConcept: null,
   conceptMembers: {},
   patients: {},
+  fetchStatus: {
+    isLoading: false,
+  },
   patientReducer: {
     patient: {
       person: {

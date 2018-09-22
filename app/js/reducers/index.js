@@ -18,6 +18,7 @@ import {
   selectedPatientReducer,
   selectedLabConceptReducer,
   conceptMembersReducer,
+  fetchStatusReducer,
 } from './patientsReducer';
 
 
@@ -31,4 +32,5 @@ export default combineReducers({
   selectedLabConcept: selectedLabConceptReducer,
   CONSTANTS: constantsReducer,
   conceptMembers: conceptMembersReducer,
+  fetchStatus: fetchStatusReducer,
 });

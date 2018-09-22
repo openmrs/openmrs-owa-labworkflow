@@ -1,6 +1,6 @@
 import { sagas as openmrsSagas } from '@openmrs/react-components';
 import patientSagas from './patientSaga';
-import { setLabTestsSaga } from './labOrdersSaga';
+import { setLabTestsSaga, clear, resetState } from './labOrdersSaga';
 import { setLabConcepts } from './conceptsSaga';
 
 const sagas = {
@@ -8,6 +8,8 @@ const sagas = {
   openmrsSagas,
   patientSagas,
   setLabConcepts,
+  clear,
+  resetState,
 };
 
 const initSagas = (sagaMiddleware) => {

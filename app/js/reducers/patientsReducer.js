@@ -1,8 +1,10 @@
 import {
   SET_SELECTED_PATIENT,
   ADD_PATIENT,
-  FETCH_LAB_CONCEPTS,
+  FETCH_LAB_CONCEPT,
   SET_CONCEPT_MEMBER,
+  SET_FETCH_STATUS,
+  SET_CONCEPT,
 } from '../actions/actionTypes';
 import initialState from './initialState';
 
@@ -30,8 +32,12 @@ export const selectedPatientReducer = (state = initialState.selectedPatient, act
 
 export const selectedLabConceptReducer = (state = initialState.selectedLabConcept, action) => {
   switch (action.type) {
-    case `${FETCH_LAB_CONCEPTS}_SUCCESS`: {
+    case `${FETCH_LAB_CONCEPT}_SUCCESS`: {
       const selectedLabConcept = action.payload.data;
+      return selectedLabConcept;
+    }
+    case SET_CONCEPT: {
+      const selectedLabConcept = null;
       return selectedLabConcept;
     }
     default: return state;
@@ -39,11 +45,20 @@ export const selectedLabConceptReducer = (state = initialState.selectedLabConcep
 };
 
 export const conceptMembersReducer = (state = initialState.conceptMembers, action) => {
+  if (action.type.includes(SET_CONCEPT_MEMBER)) {
+    return {
+      [action.member.uuid]: action.member,
+      ...state,
+    };
+  }
+  return state;
+};
+
+export const fetchStatusReducer = (state = initialState.fetchStatus, action) => {
   switch (action.type) {
-    case SET_CONCEPT_MEMBER: {
+    case SET_FETCH_STATUS: {
       return {
-        [action.member.uuid]: action.member,
-        ...state,
+        isLoading: action.status,
       };
     }
     default: return state;

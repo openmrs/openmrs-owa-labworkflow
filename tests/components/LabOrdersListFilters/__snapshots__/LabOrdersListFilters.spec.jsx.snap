@@ -22,7 +22,7 @@ exports[`<LabOrdersList /> component renders correctly 1`] = `
       >
         <span>
           <CustomDatePicker
-            defaultDate={"2018-09-11T18:19:26.047Z"}
+            defaultDate={"2018-09-16T14:58:46.893Z"}
             field="dateFromField"
             formControlStyle={
               Object {
@@ -42,6 +42,7 @@ exports[`<LabOrdersList /> component renders correctly 1`] = `
               disabled={false}
               disabledKeyboardNavigation={false}
               dropdownMode="scroll"
+              excludeDates={false}
               monthsShown={1}
               nextMonthButtonLabel="Next month"
               onBlur={[Function]}
@@ -55,7 +56,7 @@ exports[`<LabOrdersList /> component renders correctly 1`] = `
               preventOpenOnFocus={false}
               previousMonthButtonLabel="Previous Month"
               readOnly={false}
-              selected={"2018-09-11T18:19:26.047Z"}
+              selected={"2018-09-16T14:58:46.893Z"}
               shouldCloseOnSelect={true}
               showTimeSelect={false}
               timeCaption="Time"
@@ -88,7 +89,7 @@ exports[`<LabOrdersList /> component renders correctly 1`] = `
                       onFocus={[Function]}
                       onKeyDown={[Function]}
                       readOnly={false}
-                      value="09/11/2018"
+                      value="09/16/2018"
                     />
                   </div>
                 }
@@ -115,36 +116,25 @@ exports[`<LabOrdersList /> component renders correctly 1`] = `
                             onFocus={[Function]}
                             onKeyDown={[Function]}
                             readOnly={false}
-                            value="09/11/2018"
+                            value="09/16/2018"
                           >
-                            <span
-                              style={
-                                Object {
-                                  "display": "flex",
-                                  "justifyContent": "space-around",
-                                }
-                              }
-                            >
+                            <span>
                               <span
-                                className="line"
-                              >
-                                From: 
-                              </span>
-                              <FormControl
-                                bsClass="form-control"
-                                componentClass="input"
-                                placeholder=""
                                 style={
                                   Object {
-                                    "marginRight": "5px",
-                                    "width": "105px",
+                                    "display": "flex",
+                                    "justifyContent": "space-around",
                                   }
                                 }
-                                type="text"
-                                value="09/11/2018"
                               >
-                                <input
-                                  className="form-control"
+                                <span
+                                  className="line"
+                                >
+                                  From: 
+                                </span>
+                                <FormControl
+                                  bsClass="form-control"
+                                  componentClass="input"
                                   placeholder=""
                                   style={
                                     Object {
@@ -153,14 +143,27 @@ exports[`<LabOrdersList /> component renders correctly 1`] = `
                                     }
                                   }
                                   type="text"
-                                  value="09/11/2018"
+                                  value="09/16/2018"
+                                >
+                                  <input
+                                    className="form-control"
+                                    placeholder=""
+                                    style={
+                                      Object {
+                                        "marginRight": "5px",
+                                        "width": "105px",
+                                      }
+                                    }
+                                    type="text"
+                                    value="09/16/2018"
+                                  />
+                                </FormControl>
+                                <i
+                                  className="icon-calendar scale small add-on"
+                                  onClick={[Function]}
+                                  role="toolbar"
                                 />
-                              </FormControl>
-                              <i
-                                className="icon-calendar scale small add-on"
-                                onClick={[Function]}
-                                role="toolbar"
-                              />
+                              </span>
                             </span>
                           </DateDisplayComponent>
                         </div>
@@ -174,7 +177,7 @@ exports[`<LabOrdersList /> component renders correctly 1`] = `
         </span>
         <span>
           <CustomDatePicker
-            defaultDate={"2018-09-19T18:19:22.996Z"}
+            defaultDate={"2018-09-24T14:58:43.241Z"}
             field="dateToField"
             formControlStyle={
               Object {
@@ -194,6 +197,7 @@ exports[`<LabOrdersList /> component renders correctly 1`] = `
               disabled={false}
               disabledKeyboardNavigation={false}
               dropdownMode="scroll"
+              excludeDates={false}
               monthsShown={1}
               nextMonthButtonLabel="Next month"
               onBlur={[Function]}
@@ -207,7 +211,7 @@ exports[`<LabOrdersList /> component renders correctly 1`] = `
               preventOpenOnFocus={false}
               previousMonthButtonLabel="Previous Month"
               readOnly={false}
-              selected={"2018-09-19T18:19:22.996Z"}
+              selected={"2018-09-24T14:58:43.241Z"}
               shouldCloseOnSelect={true}
               showTimeSelect={false}
               timeCaption="Time"
@@ -240,7 +244,7 @@ exports[`<LabOrdersList /> component renders correctly 1`] = `
                       onFocus={[Function]}
                       onKeyDown={[Function]}
                       readOnly={false}
-                      value="09/19/2018"
+                      value="09/24/2018"
                     />
                   </div>
                 }
@@ -267,36 +271,25 @@ exports[`<LabOrdersList /> component renders correctly 1`] = `
                             onFocus={[Function]}
                             onKeyDown={[Function]}
                             readOnly={false}
-                            value="09/19/2018"
+                            value="09/24/2018"
                           >
-                            <span
-                              style={
-                                Object {
-                                  "display": "flex",
-                                  "justifyContent": "space-around",
-                                }
-                              }
-                            >
+                            <span>
                               <span
-                                className="line"
-                              >
-                                To: 
-                              </span>
-                              <FormControl
-                                bsClass="form-control"
-                                componentClass="input"
-                                placeholder=""
                                 style={
                                   Object {
-                                    "marginRight": "5px",
-                                    "width": "105px",
+                                    "display": "flex",
+                                    "justifyContent": "space-around",
                                   }
                                 }
-                                type="text"
-                                value="09/19/2018"
                               >
-                                <input
-                                  className="form-control"
+                                <span
+                                  className="line"
+                                >
+                                  To: 
+                                </span>
+                                <FormControl
+                                  bsClass="form-control"
+                                  componentClass="input"
                                   placeholder=""
                                   style={
                                     Object {
@@ -305,14 +298,27 @@ exports[`<LabOrdersList /> component renders correctly 1`] = `
                                     }
                                   }
                                   type="text"
-                                  value="09/19/2018"
+                                  value="09/24/2018"
+                                >
+                                  <input
+                                    className="form-control"
+                                    placeholder=""
+                                    style={
+                                      Object {
+                                        "marginRight": "5px",
+                                        "width": "105px",
+                                      }
+                                    }
+                                    type="text"
+                                    value="09/24/2018"
+                                  />
+                                </FormControl>
+                                <i
+                                  className="icon-calendar scale small add-on"
+                                  onClick={[Function]}
+                                  role="toolbar"
                                 />
-                              </FormControl>
-                              <i
-                                className="icon-calendar scale small add-on"
-                                onClick={[Function]}
-                                role="toolbar"
-                              />
+                              </span>
                             </span>
                           </DateDisplayComponent>
                         </div>

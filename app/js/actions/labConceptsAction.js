@@ -1,18 +1,34 @@
 import { axiosInstance } from '../config';
-import { FETCH_LAB_CONCEPTS, SET_CONCEPT_MEMBER } from './actionTypes';
+import {
+  FETCH_LAB_CONCEPT,
+  SET_CONCEPT_MEMBER,
+  SET_FETCH_STATUS,
+  SET_CONCEPT,
+} from './actionTypes';
 
 
 const fetchLabConcept = conceptUUID => ({
-  type: FETCH_LAB_CONCEPTS,
+  type: FETCH_LAB_CONCEPT,
   payload: axiosInstance.get(`/concept/${conceptUUID}?v=full`),
 });
 
-const setMembers = member => ({
-  type: SET_CONCEPT_MEMBER,
+const setMember = (member, count) => ({
+  type: `${SET_CONCEPT_MEMBER}_${count}`,
   member,
+});
+
+const setSelectedConcept = () => ({
+  type: SET_CONCEPT,
+});
+
+const setFetchStatus = status => ({
+  type: SET_FETCH_STATUS,
+  status,
 });
 
 export default {
   fetchLabConcept,
-  setMembers,
+  setMember,
+  setFetchStatus,
+  setSelectedConcept,
 };

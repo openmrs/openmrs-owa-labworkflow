@@ -1,10 +1,20 @@
 /*eslint-disable*/
 import R from 'ramda';
-import { take, put } from 'redux-saga/effects';
+import { take, takeEvery, put } from 'redux-saga/effects';
 import {
   FETCH_LAB_ORDERS
 } from '../actions/actionTypes'
 import { setLabTestTypes } from '../actions/labOrdersAction';
+import labConceptsAction from '../actions/labConceptsAction';
+
+
+export function* clear() {
+  yield put(labConceptsAction.setSelectedConcept());
+}
+
+export function* resetState() {
+  yield takeEvery(`${FETCH_LAB_ORDERS}_SUCCESS`, clear)
+}
 
 export function* setLabTestsSaga() {
   const { payload } = yield take(`${FETCH_LAB_ORDERS}_SUCCESS`);

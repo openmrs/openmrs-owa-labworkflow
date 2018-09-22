@@ -146,7 +146,7 @@ export class LabOrdersList extends PureComponent {
       originalData = filteredData;
     }
 
-    if (filters.dateToField && filters.dateFromField) {
+    if (filters.dateToField && filters.dateFromField) {;
       const filteredData = getDateRange(originalData, filters.dateFromField, filters.dateToField, 'dateActivated');
       originalData = filteredData;
     }
@@ -156,7 +156,6 @@ export class LabOrdersList extends PureComponent {
       const filteredData = matchSorter(originalData, inputValue, { keys: ['concept.display'] });
       originalData = filteredData;
     }
-
     return originalData;
   }
 

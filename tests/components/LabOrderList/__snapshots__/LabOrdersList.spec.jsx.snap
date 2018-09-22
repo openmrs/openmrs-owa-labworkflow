@@ -94,8 +94,8 @@ exports[`<LabOrdersList /> component renders correctly 1`] = `
     </h1>
     <LabOrderListFilters
       clearNameEMRField={[Function]}
-      dateFromField={"2018-09-11T18:19:26.552Z"}
-      dateToField={"2018-09-19T18:19:26.552Z"}
+      dateFromField={"2018-09-16T14:58:47.222Z"}
+      dateToField={"2018-09-24T14:58:47.221Z"}
       handleFieldChange={[Function]}
       labTests={
         Array [
@@ -115,7 +115,7 @@ exports[`<LabOrdersList /> component renders correctly 1`] = `
           >
             <span>
               <CustomDatePicker
-                defaultDate={"2018-09-11T18:19:26.569Z"}
+                defaultDate={"2018-09-16T14:58:47.256Z"}
                 field="dateFromField"
                 formControlStyle={
                   Object {
@@ -135,6 +135,7 @@ exports[`<LabOrdersList /> component renders correctly 1`] = `
                   disabled={false}
                   disabledKeyboardNavigation={false}
                   dropdownMode="scroll"
+                  excludeDates={false}
                   monthsShown={1}
                   nextMonthButtonLabel="Next month"
                   onBlur={[Function]}
@@ -148,7 +149,7 @@ exports[`<LabOrdersList /> component renders correctly 1`] = `
                   preventOpenOnFocus={false}
                   previousMonthButtonLabel="Previous Month"
                   readOnly={false}
-                  selected={"2018-09-11T18:19:26.569Z"}
+                  selected={"2018-09-16T14:58:47.256Z"}
                   shouldCloseOnSelect={true}
                   showTimeSelect={false}
                   timeCaption="Time"
@@ -181,7 +182,7 @@ exports[`<LabOrdersList /> component renders correctly 1`] = `
                           onFocus={[Function]}
                           onKeyDown={[Function]}
                           readOnly={false}
-                          value="09/11/2018"
+                          value="09/16/2018"
                         />
                       </div>
                     }
@@ -208,36 +209,25 @@ exports[`<LabOrdersList /> component renders correctly 1`] = `
                                 onFocus={[Function]}
                                 onKeyDown={[Function]}
                                 readOnly={false}
-                                value="09/11/2018"
+                                value="09/16/2018"
                               >
-                                <span
-                                  style={
-                                    Object {
-                                      "display": "flex",
-                                      "justifyContent": "space-around",
-                                    }
-                                  }
-                                >
+                                <span>
                                   <span
-                                    className="line"
-                                  >
-                                    From: 
-                                  </span>
-                                  <FormControl
-                                    bsClass="form-control"
-                                    componentClass="input"
-                                    placeholder=""
                                     style={
                                       Object {
-                                        "marginRight": "5px",
-                                        "width": "105px",
+                                        "display": "flex",
+                                        "justifyContent": "space-around",
                                       }
                                     }
-                                    type="text"
-                                    value="09/11/2018"
                                   >
-                                    <input
-                                      className="form-control"
+                                    <span
+                                      className="line"
+                                    >
+                                      From: 
+                                    </span>
+                                    <FormControl
+                                      bsClass="form-control"
+                                      componentClass="input"
                                       placeholder=""
                                       style={
                                         Object {
@@ -246,14 +236,27 @@ exports[`<LabOrdersList /> component renders correctly 1`] = `
                                         }
                                       }
                                       type="text"
-                                      value="09/11/2018"
+                                      value="09/16/2018"
+                                    >
+                                      <input
+                                        className="form-control"
+                                        placeholder=""
+                                        style={
+                                          Object {
+                                            "marginRight": "5px",
+                                            "width": "105px",
+                                          }
+                                        }
+                                        type="text"
+                                        value="09/16/2018"
+                                      />
+                                    </FormControl>
+                                    <i
+                                      className="icon-calendar scale small add-on"
+                                      onClick={[Function]}
+                                      role="toolbar"
                                     />
-                                  </FormControl>
-                                  <i
-                                    className="icon-calendar scale small add-on"
-                                    onClick={[Function]}
-                                    role="toolbar"
-                                  />
+                                  </span>
                                 </span>
                               </DateDisplayComponent>
                             </div>
@@ -267,7 +270,7 @@ exports[`<LabOrdersList /> component renders correctly 1`] = `
             </span>
             <span>
               <CustomDatePicker
-                defaultDate={"2018-09-19T18:19:23.066Z"}
+                defaultDate={"2018-09-24T14:58:43.274Z"}
                 field="dateToField"
                 formControlStyle={
                   Object {
@@ -287,6 +290,7 @@ exports[`<LabOrdersList /> component renders correctly 1`] = `
                   disabled={false}
                   disabledKeyboardNavigation={false}
                   dropdownMode="scroll"
+                  excludeDates={false}
                   monthsShown={1}
                   nextMonthButtonLabel="Next month"
                   onBlur={[Function]}
@@ -300,7 +304,7 @@ exports[`<LabOrdersList /> component renders correctly 1`] = `
                   preventOpenOnFocus={false}
                   previousMonthButtonLabel="Previous Month"
                   readOnly={false}
-                  selected={"2018-09-19T18:19:23.066Z"}
+                  selected={"2018-09-24T14:58:43.274Z"}
                   shouldCloseOnSelect={true}
                   showTimeSelect={false}
                   timeCaption="Time"
@@ -333,7 +337,7 @@ exports[`<LabOrdersList /> component renders correctly 1`] = `
                           onFocus={[Function]}
                           onKeyDown={[Function]}
                           readOnly={false}
-                          value="09/19/2018"
+                          value="09/24/2018"
                         />
                       </div>
                     }
@@ -360,36 +364,25 @@ exports[`<LabOrdersList /> component renders correctly 1`] = `
                                 onFocus={[Function]}
                                 onKeyDown={[Function]}
                                 readOnly={false}
-                                value="09/19/2018"
+                                value="09/24/2018"
                               >
-                                <span
-                                  style={
-                                    Object {
-                                      "display": "flex",
-                                      "justifyContent": "space-around",
-                                    }
-                                  }
-                                >
+                                <span>
                                   <span
-                                    className="line"
-                                  >
-                                    To: 
-                                  </span>
-                                  <FormControl
-                                    bsClass="form-control"
-                                    componentClass="input"
-                                    placeholder=""
                                     style={
                                       Object {
-                                        "marginRight": "5px",
-                                        "width": "105px",
+                                        "display": "flex",
+                                        "justifyContent": "space-around",
                                       }
                                     }
-                                    type="text"
-                                    value="09/19/2018"
                                   >
-                                    <input
-                                      className="form-control"
+                                    <span
+                                      className="line"
+                                    >
+                                      To: 
+                                    </span>
+                                    <FormControl
+                                      bsClass="form-control"
+                                      componentClass="input"
                                       placeholder=""
                                       style={
                                         Object {
@@ -398,14 +391,27 @@ exports[`<LabOrdersList /> component renders correctly 1`] = `
                                         }
                                       }
                                       type="text"
-                                      value="09/19/2018"
+                                      value="09/24/2018"
+                                    >
+                                      <input
+                                        className="form-control"
+                                        placeholder=""
+                                        style={
+                                          Object {
+                                            "marginRight": "5px",
+                                            "width": "105px",
+                                          }
+                                        }
+                                        type="text"
+                                        value="09/24/2018"
+                                      />
+                                    </FormControl>
+                                    <i
+                                      className="icon-calendar scale small add-on"
+                                      onClick={[Function]}
+                                      role="toolbar"
                                     />
-                                  </FormControl>
-                                  <i
-                                    className="icon-calendar scale small add-on"
-                                    onClick={[Function]}
-                                    role="toolbar"
-                                  />
+                                  </span>
                                 </span>
                               </DateDisplayComponent>
                             </div>
@@ -655,8 +661,8 @@ exports[`<LabOrdersList /> component renders correctly 1`] = `
         }
         filters={
           Object {
-            "dateFromField": "2018-09-11T18:19:26.552Z",
-            "dateToField": "2018-09-19T18:19:26.552Z",
+            "dateFromField": "2018-09-16T14:58:47.222Z",
+            "dateToField": "2018-09-24T14:58:47.221Z",
             "nameField": "",
             "testTypeField": "All",
           }
@@ -4534,8 +4540,8 @@ exports[`LabOrdersListContainer container should pass required props from state 
     </h1>
     <LabOrderListFilters
       clearNameEMRField={[Function]}
-      dateFromField={"2018-09-11T18:19:26.552Z"}
-      dateToField={"2018-09-19T18:19:26.552Z"}
+      dateFromField={"2018-09-16T14:58:47.222Z"}
+      dateToField={"2018-09-24T14:58:47.221Z"}
       handleFieldChange={[Function]}
       labTests={
         Array [
@@ -4555,7 +4561,7 @@ exports[`LabOrdersListContainer container should pass required props from state 
           >
             <span>
               <CustomDatePicker
-                defaultDate={"2018-09-11T18:19:26.569Z"}
+                defaultDate={"2018-09-16T14:58:47.256Z"}
                 field="dateFromField"
                 formControlStyle={
                   Object {
@@ -4575,6 +4581,7 @@ exports[`LabOrdersListContainer container should pass required props from state 
                   disabled={false}
                   disabledKeyboardNavigation={false}
                   dropdownMode="scroll"
+                  excludeDates={false}
                   monthsShown={1}
                   nextMonthButtonLabel="Next month"
                   onBlur={[Function]}
@@ -4588,7 +4595,7 @@ exports[`LabOrdersListContainer container should pass required props from state 
                   preventOpenOnFocus={false}
                   previousMonthButtonLabel="Previous Month"
                   readOnly={false}
-                  selected={"2018-09-11T18:19:26.569Z"}
+                  selected={"2018-09-16T14:58:47.256Z"}
                   shouldCloseOnSelect={true}
                   showTimeSelect={false}
                   timeCaption="Time"
@@ -4621,7 +4628,7 @@ exports[`LabOrdersListContainer container should pass required props from state 
                           onFocus={[Function]}
                           onKeyDown={[Function]}
                           readOnly={false}
-                          value="09/11/2018"
+                          value="09/16/2018"
                         />
                       </div>
                     }
@@ -4648,36 +4655,25 @@ exports[`LabOrdersListContainer container should pass required props from state 
                                 onFocus={[Function]}
                                 onKeyDown={[Function]}
                                 readOnly={false}
-                                value="09/11/2018"
+                                value="09/16/2018"
                               >
-                                <span
-                                  style={
-                                    Object {
-                                      "display": "flex",
-                                      "justifyContent": "space-around",
-                                    }
-                                  }
-                                >
+                                <span>
                                   <span
-                                    className="line"
-                                  >
-                                    From: 
-                                  </span>
-                                  <FormControl
-                                    bsClass="form-control"
-                                    componentClass="input"
-                                    placeholder=""
                                     style={
                                       Object {
-                                        "marginRight": "5px",
-                                        "width": "105px",
+                                        "display": "flex",
+                                        "justifyContent": "space-around",
                                       }
                                     }
-                                    type="text"
-                                    value="09/11/2018"
                                   >
-                                    <input
-                                      className="form-control"
+                                    <span
+                                      className="line"
+                                    >
+                                      From: 
+                                    </span>
+                                    <FormControl
+                                      bsClass="form-control"
+                                      componentClass="input"
                                       placeholder=""
                                       style={
                                         Object {
@@ -4686,14 +4682,27 @@ exports[`LabOrdersListContainer container should pass required props from state 
                                         }
                                       }
                                       type="text"
-                                      value="09/11/2018"
+                                      value="09/16/2018"
+                                    >
+                                      <input
+                                        className="form-control"
+                                        placeholder=""
+                                        style={
+                                          Object {
+                                            "marginRight": "5px",
+                                            "width": "105px",
+                                          }
+                                        }
+                                        type="text"
+                                        value="09/16/2018"
+                                      />
+                                    </FormControl>
+                                    <i
+                                      className="icon-calendar scale small add-on"
+                                      onClick={[Function]}
+                                      role="toolbar"
                                     />
-                                  </FormControl>
-                                  <i
-                                    className="icon-calendar scale small add-on"
-                                    onClick={[Function]}
-                                    role="toolbar"
-                                  />
+                                  </span>
                                 </span>
                               </DateDisplayComponent>
                             </div>
@@ -4707,7 +4716,7 @@ exports[`LabOrdersListContainer container should pass required props from state 
             </span>
             <span>
               <CustomDatePicker
-                defaultDate={"2018-09-19T18:19:23.066Z"}
+                defaultDate={"2018-09-24T14:58:43.274Z"}
                 field="dateToField"
                 formControlStyle={
                   Object {
@@ -4727,6 +4736,7 @@ exports[`LabOrdersListContainer container should pass required props from state 
                   disabled={false}
                   disabledKeyboardNavigation={false}
                   dropdownMode="scroll"
+                  excludeDates={false}
                   monthsShown={1}
                   nextMonthButtonLabel="Next month"
                   onBlur={[Function]}
@@ -4740,7 +4750,7 @@ exports[`LabOrdersListContainer container should pass required props from state 
                   preventOpenOnFocus={false}
                   previousMonthButtonLabel="Previous Month"
                   readOnly={false}
-                  selected={"2018-09-19T18:19:23.066Z"}
+                  selected={"2018-09-24T14:58:43.274Z"}
                   shouldCloseOnSelect={true}
                   showTimeSelect={false}
                   timeCaption="Time"
@@ -4773,7 +4783,7 @@ exports[`LabOrdersListContainer container should pass required props from state 
                           onFocus={[Function]}
                           onKeyDown={[Function]}
                           readOnly={false}
-                          value="09/19/2018"
+                          value="09/24/2018"
                         />
                       </div>
                     }
@@ -4800,36 +4810,25 @@ exports[`LabOrdersListContainer container should pass required props from state 
                                 onFocus={[Function]}
                                 onKeyDown={[Function]}
                                 readOnly={false}
-                                value="09/19/2018"
+                                value="09/24/2018"
                               >
-                                <span
-                                  style={
-                                    Object {
-                                      "display": "flex",
-                                      "justifyContent": "space-around",
-                                    }
-                                  }
-                                >
+                                <span>
                                   <span
-                                    className="line"
-                                  >
-                                    To: 
-                                  </span>
-                                  <FormControl
-                                    bsClass="form-control"
-                                    componentClass="input"
-                                    placeholder=""
                                     style={
                                       Object {
-                                        "marginRight": "5px",
-                                        "width": "105px",
+                                        "display": "flex",
+                                        "justifyContent": "space-around",
                                       }
                                     }
-                                    type="text"
-                                    value="09/19/2018"
                                   >
-                                    <input
-                                      className="form-control"
+                                    <span
+                                      className="line"
+                                    >
+                                      To: 
+                                    </span>
+                                    <FormControl
+                                      bsClass="form-control"
+                                      componentClass="input"
                                       placeholder=""
                                       style={
                                         Object {
@@ -4838,14 +4837,27 @@ exports[`LabOrdersListContainer container should pass required props from state 
                                         }
                                       }
                                       type="text"
-                                      value="09/19/2018"
+                                      value="09/24/2018"
+                                    >
+                                      <input
+                                        className="form-control"
+                                        placeholder=""
+                                        style={
+                                          Object {
+                                            "marginRight": "5px",
+                                            "width": "105px",
+                                          }
+                                        }
+                                        type="text"
+                                        value="09/24/2018"
+                                      />
+                                    </FormControl>
+                                    <i
+                                      className="icon-calendar scale small add-on"
+                                      onClick={[Function]}
+                                      role="toolbar"
                                     />
-                                  </FormControl>
-                                  <i
-                                    className="icon-calendar scale small add-on"
-                                    onClick={[Function]}
-                                    role="toolbar"
-                                  />
+                                  </span>
                                 </span>
                               </DateDisplayComponent>
                             </div>
@@ -5095,8 +5107,8 @@ exports[`LabOrdersListContainer container should pass required props from state 
         }
         filters={
           Object {
-            "dateFromField": "2018-09-11T18:19:26.552Z",
-            "dateToField": "2018-09-19T18:19:26.552Z",
+            "dateFromField": "2018-09-16T14:58:47.222Z",
+            "dateToField": "2018-09-24T14:58:47.221Z",
             "nameField": "",
             "testTypeField": "All",
           }
