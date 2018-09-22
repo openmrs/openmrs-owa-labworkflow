@@ -156,7 +156,6 @@ export class LabOrdersList extends PureComponent {
       const filteredData = matchSorter(originalData, inputValue, { keys: ['concept.display'] });
       originalData = filteredData;
     }
-
     return originalData;
   }
 

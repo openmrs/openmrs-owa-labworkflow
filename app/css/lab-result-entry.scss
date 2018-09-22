@@ -1,10 +1,20 @@
-legend {
-    width: auto;
-    font-size: 15px;
+.legend {
+    position: relative;
+    width: 18%;
+    bottom: 14px;
+    background: #d3d3d3;
+    left: 20px;
+    border: 1px solid;
+    padding: 2px;
+    display: flex;
+    justify-content: center;
+    font-weight: 900;
+    font-size: 20px;
+    flex-direction: row;
 }
 
 fieldset {
-    border: 1px solid black;
+    border: 0 none;;
 }
 
 .result-input {
@@ -18,11 +28,8 @@ fieldset {
 }
 
 .fieldset-container {
-    background-color: lightgrey;
-}
-
-input[type="checkbox"] {
-    transform: scale(2);
+    background-color: #d3d3d3;
+    border: 2px solid;
 }
 
 span.test-details {
@@ -56,25 +63,22 @@ button.pull-right.btn-success {
     background-color: inherit !important;
 }
 
-.result-range-header {
-    position: relative;
-    top: 65px;
-}
 
 .range-header-text {
     position: relative;
-    right: 120px;
+    left: 62.5%;
     font-weight: 900;
     text-decoration: underline;
-    text-decoration: underline;
+    top: 90px;
 }
 
 .units {
     line-height: 40px;
+    width: 20%;
 }
 
 .valid-range {
-    right: 120px;
+    right: 50px;
     position: relative;
     line-height: 40px;
 }
@@ -82,3 +86,58 @@ button.pull-right.btn-success {
 .control-label {
     line-height: 13px;
 }
+
+.fieldset-body {
+    width: 99%;
+    height: 100%;
+    padding: 40px;
+    position: relative;
+    top: -8px;
+    left: 6px;
+    align-self: left;
+}
+.form-horizontal .form-group {
+    margin-right: 0px !important;
+    margin-left: 0px !important;
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+}
+
+.member-display-label {
+    width: 25%;
+    padding-left: 15px;
+    line-height: 40px
+}
+
+.obs-component {
+    padding-right: 2%;
+}
+.col-md-20 {
+    &.col-sm-20 {
+        display: none;
+    }
+}
+
+.single-result-field {
+    display: flex;
+    padding-top: 15px;
+    padding-bottom: 15px;
+}
+.obs-date-label {
+    line-height: 40px;
+    padding-right: 20px;
+    padding-bottom: 40px;
+}
+
+.obs-dropdown-label {
+    padding-right: 80px;
+    line-height: 45px;
+}
+
+.custom-loader {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+}
+

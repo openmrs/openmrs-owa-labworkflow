@@ -8,7 +8,7 @@ import initialState from '../../app/js/reducers/initialState';
 import {
   ADD_PATIENT,
   SET_SELECTED_PATIENT,
-  FETCH_LAB_CONCEPTS,
+  FETCH_LAB_CONCEPT,
   SET_CONCEPT_MEMBER,
 } from '../../app/js/actions/actionTypes';
 
@@ -86,7 +86,7 @@ describe('selectedLabConceptReducer', () => {
   });
   it('adds the concept to the state, whenever it is selected', () => {
     const selectedConceptAction = {
-      type: `${FETCH_LAB_CONCEPTS}_SUCCESS`,
+      type: `${FETCH_LAB_CONCEPT}_SUCCESS`,
       payload: {
         data: {
           details: 'some concept detail',
