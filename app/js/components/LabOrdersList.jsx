@@ -7,6 +7,7 @@
  * graphic logo is a trademark of OpenMRS Inc.
  */
 import React, { PureComponent } from 'react';
+import R from 'ramda';
 import { connect } from 'react-redux';
 import cn from 'classnames';
 import moment from 'moment';
@@ -16,6 +17,7 @@ import matchSorter from 'match-sorter';
 import { FormattedMessage } from 'react-intl';
 import { SortableTable } from '@openmrs/react-components';
 import LabOrderListFilters from './LabOrdersListFilters';
+import { Loader } from '@openmrs/react-components';
 
 import { fetchLabOrders } from '../actions/labOrdersAction';
 import constantsAction from '../actions/constantsAction';
@@ -138,6 +140,7 @@ export class LabOrdersList extends PureComponent {
   }
 
   renderDataWithFilters(filters, data) {
+    const self = this;
     let originalData = data;
 
     if (filters.nameField !== "") {
@@ -197,35 +200,34 @@ export class LabOrdersList extends PureComponent {
   }
 
   render() {
-    const { labTests, isLoading } = this.props;
+    const { labTests, orders } = this.props;
     const { filters: { dateFromField, dateToField, nameField } } = this.state;
-    return (
-      <div className="main-container">
-        <h1>
-          <FormattedMessage
-            id="app.labOrdersList.title"
-            defaultMessage="Lab Test Results"
-            description="Welcome header on LabTestResult page" />
-        </h1>
-        <React.Fragment>
-          {!isLoading
-              && (
-                <LabOrderListFilters
-                  handleFieldChange={this.handleFilterChange}
-                  clearNameEMRField={this.clearNameEMRField}
-                  labTests={labTests}
-                  dateFromField={dateFromField}
-                  dateToField={dateToField}
-                  nameField={nameField}
+    if (!R.isEmpty(orders) && !R.isEmpty(labTests)) {
+      return (
+        <div className="main-container">
+          <h1>
+            <FormattedMessage
+              id="app.labOrdersList.title"
+              defaultMessage="Lab Test Results"
+              description="Welcome header on LabTestResult page" />
+          </h1>
 
-                />
-              )}
-          {isLoading
-            ? <div className="loader lab-order-list" />
-            : this.renderDraftOrderTable()
-          }
-        </React.Fragment>
-      </div>
+          <React.Fragment>
+            <LabOrderListFilters
+              handleFieldChange={this.handleFilterChange}
+              clearNameEMRField={this.clearNameEMRField}
+              labTests={labTests}
+              dateFromField={dateFromField}
+              dateToField={dateToField}
+              nameField={nameField}
+            />
+            {this.renderDraftOrderTable()}
+          </React.Fragment>
+        </div>
+      );
+    }
+    return (
+      <Loader />
     );
   }
 }
@@ -239,12 +241,11 @@ LabOrdersList.propTypes = {
 
 
 export const mapStateToProps = ({
-  labOrders: { orders, labTests, isLoading },
+  labOrders: { orders, labTests },
   CONSTANTS: { dateAndTimeFormat },
 }) => ({
   orders,
   labTests,
-  isLoading,
   dateAndTimeFormat,
 });
 

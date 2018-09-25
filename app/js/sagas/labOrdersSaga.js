@@ -22,7 +22,7 @@ export function* setLabTestsSaga() {
   const labTestTypes = R.compose(
     R.uniq,
     R.map(R.path(['concept','display'])),
-    )(payload.results);
+    )(payload.data.results);
 
   yield put(setLabTestTypes(labTestTypes));
 }
