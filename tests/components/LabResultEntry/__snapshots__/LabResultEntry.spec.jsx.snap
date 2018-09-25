@@ -1,7 +1,14 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`<LabOrdersList /> component renders correctly 1`] = `
+exports[`<LabResultEntry /> component renders correctly 1`] = `
 <Connect(LabResultEntry)
+  CONSTANTS={
+    Object {
+      "labResultsDidNotPerformAnswer": "mock-uuid",
+      "labResultsDidNotPerformQuestion": "mock-uuid",
+      "labResultsDidNotPerformReason": "mock-uuid",
+    }
+  }
   clearNameEMRField={[MockFunction]}
   history={
     Object {

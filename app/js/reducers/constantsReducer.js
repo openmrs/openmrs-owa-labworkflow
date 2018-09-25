@@ -1,11 +1,11 @@
 import initialState from './initialState';
-import { 
-  FETCH_LAB_RESULTS_ENCOUNTER_TYPE, 
+import {
+  FETCH_LAB_RESULTS_ENCOUNTER_TYPE,
   GET_DATE,
   FETCH_LAB_RESULTS_DID_NOT_PERFORM_ANSWER,
   FETCH_LAB_RESULTS_DID_NOT_PERFORM_QUESTION,
   FETCH_LAB_RESULTS_DID_NOT_PERFORM_REASON,
- } from '../actions/actionTypes';
+} from '../actions/actionTypes';
 
 
 export default (state = initialState.CONSTANTS, action) => {

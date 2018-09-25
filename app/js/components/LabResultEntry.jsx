@@ -388,7 +388,7 @@ const mapStateToProps = (state) => {
     conceptMembers,
   } = state;
   const selector = formValueSelector('resultEntryForm');
-  const didNotPerformCheckbox = !!(selector(state, `obs|path=did-not-perform-checkbox|concept=${CONSTANTS.labResultsDidNotPerformQuestion}`));
+  const didNotPerformCheckbox = CONSTANTS && !!(selector(state, `obs|path=did-not-perform-checkbox|concept=${CONSTANTS.labResultsDidNotPerformQuestion}`));
 
   return {
     patientHeaderDetail: patient,
