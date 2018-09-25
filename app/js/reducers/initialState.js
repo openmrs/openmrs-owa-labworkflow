@@ -36,6 +36,9 @@ export default {
   },
   CONSTANTS: {
     labResultsEncounterType: '',
+    labResultsDidNotPerformAnswer: '',
+    labResultsDidNotPerformQuestion: '',
+    labResultsDidNotPerformReason: null,
     dateAndTimeFormat: '',
     isLoading: false,
     error: {
