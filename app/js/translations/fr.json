@@ -7,5 +7,6 @@
     "app.labOrdersList.COLLECTION_DATE": "DATE ​​DE COLLECTION",
     "app.labOrdersList.URGENCY": "URGENCE",
     "app.labOrdersList.TEST_TYPE": "TYPE DE TEST",
-    "app.labOrdersList.ORDER_DATE": "DATE DE COMMANDE"
+    "app.labOrdersList.ORDER_DATE": "DATE DE COMMANDE",
+    "app.title": "OpenMRS Dossier Médicale Électronique"
 }

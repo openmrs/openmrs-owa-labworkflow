@@ -15,12 +15,14 @@ import promiseMiddleware from 'redux-promise-middleware';
 import { createLogger } from 'redux-logger';
 import reducers from './reducers';
 import initSagas from './sagas';
+import errorMiddleWare from './middlewares/errorMiddleware';
 
 const sagaMiddleware = createSagaMiddleware();
 
 const promiseTypeSuffixes = ['LOADING', 'SUCCESS', 'FAILURE'];
 
 const middlewares = [
+  errorMiddleWare,
   promiseMiddleware({ promiseTypeSuffixes }),
   sagaMiddleware,
 ];
