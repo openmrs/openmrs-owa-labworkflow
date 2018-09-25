@@ -1,10 +1,19 @@
 import { axiosInstance } from '../config';
-import { FETCH_LAB_RESULTS_ENCOUNTER_TYPE, GET_DATE } from './actionTypes';
+import {
+  FETCH_LAB_RESULTS_ENCOUNTER_TYPE,
+  FETCH_LAB_RESULTS_DATE_CONCEPT,
+  GET_DATE,
+} from './actionTypes';
 
 
 const fetchLabResultsEncounterType = () => ({
   type: FETCH_LAB_RESULTS_ENCOUNTER_TYPE,
   payload: axiosInstance.get(`systemsetting?v=custom:(value)&q=labworkflowowa.labResultsEncounterType`),
+});
+
+const fetchLabResultsDateConcept = () => ({
+  type: FETCH_LAB_RESULTS_DATE_CONCEPT,
+  payload: axiosInstance.get(`systemsetting?v=custom:(value)&q=labworkflowowa.labResultsDateConcept`),
 });
 
 const getDateFormat = () => ({
@@ -14,5 +23,6 @@ const getDateFormat = () => ({
 
 export default {
   fetchLabResultsEncounterType,
+  fetchLabResultsDateConcept,
   getDateFormat,
 };

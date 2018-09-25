@@ -36,6 +36,7 @@ export default {
   },
   CONSTANTS: {
     labResultsEncounterType: '',
+    labResultsDateConcept: '',
     dateAndTimeFormat: '',
     isLoading: false,
     error: {

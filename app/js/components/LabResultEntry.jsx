@@ -11,7 +11,6 @@ import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import { Loader } from '@openmrs/react-components';
 import R from 'ramda';
-import cn from 'classnames';
 
 import {
   Grid,
@@ -77,6 +76,7 @@ export class LabResultEntry extends PureComponent {
       dispatch(patientAction.getPatient(state.patient.uuid));
       dispatch(labConceptsAction.fetchLabConcept(conceptUUID));
       dispatch(constantsAction.fetchLabResultsEncounterType());
+      dispatch(constantsAction.fetchLabResultsDateConcept());
     } else {
       this.shouldRedirect();
     }
@@ -125,7 +125,7 @@ export class LabResultEntry extends PureComponent {
                 <span className="obs-date-field">
                   <Obs
                     datatype="date"
-                    concept="68d6bd27-37ff-4d7a-87a0-f5e0f9c8dcc0"
+                    concept={CONSTANTS.labResultsDateConcept}
                     path="result-date"
                     validate={[maxDateRange]}
                   />

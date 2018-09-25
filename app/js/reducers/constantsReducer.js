@@ -1,5 +1,9 @@
 import initialState from './initialState';
-import { FETCH_LAB_RESULTS_ENCOUNTER_TYPE, GET_DATE } from '../actions/actionTypes';
+import {
+  FETCH_LAB_RESULTS_ENCOUNTER_TYPE,
+  FETCH_LAB_RESULTS_DATE_CONCEPT,
+  GET_DATE,
+} from '../actions/actionTypes';
 
 
 export default (state = initialState.CONSTANTS, action) => {
@@ -22,6 +26,32 @@ export default (state = initialState.CONSTANTS, action) => {
       };
     }
     case `${FETCH_LAB_RESULTS_ENCOUNTER_TYPE}_LOADING`: {
+      return {
+        ...state,
+        isLoading: true,
+      };
+    }
+
+    case `${FETCH_LAB_RESULTS_DATE_CONCEPT}_SUCCESS`: {
+      return {
+        ...state,
+        isLoading: false,
+        labResultsDateConcept: action.payload.data.results[0].value,
+      };
+    }
+
+    case `${FETCH_LAB_RESULTS_DATE_CONCEPT}_FAILURE`: {
+      return {
+        ...state,
+        isLoading: false,
+        error: {
+          message: action.payload,
+          status: action.error,
+        },
+      };
+    }
+
+    case `${FETCH_LAB_RESULTS_DATE_CONCEPT}_LOADING`: {
       return {
         ...state,
         isLoading: true,
