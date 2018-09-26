@@ -10,6 +10,7 @@ import React, { PureComponent } from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import { Loader } from '@openmrs/react-components';
+import { formValueSelector } from 'redux-form';
 import R from 'ramda';
 
 import {
@@ -77,13 +78,17 @@ export class LabResultEntry extends PureComponent {
       dispatch(labConceptsAction.fetchLabConcept(conceptUUID));
       dispatch(constantsAction.fetchLabResultsEncounterType());
       dispatch(constantsAction.fetchLabResultsDateConcept());
+      dispatch(constantsAction.fetchLabResultsDidNotPerformAnswer());
+      dispatch(constantsAction.fetchLabResultsDidNotPerformQuestion());
+      dispatch(constantsAction.fetchLabResultsDidNotPerformReason());
     } else {
       this.shouldRedirect();
     }
   }
 
   componentWillReceiveProps(nextProps) {
-    const { patientHeaderDetail } = this.state;
+    const { patientHeaderDetail } = this.props;
+
     if (nextProps.patientHeaderDetail.uuid !== patientHeaderDetail.uuid) {
       this.setState({
         patientHeaderDetail: nextProps.patientHeaderDetail,
@@ -91,14 +96,14 @@ export class LabResultEntry extends PureComponent {
     }
   }
 
-
   shouldRedirect() {
     this.setState({ redirect: true });
   }
 
   renderForm(selectedLabConcept) {
     const { patientHeaderDetail } = this.state;
-    const { CONSTANTS, conceptMembers } = this.props;
+    const { CONSTANTS, conceptMembers, didNotPerformCheckbox } = this.props;
+
     const encounterType = {
       uuid: CONSTANTS.labResultsEncounterType,
     };
@@ -120,35 +125,69 @@ export class LabResultEntry extends PureComponent {
         {
           (hasMembers || hasAnswers || isSingle)
             && (
-              <span className="single-result-field">
-                <span className="obs-date-label">Result Date</span>
-                <span className="obs-date-field">
-                  <Obs
-                    datatype="date"
-                    concept={CONSTANTS.labResultsDateConcept}
-                    path="result-date"
-                    validate={[maxDateRange]}
-                  />
-                </span>
+              <div className="col-xs-4">
+                <span className="single-result-field">
+                  <span className="obs-date-label">Result Date</span>
+                  <span className="obs-date-field">
+                    <Obs
+                      datatype="date"
+                      concept={CONSTANTS.labResultsDateConcept}
+                      path="result-date"
+                      validate={[maxDateRange]}
+                    />
+                  </span>
+
               </span>
+              </div>
             )
         }
         {
           (hasAnswers)
             && (
-              <span className="single-result-field">
-                <span className="obs-dropdown-label">{selectedLabConcept.display}</span>
-                <span className="obs-dropdown-field">
-                  <Obs
-                    conceptAnswers={selectedLabConcept.answers}
-                    widget="dropdown"
-                    concept={selectedLabConcept.uuid}
-                    path={selectedLabConcept.uuid}
-                  />
+              <div className="col-xs-4">
+                <span className="single-result-field">
+                  <span className="obs-dropdown-label">{selectedLabConcept.display}</span>
+                  <span className="obs-dropdown-field">
+                    <Obs
+                      conceptAnswers={selectedLabConcept.answers}
+                      widget="dropdown"
+                      concept={selectedLabConcept.uuid}
+                      path={selectedLabConcept.uuid}
+                    />
+                  </span>
                 </span>
-              </span>
+              </div>
             )
         }
+        <div className="col-xs-4">
+          <div className="did-not-perform-checkbox">
+            <Obs
+              conceptAnswer={CONSTANTS.fetchLabResultsDidNotPerformAnswer}
+              widget="checkbox"
+              concept={CONSTANTS.labResultsDidNotPerformQuestion}
+              path="did-not-perform-checkbox"
+              checkBoxTitle="Did not perform"
+            />
+          </div>
+        </div>
+        {didNotPerformCheckbox && (
+          <div className="col-xs-4">
+            <div className="did-not-perform">
+              <span className="did-not-perform-label">Reason:&nbsp;</span>
+              <Obs
+                conceptAnswers={["Low Volume",
+                  "Contaminated",
+                  "Equipment Failure",
+                  "Stock Out",
+                  "Blood Coagulation",
+                  "Inappropriate Container"]}
+                widget="dropdown"
+                concept={CONSTANTS.fetchLabResultsDidNotPerformReason}
+                path="did-not-perform-dropdown"
+              />
+            </div>
+          </div>
+        )}
         <Row>
           {(hasMembers)
             && (
@@ -340,18 +379,26 @@ LabResultEntry.propTypes = {
   location: PropTypes.object.isRequired,
   CONSTANTS: PropTypes.string.isRequired,
   conceptMembers: PropTypes.object.isRequired,
+  didNotPerformCheckbox: PropTypes.bool.isRequired,
 };
 
-const mapStateToProps = ({
-  patient: { patient },
-  selectedLabConcept,
-  CONSTANTS,
-  conceptMembers,
-}) => ({
-  patientHeaderDetail: patient,
-  selectedLabConcept,
-  CONSTANTS,
-  conceptMembers,
-});
+const mapStateToProps = (state) => {
+  const {
+    patient: { patient },
+    selectedLabConcept,
+    CONSTANTS,
+    conceptMembers,
+  } = state;
+  const selector = formValueSelector('result-entry-form');
+  const didNotPerformCheckbox = CONSTANTS && !!(selector(state, `obs|path=did-not-perform-checkbox|concept=${CONSTANTS.labResultsDidNotPerformQuestion}`));
+
+  return {
+    patientHeaderDetail: patient,
+    selectedLabConcept,
+    CONSTANTS,
+    conceptMembers,
+    didNotPerformCheckbox,
+  };
+};
 
 export default connect(mapStateToProps)(LabResultEntry);

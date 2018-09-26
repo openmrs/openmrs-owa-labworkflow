@@ -5,19 +5,21 @@ let sagaTester;
 
 
 const { SagaTester } = global;
-const results = [
-  {
-    orderNumber: "ORD-1",
-    concept: {
-      display: "Hémogramme automatisé",
+const data = {
+  results: [
+    {
+      orderNumber: "ORD-1",
+      concept: {
+        display: "Hémogramme automatisé",
+      },
+      urgency: 'ROUTINE',
+      dateActivated: "2018-08-30T17:34:19.000+0100",
+      patient: {
+        display: "Y2A7LR - williams willy john",
+      },
     },
-    urgency: 'ROUTINE',
-    dateActivated: "2018-08-30T17:34:19.000+0100",
-    patient: {
-      display: "Y2A7LR - williams willy john",
-    },
-  },
-];
+  ],
+};
 
 describe('setLabTestsSaga', () => {
   beforeEach(() => {
@@ -30,7 +32,7 @@ describe('setLabTestsSaga', () => {
       SET_LAB_TEST,
     ];
 
-    sagaTester.dispatch({ type: `${FETCH_LAB_ORDERS}_SUCCESS`, payload: { results } });
+    sagaTester.dispatch({ type: `${FETCH_LAB_ORDERS}_SUCCESS`, payload: { data } });
 
     expect(
       sagaTester.getCalledActions().map(

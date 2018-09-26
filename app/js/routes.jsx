@@ -8,11 +8,15 @@
  */
 import React from 'react';
 import { Route, Switch } from 'react-router-dom';
-import { Header, setLocaleMessages, withLocalisation } from '@openmrs/react-components';
+import {
+  Header,
+  setLocaleMessages,
+  withLocalisation,
+  Head,
+} from '@openmrs/react-components';
 import BreadCrumb from './components/shared/BreadCrumb/BreadCrumb';
 import LabResultEntry from './components/LabResultEntry';
 import LabOrdersList from './components/LabOrdersList';
-
 import messagesEN from "./translations/en.json";
 import messagesFR from "./translations/fr.json";
 
@@ -26,11 +30,13 @@ const FakeBreadcrumbPage = () => (
   <div>FakeBreadcrumbPage</div>
 );
 
+const LocalizedHead = withLocalisation(Head);
 const LocalizedBreadCrumb = withLocalisation(BreadCrumb);
 
 // eslint-disable-next-line
 export default store => (
   <div>
+    <LocalizedHead defaultTitle="OpenMRS Electronic Medical Record" id="app.title" />
     <Header />
     <LocalizedBreadCrumb />
     <Switch>

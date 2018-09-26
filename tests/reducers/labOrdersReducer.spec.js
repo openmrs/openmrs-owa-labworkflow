@@ -21,12 +21,14 @@ describe('labOrdersReducer', () => {
     const successAction = {
       type: `${FETCH_LAB_ORDERS}_SUCCESS`,
       payload: {
-        results: ['some valid result'],
+        data: {
+          results: ['some valid result'],
+        },
       },
     };
     const nextState = labOrdersReducer(initialState.labOrderReducer, successAction);
     expect(nextState.isLoading).toEqual(false);
-    expect(nextState.orders).toEqual(successAction.payload.results);
+    expect(nextState.orders).toEqual(successAction.payload.data.results);
     expect(nextState.error.status).toEqual(false);
     expect(nextState.error.message).toEqual(null);
   });

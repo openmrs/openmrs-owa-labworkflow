@@ -8,7 +8,7 @@ export default (state = initialState.labOrderReducer, action) => {
       return {
         ...state,
         isLoading: false,
-        orders: action.payload.results,
+        orders: action.payload.data.results,
       };
     }
     case `${FETCH_LAB_ORDERS}_FAILURE`: {
