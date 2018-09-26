@@ -121,7 +121,6 @@ button.pull-right.btn-success {
 
 .single-result-field {
     display: flex;
-    padding-top: 15px;
     padding-bottom: 15px;
 }
 .obs-date-label {
@@ -141,3 +140,14 @@ button.pull-right.btn-success {
     left: 50%;
 }
 
+.did-not-perform {
+    display: flex
+}
+
+.did-not-perform-label {
+    line-height: 50px;
+}
+
+.did-not-perform-checkbox {
+    margin-left: 40px;
+}

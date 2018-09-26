@@ -1,10 +1,31 @@
 import { axiosInstance } from '../config';
-import { FETCH_LAB_RESULTS_ENCOUNTER_TYPE, GET_DATE } from './actionTypes';
+import {
+  FETCH_LAB_RESULTS_ENCOUNTER_TYPE,
+  FETCH_LAB_RESULTS_DID_NOT_PERFORM_QUESTION,
+  FETCH_LAB_RESULTS_DID_NOT_PERFORM_REASON,
+  FETCH_LAB_RESULTS_DID_NOT_PERFORM_ANSWER,
+  GET_DATE,
+} from './actionTypes';
 
 
 const fetchLabResultsEncounterType = () => ({
   type: FETCH_LAB_RESULTS_ENCOUNTER_TYPE,
   payload: axiosInstance.get(`systemsetting?v=custom:(value)&q=labworkflowowa.labResultsEncounterType`),
+});
+
+const fetchLabResultsDidNotPerformQuestion = () => ({
+  type: FETCH_LAB_RESULTS_DID_NOT_PERFORM_QUESTION,
+  payload: axiosInstance.get(`systemsetting?v=custom:(value)&q=labworkflowowa.didNotPerformQuestion`),
+});
+
+const fetchLabResultsDidNotPerformReason = () => ({
+  type: FETCH_LAB_RESULTS_DID_NOT_PERFORM_REASON,
+  payload: axiosInstance.get(`systemsetting?v=custom:(value)&q=labworkflowowa.didNotPerformReason`),
+});
+
+const fetchLabResultsDidNotPerformAnswer = () => ({
+  type: FETCH_LAB_RESULTS_DID_NOT_PERFORM_ANSWER,
+  payload: axiosInstance.get(`systemsetting?v=custom:(value)&q=labworkflowowa.didNotPerformAnswer`),
 });
 
 const getDateFormat = () => ({
@@ -15,4 +36,7 @@ const getDateFormat = () => ({
 export default {
   fetchLabResultsEncounterType,
   getDateFormat,
+  fetchLabResultsDidNotPerformQuestion,
+  fetchLabResultsDidNotPerformAnswer,
+  fetchLabResultsDidNotPerformReason,
 };

@@ -65,6 +65,11 @@ const props = {
       },
     },
   },
+  CONSTANTS: {
+    labResultsDidNotPerformAnswer: 'mock-uuid',
+    labResultsDidNotPerformQuestion: 'mock-uuid',
+    labResultsDidNotPerformReason: 'mock-uuid',
+  },
 };
 
 const state = {
@@ -85,7 +90,7 @@ const getComponent = () => {
 };
 
 
-describe('<LabOrdersList /> component', () => {
+describe('<LabResultEntry /> component', () => {
   it('renders correctly', () => {
     const component = getComponent();
     expect(component).toMatchSnapshot();
