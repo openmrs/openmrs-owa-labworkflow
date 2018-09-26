@@ -77,6 +77,7 @@ export class LabResultEntry extends PureComponent {
       dispatch(patientAction.getPatient(state.patient.uuid));
       dispatch(labConceptsAction.fetchLabConcept(conceptUUID));
       dispatch(constantsAction.fetchLabResultsEncounterType());
+      dispatch(constantsAction.fetchLabResultsDateConcept());
       dispatch(constantsAction.fetchLabResultsDidNotPerformAnswer());
       dispatch(constantsAction.fetchLabResultsDidNotPerformQuestion());
       dispatch(constantsAction.fetchLabResultsDidNotPerformReason());
@@ -130,12 +131,13 @@ export class LabResultEntry extends PureComponent {
                   <span className="obs-date-field">
                     <Obs
                       datatype="date"
-                      concept="68d6bd27-37ff-4d7a-87a0-f5e0f9c8dcc0"
+                      concept={CONSTANTS.labResultsDateConcept}
                       path="result-date"
                       validate={[maxDateRange]}
                     />
                   </span>
-                </span>
+
+              </span>
               </div>
             )
         }

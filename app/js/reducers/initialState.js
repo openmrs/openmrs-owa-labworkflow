@@ -36,6 +36,7 @@ export default {
   },
   CONSTANTS: {
     labResultsEncounterType: '',
+    labResultsDateConcept: '',
     labResultsDidNotPerformAnswer: '',
     labResultsDidNotPerformQuestion: '',
     labResultsDidNotPerformReason: null,
