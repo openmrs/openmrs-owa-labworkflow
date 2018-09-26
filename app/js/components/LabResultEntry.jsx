@@ -216,7 +216,7 @@ export class LabResultEntry extends PureComponent {
               encounterType={encounterType}
               formContent={observations}
               patient={patientHeaderDetail}
-              formId="resultEntryForm"
+              formId="result-entry-form"
             />
           </span>
         </div>
@@ -387,7 +387,7 @@ const mapStateToProps = (state) => {
     CONSTANTS,
     conceptMembers,
   } = state;
-  const selector = formValueSelector('resultEntryForm');
+  const selector = formValueSelector('result-entry-form');
   const didNotPerformCheckbox = CONSTANTS && !!(selector(state, `obs|path=did-not-perform-checkbox|concept=${CONSTANTS.labResultsDidNotPerformQuestion}`));
 
   return {
