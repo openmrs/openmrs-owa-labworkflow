@@ -40,6 +40,7 @@ export default {
     labResultsDidNotPerformAnswer: '',
     labResultsDidNotPerformQuestion: '',
     labResultsDidNotPerformReason: null,
+    labResultsTestOrderNumberConcept: '',
     dateAndTimeFormat: '',
     isLoading: false,
     error: {
