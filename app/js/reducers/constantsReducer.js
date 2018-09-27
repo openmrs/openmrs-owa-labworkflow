@@ -6,6 +6,7 @@ import {
   FETCH_LAB_RESULTS_DID_NOT_PERFORM_ANSWER,
   FETCH_LAB_RESULTS_DID_NOT_PERFORM_QUESTION,
   FETCH_LAB_RESULTS_DID_NOT_PERFORM_REASON,
+  FETCH_LAB_RESULTS_TEST_ORDER_NUMBER_CONCEPT,
 } from '../actions/actionTypes';
 
 
@@ -18,6 +19,7 @@ export default (state = initialState.CONSTANTS, action) => {
         labResultsEncounterType: action.payload.data.results[0].value,
       };
     }
+
     case `${FETCH_LAB_RESULTS_ENCOUNTER_TYPE}_FAILURE`: {
       return {
         ...state,
@@ -28,7 +30,34 @@ export default (state = initialState.CONSTANTS, action) => {
         },
       };
     }
+
     case `${FETCH_LAB_RESULTS_ENCOUNTER_TYPE}_LOADING`: {
+      return {
+        ...state,
+        isLoading: true,
+      };
+    }
+
+    case `${FETCH_LAB_RESULTS_TEST_ORDER_NUMBER_CONCEPT}_SUCCESS`: {
+      return {
+        ...state,
+        isLoading: false,
+        labResultsTestOrderNumberConcept: action.payload.data.results[0].value,
+      };
+    }
+
+    case `${FETCH_LAB_RESULTS_TEST_ORDER_NUMBER_CONCEPT}_FAILURE`: {
+      return {
+        ...state,
+        isLoading: false,
+        error: {
+          message: action.payload,
+          status: action.error,
+        },
+      };
+    }
+
+    case `${FETCH_LAB_RESULTS_TEST_ORDER_NUMBER_CONCEPT}_LOADING`: {
       return {
         ...state,
         isLoading: true,
