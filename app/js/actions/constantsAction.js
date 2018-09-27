@@ -5,6 +5,7 @@ import {
   FETCH_LAB_RESULTS_DID_NOT_PERFORM_QUESTION,
   FETCH_LAB_RESULTS_DID_NOT_PERFORM_REASON,
   FETCH_LAB_RESULTS_DID_NOT_PERFORM_ANSWER,
+  FETCH_LAB_RESULTS_TEST_ORDER_NUMBER_CONCEPT,
   GET_DATE,
 } from './actionTypes';
 
@@ -34,6 +35,11 @@ const fetchLabResultsDidNotPerformAnswer = () => ({
   payload: axiosInstance.get(`systemsetting?v=custom:(value)&q=labworkflowowa.didNotPerformAnswer`),
 });
 
+const fetchLabResultsTestOrderNumberConcept = () => ({
+  type: FETCH_LAB_RESULTS_TEST_ORDER_NUMBER_CONCEPT,
+  payload: axiosInstance.get(`systemsetting?v=custom:(value)&q=labworkflowowa.testOrderNumberConcept`),
+});
+
 const getDateFormat = () => ({
   type: GET_DATE,
   payload: axiosInstance.get(`systemsetting?v=custom:(value)&q=orderentryowa.dateAndTimeFormat`),
@@ -46,4 +52,5 @@ export default {
   fetchLabResultsDidNotPerformQuestion,
   fetchLabResultsDidNotPerformAnswer,
   fetchLabResultsDidNotPerformReason,
+  fetchLabResultsTestOrderNumberConcept,
 };

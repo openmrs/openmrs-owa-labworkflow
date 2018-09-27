@@ -74,6 +74,7 @@ export class LabResultEntry extends PureComponent {
     const { dispatch, history: { location: { state } } } = this.props;
     if (typeof state !== 'undefined') {
       const conceptUUID = state.concept.uuid;
+      // TODO: load all this CONSTANTS on app init and not on this component
       dispatch(patientAction.getPatient(state.patient.uuid));
       dispatch(labConceptsAction.fetchLabConcept(conceptUUID));
       dispatch(constantsAction.fetchLabResultsEncounterType());
@@ -81,6 +82,7 @@ export class LabResultEntry extends PureComponent {
       dispatch(constantsAction.fetchLabResultsDidNotPerformAnswer());
       dispatch(constantsAction.fetchLabResultsDidNotPerformQuestion());
       dispatch(constantsAction.fetchLabResultsDidNotPerformReason());
+      dispatch(constantsAction.fetchLabResultsTestOrderNumberConcept());
     } else {
       this.shouldRedirect();
     }
@@ -102,7 +104,9 @@ export class LabResultEntry extends PureComponent {
 
   renderForm(selectedLabConcept) {
     const { patientHeaderDetail } = this.state;
-    const { CONSTANTS, conceptMembers, didNotPerformCheckbox } = this.props;
+    const {
+      CONSTANTS, conceptMembers, didNotPerformCheckbox, history: { location: { state } },
+    } = this.props;
 
     const encounterType = {
       uuid: CONSTANTS.labResultsEncounterType,
@@ -212,6 +216,14 @@ export class LabResultEntry extends PureComponent {
           }
           <span className="encounter-form-componnent">
             <EncounterFormPage
+              defaultValues={[
+                {
+                  type: "obs",
+                  path: "test-order-number",
+                  concept: CONSTANTS.labResultsTestOrderNumberConcept,
+                  value: state.orderNumber,
+                },
+              ]}
               afterSubmitLink="/"
               backLink="/"
               encounterType={encounterType}
