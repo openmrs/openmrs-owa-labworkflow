@@ -225,7 +225,6 @@ export class LabResultEntry extends PureComponent {
                   value: state.orderNumber,
                 },
               ]}
-              testOrderNumberConcept={CONSTANTS.labResultsTestOrderNumberConcept}
               afterSubmitLink="/"
               backLink="/"
               encounterType={encounterType}
