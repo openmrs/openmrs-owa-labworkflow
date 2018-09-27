@@ -13,18 +13,15 @@ import cn from 'classnames';
 import moment from 'moment';
 import { withRouter } from 'react-router-dom';
 import PropTypes from 'prop-types';
-import matchSorter from 'match-sorter';
 import { FormattedMessage } from 'react-intl';
-import { SortableTable, constantsActions } from '@openmrs/react-components';
-import { Loader } from '@openmrs/react-components';
+import { SortableTable, Loader, constantsActions } from '@openmrs/react-components';
 import LabOrderListFilters from './LabOrdersListFilters';
-
 import { fetchLabOrders } from '../actions/labOrdersAction';
-import { getDateRange } from '../utils/helpers';
+import { filterThrough } from '../utils/helpers';
 import "../../css/lab-orders-list.scss";
 
 
-const Cell = ({ columnName, value, dateAndTimeFormat }) => {
+export const Cell = ({ columnName, value, dateAndTimeFormat }) => {
   switch (columnName) {
     case 'EMR ID': {
       // TODO: refactor this and name column to use React Components patientUtils
@@ -100,7 +97,6 @@ export class LabOrdersList extends PureComponent {
     this.handleFilterChange = this.handleFilterChange.bind(this);
     this.clearNameEMRField = this.clearNameEMRField.bind(this);
     this.handleShowResultsEntryPage = this.handleShowResultsEntryPage.bind(this);
-    this.renderDataWithFilters = this.renderDataWithFilters.bind(this);
   }
 
   componentDidMount() {
@@ -144,31 +140,8 @@ export class LabOrdersList extends PureComponent {
     });
   }
 
-  renderDataWithFilters(filters, data) {
-    const self = this;
-    let originalData = data;
-
-    if (filters.nameField !== "") {
-      const inputValue = filters.nameField;
-      const filteredData = matchSorter(originalData, inputValue, { keys: ['patient.display'] });
-      originalData = filteredData;
-    }
-
-    if (filters.dateToField && filters.dateFromField) {
-      const filteredData = getDateRange(originalData, filters.dateFromField, filters.dateToField, 'dateActivated');
-      originalData = filteredData;
-    }
-
-    if (filters.testTypeField !== "All") {
-      const inputValue = filters.testTypeField;
-      const filteredData = matchSorter(originalData, inputValue, { keys: ['concept.display'] });
-      originalData = filteredData;
-    }
-    return originalData;
-  }
-
   renderDraftOrderTable() {
-    const { orders } = this.props;
+    const { orders, dateAndTimeFormat } = this.props;
     const { filters } = this.state;
     const fields = ["EMR ID", "NAME", "ORDER ID", "ORDER DATE", "COLLECTION DATE", "URGENCY", "TEST TYPE"];
 
@@ -181,7 +154,7 @@ export class LabOrdersList extends PureComponent {
       description={`LabOrderList table header for ${columnName}`} />
   </span>,
       accessor: "",
-      Cell: data => <Cell {...data} columnName={columnName} dateAndTimeFormat={this.props.dateAndTimeFormat} />,
+      Cell: data => <Cell {...data} columnName={columnName} dateAndTimeFormat={dateAndTimeFormat} />,
       className: `lab-order-list-cell-${columnName.replace(' ', '-').toLocaleLowerCase()}`,
       headerClassName: `lab-order-list-header-${columnName.replace(' ', '-').toLocaleLowerCase()}`,
     }));
@@ -190,7 +163,7 @@ export class LabOrdersList extends PureComponent {
         <SortableTable
           data={orders}
           filters={filters}
-          getDataWithFilters={this.renderDataWithFilters}
+          getDataWithFilters={filterThrough}
           columnMetadata={columnMetadata}
           filteredFields={fields}
           filterType="none"

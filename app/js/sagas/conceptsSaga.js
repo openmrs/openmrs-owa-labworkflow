@@ -9,13 +9,13 @@ import {
 import { conceptRest } from '@openmrs/react-components';
 
 import { FETCH_LAB_CONCEPT, SET_CONCEPT_MEMBER } from '../actions/actionTypes';
-import labConceptsAction from '../actions/labConceptsAction';
+import { setMember, setFetchStatus } from '../actions/labConceptsAction';
 
 
 export function* getConcept({ concept, count }) {
   const { uuid } = concept;
   const response = yield call(conceptRest.getConcept, uuid);
-  yield put(labConceptsAction.setMember(response, count));
+  yield put(setMember(response, count));
 }
 
 export function* setConceptMembers(action) {
@@ -25,7 +25,7 @@ export function* setConceptMembers(action) {
   if (members.length) {
     let iterator = 0;
     let forkedProcess;
-    yield put(labConceptsAction.setFetchStatus(true));
+    yield put(setFetchStatus(true));
     try {
       while (members[iterator]) {
         forkedProcess = yield fork(
@@ -38,7 +38,7 @@ export function* setConceptMembers(action) {
       yield take(`${SET_CONCEPT_MEMBER}_${count}`);
       yield cancel(forkedProcess);
     }
-    yield put(labConceptsAction.setFetchStatus(false));
+    yield put(setFetchStatus(false));
   }
 }
 

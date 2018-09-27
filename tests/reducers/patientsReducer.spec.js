@@ -19,7 +19,7 @@ describe('patientsReducer', () => {
     };
     const nextState = patientsReducer(initialState, randomAction);
     expect(nextState.patients).toEqual({});
-    expect(nextState.selectedPatient).toEqual(null);
+    expect(nextState.selectedPatient).toEqual({});
   });
   it('adds the patient to the state, when the patient uuid is not set in state', () => {
     const addPatientAction = {
@@ -63,7 +63,7 @@ describe('selectedPatientReducer', () => {
       type: 'SOME_RANDOM_ACTION',
     };
     const nextState = selectedPatientReducer(initialState, randomAction);
-    expect(nextState.selectedPatient).toEqual(null);
+    expect(nextState.selectedPatient).toEqual({});
   });
   it('adds the patient to the state, when the patient uuid is not set in state', () => {
     const selectedPatientAction = {
@@ -71,7 +71,7 @@ describe('selectedPatientReducer', () => {
       patientUUID: '1234',
     };
 
-    const nextState = selectedPatientReducer(null, selectedPatientAction);
+    const nextState = selectedPatientReducer({}, selectedPatientAction);
     expect(nextState).toEqual('1234');
   });
 });
@@ -82,7 +82,7 @@ describe('selectedLabConceptReducer', () => {
       type: 'SOME_RANDOM_ACTION',
     };
     const nextState = selectedLabConceptReducer(initialState, randomAction);
-    expect(nextState.selectedPatient).toEqual(null);
+    expect(nextState.selectedPatient).toEqual({});
   });
   it('adds the concept to the state, whenever it is selected', () => {
     const selectedConceptAction = {
@@ -94,7 +94,7 @@ describe('selectedLabConceptReducer', () => {
       },
     };
 
-    const nextState = selectedLabConceptReducer(null, selectedConceptAction);
+    const nextState = selectedLabConceptReducer({}, selectedConceptAction);
     expect(nextState).toEqual(selectedConceptAction.payload.data);
   });
 });

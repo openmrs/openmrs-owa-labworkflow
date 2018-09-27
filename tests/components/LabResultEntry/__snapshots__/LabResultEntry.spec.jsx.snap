@@ -1,14 +1,1122 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`<LabResultEntry /> component renders correctly 1`] = `
+exports[`<LabResultEntry /> component renders correctly with valid props 1`] = `
+<Provider
+  location={
+    Object {
+      "state": Object {},
+    }
+  }
+  store={
+    Object {
+      "clearActions": [Function],
+      "dispatch": [Function],
+      "getActions": [Function],
+      "getState": [Function],
+      "replaceReducer": [Function],
+      "subscribe": [Function],
+    }
+  }
+>
+  <HashRouter>
+    <Router
+      history={
+        Object {
+          "action": "POP",
+          "block": [Function],
+          "createHref": [Function],
+          "go": [Function],
+          "goBack": [Function],
+          "goForward": [Function],
+          "length": 1,
+          "listen": [Function],
+          "location": Object {
+            "hash": "",
+            "pathname": "/",
+            "search": "",
+            "state": undefined,
+          },
+          "push": [Function],
+          "replace": [Function],
+        }
+      }
+    >
+      <Connect(LabResultEntry)
+        clearNameEMRField={[MockFunction]}
+        conceptMembers={
+          Object {
+            "1234-abcd": Object {
+              "hiAbsolute": 25,
+              "hiCritical": 30,
+              "hiNormal": 22,
+              "lowAbsolute": 9,
+              "lowCritical": 3,
+              "lowNormal": 11,
+              "units": "cc",
+            },
+            "pqrs-5678": Object {
+              "hiAbsolute": 25,
+              "hiCritical": 30,
+              "hiNormal": 22,
+              "lowAbsolute": 9,
+              "lowCritical": 3,
+              "lowNormal": 11,
+              "units": "cc",
+            },
+          }
+        }
+        history={
+          Object {
+            "location": Object {
+              "state": Object {
+                "concept": Object {
+                  "display": "Hémogramme automatisé",
+                  "uuid": "9i9i-99090-999",
+                },
+                "dateActivated": "2018-08-30T17:34:19.000+0100",
+                "orderNumber": "ORD-1",
+                "patient": Object {
+                  "display": "Y2A7LR - williams willy john",
+                },
+                "urgency": "ROUTINE",
+              },
+            },
+          }
+        }
+        labTests={
+          Array [
+            "Hémogramme automatisé",
+          ]
+        }
+        location={
+          Object {
+            "state": Object {
+              "concept": Object {
+                "display": "Hémogramme automatisé",
+              },
+              "dateActivated": "2018-08-30T17:34:19.000+0100",
+              "orderNumber": "ORD-1",
+              "patient": Object {
+                "display": "Y2A7LR - williams willy john",
+              },
+              "urgency": "ROUTINE",
+            },
+          }
+        }
+        nameField=""
+        patientHeaderDetail={
+          Object {
+            "display": "Y2A7LR - williams willy john",
+          }
+        }
+      >
+        <LabResultEntry
+          CONSTANTS={
+            Object {
+              "labResultsDateConcept": "mock-date-concept",
+              "labResultsDidNotPerformAnswer": "mock-uuid",
+              "labResultsDidNotPerformQuestion": "mock-uuid",
+              "labResultsDidNotPerformReason": "mock-uuid",
+              "labResultsEncounterType": "mock-encounter-uuid",
+              "labResultsTestOrderNumberConcept": "mock-test-orderno-concept",
+            }
+          }
+          clearNameEMRField={[MockFunction]}
+          conceptMembers={
+            Object {
+              "1234-abcd": Object {
+                "hiAbsolute": 25,
+                "hiCritical": 30,
+                "hiNormal": 22,
+                "lowAbsolute": 9,
+                "lowCritical": 3,
+                "lowNormal": 11,
+                "units": "cc",
+              },
+              "pqrs-5678": Object {
+                "hiAbsolute": 25,
+                "hiCritical": 30,
+                "hiNormal": 22,
+                "lowAbsolute": 9,
+                "lowCritical": 3,
+                "lowNormal": 11,
+                "units": "cc",
+              },
+            }
+          }
+          didNotPerformCheckbox={false}
+          dispatch={[Function]}
+          history={
+            Object {
+              "location": Object {
+                "state": Object {
+                  "concept": Object {
+                    "display": "Hémogramme automatisé",
+                    "uuid": "9i9i-99090-999",
+                  },
+                  "dateActivated": "2018-08-30T17:34:19.000+0100",
+                  "orderNumber": "ORD-1",
+                  "patient": Object {
+                    "display": "Y2A7LR - williams willy john",
+                  },
+                  "urgency": "ROUTINE",
+                },
+              },
+            }
+          }
+          labTests={
+            Array [
+              "Hémogramme automatisé",
+            ]
+          }
+          location={
+            Object {
+              "state": Object {
+                "concept": Object {
+                  "display": "Hémogramme automatisé",
+                },
+                "dateActivated": "2018-08-30T17:34:19.000+0100",
+                "orderNumber": "ORD-1",
+                "patient": Object {
+                  "display": "Y2A7LR - williams willy john",
+                },
+                "urgency": "ROUTINE",
+              },
+            }
+          }
+          nameField=""
+          patientHeaderDetail={
+            Object {
+              "display": "Y2A7LR - williams willy john",
+            }
+          }
+          selectedLabConcept={
+            Object {
+              "answers": Array [],
+              "set": true,
+              "setMembers": Array [
+                Object {
+                  "display": "Height",
+                  "uuid": "1234-abcd",
+                },
+                Object {
+                  "display": "Weight",
+                  "uuid": "pqrs-5678",
+                },
+              ],
+            }
+          }
+        >
+          <div
+            className="container-fluid"
+          >
+            <div>
+              <h2
+                className="lab-entry-page-title"
+              >
+                Test Results
+              </h2>
+              <div
+                className="fieldset-container"
+              >
+                <div
+                  className="legend"
+                >
+                  <span>
+                     Specimen Details 
+                  </span>
+                </div>
+                <div
+                  className="fieldset-body"
+                >
+                  <div
+                    className="col-xs-12"
+                  >
+                    <CustomDatePicker
+                      defaultDate={"2018-09-26T10:25:28.761Z"}
+                      field="dateFromField"
+                      formControlStyle={
+                        Object {
+                          "marginRight": "5px",
+                          "width": "100px",
+                        }
+                      }
+                      handleDateChange={[Function]}
+                      label="Specimen Collection Date:"
+                      labelClassName="date-picker-label"
+                    >
+                      <DatePicker
+                        allowSameDay={false}
+                        customInput={<DateDisplayComponent />}
+                        dateFormat="L"
+                        dateFormatCalendar="MMMM YYYY"
+                        disabled={false}
+                        disabledKeyboardNavigation={false}
+                        dropdownMode="scroll"
+                        excludeDates={false}
+                        monthsShown={1}
+                        nextMonthButtonLabel="Next month"
+                        onBlur={[Function]}
+                        onChange={[Function]}
+                        onClickOutside={[Function]}
+                        onFocus={[Function]}
+                        onKeyDown={[Function]}
+                        onMonthChange={[Function]}
+                        onSelect={[Function]}
+                        onYearChange={[Function]}
+                        preventOpenOnFocus={false}
+                        previousMonthButtonLabel="Previous Month"
+                        readOnly={false}
+                        selected={"2018-09-26T10:25:28.761Z"}
+                        shouldCloseOnSelect={true}
+                        showTimeSelect={false}
+                        timeCaption="Time"
+                        timeIntervals={30}
+                        withPortal={false}
+                      >
+                        <PopperComponent
+                          hidePopper={true}
+                          popperComponent={null}
+                          popperModifiers={
+                            Object {
+                              "preventOverflow": Object {
+                                "boundariesElement": "viewport",
+                                "enabled": true,
+                                "escapeWithReference": true,
+                              },
+                            }
+                          }
+                          popperPlacement="bottom-start"
+                          targetComponent={
+                            <div
+                              className="react-datepicker__input-container"
+                            >
+                              <DateDisplayComponent
+                                className=""
+                                disabled={false}
+                                onBlur={[Function]}
+                                onChange={[Function]}
+                                onClick={[Function]}
+                                onFocus={[Function]}
+                                onKeyDown={[Function]}
+                                readOnly={false}
+                                value="09/26/2018"
+                              />
+                            </div>
+                          }
+                        >
+                          <Manager
+                            tag="div"
+                          >
+                            <div>
+                              <Target
+                                className="react-datepicker-wrapper"
+                              >
+                                <div
+                                  className="react-datepicker-wrapper"
+                                >
+                                  <div
+                                    className="react-datepicker__input-container"
+                                  >
+                                    <DateDisplayComponent
+                                      className=""
+                                      disabled={false}
+                                      onBlur={[Function]}
+                                      onChange={[Function]}
+                                      onClick={[Function]}
+                                      onFocus={[Function]}
+                                      onKeyDown={[Function]}
+                                      readOnly={false}
+                                      value="09/26/2018"
+                                    >
+                                      <span>
+                                        <span
+                                          style={
+                                            Object {
+                                              "display": "flex",
+                                              "justifyContent": "space-around",
+                                            }
+                                          }
+                                        >
+                                          <span
+                                            className="date-picker-label"
+                                          >
+                                            Specimen Collection Date:
+                                          </span>
+                                          <FormControl
+                                            bsClass="form-control"
+                                            componentClass="input"
+                                            placeholder=""
+                                            style={
+                                              Object {
+                                                "marginRight": "5px",
+                                                "width": "100px",
+                                              }
+                                            }
+                                            type="text"
+                                            value="09/26/2018"
+                                          >
+                                            <input
+                                              className="form-control"
+                                              placeholder=""
+                                              style={
+                                                Object {
+                                                  "marginRight": "5px",
+                                                  "width": "100px",
+                                                }
+                                              }
+                                              type="text"
+                                              value="09/26/2018"
+                                            />
+                                          </FormControl>
+                                          <i
+                                            className="icon-calendar scale small add-on"
+                                            onClick={[Function]}
+                                            role="toolbar"
+                                          />
+                                        </span>
+                                      </span>
+                                    </DateDisplayComponent>
+                                  </div>
+                                </div>
+                              </Target>
+                            </div>
+                          </Manager>
+                        </PopperComponent>
+                      </DatePicker>
+                    </CustomDatePicker>
+                  </div>
+                  <br />
+                  <br />
+                  <div
+                    className="col-xs-6"
+                  >
+                    <span
+                      className="test-details-label"
+                    >
+                      Test: 
+                      <span
+                        className="test-details"
+                      />
+                    </span>
+                  </div>
+                  <div
+                    className="col-xs-6"
+                  >
+                    <span
+                      className="test-details-label"
+                    >
+                      Urgency: 
+                      <span
+                        className="test-details"
+                      >
+                        ROUTINE
+                      </span>
+                    </span>
+                  </div>
+                  <br />
+                  <br />
+                </div>
+              </div>
+            </div>
+            <br />
+            <br />
+            <div>
+              <div
+                className="fieldset-container lab-entry-result-details"
+              >
+                <div
+                  className="legend"
+                >
+                  <span>
+                     Result Details 
+                  </span>
+                </div>
+                <div
+                  className="fieldset-body"
+                >
+                  <span
+                    className="range-header-text"
+                  >
+                    NORMAL RANGE
+                  </span>
+                  <span
+                    className="encounter-form-componnent"
+                  >
+                    <Connect(EncounterFormPage)
+                      afterSubmitLink="/"
+                      backLink="/"
+                      defaultValues={
+                        Array [
+                          Object {
+                            "concept": "mock-test-orderno-concept",
+                            "path": "test-order-number",
+                            "type": "obs",
+                            "value": "ORD-1",
+                          },
+                        ]
+                      }
+                      encounterType={
+                        Object {
+                          "uuid": "mock-encounter-uuid",
+                        }
+                      }
+                      formContent={
+                        <Grid
+                          bsClass="container"
+                          componentClass="div"
+                          fluid={false}
+                        >
+                          <div
+                            className="col-xs-4"
+                          >
+                            <span
+                              className="single-result-field"
+                            >
+                              <span
+                                className="obs-date-label"
+                              >
+                                Result Date
+                              </span>
+                              <span
+                                className="obs-date-field"
+                              >
+                                <WithFormContext(Connect(Obs))
+                                  concept="mock-date-concept"
+                                  datatype="date"
+                                  path="result-date"
+                                  validate={
+                                    Array [
+                                      [Function],
+                                    ]
+                                  }
+                                />
+                              </span>
+                            </span>
+                          </div>
+                          <div
+                            className="col-xs-4"
+                          >
+                            <div
+                              className="did-not-perform-checkbox"
+                            >
+                              <WithFormContext(Connect(Obs))
+                                checkBoxTitle="Did not perform"
+                                concept="mock-uuid"
+                                conceptAnswer="mock-uuid"
+                                path="did-not-perform-checkbox"
+                                widget="checkbox"
+                              />
+                            </div>
+                          </div>
+                          <Row
+                            bsClass="row"
+                            componentClass="div"
+                          >
+                            <FormGroup
+                              bsClass="form-group"
+                              controlId="Height"
+                            >
+                              <span
+                                className="member-display-label"
+                              >
+                                Height
+                              </span>
+                              <span
+                                className="obs-component"
+                              >
+                                <WithFormContext(Connect(Obs))
+                                  concept="1234-abcd"
+                                  path="1234-abcd"
+                                  validate={
+                                    Array [
+                                      [Function],
+                                      [Function],
+                                    ]
+                                  }
+                                  warn={
+                                    Array [
+                                      [Function],
+                                      [Function],
+                                    ]
+                                  }
+                                />
+                              </span>
+                              <span
+                                className="units"
+                              >
+                                cc
+                              </span>
+                              <span
+                                className="valid-range"
+                              >
+                                11cc - 22cc
+                              </span>
+                            </FormGroup>
+                            <FormGroup
+                              bsClass="form-group"
+                              controlId="Weight"
+                            >
+                              <span
+                                className="member-display-label"
+                              >
+                                Weight
+                              </span>
+                              <span
+                                className="obs-component"
+                              >
+                                <WithFormContext(Connect(Obs))
+                                  concept="pqrs-5678"
+                                  path="pqrs-5678"
+                                  validate={
+                                    Array [
+                                      [Function],
+                                      [Function],
+                                    ]
+                                  }
+                                  warn={
+                                    Array [
+                                      [Function],
+                                      [Function],
+                                    ]
+                                  }
+                                />
+                              </span>
+                              <span
+                                className="units"
+                              >
+                                cc
+                              </span>
+                              <span
+                                className="valid-range"
+                              >
+                                11cc - 22cc
+                              </span>
+                            </FormGroup>
+                          </Row>
+                        </Grid>
+                      }
+                      formId="result-entry-form"
+                      patient={false}
+                    >
+                      <EncounterFormPage
+                        afterSubmitLink="/"
+                        backLink="/"
+                        defaultValues={
+                          Array [
+                            Object {
+                              "concept": "mock-test-orderno-concept",
+                              "path": "test-order-number",
+                              "type": "obs",
+                              "value": "ORD-1",
+                            },
+                          ]
+                        }
+                        dispatch={[Function]}
+                        encounterType={
+                          Object {
+                            "uuid": "mock-encounter-uuid",
+                          }
+                        }
+                        formContent={
+                          <Grid
+                            bsClass="container"
+                            componentClass="div"
+                            fluid={false}
+                          >
+                            <div
+                              className="col-xs-4"
+                            >
+                              <span
+                                className="single-result-field"
+                              >
+                                <span
+                                  className="obs-date-label"
+                                >
+                                  Result Date
+                                </span>
+                                <span
+                                  className="obs-date-field"
+                                >
+                                  <WithFormContext(Connect(Obs))
+                                    concept="mock-date-concept"
+                                    datatype="date"
+                                    path="result-date"
+                                    validate={
+                                      Array [
+                                        [Function],
+                                      ]
+                                    }
+                                  />
+                                </span>
+                              </span>
+                            </div>
+                            <div
+                              className="col-xs-4"
+                            >
+                              <div
+                                className="did-not-perform-checkbox"
+                              >
+                                <WithFormContext(Connect(Obs))
+                                  checkBoxTitle="Did not perform"
+                                  concept="mock-uuid"
+                                  conceptAnswer="mock-uuid"
+                                  path="did-not-perform-checkbox"
+                                  widget="checkbox"
+                                />
+                              </div>
+                            </div>
+                            <Row
+                              bsClass="row"
+                              componentClass="div"
+                            >
+                              <FormGroup
+                                bsClass="form-group"
+                                controlId="Height"
+                              >
+                                <span
+                                  className="member-display-label"
+                                >
+                                  Height
+                                </span>
+                                <span
+                                  className="obs-component"
+                                >
+                                  <WithFormContext(Connect(Obs))
+                                    concept="1234-abcd"
+                                    path="1234-abcd"
+                                    validate={
+                                      Array [
+                                        [Function],
+                                        [Function],
+                                      ]
+                                    }
+                                    warn={
+                                      Array [
+                                        [Function],
+                                        [Function],
+                                      ]
+                                    }
+                                  />
+                                </span>
+                                <span
+                                  className="units"
+                                >
+                                  cc
+                                </span>
+                                <span
+                                  className="valid-range"
+                                >
+                                  11cc - 22cc
+                                </span>
+                              </FormGroup>
+                              <FormGroup
+                                bsClass="form-group"
+                                controlId="Weight"
+                              >
+                                <span
+                                  className="member-display-label"
+                                >
+                                  Weight
+                                </span>
+                                <span
+                                  className="obs-component"
+                                >
+                                  <WithFormContext(Connect(Obs))
+                                    concept="pqrs-5678"
+                                    path="pqrs-5678"
+                                    validate={
+                                      Array [
+                                        [Function],
+                                        [Function],
+                                      ]
+                                    }
+                                    warn={
+                                      Array [
+                                        [Function],
+                                        [Function],
+                                      ]
+                                    }
+                                  />
+                                </span>
+                                <span
+                                  className="units"
+                                >
+                                  cc
+                                </span>
+                                <span
+                                  className="valid-range"
+                                >
+                                  11cc - 22cc
+                                </span>
+                              </FormGroup>
+                            </Row>
+                          </Grid>
+                        }
+                        formId="result-entry-form"
+                        patient={
+                          Object {
+                            "display": "Y2A7LR - williams willy john",
+                            "uuid": "abcd",
+                          }
+                        }
+                      >
+                        <div
+                          style={
+                            Object {
+                              "paddingLeft": "0px",
+                              "paddingRight": "0px",
+                            }
+                          }
+                        >
+                          <Grid
+                            bsClass="container"
+                            componentClass="div"
+                            fluid={false}
+                            style={
+                              Object {
+                                "paddingLeft": "0px",
+                                "paddingRight": "0px",
+                              }
+                            }
+                          >
+                            <div
+                              className="container"
+                              style={
+                                Object {
+                                  "paddingLeft": "0px",
+                                  "paddingRight": "0px",
+                                }
+                              }
+                            >
+                              <Row
+                                bsClass="row"
+                                componentClass="div"
+                                style={
+                                  Object {
+                                    "backgroundColor": "#ffa500b3",
+                                  }
+                                }
+                              >
+                                <div
+                                  className="row"
+                                  style={
+                                    Object {
+                                      "backgroundColor": "#ffa500b3",
+                                    }
+                                  }
+                                >
+                                  <Col
+                                    bsClass="col"
+                                    componentClass="div"
+                                    md={20}
+                                    sm={20}
+                                    style={
+                                      Object {
+                                        "paddingLeft": "20px",
+                                      }
+                                    }
+                                  >
+                                    <div
+                                      className="col-md-20 col-sm-20"
+                                      style={
+                                        Object {
+                                          "paddingLeft": "20px",
+                                        }
+                                      }
+                                    >
+                                      <span>
+                                        <h1 />
+                                      </span>
+                                    </div>
+                                  </Col>
+                                </div>
+                              </Row>
+                              <Row
+                                bsClass="row"
+                                componentClass="div"
+                              >
+                                <div
+                                  className="row"
+                                >
+                                  <Col
+                                    bsClass="col"
+                                    componentClass="div"
+                                    md={20}
+                                    sm={20}
+                                    style={
+                                      Object {
+                                        "height": "40px",
+                                      }
+                                    }
+                                  >
+                                    <div
+                                      className="col-md-20 col-sm-20"
+                                      style={
+                                        Object {
+                                          "height": "40px",
+                                        }
+                                      }
+                                    >
+                                      <span>
+                                        <h1 />
+                                      </span>
+                                    </div>
+                                  </Col>
+                                </div>
+                              </Row>
+                            </div>
+                          </Grid>
+                          <Loader>
+                            <div
+                              className="custom-loader"
+                            >
+                              <div />
+                              <div />
+                              <div />
+                              <div />
+                              <div />
+                              <div />
+                              <div />
+                              <div />
+                              <div />
+                              <div />
+                              <div />
+                              <div />
+                            </div>
+                          </Loader>
+                        </div>
+                      </EncounterFormPage>
+                    </Connect(EncounterFormPage)>
+                  </span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </LabResultEntry>
+      </Connect(LabResultEntry)>
+    </Router>
+  </HashRouter>
+</Provider>
+`;
+
+exports[`<LabResultEntry /> component should redirect when location has an empty state 1`] = `
+<HashRouter>
+  <Router
+    history={
+      Object {
+        "action": "REPLACE",
+        "block": [Function],
+        "createHref": [Function],
+        "go": [Function],
+        "goBack": [Function],
+        "goForward": [Function],
+        "length": 1,
+        "listen": [Function],
+        "location": Object {
+          "hash": "",
+          "pathname": "/",
+          "search": "",
+          "state": undefined,
+        },
+        "push": [Function],
+        "replace": [Function],
+      }
+    }
+  >
+    <Connect(LabResultEntry)
+      clearNameEMRField={[MockFunction]}
+      conceptMembers={
+        Object {
+          "1234-abcd": Object {
+            "hiAbsolute": 25,
+            "hiCritical": 30,
+            "hiNormal": 22,
+            "lowAbsolute": 9,
+            "lowCritical": 3,
+            "lowNormal": 11,
+            "units": "cc",
+          },
+          "pqrs-5678": Object {
+            "hiAbsolute": 25,
+            "hiCritical": 30,
+            "hiNormal": 22,
+            "lowAbsolute": 9,
+            "lowCritical": 3,
+            "lowNormal": 11,
+            "units": "cc",
+          },
+        }
+      }
+      history={
+        Object {
+          "location": Object {
+            "state": Object {
+              "concept": Object {
+                "display": "Hémogramme automatisé",
+                "uuid": "9i9i-99090-999",
+              },
+              "dateActivated": "2018-08-30T17:34:19.000+0100",
+              "orderNumber": "ORD-1",
+              "patient": Object {
+                "display": "Y2A7LR - williams willy john",
+              },
+              "urgency": "ROUTINE",
+            },
+          },
+        }
+      }
+      labTests={
+        Array [
+          "Hémogramme automatisé",
+        ]
+      }
+      location={
+        Object {
+          "state": null,
+        }
+      }
+      nameField=""
+      patientHeaderDetail={
+        Object {
+          "display": "Y2A7LR - williams willy john",
+        }
+      }
+      selectedLabConcept={Object {}}
+      store={
+        Object {
+          "clearActions": [Function],
+          "dispatch": [Function],
+          "getActions": [Function],
+          "getState": [Function],
+          "replaceReducer": [Function],
+          "subscribe": [Function],
+        }
+      }
+    >
+      <LabResultEntry
+        CONSTANTS={
+          Object {
+            "labResultsDateConcept": "mock-date-concept",
+            "labResultsDidNotPerformAnswer": "mock-uuid",
+            "labResultsDidNotPerformQuestion": "mock-uuid",
+            "labResultsDidNotPerformReason": "mock-uuid",
+            "labResultsEncounterType": "mock-encounter-uuid",
+            "labResultsTestOrderNumberConcept": "mock-test-orderno-concept",
+          }
+        }
+        clearNameEMRField={[MockFunction]}
+        didNotPerformCheckbox={false}
+        dispatch={[Function]}
+        history={
+          Object {
+            "location": Object {
+              "state": Object {
+                "concept": Object {
+                  "display": "Hémogramme automatisé",
+                  "uuid": "9i9i-99090-999",
+                },
+                "dateActivated": "2018-08-30T17:34:19.000+0100",
+                "orderNumber": "ORD-1",
+                "patient": Object {
+                  "display": "Y2A7LR - williams willy john",
+                },
+                "urgency": "ROUTINE",
+              },
+            },
+          }
+        }
+        labTests={
+          Array [
+            "Hémogramme automatisé",
+          ]
+        }
+        location={
+          Object {
+            "state": null,
+          }
+        }
+        nameField=""
+        patientHeaderDetail={
+          Object {
+            "display": "Y2A7LR - williams willy john",
+          }
+        }
+        selectedLabConcept={null}
+        store={
+          Object {
+            "clearActions": [Function],
+            "dispatch": [Function],
+            "getActions": [Function],
+            "getState": [Function],
+            "replaceReducer": [Function],
+            "subscribe": [Function],
+          }
+        }
+        storeSubscription={
+          Subscription {
+            "listeners": Object {
+              "clear": [Function],
+              "get": [Function],
+              "notify": [Function],
+              "subscribe": [Function],
+            },
+            "onStateChange": [Function],
+            "parentSub": undefined,
+            "store": Object {
+              "clearActions": [Function],
+              "dispatch": [Function],
+              "getActions": [Function],
+              "getState": [Function],
+              "replaceReducer": [Function],
+              "subscribe": [Function],
+            },
+            "unsubscribe": [Function],
+          }
+        }
+      >
+        <Redirect
+          push={false}
+          to="/"
+        />
+      </LabResultEntry>
+    </Connect(LabResultEntry)>
+  </Router>
+</HashRouter>
+`;
+
+exports[`<LabResultEntry /> component should render <Loader /> component when selectedLabConcept is empty 1`] = `
 <Connect(LabResultEntry)
   clearNameEMRField={[MockFunction]}
+  conceptMembers={
+    Object {
+      "1234-abcd": Object {
+        "hiAbsolute": 25,
+        "hiCritical": 30,
+        "hiNormal": 22,
+        "lowAbsolute": 9,
+        "lowCritical": 3,
+        "lowNormal": 11,
+        "units": "cc",
+      },
+      "pqrs-5678": Object {
+        "hiAbsolute": 25,
+        "hiCritical": 30,
+        "hiNormal": 22,
+        "lowAbsolute": 9,
+        "lowCritical": 3,
+        "lowNormal": 11,
+        "units": "cc",
+      },
+    }
+  }
   history={
     Object {
       "location": Object {
         "state": Object {
           "concept": Object {
             "display": "Hémogramme automatisé",
+            "uuid": "9i9i-99090-999",
           },
           "dateActivated": "2018-08-30T17:34:19.000+0100",
           "orderNumber": "ORD-1",
@@ -41,34 +1149,12 @@ exports[`<LabResultEntry /> component renders correctly 1`] = `
     }
   }
   nameField=""
-  openmrs={
-    Object {
-      "CONSTANTS": Object {
-        "labResultsDidNotPerformAnswer": "mock-uuid",
-        "labResultsDidNotPerformQuestion": "mock-uuid",
-        "labResultsDidNotPerformReason": "mock-uuid",
-      },
-    }
-  }
   patientHeaderDetail={
     Object {
       "display": "Y2A7LR - williams willy john",
     }
   }
-  selectedLAbConcept={
-    Object {
-      "setMembers": Array [
-        Object {
-          "display": "Height",
-          "uuid": "1234-abcd",
-        },
-        Object {
-          "display": "Weight",
-          "uuid": "pqrs-5678",
-        },
-      ],
-    }
-  }
+  selectedLabConcept={Object {}}
   store={
     Object {
       "clearActions": [Function],
@@ -83,9 +1169,12 @@ exports[`<LabResultEntry /> component renders correctly 1`] = `
   <LabResultEntry
     CONSTANTS={
       Object {
+        "labResultsDateConcept": "mock-date-concept",
         "labResultsDidNotPerformAnswer": "mock-uuid",
         "labResultsDidNotPerformQuestion": "mock-uuid",
         "labResultsDidNotPerformReason": "mock-uuid",
+        "labResultsEncounterType": "mock-encounter-uuid",
+        "labResultsTestOrderNumberConcept": "mock-test-orderno-concept",
       }
     }
     clearNameEMRField={[MockFunction]}
@@ -97,6 +1186,7 @@ exports[`<LabResultEntry /> component renders correctly 1`] = `
           "state": Object {
             "concept": Object {
               "display": "Hémogramme automatisé",
+              "uuid": "9i9i-99090-999",
             },
             "dateActivated": "2018-08-30T17:34:19.000+0100",
             "orderNumber": "ORD-1",
@@ -129,35 +1219,12 @@ exports[`<LabResultEntry /> component renders correctly 1`] = `
       }
     }
     nameField=""
-    openmrs={
-      Object {
-        "CONSTANTS": Object {
-          "labResultsDidNotPerformAnswer": "mock-uuid",
-          "labResultsDidNotPerformQuestion": "mock-uuid",
-          "labResultsDidNotPerformReason": "mock-uuid",
-        },
-      }
-    }
     patientHeaderDetail={
       Object {
         "display": "Y2A7LR - williams willy john",
       }
     }
-    selectedLAbConcept={
-      Object {
-        "setMembers": Array [
-          Object {
-            "display": "Height",
-            "uuid": "1234-abcd",
-          },
-          Object {
-            "display": "Weight",
-            "uuid": "pqrs-5678",
-          },
-        ],
-      }
-    }
-    selectedLabConcept={null}
+    selectedLabConcept={Object {}}
     store={
       Object {
         "clearActions": [Function],

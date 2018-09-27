@@ -7,28 +7,21 @@ import {
 } from './actionTypes';
 
 
-const fetchLabConcept = conceptUUID => ({
+export const fetchLabConcept = conceptUUID => ({
   type: FETCH_LAB_CONCEPT,
   payload: axiosInstance.get(`/concept/${conceptUUID}?v=full`),
 });
 
-const setMember = (member, count) => ({
+export const setMember = (member, count) => ({
   type: `${SET_CONCEPT_MEMBER}_${count}`,
   member,
 });
 
-const setSelectedConcept = () => ({
+export const setSelectedConcept = () => ({
   type: SET_CONCEPT,
 });
 
-const setFetchStatus = status => ({
+export const setFetchStatus = status => ({
   type: SET_FETCH_STATUS,
   status,
 });
-
-export default {
-  fetchLabConcept,
-  setMember,
-  setFetchStatus,
-  setSelectedConcept,
-};
