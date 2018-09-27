@@ -50,7 +50,7 @@ class BreadCrumb extends Component {
           <u>
             <FormattedMessage
               id="app.breadCrumb.homePageBreadcrumb.title"
-              defaultMessage="Lab workflow"
+              defaultMessage="Lab test results"
               description="the homepage breadcrumb title" />
           </u>
         </span>
@@ -83,7 +83,7 @@ class BreadCrumb extends Component {
                 className="glyphicon glyphicon-chevron-right breadcrumb-item separator"
                 aria-hidden="true" />
               <span className="title breadcrumb-item">
-                <u>LabResultEntry</u>
+                <u>Test result</u>
               </span>
             </Link>
           </span>

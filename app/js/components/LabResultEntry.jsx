@@ -136,25 +136,6 @@ export class LabResultEntry extends PureComponent {
                       validate={[maxDateRange]}
                     />
                   </span>
-
-              </span>
-              </div>
-            )
-        }
-        {
-          (hasAnswers)
-            && (
-              <div className="col-xs-4">
-                <span className="single-result-field">
-                  <span className="obs-dropdown-label">{selectedLabConcept.display}</span>
-                  <span className="obs-dropdown-field">
-                    <Obs
-                      conceptAnswers={selectedLabConcept.answers}
-                      widget="dropdown"
-                      concept={selectedLabConcept.uuid}
-                      path={selectedLabConcept.uuid}
-                    />
-                  </span>
                 </span>
               </div>
             )
@@ -188,6 +169,24 @@ export class LabResultEntry extends PureComponent {
             </div>
           </div>
         )}
+        {
+          (hasAnswers)
+            && (
+              <div className="col-xs-4">
+                <span className="single-result-field">
+                  <span className="obs-dropdown-label">{selectedLabConcept.display}</span>
+                  <span className="obs-dropdown-field">
+                    <Obs
+                      conceptAnswers={selectedLabConcept.answers}
+                      widget="dropdown"
+                      concept={selectedLabConcept.uuid}
+                      path={selectedLabConcept.uuid}
+                    />
+                  </span>
+                </span>
+              </div>
+            )
+        }
         <Row>
           {(hasMembers)
             && (
@@ -203,7 +202,7 @@ export class LabResultEntry extends PureComponent {
     );
 
     return (
-      <div className="fieldset-container">
+      <div className="fieldset-container lab-entry-result-details">
         <div className="legend">
           <span> Result Details </span>
         </div>
@@ -316,7 +315,7 @@ export class LabResultEntry extends PureComponent {
           {location.state
           && (
             <div>
-              <h1>Test Results</h1>
+              <h2 className="lab-entry-page-title">Test Results</h2>
               <div className="fieldset-container">
                 <div className="legend">
                   <span> Specimen Details </span>
@@ -334,13 +333,13 @@ export class LabResultEntry extends PureComponent {
                   <br />
                   <br />
                   <div className="col-xs-6">
-                    <span>
+                    <span className="test-details-label">
                   Test:&nbsp;
                       <span className="test-details">{location.state.display}</span>
                     </span>
                   </div>
                   <div className="col-xs-6">
-                    <span>
+                    <span className="test-details-label">
                   Urgency:&nbsp;
                       <span className="test-details">{location.state.urgency}</span>
                     </span>
@@ -351,7 +350,6 @@ export class LabResultEntry extends PureComponent {
               </div>
             </div>
           )}
-          <br />
           <br />
           <br />
           <div>
