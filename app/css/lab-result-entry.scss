@@ -180,3 +180,11 @@ button.pull-right.btn-success {
         }
     }
 }
+
+.lab-entry-result-details {
+    & .form-horizontal {
+        .container:nth-child(1) {
+            min-height: 350px;
+        }
+    }
+}
