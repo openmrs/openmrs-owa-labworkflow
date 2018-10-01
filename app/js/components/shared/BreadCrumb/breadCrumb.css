@@ -10,21 +10,19 @@
 
  .breadcrumb {
     background: none;
-    margin-bottom: 0px;
-    padding-bottom: 0px;
-    margin-top: 0px;
+    margin: 0px;
+    padding: 0px;
+    color: #363463;
 }
 
-.breadcrumb .breadcrumb-item {
+.breadcrumb-item {
     color: #363463;
+    margin-left: 3px;
+    font-size: 12px;
 }
 
 .breadcrumb>.separator {
     font-size: 15px;
-}
-
-.breadcrumb>.breadcrumb-item:not(:last-child) {
-    margin-right: 10px;
 }
 
 .breadcrumb .glyphicon {

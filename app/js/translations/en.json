@@ -1,6 +1,6 @@
 {
     "app.labOrdersList.title": "Lab Test Results",
-    "app.breadCrumb.homePageBreadcrumb.title": "Lab workflow",
+    "app.breadCrumb.homePageBreadcrumb.title": "Lab test results",
     "app.labOrdersList.EMR_ID": "EMR ID",
     "app.labOrdersList.NAME": "NAME",
     "app.labOrdersList.ORDER_ID": "ORDER ID",

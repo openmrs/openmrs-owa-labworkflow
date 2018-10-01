@@ -147,13 +147,13 @@ exports[`Breadcrumb component should take a snapshot on initial render 1`] = `
                 >
                   <u>
                     <FormattedMessage
-                      defaultMessage="Lab workflow"
+                      defaultMessage="Lab test results"
                       description="the homepage breadcrumb title"
                       id="app.breadCrumb.homePageBreadcrumb.title"
                       values={Object {}}
                     >
                       <span>
-                        Lab workflow
+                        Lab test results
                       </span>
                     </FormattedMessage>
                   </u>

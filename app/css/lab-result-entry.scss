@@ -13,6 +13,10 @@
     flex-direction: row;
 }
 
+.lab-entry-page-title {
+    margin-bottom: 20px;
+}
+
 fieldset {
     border: 0 none;;
 }
@@ -90,12 +94,11 @@ button.pull-right.btn-success {
 .fieldset-body {
     width: 99%;
     height: 100%;
-    padding: 40px;
+    padding: 15px;
     position: relative;
-    top: -8px;
-    left: 6px;
     align-self: left;
 }
+
 .form-horizontal .form-group {
     margin-right: 0px !important;
     margin-left: 0px !important;
@@ -129,11 +132,6 @@ button.pull-right.btn-success {
     padding-bottom: 40px;
 }
 
-.obs-dropdown-label {
-    padding-right: 80px;
-    line-height: 45px;
-}
-
 .custom-loader {
     position: fixed;
     top: 50%;
@@ -150,4 +148,38 @@ button.pull-right.btn-success {
 
 .did-not-perform-checkbox {
     margin-left: 40px;
+}
+
+.test-details-label {
+    font-size: 14px;
+}
+
+.lab-entry-result-details {
+    & .form-horizontal {
+        & .col-xs-offset-2 {
+            margin-left: 0px;
+        }
+        & .react-datepicker__input-container {
+            & .icon-calendar.scale.small.add-on {
+                line-height: 40px;
+            }
+        }
+        .container:nth-child(2) {
+            & .row {
+                display: flex;
+                justify-content: space-between;
+                .col-sm-2.col-xs-offset-1 {
+                    margin-left: auto;
+                }
+            }
+        }
+    }
+}
+
+.lab-entry-result-details {
+    & .form-horizontal {
+        .container:nth-child(1) {
+            min-height: 350px;
+        }
+    }
 }

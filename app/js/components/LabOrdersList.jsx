@@ -16,8 +16,8 @@ import PropTypes from 'prop-types';
 import matchSorter from 'match-sorter';
 import { FormattedMessage } from 'react-intl';
 import { SortableTable } from '@openmrs/react-components';
-import LabOrderListFilters from './LabOrdersListFilters';
 import { Loader } from '@openmrs/react-components';
+import LabOrderListFilters from './LabOrdersListFilters';
 
 import { fetchLabOrders } from '../actions/labOrdersAction';
 import constantsAction from '../actions/constantsAction';
@@ -53,13 +53,13 @@ const Cell = ({ columnName, value, dateAndTimeFormat }) => {
     case 'ORDER DATE':
       return (
         <div className="table_cell order-date">
-          <span>{moment(value.dateActivated).format(dateAndTimeFormat || "DD-MMM-YYYY HH:mm")}</span>
+          <span>{moment(value.dateActivated).format("DD-MMM-YYYY")}</span>
         </div>
       );
     case 'COLLECTION DATE':
       return (
         <div className="table_cell collection-date">
-          <span>{moment(value.dateActivated).format(dateAndTimeFormat || "DD-MMM-YYYY HH:mm")}</span>
+          <span>{moment(value.dateActivated).format("DD-MMM-YYYY")}</span>
         </div>
       );
     case 'URGENCY': {
@@ -205,12 +205,12 @@ export class LabOrdersList extends PureComponent {
     if (!R.isEmpty(orders) && !R.isEmpty(labTests)) {
       return (
         <div className="main-container">
-          <h1>
+          <h2>
             <FormattedMessage
               id="app.labOrdersList.title"
               defaultMessage="Lab Test Results"
               description="Welcome header on LabTestResult page" />
-          </h1>
+          </h2>
 
           <React.Fragment>
             <LabOrderListFilters
@@ -239,7 +239,6 @@ LabOrdersList.propTypes = {
   dateAndTimeFormat: PropTypes.string.isRequired,
 };
 
-
 export const mapStateToProps = ({
   labOrders: { orders, labTests },
   CONSTANTS: { dateAndTimeFormat },
@@ -248,7 +247,6 @@ export const mapStateToProps = ({
   labTests,
   dateAndTimeFormat,
 });
-
 
 const LabOrdersListContainer = (
   propsFromState,
