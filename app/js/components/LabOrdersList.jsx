@@ -53,13 +53,13 @@ const Cell = ({ columnName, value, dateAndTimeFormat }) => {
     case 'ORDER DATE':
       return (
         <div className="table_cell order-date">
-          <span>{moment(value.dateActivated).format(dateAndTimeFormat.split(' ')[0] || "DD-MMM-YYYY")}</span>
+          <span>{moment(value.dateActivated).format("DD-MMM-YYYY")}</span>
         </div>
       );
     case 'COLLECTION DATE':
       return (
         <div className="table_cell collection-date">
-          <span>{moment(value.dateActivated).format(dateAndTimeFormat.split(' ')[0] || "DD-MMM-YYYY")}</span>
+          <span>{moment(value.dateActivated).format("DD-MMM-YYYY")}</span>
         </div>
       );
     case 'URGENCY': {
