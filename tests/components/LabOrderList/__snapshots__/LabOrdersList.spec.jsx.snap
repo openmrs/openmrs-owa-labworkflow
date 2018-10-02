@@ -13,12 +13,65 @@ exports[`<LabOrdersList /> component renders correctly 1`] = `
         ],
         Array [
           Object {
-            "payload": Promise {},
-            "type": "GET_DATE",
+            "type": "date/REQUESTED",
+          },
+        ],
+        Array [
+          Object {
+            "type": "lab_results_encounter_type/REQUESTED",
+          },
+        ],
+        Array [
+          Object {
+            "type": "lab_results_did_not_perform_question/REQUESTED",
+          },
+        ],
+        Array [
+          Object {
+            "type": "lab_results_did_not_perform_reason/REQUESTED",
+          },
+        ],
+        Array [
+          Object {
+            "type": "lab_results_did_not_perform_answer/REQUESTED",
+          },
+        ],
+        Array [
+          Object {
+            "type": "lab_results_test_order_number_concept/REQUESTED",
+          },
+        ],
+        Array [
+          Object {
+            "type": "lab_results_date_concept/REQUESTED",
           },
         ],
       ],
       "results": Array [
+        Object {
+          "isThrow": false,
+          "value": undefined,
+        },
+        Object {
+          "isThrow": false,
+          "value": undefined,
+        },
+        Object {
+          "isThrow": false,
+          "value": undefined,
+        },
+        Object {
+          "isThrow": false,
+          "value": undefined,
+        },
+        Object {
+          "isThrow": false,
+          "value": undefined,
+        },
+        Object {
+          "isThrow": false,
+          "value": undefined,
+        },
         Object {
           "isThrow": false,
           "value": undefined,
@@ -94,8 +147,8 @@ exports[`<LabOrdersList /> component renders correctly 1`] = `
     </h2>
     <LabOrderListFilters
       clearNameEMRField={[Function]}
-      dateFromField={"2018-09-19T22:08:46.729Z"}
-      dateToField={"2018-09-27T22:08:46.728Z"}
+      dateFromField={"2018-09-24T14:34:20.766Z"}
+      dateToField={"2018-10-02T14:34:20.766Z"}
       handleFieldChange={[Function]}
       labTests={
         Array [
@@ -115,7 +168,7 @@ exports[`<LabOrdersList /> component renders correctly 1`] = `
           >
             <span>
               <CustomDatePicker
-                defaultDate={"2018-09-19T22:08:46.739Z"}
+                defaultDate={"2018-09-24T14:34:20.772Z"}
                 field="dateFromField"
                 formControlStyle={
                   Object {
@@ -149,7 +202,7 @@ exports[`<LabOrdersList /> component renders correctly 1`] = `
                   preventOpenOnFocus={false}
                   previousMonthButtonLabel="Previous Month"
                   readOnly={false}
-                  selected={"2018-09-19T22:08:46.739Z"}
+                  selected={"2018-09-24T14:34:20.772Z"}
                   shouldCloseOnSelect={true}
                   showTimeSelect={false}
                   timeCaption="Time"
@@ -182,7 +235,7 @@ exports[`<LabOrdersList /> component renders correctly 1`] = `
                           onFocus={[Function]}
                           onKeyDown={[Function]}
                           readOnly={false}
-                          value="09/19/2018"
+                          value="09/24/2018"
                         />
                       </div>
                     }
@@ -209,7 +262,7 @@ exports[`<LabOrdersList /> component renders correctly 1`] = `
                                 onFocus={[Function]}
                                 onKeyDown={[Function]}
                                 readOnly={false}
-                                value="09/19/2018"
+                                value="09/24/2018"
                               >
                                 <span>
                                   <span
@@ -236,7 +289,7 @@ exports[`<LabOrdersList /> component renders correctly 1`] = `
                                         }
                                       }
                                       type="text"
-                                      value="09/19/2018"
+                                      value="09/24/2018"
                                     >
                                       <input
                                         className="form-control"
@@ -248,7 +301,7 @@ exports[`<LabOrdersList /> component renders correctly 1`] = `
                                           }
                                         }
                                         type="text"
-                                        value="09/19/2018"
+                                        value="09/24/2018"
                                       />
                                     </FormControl>
                                     <i
@@ -270,7 +323,7 @@ exports[`<LabOrdersList /> component renders correctly 1`] = `
             </span>
             <span>
               <CustomDatePicker
-                defaultDate={"2018-09-27T22:08:44.042Z"}
+                defaultDate={"2018-10-02T14:34:20.501Z"}
                 field="dateToField"
                 formControlStyle={
                   Object {
@@ -304,7 +357,7 @@ exports[`<LabOrdersList /> component renders correctly 1`] = `
                   preventOpenOnFocus={false}
                   previousMonthButtonLabel="Previous Month"
                   readOnly={false}
-                  selected={"2018-09-27T22:08:44.042Z"}
+                  selected={"2018-10-02T14:34:20.501Z"}
                   shouldCloseOnSelect={true}
                   showTimeSelect={false}
                   timeCaption="Time"
@@ -337,7 +390,7 @@ exports[`<LabOrdersList /> component renders correctly 1`] = `
                           onFocus={[Function]}
                           onKeyDown={[Function]}
                           readOnly={false}
-                          value="09/27/2018"
+                          value="10/02/2018"
                         />
                       </div>
                     }
@@ -364,7 +417,7 @@ exports[`<LabOrdersList /> component renders correctly 1`] = `
                                 onFocus={[Function]}
                                 onKeyDown={[Function]}
                                 readOnly={false}
-                                value="09/27/2018"
+                                value="10/02/2018"
                               >
                                 <span>
                                   <span
@@ -391,7 +444,7 @@ exports[`<LabOrdersList /> component renders correctly 1`] = `
                                         }
                                       }
                                       type="text"
-                                      value="09/27/2018"
+                                      value="10/02/2018"
                                     >
                                       <input
                                         className="form-control"
@@ -403,7 +456,7 @@ exports[`<LabOrdersList /> component renders correctly 1`] = `
                                           }
                                         }
                                         type="text"
-                                        value="09/27/2018"
+                                        value="10/02/2018"
                                       />
                                     </FormControl>
                                     <i
@@ -661,8 +714,8 @@ exports[`<LabOrdersList /> component renders correctly 1`] = `
         }
         filters={
           Object {
-            "dateFromField": "2018-09-19T22:08:46.729Z",
-            "dateToField": "2018-09-27T22:08:46.728Z",
+            "dateFromField": "2018-09-24T14:34:20.766Z",
+            "dateToField": "2018-10-02T14:34:20.766Z",
             "nameField": "",
             "testTypeField": "All",
           }
@@ -4540,8 +4593,8 @@ exports[`LabOrdersListContainer container should pass required props from state 
     </h2>
     <LabOrderListFilters
       clearNameEMRField={[Function]}
-      dateFromField={"2018-09-19T22:08:46.729Z"}
-      dateToField={"2018-09-27T22:08:46.728Z"}
+      dateFromField={"2018-09-24T14:34:20.766Z"}
+      dateToField={"2018-10-02T14:34:20.766Z"}
       handleFieldChange={[Function]}
       labTests={
         Array [
@@ -4561,7 +4614,7 @@ exports[`LabOrdersListContainer container should pass required props from state 
           >
             <span>
               <CustomDatePicker
-                defaultDate={"2018-09-19T22:08:46.739Z"}
+                defaultDate={"2018-09-24T14:34:20.772Z"}
                 field="dateFromField"
                 formControlStyle={
                   Object {
@@ -4595,7 +4648,7 @@ exports[`LabOrdersListContainer container should pass required props from state 
                   preventOpenOnFocus={false}
                   previousMonthButtonLabel="Previous Month"
                   readOnly={false}
-                  selected={"2018-09-19T22:08:46.739Z"}
+                  selected={"2018-09-24T14:34:20.772Z"}
                   shouldCloseOnSelect={true}
                   showTimeSelect={false}
                   timeCaption="Time"
@@ -4628,7 +4681,7 @@ exports[`LabOrdersListContainer container should pass required props from state 
                           onFocus={[Function]}
                           onKeyDown={[Function]}
                           readOnly={false}
-                          value="09/19/2018"
+                          value="09/24/2018"
                         />
                       </div>
                     }
@@ -4655,7 +4708,7 @@ exports[`LabOrdersListContainer container should pass required props from state 
                                 onFocus={[Function]}
                                 onKeyDown={[Function]}
                                 readOnly={false}
-                                value="09/19/2018"
+                                value="09/24/2018"
                               >
                                 <span>
                                   <span
@@ -4682,7 +4735,7 @@ exports[`LabOrdersListContainer container should pass required props from state 
                                         }
                                       }
                                       type="text"
-                                      value="09/19/2018"
+                                      value="09/24/2018"
                                     >
                                       <input
                                         className="form-control"
@@ -4694,7 +4747,7 @@ exports[`LabOrdersListContainer container should pass required props from state 
                                           }
                                         }
                                         type="text"
-                                        value="09/19/2018"
+                                        value="09/24/2018"
                                       />
                                     </FormControl>
                                     <i
@@ -4716,7 +4769,7 @@ exports[`LabOrdersListContainer container should pass required props from state 
             </span>
             <span>
               <CustomDatePicker
-                defaultDate={"2018-09-27T22:08:44.042Z"}
+                defaultDate={"2018-10-02T14:34:20.501Z"}
                 field="dateToField"
                 formControlStyle={
                   Object {
@@ -4750,7 +4803,7 @@ exports[`LabOrdersListContainer container should pass required props from state 
                   preventOpenOnFocus={false}
                   previousMonthButtonLabel="Previous Month"
                   readOnly={false}
-                  selected={"2018-09-27T22:08:44.042Z"}
+                  selected={"2018-10-02T14:34:20.501Z"}
                   shouldCloseOnSelect={true}
                   showTimeSelect={false}
                   timeCaption="Time"
@@ -4783,7 +4836,7 @@ exports[`LabOrdersListContainer container should pass required props from state 
                           onFocus={[Function]}
                           onKeyDown={[Function]}
                           readOnly={false}
-                          value="09/27/2018"
+                          value="10/02/2018"
                         />
                       </div>
                     }
@@ -4810,7 +4863,7 @@ exports[`LabOrdersListContainer container should pass required props from state 
                                 onFocus={[Function]}
                                 onKeyDown={[Function]}
                                 readOnly={false}
-                                value="09/27/2018"
+                                value="10/02/2018"
                               >
                                 <span>
                                   <span
@@ -4837,7 +4890,7 @@ exports[`LabOrdersListContainer container should pass required props from state 
                                         }
                                       }
                                       type="text"
-                                      value="09/27/2018"
+                                      value="10/02/2018"
                                     >
                                       <input
                                         className="form-control"
@@ -4849,7 +4902,7 @@ exports[`LabOrdersListContainer container should pass required props from state 
                                           }
                                         }
                                         type="text"
-                                        value="09/27/2018"
+                                        value="10/02/2018"
                                       />
                                     </FormControl>
                                     <i
@@ -5107,8 +5160,8 @@ exports[`LabOrdersListContainer container should pass required props from state 
         }
         filters={
           Object {
-            "dateFromField": "2018-09-19T22:08:46.729Z",
-            "dateToField": "2018-09-27T22:08:46.728Z",
+            "dateFromField": "2018-09-24T14:34:20.766Z",
+            "dateToField": "2018-10-02T14:34:20.766Z",
             "nameField": "",
             "testTypeField": "All",
           }
