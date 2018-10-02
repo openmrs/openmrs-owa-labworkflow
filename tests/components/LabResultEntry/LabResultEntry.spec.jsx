@@ -65,10 +65,12 @@ const props = {
       },
     },
   },
-  CONSTANTS: {
-    labResultsDidNotPerformAnswer: 'mock-uuid',
-    labResultsDidNotPerformQuestion: 'mock-uuid',
-    labResultsDidNotPerformReason: 'mock-uuid',
+  openmrs: {
+    CONSTANTS: {
+      labResultsDidNotPerformAnswer: 'mock-uuid',
+      labResultsDidNotPerformQuestion: 'mock-uuid',
+      labResultsDidNotPerformReason: 'mock-uuid',
+    },
   },
 };
 
@@ -76,6 +78,13 @@ const state = {
   patient: {
     patient: {
       display: "Y2A7LR - williams willy john",
+    },
+  },
+  openmrs: {
+    CONSTANTS: {
+      labResultsDidNotPerformAnswer: 'mock-uuid',
+      labResultsDidNotPerformQuestion: 'mock-uuid',
+      labResultsDidNotPerformReason: 'mock-uuid',
     },
   },
 };

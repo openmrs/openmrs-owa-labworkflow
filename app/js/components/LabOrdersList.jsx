@@ -15,12 +15,11 @@ import { withRouter } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import matchSorter from 'match-sorter';
 import { FormattedMessage } from 'react-intl';
-import { SortableTable } from '@openmrs/react-components';
+import { SortableTable, constantsActions } from '@openmrs/react-components';
 import { Loader } from '@openmrs/react-components';
 import LabOrderListFilters from './LabOrdersListFilters';
 
 import { fetchLabOrders } from '../actions/labOrdersAction';
-import constantsAction from '../actions/constantsAction';
 import { getDateRange } from '../utils/helpers';
 import "../../css/lab-orders-list.scss";
 
@@ -107,7 +106,13 @@ export class LabOrdersList extends PureComponent {
   componentDidMount() {
     const { dispatch } = this.props;
     dispatch(fetchLabOrders());
-    dispatch(constantsAction.getDateFormat());
+    dispatch(constantsActions.getDateAndTimeFormat());
+    dispatch(constantsActions.fetchLabResultsEncounterType());
+    dispatch(constantsActions.fetchLabResultsDidNotPerformQuestion());
+    dispatch(constantsActions.fetchLabResultsDidNotPerformReason());
+    dispatch(constantsActions.fetchLabResultsDidNotPerformAnswer());
+    dispatch(constantsActions.fetchLabResultsTestOrderNumberConcept());
+    dispatch(constantsActions.fetchLabResultsDateConcept());
   }
 
   handleShowResultsEntryPage(order) {
@@ -241,7 +246,7 @@ LabOrdersList.propTypes = {
 
 export const mapStateToProps = ({
   labOrders: { orders, labTests },
-  CONSTANTS: { dateAndTimeFormat },
+  openmrs: { CONSTANTS: { dateAndTimeFormat } },
 }) => ({
   orders,
   labTests,

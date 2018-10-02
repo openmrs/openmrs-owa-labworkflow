@@ -34,18 +34,4 @@ export default {
       message: null,
     },
   },
-  CONSTANTS: {
-    labResultsEncounterType: '',
-    labResultsDateConcept: '',
-    labResultsDidNotPerformAnswer: '',
-    labResultsDidNotPerformQuestion: '',
-    labResultsDidNotPerformReason: null,
-    labResultsTestOrderNumberConcept: '',
-    dateAndTimeFormat: '',
-    isLoading: false,
-    error: {
-      status: false,
-      message: null,
-    },
-  },
 };

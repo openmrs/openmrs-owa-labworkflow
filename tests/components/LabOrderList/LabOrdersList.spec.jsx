@@ -48,8 +48,10 @@ describe('<LabOrdersList /> component', () => {
 describe('LabOrdersListContainer container', () => {
   it('should pass required props from state to <LabOrdersList /> component', () => {
     const state = {
-      CONSTANTS: {
-        dateAndTimeFormat: '',
+      openmrs: {
+        CONSTANTS: {
+          dateAndTimeFormat: '',
+        },
       },
       labOrders: {
         orders,

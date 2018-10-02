@@ -2,13 +2,6 @@
 
 exports[`<LabResultEntry /> component renders correctly 1`] = `
 <Connect(LabResultEntry)
-  CONSTANTS={
-    Object {
-      "labResultsDidNotPerformAnswer": "mock-uuid",
-      "labResultsDidNotPerformQuestion": "mock-uuid",
-      "labResultsDidNotPerformReason": "mock-uuid",
-    }
-  }
   clearNameEMRField={[MockFunction]}
   history={
     Object {
@@ -48,6 +41,15 @@ exports[`<LabResultEntry /> component renders correctly 1`] = `
     }
   }
   nameField=""
+  openmrs={
+    Object {
+      "CONSTANTS": Object {
+        "labResultsDidNotPerformAnswer": "mock-uuid",
+        "labResultsDidNotPerformQuestion": "mock-uuid",
+        "labResultsDidNotPerformReason": "mock-uuid",
+      },
+    }
+  }
   patientHeaderDetail={
     Object {
       "display": "Y2A7LR - williams willy john",
@@ -79,7 +81,15 @@ exports[`<LabResultEntry /> component renders correctly 1`] = `
   }
 >
   <LabResultEntry
+    CONSTANTS={
+      Object {
+        "labResultsDidNotPerformAnswer": "mock-uuid",
+        "labResultsDidNotPerformQuestion": "mock-uuid",
+        "labResultsDidNotPerformReason": "mock-uuid",
+      }
+    }
     clearNameEMRField={[MockFunction]}
+    didNotPerformCheckbox={false}
     dispatch={[Function]}
     history={
       Object {
@@ -119,6 +129,15 @@ exports[`<LabResultEntry /> component renders correctly 1`] = `
       }
     }
     nameField=""
+    openmrs={
+      Object {
+        "CONSTANTS": Object {
+          "labResultsDidNotPerformAnswer": "mock-uuid",
+          "labResultsDidNotPerformQuestion": "mock-uuid",
+          "labResultsDidNotPerformReason": "mock-uuid",
+        },
+      }
+    }
     patientHeaderDetail={
       Object {
         "display": "Y2A7LR - williams willy john",

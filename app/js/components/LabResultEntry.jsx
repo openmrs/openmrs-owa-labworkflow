@@ -31,7 +31,6 @@ import {
 
 import patientAction from '../actions/patientAction';
 import labConceptsAction from '../actions/labConceptsAction';
-import constantsAction from '../actions/constantsAction';
 import '../../css/lab-result-entry.scss';
 
 
@@ -74,15 +73,8 @@ export class LabResultEntry extends PureComponent {
     const { dispatch, history: { location: { state } } } = this.props;
     if (typeof state !== 'undefined') {
       const conceptUUID = state.concept.uuid;
-      // TODO: load all this CONSTANTS on app init and not on this component
       dispatch(patientAction.getPatient(state.patient.uuid));
       dispatch(labConceptsAction.fetchLabConcept(conceptUUID));
-      dispatch(constantsAction.fetchLabResultsEncounterType());
-      dispatch(constantsAction.fetchLabResultsDateConcept());
-      dispatch(constantsAction.fetchLabResultsDidNotPerformAnswer());
-      dispatch(constantsAction.fetchLabResultsDidNotPerformQuestion());
-      dispatch(constantsAction.fetchLabResultsDidNotPerformReason());
-      dispatch(constantsAction.fetchLabResultsTestOrderNumberConcept());
     } else {
       this.shouldRedirect();
     }
@@ -387,7 +379,7 @@ LabResultEntry.propTypes = {
   dispatch: PropTypes.func.isRequired,
   selectedLabConcept: PropTypes.object,
   location: PropTypes.object.isRequired,
-  CONSTANTS: PropTypes.string.isRequired,
+  CONSTANTS: PropTypes.object.isRequired,
   conceptMembers: PropTypes.object.isRequired,
   didNotPerformCheckbox: PropTypes.bool.isRequired,
 };
@@ -396,7 +388,7 @@ const mapStateToProps = (state) => {
   const {
     patient: { patient },
     selectedLabConcept,
-    CONSTANTS,
+    openmrs: { CONSTANTS },
     conceptMembers,
   } = state;
   const selector = formValueSelector('result-entry-form');
