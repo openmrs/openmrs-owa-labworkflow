@@ -14,6 +14,7 @@ import {
   withLocalisation,
   Head,
 } from '@openmrs/react-components';
+import ReduxToastr from 'react-redux-toastr';
 import BreadCrumb from './components/shared/BreadCrumb/BreadCrumb';
 import LabResultEntry from './components/LabResultEntry';
 import LabOrdersList from './components/LabOrdersList';
@@ -36,6 +37,7 @@ const LocalizedBreadCrumb = withLocalisation(BreadCrumb);
 // eslint-disable-next-line
 export default store => (
   <div>
+    <ReduxToastr />
     <LocalizedHead defaultTitle="OpenMRS Electronic Medical Record" id="app.title" />
     <Header />
     <LocalizedBreadCrumb />

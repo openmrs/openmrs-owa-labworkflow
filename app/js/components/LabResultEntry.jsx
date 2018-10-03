@@ -142,7 +142,7 @@ export class LabResultEntry extends PureComponent {
                   "Blood Coagulation",
                   "Inappropriate Container"]}
                 widget="dropdown"
-                concept={CONSTANTS.fetchLabResultsDidNotPerformReason}
+                concept={CONSTANTS.labResultsDidNotPerformReason}
                 path="did-not-perform-dropdown"
               />
             </div>
@@ -195,7 +195,7 @@ export class LabResultEntry extends PureComponent {
                 {
                   type: "obs",
                   path: "test-order-number",
-                  concept: CONSTANTS.labResultsTestOrderNumberConcept,
+                  concept: "393dec41-2fb5-428f-acfa-36ea85da6666",
                   value: state.orderNumber,
                 },
               ]}
