@@ -110,7 +110,7 @@ export class LabResultEntry extends PureComponent {
                   <span className="obs-date-field">
                     <Obs
                       datatype="date"
-                      concept={CONSTANTS.labResultsDateConcept}
+                      concept="68d6bd27-37ff-4d7a-87a0-f5e0f9c8dcc0"
                       path="result-date"
                       validate={[maxDateRange]}
                     />
@@ -195,7 +195,7 @@ export class LabResultEntry extends PureComponent {
                 {
                   type: "obs",
                   path: "test-order-number",
-                  concept: CONSTANTS.labResultsTestOrderNumberConcept,
+                  concept: "393dec41-2fb5-428f-acfa-36ea85da6666",
                   value: state.orderNumber,
                 },
               ]}

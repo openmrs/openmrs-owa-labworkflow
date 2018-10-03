@@ -13,6 +13,7 @@ import {
 import createSagaMiddleware from 'redux-saga';
 import promiseMiddleware from 'redux-promise-middleware';
 import { createLogger } from 'redux-logger';
+import { connectRouter, routerMiddleware } from 'connected-react-router';
 import reducers from './reducers';
 import initSagas from './sagas';
 import errorMiddleWare from './middlewares/errorMiddleware';

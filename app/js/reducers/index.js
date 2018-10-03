@@ -9,6 +9,7 @@
 
 import { combineReducers } from 'redux';
 import { reducer as reduxFormReducer } from 'redux-form';
+import { reducer as toastrReducer } from 'react-redux-toastr';
 import { reducers as openmrsReducers } from '@openmrs/react-components';
 import labOrderReducer from './labOrdersReducer';
 import patientReducer from './patientReducer';
@@ -24,6 +25,7 @@ import {
 export default combineReducers({
   openmrs: openmrsReducers,
   form: reduxFormReducer,
+  toastr: toastrReducer,
   labOrders: labOrderReducer,
   patient: patientReducer,
   patients: patientsReducer,
