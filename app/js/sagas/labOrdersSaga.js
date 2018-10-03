@@ -5,11 +5,11 @@ import {
   FETCH_LAB_ORDERS
 } from '../actions/actionTypes'
 import { setLabTestTypes } from '../actions/labOrdersAction';
-import labConceptsAction from '../actions/labConceptsAction';
+import { setSelectedConcept } from '../actions/labConceptsAction';
 
 
 export function* clear() {
-  yield put(labConceptsAction.setSelectedConcept());
+  yield put(setSelectedConcept());
 }
 
 export function* resetState() {

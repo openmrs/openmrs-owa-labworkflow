@@ -37,7 +37,7 @@ export const selectedLabConceptReducer = (state = initialState.selectedLabConcep
       return selectedLabConcept;
     }
     case SET_CONCEPT: {
-      const selectedLabConcept = null;
+      const selectedLabConcept = {};
       return selectedLabConcept;
     }
     default: return state;

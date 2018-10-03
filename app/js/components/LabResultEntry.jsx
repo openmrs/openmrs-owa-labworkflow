@@ -30,27 +30,10 @@ import {
 } from '@openmrs/react-components';
 
 import patientAction from '../actions/patientAction';
-import labConceptsAction from '../actions/labConceptsAction';
+import { fetchLabConcept } from '../actions/labConceptsAction';
 import '../../css/lab-result-entry.scss';
+import { formatRangeDisplayText, hasMaxAndMinValues } from '../utils/helpers';
 
-
-const formatRangeDisplayText = (min, max, units) => {
-  if (min && max && units) {
-    return `${min}${units} - ${max}${units}`;
-  }
-  return '';
-};
-
-const hasMaxAndMinValues = (
-  memebers,
-  list,
-) => memebers.reduce((currentValue, item) => {
-  const member = list[item.uuid];
-  if (member && member.hiNormal !== 'null' && member.lowNormal !== null) {
-    return true;
-  }
-  return currentValue;
-}, false);
 
 const {
   minValue,
@@ -74,7 +57,7 @@ export class LabResultEntry extends PureComponent {
     if (typeof state !== 'undefined') {
       const conceptUUID = state.concept.uuid;
       dispatch(patientAction.getPatient(state.patient.uuid));
-      dispatch(labConceptsAction.fetchLabConcept(conceptUUID));
+      dispatch(fetchLabConcept(conceptUUID));
     } else {
       this.shouldRedirect();
     }
@@ -139,7 +122,7 @@ export class LabResultEntry extends PureComponent {
         <div className="col-xs-4">
           <div className="did-not-perform-checkbox">
             <Obs
-              conceptAnswer={CONSTANTS.fetchLabResultsDidNotPerformAnswer}
+              conceptAnswer={CONSTANTS.labResultsDidNotPerformAnswer}
               widget="checkbox"
               concept={CONSTANTS.labResultsDidNotPerformQuestion}
               path="did-not-perform-checkbox"
@@ -312,7 +295,7 @@ export class LabResultEntry extends PureComponent {
     if (!location.state || redirect) {
       return <Redirect to="/" />;
     }
-    if (selectedLabConcept) {
+    if (!R.isEmpty(selectedLabConcept)) {
       return (
         <div className="container-fluid">
           {patientHeaderDetail && <PatientHeader patient={patientHeaderDetail} />}

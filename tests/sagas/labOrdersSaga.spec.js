@@ -1,5 +1,5 @@
-import { setLabTestsSaga } from '../../app/js/sagas/labOrdersSaga';
-import { FETCH_LAB_ORDERS, SET_LAB_TEST } from '../../app/js/actions/actionTypes';
+import { setLabTestsSaga, resetState, clear } from '../../app/js/sagas/labOrdersSaga';
+import { FETCH_LAB_ORDERS, SET_LAB_TEST, SET_CONCEPT } from '../../app/js/actions/actionTypes';
 
 let sagaTester;
 
@@ -30,6 +30,28 @@ describe('setLabTestsSaga', () => {
     const expectedActions = [
       `${FETCH_LAB_ORDERS}_SUCCESS`,
       SET_LAB_TEST,
+    ];
+
+    sagaTester.dispatch({ type: `${FETCH_LAB_ORDERS}_SUCCESS`, payload: { data } });
+
+    expect(
+      sagaTester.getCalledActions().map(
+        action => action.type,
+      ),
+    ).toEqual(expectedActions);
+    expect(sagaTester.wasCalled(`${FETCH_LAB_ORDERS}_SUCCESS`)).toEqual(true);
+  });
+});
+
+describe('resetState saga', () => {
+  beforeEach(() => {
+    sagaTester = new SagaTester({});
+    sagaTester.start(resetState);
+  });
+  it('should run', () => {
+    const expectedActions = [
+      `${FETCH_LAB_ORDERS}_SUCCESS`,
+      SET_CONCEPT,
     ];
 
     sagaTester.dispatch({ type: `${FETCH_LAB_ORDERS}_SUCCESS`, payload: { data } });

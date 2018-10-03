@@ -8,8 +8,8 @@ export default {
       message: null,
     },
   },
-  selectedPatient: null,
-  selectedLabConcept: null,
+  selectedPatient: {},
+  selectedLabConcept: {},
   conceptMembers: {},
   patients: {},
   fetchStatus: {
