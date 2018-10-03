@@ -110,7 +110,7 @@ export class LabResultEntry extends PureComponent {
                   <span className="obs-date-field">
                     <Obs
                       datatype="date"
-                      concept="68d6bd27-37ff-4d7a-87a0-f5e0f9c8dcc0"
+                      concept={CONSTANTS.labResultsDateConcept}
                       path="result-date"
                       validate={[maxDateRange]}
                     />
@@ -142,7 +142,7 @@ export class LabResultEntry extends PureComponent {
                   "Blood Coagulation",
                   "Inappropriate Container"]}
                 widget="dropdown"
-                concept={CONSTANTS.fetchLabResultsDidNotPerformReason}
+                concept={CONSTANTS.labResultsDidNotPerformReason}
                 path="did-not-perform-dropdown"
               />
             </div>
