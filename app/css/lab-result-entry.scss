@@ -167,9 +167,10 @@ button.pull-right.btn-success {
         .container:nth-child(2) {
             & .row {
                 display: flex;
-                justify-content: space-between;
+                padding-top: 50px;
+                position: absolute;
                 .col-sm-2.col-xs-offset-1 {
-                    margin-left: auto;
+                    margin-left: 680px;
                 }
             }
         }

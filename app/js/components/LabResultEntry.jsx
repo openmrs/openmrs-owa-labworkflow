@@ -199,8 +199,6 @@ export class LabResultEntry extends PureComponent {
                   value: state.orderNumber,
                 },
               ]}
-              afterSubmitLink="/"
-              backLink="/"
               encounterType={encounterType}
               formContent={observations}
               patient={patientHeaderDetail}
