@@ -5,6 +5,7 @@ import {
   SET_CONCEPT_MEMBER,
   SET_FETCH_STATUS,
   SET_CONCEPT,
+  UPDATE_PATIENT_INFO,
 } from '../actions/actionTypes';
 import initialState from './initialState';
 
@@ -18,6 +19,18 @@ export const patientsReducer = (state = initialState.patients, action) => {
         [action.patient.uuid]: action.patient,
         ...state,
       };
+    case UPDATE_PATIENT_INFO: {
+      console.log('yo ho ho', action);
+      const { patientUUID } = action;
+      const patientInfo = {
+        ...state[patientUUID],
+        ...action.meta,
+      };
+      return {
+        [patientUUID]: patientInfo,
+        ...state,
+      };
+    }
     default: return state;
   }
 };

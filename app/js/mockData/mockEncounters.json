@@ -1,0 +1,2118 @@
+{
+  "results": [
+      {
+          "uuid": "49dde940-08e5-4ded-aa1e-8753b28692e2",
+          "display": "Laboratory Results 03/10/2018",
+          "encounterDatetime": "2018-10-03T08:23:46.000+0100",
+          "patient": {
+              "uuid": "49287a9d-256b-4f52-9a92-ec61f9166f25",
+              "display": "Y2A7LR - williams willy john",
+              "links": [
+                  {
+                      "rel": "self",
+                      "uri": "http://localhost:8080/openmrs/ws/rest/v1/patient/49287a9d-256b-4f52-9a92-ec61f9166f25"
+                  }
+              ]
+          },
+          "location": null,
+          "form": null,
+          "encounterType": {
+              "uuid": "4d77916a-0620-11e5-a6c0-1697f925ec7b",
+              "display": "Résultats de Laboratoire",
+              "name": "Laboratory Results",
+              "description": "Laboratory Results",
+              "retired": false,
+              "links": [
+                  {
+                      "rel": "self",
+                      "uri": "http://localhost:8080/openmrs/ws/rest/v1/encountertype/4d77916a-0620-11e5-a6c0-1697f925ec7b"
+                  },
+                  {
+                      "rel": "full",
+                      "uri": "http://localhost:8080/openmrs/ws/rest/v1/encountertype/4d77916a-0620-11e5-a6c0-1697f925ec7b?v=full"
+                  }
+              ],
+              "resourceVersion": "1.8"
+          },
+          "obs": [
+              {
+                  "uuid": "6989636b-a16b-478a-9026-95edc7c4fe4f",
+                  "display": "Groupe sanguin: AB POSITIF",
+                  "concept": {
+                      "uuid": "3ccf4090-26fe-102b-80cb-0017a47871b2",
+                      "display": "Groupe sanguin",
+                      "links": [
+                          {
+                              "rel": "self",
+                              "uri": "http://localhost:8080/openmrs/ws/rest/v1/concept/3ccf4090-26fe-102b-80cb-0017a47871b2"
+                          }
+                      ]
+                  },
+                  "person": {
+                      "uuid": "49287a9d-256b-4f52-9a92-ec61f9166f25",
+                      "display": "Y2A7LR - williams willy john",
+                      "links": [
+                          {
+                              "rel": "self",
+                              "uri": "http://localhost:8080/openmrs/ws/rest/v1/patient/49287a9d-256b-4f52-9a92-ec61f9166f25"
+                          }
+                      ]
+                  },
+                  "obsDatetime": "2018-10-03T08:23:46.000+0100",
+                  "accessionNumber": null,
+                  "obsGroup": null,
+                  "valueCodedName": null,
+                  "groupMembers": null,
+                  "comment": "result-entry-form^3ccf4090-26fe-102b-80cb-0017a47871b2",
+                  "location": null,
+                  "order": null,
+                  "encounter": {
+                      "uuid": "49dde940-08e5-4ded-aa1e-8753b28692e2",
+                      "display": "Laboratory Results 03/10/2018",
+                      "links": [
+                          {
+                              "rel": "self",
+                              "uri": "http://localhost:8080/openmrs/ws/rest/v1/encounter/49dde940-08e5-4ded-aa1e-8753b28692e2"
+                          }
+                      ]
+                  },
+                  "voided": false,
+                  "value": {
+                      "uuid": "3cd8f716-26fe-102b-80cb-0017a47871b2",
+                      "display": "AB POSITIF",
+                      "name": {
+                          "display": "AB POSITIF",
+                          "uuid": "9423ab20-7e81-4ae7-b099-ff9ad5b9ade5",
+                          "name": "AB POSITIF",
+                          "locale": "fr",
+                          "localePreferred": true,
+                          "conceptNameType": null,
+                          "links": [
+                              {
+                                  "rel": "self",
+                                  "uri": "http://localhost:8080/openmrs/ws/rest/v1/concept/3cd8f716-26fe-102b-80cb-0017a47871b2/name/9423ab20-7e81-4ae7-b099-ff9ad5b9ade5"
+                              },
+                              {
+                                  "rel": "full",
+                                  "uri": "http://localhost:8080/openmrs/ws/rest/v1/concept/3cd8f716-26fe-102b-80cb-0017a47871b2/name/9423ab20-7e81-4ae7-b099-ff9ad5b9ade5?v=full"
+                              }
+                          ],
+                          "resourceVersion": "1.9"
+                      },
+                      "datatype": {
+                          "uuid": "8d4a4c94-c2cc-11de-8d13-0010c6dffd0f",
+                          "display": "N/A",
+                          "links": [
+                              {
+                                  "rel": "self",
+                                  "uri": "http://localhost:8080/openmrs/ws/rest/v1/conceptdatatype/8d4a4c94-c2cc-11de-8d13-0010c6dffd0f"
+                              }
+                          ]
+                      },
+                      "conceptClass": {
+                          "uuid": "8d492774-c2cc-11de-8d13-0010c6dffd0f",
+                          "display": "Misc",
+                          "links": [
+                              {
+                                  "rel": "self",
+                                  "uri": "http://localhost:8080/openmrs/ws/rest/v1/conceptclass/8d492774-c2cc-11de-8d13-0010c6dffd0f"
+                              }
+                          ]
+                      },
+                      "set": false,
+                      "version": null,
+                      "retired": false,
+                      "names": [
+                          {
+                              "uuid": "3e170122-26fe-102b-80cb-0017a47871b2",
+                              "display": "AB positive",
+                              "links": [
+                                  {
+                                      "rel": "self",
+                                      "uri": "http://localhost:8080/openmrs/ws/rest/v1/concept/3cd8f716-26fe-102b-80cb-0017a47871b2/name/3e170122-26fe-102b-80cb-0017a47871b2"
+                                  }
+                              ]
+                          },
+                          {
+                              "uuid": "93eb150e-07d4-102c-b5fa-0017a47871b2",
+                              "display": "AB+",
+                              "links": [
+                                  {
+                                      "rel": "self",
+                                      "uri": "http://localhost:8080/openmrs/ws/rest/v1/concept/3cd8f716-26fe-102b-80cb-0017a47871b2/name/93eb150e-07d4-102c-b5fa-0017a47871b2"
+                                  }
+                              ]
+                          },
+                          {
+                              "uuid": "9423ab20-7e81-4ae7-b099-ff9ad5b9ade5",
+                              "display": "AB POSITIF",
+                              "links": [
+                                  {
+                                      "rel": "self",
+                                      "uri": "http://localhost:8080/openmrs/ws/rest/v1/concept/3cd8f716-26fe-102b-80cb-0017a47871b2/name/9423ab20-7e81-4ae7-b099-ff9ad5b9ade5"
+                                  }
+                              ]
+                          }
+                      ],
+                      "descriptions": [
+                          {
+                              "uuid": "ece6848e-07fe-102c-b5fa-0017a47871b2",
+                              "display": "Describes a particular antigen combination on the surface of red blood cells: AB, Rh positive.",
+                              "links": [
+                                  {
+                                      "rel": "self",
+                                      "uri": "http://localhost:8080/openmrs/ws/rest/v1/concept/3cd8f716-26fe-102b-80cb-0017a47871b2/description/ece6848e-07fe-102c-b5fa-0017a47871b2"
+                                  }
+                              ]
+                          }
+                      ],
+                      "mappings": [
+                          {
+                              "uuid": "b20fab94-4864-102e-96e9-000c29c2a5d7",
+                              "display": "PIH: 1230",
+                              "links": [
+                                  {
+                                      "rel": "self",
+                                      "uri": "http://localhost:8080/openmrs/ws/rest/v1/concept/3cd8f716-26fe-102b-80cb-0017a47871b2/mapping/b20fab94-4864-102e-96e9-000c29c2a5d7"
+                                  }
+                              ]
+                          },
+                          {
+                              "uuid": "75694d14-4943-102e-96e9-000c29c2a5d7",
+                              "display": "PIH: AB POSITIVE",
+                              "links": [
+                                  {
+                                      "rel": "self",
+                                      "uri": "http://localhost:8080/openmrs/ws/rest/v1/concept/3cd8f716-26fe-102b-80cb-0017a47871b2/mapping/75694d14-4943-102e-96e9-000c29c2a5d7"
+                                  }
+                              ]
+                          }
+                      ],
+                      "answers": [],
+                      "setMembers": [],
+                      "attributes": [],
+                      "links": [
+                          {
+                              "rel": "self",
+                              "uri": "http://localhost:8080/openmrs/ws/rest/v1/concept/3cd8f716-26fe-102b-80cb-0017a47871b2"
+                          },
+                          {
+                              "rel": "full",
+                              "uri": "http://localhost:8080/openmrs/ws/rest/v1/concept/3cd8f716-26fe-102b-80cb-0017a47871b2?v=full"
+                          }
+                      ],
+                      "resourceVersion": "2.0"
+                  },
+                  "valueModifier": null,
+                  "formFieldPath": null,
+                  "formFieldNamespace": null,
+                  "status": "FINAL",
+                  "interpretation": null,
+                  "links": [
+                      {
+                          "rel": "self",
+                          "uri": "http://localhost:8080/openmrs/ws/rest/v1/obs/6989636b-a16b-478a-9026-95edc7c4fe4f"
+                      },
+                      {
+                          "rel": "full",
+                          "uri": "http://localhost:8080/openmrs/ws/rest/v1/obs/6989636b-a16b-478a-9026-95edc7c4fe4f?v=full"
+                      }
+                  ],
+                  "resourceVersion": "2.1"
+              },
+              {
+                  "uuid": "e216ba54-5048-41f3-b083-29845cb30491",
+                  "display": "Test order number: ORD-2",
+                  "concept": {
+                      "uuid": "393dec41-2fb5-428f-acfa-36ea85da6666",
+                      "display": "Test order number",
+                      "links": [
+                          {
+                              "rel": "self",
+                              "uri": "http://localhost:8080/openmrs/ws/rest/v1/concept/393dec41-2fb5-428f-acfa-36ea85da6666"
+                          }
+                      ]
+                  },
+                  "person": {
+                      "uuid": "49287a9d-256b-4f52-9a92-ec61f9166f25",
+                      "display": "Y2A7LR - williams willy john",
+                      "links": [
+                          {
+                              "rel": "self",
+                              "uri": "http://localhost:8080/openmrs/ws/rest/v1/patient/49287a9d-256b-4f52-9a92-ec61f9166f25"
+                          }
+                      ]
+                  },
+                  "obsDatetime": "2018-10-03T08:23:46.000+0100",
+                  "accessionNumber": null,
+                  "obsGroup": null,
+                  "valueCodedName": null,
+                  "groupMembers": null,
+                  "comment": "result-entry-form^test-order-number",
+                  "location": null,
+                  "order": null,
+                  "encounter": {
+                      "uuid": "49dde940-08e5-4ded-aa1e-8753b28692e2",
+                      "display": "Laboratory Results 03/10/2018",
+                      "links": [
+                          {
+                              "rel": "self",
+                              "uri": "http://localhost:8080/openmrs/ws/rest/v1/encounter/49dde940-08e5-4ded-aa1e-8753b28692e2"
+                          }
+                      ]
+                  },
+                  "voided": false,
+                  "value": "ORD-2",
+                  "valueModifier": null,
+                  "formFieldPath": null,
+                  "formFieldNamespace": null,
+                  "status": "FINAL",
+                  "interpretation": null,
+                  "links": [
+                      {
+                          "rel": "self",
+                          "uri": "http://localhost:8080/openmrs/ws/rest/v1/obs/e216ba54-5048-41f3-b083-29845cb30491"
+                      },
+                      {
+                          "rel": "full",
+                          "uri": "http://localhost:8080/openmrs/ws/rest/v1/obs/e216ba54-5048-41f3-b083-29845cb30491?v=full"
+                      }
+                  ],
+                  "resourceVersion": "2.1"
+              }
+          ],
+          "orders": [],
+          "voided": false,
+          "auditInfo": {
+              "creator": {
+                  "uuid": "e7ff2a99-a819-4d9d-8b07-9778c5b164a8",
+                  "display": "sudo",
+                  "links": [
+                      {
+                          "rel": "self",
+                          "uri": "http://localhost:8080/openmrs/ws/rest/v1/user/e7ff2a99-a819-4d9d-8b07-9778c5b164a8"
+                      }
+                  ]
+              },
+              "dateCreated": "2018-10-03T08:23:47.000+0100",
+              "changedBy": null,
+              "dateChanged": null
+          },
+          "visit": null,
+          "encounterProviders": [],
+          "links": [
+              {
+                  "rel": "self",
+                  "uri": "http://localhost:8080/openmrs/ws/rest/v1/encounter/49dde940-08e5-4ded-aa1e-8753b28692e2"
+              }
+          ],
+          "resourceVersion": "1.9"
+      },
+      {
+          "uuid": "a8c7d5c6-dcca-4663-ad53-06974d52d8e3",
+          "display": "Laboratory Results 03/10/2018",
+          "encounterDatetime": "2018-10-03T09:52:38.000+0100",
+          "patient": {
+              "uuid": "49287a9d-256b-4f52-9a92-ec61f9166f25",
+              "display": "Y2A7LR - williams willy john",
+              "links": [
+                  {
+                      "rel": "self",
+                      "uri": "http://localhost:8080/openmrs/ws/rest/v1/patient/49287a9d-256b-4f52-9a92-ec61f9166f25"
+                  }
+              ]
+          },
+          "location": null,
+          "form": null,
+          "encounterType": {
+              "uuid": "4d77916a-0620-11e5-a6c0-1697f925ec7b",
+              "display": "Résultats de Laboratoire",
+              "name": "Laboratory Results",
+              "description": "Laboratory Results",
+              "retired": false,
+              "links": [
+                  {
+                      "rel": "self",
+                      "uri": "http://localhost:8080/openmrs/ws/rest/v1/encountertype/4d77916a-0620-11e5-a6c0-1697f925ec7b"
+                  },
+                  {
+                      "rel": "full",
+                      "uri": "http://localhost:8080/openmrs/ws/rest/v1/encountertype/4d77916a-0620-11e5-a6c0-1697f925ec7b?v=full"
+                  }
+              ],
+              "resourceVersion": "1.8"
+          },
+          "obs": [
+              {
+                  "uuid": "ed994202-def7-4a59-a13a-9f886e8c888e",
+                  "display": "Test order number: ORD-1",
+                  "concept": {
+                      "uuid": "393dec41-2fb5-428f-acfa-36ea85da6666",
+                      "display": "Test order number",
+                      "links": [
+                          {
+                              "rel": "self",
+                              "uri": "http://localhost:8080/openmrs/ws/rest/v1/concept/393dec41-2fb5-428f-acfa-36ea85da6666"
+                          }
+                      ]
+                  },
+                  "person": {
+                      "uuid": "49287a9d-256b-4f52-9a92-ec61f9166f25",
+                      "display": "Y2A7LR - williams willy john",
+                      "links": [
+                          {
+                              "rel": "self",
+                              "uri": "http://localhost:8080/openmrs/ws/rest/v1/patient/49287a9d-256b-4f52-9a92-ec61f9166f25"
+                          }
+                      ]
+                  },
+                  "obsDatetime": "2018-10-03T09:52:38.000+0100",
+                  "accessionNumber": null,
+                  "obsGroup": null,
+                  "valueCodedName": null,
+                  "groupMembers": null,
+                  "comment": "result-entry-form^test-order-number",
+                  "location": null,
+                  "order": null,
+                  "encounter": {
+                      "uuid": "a8c7d5c6-dcca-4663-ad53-06974d52d8e3",
+                      "display": "Laboratory Results 03/10/2018",
+                      "links": [
+                          {
+                              "rel": "self",
+                              "uri": "http://localhost:8080/openmrs/ws/rest/v1/encounter/a8c7d5c6-dcca-4663-ad53-06974d52d8e3"
+                          }
+                      ]
+                  },
+                  "voided": false,
+                  "value": "ORD-1",
+                  "valueModifier": null,
+                  "formFieldPath": null,
+                  "formFieldNamespace": null,
+                  "status": "FINAL",
+                  "interpretation": null,
+                  "links": [
+                      {
+                          "rel": "self",
+                          "uri": "http://localhost:8080/openmrs/ws/rest/v1/obs/ed994202-def7-4a59-a13a-9f886e8c888e"
+                      },
+                      {
+                          "rel": "full",
+                          "uri": "http://localhost:8080/openmrs/ws/rest/v1/obs/ed994202-def7-4a59-a13a-9f886e8c888e?v=full"
+                      }
+                  ],
+                  "resourceVersion": "2.1"
+              },
+              {
+                  "uuid": "92b3e301-7612-423d-bac0-863ebc50a661",
+                  "display": "Plaquettes: 100,0",
+                  "concept": {
+                      "uuid": "3cd3d038-26fe-102b-80cb-0017a47871b2",
+                      "display": "Plaquettes",
+                      "links": [
+                          {
+                              "rel": "self",
+                              "uri": "http://localhost:8080/openmrs/ws/rest/v1/concept/3cd3d038-26fe-102b-80cb-0017a47871b2"
+                          }
+                      ]
+                  },
+                  "person": {
+                      "uuid": "49287a9d-256b-4f52-9a92-ec61f9166f25",
+                      "display": "Y2A7LR - williams willy john",
+                      "links": [
+                          {
+                              "rel": "self",
+                              "uri": "http://localhost:8080/openmrs/ws/rest/v1/patient/49287a9d-256b-4f52-9a92-ec61f9166f25"
+                          }
+                      ]
+                  },
+                  "obsDatetime": "2018-10-03T09:52:38.000+0100",
+                  "accessionNumber": null,
+                  "obsGroup": null,
+                  "valueCodedName": null,
+                  "groupMembers": null,
+                  "comment": "result-entry-form^3cd3d038-26fe-102b-80cb-0017a47871b2",
+                  "location": null,
+                  "order": null,
+                  "encounter": {
+                      "uuid": "a8c7d5c6-dcca-4663-ad53-06974d52d8e3",
+                      "display": "Laboratory Results 03/10/2018",
+                      "links": [
+                          {
+                              "rel": "self",
+                              "uri": "http://localhost:8080/openmrs/ws/rest/v1/encounter/a8c7d5c6-dcca-4663-ad53-06974d52d8e3"
+                          }
+                      ]
+                  },
+                  "voided": false,
+                  "value": 100,
+                  "valueModifier": null,
+                  "formFieldPath": null,
+                  "formFieldNamespace": null,
+                  "status": "FINAL",
+                  "interpretation": null,
+                  "links": [
+                      {
+                          "rel": "self",
+                          "uri": "http://localhost:8080/openmrs/ws/rest/v1/obs/92b3e301-7612-423d-bac0-863ebc50a661"
+                      },
+                      {
+                          "rel": "full",
+                          "uri": "http://localhost:8080/openmrs/ws/rest/v1/obs/92b3e301-7612-423d-bac0-863ebc50a661?v=full"
+                      }
+                  ],
+                  "resourceVersion": "2.1"
+              },
+              {
+                  "uuid": "c6e1f37f-2901-4972-90f1-0167a973c23b",
+                  "display": "Absolute Neutrophil Count: 100,0",
+                  "concept": {
+                      "uuid": "48348ce0-af6a-47a9-8671-1bbeb37dd500",
+                      "display": "Absolute Neutrophil Count",
+                      "links": [
+                          {
+                              "rel": "self",
+                              "uri": "http://localhost:8080/openmrs/ws/rest/v1/concept/48348ce0-af6a-47a9-8671-1bbeb37dd500"
+                          }
+                      ]
+                  },
+                  "person": {
+                      "uuid": "49287a9d-256b-4f52-9a92-ec61f9166f25",
+                      "display": "Y2A7LR - williams willy john",
+                      "links": [
+                          {
+                              "rel": "self",
+                              "uri": "http://localhost:8080/openmrs/ws/rest/v1/patient/49287a9d-256b-4f52-9a92-ec61f9166f25"
+                          }
+                      ]
+                  },
+                  "obsDatetime": "2018-10-03T09:52:38.000+0100",
+                  "accessionNumber": null,
+                  "obsGroup": null,
+                  "valueCodedName": null,
+                  "groupMembers": null,
+                  "comment": "result-entry-form^48348ce0-af6a-47a9-8671-1bbeb37dd500",
+                  "location": null,
+                  "order": null,
+                  "encounter": {
+                      "uuid": "a8c7d5c6-dcca-4663-ad53-06974d52d8e3",
+                      "display": "Laboratory Results 03/10/2018",
+                      "links": [
+                          {
+                              "rel": "self",
+                              "uri": "http://localhost:8080/openmrs/ws/rest/v1/encounter/a8c7d5c6-dcca-4663-ad53-06974d52d8e3"
+                          }
+                      ]
+                  },
+                  "voided": false,
+                  "value": 100,
+                  "valueModifier": null,
+                  "formFieldPath": null,
+                  "formFieldNamespace": null,
+                  "status": "FINAL",
+                  "interpretation": null,
+                  "links": [
+                      {
+                          "rel": "self",
+                          "uri": "http://localhost:8080/openmrs/ws/rest/v1/obs/c6e1f37f-2901-4972-90f1-0167a973c23b"
+                      },
+                      {
+                          "rel": "full",
+                          "uri": "http://localhost:8080/openmrs/ws/rest/v1/obs/c6e1f37f-2901-4972-90f1-0167a973c23b?v=full"
+                      }
+                  ],
+                  "resourceVersion": "2.1"
+              },
+              {
+                  "uuid": "b13777ed-39aa-490c-9038-bff29a644bc5",
+                  "display": "Hémoglobine: 100,0",
+                  "concept": {
+                      "uuid": "3ccc7158-26fe-102b-80cb-0017a47871b2",
+                      "display": "Hémoglobine",
+                      "links": [
+                          {
+                              "rel": "self",
+                              "uri": "http://localhost:8080/openmrs/ws/rest/v1/concept/3ccc7158-26fe-102b-80cb-0017a47871b2"
+                          }
+                      ]
+                  },
+                  "person": {
+                      "uuid": "49287a9d-256b-4f52-9a92-ec61f9166f25",
+                      "display": "Y2A7LR - williams willy john",
+                      "links": [
+                          {
+                              "rel": "self",
+                              "uri": "http://localhost:8080/openmrs/ws/rest/v1/patient/49287a9d-256b-4f52-9a92-ec61f9166f25"
+                          }
+                      ]
+                  },
+                  "obsDatetime": "2018-10-03T09:52:38.000+0100",
+                  "accessionNumber": null,
+                  "obsGroup": null,
+                  "valueCodedName": null,
+                  "groupMembers": null,
+                  "comment": "result-entry-form^3ccc7158-26fe-102b-80cb-0017a47871b2",
+                  "location": null,
+                  "order": null,
+                  "encounter": {
+                      "uuid": "a8c7d5c6-dcca-4663-ad53-06974d52d8e3",
+                      "display": "Laboratory Results 03/10/2018",
+                      "links": [
+                          {
+                              "rel": "self",
+                              "uri": "http://localhost:8080/openmrs/ws/rest/v1/encounter/a8c7d5c6-dcca-4663-ad53-06974d52d8e3"
+                          }
+                      ]
+                  },
+                  "voided": false,
+                  "value": 100,
+                  "valueModifier": null,
+                  "formFieldPath": null,
+                  "formFieldNamespace": null,
+                  "status": "FINAL",
+                  "interpretation": null,
+                  "links": [
+                      {
+                          "rel": "self",
+                          "uri": "http://localhost:8080/openmrs/ws/rest/v1/obs/b13777ed-39aa-490c-9038-bff29a644bc5"
+                      },
+                      {
+                          "rel": "full",
+                          "uri": "http://localhost:8080/openmrs/ws/rest/v1/obs/b13777ed-39aa-490c-9038-bff29a644bc5?v=full"
+                      }
+                  ],
+                  "resourceVersion": "2.1"
+              },
+              {
+                  "uuid": "5a8510d4-bd63-415c-b6a5-a8fd4bf38a5e",
+                  "display": "Absolute Eosinophil Count: 100,0",
+                  "concept": {
+                      "uuid": "1332AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+                      "display": "Absolute Eosinophil Count",
+                      "links": [
+                          {
+                              "rel": "self",
+                              "uri": "http://localhost:8080/openmrs/ws/rest/v1/concept/1332AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+                          }
+                      ]
+                  },
+                  "person": {
+                      "uuid": "49287a9d-256b-4f52-9a92-ec61f9166f25",
+                      "display": "Y2A7LR - williams willy john",
+                      "links": [
+                          {
+                              "rel": "self",
+                              "uri": "http://localhost:8080/openmrs/ws/rest/v1/patient/49287a9d-256b-4f52-9a92-ec61f9166f25"
+                          }
+                      ]
+                  },
+                  "obsDatetime": "2018-10-03T09:52:38.000+0100",
+                  "accessionNumber": null,
+                  "obsGroup": null,
+                  "valueCodedName": null,
+                  "groupMembers": null,
+                  "comment": "result-entry-form^1332AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+                  "location": null,
+                  "order": null,
+                  "encounter": {
+                      "uuid": "a8c7d5c6-dcca-4663-ad53-06974d52d8e3",
+                      "display": "Laboratory Results 03/10/2018",
+                      "links": [
+                          {
+                              "rel": "self",
+                              "uri": "http://localhost:8080/openmrs/ws/rest/v1/encounter/a8c7d5c6-dcca-4663-ad53-06974d52d8e3"
+                          }
+                      ]
+                  },
+                  "voided": false,
+                  "value": 100,
+                  "valueModifier": null,
+                  "formFieldPath": null,
+                  "formFieldNamespace": null,
+                  "status": "FINAL",
+                  "interpretation": null,
+                  "links": [
+                      {
+                          "rel": "self",
+                          "uri": "http://localhost:8080/openmrs/ws/rest/v1/obs/5a8510d4-bd63-415c-b6a5-a8fd4bf38a5e"
+                      },
+                      {
+                          "rel": "full",
+                          "uri": "http://localhost:8080/openmrs/ws/rest/v1/obs/5a8510d4-bd63-415c-b6a5-a8fd4bf38a5e?v=full"
+                      }
+                  ],
+                  "resourceVersion": "2.1"
+              },
+              {
+                  "uuid": "a622ca4c-37a3-4ef9-bc32-f6ec439c1a03",
+                  "display": "Moyenne hémoglobine cellulaire concentration: 100,0",
+                  "concept": {
+                      "uuid": "3cd69dc2-26fe-102b-80cb-0017a47871b2",
+                      "display": "Moyenne hémoglobine cellulaire concentration",
+                      "links": [
+                          {
+                              "rel": "self",
+                              "uri": "http://localhost:8080/openmrs/ws/rest/v1/concept/3cd69dc2-26fe-102b-80cb-0017a47871b2"
+                          }
+                      ]
+                  },
+                  "person": {
+                      "uuid": "49287a9d-256b-4f52-9a92-ec61f9166f25",
+                      "display": "Y2A7LR - williams willy john",
+                      "links": [
+                          {
+                              "rel": "self",
+                              "uri": "http://localhost:8080/openmrs/ws/rest/v1/patient/49287a9d-256b-4f52-9a92-ec61f9166f25"
+                          }
+                      ]
+                  },
+                  "obsDatetime": "2018-10-03T09:52:38.000+0100",
+                  "accessionNumber": null,
+                  "obsGroup": null,
+                  "valueCodedName": null,
+                  "groupMembers": null,
+                  "comment": "result-entry-form^3cd69dc2-26fe-102b-80cb-0017a47871b2",
+                  "location": null,
+                  "order": null,
+                  "encounter": {
+                      "uuid": "a8c7d5c6-dcca-4663-ad53-06974d52d8e3",
+                      "display": "Laboratory Results 03/10/2018",
+                      "links": [
+                          {
+                              "rel": "self",
+                              "uri": "http://localhost:8080/openmrs/ws/rest/v1/encounter/a8c7d5c6-dcca-4663-ad53-06974d52d8e3"
+                          }
+                      ]
+                  },
+                  "voided": false,
+                  "value": 100,
+                  "valueModifier": null,
+                  "formFieldPath": null,
+                  "formFieldNamespace": null,
+                  "status": "FINAL",
+                  "interpretation": null,
+                  "links": [
+                      {
+                          "rel": "self",
+                          "uri": "http://localhost:8080/openmrs/ws/rest/v1/obs/a622ca4c-37a3-4ef9-bc32-f6ec439c1a03"
+                      },
+                      {
+                          "rel": "full",
+                          "uri": "http://localhost:8080/openmrs/ws/rest/v1/obs/a622ca4c-37a3-4ef9-bc32-f6ec439c1a03?v=full"
+                      }
+                  ],
+                  "resourceVersion": "2.1"
+              },
+              {
+                  "uuid": "cfcbb6aa-9ebc-4582-bec0-60e7bb2d573e",
+                  "display": "Absolute Monocyte Count: 100,0",
+                  "concept": {
+                      "uuid": "1331AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+                      "display": "Absolute Monocyte Count",
+                      "links": [
+                          {
+                              "rel": "self",
+                              "uri": "http://localhost:8080/openmrs/ws/rest/v1/concept/1331AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+                          }
+                      ]
+                  },
+                  "person": {
+                      "uuid": "49287a9d-256b-4f52-9a92-ec61f9166f25",
+                      "display": "Y2A7LR - williams willy john",
+                      "links": [
+                          {
+                              "rel": "self",
+                              "uri": "http://localhost:8080/openmrs/ws/rest/v1/patient/49287a9d-256b-4f52-9a92-ec61f9166f25"
+                          }
+                      ]
+                  },
+                  "obsDatetime": "2018-10-03T09:52:38.000+0100",
+                  "accessionNumber": null,
+                  "obsGroup": null,
+                  "valueCodedName": null,
+                  "groupMembers": null,
+                  "comment": "result-entry-form^1331AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+                  "location": null,
+                  "order": null,
+                  "encounter": {
+                      "uuid": "a8c7d5c6-dcca-4663-ad53-06974d52d8e3",
+                      "display": "Laboratory Results 03/10/2018",
+                      "links": [
+                          {
+                              "rel": "self",
+                              "uri": "http://localhost:8080/openmrs/ws/rest/v1/encounter/a8c7d5c6-dcca-4663-ad53-06974d52d8e3"
+                          }
+                      ]
+                  },
+                  "voided": false,
+                  "value": 100,
+                  "valueModifier": null,
+                  "formFieldPath": null,
+                  "formFieldNamespace": null,
+                  "status": "FINAL",
+                  "interpretation": null,
+                  "links": [
+                      {
+                          "rel": "self",
+                          "uri": "http://localhost:8080/openmrs/ws/rest/v1/obs/cfcbb6aa-9ebc-4582-bec0-60e7bb2d573e"
+                      },
+                      {
+                          "rel": "full",
+                          "uri": "http://localhost:8080/openmrs/ws/rest/v1/obs/cfcbb6aa-9ebc-4582-bec0-60e7bb2d573e?v=full"
+                      }
+                  ],
+                  "resourceVersion": "2.1"
+              },
+              {
+                  "uuid": "65b568d9-ba40-48f1-9480-a95232410198",
+                  "display": "Globules rouges: 100,0",
+                  "concept": {
+                      "uuid": "3cd2ab40-26fe-102b-80cb-0017a47871b2",
+                      "display": "Globules rouges",
+                      "links": [
+                          {
+                              "rel": "self",
+                              "uri": "http://localhost:8080/openmrs/ws/rest/v1/concept/3cd2ab40-26fe-102b-80cb-0017a47871b2"
+                          }
+                      ]
+                  },
+                  "person": {
+                      "uuid": "49287a9d-256b-4f52-9a92-ec61f9166f25",
+                      "display": "Y2A7LR - williams willy john",
+                      "links": [
+                          {
+                              "rel": "self",
+                              "uri": "http://localhost:8080/openmrs/ws/rest/v1/patient/49287a9d-256b-4f52-9a92-ec61f9166f25"
+                          }
+                      ]
+                  },
+                  "obsDatetime": "2018-10-03T09:52:38.000+0100",
+                  "accessionNumber": null,
+                  "obsGroup": null,
+                  "valueCodedName": null,
+                  "groupMembers": null,
+                  "comment": "result-entry-form^3cd2ab40-26fe-102b-80cb-0017a47871b2",
+                  "location": null,
+                  "order": null,
+                  "encounter": {
+                      "uuid": "a8c7d5c6-dcca-4663-ad53-06974d52d8e3",
+                      "display": "Laboratory Results 03/10/2018",
+                      "links": [
+                          {
+                              "rel": "self",
+                              "uri": "http://localhost:8080/openmrs/ws/rest/v1/encounter/a8c7d5c6-dcca-4663-ad53-06974d52d8e3"
+                          }
+                      ]
+                  },
+                  "voided": false,
+                  "value": 100,
+                  "valueModifier": null,
+                  "formFieldPath": null,
+                  "formFieldNamespace": null,
+                  "status": "FINAL",
+                  "interpretation": null,
+                  "links": [
+                      {
+                          "rel": "self",
+                          "uri": "http://localhost:8080/openmrs/ws/rest/v1/obs/65b568d9-ba40-48f1-9480-a95232410198"
+                      },
+                      {
+                          "rel": "full",
+                          "uri": "http://localhost:8080/openmrs/ws/rest/v1/obs/65b568d9-ba40-48f1-9480-a95232410198?v=full"
+                      }
+                  ],
+                  "resourceVersion": "2.1"
+              },
+              {
+                  "uuid": "672cfcdb-3485-4a10-b1ac-27196ea8644d",
+                  "display": "Nombre absolu de lymphocytes: 100,0",
+                  "concept": {
+                      "uuid": "3cd58018-26fe-102b-80cb-0017a47871b2",
+                      "display": "Nombre absolu de lymphocytes",
+                      "links": [
+                          {
+                              "rel": "self",
+                              "uri": "http://localhost:8080/openmrs/ws/rest/v1/concept/3cd58018-26fe-102b-80cb-0017a47871b2"
+                          }
+                      ]
+                  },
+                  "person": {
+                      "uuid": "49287a9d-256b-4f52-9a92-ec61f9166f25",
+                      "display": "Y2A7LR - williams willy john",
+                      "links": [
+                          {
+                              "rel": "self",
+                              "uri": "http://localhost:8080/openmrs/ws/rest/v1/patient/49287a9d-256b-4f52-9a92-ec61f9166f25"
+                          }
+                      ]
+                  },
+                  "obsDatetime": "2018-10-03T09:52:38.000+0100",
+                  "accessionNumber": null,
+                  "obsGroup": null,
+                  "valueCodedName": null,
+                  "groupMembers": null,
+                  "comment": "result-entry-form^3cd58018-26fe-102b-80cb-0017a47871b2",
+                  "location": null,
+                  "order": null,
+                  "encounter": {
+                      "uuid": "a8c7d5c6-dcca-4663-ad53-06974d52d8e3",
+                      "display": "Laboratory Results 03/10/2018",
+                      "links": [
+                          {
+                              "rel": "self",
+                              "uri": "http://localhost:8080/openmrs/ws/rest/v1/encounter/a8c7d5c6-dcca-4663-ad53-06974d52d8e3"
+                          }
+                      ]
+                  },
+                  "voided": false,
+                  "value": 100,
+                  "valueModifier": null,
+                  "formFieldPath": null,
+                  "formFieldNamespace": null,
+                  "status": "FINAL",
+                  "interpretation": null,
+                  "links": [
+                      {
+                          "rel": "self",
+                          "uri": "http://localhost:8080/openmrs/ws/rest/v1/obs/672cfcdb-3485-4a10-b1ac-27196ea8644d"
+                      },
+                      {
+                          "rel": "full",
+                          "uri": "http://localhost:8080/openmrs/ws/rest/v1/obs/672cfcdb-3485-4a10-b1ac-27196ea8644d?v=full"
+                      }
+                  ],
+                  "resourceVersion": "2.1"
+              },
+              {
+                  "uuid": "c9af73d7-576d-4016-ab0c-caa70611322d",
+                  "display": "Hémoglobine corpusculaires moyenne: 100,0",
+                  "concept": {
+                      "uuid": "3cd69f48-26fe-102b-80cb-0017a47871b2",
+                      "display": "Hémoglobine corpusculaires moyenne",
+                      "links": [
+                          {
+                              "rel": "self",
+                              "uri": "http://localhost:8080/openmrs/ws/rest/v1/concept/3cd69f48-26fe-102b-80cb-0017a47871b2"
+                          }
+                      ]
+                  },
+                  "person": {
+                      "uuid": "49287a9d-256b-4f52-9a92-ec61f9166f25",
+                      "display": "Y2A7LR - williams willy john",
+                      "links": [
+                          {
+                              "rel": "self",
+                              "uri": "http://localhost:8080/openmrs/ws/rest/v1/patient/49287a9d-256b-4f52-9a92-ec61f9166f25"
+                          }
+                      ]
+                  },
+                  "obsDatetime": "2018-10-03T09:52:38.000+0100",
+                  "accessionNumber": null,
+                  "obsGroup": null,
+                  "valueCodedName": null,
+                  "groupMembers": null,
+                  "comment": "result-entry-form^3cd69f48-26fe-102b-80cb-0017a47871b2",
+                  "location": null,
+                  "order": null,
+                  "encounter": {
+                      "uuid": "a8c7d5c6-dcca-4663-ad53-06974d52d8e3",
+                      "display": "Laboratory Results 03/10/2018",
+                      "links": [
+                          {
+                              "rel": "self",
+                              "uri": "http://localhost:8080/openmrs/ws/rest/v1/encounter/a8c7d5c6-dcca-4663-ad53-06974d52d8e3"
+                          }
+                      ]
+                  },
+                  "voided": false,
+                  "value": 100,
+                  "valueModifier": null,
+                  "formFieldPath": null,
+                  "formFieldNamespace": null,
+                  "status": "FINAL",
+                  "interpretation": null,
+                  "links": [
+                      {
+                          "rel": "self",
+                          "uri": "http://localhost:8080/openmrs/ws/rest/v1/obs/c9af73d7-576d-4016-ab0c-caa70611322d"
+                      },
+                      {
+                          "rel": "full",
+                          "uri": "http://localhost:8080/openmrs/ws/rest/v1/obs/c9af73d7-576d-4016-ab0c-caa70611322d?v=full"
+                      }
+                  ],
+                  "resourceVersion": "2.1"
+              },
+              {
+                  "uuid": "1cfbe6eb-350f-498f-b834-04c5f87fe1ad",
+                  "display": "Globules blancs: 100,0",
+                  "concept": {
+                      "uuid": "3cd2a906-26fe-102b-80cb-0017a47871b2",
+                      "display": "Globules blancs",
+                      "links": [
+                          {
+                              "rel": "self",
+                              "uri": "http://localhost:8080/openmrs/ws/rest/v1/concept/3cd2a906-26fe-102b-80cb-0017a47871b2"
+                          }
+                      ]
+                  },
+                  "person": {
+                      "uuid": "49287a9d-256b-4f52-9a92-ec61f9166f25",
+                      "display": "Y2A7LR - williams willy john",
+                      "links": [
+                          {
+                              "rel": "self",
+                              "uri": "http://localhost:8080/openmrs/ws/rest/v1/patient/49287a9d-256b-4f52-9a92-ec61f9166f25"
+                          }
+                      ]
+                  },
+                  "obsDatetime": "2018-10-03T09:52:38.000+0100",
+                  "accessionNumber": null,
+                  "obsGroup": null,
+                  "valueCodedName": null,
+                  "groupMembers": null,
+                  "comment": "result-entry-form^3cd2a906-26fe-102b-80cb-0017a47871b2",
+                  "location": null,
+                  "order": null,
+                  "encounter": {
+                      "uuid": "a8c7d5c6-dcca-4663-ad53-06974d52d8e3",
+                      "display": "Laboratory Results 03/10/2018",
+                      "links": [
+                          {
+                              "rel": "self",
+                              "uri": "http://localhost:8080/openmrs/ws/rest/v1/encounter/a8c7d5c6-dcca-4663-ad53-06974d52d8e3"
+                          }
+                      ]
+                  },
+                  "voided": false,
+                  "value": 100,
+                  "valueModifier": null,
+                  "formFieldPath": null,
+                  "formFieldNamespace": null,
+                  "status": "FINAL",
+                  "interpretation": null,
+                  "links": [
+                      {
+                          "rel": "self",
+                          "uri": "http://localhost:8080/openmrs/ws/rest/v1/obs/1cfbe6eb-350f-498f-b834-04c5f87fe1ad"
+                      },
+                      {
+                          "rel": "full",
+                          "uri": "http://localhost:8080/openmrs/ws/rest/v1/obs/1cfbe6eb-350f-498f-b834-04c5f87fe1ad?v=full"
+                      }
+                  ],
+                  "resourceVersion": "2.1"
+              },
+              {
+                  "uuid": "1072109e-e806-46b7-8b4d-d0f9fab43073",
+                  "display": "Absolute Basophil Count: 100,0",
+                  "concept": {
+                      "uuid": "1333AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+                      "display": "Absolute Basophil Count",
+                      "links": [
+                          {
+                              "rel": "self",
+                              "uri": "http://localhost:8080/openmrs/ws/rest/v1/concept/1333AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+                          }
+                      ]
+                  },
+                  "person": {
+                      "uuid": "49287a9d-256b-4f52-9a92-ec61f9166f25",
+                      "display": "Y2A7LR - williams willy john",
+                      "links": [
+                          {
+                              "rel": "self",
+                              "uri": "http://localhost:8080/openmrs/ws/rest/v1/patient/49287a9d-256b-4f52-9a92-ec61f9166f25"
+                          }
+                      ]
+                  },
+                  "obsDatetime": "2018-10-03T09:52:38.000+0100",
+                  "accessionNumber": null,
+                  "obsGroup": null,
+                  "valueCodedName": null,
+                  "groupMembers": null,
+                  "comment": "result-entry-form^1333AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+                  "location": null,
+                  "order": null,
+                  "encounter": {
+                      "uuid": "a8c7d5c6-dcca-4663-ad53-06974d52d8e3",
+                      "display": "Laboratory Results 03/10/2018",
+                      "links": [
+                          {
+                              "rel": "self",
+                              "uri": "http://localhost:8080/openmrs/ws/rest/v1/encounter/a8c7d5c6-dcca-4663-ad53-06974d52d8e3"
+                          }
+                      ]
+                  },
+                  "voided": false,
+                  "value": 100,
+                  "valueModifier": null,
+                  "formFieldPath": null,
+                  "formFieldNamespace": null,
+                  "status": "FINAL",
+                  "interpretation": null,
+                  "links": [
+                      {
+                          "rel": "self",
+                          "uri": "http://localhost:8080/openmrs/ws/rest/v1/obs/1072109e-e806-46b7-8b4d-d0f9fab43073"
+                      },
+                      {
+                          "rel": "full",
+                          "uri": "http://localhost:8080/openmrs/ws/rest/v1/obs/1072109e-e806-46b7-8b4d-d0f9fab43073?v=full"
+                      }
+                  ],
+                  "resourceVersion": "2.1"
+              },
+              {
+                  "uuid": "317970bc-405f-4559-8605-1c429f3e31f5",
+                  "display": "Hématocrite: 100,0",
+                  "concept": {
+                      "uuid": "3cd69a98-26fe-102b-80cb-0017a47871b2",
+                      "display": "Hématocrite",
+                      "links": [
+                          {
+                              "rel": "self",
+                              "uri": "http://localhost:8080/openmrs/ws/rest/v1/concept/3cd69a98-26fe-102b-80cb-0017a47871b2"
+                          }
+                      ]
+                  },
+                  "person": {
+                      "uuid": "49287a9d-256b-4f52-9a92-ec61f9166f25",
+                      "display": "Y2A7LR - williams willy john",
+                      "links": [
+                          {
+                              "rel": "self",
+                              "uri": "http://localhost:8080/openmrs/ws/rest/v1/patient/49287a9d-256b-4f52-9a92-ec61f9166f25"
+                          }
+                      ]
+                  },
+                  "obsDatetime": "2018-10-03T09:52:38.000+0100",
+                  "accessionNumber": null,
+                  "obsGroup": null,
+                  "valueCodedName": null,
+                  "groupMembers": null,
+                  "comment": "result-entry-form^3cd69a98-26fe-102b-80cb-0017a47871b2",
+                  "location": null,
+                  "order": null,
+                  "encounter": {
+                      "uuid": "a8c7d5c6-dcca-4663-ad53-06974d52d8e3",
+                      "display": "Laboratory Results 03/10/2018",
+                      "links": [
+                          {
+                              "rel": "self",
+                              "uri": "http://localhost:8080/openmrs/ws/rest/v1/encounter/a8c7d5c6-dcca-4663-ad53-06974d52d8e3"
+                          }
+                      ]
+                  },
+                  "voided": false,
+                  "value": 100,
+                  "valueModifier": null,
+                  "formFieldPath": null,
+                  "formFieldNamespace": null,
+                  "status": "FINAL",
+                  "interpretation": null,
+                  "links": [
+                      {
+                          "rel": "self",
+                          "uri": "http://localhost:8080/openmrs/ws/rest/v1/obs/317970bc-405f-4559-8605-1c429f3e31f5"
+                      },
+                      {
+                          "rel": "full",
+                          "uri": "http://localhost:8080/openmrs/ws/rest/v1/obs/317970bc-405f-4559-8605-1c429f3e31f5?v=full"
+                      }
+                  ],
+                  "resourceVersion": "2.1"
+              },
+              {
+                  "uuid": "0ab67294-a86f-43e8-a9cf-10b97ee8a1c5",
+                  "display": "Volume globulaire moyen: 100,0",
+                  "concept": {
+                      "uuid": "3cd4a0a8-26fe-102b-80cb-0017a47871b2",
+                      "display": "Volume globulaire moyen",
+                      "links": [
+                          {
+                              "rel": "self",
+                              "uri": "http://localhost:8080/openmrs/ws/rest/v1/concept/3cd4a0a8-26fe-102b-80cb-0017a47871b2"
+                          }
+                      ]
+                  },
+                  "person": {
+                      "uuid": "49287a9d-256b-4f52-9a92-ec61f9166f25",
+                      "display": "Y2A7LR - williams willy john",
+                      "links": [
+                          {
+                              "rel": "self",
+                              "uri": "http://localhost:8080/openmrs/ws/rest/v1/patient/49287a9d-256b-4f52-9a92-ec61f9166f25"
+                          }
+                      ]
+                  },
+                  "obsDatetime": "2018-10-03T09:52:38.000+0100",
+                  "accessionNumber": null,
+                  "obsGroup": null,
+                  "valueCodedName": null,
+                  "groupMembers": null,
+                  "comment": "result-entry-form^3cd4a0a8-26fe-102b-80cb-0017a47871b2",
+                  "location": null,
+                  "order": null,
+                  "encounter": {
+                      "uuid": "a8c7d5c6-dcca-4663-ad53-06974d52d8e3",
+                      "display": "Laboratory Results 03/10/2018",
+                      "links": [
+                          {
+                              "rel": "self",
+                              "uri": "http://localhost:8080/openmrs/ws/rest/v1/encounter/a8c7d5c6-dcca-4663-ad53-06974d52d8e3"
+                          }
+                      ]
+                  },
+                  "voided": false,
+                  "value": 100,
+                  "valueModifier": null,
+                  "formFieldPath": null,
+                  "formFieldNamespace": null,
+                  "status": "FINAL",
+                  "interpretation": null,
+                  "links": [
+                      {
+                          "rel": "self",
+                          "uri": "http://localhost:8080/openmrs/ws/rest/v1/obs/0ab67294-a86f-43e8-a9cf-10b97ee8a1c5"
+                      },
+                      {
+                          "rel": "full",
+                          "uri": "http://localhost:8080/openmrs/ws/rest/v1/obs/0ab67294-a86f-43e8-a9cf-10b97ee8a1c5?v=full"
+                      }
+                  ],
+                  "resourceVersion": "2.1"
+              }
+          ],
+          "orders": [],
+          "voided": false,
+          "auditInfo": {
+              "creator": {
+                  "uuid": "e7ff2a99-a819-4d9d-8b07-9778c5b164a8",
+                  "display": "sudo",
+                  "links": [
+                      {
+                          "rel": "self",
+                          "uri": "http://localhost:8080/openmrs/ws/rest/v1/user/e7ff2a99-a819-4d9d-8b07-9778c5b164a8"
+                      }
+                  ]
+              },
+              "dateCreated": "2018-10-03T09:52:39.000+0100",
+              "changedBy": null,
+              "dateChanged": null
+          },
+          "visit": null,
+          "encounterProviders": [],
+          "links": [
+              {
+                  "rel": "self",
+                  "uri": "http://localhost:8080/openmrs/ws/rest/v1/encounter/a8c7d5c6-dcca-4663-ad53-06974d52d8e3"
+              }
+          ],
+          "resourceVersion": "1.9"
+      },
+      {
+          "uuid": "e050c1ff-2931-4493-b626-0be1fc09fc9d",
+          "display": "Laboratory Results 04/10/2018",
+          "encounterDatetime": "2018-10-04T14:47:32.000+0100",
+          "patient": {
+              "uuid": "49287a9d-256b-4f52-9a92-ec61f9166f25",
+              "display": "Y2A7LR - williams willy john",
+              "links": [
+                  {
+                      "rel": "self",
+                      "uri": "http://localhost:8080/openmrs/ws/rest/v1/patient/49287a9d-256b-4f52-9a92-ec61f9166f25"
+                  }
+              ]
+          },
+          "location": null,
+          "form": null,
+          "encounterType": {
+              "uuid": "4d77916a-0620-11e5-a6c0-1697f925ec7b",
+              "display": "Résultats de Laboratoire",
+              "name": "Laboratory Results",
+              "description": "Laboratory Results",
+              "retired": false,
+              "links": [
+                  {
+                      "rel": "self",
+                      "uri": "http://localhost:8080/openmrs/ws/rest/v1/encountertype/4d77916a-0620-11e5-a6c0-1697f925ec7b"
+                  },
+                  {
+                      "rel": "full",
+                      "uri": "http://localhost:8080/openmrs/ws/rest/v1/encountertype/4d77916a-0620-11e5-a6c0-1697f925ec7b?v=full"
+                  }
+              ],
+              "resourceVersion": "1.8"
+          },
+          "obs": [
+              {
+                  "uuid": "3ae56204-b46c-42f3-8c08-511ac9d4dfea",
+                  "display": "Test order number: ORD-1",
+                  "concept": {
+                      "uuid": "393dec41-2fb5-428f-acfa-36ea85da6666",
+                      "display": "Test order number",
+                      "links": [
+                          {
+                              "rel": "self",
+                              "uri": "http://localhost:8080/openmrs/ws/rest/v1/concept/393dec41-2fb5-428f-acfa-36ea85da6666"
+                          }
+                      ]
+                  },
+                  "person": {
+                      "uuid": "49287a9d-256b-4f52-9a92-ec61f9166f25",
+                      "display": "Y2A7LR - williams willy john",
+                      "links": [
+                          {
+                              "rel": "self",
+                              "uri": "http://localhost:8080/openmrs/ws/rest/v1/patient/49287a9d-256b-4f52-9a92-ec61f9166f25"
+                          }
+                      ]
+                  },
+                  "obsDatetime": "2018-10-04T14:47:32.000+0100",
+                  "accessionNumber": null,
+                  "obsGroup": null,
+                  "valueCodedName": null,
+                  "groupMembers": null,
+                  "comment": "result-entry-form^test-order-number",
+                  "location": null,
+                  "order": null,
+                  "encounter": {
+                      "uuid": "e050c1ff-2931-4493-b626-0be1fc09fc9d",
+                      "display": "Laboratory Results 04/10/2018",
+                      "links": [
+                          {
+                              "rel": "self",
+                              "uri": "http://localhost:8080/openmrs/ws/rest/v1/encounter/e050c1ff-2931-4493-b626-0be1fc09fc9d"
+                          }
+                      ]
+                  },
+                  "voided": false,
+                  "value": "ORD-1",
+                  "valueModifier": null,
+                  "formFieldPath": null,
+                  "formFieldNamespace": null,
+                  "status": "FINAL",
+                  "interpretation": null,
+                  "links": [
+                      {
+                          "rel": "self",
+                          "uri": "http://localhost:8080/openmrs/ws/rest/v1/obs/3ae56204-b46c-42f3-8c08-511ac9d4dfea"
+                      },
+                      {
+                          "rel": "full",
+                          "uri": "http://localhost:8080/openmrs/ws/rest/v1/obs/3ae56204-b46c-42f3-8c08-511ac9d4dfea?v=full"
+                      }
+                  ],
+                  "resourceVersion": "2.1"
+              },
+              {
+                  "uuid": "7aa5efd9-7b63-4fd2-a491-293a75b9d211",
+                  "display": "Volume globulaire moyen: 90,0",
+                  "concept": {
+                      "uuid": "3cd4a0a8-26fe-102b-80cb-0017a47871b2",
+                      "display": "Volume globulaire moyen",
+                      "links": [
+                          {
+                              "rel": "self",
+                              "uri": "http://localhost:8080/openmrs/ws/rest/v1/concept/3cd4a0a8-26fe-102b-80cb-0017a47871b2"
+                          }
+                      ]
+                  },
+                  "person": {
+                      "uuid": "49287a9d-256b-4f52-9a92-ec61f9166f25",
+                      "display": "Y2A7LR - williams willy john",
+                      "links": [
+                          {
+                              "rel": "self",
+                              "uri": "http://localhost:8080/openmrs/ws/rest/v1/patient/49287a9d-256b-4f52-9a92-ec61f9166f25"
+                          }
+                      ]
+                  },
+                  "obsDatetime": "2018-10-04T14:47:32.000+0100",
+                  "accessionNumber": null,
+                  "obsGroup": null,
+                  "valueCodedName": null,
+                  "groupMembers": null,
+                  "comment": "result-entry-form^3cd4a0a8-26fe-102b-80cb-0017a47871b2",
+                  "location": null,
+                  "order": null,
+                  "encounter": {
+                      "uuid": "e050c1ff-2931-4493-b626-0be1fc09fc9d",
+                      "display": "Laboratory Results 04/10/2018",
+                      "links": [
+                          {
+                              "rel": "self",
+                              "uri": "http://localhost:8080/openmrs/ws/rest/v1/encounter/e050c1ff-2931-4493-b626-0be1fc09fc9d"
+                          }
+                      ]
+                  },
+                  "voided": false,
+                  "value": 90,
+                  "valueModifier": null,
+                  "formFieldPath": null,
+                  "formFieldNamespace": null,
+                  "status": "FINAL",
+                  "interpretation": null,
+                  "links": [
+                      {
+                          "rel": "self",
+                          "uri": "http://localhost:8080/openmrs/ws/rest/v1/obs/7aa5efd9-7b63-4fd2-a491-293a75b9d211"
+                      },
+                      {
+                          "rel": "full",
+                          "uri": "http://localhost:8080/openmrs/ws/rest/v1/obs/7aa5efd9-7b63-4fd2-a491-293a75b9d211?v=full"
+                      }
+                  ],
+                  "resourceVersion": "2.1"
+              },
+              {
+                  "uuid": "2899f3df-0fe2-41aa-b7f1-7329677fa2e8",
+                  "display": "Moyenne hémoglobine cellulaire concentration: 33,0",
+                  "concept": {
+                      "uuid": "3cd69dc2-26fe-102b-80cb-0017a47871b2",
+                      "display": "Moyenne hémoglobine cellulaire concentration",
+                      "links": [
+                          {
+                              "rel": "self",
+                              "uri": "http://localhost:8080/openmrs/ws/rest/v1/concept/3cd69dc2-26fe-102b-80cb-0017a47871b2"
+                          }
+                      ]
+                  },
+                  "person": {
+                      "uuid": "49287a9d-256b-4f52-9a92-ec61f9166f25",
+                      "display": "Y2A7LR - williams willy john",
+                      "links": [
+                          {
+                              "rel": "self",
+                              "uri": "http://localhost:8080/openmrs/ws/rest/v1/patient/49287a9d-256b-4f52-9a92-ec61f9166f25"
+                          }
+                      ]
+                  },
+                  "obsDatetime": "2018-10-04T14:47:32.000+0100",
+                  "accessionNumber": null,
+                  "obsGroup": null,
+                  "valueCodedName": null,
+                  "groupMembers": null,
+                  "comment": "result-entry-form^3cd69dc2-26fe-102b-80cb-0017a47871b2",
+                  "location": null,
+                  "order": null,
+                  "encounter": {
+                      "uuid": "e050c1ff-2931-4493-b626-0be1fc09fc9d",
+                      "display": "Laboratory Results 04/10/2018",
+                      "links": [
+                          {
+                              "rel": "self",
+                              "uri": "http://localhost:8080/openmrs/ws/rest/v1/encounter/e050c1ff-2931-4493-b626-0be1fc09fc9d"
+                          }
+                      ]
+                  },
+                  "voided": false,
+                  "value": 33,
+                  "valueModifier": null,
+                  "formFieldPath": null,
+                  "formFieldNamespace": null,
+                  "status": "FINAL",
+                  "interpretation": null,
+                  "links": [
+                      {
+                          "rel": "self",
+                          "uri": "http://localhost:8080/openmrs/ws/rest/v1/obs/2899f3df-0fe2-41aa-b7f1-7329677fa2e8"
+                      },
+                      {
+                          "rel": "full",
+                          "uri": "http://localhost:8080/openmrs/ws/rest/v1/obs/2899f3df-0fe2-41aa-b7f1-7329677fa2e8?v=full"
+                      }
+                  ],
+                  "resourceVersion": "2.1"
+              },
+              {
+                  "uuid": "2d53b0a8-82e1-4efd-a623-cee9e62b6643",
+                  "display": "Nombre absolu de lymphocytes: 900,0",
+                  "concept": {
+                      "uuid": "3cd58018-26fe-102b-80cb-0017a47871b2",
+                      "display": "Nombre absolu de lymphocytes",
+                      "links": [
+                          {
+                              "rel": "self",
+                              "uri": "http://localhost:8080/openmrs/ws/rest/v1/concept/3cd58018-26fe-102b-80cb-0017a47871b2"
+                          }
+                      ]
+                  },
+                  "person": {
+                      "uuid": "49287a9d-256b-4f52-9a92-ec61f9166f25",
+                      "display": "Y2A7LR - williams willy john",
+                      "links": [
+                          {
+                              "rel": "self",
+                              "uri": "http://localhost:8080/openmrs/ws/rest/v1/patient/49287a9d-256b-4f52-9a92-ec61f9166f25"
+                          }
+                      ]
+                  },
+                  "obsDatetime": "2018-10-04T14:47:32.000+0100",
+                  "accessionNumber": null,
+                  "obsGroup": null,
+                  "valueCodedName": null,
+                  "groupMembers": null,
+                  "comment": "result-entry-form^3cd58018-26fe-102b-80cb-0017a47871b2",
+                  "location": null,
+                  "order": null,
+                  "encounter": {
+                      "uuid": "e050c1ff-2931-4493-b626-0be1fc09fc9d",
+                      "display": "Laboratory Results 04/10/2018",
+                      "links": [
+                          {
+                              "rel": "self",
+                              "uri": "http://localhost:8080/openmrs/ws/rest/v1/encounter/e050c1ff-2931-4493-b626-0be1fc09fc9d"
+                          }
+                      ]
+                  },
+                  "voided": false,
+                  "value": 900,
+                  "valueModifier": null,
+                  "formFieldPath": null,
+                  "formFieldNamespace": null,
+                  "status": "FINAL",
+                  "interpretation": null,
+                  "links": [
+                      {
+                          "rel": "self",
+                          "uri": "http://localhost:8080/openmrs/ws/rest/v1/obs/2d53b0a8-82e1-4efd-a623-cee9e62b6643"
+                      },
+                      {
+                          "rel": "full",
+                          "uri": "http://localhost:8080/openmrs/ws/rest/v1/obs/2d53b0a8-82e1-4efd-a623-cee9e62b6643?v=full"
+                      }
+                  ],
+                  "resourceVersion": "2.1"
+              },
+              {
+                  "uuid": "46eecd52-c114-43f4-935c-ec38e68e8d5f",
+                  "display": "Hématocrite: 34,0",
+                  "concept": {
+                      "uuid": "3cd69a98-26fe-102b-80cb-0017a47871b2",
+                      "display": "Hématocrite",
+                      "links": [
+                          {
+                              "rel": "self",
+                              "uri": "http://localhost:8080/openmrs/ws/rest/v1/concept/3cd69a98-26fe-102b-80cb-0017a47871b2"
+                          }
+                      ]
+                  },
+                  "person": {
+                      "uuid": "49287a9d-256b-4f52-9a92-ec61f9166f25",
+                      "display": "Y2A7LR - williams willy john",
+                      "links": [
+                          {
+                              "rel": "self",
+                              "uri": "http://localhost:8080/openmrs/ws/rest/v1/patient/49287a9d-256b-4f52-9a92-ec61f9166f25"
+                          }
+                      ]
+                  },
+                  "obsDatetime": "2018-10-04T14:47:32.000+0100",
+                  "accessionNumber": null,
+                  "obsGroup": null,
+                  "valueCodedName": null,
+                  "groupMembers": null,
+                  "comment": "result-entry-form^3cd69a98-26fe-102b-80cb-0017a47871b2",
+                  "location": null,
+                  "order": null,
+                  "encounter": {
+                      "uuid": "e050c1ff-2931-4493-b626-0be1fc09fc9d",
+                      "display": "Laboratory Results 04/10/2018",
+                      "links": [
+                          {
+                              "rel": "self",
+                              "uri": "http://localhost:8080/openmrs/ws/rest/v1/encounter/e050c1ff-2931-4493-b626-0be1fc09fc9d"
+                          }
+                      ]
+                  },
+                  "voided": false,
+                  "value": 34,
+                  "valueModifier": null,
+                  "formFieldPath": null,
+                  "formFieldNamespace": null,
+                  "status": "FINAL",
+                  "interpretation": null,
+                  "links": [
+                      {
+                          "rel": "self",
+                          "uri": "http://localhost:8080/openmrs/ws/rest/v1/obs/46eecd52-c114-43f4-935c-ec38e68e8d5f"
+                      },
+                      {
+                          "rel": "full",
+                          "uri": "http://localhost:8080/openmrs/ws/rest/v1/obs/46eecd52-c114-43f4-935c-ec38e68e8d5f?v=full"
+                      }
+                  ],
+                  "resourceVersion": "2.1"
+              },
+              {
+                  "uuid": "f2911048-f633-4426-9c1d-fe64db02d833",
+                  "display": "Hémoglobine corpusculaires moyenne: 29,0",
+                  "concept": {
+                      "uuid": "3cd69f48-26fe-102b-80cb-0017a47871b2",
+                      "display": "Hémoglobine corpusculaires moyenne",
+                      "links": [
+                          {
+                              "rel": "self",
+                              "uri": "http://localhost:8080/openmrs/ws/rest/v1/concept/3cd69f48-26fe-102b-80cb-0017a47871b2"
+                          }
+                      ]
+                  },
+                  "person": {
+                      "uuid": "49287a9d-256b-4f52-9a92-ec61f9166f25",
+                      "display": "Y2A7LR - williams willy john",
+                      "links": [
+                          {
+                              "rel": "self",
+                              "uri": "http://localhost:8080/openmrs/ws/rest/v1/patient/49287a9d-256b-4f52-9a92-ec61f9166f25"
+                          }
+                      ]
+                  },
+                  "obsDatetime": "2018-10-04T14:47:32.000+0100",
+                  "accessionNumber": null,
+                  "obsGroup": null,
+                  "valueCodedName": null,
+                  "groupMembers": null,
+                  "comment": "result-entry-form^3cd69f48-26fe-102b-80cb-0017a47871b2",
+                  "location": null,
+                  "order": null,
+                  "encounter": {
+                      "uuid": "e050c1ff-2931-4493-b626-0be1fc09fc9d",
+                      "display": "Laboratory Results 04/10/2018",
+                      "links": [
+                          {
+                              "rel": "self",
+                              "uri": "http://localhost:8080/openmrs/ws/rest/v1/encounter/e050c1ff-2931-4493-b626-0be1fc09fc9d"
+                          }
+                      ]
+                  },
+                  "voided": false,
+                  "value": 29,
+                  "valueModifier": null,
+                  "formFieldPath": null,
+                  "formFieldNamespace": null,
+                  "status": "FINAL",
+                  "interpretation": null,
+                  "links": [
+                      {
+                          "rel": "self",
+                          "uri": "http://localhost:8080/openmrs/ws/rest/v1/obs/f2911048-f633-4426-9c1d-fe64db02d833"
+                      },
+                      {
+                          "rel": "full",
+                          "uri": "http://localhost:8080/openmrs/ws/rest/v1/obs/f2911048-f633-4426-9c1d-fe64db02d833?v=full"
+                      }
+                  ],
+                  "resourceVersion": "2.1"
+              },
+              {
+                  "uuid": "ba8e60cb-967a-4353-bfa8-388512fa34be",
+                  "display": "Globules blancs: 100,0",
+                  "concept": {
+                      "uuid": "3cd2a906-26fe-102b-80cb-0017a47871b2",
+                      "display": "Globules blancs",
+                      "links": [
+                          {
+                              "rel": "self",
+                              "uri": "http://localhost:8080/openmrs/ws/rest/v1/concept/3cd2a906-26fe-102b-80cb-0017a47871b2"
+                          }
+                      ]
+                  },
+                  "person": {
+                      "uuid": "49287a9d-256b-4f52-9a92-ec61f9166f25",
+                      "display": "Y2A7LR - williams willy john",
+                      "links": [
+                          {
+                              "rel": "self",
+                              "uri": "http://localhost:8080/openmrs/ws/rest/v1/patient/49287a9d-256b-4f52-9a92-ec61f9166f25"
+                          }
+                      ]
+                  },
+                  "obsDatetime": "2018-10-04T14:47:32.000+0100",
+                  "accessionNumber": null,
+                  "obsGroup": null,
+                  "valueCodedName": null,
+                  "groupMembers": null,
+                  "comment": "result-entry-form^3cd2a906-26fe-102b-80cb-0017a47871b2",
+                  "location": null,
+                  "order": null,
+                  "encounter": {
+                      "uuid": "e050c1ff-2931-4493-b626-0be1fc09fc9d",
+                      "display": "Laboratory Results 04/10/2018",
+                      "links": [
+                          {
+                              "rel": "self",
+                              "uri": "http://localhost:8080/openmrs/ws/rest/v1/encounter/e050c1ff-2931-4493-b626-0be1fc09fc9d"
+                          }
+                      ]
+                  },
+                  "voided": false,
+                  "value": 100,
+                  "valueModifier": null,
+                  "formFieldPath": null,
+                  "formFieldNamespace": null,
+                  "status": "FINAL",
+                  "interpretation": null,
+                  "links": [
+                      {
+                          "rel": "self",
+                          "uri": "http://localhost:8080/openmrs/ws/rest/v1/obs/ba8e60cb-967a-4353-bfa8-388512fa34be"
+                      },
+                      {
+                          "rel": "full",
+                          "uri": "http://localhost:8080/openmrs/ws/rest/v1/obs/ba8e60cb-967a-4353-bfa8-388512fa34be?v=full"
+                      }
+                  ],
+                  "resourceVersion": "2.1"
+              },
+              {
+                  "uuid": "cad984a1-c5c2-4c75-9d81-4dbecd6e9aca",
+                  "display": "Absolute Neutrophil Count: 120,0",
+                  "concept": {
+                      "uuid": "48348ce0-af6a-47a9-8671-1bbeb37dd500",
+                      "display": "Absolute Neutrophil Count",
+                      "links": [
+                          {
+                              "rel": "self",
+                              "uri": "http://localhost:8080/openmrs/ws/rest/v1/concept/48348ce0-af6a-47a9-8671-1bbeb37dd500"
+                          }
+                      ]
+                  },
+                  "person": {
+                      "uuid": "49287a9d-256b-4f52-9a92-ec61f9166f25",
+                      "display": "Y2A7LR - williams willy john",
+                      "links": [
+                          {
+                              "rel": "self",
+                              "uri": "http://localhost:8080/openmrs/ws/rest/v1/patient/49287a9d-256b-4f52-9a92-ec61f9166f25"
+                          }
+                      ]
+                  },
+                  "obsDatetime": "2018-10-04T14:47:32.000+0100",
+                  "accessionNumber": null,
+                  "obsGroup": null,
+                  "valueCodedName": null,
+                  "groupMembers": null,
+                  "comment": "result-entry-form^48348ce0-af6a-47a9-8671-1bbeb37dd500",
+                  "location": null,
+                  "order": null,
+                  "encounter": {
+                      "uuid": "e050c1ff-2931-4493-b626-0be1fc09fc9d",
+                      "display": "Laboratory Results 04/10/2018",
+                      "links": [
+                          {
+                              "rel": "self",
+                              "uri": "http://localhost:8080/openmrs/ws/rest/v1/encounter/e050c1ff-2931-4493-b626-0be1fc09fc9d"
+                          }
+                      ]
+                  },
+                  "voided": false,
+                  "value": 120,
+                  "valueModifier": null,
+                  "formFieldPath": null,
+                  "formFieldNamespace": null,
+                  "status": "FINAL",
+                  "interpretation": null,
+                  "links": [
+                      {
+                          "rel": "self",
+                          "uri": "http://localhost:8080/openmrs/ws/rest/v1/obs/cad984a1-c5c2-4c75-9d81-4dbecd6e9aca"
+                      },
+                      {
+                          "rel": "full",
+                          "uri": "http://localhost:8080/openmrs/ws/rest/v1/obs/cad984a1-c5c2-4c75-9d81-4dbecd6e9aca?v=full"
+                      }
+                  ],
+                  "resourceVersion": "2.1"
+              },
+              {
+                  "uuid": "62bc2583-6bca-4801-b274-dfacf4065599",
+                  "display": "Plaquettes: 30000,0",
+                  "concept": {
+                      "uuid": "3cd3d038-26fe-102b-80cb-0017a47871b2",
+                      "display": "Plaquettes",
+                      "links": [
+                          {
+                              "rel": "self",
+                              "uri": "http://localhost:8080/openmrs/ws/rest/v1/concept/3cd3d038-26fe-102b-80cb-0017a47871b2"
+                          }
+                      ]
+                  },
+                  "person": {
+                      "uuid": "49287a9d-256b-4f52-9a92-ec61f9166f25",
+                      "display": "Y2A7LR - williams willy john",
+                      "links": [
+                          {
+                              "rel": "self",
+                              "uri": "http://localhost:8080/openmrs/ws/rest/v1/patient/49287a9d-256b-4f52-9a92-ec61f9166f25"
+                          }
+                      ]
+                  },
+                  "obsDatetime": "2018-10-04T14:47:32.000+0100",
+                  "accessionNumber": null,
+                  "obsGroup": null,
+                  "valueCodedName": null,
+                  "groupMembers": null,
+                  "comment": "result-entry-form^3cd3d038-26fe-102b-80cb-0017a47871b2",
+                  "location": null,
+                  "order": null,
+                  "encounter": {
+                      "uuid": "e050c1ff-2931-4493-b626-0be1fc09fc9d",
+                      "display": "Laboratory Results 04/10/2018",
+                      "links": [
+                          {
+                              "rel": "self",
+                              "uri": "http://localhost:8080/openmrs/ws/rest/v1/encounter/e050c1ff-2931-4493-b626-0be1fc09fc9d"
+                          }
+                      ]
+                  },
+                  "voided": false,
+                  "value": 30000,
+                  "valueModifier": null,
+                  "formFieldPath": null,
+                  "formFieldNamespace": null,
+                  "status": "FINAL",
+                  "interpretation": null,
+                  "links": [
+                      {
+                          "rel": "self",
+                          "uri": "http://localhost:8080/openmrs/ws/rest/v1/obs/62bc2583-6bca-4801-b274-dfacf4065599"
+                      },
+                      {
+                          "rel": "full",
+                          "uri": "http://localhost:8080/openmrs/ws/rest/v1/obs/62bc2583-6bca-4801-b274-dfacf4065599?v=full"
+                      }
+                  ],
+                  "resourceVersion": "2.1"
+              },
+              {
+                  "uuid": "ebe6a9d4-1631-4dee-b8ff-d0095362f878",
+                  "display": "Hémoglobine: 13,0",
+                  "concept": {
+                      "uuid": "3ccc7158-26fe-102b-80cb-0017a47871b2",
+                      "display": "Hémoglobine",
+                      "links": [
+                          {
+                              "rel": "self",
+                              "uri": "http://localhost:8080/openmrs/ws/rest/v1/concept/3ccc7158-26fe-102b-80cb-0017a47871b2"
+                          }
+                      ]
+                  },
+                  "person": {
+                      "uuid": "49287a9d-256b-4f52-9a92-ec61f9166f25",
+                      "display": "Y2A7LR - williams willy john",
+                      "links": [
+                          {
+                              "rel": "self",
+                              "uri": "http://localhost:8080/openmrs/ws/rest/v1/patient/49287a9d-256b-4f52-9a92-ec61f9166f25"
+                          }
+                      ]
+                  },
+                  "obsDatetime": "2018-10-04T14:47:32.000+0100",
+                  "accessionNumber": null,
+                  "obsGroup": null,
+                  "valueCodedName": null,
+                  "groupMembers": null,
+                  "comment": "result-entry-form^3ccc7158-26fe-102b-80cb-0017a47871b2",
+                  "location": null,
+                  "order": null,
+                  "encounter": {
+                      "uuid": "e050c1ff-2931-4493-b626-0be1fc09fc9d",
+                      "display": "Laboratory Results 04/10/2018",
+                      "links": [
+                          {
+                              "rel": "self",
+                              "uri": "http://localhost:8080/openmrs/ws/rest/v1/encounter/e050c1ff-2931-4493-b626-0be1fc09fc9d"
+                          }
+                      ]
+                  },
+                  "voided": false,
+                  "value": 13,
+                  "valueModifier": null,
+                  "formFieldPath": null,
+                  "formFieldNamespace": null,
+                  "status": "FINAL",
+                  "interpretation": null,
+                  "links": [
+                      {
+                          "rel": "self",
+                          "uri": "http://localhost:8080/openmrs/ws/rest/v1/obs/ebe6a9d4-1631-4dee-b8ff-d0095362f878"
+                      },
+                      {
+                          "rel": "full",
+                          "uri": "http://localhost:8080/openmrs/ws/rest/v1/obs/ebe6a9d4-1631-4dee-b8ff-d0095362f878?v=full"
+                      }
+                  ],
+                  "resourceVersion": "2.1"
+              },
+              {
+                  "uuid": "bd3c2e1b-7efa-4078-89c4-f81b63697711",
+                  "display": "Absolute Basophil Count: 156,0",
+                  "concept": {
+                      "uuid": "1333AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+                      "display": "Absolute Basophil Count",
+                      "links": [
+                          {
+                              "rel": "self",
+                              "uri": "http://localhost:8080/openmrs/ws/rest/v1/concept/1333AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+                          }
+                      ]
+                  },
+                  "person": {
+                      "uuid": "49287a9d-256b-4f52-9a92-ec61f9166f25",
+                      "display": "Y2A7LR - williams willy john",
+                      "links": [
+                          {
+                              "rel": "self",
+                              "uri": "http://localhost:8080/openmrs/ws/rest/v1/patient/49287a9d-256b-4f52-9a92-ec61f9166f25"
+                          }
+                      ]
+                  },
+                  "obsDatetime": "2018-10-04T14:47:32.000+0100",
+                  "accessionNumber": null,
+                  "obsGroup": null,
+                  "valueCodedName": null,
+                  "groupMembers": null,
+                  "comment": "result-entry-form^1333AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+                  "location": null,
+                  "order": null,
+                  "encounter": {
+                      "uuid": "e050c1ff-2931-4493-b626-0be1fc09fc9d",
+                      "display": "Laboratory Results 04/10/2018",
+                      "links": [
+                          {
+                              "rel": "self",
+                              "uri": "http://localhost:8080/openmrs/ws/rest/v1/encounter/e050c1ff-2931-4493-b626-0be1fc09fc9d"
+                          }
+                      ]
+                  },
+                  "voided": false,
+                  "value": 156,
+                  "valueModifier": null,
+                  "formFieldPath": null,
+                  "formFieldNamespace": null,
+                  "status": "FINAL",
+                  "interpretation": null,
+                  "links": [
+                      {
+                          "rel": "self",
+                          "uri": "http://localhost:8080/openmrs/ws/rest/v1/obs/bd3c2e1b-7efa-4078-89c4-f81b63697711"
+                      },
+                      {
+                          "rel": "full",
+                          "uri": "http://localhost:8080/openmrs/ws/rest/v1/obs/bd3c2e1b-7efa-4078-89c4-f81b63697711?v=full"
+                      }
+                  ],
+                  "resourceVersion": "2.1"
+              },
+              {
+                  "uuid": "ef04af2e-d7cd-4b24-a71f-9ef619015b8a",
+                  "display": "Globules rouges: 100,0",
+                  "concept": {
+                      "uuid": "3cd2ab40-26fe-102b-80cb-0017a47871b2",
+                      "display": "Globules rouges",
+                      "links": [
+                          {
+                              "rel": "self",
+                              "uri": "http://localhost:8080/openmrs/ws/rest/v1/concept/3cd2ab40-26fe-102b-80cb-0017a47871b2"
+                          }
+                      ]
+                  },
+                  "person": {
+                      "uuid": "49287a9d-256b-4f52-9a92-ec61f9166f25",
+                      "display": "Y2A7LR - williams willy john",
+                      "links": [
+                          {
+                              "rel": "self",
+                              "uri": "http://localhost:8080/openmrs/ws/rest/v1/patient/49287a9d-256b-4f52-9a92-ec61f9166f25"
+                          }
+                      ]
+                  },
+                  "obsDatetime": "2018-10-04T14:47:32.000+0100",
+                  "accessionNumber": null,
+                  "obsGroup": null,
+                  "valueCodedName": null,
+                  "groupMembers": null,
+                  "comment": "result-entry-form^3cd2ab40-26fe-102b-80cb-0017a47871b2",
+                  "location": null,
+                  "order": null,
+                  "encounter": {
+                      "uuid": "e050c1ff-2931-4493-b626-0be1fc09fc9d",
+                      "display": "Laboratory Results 04/10/2018",
+                      "links": [
+                          {
+                              "rel": "self",
+                              "uri": "http://localhost:8080/openmrs/ws/rest/v1/encounter/e050c1ff-2931-4493-b626-0be1fc09fc9d"
+                          }
+                      ]
+                  },
+                  "voided": false,
+                  "value": 100,
+                  "valueModifier": null,
+                  "formFieldPath": null,
+                  "formFieldNamespace": null,
+                  "status": "FINAL",
+                  "interpretation": null,
+                  "links": [
+                      {
+                          "rel": "self",
+                          "uri": "http://localhost:8080/openmrs/ws/rest/v1/obs/ef04af2e-d7cd-4b24-a71f-9ef619015b8a"
+                      },
+                      {
+                          "rel": "full",
+                          "uri": "http://localhost:8080/openmrs/ws/rest/v1/obs/ef04af2e-d7cd-4b24-a71f-9ef619015b8a?v=full"
+                      }
+                  ],
+                  "resourceVersion": "2.1"
+              },
+              {
+                  "uuid": "2ba7b841-9f7c-4679-9b13-64a65ec8a10b",
+                  "display": "Absolute Eosinophil Count: 156,0",
+                  "concept": {
+                      "uuid": "1332AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+                      "display": "Absolute Eosinophil Count",
+                      "links": [
+                          {
+                              "rel": "self",
+                              "uri": "http://localhost:8080/openmrs/ws/rest/v1/concept/1332AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+                          }
+                      ]
+                  },
+                  "person": {
+                      "uuid": "49287a9d-256b-4f52-9a92-ec61f9166f25",
+                      "display": "Y2A7LR - williams willy john",
+                      "links": [
+                          {
+                              "rel": "self",
+                              "uri": "http://localhost:8080/openmrs/ws/rest/v1/patient/49287a9d-256b-4f52-9a92-ec61f9166f25"
+                          }
+                      ]
+                  },
+                  "obsDatetime": "2018-10-04T14:47:32.000+0100",
+                  "accessionNumber": null,
+                  "obsGroup": null,
+                  "valueCodedName": null,
+                  "groupMembers": null,
+                  "comment": "result-entry-form^1332AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+                  "location": null,
+                  "order": null,
+                  "encounter": {
+                      "uuid": "e050c1ff-2931-4493-b626-0be1fc09fc9d",
+                      "display": "Laboratory Results 04/10/2018",
+                      "links": [
+                          {
+                              "rel": "self",
+                              "uri": "http://localhost:8080/openmrs/ws/rest/v1/encounter/e050c1ff-2931-4493-b626-0be1fc09fc9d"
+                          }
+                      ]
+                  },
+                  "voided": false,
+                  "value": 156,
+                  "valueModifier": null,
+                  "formFieldPath": null,
+                  "formFieldNamespace": null,
+                  "status": "FINAL",
+                  "interpretation": null,
+                  "links": [
+                      {
+                          "rel": "self",
+                          "uri": "http://localhost:8080/openmrs/ws/rest/v1/obs/2ba7b841-9f7c-4679-9b13-64a65ec8a10b"
+                      },
+                      {
+                          "rel": "full",
+                          "uri": "http://localhost:8080/openmrs/ws/rest/v1/obs/2ba7b841-9f7c-4679-9b13-64a65ec8a10b?v=full"
+                      }
+                  ],
+                  "resourceVersion": "2.1"
+              },
+              {
+                  "uuid": "9b21f7cf-7555-4c8b-b4bf-08b353697c8b",
+                  "display": "Absolute Monocyte Count: 156,0",
+                  "concept": {
+                      "uuid": "1331AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+                      "display": "Absolute Monocyte Count",
+                      "links": [
+                          {
+                              "rel": "self",
+                              "uri": "http://localhost:8080/openmrs/ws/rest/v1/concept/1331AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+                          }
+                      ]
+                  },
+                  "person": {
+                      "uuid": "49287a9d-256b-4f52-9a92-ec61f9166f25",
+                      "display": "Y2A7LR - williams willy john",
+                      "links": [
+                          {
+                              "rel": "self",
+                              "uri": "http://localhost:8080/openmrs/ws/rest/v1/patient/49287a9d-256b-4f52-9a92-ec61f9166f25"
+                          }
+                      ]
+                  },
+                  "obsDatetime": "2018-10-04T14:47:32.000+0100",
+                  "accessionNumber": null,
+                  "obsGroup": null,
+                  "valueCodedName": null,
+                  "groupMembers": null,
+                  "comment": "result-entry-form^1331AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+                  "location": null,
+                  "order": null,
+                  "encounter": {
+                      "uuid": "e050c1ff-2931-4493-b626-0be1fc09fc9d",
+                      "display": "Laboratory Results 04/10/2018",
+                      "links": [
+                          {
+                              "rel": "self",
+                              "uri": "http://localhost:8080/openmrs/ws/rest/v1/encounter/e050c1ff-2931-4493-b626-0be1fc09fc9d"
+                          }
+                      ]
+                  },
+                  "voided": false,
+                  "value": 156,
+                  "valueModifier": null,
+                  "formFieldPath": null,
+                  "formFieldNamespace": null,
+                  "status": "FINAL",
+                  "interpretation": null,
+                  "links": [
+                      {
+                          "rel": "self",
+                          "uri": "http://localhost:8080/openmrs/ws/rest/v1/obs/9b21f7cf-7555-4c8b-b4bf-08b353697c8b"
+                      },
+                      {
+                          "rel": "full",
+                          "uri": "http://localhost:8080/openmrs/ws/rest/v1/obs/9b21f7cf-7555-4c8b-b4bf-08b353697c8b?v=full"
+                      }
+                  ],
+                  "resourceVersion": "2.1"
+              }
+          ],
+          "orders": [],
+          "voided": false,
+          "auditInfo": {
+              "creator": {
+                  "uuid": "e7ff2a99-a819-4d9d-8b07-9778c5b164a8",
+                  "display": "sudo",
+                  "links": [
+                      {
+                          "rel": "self",
+                          "uri": "http://localhost:8080/openmrs/ws/rest/v1/user/e7ff2a99-a819-4d9d-8b07-9778c5b164a8"
+                      }
+                  ]
+              },
+              "dateCreated": "2018-10-04T14:47:33.000+0100",
+              "changedBy": null,
+              "dateChanged": null
+          },
+          "visit": null,
+          "encounterProviders": [],
+          "links": [
+              {
+                  "rel": "self",
+                  "uri": "http://localhost:8080/openmrs/ws/rest/v1/encounter/e050c1ff-2931-4493-b626-0be1fc09fc9d"
+              }
+          ],
+          "resourceVersion": "1.9"
+      }
+  ]
+}
