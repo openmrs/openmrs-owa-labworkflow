@@ -11,6 +11,7 @@
     font-weight: 900;
     font-size: 20px;
     flex-direction: row;
+    text-align: center;
 }
 
 .lab-entry-page-title {
@@ -19,6 +20,15 @@
 
 fieldset {
     border: 0 none;;
+}
+
+.lab-result-detail-fieldset {
+    width: 48%;
+    display: inline-block;
+}
+
+.lab-result-detail-fieldset-title{
+    font-size: 12px;
 }
 
 .result-input {
@@ -37,7 +47,7 @@ fieldset {
 }
 
 span.test-details {
-  font-size: 20px;
+  font-size: 16px;
 }
 
 a.link-cancel {

@@ -289,6 +289,8 @@ export class LabResultEntry extends PureComponent {
     const {
       location, selectedLabConcept,
     } = this.props;
+    console.log('--------', location.state.auditInfo.dateCreated);
+
 
     if (!location.state || redirect) {
       return <Redirect to="/" />;
@@ -300,10 +302,13 @@ export class LabResultEntry extends PureComponent {
           {location.state
           && (
             <div>
-              <h2 className="lab-entry-page-title">Test Results</h2>
-              <div className="fieldset-container">
+              <h2 className="lab-entry-page-title">
+                Test Results -
+                {` ${location.state.display}`}
+              </h2>
+              <div className="fieldset-container lab-result-detail-fieldset">
                 <div className="legend">
-                  <span> Specimen Details </span>
+                  <span className="lab-result-detail-fieldset-title"> Specimen Details </span>
                 </div>
                 <div className="fieldset-body">
                   <div className="col-xs-12">
@@ -317,13 +322,20 @@ export class LabResultEntry extends PureComponent {
                   </div>
                   <br />
                   <br />
-                  <div className="col-xs-6">
+                </div>
+              </div>
+              <div className="fieldset-container lab-result-detail-fieldset">
+                <div className="legend">
+                  <span className="lab-result-detail-fieldset-title"> Order Details </span>
+                </div>
+                <div className="fieldset-body">
+                  <div className="col-xs-8">
                     <span className="test-details-label">
-                  Test:&nbsp;
-                      <span className="test-details">{location.state.display}</span>
+                  Order Date:&nbsp;
+                      <span className="test-details">{moment(location.state.auditInfo.dateCreated).format('MMM DD h:mm A')}</span>
                     </span>
                   </div>
-                  <div className="col-xs-6">
+                  <div className="col-xs-4">
                     <span className="test-details-label">
                   Urgency:&nbsp;
                       <span className="test-details">{location.state.urgency}</span>
