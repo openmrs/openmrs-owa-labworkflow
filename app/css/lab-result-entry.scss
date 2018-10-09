@@ -1,6 +1,6 @@
 .legend {
     position: relative;
-    width: 18%;
+    width: max-content;
     bottom: 14px;
     background: #d3d3d3;
     left: 20px;
@@ -24,7 +24,10 @@ fieldset {
 
 .lab-result-detail-fieldset {
     width: 48%;
-    display: inline-block;
+    display: inline-table;
+    min-height: 140px;
+    margin-left: 1%;
+    margin-right: 1%;
 }
 
 .lab-result-detail-fieldset-title{
@@ -44,6 +47,12 @@ fieldset {
 .fieldset-container {
     background-color: #d3d3d3;
     border: 2px solid;
+}
+
+.estimated-checkbox {
+    position: absolute;
+    top: -45%;
+    left: 38%;
 }
 
 span.test-details {
@@ -154,6 +163,17 @@ button.pull-right.btn-success {
 
 .did-not-perform-label {
     line-height: 50px;
+}
+
+.test-location {
+    display: flex;
+    position: absolute;
+    top: -32%;
+    left: 4%;
+}
+
+.test-location-label {
+    line-height: 36px;
 }
 
 .did-not-perform-checkbox {

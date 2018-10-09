@@ -6,6 +6,7 @@
  * Copyright (C) OpenMRS Inc. OpenMRS is a registered trademark and the OpenMRS
  * graphic logo is a trademark of OpenMRS Inc.
  */
+import ReactDOM from 'react-dom';
 import React, { PureComponent } from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
@@ -33,7 +34,6 @@ import patientAction from '../actions/patientAction';
 import { fetchLabConcept } from '../actions/labConceptsAction';
 import '../../css/lab-result-entry.scss';
 import { formatRangeDisplayText, hasMaxAndMinValues } from '../utils/helpers';
-
 
 const {
   minValue,
@@ -166,6 +166,25 @@ export class LabResultEntry extends PureComponent {
               </div>
             )
         }
+        <div className="estimated-checkbox">
+          <Obs
+            conceptAnswer="87f506e3-4433-40ec-b16c-b3c65e402989"
+            widget="checkbox"
+            concept="87f506e3-4433-40ec-b16c-b3c65e402989"
+            path="estimated-checkbox"
+            checkBoxTitle="estimated"
+          />
+        </div>
+        <div className="test-location">
+          <span className="test-location-label">Reason:&nbsp;</span>
+          <Obs
+            conceptAnswers={["Hospital Universitaire de Mirebalais"]}
+            widget="dropdown"
+            concept={CONSTANTS.labResultsDidNotPerformReason}
+            path="test-location-dropdown"
+            dropDownStyle={{ heigth: '35px' }}
+          />
+        </div>
         <Row>
           {(hasMembers)
             && (
@@ -289,8 +308,6 @@ export class LabResultEntry extends PureComponent {
     const {
       location, selectedLabConcept,
     } = this.props;
-    console.log('--------', location.state.auditInfo.dateCreated);
-
 
     if (!location.state || redirect) {
       return <Redirect to="/" />;
@@ -306,43 +323,44 @@ export class LabResultEntry extends PureComponent {
                 Test Results -
                 {` ${location.state.display}`}
               </h2>
-              <div className="fieldset-container lab-result-detail-fieldset">
-                <div className="legend">
-                  <span className="lab-result-detail-fieldset-title"> Specimen Details </span>
-                </div>
-                <div className="fieldset-body">
-                  <div className="col-xs-12">
-                    <CustomDatePicker
-                      handleDateChange={() => {}}
-                      labelClassName="date-picker-label"
-                      label="Specimen Collection Date:"
-                      defaultDate={moment().subtract(7, 'days')}
-                      field="dateFromField"
-                    />
+              <div className="lab-result-detail-fieldset-container">
+                <div className="fieldset-container lab-result-detail-fieldset">
+                  <div className="legend">
+                    <span className="lab-result-detail-fieldset-title"> Specimen Details </span>
                   </div>
-                  <br />
-                  <br />
+                  <div className="fieldset-body">
+                    <div className="col-xs-10">
+                      <CustomDatePicker
+                        handleDateChange={() => {}}
+                        labelClassName="date-picker-label"
+                        label="Specimen Collection Date:"
+                        defaultDate={moment().subtract(7, 'days')}
+                        field="dateFromField"
+                      />
+                    </div>
+                    <br />
+                  </div>
                 </div>
-              </div>
-              <div className="fieldset-container lab-result-detail-fieldset">
-                <div className="legend">
-                  <span className="lab-result-detail-fieldset-title"> Order Details </span>
-                </div>
-                <div className="fieldset-body">
-                  <div className="col-xs-8">
-                    <span className="test-details-label">
+                <div className="fieldset-container lab-result-detail-fieldset">
+                  <div className="legend">
+                    <span className="lab-result-detail-fieldset-title"> Order Details </span>
+                  </div>
+                  <div className="fieldset-body">
+                    <div className="col-xs-8">
+                      <span className="test-details-label">
                   Order Date:&nbsp;
-                      <span className="test-details">{moment(location.state.auditInfo.dateCreated).format('MMM DD h:mm A')}</span>
-                    </span>
-                  </div>
-                  <div className="col-xs-4">
-                    <span className="test-details-label">
+                        <span className="test-details">{moment(location.state.auditInfo.dateCreated).format('MMM DD h:mm A')}</span>
+                      </span>
+                    </div>
+                    <div className="col-xs-4">
+                      <span className="test-details-label">
                   Urgency:&nbsp;
-                      <span className="test-details">{location.state.urgency}</span>
-                    </span>
+                        <span className="test-details">{location.state.urgency}</span>
+                      </span>
+                    </div>
+                    <br />
+                    <br />
                   </div>
-                  <br />
-                  <br />
                 </div>
               </div>
             </div>
