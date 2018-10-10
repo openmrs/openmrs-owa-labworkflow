@@ -10,7 +10,6 @@ import React, { PureComponent } from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import { Loader } from '@openmrs/react-components';
-import { formValueSelector } from 'redux-form';
 import R from 'ramda';
 
 import {
@@ -130,24 +129,23 @@ export class LabResultEntry extends PureComponent {
             />
           </div>
         </div>
-        {didNotPerformCheckbox && (
-          <div className="col-xs-4">
-            <div className="did-not-perform">
-              <span className="did-not-perform-label">Reason:&nbsp;</span>
-              <Obs
-                conceptAnswers={["Low Volume",
-                  "Contaminated",
-                  "Equipment Failure",
-                  "Stock Out",
-                  "Blood Coagulation",
-                  "Inappropriate Container"]}
-                widget="dropdown"
-                concept={CONSTANTS.labResultsDidNotPerformReason}
-                path="did-not-perform-dropdown"
-              />
-            </div>
+        <div className="col-xs-4">
+          <div className="did-not-perform">
+            <span className="did-not-perform-label">Reason:&nbsp;</span>
+            <Obs
+              conceptAnswers={["",
+                "Low Volume",
+                "Contaminated",
+                "Equipment Failure",
+                "Stock Out",
+                "Blood Coagulation",
+                "Inappropriate Container"]}
+              widget="dropdown"
+              concept={CONSTANTS.labResultsDidNotPerformReason}
+              path="did-not-perform-dropdown"
+            />
           </div>
-        )}
+        </div>
         {
           (hasAnswers)
             && (
@@ -372,15 +370,12 @@ const mapStateToProps = (state) => {
     openmrs: { CONSTANTS },
     conceptMembers,
   } = state;
-  const selector = formValueSelector('result-entry-form');
-  const didNotPerformCheckbox = CONSTANTS && !!(selector(state, `obs|path=did-not-perform-checkbox|concept=${CONSTANTS.labResultsDidNotPerformQuestion}`));
 
   return {
     patientHeaderDetail: patient,
     selectedLabConcept,
     CONSTANTS,
     conceptMembers,
-    didNotPerformCheckbox,
   };
 };
 
