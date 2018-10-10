@@ -176,7 +176,7 @@ export class LabResultEntry extends PureComponent {
           />
         </div>
         <div className="test-location">
-          <span className="test-location-label">Reason:&nbsp;</span>
+          <span className="test-location-label">Test location:&nbsp;</span>
           <Obs
             conceptAnswers={["Hospital Universitaire de Mirebalais"]}
             widget="dropdown"
