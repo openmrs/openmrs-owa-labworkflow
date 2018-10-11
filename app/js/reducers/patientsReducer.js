@@ -9,6 +9,7 @@ import {
 } from '../actions/actionTypes';
 import initialState from './initialState';
 
+
 export const patientsReducer = (state = initialState.patients, action) => {
   switch (action.type) {
     case ADD_PATIENT:
@@ -20,15 +21,15 @@ export const patientsReducer = (state = initialState.patients, action) => {
         ...state,
       };
     case UPDATE_PATIENT_INFO: {
-      console.log('yo ho ho', action);
       const { patientUUID } = action;
+      const pat = state[patientUUID];
       const patientInfo = {
         ...state[patientUUID],
         ...action.meta,
       };
       return {
-        [patientUUID]: patientInfo,
         ...state,
+        [patientUUID]: patientInfo,
       };
     }
     default: return state;

@@ -21,68 +21,74 @@ import "../../css/lab-orders-list.scss";
 
 
 export const Cell = ({ columnName, value, dateAndTimeFormat }) => {
-  console.log('vals', value.obs.length);
-  const obsWithoutTestOrderNumber = value.obs.filter(item => item.concept.display !== "Test order number");
-  const isPanel = value.obs.length > 2;
-  console.log('isPanel', obsWithoutTestOrderNumber);
-  switch (columnName) {
-    case 'TYPE': {
-      // TODO: refactor this and name column to use React Components patientUtils
-      const emrID = value.patient.display.split('-')[0];
-      return (
-        <div className="table_cell emr-id">
-          <span>{obsWithoutTestOrderNumber.concept.display}</span>
-        </div>
-      );
+  const isPanel = value.obs.length > 1;
+  if (!isPanel) {
+    const labResult = value.obs[0];
+    switch (columnName) {
+      case 'TYPE': {
+        // TODO: refactor this and name column to use React Components patientUtils
+        return (
+          <div className="table_cell emr-id">
+            <span>{value.order.display}</span>
+          </div>
+        );
+      }
+      case 'STATUS': {
+        return (
+          <div className="table_cell order-date">
+            <span>{labResult.status}</span>
+          </div>
+        );
+      }
+      case 'REQUEST DATE':
+        return (
+          <div className="table_cell order-id">
+            <span>{moment(value.encouterDatetime).format("DD-MMM-YYYY")}</span>
+          </div>
+        );
+      case 'SAMPLE DATE':
+        return (
+          <div className="table_cell order-date">
+            <span>{moment(value.encouterDatetime).format("DD-MMM-YYYY")}</span>
+          </div>
+        );
+      case 'RESULT':
+        return (
+          <div className="table_cell collection-date">
+            <span>{labResult.value.display}</span>
+          </div>
+        );
+      case 'URGENCY': {
+        const urgencyClassName = cn({
+          table_cell: true,
+          urgency: true,
+          stat: value.urgency === 'STAT',
+          routine: value.urgency === 'ROUTINE',
+        });
+        return (
+          <div className={urgencyClassName}>
+            <span>{value.urgency}</span>
+          </div>
+        );
+      }
+      case 'TEST TYPE':
+        return (
+          <div className="table_cell test-type">
+            <span>{value.concept.display}</span>
+          </div>
+        );
+      default:
+        return null;
     }
-    case 'NAME': {
-      const displayName = value.patient.display.split('-')[1];
-      return (
-        <div className="table_cell order-date">
-          <span>{displayName}</span>
-        </div>
-      );
-    }
-    case 'ORDER ID':
-      return (
-        <div className="table_cell order-id">
-          <span>{value.orderNumber}</span>
-        </div>
-      );
-    case 'ORDER DATE':
-      return (
-        <div className="table_cell order-date">
-          <span>{moment(value.dateActivated).format("DD-MMM-YYYY")}</span>
-        </div>
-      );
-    case 'COLLECTION DATE':
-      return (
-        <div className="table_cell collection-date">
-          <span>{moment(value.dateActivated).format("DD-MMM-YYYY")}</span>
-        </div>
-      );
-    case 'URGENCY': {
-      const urgencyClassName = cn({
-        table_cell: true,
-        urgency: true,
-        stat: value.urgency === 'STAT',
-        routine: value.urgency === 'ROUTINE',
-      });
-      return (
-        <div className={urgencyClassName}>
-          <span>{value.urgency}</span>
-        </div>
-      );
-    }
-    case 'TEST TYPE':
-      return (
-        <div className="table_cell test-type">
-          <span>{value.concept.display}</span>
-        </div>
-      );
-    default:
-      return null;
   }
+  if (isPanel && columnName === 'TYPE') {
+    return (
+      <div className="table_cell emr-id">
+        <span>{value.order.display}</span>
+      </div>
+    );
+  }
+  return null;
 };
 
 
@@ -96,6 +102,8 @@ export class LabResultsView extends PureComponent {
         dateFromField: moment().subtract(8, 'days'),
         testTypeField: "All",
       },
+      // would need to get this from the route
+      patientUUID: '49287a9d-256b-4f52-9a92-ec61f9166f25',
     };
     // this.handleFilterChange = this.handleFilterChange.bind(this);
     // this.clearNameEMRField = this.clearNameEMRField.bind(this);
@@ -105,14 +113,13 @@ export class LabResultsView extends PureComponent {
 
   componentWillMount() {
     const { dispatch } = this.props;
-    dispatch(patientAction.getPatient('49287a9d-256b-4f52-9a92-ec61f9166f25'));
-    dispatch(patientAction.fetchPatientLabTestResults('49287a9d-256b-4f52-9a92-ec61f9166f25'));
+    const { patientUUID } = this.state;
+    dispatch(patientAction.getPatient(patientUUID));
+    dispatch(patientAction.fetchPatientLabTestResults(patientUUID));
   }
 
-  renderDraftOrderTable() {
-    const { obs, dateAndTimeFormat } = this.props;
-    console.log('obs', obs);
-    // const { filters } = this.state;
+  renderDraftOrderTable(labResults) {
+    const { obs, dateAndTimeFormat, conceptMembers } = this.props;
     const fields = ["TYPE", "STATUS", "REQUEST DATE", "SAMPLE DATE", "RESULT", "NORMAL RANGE"];
 
     const columnMetadata = fields.map(columnName => ({
@@ -128,7 +135,7 @@ export class LabResultsView extends PureComponent {
     return (
       <div className="lab-order-list">
         <SortableTable
-          data={obs}
+          data={labResults}
           columnMetadata={columnMetadata}
           filteredFields={fields}
           filterType="none"
@@ -137,15 +144,42 @@ export class LabResultsView extends PureComponent {
           rowOnClick={this.handleShowResultsEntryPage}
           noDataMessage="No orders found"
           defaultPageSize={10}
+          subComponent={(row) => {
+            const isPanel = row.original.obs.length > 1;
+            if (isPanel) {
+              return (
+                <span style={{ display: 'flex', flexDirection: "row", justifyContent: 'space-around' }}>
+                  <span>Rowland</span>
+                  <span>Henshaw</span>
+                  <span>Something</span>
+                </span>
+              );
+            }
+          }}
         />
       </div>
     );
   }
 
   render() {
-    const { obs } = this.props;
+    const { patients, conceptMembers } = this.props;
+    const { patientUUID } = this.state;
+    const selectedPatient = patients[patientUUID] || {};
+    const { encounters = [], orders = [] } = selectedPatient;
+    const getPatientLabResults = (patient) => {
+      const labResults = encounters.map((encounter) => {
+        const testOrderObs = encounter.obs.filter(item => item.display.includes('Test order number:'));
+        const orderNumber = testOrderObs[0].value;
+        const order = patient.orders.filter(item => item.orderNumber === orderNumber)[0];
+        const validObs = encounter.obs.filter(item => !item.display.includes('Test order number:'));
+        return { ...encounter, obs: validObs, order };
+      });
+      return labResults;
+    };
+
     const { filters: { dateFromField, dateToField, nameField } } = this.state;
-    if (!R.isEmpty(obs)) {
+    if (!R.isEmpty(selectedPatient) && !R.isEmpty(orders) && !R.isEmpty(encounters) && !R.isEmpty(conceptMembers)) {
+      const labResults = getPatientLabResults(patients[patientUUID]);
       return (
         <div className="main-container">
           <h2>
@@ -161,7 +195,7 @@ export class LabResultsView extends PureComponent {
               dateToField={dateToField}
               nameField={nameField}
             /> */}
-            {this.renderDraftOrderTable()}
+            {this.renderDraftOrderTable(labResults)}
           </React.Fragment>
         </div>
       );
@@ -180,10 +214,12 @@ LabResultsView.propTypes = {
 };
 
 export const mapStateToProps = ({
-  encounter: { obs },
   openmrs: { CONSTANTS: { dateAndTimeFormat } },
+  patients,
+  conceptMembers,
 }) => ({
-  obs,
+  patients,
+  conceptMembers,
 });
 
 
