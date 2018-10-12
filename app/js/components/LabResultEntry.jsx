@@ -135,14 +135,9 @@ export class LabResultEntry extends PureComponent {
             <div className="did-not-perform">
               <span className="did-not-perform-label">Reason:&nbsp;</span>
               <Obs
-                conceptAnswers={["Low Volume",
-                  "Contaminated",
-                  "Equipment Failure",
-                  "Stock Out",
-                  "Blood Coagulation",
-                  "Inappropriate Container"]}
+                conceptAnswers={CONSTANTS.labResultsDidNotPerformReasonConcept.answers}
                 widget="dropdown"
-                concept={CONSTANTS.labResultsDidNotPerformReason}
+                concept={CONSTANTS.labResultsDidNotPerformReasonConcept.uuid}
                 path="did-not-perform-dropdown"
               />
             </div>
