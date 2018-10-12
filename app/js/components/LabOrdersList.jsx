@@ -105,11 +105,11 @@ export class LabOrdersList extends PureComponent {
     dispatch(constantsActions.getDateAndTimeFormat());
     dispatch(constantsActions.fetchLabResultsEncounterType());
     dispatch(constantsActions.fetchLabResultsDidNotPerformQuestion());
-    dispatch(constantsActions.fetchLabResultsDidNotPerformReason());
     dispatch(constantsActions.fetchLabResultsDidNotPerformAnswer());
     dispatch(constantsActions.fetchLabResultsTestOrderNumberConcept());
     dispatch(constantsActions.fetchLabResultsTestLocationConcept('e9732df4-971d-4a9a-9129-e2e610552468'));
     dispatch(constantsActions.fetchLabResultsEstimatedCollectionDateConcept('87f506e3-4433-40ec-b16c-b3c65e402989'));
+    // dispatch(constantsActions.fetchLabResultsDidNotPerformReasonConcept('5dc35a2a-228c-41d0-ae19-5b1e23618eda'));
     dispatch(constantsActions.fetchLabResultsDateConcept());
   }
 

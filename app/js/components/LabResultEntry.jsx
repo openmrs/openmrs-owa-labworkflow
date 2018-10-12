@@ -402,7 +402,6 @@ const mapStateToProps = (state) => {
     selectedLabConcept,
     openmrs: { CONSTANTS },
     conceptMembers,
-    concepts: { testLocationConcept, estimatedCollectionDateConcept },
   } = state;
   const selector = formValueSelector('result-entry-form');
   const didNotPerformCheckbox = CONSTANTS && !!(selector(state, `obs|path=did-not-perform-checkbox|concept=${CONSTANTS.labResultsDidNotPerformQuestion}`));
