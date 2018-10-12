@@ -108,6 +108,8 @@ export class LabOrdersList extends PureComponent {
     dispatch(constantsActions.fetchLabResultsDidNotPerformReason());
     dispatch(constantsActions.fetchLabResultsDidNotPerformAnswer());
     dispatch(constantsActions.fetchLabResultsTestOrderNumberConcept());
+    dispatch(constantsActions.fetchLabResultsTestLocationConcept('e9732df4-971d-4a9a-9129-e2e610552468'));
+    dispatch(constantsActions.fetchLabResultsEstimatedCollectionDateConcept('87f506e3-4433-40ec-b16c-b3c65e402989'));
     dispatch(constantsActions.fetchLabResultsDateConcept());
   }
 

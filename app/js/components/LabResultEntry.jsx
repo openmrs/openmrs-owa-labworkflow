@@ -168,9 +168,9 @@ export class LabResultEntry extends PureComponent {
         }
         <div className="estimated-checkbox">
           <Obs
-            conceptAnswer="87f506e3-4433-40ec-b16c-b3c65e402989"
+            conceptAnswer={CONSTANTS.labResultsEstimatedCollectionDateConcept.answers[0]}
             widget="checkbox"
-            concept="87f506e3-4433-40ec-b16c-b3c65e402989"
+            concept={CONSTANTS.labResultsEstimatedCollectionDateConcept.uuid}
             path="estimated-checkbox"
             checkBoxTitle="estimated"
           />
@@ -178,9 +178,9 @@ export class LabResultEntry extends PureComponent {
         <div className="test-location">
           <span className="test-location-label">Test location:&nbsp;</span>
           <Obs
-            conceptAnswers={["Hospital Universitaire de Mirebalais"]}
+            conceptAnswers={CONSTANTS.labResultsTestLocationConcept.answers}
             widget="dropdown"
-            concept={CONSTANTS.labResultsDidNotPerformReason}
+            concept={CONSTANTS.labResultsTestLocationConcept.uuid}
             path="test-location-dropdown"
             dropDownStyle={{ heigth: '35px' }}
           />
@@ -387,6 +387,7 @@ LabResultEntry.defaultProps = {
 LabResultEntry.propTypes = {
   patientHeaderDetail: PropTypes.object.isRequired,
   history: PropTypes.object.isRequired,
+  testLocationConcept: PropTypes.object.isRequired,
   dispatch: PropTypes.func.isRequired,
   selectedLabConcept: PropTypes.object,
   location: PropTypes.object.isRequired,
@@ -401,6 +402,7 @@ const mapStateToProps = (state) => {
     selectedLabConcept,
     openmrs: { CONSTANTS },
     conceptMembers,
+    concepts: { testLocationConcept, estimatedCollectionDateConcept },
   } = state;
   const selector = formValueSelector('result-entry-form');
   const didNotPerformCheckbox = CONSTANTS && !!(selector(state, `obs|path=did-not-perform-checkbox|concept=${CONSTANTS.labResultsDidNotPerformQuestion}`));
