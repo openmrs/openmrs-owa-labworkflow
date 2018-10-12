@@ -79,7 +79,7 @@ export class LabResultEntry extends PureComponent {
   renderForm(selectedLabConcept) {
     const { patientHeaderDetail } = this.state;
     const {
-      CONSTANTS, conceptMembers, didNotPerformCheckbox, history: { location: { state } },
+      CONSTANTS, conceptMembers, history: { location: { state } },
     } = this.props;
 
     const encounterType = {
