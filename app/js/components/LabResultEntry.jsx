@@ -27,6 +27,7 @@ import {
   EncounterFormPage,
   Obs,
   formValidations,
+  constantsActions,
 } from '@openmrs/react-components';
 
 import patientAction from '../actions/patientAction';
@@ -52,10 +53,12 @@ export class LabResultEntry extends PureComponent {
   }
 
   componentWillMount() {
-    const { dispatch, history: { location: { state } } } = this.props;
+    const { dispatch, history: { location: { state } }, CONSTANTS } = this.props;
     if (typeof state !== 'undefined') {
       const conceptUUID = state.concept.uuid;
       dispatch(patientAction.getPatient(state.patient.uuid));
+      dispatch(constantsActions.fetchLabResultsDidNotPerformReasonAnswer(CONSTANTS.labResultsDidNotPerformReasonQuestion));
+      dispatch(constantsActions.fetchLabResultsTestLocationAnswer(CONSTANTS.labResultsTestLocationQuestion));
       dispatch(fetchLabConcept(conceptUUID));
     } else {
       this.shouldRedirect();
@@ -133,9 +136,9 @@ export class LabResultEntry extends PureComponent {
           <div className="did-not-perform">
             <span className="did-not-perform-label">Reason:&nbsp;</span>
             <Obs
-              conceptAnswers={CONSTANTS.labResultsDidNotPerformReasonConcept.answers}
+              conceptAnswers={CONSTANTS.labResultsDidNotPerformReasonAnswer}
               widget="dropdown"
-              concept={CONSTANTS.labResultsDidNotPerformReasonConcept.uuid}
+              concept={CONSTANTS.labResultsDidNotPerformReasonQuestion}
               path="did-not-perform-dropdown"
             />
           </div>
@@ -160,9 +163,9 @@ export class LabResultEntry extends PureComponent {
         }
         <div className="estimated-checkbox">
           <Obs
-            conceptAnswer={CONSTANTS.labResultsEstimatedCollectionDateConcept.answers[0]}
+            conceptAnswer={CONSTANTS.labResultsEstimatedCollectionDateAnswer}
             widget="checkbox"
-            concept={CONSTANTS.labResultsEstimatedCollectionDateConcept.uuid}
+            concept={CONSTANTS.labResultsEstimatedCollectionDateQuestion}
             path="estimated-checkbox"
             checkBoxTitle="estimated"
           />
@@ -170,9 +173,9 @@ export class LabResultEntry extends PureComponent {
         <div className="test-location">
           <span className="test-location-label">Test location:&nbsp;</span>
           <Obs
-            conceptAnswers={CONSTANTS.labResultsTestLocationConcept.answers}
+            conceptAnswers={CONSTANTS.labResultsTestLocationAnswer}
             widget="dropdown"
-            concept={CONSTANTS.labResultsTestLocationConcept.uuid}
+            concept={CONSTANTS.labResultsTestLocationQuestion}
             path="test-location-dropdown"
             dropDownStyle={{ heigth: '35px' }}
           />
@@ -385,7 +388,6 @@ LabResultEntry.propTypes = {
   location: PropTypes.object.isRequired,
   CONSTANTS: PropTypes.object.isRequired,
   conceptMembers: PropTypes.object.isRequired,
-  didNotPerformCheckbox: PropTypes.bool.isRequired,
 };
 
 const mapStateToProps = (state) => {
