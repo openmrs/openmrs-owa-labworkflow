@@ -22,7 +22,7 @@ import moment from 'moment';
 import { Redirect } from 'react-router-dom';
 
 import {
-  CustomDatePicker,
+  EncounterDate,
   PatientHeader,
   EncounterFormPage,
   Obs,
@@ -103,8 +103,9 @@ export class LabResultEntry extends PureComponent {
     const maxDateRange = maxDateValue(new Date());
     const observations = (
       <Grid>
-        {
-          (hasMembers || hasAnswers || isSingle)
+        <div className="observation">
+          {
+            (hasMembers || hasAnswers || isSingle)
             && (
               <div className="col-xs-4">
                 <span className="single-result-field">
@@ -120,31 +121,31 @@ export class LabResultEntry extends PureComponent {
                 </span>
               </div>
             )
-        }
-        <div className="col-xs-4">
-          <div className="did-not-perform-checkbox">
-            <Obs
-              conceptAnswer={CONSTANTS.labResultsDidNotPerformAnswer}
-              widget="checkbox"
-              concept={CONSTANTS.labResultsDidNotPerformQuestion}
-              path="did-not-perform-checkbox"
-              checkBoxTitle="Did not perform"
-            />
+          }
+          <div className="col-xs-4">
+            <div className="did-not-perform-checkbox">
+              <Obs
+                conceptAnswer={CONSTANTS.labResultsDidNotPerformAnswer}
+                widget="checkbox"
+                concept={CONSTANTS.labResultsDidNotPerformQuestion}
+                path="did-not-perform-checkbox"
+                checkBoxTitle="Did not perform"
+              />
+            </div>
           </div>
-        </div>
-        <div className="col-xs-4">
-          <div className="did-not-perform">
-            <span className="did-not-perform-label">Reason:&nbsp;</span>
-            <Obs
-              conceptAnswers={CONSTANTS.labResultsDidNotPerformReasonAnswer}
-              widget="dropdown"
-              concept={CONSTANTS.labResultsDidNotPerformReasonQuestion}
-              path="did-not-perform-dropdown"
-            />
+          <div className="col-xs-4">
+            <div className="did-not-perform">
+              <span className="did-not-perform-label">Reason:&nbsp;</span>
+              <Obs
+                conceptAnswers={CONSTANTS.labResultsDidNotPerformReasonAnswer}
+                widget="dropdown"
+                concept={CONSTANTS.labResultsDidNotPerformReasonQuestion}
+                path="did-not-perform-dropdown"
+              />
+            </div>
           </div>
-        </div>
-        {
-          (hasAnswers)
+          {
+            (hasAnswers)
             && (
               <div className="col-xs-4">
                 <span className="single-result-field">
@@ -160,37 +161,51 @@ export class LabResultEntry extends PureComponent {
                 </span>
               </div>
             )
-        }
-        <div className="estimated-checkbox">
-          <Obs
-            conceptAnswer={CONSTANTS.labResultsEstimatedCollectionDateAnswer}
-            widget="checkbox"
-            concept={CONSTANTS.labResultsEstimatedCollectionDateQuestion}
-            path="estimated-checkbox"
-            checkBoxTitle="estimated"
-          />
-        </div>
-        <div className="test-location">
-          <span className="test-location-label">Test location:&nbsp;</span>
-          <Obs
-            conceptAnswers={CONSTANTS.labResultsTestLocationAnswer}
-            widget="dropdown"
-            concept={CONSTANTS.labResultsTestLocationQuestion}
-            path="test-location-dropdown"
-            dropDownStyle={{ heigth: '35px' }}
-          />
-        </div>
-        <Row>
-          {(hasMembers)
+          }
+          <div className="estimated-checkbox">
+            <Obs
+              conceptAnswer={CONSTANTS.labResultsEstimatedCollectionDateAnswer}
+              widget="checkbox"
+              concept={CONSTANTS.labResultsEstimatedCollectionDateQuestion}
+              path="estimated-checkbox"
+              checkBoxTitle="estimated"
+            />
+          </div>
+          <div className="test-location">
+            <span className="test-location-label">Test location:&nbsp;</span>
+            <Obs
+              conceptAnswers={CONSTANTS.labResultsTestLocationAnswer}
+              widget="dropdown"
+              concept={CONSTANTS.labResultsTestLocationQuestion}
+              path="test-location-dropdown"
+              dropDownStyle={{ heigth: '35px' }}
+            />
+          </div>
+          <div className="specimen-collection-date">
+            <div className="col-xs-10 encounter-date-container">
+              <span className="encounter-date-label">Specimen Collection Date: &nbsp;</span>
+              <EncounterDate
+                handleDateChange={() => {}}
+                labelClassName="date-picker-label"
+                label="Specimen Collection Date:"
+                defaultDate={moment().subtract(7, 'days')}
+                field="dateFromField"
+              />
+            </div>
+            <br />
+          </div>
+          <Row>
+            {(hasMembers)
             && (
               selectedLabConcept.setMembers.map(
                 member => this.renderFormContent(member),
               ))
-          }
-          {(isSingle)
+            }
+            {(isSingle)
           && (this.renderFormContent(selectedLabConcept))
-          }
-        </Row>
+            }
+          </Row>
+        </div>
       </Grid>
     );
 
@@ -322,18 +337,6 @@ export class LabResultEntry extends PureComponent {
                 <div className="fieldset-container lab-result-detail-fieldset">
                   <div className="legend">
                     <span className="lab-result-detail-fieldset-title"> Specimen Details </span>
-                  </div>
-                  <div className="fieldset-body">
-                    <div className="col-xs-10">
-                      <CustomDatePicker
-                        handleDateChange={() => {}}
-                        labelClassName="date-picker-label"
-                        label="Specimen Collection Date:"
-                        defaultDate={moment().subtract(7, 'days')}
-                        field="dateFromField"
-                      />
-                    </div>
-                    <br />
                   </div>
                 </div>
                 <div className="fieldset-container lab-result-detail-fieldset">

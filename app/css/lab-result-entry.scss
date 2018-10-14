@@ -194,6 +194,9 @@ button.pull-right.btn-success {
                 line-height: 40px;
             }
         }
+        .container:nth-child(1) {
+            min-height: 350px;
+        }
         .container:nth-child(2) {
             & .row {
                 display: flex;
@@ -207,10 +210,28 @@ button.pull-right.btn-success {
     }
 }
 
-.lab-entry-result-details {
-    & .form-horizontal {
-        .container:nth-child(1) {
-            min-height: 350px;
-        }
+.specimen-collection-date {
+    position: absolute;
+    top: -45%;
+    margin-left: 1%;
+}
+
+.encounter-date-container {
+    display: flex;
+    align-items: center;
+    padding: 0px;
+
+    span {
+        white-space: nowrap;
     }
+}
+
+.observation {
+    svg {
+        margin-top: 5px
+    }
+}
+
+.encounter-date-label {
+    font-size: 14px;
 }
