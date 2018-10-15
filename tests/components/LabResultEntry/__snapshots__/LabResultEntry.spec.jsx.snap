@@ -91,6 +91,9 @@ exports[`<LabResultEntry /> component renders correctly with valid props 1`] = `
         location={
           Object {
             "state": Object {
+              "auditInfo": Object {
+                "dateCreated": "2018-08-30T17:34:19.000+0100",
+              },
               "concept": Object {
                 "display": "Hémogramme automatisé",
               },
@@ -144,7 +147,6 @@ exports[`<LabResultEntry /> component renders correctly with valid props 1`] = `
               },
             }
           }
-          didNotPerformCheckbox={false}
           dispatch={[Function]}
           history={
             Object {
@@ -172,6 +174,9 @@ exports[`<LabResultEntry /> component renders correctly with valid props 1`] = `
           location={
             Object {
               "state": Object {
+                "auditInfo": Object {
+                  "dateCreated": "2018-08-30T17:34:19.000+0100",
+                },
                 "concept": Object {
                   "display": "Hémogramme automatisé",
                 },
@@ -214,208 +219,71 @@ exports[`<LabResultEntry /> component renders correctly with valid props 1`] = `
               <h2
                 className="lab-entry-page-title"
               >
-                Test Results
+                Test Results -
+                 undefined
               </h2>
               <div
-                className="fieldset-container"
+                className="lab-result-detail-fieldset-container"
               >
                 <div
-                  className="legend"
+                  className="fieldset-container lab-result-detail-fieldset"
                 >
-                  <span>
-                     Specimen Details 
-                  </span>
+                  <div
+                    className="legend"
+                  >
+                    <span
+                      className="lab-result-detail-fieldset-title"
+                    >
+                       Specimen Details 
+                    </span>
+                  </div>
                 </div>
                 <div
-                  className="fieldset-body"
+                  className="fieldset-container lab-result-detail-fieldset"
                 >
                   <div
-                    className="col-xs-12"
+                    className="legend"
                   >
-                    <CustomDatePicker
-                      defaultDate={"2018-09-26T10:25:28.761Z"}
-                      field="dateFromField"
-                      formControlStyle={
-                        Object {
-                          "marginRight": "5px",
-                          "width": "100px",
-                        }
-                      }
-                      handleDateChange={[Function]}
-                      label="Specimen Collection Date:"
-                      labelClassName="date-picker-label"
+                    <span
+                      className="lab-result-detail-fieldset-title"
                     >
-                      <DatePicker
-                        allowSameDay={false}
-                        customInput={<DateDisplayComponent />}
-                        dateFormat="L"
-                        dateFormatCalendar="MMMM YYYY"
-                        disabled={false}
-                        disabledKeyboardNavigation={false}
-                        dropdownMode="scroll"
-                        excludeDates={false}
-                        monthsShown={1}
-                        nextMonthButtonLabel="Next month"
-                        onBlur={[Function]}
-                        onChange={[Function]}
-                        onClickOutside={[Function]}
-                        onFocus={[Function]}
-                        onKeyDown={[Function]}
-                        onMonthChange={[Function]}
-                        onSelect={[Function]}
-                        onYearChange={[Function]}
-                        preventOpenOnFocus={false}
-                        previousMonthButtonLabel="Previous Month"
-                        readOnly={false}
-                        selected={"2018-09-26T10:25:28.761Z"}
-                        shouldCloseOnSelect={true}
-                        showTimeSelect={false}
-                        timeCaption="Time"
-                        timeIntervals={30}
-                        withPortal={false}
+                       Order Details 
+                    </span>
+                  </div>
+                  <div
+                    className="fieldset-body"
+                  >
+                    <div
+                      className="col-xs-8"
+                    >
+                      <span
+                        className="test-details-label"
                       >
-                        <PopperComponent
-                          hidePopper={true}
-                          popperComponent={null}
-                          popperModifiers={
-                            Object {
-                              "preventOverflow": Object {
-                                "boundariesElement": "viewport",
-                                "enabled": true,
-                                "escapeWithReference": true,
-                              },
-                            }
-                          }
-                          popperPlacement="bottom-start"
-                          targetComponent={
-                            <div
-                              className="react-datepicker__input-container"
-                            >
-                              <DateDisplayComponent
-                                className=""
-                                disabled={false}
-                                onBlur={[Function]}
-                                onChange={[Function]}
-                                onClick={[Function]}
-                                onFocus={[Function]}
-                                onKeyDown={[Function]}
-                                readOnly={false}
-                                value="09/26/2018"
-                              />
-                            </div>
-                          }
+                        Order Date: 
+                        <span
+                          className="test-details"
                         >
-                          <Manager
-                            tag="div"
-                          >
-                            <div>
-                              <Target
-                                className="react-datepicker-wrapper"
-                              >
-                                <div
-                                  className="react-datepicker-wrapper"
-                                >
-                                  <div
-                                    className="react-datepicker__input-container"
-                                  >
-                                    <DateDisplayComponent
-                                      className=""
-                                      disabled={false}
-                                      onBlur={[Function]}
-                                      onChange={[Function]}
-                                      onClick={[Function]}
-                                      onFocus={[Function]}
-                                      onKeyDown={[Function]}
-                                      readOnly={false}
-                                      value="09/26/2018"
-                                    >
-                                      <span>
-                                        <span
-                                          style={
-                                            Object {
-                                              "display": "flex",
-                                              "justifyContent": "space-around",
-                                            }
-                                          }
-                                        >
-                                          <span
-                                            className="date-picker-label"
-                                          >
-                                            Specimen Collection Date:
-                                          </span>
-                                          <FormControl
-                                            bsClass="form-control"
-                                            componentClass="input"
-                                            placeholder=""
-                                            style={
-                                              Object {
-                                                "marginRight": "5px",
-                                                "width": "100px",
-                                              }
-                                            }
-                                            type="text"
-                                            value="09/26/2018"
-                                          >
-                                            <input
-                                              className="form-control"
-                                              placeholder=""
-                                              style={
-                                                Object {
-                                                  "marginRight": "5px",
-                                                  "width": "100px",
-                                                }
-                                              }
-                                              type="text"
-                                              value="09/26/2018"
-                                            />
-                                          </FormControl>
-                                          <i
-                                            className="icon-calendar scale small add-on"
-                                            onClick={[Function]}
-                                            role="toolbar"
-                                          />
-                                        </span>
-                                      </span>
-                                    </DateDisplayComponent>
-                                  </div>
-                                </div>
-                              </Target>
-                            </div>
-                          </Manager>
-                        </PopperComponent>
-                      </DatePicker>
-                    </CustomDatePicker>
-                  </div>
-                  <br />
-                  <br />
-                  <div
-                    className="col-xs-6"
-                  >
-                    <span
-                      className="test-details-label"
-                    >
-                      Test: 
-                      <span
-                        className="test-details"
-                      />
-                    </span>
-                  </div>
-                  <div
-                    className="col-xs-6"
-                  >
-                    <span
-                      className="test-details-label"
-                    >
-                      Urgency: 
-                      <span
-                        className="test-details"
-                      >
-                        ROUTINE
+                          Aug 30 5:34 PM
+                        </span>
                       </span>
-                    </span>
+                    </div>
+                    <div
+                      className="col-xs-4"
+                    >
+                      <span
+                        className="test-details-label"
+                      >
+                        Urgency: 
+                        <span
+                          className="test-details"
+                        >
+                          ROUTINE
+                        </span>
+                      </span>
+                    </div>
+                    <br />
+                    <br />
                   </div>
-                  <br />
-                  <br />
                 </div>
               </div>
             </div>
@@ -444,12 +312,10 @@ exports[`<LabResultEntry /> component renders correctly with valid props 1`] = `
                     className="encounter-form-componnent"
                   >
                     <Connect(EncounterFormPage)
-                      afterSubmitLink="/"
-                      backLink="/"
                       defaultValues={
                         Array [
                           Object {
-                            "concept": "mock-test-orderno-concept",
+                            "concept": "393dec41-2fb5-428f-acfa-36ea85da6666",
                             "path": "test-order-number",
                             "type": "obs",
                             "value": "ORD-1",
@@ -468,161 +334,7 @@ exports[`<LabResultEntry /> component renders correctly with valid props 1`] = `
                           fluid={false}
                         >
                           <div
-                            className="col-xs-4"
-                          >
-                            <span
-                              className="single-result-field"
-                            >
-                              <span
-                                className="obs-date-label"
-                              >
-                                Result Date
-                              </span>
-                              <span
-                                className="obs-date-field"
-                              >
-                                <WithFormContext(Connect(Obs))
-                                  concept="mock-date-concept"
-                                  datatype="date"
-                                  path="result-date"
-                                  validate={
-                                    Array [
-                                      [Function],
-                                    ]
-                                  }
-                                />
-                              </span>
-                            </span>
-                          </div>
-                          <div
-                            className="col-xs-4"
-                          >
-                            <div
-                              className="did-not-perform-checkbox"
-                            >
-                              <WithFormContext(Connect(Obs))
-                                checkBoxTitle="Did not perform"
-                                concept="mock-uuid"
-                                conceptAnswer="mock-uuid"
-                                path="did-not-perform-checkbox"
-                                widget="checkbox"
-                              />
-                            </div>
-                          </div>
-                          <Row
-                            bsClass="row"
-                            componentClass="div"
-                          >
-                            <FormGroup
-                              bsClass="form-group"
-                              controlId="Height"
-                            >
-                              <span
-                                className="member-display-label"
-                              >
-                                Height
-                              </span>
-                              <span
-                                className="obs-component"
-                              >
-                                <WithFormContext(Connect(Obs))
-                                  concept="1234-abcd"
-                                  path="1234-abcd"
-                                  validate={
-                                    Array [
-                                      [Function],
-                                      [Function],
-                                    ]
-                                  }
-                                  warn={
-                                    Array [
-                                      [Function],
-                                      [Function],
-                                    ]
-                                  }
-                                />
-                              </span>
-                              <span
-                                className="units"
-                              >
-                                cc
-                              </span>
-                              <span
-                                className="valid-range"
-                              >
-                                11cc - 22cc
-                              </span>
-                            </FormGroup>
-                            <FormGroup
-                              bsClass="form-group"
-                              controlId="Weight"
-                            >
-                              <span
-                                className="member-display-label"
-                              >
-                                Weight
-                              </span>
-                              <span
-                                className="obs-component"
-                              >
-                                <WithFormContext(Connect(Obs))
-                                  concept="pqrs-5678"
-                                  path="pqrs-5678"
-                                  validate={
-                                    Array [
-                                      [Function],
-                                      [Function],
-                                    ]
-                                  }
-                                  warn={
-                                    Array [
-                                      [Function],
-                                      [Function],
-                                    ]
-                                  }
-                                />
-                              </span>
-                              <span
-                                className="units"
-                              >
-                                cc
-                              </span>
-                              <span
-                                className="valid-range"
-                              >
-                                11cc - 22cc
-                              </span>
-                            </FormGroup>
-                          </Row>
-                        </Grid>
-                      }
-                      formId="result-entry-form"
-                      patient={false}
-                    >
-                      <EncounterFormPage
-                        afterSubmitLink="/"
-                        backLink="/"
-                        defaultValues={
-                          Array [
-                            Object {
-                              "concept": "mock-test-orderno-concept",
-                              "path": "test-order-number",
-                              "type": "obs",
-                              "value": "ORD-1",
-                            },
-                          ]
-                        }
-                        dispatch={[Function]}
-                        encounterType={
-                          Object {
-                            "uuid": "mock-encounter-uuid",
-                          }
-                        }
-                        formContent={
-                          <Grid
-                            bsClass="container"
-                            componentClass="div"
-                            fluid={false}
+                            className="observation"
                           >
                             <div
                               className="col-xs-4"
@@ -638,7 +350,7 @@ exports[`<LabResultEntry /> component renders correctly with valid props 1`] = `
                                 <span
                                   className="obs-date-field"
                                 >
-                                  <WithFormContext(Connect(Obs))
+                                  <WithObsGroupContext(WithFormContext(Connect(Obs)))
                                     concept="mock-date-concept"
                                     datatype="date"
                                     path="result-date"
@@ -657,7 +369,7 @@ exports[`<LabResultEntry /> component renders correctly with valid props 1`] = `
                               <div
                                 className="did-not-perform-checkbox"
                               >
-                                <WithFormContext(Connect(Obs))
+                                <WithObsGroupContext(WithFormContext(Connect(Obs)))
                                   checkBoxTitle="Did not perform"
                                   concept="mock-uuid"
                                   conceptAnswer="mock-uuid"
@@ -665,6 +377,71 @@ exports[`<LabResultEntry /> component renders correctly with valid props 1`] = `
                                   widget="checkbox"
                                 />
                               </div>
+                            </div>
+                            <div
+                              className="col-xs-4"
+                            >
+                              <div
+                                className="did-not-perform"
+                              >
+                                <span
+                                  className="did-not-perform-label"
+                                >
+                                  Reason: 
+                                </span>
+                                <WithObsGroupContext(WithFormContext(Connect(Obs)))
+                                  path="did-not-perform-dropdown"
+                                  widget="dropdown"
+                                />
+                              </div>
+                            </div>
+                            <div
+                              className="estimated-checkbox"
+                            >
+                              <WithObsGroupContext(WithFormContext(Connect(Obs)))
+                                checkBoxTitle="estimated"
+                                path="estimated-checkbox"
+                                widget="checkbox"
+                              />
+                            </div>
+                            <div
+                              className="test-location"
+                            >
+                              <span
+                                className="test-location-label"
+                              >
+                                Test location: 
+                              </span>
+                              <WithObsGroupContext(WithFormContext(Connect(Obs)))
+                                dropDownStyle={
+                                  Object {
+                                    "heigth": "35px",
+                                  }
+                                }
+                                path="test-location-dropdown"
+                                widget="dropdown"
+                              />
+                            </div>
+                            <div
+                              className="specimen-collection-date"
+                            >
+                              <div
+                                className="col-xs-10 encounter-date-container"
+                              >
+                                <span
+                                  className="encounter-date-label"
+                                >
+                                  Specimen Collection Date:  
+                                </span>
+                                <WithFormContext(Connect(EncounterDate))
+                                  defaultDate={"2018-10-14T23:00:00.000Z"}
+                                  field="dateFromField"
+                                  handleDateChange={[Function]}
+                                  label="Specimen Collection Date:"
+                                  labelClassName="date-picker-label"
+                                />
+                              </div>
+                              <br />
                             </div>
                             <Row
                               bsClass="row"
@@ -682,7 +459,7 @@ exports[`<LabResultEntry /> component renders correctly with valid props 1`] = `
                                 <span
                                   className="obs-component"
                                 >
-                                  <WithFormContext(Connect(Obs))
+                                  <WithObsGroupContext(WithFormContext(Connect(Obs)))
                                     concept="1234-abcd"
                                     path="1234-abcd"
                                     validate={
@@ -722,7 +499,7 @@ exports[`<LabResultEntry /> component renders correctly with valid props 1`] = `
                                 <span
                                   className="obs-component"
                                 >
-                                  <WithFormContext(Connect(Obs))
+                                  <WithObsGroupContext(WithFormContext(Connect(Obs)))
                                     concept="pqrs-5678"
                                     path="pqrs-5678"
                                     validate={
@@ -751,6 +528,231 @@ exports[`<LabResultEntry /> component renders correctly with valid props 1`] = `
                                 </span>
                               </FormGroup>
                             </Row>
+                          </div>
+                        </Grid>
+                      }
+                      formId="result-entry-form"
+                      patient={false}
+                    >
+                      <EncounterFormPage
+                        defaultValues={
+                          Array [
+                            Object {
+                              "concept": "393dec41-2fb5-428f-acfa-36ea85da6666",
+                              "path": "test-order-number",
+                              "type": "obs",
+                              "value": "ORD-1",
+                            },
+                          ]
+                        }
+                        dispatch={[Function]}
+                        encounterType={
+                          Object {
+                            "uuid": "mock-encounter-uuid",
+                          }
+                        }
+                        formContent={
+                          <Grid
+                            bsClass="container"
+                            componentClass="div"
+                            fluid={false}
+                          >
+                            <div
+                              className="observation"
+                            >
+                              <div
+                                className="col-xs-4"
+                              >
+                                <span
+                                  className="single-result-field"
+                                >
+                                  <span
+                                    className="obs-date-label"
+                                  >
+                                    Result Date
+                                  </span>
+                                  <span
+                                    className="obs-date-field"
+                                  >
+                                    <WithObsGroupContext(WithFormContext(Connect(Obs)))
+                                      concept="mock-date-concept"
+                                      datatype="date"
+                                      path="result-date"
+                                      validate={
+                                        Array [
+                                          [Function],
+                                        ]
+                                      }
+                                    />
+                                  </span>
+                                </span>
+                              </div>
+                              <div
+                                className="col-xs-4"
+                              >
+                                <div
+                                  className="did-not-perform-checkbox"
+                                >
+                                  <WithObsGroupContext(WithFormContext(Connect(Obs)))
+                                    checkBoxTitle="Did not perform"
+                                    concept="mock-uuid"
+                                    conceptAnswer="mock-uuid"
+                                    path="did-not-perform-checkbox"
+                                    widget="checkbox"
+                                  />
+                                </div>
+                              </div>
+                              <div
+                                className="col-xs-4"
+                              >
+                                <div
+                                  className="did-not-perform"
+                                >
+                                  <span
+                                    className="did-not-perform-label"
+                                  >
+                                    Reason: 
+                                  </span>
+                                  <WithObsGroupContext(WithFormContext(Connect(Obs)))
+                                    path="did-not-perform-dropdown"
+                                    widget="dropdown"
+                                  />
+                                </div>
+                              </div>
+                              <div
+                                className="estimated-checkbox"
+                              >
+                                <WithObsGroupContext(WithFormContext(Connect(Obs)))
+                                  checkBoxTitle="estimated"
+                                  path="estimated-checkbox"
+                                  widget="checkbox"
+                                />
+                              </div>
+                              <div
+                                className="test-location"
+                              >
+                                <span
+                                  className="test-location-label"
+                                >
+                                  Test location: 
+                                </span>
+                                <WithObsGroupContext(WithFormContext(Connect(Obs)))
+                                  dropDownStyle={
+                                    Object {
+                                      "heigth": "35px",
+                                    }
+                                  }
+                                  path="test-location-dropdown"
+                                  widget="dropdown"
+                                />
+                              </div>
+                              <div
+                                className="specimen-collection-date"
+                              >
+                                <div
+                                  className="col-xs-10 encounter-date-container"
+                                >
+                                  <span
+                                    className="encounter-date-label"
+                                  >
+                                    Specimen Collection Date:  
+                                  </span>
+                                  <WithFormContext(Connect(EncounterDate))
+                                    defaultDate={"2018-10-14T23:00:00.000Z"}
+                                    field="dateFromField"
+                                    handleDateChange={[Function]}
+                                    label="Specimen Collection Date:"
+                                    labelClassName="date-picker-label"
+                                  />
+                                </div>
+                                <br />
+                              </div>
+                              <Row
+                                bsClass="row"
+                                componentClass="div"
+                              >
+                                <FormGroup
+                                  bsClass="form-group"
+                                  controlId="Height"
+                                >
+                                  <span
+                                    className="member-display-label"
+                                  >
+                                    Height
+                                  </span>
+                                  <span
+                                    className="obs-component"
+                                  >
+                                    <WithObsGroupContext(WithFormContext(Connect(Obs)))
+                                      concept="1234-abcd"
+                                      path="1234-abcd"
+                                      validate={
+                                        Array [
+                                          [Function],
+                                          [Function],
+                                        ]
+                                      }
+                                      warn={
+                                        Array [
+                                          [Function],
+                                          [Function],
+                                        ]
+                                      }
+                                    />
+                                  </span>
+                                  <span
+                                    className="units"
+                                  >
+                                    cc
+                                  </span>
+                                  <span
+                                    className="valid-range"
+                                  >
+                                    11cc - 22cc
+                                  </span>
+                                </FormGroup>
+                                <FormGroup
+                                  bsClass="form-group"
+                                  controlId="Weight"
+                                >
+                                  <span
+                                    className="member-display-label"
+                                  >
+                                    Weight
+                                  </span>
+                                  <span
+                                    className="obs-component"
+                                  >
+                                    <WithObsGroupContext(WithFormContext(Connect(Obs)))
+                                      concept="pqrs-5678"
+                                      path="pqrs-5678"
+                                      validate={
+                                        Array [
+                                          [Function],
+                                          [Function],
+                                        ]
+                                      }
+                                      warn={
+                                        Array [
+                                          [Function],
+                                          [Function],
+                                        ]
+                                      }
+                                    />
+                                  </span>
+                                  <span
+                                    className="units"
+                                  >
+                                    cc
+                                  </span>
+                                  <span
+                                    className="valid-range"
+                                  >
+                                    11cc - 22cc
+                                  </span>
+                                </FormGroup>
+                              </Row>
+                            </div>
                           </Grid>
                         }
                         formId="result-entry-form"
@@ -1006,7 +1008,6 @@ exports[`<LabResultEntry /> component should redirect when location has an empty
           }
         }
         clearNameEMRField={[MockFunction]}
-        didNotPerformCheckbox={false}
         dispatch={[Function]}
         history={
           Object {
@@ -1136,6 +1137,9 @@ exports[`<LabResultEntry /> component should render <Loader /> component when se
   location={
     Object {
       "state": Object {
+        "auditInfo": Object {
+          "dateCreated": "2018-08-30T17:34:19.000+0100",
+        },
         "concept": Object {
           "display": "Hémogramme automatisé",
         },
@@ -1178,7 +1182,6 @@ exports[`<LabResultEntry /> component should render <Loader /> component when se
       }
     }
     clearNameEMRField={[MockFunction]}
-    didNotPerformCheckbox={false}
     dispatch={[Function]}
     history={
       Object {
@@ -1206,6 +1209,9 @@ exports[`<LabResultEntry /> component should render <Loader /> component when se
     location={
       Object {
         "state": Object {
+          "auditInfo": Object {
+            "dateCreated": "2018-08-30T17:34:19.000+0100",
+          },
           "concept": Object {
             "display": "Hémogramme automatisé",
           },
