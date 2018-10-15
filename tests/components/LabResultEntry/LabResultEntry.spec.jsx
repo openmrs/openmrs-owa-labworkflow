@@ -1,7 +1,7 @@
 import React from 'react';
-import LabResultEntry from '../../../app/js/components/LabResultEntry';
 import { HashRouter } from 'react-router-dom';
 import { Provider } from 'react-redux';
+import LabResultEntry from '../../../app/js/components/LabResultEntry';
 
 
 let mountedComponent;
@@ -44,6 +44,9 @@ let props = {
       dateActivated: "2018-08-30T17:34:19.000+0100",
       patient: {
         display: "Y2A7LR - williams willy john",
+      },
+      auditInfo: {
+        dateCreated: "2018-08-30T17:34:19.000+0100",
       },
     },
   },

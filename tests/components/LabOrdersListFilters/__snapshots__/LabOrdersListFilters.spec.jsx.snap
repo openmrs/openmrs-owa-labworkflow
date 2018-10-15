@@ -22,7 +22,7 @@ exports[`<LabOrdersList /> component renders correctly 1`] = `
       >
         <span>
           <CustomDatePicker
-            defaultDate={"2018-09-25T10:25:28.634Z"}
+            defaultDate={"2018-10-07T17:39:11.807Z"}
             field="dateFromField"
             formControlStyle={
               Object {
@@ -56,7 +56,7 @@ exports[`<LabOrdersList /> component renders correctly 1`] = `
               preventOpenOnFocus={false}
               previousMonthButtonLabel="Previous Month"
               readOnly={false}
-              selected={"2018-09-25T10:25:28.634Z"}
+              selected={"2018-10-07T17:39:11.807Z"}
               shouldCloseOnSelect={true}
               showTimeSelect={false}
               timeCaption="Time"
@@ -89,7 +89,7 @@ exports[`<LabOrdersList /> component renders correctly 1`] = `
                       onFocus={[Function]}
                       onKeyDown={[Function]}
                       readOnly={false}
-                      value="09/25/2018"
+                      value="10/07/2018"
                     />
                   </div>
                 }
@@ -116,7 +116,7 @@ exports[`<LabOrdersList /> component renders correctly 1`] = `
                             onFocus={[Function]}
                             onKeyDown={[Function]}
                             readOnly={false}
-                            value="09/25/2018"
+                            value="10/07/2018"
                           >
                             <span>
                               <span
@@ -143,7 +143,7 @@ exports[`<LabOrdersList /> component renders correctly 1`] = `
                                     }
                                   }
                                   type="text"
-                                  value="09/25/2018"
+                                  value="10/07/2018"
                                 >
                                   <input
                                     className="form-control"
@@ -155,14 +155,45 @@ exports[`<LabOrdersList /> component renders correctly 1`] = `
                                       }
                                     }
                                     type="text"
-                                    value="09/25/2018"
+                                    value="10/07/2018"
                                   />
                                 </FormControl>
-                                <i
-                                  className="icon-calendar scale small add-on"
+                                <FontAwesomeIcon
+                                  border={false}
+                                  className=""
+                                  fixedWidth={false}
+                                  flip={null}
+                                  icon="calendar-alt"
+                                  inverse={false}
+                                  listItem={false}
+                                  mask={null}
                                   onClick={[Function]}
-                                  role="toolbar"
-                                />
+                                  pull={null}
+                                  pulse={false}
+                                  rotation={null}
+                                  size="2x"
+                                  spin={false}
+                                  symbol={false}
+                                  transform={null}
+                                >
+                                  <svg
+                                    aria-hidden="true"
+                                    className="svg-inline--fa fa-calendar-alt fa-w-14 fa-2x "
+                                    data-icon="calendar-alt"
+                                    data-prefix="fas"
+                                    onClick={[Function]}
+                                    role="img"
+                                    style={Object {}}
+                                    viewBox="0 0 448 512"
+                                    xmlns="http://www.w3.org/2000/svg"
+                                  >
+                                    <path
+                                      d="M436 160H12c-6.6 0-12-5.4-12-12v-36c0-26.5 21.5-48 48-48h48V12c0-6.6 5.4-12 12-12h40c6.6 0 12 5.4 12 12v52h128V12c0-6.6 5.4-12 12-12h40c6.6 0 12 5.4 12 12v52h48c26.5 0 48 21.5 48 48v36c0 6.6-5.4 12-12 12zM12 192h424c6.6 0 12 5.4 12 12v260c0 26.5-21.5 48-48 48H48c-26.5 0-48-21.5-48-48V204c0-6.6 5.4-12 12-12zm116 204c0-6.6-5.4-12-12-12H76c-6.6 0-12 5.4-12 12v40c0 6.6 5.4 12 12 12h40c6.6 0 12-5.4 12-12v-40zm0-128c0-6.6-5.4-12-12-12H76c-6.6 0-12 5.4-12 12v40c0 6.6 5.4 12 12 12h40c6.6 0 12-5.4 12-12v-40zm128 128c0-6.6-5.4-12-12-12h-40c-6.6 0-12 5.4-12 12v40c0 6.6 5.4 12 12 12h40c6.6 0 12-5.4 12-12v-40zm0-128c0-6.6-5.4-12-12-12h-40c-6.6 0-12 5.4-12 12v40c0 6.6 5.4 12 12 12h40c6.6 0 12-5.4 12-12v-40zm128 128c0-6.6-5.4-12-12-12h-40c-6.6 0-12 5.4-12 12v40c0 6.6 5.4 12 12 12h40c6.6 0 12-5.4 12-12v-40zm0-128c0-6.6-5.4-12-12-12h-40c-6.6 0-12 5.4-12 12v40c0 6.6 5.4 12 12 12h40c6.6 0 12-5.4 12-12v-40z"
+                                      fill="currentColor"
+                                      style={Object {}}
+                                    />
+                                  </svg>
+                                </FontAwesomeIcon>
                               </span>
                             </span>
                           </DateDisplayComponent>
@@ -177,7 +208,7 @@ exports[`<LabOrdersList /> component renders correctly 1`] = `
         </span>
         <span>
           <CustomDatePicker
-            defaultDate={"2018-10-03T10:25:26.032Z"}
+            defaultDate={"2018-10-15T17:39:06.228Z"}
             field="dateToField"
             formControlStyle={
               Object {
@@ -211,7 +242,7 @@ exports[`<LabOrdersList /> component renders correctly 1`] = `
               preventOpenOnFocus={false}
               previousMonthButtonLabel="Previous Month"
               readOnly={false}
-              selected={"2018-10-03T10:25:26.032Z"}
+              selected={"2018-10-15T17:39:06.228Z"}
               shouldCloseOnSelect={true}
               showTimeSelect={false}
               timeCaption="Time"
@@ -244,7 +275,7 @@ exports[`<LabOrdersList /> component renders correctly 1`] = `
                       onFocus={[Function]}
                       onKeyDown={[Function]}
                       readOnly={false}
-                      value="10/03/2018"
+                      value="10/15/2018"
                     />
                   </div>
                 }
@@ -271,7 +302,7 @@ exports[`<LabOrdersList /> component renders correctly 1`] = `
                             onFocus={[Function]}
                             onKeyDown={[Function]}
                             readOnly={false}
-                            value="10/03/2018"
+                            value="10/15/2018"
                           >
                             <span>
                               <span
@@ -298,7 +329,7 @@ exports[`<LabOrdersList /> component renders correctly 1`] = `
                                     }
                                   }
                                   type="text"
-                                  value="10/03/2018"
+                                  value="10/15/2018"
                                 >
                                   <input
                                     className="form-control"
@@ -310,14 +341,45 @@ exports[`<LabOrdersList /> component renders correctly 1`] = `
                                       }
                                     }
                                     type="text"
-                                    value="10/03/2018"
+                                    value="10/15/2018"
                                   />
                                 </FormControl>
-                                <i
-                                  className="icon-calendar scale small add-on"
+                                <FontAwesomeIcon
+                                  border={false}
+                                  className=""
+                                  fixedWidth={false}
+                                  flip={null}
+                                  icon="calendar-alt"
+                                  inverse={false}
+                                  listItem={false}
+                                  mask={null}
                                   onClick={[Function]}
-                                  role="toolbar"
-                                />
+                                  pull={null}
+                                  pulse={false}
+                                  rotation={null}
+                                  size="2x"
+                                  spin={false}
+                                  symbol={false}
+                                  transform={null}
+                                >
+                                  <svg
+                                    aria-hidden="true"
+                                    className="svg-inline--fa fa-calendar-alt fa-w-14 fa-2x "
+                                    data-icon="calendar-alt"
+                                    data-prefix="fas"
+                                    onClick={[Function]}
+                                    role="img"
+                                    style={Object {}}
+                                    viewBox="0 0 448 512"
+                                    xmlns="http://www.w3.org/2000/svg"
+                                  >
+                                    <path
+                                      d="M436 160H12c-6.6 0-12-5.4-12-12v-36c0-26.5 21.5-48 48-48h48V12c0-6.6 5.4-12 12-12h40c6.6 0 12 5.4 12 12v52h128V12c0-6.6 5.4-12 12-12h40c6.6 0 12 5.4 12 12v52h48c26.5 0 48 21.5 48 48v36c0 6.6-5.4 12-12 12zM12 192h424c6.6 0 12 5.4 12 12v260c0 26.5-21.5 48-48 48H48c-26.5 0-48-21.5-48-48V204c0-6.6 5.4-12 12-12zm116 204c0-6.6-5.4-12-12-12H76c-6.6 0-12 5.4-12 12v40c0 6.6 5.4 12 12 12h40c6.6 0 12-5.4 12-12v-40zm0-128c0-6.6-5.4-12-12-12H76c-6.6 0-12 5.4-12 12v40c0 6.6 5.4 12 12 12h40c6.6 0 12-5.4 12-12v-40zm128 128c0-6.6-5.4-12-12-12h-40c-6.6 0-12 5.4-12 12v40c0 6.6 5.4 12 12 12h40c6.6 0 12-5.4 12-12v-40zm0-128c0-6.6-5.4-12-12-12h-40c-6.6 0-12 5.4-12 12v40c0 6.6 5.4 12 12 12h40c6.6 0 12-5.4 12-12v-40zm128 128c0-6.6-5.4-12-12-12h-40c-6.6 0-12 5.4-12 12v40c0 6.6 5.4 12 12 12h40c6.6 0 12-5.4 12-12v-40zm0-128c0-6.6-5.4-12-12-12h-40c-6.6 0-12 5.4-12 12v40c0 6.6 5.4 12 12 12h40c6.6 0 12-5.4 12-12v-40z"
+                                      fill="currentColor"
+                                      style={Object {}}
+                                    />
+                                  </svg>
+                                </FontAwesomeIcon>
                               </span>
                             </span>
                           </DateDisplayComponent>
