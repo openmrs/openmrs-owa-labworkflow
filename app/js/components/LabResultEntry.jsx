@@ -6,6 +6,7 @@
  * Copyright (C) OpenMRS Inc. OpenMRS is a registered trademark and the OpenMRS
  * graphic logo is a trademark of OpenMRS Inc.
  */
+import ReactDOM from 'react-dom';
 import React, { PureComponent } from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
@@ -21,18 +22,18 @@ import moment from 'moment';
 import { Redirect } from 'react-router-dom';
 
 import {
-  CustomDatePicker,
+  EncounterDate,
   PatientHeader,
   EncounterFormPage,
   Obs,
   formValidations,
+  constantsActions,
 } from '@openmrs/react-components';
 
 import patientAction from '../actions/patientAction';
 import { fetchLabConcept } from '../actions/labConceptsAction';
 import '../../css/lab-result-entry.scss';
 import { formatRangeDisplayText, hasMaxAndMinValues } from '../utils/helpers';
-
 
 const {
   minValue,
@@ -52,10 +53,12 @@ export class LabResultEntry extends PureComponent {
   }
 
   componentWillMount() {
-    const { dispatch, history: { location: { state } } } = this.props;
+    const { dispatch, history: { location: { state } }, CONSTANTS } = this.props;
     if (typeof state !== 'undefined') {
       const conceptUUID = state.concept.uuid;
       dispatch(patientAction.getPatient(state.patient.uuid));
+      dispatch(constantsActions.fetchLabResultsDidNotPerformReasonAnswer(CONSTANTS.labResultsDidNotPerformReasonQuestion));
+      dispatch(constantsActions.fetchLabResultsTestLocationAnswer(CONSTANTS.labResultsTestLocationQuestion));
       dispatch(fetchLabConcept(conceptUUID));
     } else {
       this.shouldRedirect();
@@ -79,7 +82,7 @@ export class LabResultEntry extends PureComponent {
   renderForm(selectedLabConcept) {
     const { patientHeaderDetail } = this.state;
     const {
-      CONSTANTS, conceptMembers, didNotPerformCheckbox, history: { location: { state } },
+      CONSTANTS, conceptMembers, history: { location: { state } },
     } = this.props;
 
     const encounterType = {
@@ -100,8 +103,9 @@ export class LabResultEntry extends PureComponent {
     const maxDateRange = maxDateValue(new Date());
     const observations = (
       <Grid>
-        {
-          (hasMembers || hasAnswers || isSingle)
+        <div className="observation">
+          {
+            (hasMembers || hasAnswers || isSingle)
             && (
               <div className="col-xs-4">
                 <span className="single-result-field">
@@ -117,37 +121,31 @@ export class LabResultEntry extends PureComponent {
                 </span>
               </div>
             )
-        }
-        <div className="col-xs-4">
-          <div className="did-not-perform-checkbox">
-            <Obs
-              conceptAnswer={CONSTANTS.labResultsDidNotPerformAnswer}
-              widget="checkbox"
-              concept={CONSTANTS.labResultsDidNotPerformQuestion}
-              path="did-not-perform-checkbox"
-              checkBoxTitle="Did not perform"
-            />
+          }
+          <div className="col-xs-4">
+            <div className="did-not-perform-checkbox">
+              <Obs
+                conceptAnswer={CONSTANTS.labResultsDidNotPerformAnswer}
+                widget="checkbox"
+                concept={CONSTANTS.labResultsDidNotPerformQuestion}
+                path="did-not-perform-checkbox"
+                checkBoxTitle="Did not perform"
+              />
+            </div>
           </div>
-        </div>
-        <div className="col-xs-4">
-          <div className="did-not-perform">
-            <span className="did-not-perform-label">Reason:&nbsp;</span>
-            <Obs
-              conceptAnswers={["",
-                "Low Volume",
-                "Contaminated",
-                "Equipment Failure",
-                "Stock Out",
-                "Blood Coagulation",
-                "Inappropriate Container"]}
-              widget="dropdown"
-              concept={CONSTANTS.labResultsDidNotPerformReason}
-              path="did-not-perform-dropdown"
-            />
+          <div className="col-xs-4">
+            <div className="did-not-perform">
+              <span className="did-not-perform-label">Reason:&nbsp;</span>
+              <Obs
+                conceptAnswers={CONSTANTS.labResultsDidNotPerformReasonAnswer}
+                widget="dropdown"
+                concept={CONSTANTS.labResultsDidNotPerformReasonQuestion}
+                path="did-not-perform-dropdown"
+              />
+            </div>
           </div>
-        </div>
-        {
-          (hasAnswers)
+          {
+            (hasAnswers)
             && (
               <div className="col-xs-4">
                 <span className="single-result-field">
@@ -163,18 +161,51 @@ export class LabResultEntry extends PureComponent {
                 </span>
               </div>
             )
-        }
-        <Row>
-          {(hasMembers)
+          }
+          <div className="estimated-checkbox">
+            <Obs
+              conceptAnswer={CONSTANTS.labResultsEstimatedCollectionDateAnswer}
+              widget="checkbox"
+              concept={CONSTANTS.labResultsEstimatedCollectionDateQuestion}
+              path="estimated-checkbox"
+              checkBoxTitle="estimated"
+            />
+          </div>
+          <div className="test-location">
+            <span className="test-location-label">Test location:&nbsp;</span>
+            <Obs
+              conceptAnswers={CONSTANTS.labResultsTestLocationAnswer}
+              widget="dropdown"
+              concept={CONSTANTS.labResultsTestLocationQuestion}
+              path="test-location-dropdown"
+              dropDownStyle={{ heigth: '35px' }}
+            />
+          </div>
+          <div className="specimen-collection-date">
+            <div className="col-xs-10 encounter-date-container">
+              <span className="encounter-date-label">Specimen Collection Date: &nbsp;</span>
+              <EncounterDate
+                handleDateChange={() => {}}
+                labelClassName="date-picker-label"
+                label="Specimen Collection Date:"
+                defaultDate={moment().startOf('day')}
+                field="dateFromField"
+              />
+            </div>
+            <br />
+          </div>
+          <Row>
+            {(hasMembers)
             && (
               selectedLabConcept.setMembers.map(
                 member => this.renderFormContent(member),
               ))
-          }
-          {(isSingle)
+            }
+            {(isSingle)
           && (this.renderFormContent(selectedLabConcept))
-          }
-        </Row>
+            }
+          </Row>
+        </div>
       </Grid>
     );
 
@@ -298,37 +329,36 @@ export class LabResultEntry extends PureComponent {
           {location.state
           && (
             <div>
-              <h2 className="lab-entry-page-title">Test Results</h2>
-              <div className="fieldset-container">
-                <div className="legend">
-                  <span> Specimen Details </span>
+              <h2 className="lab-entry-page-title">
+                Test Results -
+                {` ${location.state.display}`}
+              </h2>
+              <div className="lab-result-detail-fieldset-container">
+                <div className="fieldset-container lab-result-detail-fieldset">
+                  <div className="legend">
+                    <span className="lab-result-detail-fieldset-title"> Specimen Details </span>
+                  </div>
                 </div>
-                <div className="fieldset-body">
-                  <div className="col-xs-12">
-                    <CustomDatePicker
-                      handleDateChange={() => {}}
-                      labelClassName="date-picker-label"
-                      label="Specimen Collection Date:"
-                      defaultDate={moment().subtract(7, 'days')}
-                      field="dateFromField"
-                    />
+                <div className="fieldset-container lab-result-detail-fieldset">
+                  <div className="legend">
+                    <span className="lab-result-detail-fieldset-title"> Order Details </span>
                   </div>
-                  <br />
-                  <br />
-                  <div className="col-xs-6">
-                    <span className="test-details-label">
-                  Test:&nbsp;
-                      <span className="test-details">{location.state.display}</span>
-                    </span>
-                  </div>
-                  <div className="col-xs-6">
-                    <span className="test-details-label">
+                  <div className="fieldset-body">
+                    <div className="col-xs-8">
+                      <span className="test-details-label">
+                  Order Date:&nbsp;
+                        <span className="test-details">{moment(location.state.auditInfo.dateCreated).format('MMM DD h:mm A')}</span>
+                      </span>
+                    </div>
+                    <div className="col-xs-4">
+                      <span className="test-details-label">
                   Urgency:&nbsp;
-                      <span className="test-details">{location.state.urgency}</span>
-                    </span>
+                        <span className="test-details">{location.state.urgency}</span>
+                      </span>
+                    </div>
+                    <br />
+                    <br />
                   </div>
-                  <br />
-                  <br />
                 </div>
               </div>
             </div>
@@ -355,12 +385,12 @@ LabResultEntry.defaultProps = {
 LabResultEntry.propTypes = {
   patientHeaderDetail: PropTypes.object.isRequired,
   history: PropTypes.object.isRequired,
+  testLocationConcept: PropTypes.object.isRequired,
   dispatch: PropTypes.func.isRequired,
   selectedLabConcept: PropTypes.object,
   location: PropTypes.object.isRequired,
   CONSTANTS: PropTypes.object.isRequired,
   conceptMembers: PropTypes.object.isRequired,
-  didNotPerformCheckbox: PropTypes.bool.isRequired,
 };
 
 const mapStateToProps = (state) => {

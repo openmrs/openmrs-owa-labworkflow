@@ -6,7 +6,6 @@ import {
   SET_CONCEPT,
 } from './actionTypes';
 
-
 export const fetchLabConcept = conceptUUID => ({
   type: FETCH_LAB_CONCEPT,
   payload: axiosInstance.get(`/concept/${conceptUUID}?v=full`),
