@@ -188,7 +188,7 @@ export class LabResultEntry extends PureComponent {
                 handleDateChange={() => {}}
                 labelClassName="date-picker-label"
                 label="Specimen Collection Date:"
-                defaultDate={moment().subtract(7, 'days')}
+                defaultDate={moment().startOf('day')}
                 field="dateFromField"
               />
             </div>
