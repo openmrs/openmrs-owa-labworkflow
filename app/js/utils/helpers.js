@@ -23,9 +23,9 @@ export const hasMaxAndMinValues = (
   return currentValue;
 }, false);
 
-export const formatRangeDisplayText = (min, max, units) => {
-  if (min && max && units) {
-    return `${min}${units} - ${max}${units}`;
+export const formatRangeDisplayText = (min, max) => {
+  if (min && max) {
+    return `${min} - ${max}`;
   }
   return '';
 };
