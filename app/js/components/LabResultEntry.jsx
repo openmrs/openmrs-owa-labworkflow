@@ -109,7 +109,7 @@ export class LabResultEntry extends PureComponent {
             && (
               <div className="col-xs-4">
                 <span className="single-result-field">
-                  <span className="obs-date-label">Result Date</span>
+                  <span className="obs-date-label">Result Date:</span>
                   <span className="obs-date-field">
                     <Obs
                       datatype="date"
@@ -141,6 +141,8 @@ export class LabResultEntry extends PureComponent {
                 widget="dropdown"
                 concept={CONSTANTS.labResultsDidNotPerformReasonQuestion}
                 path="did-not-perform-dropdown"
+                defaultValue=" "
+                dropDownStyle={{ heigth: '40px', width: '100%' }}
               />
             </div>
           </div>
@@ -178,7 +180,8 @@ export class LabResultEntry extends PureComponent {
               widget="dropdown"
               concept={CONSTANTS.labResultsTestLocationQuestion}
               path="test-location-dropdown"
-              dropDownStyle={{ heigth: '35px' }}
+              dropDownStyle={{ heigth: '40px', width: '100%' }}
+              defaultValue=" "
             />
           </div>
           <div className="specimen-collection-date">
@@ -294,7 +297,7 @@ export class LabResultEntry extends PureComponent {
       };
     }
 
-    const normalRange = formatRangeDisplayText(lowNormal, hiNormal, units);
+    const normalRange = formatRangeDisplayText(lowNormal, hiNormal);
     return (
       <FormGroup controlId={member.display}>
         <span className="member-display-label">
