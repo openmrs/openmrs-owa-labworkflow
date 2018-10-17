@@ -6,11 +6,9 @@
  * Copyright (C) OpenMRS Inc. OpenMRS is a registered trademark and the OpenMRS
  * graphic logo is a trademark of OpenMRS Inc.
  */
-import ReactDOM from 'react-dom';
 import React, { PureComponent } from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
-import { Loader } from '@openmrs/react-components';
 import R from 'ramda';
 
 import {
@@ -28,6 +26,7 @@ import {
   Obs,
   formValidations,
   constantsActions,
+  Loader,
 } from '@openmrs/react-components';
 
 import patientAction from '../actions/patientAction';
@@ -164,38 +163,40 @@ export class LabResultEntry extends PureComponent {
               </div>
             )
           }
-          <div className="estimated-checkbox">
-            <Obs
-              conceptAnswer={CONSTANTS.labResultsEstimatedCollectionDateAnswer}
-              widget="checkbox"
-              concept={CONSTANTS.labResultsEstimatedCollectionDateQuestion}
-              path="estimated-checkbox"
-              checkBoxTitle="estimated"
-            />
-          </div>
-          <div className="test-location">
-            <span className="test-location-label">Test location:&nbsp;</span>
-            <Obs
-              conceptAnswers={CONSTANTS.labResultsTestLocationAnswer}
-              widget="dropdown"
-              concept={CONSTANTS.labResultsTestLocationQuestion}
-              path="test-location-dropdown"
-              dropDownStyle={{ heigth: '40px', width: '100%' }}
-              defaultValue=" "
-            />
-          </div>
-          <div className="specimen-collection-date">
-            <div className="col-xs-10 encounter-date-container">
-              <span className="encounter-date-label">Specimen Collection Date: &nbsp;</span>
-              <EncounterDate
-                handleDateChange={() => {}}
-                labelClassName="date-picker-label"
-                label="Specimen Collection Date:"
-                defaultDate={moment().startOf('day')}
-                field="dateFromField"
+          <div className="specimen-detail">
+            <div className="estimated-checkbox">
+              <Obs
+                conceptAnswer={CONSTANTS.labResultsEstimatedCollectionDateAnswer}
+                widget="checkbox"
+                concept={CONSTANTS.labResultsEstimatedCollectionDateQuestion}
+                path="estimated-checkbox"
+                checkBoxTitle="estimated"
               />
             </div>
-            <br />
+            <div className="test-location">
+              <span className="test-location-label">Test location:&nbsp;</span>
+              <Obs
+                conceptAnswers={CONSTANTS.labResultsTestLocationAnswer}
+                widget="dropdown"
+                concept={CONSTANTS.labResultsTestLocationQuestion}
+                path="test-location-dropdown"
+                dropDownStyle={{ heigth: '40px', width: '100%' }}
+                defaultValue=" "
+              />
+            </div>
+            <div className="specimen-collection-date">
+              <div className="col-xs-10 encounter-date-container">
+                <span className="encounter-date-label">Specimen Collection Date: &nbsp;</span>
+                <EncounterDate
+                  handleDateChange={() => {}}
+                  labelClassName="date-picker-label"
+                  label="Specimen Collection Date:"
+                  defaultDate={moment().startOf('day')}
+                  field="dateFromField"
+                />
+              </div>
+              <br />
+            </div>
           </div>
           <Row>
             {(hasMembers)
@@ -350,7 +351,7 @@ export class LabResultEntry extends PureComponent {
                     <div className="col-xs-8">
                       <span className="test-details-label">
                   Order Date:&nbsp;
-                        <span className="test-details">{moment(location.state.auditInfo.dateCreated).format('MMM DD h:mm A')}</span>
+                        <span className="test-details">{moment(location.state.concept.dateActivated).format('MMM DD h:mm A')}</span>
                       </span>
                     </div>
                     <div className="col-xs-4">
