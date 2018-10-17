@@ -65,13 +65,9 @@ export class LabResultEntry extends PureComponent {
   }
 
   componentWillReceiveProps(nextProps) {
-    const { patientHeaderDetail } = this.props;
-
-    if (nextProps.patientHeaderDetail.uuid !== patientHeaderDetail.uuid) {
-      this.setState({
-        patientHeaderDetail: nextProps.patientHeaderDetail,
-      });
-    }
+    this.setState({
+      patientHeaderDetail: nextProps.patientHeaderDetail,
+    });
   }
 
   shouldRedirect() {
