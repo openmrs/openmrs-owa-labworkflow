@@ -55,7 +55,7 @@ export class LabResultEntry extends PureComponent {
     const { dispatch, history: { location: { state } }, CONSTANTS } = this.props;
     if (typeof state !== 'undefined') {
       const conceptUUID = state.concept.uuid;
-      dispatch(patientAction.getPatient(state.patient.uuid));
+      dispatch(patientAction.getPatient('ac52bcd8-648b-434b-9306-6ed6717f2635'));
       dispatch(constantsActions.fetchLabResultsDidNotPerformReasonAnswer(CONSTANTS.labResultsDidNotPerformReasonQuestion));
       dispatch(constantsActions.fetchLabResultsTestLocationAnswer(CONSTANTS.labResultsTestLocationQuestion));
       dispatch(fetchLabConcept(conceptUUID));

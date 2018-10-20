@@ -14,12 +14,14 @@ export class App extends React.Component {
   componentDidMount() {
     // const { dispatch } = this.props;
     // dispatch(patientAction.getPatient('da5e210f-a3c4-4c49-80f2-e2e5386db8ad'));
+    // dispatch(patientAction.getPatient('da5e210f-a3c4-4c49-80f2-e2e5386db8ad'));
+    // dispatch(patientAction.getPatient('da5e210f-a3c4-4c49-80f2-e2e5386db8ad'));
   }
 
   render() {
     return (
       <div>
-        
+
         <LabOrdersList />
       </div>
     );
