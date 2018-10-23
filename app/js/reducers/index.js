@@ -13,7 +13,6 @@ import { reducer as toastrReducer } from 'react-redux-toastr';
 import { reducers as openmrsReducers } from '@openmrs/react-components';
 import labOrderReducer from './labOrdersReducer';
 import patientReducer from './patientReducer';
-import encounterReducer from './encounterReducer';
 import {
   patientsReducer,
   selectedPatientReducer,
@@ -34,5 +33,4 @@ export default combineReducers({
   selectedLabConcept: selectedLabConceptReducer,
   conceptMembers: conceptMembersReducer,
   fetchStatus: fetchStatusReducer,
-  encounter: encounterReducer,
 });

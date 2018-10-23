@@ -35,7 +35,7 @@ class RangeCell extends PureComponent {
     }
   }
 
-  ShowRange() {
+  showRange() {
     const { concept } = this.props;
     const {
       hiNormal,
@@ -62,7 +62,7 @@ class RangeCell extends PureComponent {
     if (!R.isEmpty(concept)) {
       return (
         <div className="table_cell test-type">
-          {this.ShowRange()}
+          {this.showRange()}
         </div>
       );
     }

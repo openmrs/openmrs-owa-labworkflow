@@ -34,7 +34,4 @@ export default {
       message: null,
     },
   },
-  encounter: {
-    obs: {}
-  }
 };
