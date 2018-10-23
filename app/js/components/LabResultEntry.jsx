@@ -39,6 +39,8 @@ const {
   maxValue,
   abnormalMaxValue,
   abnormalMinValue,
+  criticalMaxValue,
+  criticalMinValue,
   maxDateValue,
 } = formValidations;
 
@@ -276,12 +278,22 @@ export class LabResultEntry extends PureComponent {
     }
 
     if (hiCritical) {
-      const abnormalMaxRange = abnormalMaxValue(hiCritical);
-      warnings.push(abnormalMaxRange);
+      const criticalMaxRange = criticalMaxValue(hiCritical);
+      warnings.push(criticalMaxRange);
     }
 
     if (lowCritical) {
-      const abnormalMinRange = abnormalMinValue(lowCritical);
+      const criticalMinRange = criticalMinValue(lowCritical);
+      warnings.push(criticalMinRange);
+    }
+
+    if (hiNormal) {
+      const abnormalMaxRange = abnormalMaxValue(hiNormal);
+      warnings.push(abnormalMaxRange);
+    }
+
+    if (lowNormal) {
+      const abnormalMinRange = abnormalMinValue(lowNormal);
       warnings.push(abnormalMinRange);
     }
 
