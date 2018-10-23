@@ -170,7 +170,12 @@ button.pull-right.btn-success {
 
 .did-not-perform-checkbox {
     margin-left: 40px;
-    margin-top: -10px;
+    margin-top: -8px;
+    display: inline-block;
+    span {
+        position: absolute;
+        top: 8px;
+    }
 }
 
 .test-details-label {
@@ -221,6 +226,7 @@ button.pull-right.btn-success {
 
 .encounter-date-label {
     font-size: 14px;
+    margin-top: 10px;
 }
 
 .test-location {
@@ -240,6 +246,10 @@ button.pull-right.btn-success {
     top:70px;
     left: 328px;
     white-space: nowrap;
+    span {
+        position: absolute;
+        top: 15px;
+    }
 }
 
 .obs-checkbox-edit-value {
