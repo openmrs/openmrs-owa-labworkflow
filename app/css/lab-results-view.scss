@@ -1,0 +1,134 @@
+.collapsible-panel {
+  margin: 15px;
+
+
+  .ReactTable .rt-tbody .rt-td {
+      border-right: 0px solid rgba(0,0,0,0.02);
+  }
+
+  .ReactTable.-striped .rt-tr.-odd {
+    background: none;
+  }
+
+  .lab-results-list-cell-type {
+    min-width: 60% !important;
+  }
+
+  .lab-results-list-header {
+    display: none;
+  }
+  .lab-results-list-cell-sample-date {
+    min-width: 80px !important;
+  }
+
+  .lab-results-list-cell-normal-range {
+    display: flex;
+    justify-content: center;
+  }
+
+  .lab-results-list-cell-result {
+    max-width: 10% !important;
+    display: flex;
+    justify-content: center;
+  }
+
+}
+
+.lab-results-list-cell-emr-id,
+.lab-results-list-header-emr-id {
+    max-width: 80px;
+}
+
+i.scale:hover {
+  text-decoration: none;
+  transform: scale(1.5);
+  -webkit-transform: scale(1.5);
+  -moz-transform: scale(1.5);
+  cursor: pointer;
+}
+
+.lab-results-list {
+    position: relative;
+    margin-top: 30px;
+}
+.table_cell {
+    font-size: 15px;
+    text-transform: capitalize;
+    &.urgency {
+        &.stat {
+            text-transform: uppercase !important;
+        }
+        &.routine {
+            text-transform: lowercase !important;
+        }
+    }
+}
+
+.labs-order-table-head {
+    font-size: 16px;
+    font-weight: 800;
+}
+
+
+.lab-results-list-cell-emr-id,
+.lab-results-list-header-emr-id {
+    max-width: 80px;
+}
+
+.lab-results-list-cell-order-id,
+.lab-results-list-header-order-id {
+    max-width: 90px;
+}
+
+.lab-results-list-cell-order-date,
+.lab-results-list-header-order-date {
+    max-width: 130px;
+}
+
+.lab-results-list-cell-collection-date,
+.lab-results-list-header-collection-date {
+    max-width: 160px;
+}
+
+.lab-results-list-cell-urgency,
+.lab-results-list-header-urgency {
+    max-width: 90px;
+}
+
+// style for making sure each row in the
+// sortableTablecomponent have a cursor pointer
+// instead of an arrow...
+// target class is .rt-tr-group
+.rt-tr-group {
+  cursor: pointer;
+}
+
+.lab-results-list-cell-type,
+.lab-result-list-header-type  {
+    max-width: 190px;
+}
+
+.lab-results-list-cell-status,
+.lab-result-list-header-status {
+    max-width: 80px
+}
+
+.lab-results-list-cell-request-date,
+.lab-results-list-cell-sample-date,
+.lab-result-list-header-sample-date,
+.lab-result-list-header-request-date {
+    max-width: 140px;
+}
+
+.lab-results-list-cell-result,
+.lab-result-list-header-result {
+    max-width: 80px;
+    display: flex;
+    justify-content: center;
+}
+
+
+
+
+
+

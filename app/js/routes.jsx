@@ -18,7 +18,7 @@ import ReduxToastr from 'react-redux-toastr';
 import BreadCrumb from './components/shared/BreadCrumb/BreadCrumb';
 import LabResultEntry from './components/LabResultEntry';
 import LabOrdersList from './components/LabOrdersList';
-import LabResultsView from './components/LabResultsView';
+import LabResultsList from './components/LabResultsList';
 import messagesEN from "./translations/en.json";
 import messagesFR from "./translations/fr.json";
 
@@ -46,7 +46,7 @@ export default store => (
       <Route exact path="/" component={withLocalisation(LabOrdersList)} />
       <Route exact path="/FakeBreadcrumbPage" component={withLocalisation(FakeBreadcrumbPage)} />
       <Route path="/LabResultEntry" component={LabResultEntry} />
-      <Route path="/LabResults" component={LabResultsView} />
+      <Route path="/labresults" component={LabResultsList} />
     </Switch>
   </div>
 );

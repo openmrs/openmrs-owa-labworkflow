@@ -65,6 +65,12 @@ export const conceptMembersReducer = (state = initialState.conceptMembers, actio
       ...state,
     };
   }
+  if (action.type === 'FETCH_CONCEPT_SUCCESS') {
+    return {
+      [action.payload.data.uuid]: action.payload.data,
+      ...state,
+    }
+  }
   return state;
 };
 

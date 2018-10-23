@@ -24,3 +24,8 @@ export const setFetchStatus = status => ({
   type: SET_FETCH_STATUS,
   status,
 });
+
+export const fetchConcept = conceptUUID => ({
+  type: 'FETCH_CONCEPT',
+  payload: axiosInstance.get(`/concept/${conceptUUID}?v=full`),
+})

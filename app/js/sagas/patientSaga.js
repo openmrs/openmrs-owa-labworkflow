@@ -3,14 +3,10 @@ import {
   put,
   takeLatest,
   takeEvery,
-  fork,
-  take,
-  cancel,
 } from 'redux-saga/effects';
 import { patientRest, constantsRest } from '@openmrs/react-components';
 import actionTypes, { FETCH_PATIENT_LAB_TEST_RESULTS, SET_CONCEPT_MEMBER } from '../actions/actionTypes';
 import patientAction from '../actions/patientAction';
-import { getConcept } from './conceptsSaga';
 
 function* getPatient(action) {
   try {
@@ -41,20 +37,7 @@ function* fetchAndSetTestResults(action) {
       const patientEncountersResponse = yield call(patientRest.getPatientEncounters, { patientUUID, encounterUUID });
 
       if (patientOrdersResponse && patientEncountersResponse) {
-        console.log('patientEncountersResponse', patientEncountersResponse);
-        console.log('patientOrdersResponse', patientOrdersResponse);
         if (patientOrdersResponse.results.length) {
-          let iterator = 0;
-          let forkedProcess;
-          while (patientOrdersResponse.results[iterator]) {
-            forkedProcess = yield fork(
-              getConcept, { concept: patientOrdersResponse.results[iterator].concept, count: iterator },
-            );
-            iterator += 1;
-          }
-          const count = iterator - 1;
-          yield take(`${SET_CONCEPT_MEMBER}_${count}`);
-          yield cancel(forkedProcess);
           yield put(patientAction.updatePatientInfo({
             meta: {
               orders: patientOrdersResponse.results,
