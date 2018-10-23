@@ -9,7 +9,7 @@
     display: flex;
     justify-content: center;
     font-weight: 900;
-    font-size: 20px;
+    font-size: 14px;
     flex-direction: row;
     text-align: center;
 }
@@ -25,13 +25,13 @@ fieldset {
 .lab-result-detail-fieldset {
     width: 48%;
     display: inline-table;
-    min-height: 140px;
+    min-height: 120px;
     margin-left: 1%;
     margin-right: 1%;
 }
 
 .lab-result-detail-fieldset-title{
-    font-size: 12px;
+    font-size: 14px;
 }
 
 .result-input {
@@ -83,7 +83,7 @@ button.pull-right.btn-success {
 
 .range-header-text {
     position: relative;
-    left: 57%;
+    left: 62%;
     font-weight: 900;
     text-decoration: underline;
     top: 90px;
@@ -95,8 +95,8 @@ button.pull-right.btn-success {
 }
 
 .valid-range {
-    right: 50px;
-    position: relative;
+    left: 620px;
+    position: absolute;
     line-height: 40px;
 }
 
@@ -107,7 +107,7 @@ button.pull-right.btn-success {
 .fieldset-body {
     width: 99%;
     height: 100%;
-    padding: 15px;
+    padding: 0px 15px;
     position: relative;
     align-self: left;
 }
@@ -121,7 +121,7 @@ button.pull-right.btn-success {
 }
 
 .member-display-label {
-    width: 25%;
+    width: 30%;
     padding-left: 15px;
     line-height: 40px
 }
@@ -170,7 +170,12 @@ button.pull-right.btn-success {
 
 .did-not-perform-checkbox {
     margin-left: 40px;
-    margin-top: -10px;
+    margin-top: -8px;
+    display: inline-block;
+    span {
+        position: absolute;
+        top: 8px;
+    }
 }
 
 .test-details-label {
@@ -221,6 +226,7 @@ button.pull-right.btn-success {
 
 .encounter-date-label {
     font-size: 14px;
+    margin-top: 10px;
 }
 
 .test-location {
@@ -232,17 +238,31 @@ button.pull-right.btn-success {
 
 .specimen-collection-date {
     position: absolute;
-    top: 60px;
+    top: 75px;
 }
 
 .estimated-checkbox {
     position: absolute;
-    top: 57px;
+    top:70px;
     left: 328px;
     white-space: nowrap;
+    span {
+        position: absolute;
+        top: 15px;
+    }
 }
 
 .obs-checkbox-edit-value {
     display: inline-block;
     margin-top: 15px;
+}
+
+.obs-dropdown-label {
+    white-space: nowrap;
+    line-height: 35px;
+}
+
+.observation-dropdown {
+    left: -295px;
+    margin-top: 10px;
 }

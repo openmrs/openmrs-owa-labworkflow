@@ -144,15 +144,19 @@ export class LabResultEntry extends PureComponent {
           {
             (hasAnswers)
             && (
-              <div className="col-xs-4">
+              <div className="col-xs-4 observation-dropdown">
                 <span className="single-result-field">
-                  <span className="obs-dropdown-label">{selectedLabConcept.display}</span>
+                  <span className="obs-dropdown-label">
+                    {`${selectedLabConcept.display}: `}
+                      &nbsp;
+                  </span>
                   <span className="obs-dropdown-field">
                     <Obs
                       conceptAnswers={selectedLabConcept.answers}
                       widget="dropdown"
                       concept={selectedLabConcept.uuid}
                       path={selectedLabConcept.uuid}
+                      dropDownStyle={{ heigth: '40px', width: '100%' }}
                     />
                   </span>
                 </span>
@@ -345,13 +349,13 @@ export class LabResultEntry extends PureComponent {
                     <span className="lab-result-detail-fieldset-title"> Order Details </span>
                   </div>
                   <div className="fieldset-body">
-                    <div className="col-xs-8">
+                    <div className="col-xs-7">
                       <span className="test-details-label">
                   Order Date:&nbsp;
                         <span className="test-details">{moment(location.state.concept.dateActivated).format('MMM DD h:mm A')}</span>
                       </span>
                     </div>
-                    <div className="col-xs-4">
+                    <div className="col-xs-5">
                       <span className="test-details-label">
                   Urgency:&nbsp;
                         <span className="test-details">{location.state.urgency}</span>

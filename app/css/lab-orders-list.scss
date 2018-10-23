@@ -100,6 +100,7 @@ i.scale:hover {
     width: 100%;
     display: flex;
     .form-filter-group {
+      white-space: nowrap;
       display: flex;
       flex-direction: column;
       &.quater {

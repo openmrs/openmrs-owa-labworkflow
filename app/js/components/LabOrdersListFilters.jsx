@@ -64,7 +64,7 @@ class LabOrderListFilters extends PureComponent {
     const { labTests, handleFieldChange } = this.props;
     return (
       <Dropdown
-        className="form-filter-group quater"
+        className="form-filter-group"
         label="Test Type"
         defaultValue="All"
         list={labTests}
