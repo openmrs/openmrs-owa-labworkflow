@@ -5,7 +5,9 @@ import {
   SET_CONCEPT_MEMBER,
   SET_FETCH_STATUS,
   SET_CONCEPT,
-  UPDATE_PATIENT_INFO,
+  SET_PATIENT_DATA,
+  FETCH_CONCEPT_SUCCEEDED,
+  FETCH_CONCEPT_FAILED,
 } from '../actions/actionTypes';
 import initialState from './initialState';
 
@@ -20,7 +22,7 @@ export const patientsReducer = (state = initialState.patients, action) => {
         [action.patient.uuid]: action.patient,
         ...state,
       };
-    case UPDATE_PATIENT_INFO: {
+    case SET_PATIENT_DATA: {
       const { patientUUID } = action;
       const pat = state[patientUUID];
       const patientInfo = {
@@ -65,9 +67,15 @@ export const conceptMembersReducer = (state = initialState.conceptMembers, actio
       ...state,
     };
   }
-  if (action.type === 'FETCH_CONCEPT_SUCCESS') {
+  if (action.type === FETCH_CONCEPT_FAILED) {
     return {
-      [action.payload.data.uuid]: action.payload.data,
+      [action.conceptUUID]: action.error,
+      ...state,
+    }
+  }
+  if (action.type === FETCH_CONCEPT_SUCCEEDED) {
+    return {
+      [action.conceptUUID]: action.data,
       ...state,
     }
   }

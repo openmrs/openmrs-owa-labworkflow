@@ -4,6 +4,7 @@ import {
   SET_CONCEPT_MEMBER,
   SET_FETCH_STATUS,
   SET_CONCEPT,
+  FETCH_CONCEPT,
 } from './actionTypes';
 
 export const fetchLabConcept = conceptUUID => ({
@@ -26,6 +27,6 @@ export const setFetchStatus = status => ({
 });
 
 export const fetchConcept = conceptUUID => ({
-  type: 'FETCH_CONCEPT',
-  payload: axiosInstance.get(`/concept/${conceptUUID}?v=full`),
+  type: FETCH_CONCEPT,
+  conceptUUID,
 })

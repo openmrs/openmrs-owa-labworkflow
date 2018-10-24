@@ -1,8 +1,7 @@
-/*eslint-disable*/
 import R from 'ramda';
 import { take, takeEvery, put } from 'redux-saga/effects';
 import {
-  FETCH_LAB_ORDERS
+  FETCH_LAB_ORDERS,
 } from '../actions/actionTypes'
 import { setLabTestTypes } from '../actions/labOrdersAction';
 import { setSelectedConcept } from '../actions/labConceptsAction';

@@ -1,7 +1,7 @@
 import actionTypes, {
   SET_SELECTED_PATIENT, ADD_PATIENT,
   FETCH_PATIENT_LAB_TEST_RESULTS,
-  UPDATE_PATIENT_INFO,
+  SET_PATIENT_DATA,
 } from "./actionTypes";
 
 const getPatient = patientUuid => ({
@@ -38,8 +38,8 @@ const fetchPatientLabTestResults = patientUUID => ({
   patientUUID,
 });
 
-const updatePatientInfo = patientInfo => ({
-  type: UPDATE_PATIENT_INFO,
+const setPatientData = patientInfo => ({
+  type: SET_PATIENT_DATA,
   ...patientInfo,
 });
 
@@ -50,5 +50,5 @@ export default {
   setSelectedPatient,
   addPatient,
   fetchPatientLabTestResults,
-  updatePatientInfo,
+  setPatientData,
 };

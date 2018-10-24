@@ -32,13 +32,13 @@ function* fetchAndSetTestResults(action) {
   try {
     const encounterTypeResponse = yield call(constantsRest.fetchLabResultsEncounterType);
     if (encounterTypeResponse) {
-      const encounterUUID = encounterTypeResponse.results[0].value;
+      const encounterTypeUUID = encounterTypeResponse.results[0].value;
       const patientOrdersResponse = yield call(patientRest.getPatientLabOrders, patientUUID);
-      const patientEncountersResponse = yield call(patientRest.getPatientEncounters, { patientUUID, encounterUUID });
+      const patientEncountersResponse = yield call(patientRest.getPatientEncounters, { patientUUID, encounterTypeUUID });
 
       if (patientOrdersResponse && patientEncountersResponse) {
         if (patientOrdersResponse.results.length) {
-          yield put(patientAction.updatePatientInfo({
+          yield put(patientAction.setPatientData({
             meta: {
               orders: patientOrdersResponse.results,
               encounters: patientEncountersResponse.results,
@@ -51,10 +51,8 @@ function* fetchAndSetTestResults(action) {
   } catch (e) {
     yield put(patientAction.getPatientFailed(e.message));
   }
-
 }
 
 export function* fetchPatientTestResults() {
   yield takeEvery(FETCH_PATIENT_LAB_TEST_RESULTS, fetchAndSetTestResults)
 }
-

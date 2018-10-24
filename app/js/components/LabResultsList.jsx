@@ -178,7 +178,7 @@ export class LabResultsList extends PureComponent {
         const validObs = encounter.obs.filter(item => !item.display.includes('Test order number:'));
         return { ...encounter, obs: validObs, order };
       });
-      return labResults;
+      return labResults.filter(result => !R.isEmpty(result.obs));
     };
 
     if (!R.isEmpty(selectedPatient) && !R.isEmpty(orders) && !R.isEmpty(encounters)) {
