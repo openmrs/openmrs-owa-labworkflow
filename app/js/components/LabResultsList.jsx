@@ -9,7 +9,12 @@ import patientAction from '../actions/patientAction';
 import "../../css/lab-results-view.scss";
 
 
-export const Cell = ({ columnName, value, dateAndTimeFormat }) => {
+const patientUUID = process.env.NODE_ENV !== 'production'
+  ? '49287a9d-256b-4f52-9a92-ec61f9166f25' // your patient uuid will go here
+  : '0c9bbb90-c85d-4a13-b2e6-8fc59f999ca4';
+
+
+export const Cell = ({ columnName, value }) => {
   const isPanel = value.obs.length > 1;
 
   if (columnName === 'TYPE') {
@@ -64,6 +69,11 @@ export const Cell = ({ columnName, value, dateAndTimeFormat }) => {
   return null;
 };
 
+Cell.propTypes = {
+  columnName: PropTypes.string.isRequired,
+  value: PropTypes.shape({}).isRequired,
+};
+
 export const CollapsibleCell = ({ columnName, value }) => {
   switch (columnName) {
     case 'TYPE': {
@@ -88,13 +98,19 @@ export const CollapsibleCell = ({ columnName, value }) => {
   }
 };
 
+CollapsibleCell.propTypes = {
+  columnName: PropTypes.string.isRequired,
+  value: PropTypes.shape({}).isRequired,
+};
+
 
 export class LabResultsList extends PureComponent {
   constructor() {
     super();
     this.state = {
-      // would need to get this from the route
-      patientUUID: '49287a9d-256b-4f52-9a92-ec61f9166f25',
+      // would need to get this from the route ideally
+      // if you're working locally, endeavour to hard code a valid patientUUID on line 12
+      patientUUID,
     };
   }
 
@@ -215,6 +231,5 @@ export const mapStateToProps = ({
   patients,
   dateAndTimeFormat,
 });
-
 
 export default connect(mapStateToProps)(LabResultsList);

@@ -1,9 +1,9 @@
 import React, { PureComponent } from 'react';
 import R from 'ramda';
 import { connect } from 'react-redux';
+import PropTypes from 'prop-types';
 import {
   formValidations,
-  Loader,
 } from '@openmrs/react-components';
 import { fetchConcept } from '../actions/labConceptsAction';
 import { formatRangeDisplayText, hasMaxAndMinValues } from '../utils/helpers';
@@ -22,8 +22,10 @@ class RangeCell extends PureComponent {
   };
 
   componentWillMount() {
-    const { conceptUUID, dispatch } = this.props;
-    dispatch(fetchConcept(conceptUUID));
+    const { conceptUUID, dispatch, concept } = this.props;
+    if (R.isEmpty(concept)) {
+      dispatch(fetchConcept(conceptUUID));
+    }
   }
 
   componentWillReceiveProps(nextProps) {
@@ -73,6 +75,12 @@ class RangeCell extends PureComponent {
       </div>
     );
   }
+}
+
+RangeCell.propTypes = {
+  concept: PropTypes.shape({}).isRequired,
+  conceptUUID: PropTypes.string.isRequired,
+  dispatch: PropTypes.func.isRequired,
 }
 
 const mapStateToProps = ({
