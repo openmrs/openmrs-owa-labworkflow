@@ -24,6 +24,7 @@ import {
   PatientHeader,
   EncounterFormPage,
   Obs,
+  ObsGroup,
   formValidations,
   constantsActions,
   Loader,
@@ -203,9 +204,11 @@ export class LabResultEntry extends PureComponent {
           <Row>
             {(hasMembers)
             && (
-              selectedLabConcept.setMembers.map(
-                member => this.renderFormContent(member),
-              ))
+              <ObsGroup groupingConcept={selectedLabConcept.uuid} path={selectedLabConcept.uuid}>
+                {selectedLabConcept.setMembers.map(
+                  member => this.renderFormContent(member),
+                )}
+              </ObsGroup>)
             }
             {(isSingle)
           && (this.renderFormContent(selectedLabConcept))
