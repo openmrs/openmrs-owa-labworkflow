@@ -4,8 +4,13 @@ import {
   takeLatest,
   takeEvery,
 } from 'redux-saga/effects';
-import { patientRest, constantsRest } from '@openmrs/react-components';
-import actionTypes, { FETCH_PATIENT_LAB_TEST_RESULTS, SET_CONCEPT_MEMBER } from '../actions/actionTypes';
+import {
+  patientRest,
+  constantsRest,
+  encounterRest,
+  orderRest,
+} from '@openmrs/react-components';
+import actionTypes, { FETCH_PATIENT_LAB_TEST_RESULTS } from '../actions/actionTypes';
 import patientAction from '../actions/patientAction';
 
 function* getPatient(action) {
@@ -33,9 +38,9 @@ function* fetchAndSetTestResults(action) {
     const encounterTypeResponse = yield call(constantsRest.fetchLabResultsEncounterType);
     if (encounterTypeResponse) {
       const encounterTypeUUID = encounterTypeResponse.results[0].value;
-      const patientOrdersResponse = yield call(patientRest.getPatientLabOrders, patientUUID);
+      const patientOrdersResponse = yield call(orderRest.fetchOrdersByPatient, patientUUID);
       const patientEncountersResponse = yield call(
-        patientRest.getPatientEncounters,
+        encounterRest.getPatientEncounters,
         {
           patientUUID,
           encounterTypeUUID,
