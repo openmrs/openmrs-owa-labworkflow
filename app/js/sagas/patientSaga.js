@@ -34,7 +34,13 @@ function* fetchAndSetTestResults(action) {
     if (encounterTypeResponse) {
       const encounterTypeUUID = encounterTypeResponse.results[0].value;
       const patientOrdersResponse = yield call(patientRest.getPatientLabOrders, patientUUID);
-      const patientEncountersResponse = yield call(patientRest.getPatientEncounters, { patientUUID, encounterTypeUUID });
+      const patientEncountersResponse = yield call(
+        patientRest.getPatientEncounters,
+        {
+          patientUUID,
+          encounterTypeUUID,
+        },
+      );
 
       if (patientOrdersResponse && patientEncountersResponse) {
         if (patientOrdersResponse.results.length) {
@@ -54,5 +60,5 @@ function* fetchAndSetTestResults(action) {
 }
 
 export function* fetchPatientTestResults() {
-  yield takeEvery(FETCH_PATIENT_LAB_TEST_RESULTS, fetchAndSetTestResults)
+  yield takeEvery(FETCH_PATIENT_LAB_TEST_RESULTS, fetchAndSetTestResults);
 }

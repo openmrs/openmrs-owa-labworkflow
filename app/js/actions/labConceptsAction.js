@@ -6,7 +6,6 @@ import {
   SET_CONCEPT,
   FETCH_CONCEPT,
 } from './actionTypes';
-import { conceptRest } from '@openmrs/react-components';
 
 export const fetchLabConcept = conceptUUID => ({
   type: FETCH_LAB_CONCEPT,
@@ -30,4 +29,4 @@ export const setFetchStatus = status => ({
 export const fetchConcept = conceptUUID => ({
   type: FETCH_CONCEPT,
   conceptUUID,
-})
+});

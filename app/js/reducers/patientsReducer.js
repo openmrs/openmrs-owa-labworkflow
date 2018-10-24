@@ -71,13 +71,13 @@ export const conceptMembersReducer = (state = initialState.conceptMembers, actio
     return {
       [action.conceptUUID]: action.error,
       ...state,
-    }
+    };
   }
   if (action.type === FETCH_CONCEPT_SUCCEEDED) {
     return {
       [action.conceptUUID]: action.data,
       ...state,
-    }
+    };
   }
   return state;
 };
