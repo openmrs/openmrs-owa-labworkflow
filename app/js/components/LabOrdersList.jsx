@@ -21,8 +21,8 @@ import { filterThrough } from '../utils/helpers';
 import "../../css/lab-orders-list.scss";
 
 const patientUUID = process.env.NODE_ENV !== 'production'
-  ? 'ae62259b-99c4-4262-95ad-65ae5a18d663' // your patient uuid will go here
-  : '0c9bbb90-c85d-4a13-b2e6-8fc59f999ca4';
+  ? 'b2231edd-f62b-47fc-a9c7-feb49c63721c' // your patient uuid will go here
+  : 'd61f8c9d-a2c7-464d-9747-d241fad1eb51';
 
 
 export const Cell = ({ columnName, value, dateAndTimeFormat }) => {
