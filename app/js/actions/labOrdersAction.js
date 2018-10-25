@@ -5,7 +5,7 @@ import mockOrders from '../mockData/mockOrders.json';
 
 export const fetchLabOrders = () => ({
   type: FETCH_LAB_ORDERS,
-  payload: process.env.NODE_ENV !== 'production' ? Promise.resolve(mockOrders) : axiosInstance.get(`order?totalCount=true&sort=desc&status=active&patient=0c9bbb90-c85d-4a13-b2e6-8fc59f999ca4&v=full`),
+  payload: process.env.NODE_ENV !== 'production' ? Promise.resolve(mockOrders) : axiosInstance.get(`testorder?totalCount=true&sort=desc&status=active&patient=0c9bbb90-c85d-4a13-b2e6-8fc59f999ca4&v=full`),
 });
 
 export const setLabTestTypes = testTypes => ({
