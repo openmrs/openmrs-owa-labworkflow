@@ -21,7 +21,7 @@ import { filterThrough } from '../utils/helpers';
 import "../../css/lab-orders-list.scss";
 
 const patientUUID = process.env.NODE_ENV !== 'production'
-  ? 'b2231edd-f62b-47fc-a9c7-feb49c63721c' // your patient uuid will go here
+  ? '79a61c2c-7737-4ee5-9b69-0b3f851bdc2c' // your patient uuid will go here
   : 'd61f8c9d-a2c7-464d-9747-d241fad1eb51';
 
 
@@ -220,7 +220,6 @@ export class LabOrdersList extends PureComponent {
 LabOrdersList.propTypes = {
   orders: PropTypes.array.isRequired,
   labTests: PropTypes.array.isRequired,
-  isLoading: PropTypes.bool.isRequired,
   dateAndTimeFormat: PropTypes.string.isRequired,
 };
 

@@ -8,6 +8,9 @@ export default {
       message: null,
     },
   },
+  labOrderTrendsReducer: {
+    result: [],
+  },
   selectedPatient: {},
   selectedLabConcept: {},
   conceptMembers: {},

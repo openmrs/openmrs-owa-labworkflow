@@ -1,5 +1,6 @@
 /*eslint-disable*/
 import matchSorter from 'match-sorter';
+import moment from 'moment';
 
 const dateToInt = dateStr => new Date(dateStr).getTime();
 
@@ -50,4 +51,43 @@ export const filterThrough = (filters, data) => {
     originalData = filteredData;
   }
   return originalData;
+}
+
+export const getTestResultDate = (data) => {
+  const encounterDatetime = data.encounter.encounterDatetime
+  let resultDate;
+  if (data.encounter.obs) {
+    const obs = data.encounter.obs;
+    obs.some(eachObs => {
+      if (eachObs.display.toLowerCase().match('date of test result')) {
+        if (encounterDatetime) {
+          resultDate = eachObs.value;
+        }
+      }
+    })
+  }
+  if (resultDate) {
+    return moment(resultDate).format('DD-MMM-YYYY');
+  } else {
+    return moment(data.obsDatetime).format('DD-MMM-YYYY');
+  }
+}
+
+export const getSampleDate = (data) => {
+  let sampleDate;
+  if (data.encounter.obs) {
+    const obs = data.encounter.obs;
+    obs.some(eachObs => {
+      if (eachObs.display.toLowerCase().match('sample date estimated')) {
+        sampleDate = eachObs.value;
+      }
+    })
+  }
+  if (sampleDate) {
+    return `${moment(sampleDate).format('DD-MMM-YYYY')}*`;
+  } else if(data.encounter && data.encounter.encounterDatetime){
+    return moment(data.encounter.encounterDatetime).format('DD-MMM-YYYY');
+  } else {
+    return "Unknown"
+  }
 }
