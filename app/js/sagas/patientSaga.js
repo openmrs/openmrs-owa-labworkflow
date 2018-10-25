@@ -39,7 +39,7 @@ function* fetchAndSetTestResults(action) {
     if (encounterTypeResponse) {
       const encounterTypeUUID = encounterTypeResponse.results[0].value;
       const patientOrdersResponse = yield call(orderRest.fetchActiveOrdersByPatient, patientUUID);
- 
+
       const patientEncountersResponse = yield call(
         encounterRest.fetchEncountersByPatient,
         patientUUID,
