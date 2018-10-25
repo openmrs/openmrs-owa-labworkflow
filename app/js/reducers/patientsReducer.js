@@ -5,8 +5,12 @@ import {
   SET_CONCEPT_MEMBER,
   SET_FETCH_STATUS,
   SET_CONCEPT,
+  SET_PATIENT_DATA,
+  FETCH_CONCEPT_SUCCEEDED,
+  FETCH_CONCEPT_FAILED,
 } from '../actions/actionTypes';
 import initialState from './initialState';
+
 
 export const patientsReducer = (state = initialState.patients, action) => {
   switch (action.type) {
@@ -18,6 +22,18 @@ export const patientsReducer = (state = initialState.patients, action) => {
         [action.patient.uuid]: action.patient,
         ...state,
       };
+    case SET_PATIENT_DATA: {
+      const { patientUUID } = action;
+      const pat = state[patientUUID];
+      const patientInfo = {
+        ...state[patientUUID],
+        ...action.meta,
+      };
+      return {
+        ...state,
+        [patientUUID]: patientInfo,
+      };
+    }
     default: return state;
   }
 };
@@ -48,6 +64,18 @@ export const conceptMembersReducer = (state = initialState.conceptMembers, actio
   if (action.type.includes(SET_CONCEPT_MEMBER)) {
     return {
       [action.member.uuid]: action.member,
+      ...state,
+    };
+  }
+  if (action.type === FETCH_CONCEPT_FAILED) {
+    return {
+      [action.conceptUUID]: action.error,
+      ...state,
+    };
+  }
+  if (action.type === FETCH_CONCEPT_SUCCEEDED) {
+    return {
+      [action.conceptUUID]: action.data,
       ...state,
     };
   }

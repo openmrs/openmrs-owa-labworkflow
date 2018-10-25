@@ -4,6 +4,7 @@ import {
   SET_CONCEPT_MEMBER,
   SET_FETCH_STATUS,
   SET_CONCEPT,
+  FETCH_CONCEPT,
 } from './actionTypes';
 
 export const fetchLabConcept = conceptUUID => ({
@@ -23,4 +24,9 @@ export const setSelectedConcept = () => ({
 export const setFetchStatus = status => ({
   type: SET_FETCH_STATUS,
   status,
+});
+
+export const fetchConcept = conceptUUID => ({
+  type: FETCH_CONCEPT,
+  conceptUUID,
 });

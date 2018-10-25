@@ -8,7 +8,13 @@ import {
 } from 'redux-saga/effects';
 import { conceptRest } from '@openmrs/react-components';
 
-import { FETCH_LAB_CONCEPT, SET_CONCEPT_MEMBER } from '../actions/actionTypes';
+import {
+  FETCH_LAB_CONCEPT,
+  SET_CONCEPT_MEMBER,
+  FETCH_CONCEPT,
+  FETCH_CONCEPT_SUCCEEDED,
+  FETCH_CONCEPT_FAILED,
+} from '../actions/actionTypes';
 import { setMember, setFetchStatus } from '../actions/labConceptsAction';
 
 
@@ -44,4 +50,28 @@ export function* setConceptMembers(action) {
 
 export function* setLabConcepts() {
   yield takeEvery(`${FETCH_LAB_CONCEPT}_SUCCESS`, setConceptMembers);
+}
+
+export function* fetchAndSetConcept(action) {
+  const { conceptUUID } = action;
+  try {
+    const response = yield call(conceptRest.getConcept, conceptUUID);
+    if (response) {
+      yield put({
+        type: FETCH_CONCEPT_SUCCEEDED,
+        data: response,
+        conceptUUID,
+      });
+    }
+  } catch (e) {
+    yield put({
+      type: FETCH_CONCEPT_FAILED,
+      error: e,
+      conceptUUID,
+    });
+  }
+}
+
+export function* fetchConcept() {
+  yield takeEvery(FETCH_CONCEPT, fetchAndSetConcept);
 }

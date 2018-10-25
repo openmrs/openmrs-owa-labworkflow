@@ -1,4 +1,4 @@
-import { getConcept, setConceptMembers, setLabConcepts } from '../../app/js/sagas/conceptsSaga';
+import { getConcept, setConceptMembers, setLabConcepts } from '../../app/js/sagas/conceptSaga';
 import { FETCH_LAB_CONCEPT, SET_FETCH_STATUS } from '../../app/js/actions/actionTypes';
 
 let sagaTester;
