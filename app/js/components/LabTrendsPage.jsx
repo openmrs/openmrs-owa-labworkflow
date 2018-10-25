@@ -54,9 +54,9 @@ export const Cell = ({ columnName, conceptUuid, value }) => {
 };
 export class LabTrendsPage extends PureComponent {
   componentDidMount() {
-    const { fetchLabOrdersTrends } = this.props;
-    const conceptUuid = this.props.history.location.state.uuid;
-    const patientUuid = this.props.patientHeaderDetail.uuid;
+    const { fetchLabOrdersTrends, patientHeaderDetail, history: { location: { state } } } = this.props;
+    const conceptUuid = state.uuid;
+    const patientUuid = patientHeaderDetail.uuid;
     fetchLabOrdersTrends(patientUuid, conceptUuid);
   }
 
@@ -64,7 +64,7 @@ export class LabTrendsPage extends PureComponent {
     const {
       labOrdersTrend: { result },
       patientHeaderDetail,
-      history: { location: { state: { uuid } } },
+      history: { location: { state } },
     } = this.props;
 
     const fields = ["SAMPLE DATE", "RESULT DATE", "RESULT", "NORMAL RANGE"];
@@ -74,7 +74,7 @@ export class LabTrendsPage extends PureComponent {
     {columnName}
   </span>,
       accessor: "",
-      Cell: data => <Cell {...data} columnName={columnName} conceptUuid={uuid} />,
+      Cell: data => <Cell {...data} columnName={columnName} conceptUuid={state.uuid} />,
       className: `lab-order-list-cell-${columnName.replace(' ', '-').toLocaleLowerCase()}`,
       headerClassName: `lab-order-list-header-${columnName.replace(' ', '-').toLocaleLowerCase()}`,
     }));
@@ -83,7 +83,7 @@ export class LabTrendsPage extends PureComponent {
     return (
       <div>
         {patientHeaderDetail && <PatientHeader patient={patientHeaderDetail} />}
-        <h1>Lab trends page</h1>
+        <h1>{`${state.display} Trend`}</h1>
         <div className="lab-orders-trend-list">
           <SortableTable
             data={result}
