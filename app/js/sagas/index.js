@@ -1,7 +1,7 @@
 import { sagas as openmrsSagas } from '@openmrs/react-components';
 import { patientSagas, fetchPatientTestResults } from './patientSaga';
 import { setLabTestsSaga, clear, resetState } from './labOrdersSaga';
-import { fetchConcept } from './conceptSaga';
+import { setLabConcepts, fetchConcept } from './conceptSaga';
 
 const sagas = {
   setLabTestsSaga,
@@ -10,6 +10,7 @@ const sagas = {
   clear,
   resetState,
   fetchPatientTestResults,
+  setLabConcepts,
   fetchConcept,
 };
 

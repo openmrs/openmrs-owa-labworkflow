@@ -1,4 +1,4 @@
-import patientSagas from '../../app/js/sagas/patientSaga';
+import { patientSagas } from '../../app/js/sagas/patientSaga';
 import actionTypes from '../../app/js/actions/actionTypes';
 
 let sagaTester;

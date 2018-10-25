@@ -1,107 +1,16 @@
 import React, { PureComponent } from 'react';
 import R from 'ramda';
 import { connect } from 'react-redux';
-import moment from 'moment';
 import PropTypes from 'prop-types';
 import { SortableTable, Loader, constantsActions } from '@openmrs/react-components';
-import RangeCell from './RangeCell';
+import Cell from './LabResultListCells';
 import patientAction from '../actions/patientAction';
 import "../../css/lab-results-view.scss";
 
 
 const patientUUID = process.env.NODE_ENV !== 'production'
-  ? '49287a9d-256b-4f52-9a92-ec61f9166f25' // your patient uuid will go here
+  ? 'ae62259b-99c4-4262-95ad-65ae5a18d663' // your patient uuid will go here
   : '0c9bbb90-c85d-4a13-b2e6-8fc59f999ca4';
-
-
-export const Cell = ({ columnName, value }) => {
-  const isPanel = value.obs.length > 1;
-
-  if (columnName === 'TYPE') {
-    return (
-      <div className="table_cell type">
-        <span>{value.order.display}</span>
-      </div>
-    );
-  }
-
-  if (columnName === 'REQUEST DATE') {
-    return (
-      <div className="table_cell request-date">
-        <span>{moment(value.order.dateActivated).format("DD-MMM-YYYY")}</span>
-      </div>
-    );
-  }
-
-  if (columnName === 'STATUS') {
-    return (
-      <div className="table_cell status">
-        <span>Reported</span>
-      </div>
-    );
-  }
-
-  if (columnName === 'SAMPLE DATE') {
-    return (
-      <div className="table_cell sample-date">
-        <span>{moment(value.encouterDatetime).format("DD-MMM-YYYY")}</span>
-      </div>
-    );
-  }
-
-  if (!isPanel) {
-    const labResult = value.obs[0];
-    switch (columnName) {
-      case 'RESULT':
-        return (
-          <div className="table_cell result">
-            <span>{labResult.value.display}</span>
-          </div>
-        );
-      case 'NORMAL RANGE':
-        return (
-          <RangeCell conceptUUID={labResult.concept.uuid} />
-        );
-      default:
-        return null;
-    }
-  }
-  return null;
-};
-
-Cell.propTypes = {
-  columnName: PropTypes.string.isRequired,
-  value: PropTypes.shape({}).isRequired,
-};
-
-export const CollapsibleCell = ({ columnName, value }) => {
-  switch (columnName) {
-    case 'TYPE': {
-      return (
-        <div className="table_cell type">
-          <span>{value.concept.display}</span>
-        </div>
-      );
-    }
-    case 'RESULT':
-      return (
-        <div className="table_cell result">
-          <span>{value.value}</span>
-        </div>
-      );
-    case 'NORMAL RANGE':
-      return (
-        <RangeCell conceptUUID={value.concept.uuid} />
-      );
-    default:
-      return null;
-  }
-};
-
-CollapsibleCell.propTypes = {
-  columnName: PropTypes.string.isRequired,
-  value: PropTypes.shape({}).isRequired,
-};
 
 
 export class LabResultsList extends PureComponent {
@@ -133,7 +42,7 @@ export class LabResultsList extends PureComponent {
     {columnName}
   </span>,
       accessor: "",
-      Cell: data => <Cell {...data} columnName={columnName} dateAndTimeFormat={dateAndTimeFormat} />,
+      Cell: data => <Cell {...data} columnName={columnName} dateAndTimeFormat={dateAndTimeFormat} type="single" />,
       className: `lab-results-list-cell-${columnName.replace(' ', '-').toLocaleLowerCase()}`,
       headerClassName: `lab-result-list-header-${columnName.replace(' ', '-').toLocaleLowerCase()}`,
     }));
@@ -150,11 +59,13 @@ export class LabResultsList extends PureComponent {
           noDataMessage="No orders found"
           defaultPageSize={10}
           subComponent={(row) => {
-            const isPanel = row.original.obs.length > 1;
+            const isPanel = (row.original.encounter)
+              && (row.original.encounter.obs)
+              && (row.original.encounter.obs.length > 1);
             const rowFields = ["TYPE", "RESULT", "NORMAL RANGE"];
             const rowColumnMetadata = rowFields.map(columnName => ({
               accessor: "",
-              Cell: data => <CollapsibleCell {...data} columnName={columnName} />,
+              Cell: data => <Cell {...data} columnName={columnName} type="panel" />,
               className: `lab-results-list-cell-${columnName.replace(' ', '-').toLocaleLowerCase()}`,
               headerClassName: 'lab-results-list-header',
             }));
@@ -162,12 +73,12 @@ export class LabResultsList extends PureComponent {
               return (
                 <div className="collapsible-panel">
                   <SortableTable
-                    data={row.original.obs}
+                    data={row.original.encounter.obs}
                     columnMetadata={rowColumnMetadata}
                     collapseOnDataChange={false}
                     collapseOnPageChange={false}
                     showPagination={false}
-                    defaultPageSize={row.original.obs.length}
+                    defaultPageSize={row.original.encounter.obs.length}
                     defaultClassName=""
                   />
                 </div>
@@ -186,19 +97,50 @@ export class LabResultsList extends PureComponent {
     const selectedPatient = patients[patientUUID] || {};
     const { encounters = [], orders = [] } = selectedPatient;
 
-    const getPatientLabResults = (patient) => {
-      const labResults = encounters.map((encounter) => {
-        const testOrderObs = encounter.obs.filter(item => item.display.includes('Test order number:'));
-        const orderNumber = testOrderObs[0].value;
-        const order = patient.orders.filter(item => item.orderNumber === orderNumber)[0];
-        const validObs = encounter.obs.filter(item => !item.display.includes('Test order number:'));
-        return { ...encounter, obs: validObs, order };
+    const getPatientLabResults = () => {
+      const labResults = orders.map((order) => {
+        const status = 'Ordered';
+        const matchedEnocunter = encounters.filter((encounter) => {
+          const testOrderObs = encounter.obs.filter(item => item.display.includes('Test order number:'));
+          const orderNumber = testOrderObs[0].value;
+          return orderNumber === order.orderNumber;
+        });
+        const hasEncounter = !R.isEmpty(matchedEnocunter);
+        if (hasEncounter) {
+          const encounter = matchedEnocunter[0];
+          const hasObs = !R.isEmpty(encounter.obs);
+          if (hasObs) {
+            
+            return {
+              order,
+              encounter: {
+                ...encounter,
+                obs: R.pipe(
+                  R.filter(item => !item.display.includes('Date of test results')),
+                  R.filter(item => !item.display.includes('Location of laboratory')),
+                  R.filter(item => !item.display.includes('Test order number')),
+                )(encounter.obs),
+              },
+              status: 'Taken',
+            };
+          }
+          return {
+            order,
+            encounter: matchedEnocunter[0],
+            status: 'Reported',
+          };
+        }
+
+        return {
+          order,
+          status,
+        };
       });
-      return labResults.filter(result => !R.isEmpty(result.obs));
+      return labResults;
     };
 
-    if (!R.isEmpty(selectedPatient) && !R.isEmpty(orders) && !R.isEmpty(encounters)) {
-      const labResults = getPatientLabResults(patients[patientUUID]);
+    if (!R.isEmpty(selectedPatient) && !R.isEmpty(orders)) {
+      const labResults = getPatientLabResults();
       return (
         <div className="main-container">
           <h2>
@@ -218,9 +160,6 @@ export class LabResultsList extends PureComponent {
 }
 
 LabResultsList.propTypes = {
-  obs: PropTypes.array.isRequired,
-  labTests: PropTypes.array.isRequired,
-  isLoading: PropTypes.bool.isRequired,
   dateAndTimeFormat: PropTypes.string.isRequired,
 };
 

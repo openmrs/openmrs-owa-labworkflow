@@ -263,7 +263,7 @@ exports[`<LabResultEntry /> component renders correctly with valid props 1`] = `
                         <span
                           className="test-details"
                         >
-                          Aug 30 5:34 PM
+                          Oct 25 7:38 AM
                         </span>
                       </span>
                     </div>
@@ -312,6 +312,7 @@ exports[`<LabResultEntry /> component renders correctly with valid props 1`] = `
                     className="encounter-form-componnent"
                   >
                     <Connect(EncounterFormPage)
+                      backLink="/"
                       defaultValues={
                         Array [
                           Object {
@@ -345,7 +346,7 @@ exports[`<LabResultEntry /> component renders correctly with valid props 1`] = `
                                 <span
                                   className="obs-date-label"
                                 >
-                                  Result Date
+                                  Result Date:
                                 </span>
                                 <span
                                   className="obs-date-field"
@@ -390,58 +391,71 @@ exports[`<LabResultEntry /> component renders correctly with valid props 1`] = `
                                   Reason: 
                                 </span>
                                 <WithObsGroupContext(WithFormContext(Connect(Obs)))
+                                  defaultValue=" "
+                                  dropDownStyle={
+                                    Object {
+                                      "heigth": "40px",
+                                      "width": "100%",
+                                    }
+                                  }
                                   path="did-not-perform-dropdown"
                                   widget="dropdown"
                                 />
                               </div>
                             </div>
                             <div
-                              className="estimated-checkbox"
-                            >
-                              <WithObsGroupContext(WithFormContext(Connect(Obs)))
-                                checkBoxTitle="estimated"
-                                path="estimated-checkbox"
-                                widget="checkbox"
-                              />
-                            </div>
-                            <div
-                              className="test-location"
-                            >
-                              <span
-                                className="test-location-label"
-                              >
-                                Test location: 
-                              </span>
-                              <WithObsGroupContext(WithFormContext(Connect(Obs)))
-                                dropDownStyle={
-                                  Object {
-                                    "heigth": "35px",
-                                  }
-                                }
-                                path="test-location-dropdown"
-                                widget="dropdown"
-                              />
-                            </div>
-                            <div
-                              className="specimen-collection-date"
+                              className="specimen-detail"
                             >
                               <div
-                                className="col-xs-10 encounter-date-container"
+                                className="estimated-checkbox"
                               >
-                                <span
-                                  className="encounter-date-label"
-                                >
-                                  Specimen Collection Date:  
-                                </span>
-                                <WithFormContext(Connect(EncounterDate))
-                                  defaultDate={"2018-10-14T23:00:00.000Z"}
-                                  field="dateFromField"
-                                  handleDateChange={[Function]}
-                                  label="Specimen Collection Date:"
-                                  labelClassName="date-picker-label"
+                                <WithObsGroupContext(WithFormContext(Connect(Obs)))
+                                  checkBoxTitle="estimated"
+                                  path="estimated-checkbox"
+                                  widget="checkbox"
                                 />
                               </div>
-                              <br />
+                              <div
+                                className="test-location"
+                              >
+                                <span
+                                  className="test-location-label"
+                                >
+                                  Test location: 
+                                </span>
+                                <WithObsGroupContext(WithFormContext(Connect(Obs)))
+                                  defaultValue=" "
+                                  dropDownStyle={
+                                    Object {
+                                      "heigth": "40px",
+                                      "width": "100%",
+                                    }
+                                  }
+                                  path="test-location-dropdown"
+                                  widget="dropdown"
+                                />
+                              </div>
+                              <div
+                                className="specimen-collection-date"
+                              >
+                                <div
+                                  className="col-xs-10 encounter-date-container"
+                                >
+                                  <span
+                                    className="encounter-date-label"
+                                  >
+                                    Specimen Collection Date:  
+                                  </span>
+                                  <WithFormContext(Connect(EncounterDate))
+                                    defaultDate={"2018-10-24T23:00:00.000Z"}
+                                    field="dateFromField"
+                                    handleDateChange={[Function]}
+                                    label="Specimen Collection Date:"
+                                    labelClassName="date-picker-label"
+                                  />
+                                </div>
+                                <br />
+                              </div>
                             </div>
                             <Row
                               bsClass="row"
@@ -484,7 +498,7 @@ exports[`<LabResultEntry /> component renders correctly with valid props 1`] = `
                                 <span
                                   className="valid-range"
                                 >
-                                  11cc - 22cc
+                                  11 - 22
                                 </span>
                               </FormGroup>
                               <FormGroup
@@ -524,7 +538,7 @@ exports[`<LabResultEntry /> component renders correctly with valid props 1`] = `
                                 <span
                                   className="valid-range"
                                 >
-                                  11cc - 22cc
+                                  11 - 22
                                 </span>
                               </FormGroup>
                             </Row>
@@ -535,6 +549,7 @@ exports[`<LabResultEntry /> component renders correctly with valid props 1`] = `
                       patient={false}
                     >
                       <EncounterFormPage
+                        backLink="/"
                         defaultValues={
                           Array [
                             Object {
@@ -569,7 +584,7 @@ exports[`<LabResultEntry /> component renders correctly with valid props 1`] = `
                                   <span
                                     className="obs-date-label"
                                   >
-                                    Result Date
+                                    Result Date:
                                   </span>
                                   <span
                                     className="obs-date-field"
@@ -614,58 +629,71 @@ exports[`<LabResultEntry /> component renders correctly with valid props 1`] = `
                                     Reason: 
                                   </span>
                                   <WithObsGroupContext(WithFormContext(Connect(Obs)))
+                                    defaultValue=" "
+                                    dropDownStyle={
+                                      Object {
+                                        "heigth": "40px",
+                                        "width": "100%",
+                                      }
+                                    }
                                     path="did-not-perform-dropdown"
                                     widget="dropdown"
                                   />
                                 </div>
                               </div>
                               <div
-                                className="estimated-checkbox"
-                              >
-                                <WithObsGroupContext(WithFormContext(Connect(Obs)))
-                                  checkBoxTitle="estimated"
-                                  path="estimated-checkbox"
-                                  widget="checkbox"
-                                />
-                              </div>
-                              <div
-                                className="test-location"
-                              >
-                                <span
-                                  className="test-location-label"
-                                >
-                                  Test location: 
-                                </span>
-                                <WithObsGroupContext(WithFormContext(Connect(Obs)))
-                                  dropDownStyle={
-                                    Object {
-                                      "heigth": "35px",
-                                    }
-                                  }
-                                  path="test-location-dropdown"
-                                  widget="dropdown"
-                                />
-                              </div>
-                              <div
-                                className="specimen-collection-date"
+                                className="specimen-detail"
                               >
                                 <div
-                                  className="col-xs-10 encounter-date-container"
+                                  className="estimated-checkbox"
                                 >
-                                  <span
-                                    className="encounter-date-label"
-                                  >
-                                    Specimen Collection Date:  
-                                  </span>
-                                  <WithFormContext(Connect(EncounterDate))
-                                    defaultDate={"2018-10-14T23:00:00.000Z"}
-                                    field="dateFromField"
-                                    handleDateChange={[Function]}
-                                    label="Specimen Collection Date:"
-                                    labelClassName="date-picker-label"
+                                  <WithObsGroupContext(WithFormContext(Connect(Obs)))
+                                    checkBoxTitle="estimated"
+                                    path="estimated-checkbox"
+                                    widget="checkbox"
                                   />
                                 </div>
-                                <br />
+                                <div
+                                  className="test-location"
+                                >
+                                  <span
+                                    className="test-location-label"
+                                  >
+                                    Test location: 
+                                  </span>
+                                  <WithObsGroupContext(WithFormContext(Connect(Obs)))
+                                    defaultValue=" "
+                                    dropDownStyle={
+                                      Object {
+                                        "heigth": "40px",
+                                        "width": "100%",
+                                      }
+                                    }
+                                    path="test-location-dropdown"
+                                    widget="dropdown"
+                                  />
+                                </div>
+                                <div
+                                  className="specimen-collection-date"
+                                >
+                                  <div
+                                    className="col-xs-10 encounter-date-container"
+                                  >
+                                    <span
+                                      className="encounter-date-label"
+                                    >
+                                      Specimen Collection Date:  
+                                    </span>
+                                    <WithFormContext(Connect(EncounterDate))
+                                      defaultDate={"2018-10-24T23:00:00.000Z"}
+                                      field="dateFromField"
+                                      handleDateChange={[Function]}
+                                      label="Specimen Collection Date:"
+                                      labelClassName="date-picker-label"
+                                    />
+                                  </div>
+                                  <br />
+                                </div>
                               </div>
                               <Row
                                 bsClass="row"
@@ -708,7 +736,7 @@ exports[`<LabResultEntry /> component renders correctly with valid props 1`] = `
                                   <span
                                     className="valid-range"
                                   >
-                                    11cc - 22cc
+                                    11 - 22
                                   </span>
                                 </FormGroup>
                                 <FormGroup
@@ -748,7 +776,7 @@ exports[`<LabResultEntry /> component renders correctly with valid props 1`] = `
                                   <span
                                     className="valid-range"
                                   >
-                                    11cc - 22cc
+                                    11 - 22
                                   </span>
                                 </FormGroup>
                               </Row>

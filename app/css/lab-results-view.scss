@@ -11,7 +11,7 @@
   }
 
   .lab-results-list-cell-type {
-    min-width: 60% !important;
+    min-width: 50% !important;
   }
 
   .lab-results-list-header {
@@ -27,9 +27,10 @@
   }
 
   .lab-results-list-cell-result {
-    max-width: 10% !important;
+    max-width: 25% !important;
     display: flex;
     justify-content: center;
+    font-size: 12px !important;
   }
 
 }
@@ -38,6 +39,11 @@
 .lab-results-list-header-emr-id {
     max-width: 80px;
 }
+
+.lab-results-list-cell-normal-range {
+    display: flex;
+    justify-content: center;
+  }
 
 i.scale:hover {
   text-decoration: none;
@@ -125,6 +131,22 @@ i.scale:hover {
     max-width: 80px;
     display: flex;
     justify-content: center;
+}
+
+.spiner {
+    border: 0.3em solid black;
+    border-top: 0.3em #fff;
+    border-radius: 50%;
+    width: 1em;
+    height: 1em;
+    animation: spin 2s linear infinite;
+    margin: auto;
+}
+
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
 }
 
 
