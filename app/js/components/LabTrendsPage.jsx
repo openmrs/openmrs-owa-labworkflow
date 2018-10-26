@@ -74,8 +74,8 @@ export class LabTrendsPage extends PureComponent {
   </span>,
       accessor: "",
       Cell: data => <Cell {...data} columnName={columnName} conceptUuid={state.uuid} />,
-      className: `lab-order-list-cell-${columnName.replace(' ', '-').toLocaleLowerCase()}`,
-      headerClassName: `lab-order-list-header-${columnName.replace(' ', '-').toLocaleLowerCase()}`,
+      className: `lab-trends-list-cell-${columnName.replace(' ', '-').toLocaleLowerCase()}`,
+      headerClassName: `lab-trends-list-header-${columnName.replace(' ', '-').toLocaleLowerCase()}`,
     }));
 
 
