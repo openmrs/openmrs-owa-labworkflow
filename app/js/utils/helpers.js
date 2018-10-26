@@ -92,3 +92,15 @@ export const getSampleDate = (data) => {
     return "Unknown"
   }
 }
+
+export const getResultValue = (data) => {
+  let resultValue;
+  if(data.value === null) {
+    resultValue = '';
+  } else if(data.value.display || data.value) {
+    resultValue = data.value.display || data.value;
+  } else {
+    resultValue = '';
+  }
+  return resultValue;
+}

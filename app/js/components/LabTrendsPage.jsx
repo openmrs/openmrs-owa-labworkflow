@@ -16,7 +16,7 @@ import {
 
 import RangeCell from "./RangeCell";
 import { fetchLabTestResults } from '../actions/labOrdersAction';
-import { getTestResultDate, getSampleDate } from '../utils/helpers';
+import { getTestResultDate, getSampleDate, getResultValue } from '../utils/helpers';
 
 import "../../css/lab-orders-trends-page.scss";
 
@@ -39,7 +39,7 @@ export const Cell = ({ columnName, conceptUuid, value }) => {
     case 'RESULT':
       return (
         <div className="table_cell result">
-          <span>{value.value}</span>
+          <span>{getResultValue(value)}</span>
         </div>
       );
 

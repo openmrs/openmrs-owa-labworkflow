@@ -127,10 +127,17 @@ export class LabResultsList extends PureComponent {
 
   handleShowLabTrendsPage(data) {
     const { history } = this.props;
-    history.push({
-      pathname: "/labtrendspage",
-      state: data.concept,
-    });
+    if (data.order) {
+      history.push({
+        pathname: "/labtrendspage",
+        state: data.encounter.obs[0].concept,
+      });
+    } else if (data.concept) {
+      history.push({
+        pathname: "/labtrendspage",
+        state: data.concept,
+      });
+    }
   }
 
   renderLabResultsTable(labResults) {
@@ -155,6 +162,7 @@ export class LabResultsList extends PureComponent {
           filteredFields={fields}
           filterType="none"
           showFilter={false}
+          // rowOnClick={this.handleShowLabTrendsPage}
           isSortable={false}
           noDataMessage="No orders found"
           defaultPageSize={10}
