@@ -8,7 +8,7 @@ export const fetchLabOrders = patientUUID => ({
 
 export const fetchLabOrdersTrends = (patientUuid, conceptUuid) => ({
   type: FETCH_LAB_ORDER_TRENDS,
-  payload: axiosInstance.get(`obs/?patient=${patientUuid}&concept=${conceptUuid}&v=custom:(id,uuid,display,obsDatetime,value:(id,uuid,display,name:(uuid,name)),encounter:(id,uuid,encounterDatetime,obs:(display,value)))`),
+  payload: axiosInstance.get(`obs/?patient=${patientUuid}&concept=${conceptUuid}&v=custom:(id,uuid,display,obsDatetime,value:(id,uuid,display,name:(uuid,name)),encounter:(id,uuid,encounterDatetime,obs:(uuid,display,value)))`),
 });
 
 export const setLabTestTypes = testTypes => ({

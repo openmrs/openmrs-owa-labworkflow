@@ -43,10 +43,10 @@ export const Cell = ({ columnName, conceptUuid, value }) => {
         </div>
       );
 
-    // case 'NORMAL RANGE':
-    //   return (
-    //     // <RangeCell conceptUUID={conceptUuid} />
-    //   );
+    case 'NORMAL RANGE':
+      return (
+        <RangeCell conceptUUID={conceptUuid} />
+      );
     default:
       return null;
   }

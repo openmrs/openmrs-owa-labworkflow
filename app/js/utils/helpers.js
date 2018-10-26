@@ -59,7 +59,8 @@ export const getTestResultDate = (data) => {
   if (data.encounter.obs) {
     const obs = data.encounter.obs;
     obs.some(eachObs => {
-      if (eachObs.display.toLowerCase().match('date of test result')) {
+      // Checking if there is a Date of test results Obs
+      if (eachObs.uuid === 'fa17dc82-4ffe-4ea3-bf1c-c2d596821dcc') {
         if (encounterDatetime) {
           resultDate = eachObs.value;
         }
