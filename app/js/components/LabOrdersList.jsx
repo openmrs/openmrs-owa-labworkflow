@@ -106,6 +106,7 @@ export class LabOrdersList extends PureComponent {
   componentDidMount() {
     const { dispatch } = this.props;
     dispatch(constantsActions.getDateAndTimeFormat());
+    dispatch(constantsActions.fetchLabResultsEncounterType());
     dispatch(constantsActions.fetchLabResultsDidNotPerformQuestion());
     dispatch(constantsActions.fetchLabResultsTestOrderType());
     dispatch(constantsActions.fetchLabResultsDidNotPerformAnswer());
