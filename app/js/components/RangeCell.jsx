@@ -2,24 +2,17 @@ import React, { PureComponent } from 'react';
 import R from 'ramda';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
-import {
-  formValidations,
-} from '@openmrs/react-components';
 import { fetchConcept } from '../actions/labConceptsAction';
 import { formatRangeDisplayText, hasMaxAndMinValues } from '../utils/helpers';
 
-const {
-  minValue,
-  maxValue,
-  abnormalMaxValue,
-  abnormalMinValue,
-  maxDateValue,
-} = formValidations;
-
 class RangeCell extends PureComponent {
-  state = {
-    concept: {},
-  };
+  constructor(props) {
+    super(props);
+
+    this.state = {
+      concept: {},
+    };
+  }
 
   componentWillMount() {
     const { conceptUUID, dispatch, concept } = this.props;
@@ -84,7 +77,7 @@ RangeCell.propTypes = {
 const mapStateToProps = ({
   conceptMembers,
 }, {
- conceptUUID,
+  conceptUUID,
 }) => ({
   concept: conceptMembers[conceptUUID] || {},
   conceptMembers,

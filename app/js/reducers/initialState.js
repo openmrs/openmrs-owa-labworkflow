@@ -8,6 +8,14 @@ export default {
       message: null,
     },
   },
+  labTestResultsReducer: {
+    results: [],
+    isLoading: false,
+    error: {
+      status: false,
+      message: null,
+    },
+  },
   selectedPatient: {},
   selectedLabConcept: {},
   conceptMembers: {},

@@ -10,7 +10,7 @@ import "../../css/lab-results-view.scss";
 
 
 const patientUUID = process.env.NODE_ENV !== 'production'
-  ? 'b2231edd-f62b-47fc-a9c7-feb49c63721c' // your patient uuid will go here
+  ? '79a61c2c-7737-4ee5-9b69-0b3f851bdc2c' // your patient uuid will go here
   : 'd61f8c9d-a2c7-464d-9747-d241fad1eb51';
 
 const Cell = ({ value, columnName, type }) => {
@@ -88,7 +88,7 @@ const Cell = ({ value, columnName, type }) => {
         return (
           <RangeCell conceptUUID={value.concept.uuid} />
         );
-    
+
       default: {
         return null;
       }
@@ -112,6 +112,8 @@ export class LabResultsList extends PureComponent {
       // if you're working locally, endeavour to hard code a valid patientUUID on line 12
       patientUUID,
     };
+
+    this.handleShowLabTrendsPage = this.handleShowLabTrendsPage.bind(this);
   }
 
 
@@ -121,6 +123,21 @@ export class LabResultsList extends PureComponent {
     dispatch(constantsActions.getDateAndTimeFormat());
     dispatch(patientAction.getPatient(patientUUID));
     dispatch(patientAction.fetchPatientLabTestResults(patientUUID));
+  }
+
+  handleShowLabTrendsPage(data) {
+    const { history } = this.props;
+    if (data.order) {
+      history.push({
+        pathname: "/labtrendspage",
+        state: data.encounter.obs[0].concept,
+      });
+    } else if (data.concept) {
+      history.push({
+        pathname: "/labtrendspage",
+        state: data.concept,
+      });
+    }
   }
 
   renderLabResultsTable(labResults) {
@@ -145,8 +162,8 @@ export class LabResultsList extends PureComponent {
           filteredFields={fields}
           filterType="none"
           showFilter={false}
+          // rowOnClick={this.handleShowLabTrendsPage}
           isSortable={false}
-          rowOnClick={this.handleShowResultsEntryPage}
           noDataMessage="No orders found"
           defaultPageSize={10}
           subComponent={(row) => {
@@ -167,6 +184,7 @@ export class LabResultsList extends PureComponent {
                     collapseOnDataChange={false}
                     collapseOnPageChange={false}
                     showPagination={false}
+                    rowOnClick={this.handleShowLabTrendsPage}
                     defaultPageSize={row.original.encounter.obs[0].groupMembers.length}
                     defaultClassName=""
                   />
@@ -199,7 +217,6 @@ export class LabResultsList extends PureComponent {
           const encounter = matchedEnocunter[0];
           const hasObs = !R.isEmpty(encounter.obs);
           if (hasObs) {
-            
             return {
               order,
               encounter: {

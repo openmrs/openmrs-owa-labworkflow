@@ -19,6 +19,7 @@ import BreadCrumb from './components/shared/BreadCrumb/BreadCrumb';
 import LabResultEntry from './components/LabResultEntry';
 import LabOrdersList from './components/LabOrdersList';
 import LabResultsList from './components/LabResultsList';
+import LabTrendsPage from './components/LabTrendsPage';
 import messagesEN from "./translations/en.json";
 import messagesFR from "./translations/fr.json";
 
@@ -26,11 +27,6 @@ setLocaleMessages({
   en: messagesEN,
   fr: messagesFR,
 });
-
-// Demo component as placeholder for fake breadcrumb page
-const FakeBreadcrumbPage = () => (
-  <div>FakeBreadcrumbPage</div>
-);
 
 const LocalizedHead = withLocalisation(Head);
 const LocalizedBreadCrumb = withLocalisation(BreadCrumb);
@@ -44,9 +40,9 @@ export default store => (
     <LocalizedBreadCrumb />
     <Switch>
       <Route exact path="/" component={withLocalisation(LabOrdersList)} />
-      <Route exact path="/FakeBreadcrumbPage" component={withLocalisation(FakeBreadcrumbPage)} />
       <Route path="/LabResultEntry" component={LabResultEntry} />
       <Route path="/labresults" component={LabResultsList} />
+      <Route path="/labtrendspage" component={LabTrendsPage} />
     </Switch>
   </div>
 );
