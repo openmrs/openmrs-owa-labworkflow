@@ -22,7 +22,7 @@ exports[`<LabOrdersList /> component renders correctly 1`] = `
       >
         <span>
           <CustomDatePicker
-            defaultDate={"2018-10-17T23:45:08.828Z"}
+            defaultDate={"2018-10-18T11:55:56.434Z"}
             field="dateFromField"
             formControlStyle={
               Object {
@@ -57,7 +57,7 @@ exports[`<LabOrdersList /> component renders correctly 1`] = `
                 preventOpenOnFocus={false}
                 previousMonthButtonLabel="Previous Month"
                 readOnly={false}
-                selected={"2018-10-17T23:45:08.828Z"}
+                selected={"2018-10-18T11:55:56.434Z"}
                 shouldCloseOnSelect={true}
                 showTimeSelect={false}
                 timeCaption="Time"
@@ -210,7 +210,7 @@ exports[`<LabOrdersList /> component renders correctly 1`] = `
         </span>
         <span>
           <CustomDatePicker
-            defaultDate={"2018-10-25T23:45:08.420Z"}
+            defaultDate={"2018-10-26T11:55:56.238Z"}
             field="dateToField"
             formControlStyle={
               Object {
@@ -245,7 +245,7 @@ exports[`<LabOrdersList /> component renders correctly 1`] = `
                 preventOpenOnFocus={false}
                 previousMonthButtonLabel="Previous Month"
                 readOnly={false}
-                selected={"2018-10-25T23:45:08.420Z"}
+                selected={"2018-10-26T11:55:56.238Z"}
                 shouldCloseOnSelect={true}
                 showTimeSelect={false}
                 timeCaption="Time"

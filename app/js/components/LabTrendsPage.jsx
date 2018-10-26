@@ -12,7 +12,6 @@ import PropTypes from 'prop-types';
 import {
   PatientHeader,
   SortableTable,
-  obsRest,
 } from '@openmrs/react-components';
 
 import RangeCell from "./RangeCell";
@@ -44,10 +43,10 @@ export const Cell = ({ columnName, conceptUuid, value }) => {
         </div>
       );
 
-    case 'NORMAL RANGE':
-      return (
-        <RangeCell conceptUUID={conceptUuid} />
-      );
+    // case 'NORMAL RANGE':
+    //   return (
+    //     // <RangeCell conceptUUID={conceptUuid} />
+    //   );
     default:
       return null;
   }

@@ -10,6 +10,11 @@ export default {
   },
   labOrderTrendsReducer: {
     result: [],
+    isLoading: false,
+    error: {
+      status: false,
+      message: null,
+    },
   },
   selectedPatient: {},
   selectedLabConcept: {},

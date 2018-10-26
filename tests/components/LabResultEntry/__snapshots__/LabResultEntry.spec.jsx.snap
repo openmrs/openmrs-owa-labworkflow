@@ -263,7 +263,7 @@ exports[`<LabResultEntry /> component renders correctly with valid props 1`] = `
                         <span
                           className="test-details"
                         >
-                          Oct 26 12:45 AM
+                          Oct 26 12:55 PM
                         </span>
                       </span>
                     </div>

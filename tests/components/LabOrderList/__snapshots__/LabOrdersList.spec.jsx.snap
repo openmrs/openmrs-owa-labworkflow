@@ -181,8 +181,8 @@ exports[`<LabOrdersList /> component renders correctly 1`] = `
     </h2>
     <LabOrderListFilters
       clearNameEMRField={[Function]}
-      dateFromField={"2018-10-17T23:45:07.455Z"}
-      dateToField={"2018-10-25T23:45:07.455Z"}
+      dateFromField={"2018-10-18T11:55:55.153Z"}
+      dateToField={"2018-10-26T11:55:55.152Z"}
       handleFieldChange={[Function]}
       labTests={
         Array [
@@ -202,7 +202,7 @@ exports[`<LabOrdersList /> component renders correctly 1`] = `
           >
             <span>
               <CustomDatePicker
-                defaultDate={"2018-10-17T23:45:07.462Z"}
+                defaultDate={"2018-10-18T11:55:55.165Z"}
                 field="dateFromField"
                 formControlStyle={
                   Object {
@@ -237,7 +237,7 @@ exports[`<LabOrdersList /> component renders correctly 1`] = `
                     preventOpenOnFocus={false}
                     previousMonthButtonLabel="Previous Month"
                     readOnly={false}
-                    selected={"2018-10-17T23:45:07.462Z"}
+                    selected={"2018-10-18T11:55:55.165Z"}
                     shouldCloseOnSelect={true}
                     showTimeSelect={false}
                     timeCaption="Time"
@@ -390,7 +390,7 @@ exports[`<LabOrdersList /> component renders correctly 1`] = `
             </span>
             <span>
               <CustomDatePicker
-                defaultDate={"2018-10-25T23:44:51.249Z"}
+                defaultDate={"2018-10-26T11:55:53.215Z"}
                 field="dateToField"
                 formControlStyle={
                   Object {
@@ -425,7 +425,7 @@ exports[`<LabOrdersList /> component renders correctly 1`] = `
                     preventOpenOnFocus={false}
                     previousMonthButtonLabel="Previous Month"
                     readOnly={false}
-                    selected={"2018-10-25T23:44:51.249Z"}
+                    selected={"2018-10-26T11:55:53.215Z"}
                     shouldCloseOnSelect={true}
                     showTimeSelect={false}
                     timeCaption="Time"
@@ -817,8 +817,8 @@ exports[`<LabOrdersList /> component renders correctly 1`] = `
         }
         filters={
           Object {
-            "dateFromField": "2018-10-17T23:45:07.455Z",
-            "dateToField": "2018-10-25T23:45:07.455Z",
+            "dateFromField": "2018-10-18T11:55:55.153Z",
+            "dateToField": "2018-10-26T11:55:55.152Z",
             "nameField": "",
             "testTypeField": "All",
           }
@@ -5105,8 +5105,8 @@ exports[`LabOrdersListContainer container should pass required props from state 
     </h2>
     <LabOrderListFilters
       clearNameEMRField={[Function]}
-      dateFromField={"2018-10-17T23:45:07.455Z"}
-      dateToField={"2018-10-25T23:45:07.455Z"}
+      dateFromField={"2018-10-18T11:55:55.153Z"}
+      dateToField={"2018-10-26T11:55:55.152Z"}
       handleFieldChange={[Function]}
       labTests={
         Array [
@@ -5126,7 +5126,7 @@ exports[`LabOrdersListContainer container should pass required props from state 
           >
             <span>
               <CustomDatePicker
-                defaultDate={"2018-10-17T23:45:07.462Z"}
+                defaultDate={"2018-10-18T11:55:55.165Z"}
                 field="dateFromField"
                 formControlStyle={
                   Object {
@@ -5161,7 +5161,7 @@ exports[`LabOrdersListContainer container should pass required props from state 
                     preventOpenOnFocus={false}
                     previousMonthButtonLabel="Previous Month"
                     readOnly={false}
-                    selected={"2018-10-17T23:45:07.462Z"}
+                    selected={"2018-10-18T11:55:55.165Z"}
                     shouldCloseOnSelect={true}
                     showTimeSelect={false}
                     timeCaption="Time"
@@ -5314,7 +5314,7 @@ exports[`LabOrdersListContainer container should pass required props from state 
             </span>
             <span>
               <CustomDatePicker
-                defaultDate={"2018-10-25T23:44:51.249Z"}
+                defaultDate={"2018-10-26T11:55:53.215Z"}
                 field="dateToField"
                 formControlStyle={
                   Object {
@@ -5349,7 +5349,7 @@ exports[`LabOrdersListContainer container should pass required props from state 
                     preventOpenOnFocus={false}
                     previousMonthButtonLabel="Previous Month"
                     readOnly={false}
-                    selected={"2018-10-25T23:44:51.249Z"}
+                    selected={"2018-10-26T11:55:53.215Z"}
                     shouldCloseOnSelect={true}
                     showTimeSelect={false}
                     timeCaption="Time"
@@ -5741,8 +5741,8 @@ exports[`LabOrdersListContainer container should pass required props from state 
         }
         filters={
           Object {
-            "dateFromField": "2018-10-17T23:45:07.455Z",
-            "dateToField": "2018-10-25T23:45:07.455Z",
+            "dateFromField": "2018-10-18T11:55:55.153Z",
+            "dateToField": "2018-10-26T11:55:55.152Z",
             "nameField": "",
             "testTypeField": "All",
           }
