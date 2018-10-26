@@ -1,17 +1,17 @@
 import initialState from './initialState';
-import { FETCH_LAB_ORDER_TRENDS } from '../actions/actionTypes';
+import { FETCH_LAB_TEST_RESULTS } from '../actions/actionTypes';
 
 
-export default (state = initialState.labOrderTrendsReducer, action) => {
+export default (state = initialState.labTestResultsReducer, action) => {
   switch (action.type) {
-    case `${FETCH_LAB_ORDER_TRENDS}_SUCCESS`: {
+    case `${FETCH_LAB_TEST_RESULTS}_SUCCESS`: {
       return {
         ...state,
         isLoading: false,
-        result: action.payload.data.results,
+        results: action.payload.data.results,
       };
     }
-    case `${FETCH_LAB_ORDER_TRENDS}_FAILURE`: {
+    case `${FETCH_LAB_TEST_RESULTS}_FAILURE`: {
       return {
         ...state,
         isLoading: false,
@@ -21,7 +21,7 @@ export default (state = initialState.labOrderTrendsReducer, action) => {
         },
       };
     }
-    case `${FETCH_LAB_ORDER_TRENDS}_LOADING`: {
+    case `${FETCH_LAB_TEST_RESULTS}_LOADING`: {
       return {
         ...state,
         isLoading: true,

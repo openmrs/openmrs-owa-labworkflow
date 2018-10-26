@@ -8,8 +8,8 @@ export default {
       message: null,
     },
   },
-  labOrderTrendsReducer: {
-    result: [],
+  labTestResultsReducer: {
+    results: [],
     isLoading: false,
     error: {
       status: false,

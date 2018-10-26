@@ -15,7 +15,7 @@ import {
 } from '@openmrs/react-components';
 
 import RangeCell from "./RangeCell";
-import { fetchLabOrdersTrends } from '../actions/labOrdersAction';
+import { fetchLabTestResults } from '../actions/labOrdersAction';
 import { getTestResultDate, getSampleDate } from '../utils/helpers';
 
 import "../../css/lab-orders-trends-page.scss";
@@ -53,15 +53,15 @@ export const Cell = ({ columnName, conceptUuid, value }) => {
 };
 export class LabTrendsPage extends PureComponent {
   componentDidMount() {
-    const { fetchLabOrdersTrends, patientHeaderDetail, history: { location: { state } } } = this.props;
+    const { fetchLabTestResults, patientHeaderDetail, history: { location: { state } } } = this.props;
     const conceptUuid = state.uuid;
     const patientUuid = patientHeaderDetail.uuid;
-    fetchLabOrdersTrends(patientUuid, conceptUuid);
+    fetchLabTestResults(patientUuid, conceptUuid);
   }
 
   render() {
     const {
-      labOrdersTrend: { result },
+      labTestResults: { results },
       patientHeaderDetail,
       history: { location: { state } },
     } = this.props;
@@ -85,7 +85,7 @@ export class LabTrendsPage extends PureComponent {
         <h1>{`${state.display} Trend`}</h1>
         <div className="lab-orders-trend-list">
           <SortableTable
-            data={result}
+            data={results}
             columnMetadata={columnMetadata}
             filteredFields={fields}
             isSortable={false}
@@ -99,21 +99,21 @@ export class LabTrendsPage extends PureComponent {
 }
 
 LabTrendsPage.propTypes = {
-  fetchLabOrdersTrends: PropTypes.func.isRequired,
+  fetchLabTestResults: PropTypes.func.isRequired,
 };
 
 const mapStateToProps = (state) => {
-  const { labOrdersTrend, patient: { patient } } = state;
+  const { labTestResults, patient: { patient } } = state;
 
   return {
-    labOrdersTrend,
+    labTestResults,
     patientHeaderDetail: patient,
   };
 };
 
 const mapDispatchToProps = dispatch => ({
-  fetchLabOrdersTrends: (patientUuid, conceptUuid) => {
-    dispatch(fetchLabOrdersTrends(patientUuid, conceptUuid));
+  fetchLabTestResults: (patientUuid, conceptUuid) => {
+    dispatch(fetchLabTestResults(patientUuid, conceptUuid));
   },
 });
 
