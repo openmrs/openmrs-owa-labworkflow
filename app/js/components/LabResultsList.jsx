@@ -10,7 +10,7 @@ import "../../css/lab-results-view.scss";
 
 
 const patientUUID = process.env.NODE_ENV !== 'production'
-  ? '79a61c2c-7737-4ee5-9b69-0b3f851bdc2c' // your patient uuid will go here
+  ? 'b2231edd-f62b-47fc-a9c7-feb49c63721c' // your patient uuid will go here
   : 'd61f8c9d-a2c7-464d-9747-d241fad1eb51';
 
 const Cell = ({ value, columnName, type }) => {
@@ -120,6 +120,9 @@ export class LabResultsList extends PureComponent {
   componentWillMount() {
     const { dispatch } = this.props;
     const { patientUUID } = this.state;
+    dispatch(constantsActions.fetchLabResultsDateConcept());
+    dispatch(constantsActions.fetchLabResultsTestOrderNumberConcept());
+    dispatch(constantsActions.fetchLabResultsTestLocationQuestion());
     dispatch(constantsActions.getDateAndTimeFormat());
     dispatch(patientAction.getPatient(patientUUID));
     dispatch(patientAction.fetchPatientLabTestResults(patientUUID));
@@ -199,49 +202,66 @@ export class LabResultsList extends PureComponent {
   }
 
   render() {
-    const { patients } = this.props;
+    const {
+      patients,
+      labResultsTestOrderNumberConcept,
+      labResultsTestLocationQuestion,
+      labResultsDateConcept,
+    } = this.props;
     const { patientUUID } = this.state;
     const selectedPatient = patients[patientUUID] || {};
     const { encounters = [], orders = [] } = selectedPatient;
 
     const getPatientLabResults = () => {
-      const labResults = orders.map((order) => {
-        const status = 'Ordered';
-        const matchedEnocunter = encounters.filter((encounter) => {
-          const testOrderObs = encounter.obs.filter(item => item.display.includes('Test order number:'));
-          const orderNumber = testOrderObs[0].value;
-          return orderNumber === order.orderNumber;
-        });
-        const hasEncounter = !R.isEmpty(matchedEnocunter);
-        if (hasEncounter) {
-          const encounter = matchedEnocunter[0];
-          const hasObs = !R.isEmpty(encounter.obs);
-          if (hasObs) {
+      const results = encounters.map((encounter) => {
+        const testOrderObs = encounter.obs.filter(
+          item => item.concept.uuid === labResultsTestOrderNumberConcept,
+        );
+        const testOrderNumber = testOrderObs[0].value;
+        const matchedOrder = orders.filter(order => order.orderNumber === testOrderNumber);
+        const hasObs = !R.isEmpty(encounter.obs);
+        const concealedConceptUUIDs = [
+          labResultsTestOrderNumberConcept,
+          labResultsTestLocationQuestion,
+          labResultsDateConcept,
+        ];
+        if (hasObs) {
+          const obs = R.pipe(
+            R.filter(item => !concealedConceptUUIDs.includes(item.concept.uuid)),
+          )(encounter.obs);
+          if (!R.isEmpty(encounter.obs)) {
             return {
-              order,
+              order: matchedOrder[0],
               encounter: {
                 ...encounter,
-                obs: R.pipe(
-                  R.filter(item => !item.display.includes('Date of test results')),
-                  R.filter(item => !item.display.includes('Location of laboratory')),
-                  R.filter(item => !item.display.includes('Test order number')),
-                )(encounter.obs),
+                obs,
               },
               status: 'Taken',
             };
           }
+
           return {
-            order,
-            encounter: matchedEnocunter[0],
+            order: matchedOrder[0],
+            encounter: {
+              ...encounter,
+              obs,
+            },
             status: 'Reported',
           };
         }
-
-        return {
-          order,
-          status,
-        };
       });
+
+      const filteredOrders = orders.filter((order) => {
+        const matchedResult = results.filter(item => item.order.orderNumber === order.orderNumber);
+        return R.isEmpty(matchedResult);
+      });
+
+      const orderedTests = filteredOrders.map(order => ({
+        order,
+        status: 'Ordered',
+      }));
+      const labResults = results.concat(orderedTests);
+
       return labResults;
     };
 
@@ -270,11 +290,21 @@ LabResultsList.propTypes = {
 };
 
 export const mapStateToProps = ({
-  openmrs: { CONSTANTS: { dateAndTimeFormat } },
+  openmrs: {
+    CONSTANTS: {
+      dateAndTimeFormat,
+      labResultsTestOrderNumberConcept,
+      labResultsTestLocationQuestion,
+      labResultsDateConcept,
+    },
+  },
   patients,
 }) => ({
   patients,
   dateAndTimeFormat,
+  labResultsTestOrderNumberConcept,
+  labResultsTestLocationQuestion,
+  labResultsDateConcept,
 });
 
 export default connect(mapStateToProps)(LabResultsList);
