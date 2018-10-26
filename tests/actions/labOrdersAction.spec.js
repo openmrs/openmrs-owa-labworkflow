@@ -1,7 +1,7 @@
-import { fetchLabOrdersTrends, setLabTestTypes } from '../../app/js/actions/labOrdersAction';
+import { fetchLabTestResults, setLabTestTypes } from '../../app/js/actions/labOrdersAction';
 
 import {
-  FETCH_LAB_ORDER_TRENDS,
+  FETCH_LAB_TEST_RESULTS,
   SET_LAB_TEST,
 } from '../../app/js/actions/actionTypes';
 
@@ -27,16 +27,16 @@ describe('setLabTestTypes action', () => {
   });
 });
 
-describe('fetchLabOrdersTrends action', () => {
+describe('fetchLabTestResults action', () => {
   beforeEach(() => moxios.install());
   afterEach(() => moxios.uninstall());
-  it('should fetch lab orders trend test', () => {
+  it('should fetch lab test result trend test', () => {
     const expectedActionTypes = [
-      `${FETCH_LAB_ORDER_TRENDS}_LOADING`,
+      `${FETCH_LAB_TEST_RESULTS}_LOADING`,
     ];
 
     const store = mockStore({});
-    store.dispatch(fetchLabOrdersTrends());
+    store.dispatch(fetchLabTestResults());
     const dispatchedActions = store.getActions();
     const dispatchedActionTypes = dispatchedActions.map(action => action.type);
     expect(dispatchedActionTypes).toEqual(expectedActionTypes);

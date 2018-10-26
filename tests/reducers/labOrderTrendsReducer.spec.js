@@ -1,45 +1,45 @@
-import labOrderTrendsReducer from '../../app/js/reducers/labOrderTrendsReducer';
+import labTestResultsReducer from '../../app/js/reducers/labTestResultsReducer';
 import initialState from '../../app/js/reducers/initialState';
 import {
-  FETCH_LAB_ORDER_TRENDS,
+  FETCH_LAB_TEST_RESULTS,
 } from '../../app/js/actions/actionTypes';
 
 
 describe('labOrdersReducer', () => {
-  it(`sets the apprioprate state after FETCH_LAB_ORDER_TRENDS_LOADING is dispatched`, () => {
+  it(`sets the apprioprate state after FETCH_LAB_TEST_RESULTS_LOADING is dispatched`, () => {
     const loadingAction = {
-      type: `${FETCH_LAB_ORDER_TRENDS}_LOADING`,
+      type: `${FETCH_LAB_TEST_RESULTS}_LOADING`,
     };
-    const nextState = labOrderTrendsReducer(initialState.labOrderTrendsReducer, loadingAction);
+    const nextState = labTestResultsReducer(initialState.labTestResultsReducer, loadingAction);
     expect(nextState.isLoading).toEqual(true);
-    expect(nextState.result).toEqual([]);
+    expect(nextState.results).toEqual([]);
     expect(nextState.error.status).toEqual(false);
     expect(nextState.error.message).toEqual(null);
   });
-  it(`sets the apprioprate state after FETCH_LAB_ORDER_TRENDS_SUCCESS is dispatched`, () => {
+  it(`sets the apprioprate state after FETCH_LAB_TEST_RESULTS_SUCCESS is dispatched`, () => {
     const successAction = {
-      type: `${FETCH_LAB_ORDER_TRENDS}_SUCCESS`,
+      type: `${FETCH_LAB_TEST_RESULTS}_SUCCESS`,
       payload: {
         data: {
           results: ['some valid result'],
         },
       },
     };
-    const nextState = labOrderTrendsReducer(initialState.labOrderTrendsReducer, successAction);
+    const nextState = labTestResultsReducer(initialState.labTestResultsReducer, successAction);
     expect(nextState.isLoading).toEqual(false);
-    expect(nextState.result).toEqual(successAction.payload.data.results);
+    expect(nextState.results).toEqual(successAction.payload.data.results);
     expect(nextState.error.status).toEqual(false);
     expect(nextState.error.message).toEqual(null);
   });
-  it(`sets the apprioprate state after FETCH_LAB_ORDER_TRENDS_FAILURE is dispatched`, () => {
+  it(`sets the apprioprate state after FETCH_LAB_TEST_RESULTS_FAILURE is dispatched`, () => {
     const failedAction = {
-      type: `${FETCH_LAB_ORDER_TRENDS}_FAILURE`,
+      type: `${FETCH_LAB_TEST_RESULTS}_FAILURE`,
       error: true,
       payload: 'some akward error message',
     };
-    const nextState = labOrderTrendsReducer(initialState.labOrderTrendsReducer, failedAction);
+    const nextState = labTestResultsReducer(initialState.labTestResultsReducer, failedAction);
     expect(nextState.isLoading).toEqual(false);
-    expect(nextState.result).toEqual([]);
+    expect(nextState.results).toEqual([]);
     expect(nextState.error.status).toEqual(failedAction.error);
     expect(nextState.error.message).toEqual(failedAction.payload);
   });
@@ -47,9 +47,9 @@ describe('labOrdersReducer', () => {
     const someOtherAction = {
       type: 'SOME_OTHER_ACTION',
     };
-    const nextState = labOrderTrendsReducer(initialState.labOrderTrendsReducer, someOtherAction);
+    const nextState = labTestResultsReducer(initialState.labTestResultsReducer, someOtherAction);
     expect(nextState.isLoading).toEqual(false);
-    expect(nextState.result).toEqual([]);
+    expect(nextState.results).toEqual([]);
     expect(nextState.error.status).toEqual(false);
     expect(nextState.error.message).toEqual(null);
   });
