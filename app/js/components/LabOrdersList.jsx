@@ -105,10 +105,9 @@ export class LabOrdersList extends PureComponent {
 
   componentDidMount() {
     const { dispatch } = this.props;
-    dispatch(fetchLabOrders(patientUUID));
     dispatch(constantsActions.getDateAndTimeFormat());
-    dispatch(constantsActions.fetchLabResultsEncounterType());
     dispatch(constantsActions.fetchLabResultsDidNotPerformQuestion());
+    dispatch(constantsActions.fetchLabResultsTestOrderType());
     dispatch(constantsActions.fetchLabResultsDidNotPerformAnswer());
     dispatch(constantsActions.fetchLabResultsTestOrderNumberConcept());
     dispatch(constantsActions.fetchLabResultsTestLocationQuestion());
@@ -116,6 +115,13 @@ export class LabOrdersList extends PureComponent {
     dispatch(constantsActions.fetchLabResultsEstimatedCollectionDateAnswer());
     dispatch(constantsActions.fetchLabResultsDidNotPerformReasonQuestion());
     dispatch(constantsActions.fetchLabResultsDateConcept());
+  }
+
+  componentWillReceiveProps(nextProps) {
+    const { dispatch, labResultsTestOrderType } = this.props;
+    if (nextProps.labResultsTestOrderType !== labResultsTestOrderType) {
+      dispatch(fetchLabOrders(patientUUID, nextProps.labResultsTestOrderType));
+    }
   }
 
   handleShowResultsEntryPage(order) {
@@ -226,11 +232,12 @@ LabOrdersList.propTypes = {
 
 export const mapStateToProps = ({
   labOrders: { orders, labTests },
-  openmrs: { CONSTANTS: { dateAndTimeFormat } },
+  openmrs: { CONSTANTS: { dateAndTimeFormat, labResultsTestOrderType } },
 }) => ({
   orders,
   labTests,
   dateAndTimeFormat,
+  labResultsTestOrderType,
 });
 
 const LabOrdersListContainer = (

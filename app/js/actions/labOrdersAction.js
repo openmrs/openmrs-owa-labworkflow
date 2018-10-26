@@ -3,9 +3,9 @@ import { FETCH_LAB_ORDERS, SET_LAB_TEST } from './actionTypes';
 import mockOrders from '../mockData/mockOrders.json';
 
 
-export const fetchLabOrders = patientUUID => ({
+export const fetchLabOrders = (patientUUID, testOrderType) => ({
   type: FETCH_LAB_ORDERS,
-  payload: axiosInstance.get(`order?totalCount=true&sort=desc&status=active&patient=${patientUUID}&v=full`),
+  payload: axiosInstance.get(`order?totalCount=true&sort=desc&status=active&patient=${patientUUID}&orderType=${testOrderType}&v=full`),
 });
 
 export const setLabTestTypes = testTypes => ({
