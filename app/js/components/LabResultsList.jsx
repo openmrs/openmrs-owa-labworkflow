@@ -187,7 +187,7 @@ export class LabResultsList extends PureComponent {
           showFilter={false}
           // rowOnClick={this.handleShowLabTrendsPage}
           isSortable={false}
-          noDataMessage="No orders found"
+          noDataMessage="No results found"
           defaultPageSize={10}
           subComponent={(row) => {
             const isPanel = (row.original.order.concept.set) && (row.original.status !== "Ordered");
