@@ -22,7 +22,7 @@ import "../../css/lab-orders-list.scss";
 
 const patientUUID = process.env.NODE_ENV !== 'production'
   ? 'b2231edd-f62b-47fc-a9c7-feb49c63721c' // your patient uuid will go here
-  : 'd61f8c9d-a2c7-464d-9747-d241fad1eb51';
+  : '76f0fd80-2b5b-496a-8b68-539d7e532ad2';
 
 
 export const Cell = ({ columnName, value, dateAndTimeFormat }) => {
@@ -96,6 +96,7 @@ export class LabOrdersList extends PureComponent {
         dateToField: moment(),
         dateFromField: moment().subtract(8, 'days'),
         testTypeField: "All",
+        dateField: 'dateActivated',
       },
     };
     this.handleFilterChange = this.handleFilterChange.bind(this);

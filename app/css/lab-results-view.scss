@@ -143,6 +143,15 @@ i.scale:hover {
     margin: auto;
 }
 
+.lab-result-list-filters {
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-direction: column;
+    flex-direction: column;
+    width: 100%;
+    background: white;
+    padding: 10px;
+}
 
 @keyframes spin {
     0% { transform: rotate(0deg); }
