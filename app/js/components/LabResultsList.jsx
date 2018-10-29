@@ -6,7 +6,7 @@ import {
   SortableTable, Loader, constantsActions, CustomDatePicker as DatePicker,
 } from '@openmrs/react-components';
 import moment from 'moment';
-import RangeCell from './RangeCell';
+import ConceptDisplay from './ConceptDisplay';
 import patientAction from '../actions/patientAction';
 import { filterThrough } from '../utils/helpers';
 import "../../css/lab-results-view.scss";
@@ -65,12 +65,12 @@ const Cell = ({
         case 'RESULT':
           return (
             <div className="table_cell result">
-              <span>{labResult.value.display || labResult.value}</span>
+              <ConceptDisplay conceptUUID={labResult.concept.uuid} type="result" value={labResult.value.display || labResult.value} />
             </div>
           );
         case 'NORMAL RANGE':
           return (
-            <RangeCell conceptUUID={labResult.concept.uuid} />
+            <ConceptDisplay conceptUUID={labResult.concept.uuid} type="range" />
           );
         default:
           return null;
@@ -93,17 +93,13 @@ const Cell = ({
       }
       case 'RESULT':
         return (
-          <div
-            className="table_cell result" onClick={(e) => {
-              e.preventDefault();
-              navigate(value);
-            }}>
-            <span>{value.value.display || value.value}</span>
+          <div className="table_cell result">
+            <ConceptDisplay conceptUUID={value.concept.uuid} type="result" value={value.value.display || value.value} />
           </div>
         );
       case 'NORMAL RANGE':
         return (
-          <RangeCell conceptUUID={value.concept.uuid} />
+          <ConceptDisplay conceptUUID={value.concept.uuid} type="range" />
         );
 
       default: {

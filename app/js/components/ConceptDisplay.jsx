@@ -2,10 +2,16 @@ import React, { PureComponent } from 'react';
 import R from 'ramda';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
+import { formValidations } from '@openmrs/react-components';
 import { fetchConcept } from '../actions/labConceptsAction';
 import { formatRangeDisplayText, hasMaxAndMinValues } from '../utils/helpers';
 
-class RangeCell extends PureComponent {
+const {
+  abnormalMaxValue,
+  abnormalMinValue,
+} = formValidations;
+
+class ConceptDisplay extends PureComponent {
   constructor(props) {
     super(props);
 
@@ -52,14 +58,36 @@ class RangeCell extends PureComponent {
   }
 
   render() {
-    const { concept } = this.props;
+    const { concept, type, value } = this.props;
 
     if (!R.isEmpty(concept)) {
-      return (
-        <div className="table_cell test-type">
-          {this.showRange()}
-        </div>
-      );
+      if (type === "result") {
+        const {
+          hiNormal,
+          lowNormal,
+        } = concept;
+
+        const validationRules = {
+          "abnormal-min-value": !R.isEmpty(lowNormal) ? abnormalMinValue(lowNormal)(value) : undefined,
+          "abnormal-max-value": !R.isEmpty(hiNormal) ? abnormalMaxValue(hiNormal)(value) : undefined,
+        };
+
+        const resultClassName = R.isEmpty(R.reject(R.isNil)(validationRules)) ? "" : 'abnormal-value';
+
+        return (
+          <span className={resultClassName}>
+            {value}
+          </span>
+        );
+      }
+
+      if (type === "range") {
+        return (
+          <div className="table_cell test-type">
+            {this.showRange()}
+          </div>
+        );
+      }
     }
 
     return (
@@ -68,10 +96,16 @@ class RangeCell extends PureComponent {
   }
 }
 
-RangeCell.propTypes = {
+ConceptDisplay.defaultProps = {
+  value: '',
+};
+
+ConceptDisplay.propTypes = {
   concept: PropTypes.shape({}).isRequired,
   conceptUUID: PropTypes.string.isRequired,
   dispatch: PropTypes.func.isRequired,
+  type: PropTypes.string.isRequired,
+  value: PropTypes.string,
 };
 
 const mapStateToProps = ({
@@ -83,4 +117,4 @@ const mapStateToProps = ({
   conceptMembers,
 });
 
-export default connect(mapStateToProps)(RangeCell);
+export default connect(mapStateToProps)(ConceptDisplay);
