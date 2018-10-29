@@ -21,7 +21,6 @@ import { Redirect } from 'react-router-dom';
 
 import {
   EncounterDate,
-  PatientHeader,
   EncounterFormPage,
   Obs,
   ObsGroup,
@@ -30,7 +29,6 @@ import {
   Loader,
 } from '@openmrs/react-components';
 
-import patientAction from '../actions/patientAction';
 import { fetchLabConcept } from '../actions/labConceptsAction';
 import '../../css/lab-result-entry.scss';
 import { formatRangeDisplayText, hasMaxAndMinValues } from '../utils/helpers';
@@ -49,7 +47,6 @@ export class LabResultEntry extends PureComponent {
   constructor(props) {
     super(props);
     this.state = {
-      patientHeaderDetail: false,
       redirect: false,
     };
   }
@@ -58,7 +55,6 @@ export class LabResultEntry extends PureComponent {
     const { dispatch, history: { location: { state } }, CONSTANTS } = this.props;
     if (typeof state !== 'undefined') {
       const conceptUUID = state.concept.uuid;
-      dispatch(patientAction.getPatient(state.patient.uuid));
       dispatch(constantsActions.fetchLabResultsDidNotPerformReasonAnswer(CONSTANTS.labResultsDidNotPerformReasonQuestion));
       dispatch(constantsActions.fetchLabResultsTestLocationAnswer(CONSTANTS.labResultsTestLocationQuestion));
       dispatch(fetchLabConcept(conceptUUID));
@@ -67,18 +63,12 @@ export class LabResultEntry extends PureComponent {
     }
   }
 
-  componentWillReceiveProps(nextProps) {
-    this.setState({
-      patientHeaderDetail: nextProps.patientHeaderDetail,
-    });
-  }
-
   shouldRedirect() {
     this.setState({ redirect: true });
   }
 
   renderForm(selectedLabConcept) {
-    const { patientHeaderDetail } = this.state;
+    const { patientHeaderDetail } = this.props;
     const {
       CONSTANTS, conceptMembers, history: { location: { state } },
     } = this.props;
@@ -139,7 +129,6 @@ export class LabResultEntry extends PureComponent {
                 widget="dropdown"
                 concept={CONSTANTS.labResultsDidNotPerformReasonQuestion}
                 path="did-not-perform-dropdown"
-                defaultValue=" "
                 dropDownStyle={{ heigth: '40px', width: '100%' }}
               />
             </div>
@@ -184,7 +173,6 @@ export class LabResultEntry extends PureComponent {
                 concept={CONSTANTS.labResultsTestLocationQuestion}
                 path="test-location-dropdown"
                 dropDownStyle={{ heigth: '40px', width: '100%' }}
-                defaultValue=" "
               />
             </div>
             <div className="specimen-collection-date">
@@ -334,7 +322,7 @@ export class LabResultEntry extends PureComponent {
   }
 
   render() {
-    const { patientHeaderDetail, redirect } = this.state;
+    const { redirect } = this.state;
     const {
       location, selectedLabConcept,
     } = this.props;
@@ -345,7 +333,6 @@ export class LabResultEntry extends PureComponent {
     if (!R.isEmpty(selectedLabConcept)) {
       return (
         <div className="container-fluid">
-          {patientHeaderDetail && <PatientHeader patient={patientHeaderDetail} />}
           {location.state
           && (
             <div>

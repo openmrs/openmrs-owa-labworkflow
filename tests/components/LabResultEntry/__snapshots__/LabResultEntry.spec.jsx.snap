@@ -263,7 +263,7 @@ exports[`<LabResultEntry /> component renders correctly with valid props 1`] = `
                         <span
                           className="test-details"
                         >
-                          Oct 26 12:55 PM
+                          Oct 29 9:36 AM
                         </span>
                       </span>
                     </div>
@@ -391,7 +391,6 @@ exports[`<LabResultEntry /> component renders correctly with valid props 1`] = `
                                   Reason: 
                                 </span>
                                 <WithObsGroupContext(WithFormContext(Connect(Obs)))
-                                  defaultValue=" "
                                   dropDownStyle={
                                     Object {
                                       "heigth": "40px",
@@ -424,7 +423,6 @@ exports[`<LabResultEntry /> component renders correctly with valid props 1`] = `
                                   Test location: 
                                 </span>
                                 <WithObsGroupContext(WithFormContext(Connect(Obs)))
-                                  defaultValue=" "
                                   dropDownStyle={
                                     Object {
                                       "heigth": "40px",
@@ -447,7 +445,7 @@ exports[`<LabResultEntry /> component renders correctly with valid props 1`] = `
                                     Specimen Collection Date:  
                                   </span>
                                   <WithFormContext(Connect(EncounterDate))
-                                    defaultDate={"2018-10-25T23:00:00.000Z"}
+                                    defaultDate={"2018-10-28T23:00:00.000Z"}
                                     field="dateFromField"
                                     handleDateChange={[Function]}
                                     label="Specimen Collection Date:"
@@ -552,7 +550,11 @@ exports[`<LabResultEntry /> component renders correctly with valid props 1`] = `
                         </Grid>
                       }
                       formId="result-entry-form"
-                      patient={false}
+                      patient={
+                        Object {
+                          "display": "Y2A7LR - williams willy john",
+                        }
+                      }
                     >
                       <EncounterFormPage
                         backLink="/"
@@ -635,7 +637,6 @@ exports[`<LabResultEntry /> component renders correctly with valid props 1`] = `
                                     Reason: 
                                   </span>
                                   <WithObsGroupContext(WithFormContext(Connect(Obs)))
-                                    defaultValue=" "
                                     dropDownStyle={
                                       Object {
                                         "heigth": "40px",
@@ -668,7 +669,6 @@ exports[`<LabResultEntry /> component renders correctly with valid props 1`] = `
                                     Test location: 
                                   </span>
                                   <WithObsGroupContext(WithFormContext(Connect(Obs)))
-                                    defaultValue=" "
                                     dropDownStyle={
                                       Object {
                                         "heigth": "40px",
@@ -691,7 +691,7 @@ exports[`<LabResultEntry /> component renders correctly with valid props 1`] = `
                                       Specimen Collection Date:  
                                     </span>
                                     <WithFormContext(Connect(EncounterDate))
-                                      defaultDate={"2018-10-25T23:00:00.000Z"}
+                                      defaultDate={"2018-10-28T23:00:00.000Z"}
                                       field="dateFromField"
                                       handleDateChange={[Function]}
                                       label="Specimen Collection Date:"
@@ -799,7 +799,6 @@ exports[`<LabResultEntry /> component renders correctly with valid props 1`] = `
                         patient={
                           Object {
                             "display": "Y2A7LR - williams willy john",
-                            "uuid": "abcd",
                           }
                         }
                       >
@@ -831,49 +830,6 @@ exports[`<LabResultEntry /> component renders correctly with valid props 1`] = `
                                 }
                               }
                             >
-                              <Row
-                                bsClass="row"
-                                componentClass="div"
-                                style={
-                                  Object {
-                                    "backgroundColor": "#ffa500b3",
-                                  }
-                                }
-                              >
-                                <div
-                                  className="row"
-                                  style={
-                                    Object {
-                                      "backgroundColor": "#ffa500b3",
-                                    }
-                                  }
-                                >
-                                  <Col
-                                    bsClass="col"
-                                    componentClass="div"
-                                    md={20}
-                                    sm={20}
-                                    style={
-                                      Object {
-                                        "paddingLeft": "20px",
-                                      }
-                                    }
-                                  >
-                                    <div
-                                      className="col-md-20 col-sm-20"
-                                      style={
-                                        Object {
-                                          "paddingLeft": "20px",
-                                        }
-                                      }
-                                    >
-                                      <span>
-                                        <h1 />
-                                      </span>
-                                    </div>
-                                  </Col>
-                                </div>
-                              </Row>
                               <Row
                                 bsClass="row"
                                 componentClass="div"

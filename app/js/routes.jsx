@@ -20,6 +20,7 @@ import LabResultEntry from './components/LabResultEntry';
 import LabOrdersList from './components/LabOrdersList';
 import LabResultsList from './components/LabResultsList';
 import LabTrendsPage from './components/LabTrendsPage';
+import Patientheader from './components/shared/PatientHeader';
 import messagesEN from "./translations/en.json";
 import messagesFR from "./translations/fr.json";
 
@@ -38,6 +39,7 @@ export default store => (
     <LocalizedHead defaultTitle="OpenMRS Electronic Medical Record" id="app.title" />
     <Header />
     <LocalizedBreadCrumb />
+    <Patientheader />
     <Switch>
       <Route exact path="/" component={withLocalisation(LabOrdersList)} />
       <Route path="/LabResultEntry" component={LabResultEntry} />
