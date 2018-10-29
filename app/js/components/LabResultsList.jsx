@@ -2,7 +2,7 @@ import React, { PureComponent } from 'react';
 import R from 'ramda';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
-import { SortableTable, Loader, constantsActions } from '@openmrs/react-components';
+import { SortableTable, Loader, constantsActions, PatientHeader } from '@openmrs/react-components';
 import moment from 'moment';
 import RangeCell from './RangeCell';
 import patientAction from '../actions/patientAction';
@@ -269,6 +269,7 @@ export class LabResultsList extends PureComponent {
       const labResults = getPatientLabResults();
       return (
         <div className="main-container">
+          <PatientHeader patient={selectedPatient} />
           <h2>
             Lab Test Results
           </h2>
