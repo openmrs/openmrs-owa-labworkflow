@@ -10,7 +10,6 @@ import React, { PureComponent } from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import {
-  PatientHeader,
   SortableTable,
 } from '@openmrs/react-components';
 
@@ -62,7 +61,6 @@ export class LabTrendsPage extends PureComponent {
   render() {
     const {
       labTestResults: { results },
-      patientHeaderDetail,
       history: { location: { state } },
     } = this.props;
 
@@ -81,7 +79,6 @@ export class LabTrendsPage extends PureComponent {
 
     return (
       <div>
-        {patientHeaderDetail && <PatientHeader patient={patientHeaderDetail} />}
         <h1>{`${state.display} Trend`}</h1>
         <div className="lab-orders-trend-list">
           <SortableTable
