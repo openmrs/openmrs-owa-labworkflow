@@ -2,16 +2,17 @@ import React, { PureComponent } from 'react';
 import R from 'ramda';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
-import { SortableTable, Loader, constantsActions } from '@openmrs/react-components';
+import { SortableTable, Loader, constantsActions, CustomDatePicker as DatePicker } from '@openmrs/react-components';
 import moment from 'moment';
 import RangeCell from './RangeCell';
 import patientAction from '../actions/patientAction';
+import { filterThrough } from '../utils/helpers';
 import "../../css/lab-results-view.scss";
 
 
 const patientUUID = process.env.NODE_ENV !== 'production'
   ? 'b2231edd-f62b-47fc-a9c7-feb49c63721c' // your patient uuid will go here
-  : 'd61f8c9d-a2c7-464d-9747-d241fad1eb51';
+  : '76f0fd80-2b5b-496a-8b68-539d7e532ad2';
 
 const Cell = ({ value, columnName, type }) => {
   if (type === 'single') {
@@ -111,9 +112,15 @@ export class LabResultsList extends PureComponent {
       // would need to get this from the route ideally
       // if you're working locally, endeavour to hard code a valid patientUUID on line 12
       patientUUID,
+      filters: {
+        dateToField: moment(),
+        dateFromField: moment().subtract(8, 'days'),
+        dateField: 'encounter.encounterDatetime',
+      },
     };
 
     this.handleShowLabTrendsPage = this.handleShowLabTrendsPage.bind(this);
+    this.handleFilterChange = this.handleFilterChange.bind(this);
   }
 
 
@@ -143,8 +150,19 @@ export class LabResultsList extends PureComponent {
     }
   }
 
+  handleFilterChange(field, value) {
+    const { filters } = this.state;
+    this.setState({
+      filters: {
+        ...filters,
+        [field]: value,
+      },
+    });
+  }
+
   renderLabResultsTable(labResults) {
     const { dateAndTimeFormat } = this.props;
+    const { filters } = this.state;
     const fields = ["TYPE", "STATUS", "REQUEST DATE", "SAMPLE DATE", "RESULT", "NORMAL RANGE"];
 
     const columnMetadata = fields.map(columnName => ({
@@ -161,13 +179,15 @@ export class LabResultsList extends PureComponent {
       <div className="lab-results-list">
         <SortableTable
           data={labResults}
+          filters={filters}
+          getDataWithFilters={filterThrough}
           columnMetadata={columnMetadata}
           filteredFields={fields}
           filterType="none"
           showFilter={false}
           // rowOnClick={this.handleShowLabTrendsPage}
           isSortable={false}
-          noDataMessage="No orders found"
+          noDataMessage="No results found"
           defaultPageSize={10}
           subComponent={(row) => {
             const isPanel = (row.original.order.concept.set) && (row.original.status !== "Ordered");
@@ -198,6 +218,38 @@ export class LabResultsList extends PureComponent {
           }}
         />
       </div>
+    );
+  }
+
+  renderDatePickerFilters() {
+    return (
+      <span className="date-picker-filter">
+        <span>
+          <DatePicker
+            labelClassName="line"
+            label="From: "
+            defaultDate={moment().subtract(8, 'days')}
+            formControlStyle={{
+              marginRight: '5px',
+              width: '105px',
+            }}
+            handleDateChange={(field, value) => this.handleFilterChange(field, value)}
+            field="dateFromField"
+          />
+        </span>
+        <span>
+          <DatePicker
+            labelClassName="line"
+            label="To: "
+            field="dateToField"
+            formControlStyle={{
+              marginRight: '5px',
+              width: '105px',
+            }}
+            handleDateChange={(field, value) => this.handleFilterChange(field, value)}
+          />
+        </span>
+      </span>
     );
   }
 
@@ -277,6 +329,9 @@ export class LabResultsList extends PureComponent {
           </h2>
 
           <React.Fragment>
+            <div className="lab-result-list-filters">
+              {this.renderDatePickerFilters()}
+            </div>
             {this.renderLabResultsTable(labResults)}
           </React.Fragment>
         </div>

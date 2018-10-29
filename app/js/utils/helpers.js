@@ -1,6 +1,7 @@
 /*eslint-disable*/
 import matchSorter from 'match-sorter';
 import moment from 'moment';
+import R from 'ramda';
 
 const dateToInt = dateStr => new Date(dateStr).getTime();
 
@@ -10,7 +11,7 @@ export const getDateRange = (
   to,
   path,
 ) => data.filter(
-  item => dateToInt(from) <= dateToInt(item[path]) && dateToInt(to) >= dateToInt(item[path]),
+  item => dateToInt(from) <= dateToInt(R.path(path.split('.'))(item)) && dateToInt(to) >= dateToInt(R.path(path.split('.'))(item)),
 );
 
 export const hasMaxAndMinValues = (
@@ -41,7 +42,7 @@ export const filterThrough = (filters, data) => {
   }
 
   if (filters.dateToField && filters.dateFromField) {
-    const filteredData = getDateRange(originalData, filters.dateFromField, filters.dateToField, 'dateActivated');
+    const filteredData = getDateRange(originalData, filters.dateFromField, filters.dateToField, filters.dateField);
     originalData = filteredData;
   }
 
