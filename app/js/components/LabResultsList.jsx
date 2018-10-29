@@ -214,6 +214,9 @@ export class LabResultsList extends PureComponent {
 
     const getPatientLabResults = () => {
       const results = encounters.map((encounter) => {
+
+        // TODO the assumption here is that there will only be one (and always be one) test order obs per encounter,
+        // TODO in our current model, this is correct, but may change (note that currently we are only parsing specimen collectoin encounters)
         const testOrderObs = encounter.obs.filter(
           item => item.concept.uuid === labResultsTestOrderNumberConcept,
         );
