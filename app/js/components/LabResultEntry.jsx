@@ -28,6 +28,7 @@ import {
   constantsActions,
   Loader,
 } from '@openmrs/react-components';
+import patientAction from '../actions/patientAction';
 
 import { fetchLabConcept } from '../actions/labConceptsAction';
 import '../../css/lab-result-entry.scss';
@@ -55,6 +56,8 @@ export class LabResultEntry extends PureComponent {
     const { dispatch, history: { location: { state } }, CONSTANTS } = this.props;
     if (typeof state !== 'undefined') {
       const conceptUUID = state.concept.uuid;
+      const patientUUID = state.patient.uuid;
+      dispatch(patientAction.getPatient(patientUUID));
       dispatch(constantsActions.fetchLabResultsDidNotPerformReasonAnswer(CONSTANTS.labResultsDidNotPerformReasonQuestion));
       dispatch(constantsActions.fetchLabResultsTestLocationAnswer(CONSTANTS.labResultsTestLocationQuestion));
       dispatch(fetchLabConcept(conceptUUID));
@@ -68,7 +71,9 @@ export class LabResultEntry extends PureComponent {
   }
 
   renderForm(selectedLabConcept) {
-    const { patientHeaderDetail } = this.props;
+    const { patients, selectedPatient } = this.props;
+    const patient = patients[selectedPatient] || {};
+    console.log('patient', patient);
     const {
       CONSTANTS, conceptMembers, history: { location: { state } },
     } = this.props;
@@ -228,7 +233,7 @@ export class LabResultEntry extends PureComponent {
               backLink="/"
               encounterType={encounterType}
               formContent={observations}
-              patient={patientHeaderDetail}
+              patient={patient}
               formId="result-entry-form"
             />
           </span>
@@ -390,7 +395,7 @@ LabResultEntry.defaultProps = {
 };
 
 LabResultEntry.propTypes = {
-  patientHeaderDetail: PropTypes.object.isRequired,
+  patients: PropTypes.object.isRequired,
   history: PropTypes.object.isRequired,
   testLocationConcept: PropTypes.object.isRequired,
   dispatch: PropTypes.func.isRequired,
@@ -398,18 +403,21 @@ LabResultEntry.propTypes = {
   location: PropTypes.object.isRequired,
   CONSTANTS: PropTypes.object.isRequired,
   conceptMembers: PropTypes.object.isRequired,
+  selectedPatient: PropTypes.string.isRequired,
 };
 
 const mapStateToProps = (state) => {
   const {
-    patient: { patient },
     selectedLabConcept,
     openmrs: { CONSTANTS },
     conceptMembers,
+    patients,
+    selectedPatient,
   } = state;
 
   return {
-    patientHeaderDetail: patient,
+    patients,
+    selectedPatient,
     selectedLabConcept,
     CONSTANTS,
     conceptMembers,

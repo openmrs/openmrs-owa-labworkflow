@@ -18,10 +18,11 @@ import { SortableTable, Loader, constantsActions } from '@openmrs/react-componen
 import LabOrderListFilters from './LabOrdersListFilters';
 import { fetchLabOrders } from '../actions/labOrdersAction';
 import { filterThrough } from '../utils/helpers';
+import patientAction from '../actions/patientAction';
 import "../../css/lab-orders-list.scss";
 
 const patientUUID = process.env.NODE_ENV !== 'production'
-  ? 'b2231edd-f62b-47fc-a9c7-feb49c63721c' // your patient uuid will go here
+  ? 'ab408b4d-c29d-418d-8bbe-4d1a0903b373' // your patient uuid will go here
   : '76f0fd80-2b5b-496a-8b68-539d7e532ad2';
 
 
@@ -117,6 +118,7 @@ export class LabOrdersList extends PureComponent {
     dispatch(constantsActions.fetchLabResultsEstimatedCollectionDateAnswer());
     dispatch(constantsActions.fetchLabResultsDidNotPerformReasonQuestion());
     dispatch(constantsActions.fetchLabResultsDateConcept());
+    dispatch(patientAction.setSelectedPatient(''));
   }
 
   componentWillReceiveProps(nextProps) {

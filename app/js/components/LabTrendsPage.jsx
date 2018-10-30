@@ -52,10 +52,11 @@ export const Cell = ({ columnName, conceptUuid, value }) => {
 };
 export class LabTrendsPage extends PureComponent {
   componentDidMount() {
-    const { fetchLabTestResults, patientHeaderDetail, history: { location: { state } } } = this.props;
-    const conceptUuid = state.uuid;
-    const patientUuid = patientHeaderDetail.uuid;
-    fetchLabTestResults(patientUuid, conceptUuid);
+    const { dispatch, patient, history: { location: { state } } } = this.props;
+    console.log('state', state);
+    const conceptUUID = state.uuid;
+    const patientUUID = patient.uuid;
+    dispatch(fetchLabTestResults(patientUUID, conceptUUID));
   }
 
   render() {
@@ -96,22 +97,17 @@ export class LabTrendsPage extends PureComponent {
 }
 
 LabTrendsPage.propTypes = {
-  fetchLabTestResults: PropTypes.func.isRequired,
+  labTestResults: PropTypes.array.isRequired,
+  patientHeaderDetail: PropTypes.object.isRequired,
 };
 
-const mapStateToProps = (state) => {
-  const { labTestResults, patient: { patient } } = state;
-
-  return {
-    labTestResults,
-    patientHeaderDetail: patient,
-  };
-};
-
-const mapDispatchToProps = dispatch => ({
-  fetchLabTestResults: (patientUuid, conceptUuid) => {
-    dispatch(fetchLabTestResults(patientUuid, conceptUuid));
-  },
+const mapStateToProps = ({
+  selectedPatient,
+  patients,
+  labTestResults,
+}) => ({
+  labTestResults,
+  patient: patients[selectedPatient],
 });
 
-export default connect(mapStateToProps, mapDispatchToProps)(LabTrendsPage);
+export default connect(mapStateToProps)(LabTrendsPage);
