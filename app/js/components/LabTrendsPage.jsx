@@ -53,7 +53,6 @@ export const Cell = ({ columnName, conceptUuid, value }) => {
 export class LabTrendsPage extends PureComponent {
   componentDidMount() {
     const { dispatch, patient, history: { location: { state } } } = this.props;
-    console.log('state', state);
     const conceptUUID = state.uuid;
     const patientUUID = patient.uuid;
     dispatch(fetchLabTestResults(patientUUID, conceptUUID));
