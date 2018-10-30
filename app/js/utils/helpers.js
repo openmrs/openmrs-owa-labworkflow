@@ -11,8 +11,12 @@ export const getDateRange = (
   to,
   path,
 ) => data.filter(
-  item => dateToInt(from) <= dateToInt(R.path(path.split('.'))(item)) && dateToInt(to) >= dateToInt(R.path(path.split('.'))(item)),
-);
+  item => {
+    if (R.path(path.split('.'))(item)) {
+      return (dateToInt(from) <= dateToInt(R.path(path.split('.'))(item)) && dateToInt(to) >= dateToInt(R.path(path.split('.'))(item)))
+    }
+    return true;
+  });
 
 export const hasMaxAndMinValues = (
   memebers,
