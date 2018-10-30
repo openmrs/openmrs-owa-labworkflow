@@ -73,7 +73,6 @@ export class LabResultEntry extends PureComponent {
   renderForm(selectedLabConcept) {
     const { patients, selectedPatient } = this.props;
     const patient = patients[selectedPatient] || {};
-    console.log('patient', patient);
     const {
       CONSTANTS, conceptMembers, history: { location: { state } },
     } = this.props;
