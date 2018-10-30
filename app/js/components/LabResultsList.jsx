@@ -2,7 +2,9 @@ import React, { PureComponent } from 'react';
 import R from 'ramda';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
-import { SortableTable, Loader, constantsActions, CustomDatePicker as DatePicker } from '@openmrs/react-components';
+import {
+  SortableTable, Loader, constantsActions, CustomDatePicker as DatePicker,
+} from '@openmrs/react-components';
 import moment from 'moment';
 import RangeCell from './RangeCell';
 import patientAction from '../actions/patientAction';
@@ -11,16 +13,22 @@ import "../../css/lab-results-view.scss";
 
 
 const patientUUID = process.env.NODE_ENV !== 'production'
-  ? 'ab408b4d-c29d-418d-8bbe-4d1a0903b373' // your patient uuid will go here
+  ? '70c9de3d-ce33-420b-818b-332acbfaf776' // your patient uuid will go here
   : '76f0fd80-2b5b-496a-8b68-539d7e532ad2';
 
-const Cell = ({ value, columnName, type }) => {
+const Cell = ({
+  value, columnName, type, navigate,
+}) => {
   if (type === 'single') {
     const hasNoEncounter = value.status === 'Ordered';
     const isPanel = value.order.concept.set;
     if (columnName === 'TYPE') {
       return (
-        <div className="table_cell type">
+        <div
+          className="table_cell type" onClick={(e) => {
+            e.preventDefault();
+            navigate(value);
+          }}>
           <span>{value.order.display}</span>
         </div>
       );
@@ -74,14 +82,22 @@ const Cell = ({ value, columnName, type }) => {
     switch (columnName) {
       case 'TYPE': {
         return (
-          <div className="table_cell type">
+          <div
+            className="table_cell type" onClick={(e) => {
+              e.preventDefault();
+              navigate(value);
+            }}>
             <span>{value.concept.display}</span>
           </div>
         );
       }
       case 'RESULT':
         return (
-          <div className="table_cell result">
+          <div
+            className="table_cell result" onClick={(e) => {
+              e.preventDefault();
+              navigate(value);
+            }}>
             <span>{value.value.display || value.value}</span>
           </div>
         );
@@ -138,16 +154,25 @@ export class LabResultsList extends PureComponent {
   handleShowLabTrendsPage(data) {
     const { history } = this.props;
     if (data.order) {
-      history.push({
-        pathname: "/labtrendspage",
-        state: data.encounter.obs[0].concept,
-      });
+      if (data.encounter && data.encounter.obs[0]) {
+        const obs = data.encounter.obs[0];
+        if (!obs.groupMembers) {
+          history.push({
+            pathname: "/labtrends",
+            state: data.encounter.obs[0].concept,
+          });
+        }
+      }
     } else if (data.concept) {
       history.push({
-        pathname: "/labtrendspage",
+        pathname: "/labtrends",
         state: data.concept,
       });
     }
+  }
+
+  navigate(data) {
+    this.handleShowLabTrendsPage(data);
   }
 
   handleFilterChange(field, value) {
@@ -171,7 +196,7 @@ export class LabResultsList extends PureComponent {
     {columnName}
   </span>,
       accessor: "",
-      Cell: data => <Cell {...data} columnName={columnName} dateAndTimeFormat={dateAndTimeFormat} type="single" show={false} />,
+      Cell: data => <Cell {...data} columnName={columnName} dateAndTimeFormat={dateAndTimeFormat} type="single" show={false} navigate={this.handleShowLabTrendsPage} />,
       className: `lab-results-list-cell-${columnName.replace(' ', '-').toLocaleLowerCase()}`,
       headerClassName: `lab-result-list-header-${columnName.replace(' ', '-').toLocaleLowerCase()}`,
     }));
@@ -185,7 +210,6 @@ export class LabResultsList extends PureComponent {
           filteredFields={fields}
           filterType="none"
           showFilter={false}
-          // rowOnClick={this.handleShowLabTrendsPage}
           isSortable={false}
           noDataMessage="No results found"
           defaultPageSize={10}
@@ -194,7 +218,7 @@ export class LabResultsList extends PureComponent {
             const rowFields = ["TYPE", "RESULT", "NORMAL RANGE"];
             const rowColumnMetadata = rowFields.map(columnName => ({
               accessor: "",
-              Cell: data => <Cell {...data} columnName={columnName} type="panel" />,
+              Cell: data => <Cell {...data} columnName={columnName} type="panel" navigate={this.handleShowLabTrendsPage} />,
               className: `lab-results-list-cell-${columnName.replace(' ', '-').toLocaleLowerCase()}`,
               headerClassName: 'lab-results-list-header',
             }));
@@ -266,7 +290,6 @@ export class LabResultsList extends PureComponent {
 
     const getPatientLabResults = () => {
       const results = encounters.map((encounter) => {
-
         // TODO the assumption here is that there will only be one (and always be one) test order obs per encounter,
         // TODO in our current model, this is correct, but may change (note that currently we are only parsing specimen collectoin encounters)
         const testOrderObs = encounter.obs.filter(
@@ -345,6 +368,8 @@ export class LabResultsList extends PureComponent {
 
 LabResultsList.propTypes = {
   dateAndTimeFormat: PropTypes.string.isRequired,
+  type: PropTypes.string.isRequired,
+  navigate: PropTypes.func.isRequired,
 };
 
 export const mapStateToProps = ({

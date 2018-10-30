@@ -58,12 +58,18 @@ export class LabTrendsPage extends PureComponent {
     dispatch(fetchLabTestResults(patientUUID, conceptUUID));
   }
 
+  handleNavigateBack(history) {
+    history.push({
+      pathname: "/labresults",
+    });
+  }
+
   render() {
     const {
       labTestResults: { results },
-      history: { location: { state } },
+      history,
     } = this.props;
-
+    const { location: { state } } = history;
     const fields = ["SAMPLE DATE", "RESULT DATE", "RESULT", "NORMAL RANGE"];
     const columnMetadata = fields.map(columnName => ({
       Header:
@@ -75,7 +81,6 @@ export class LabTrendsPage extends PureComponent {
       className: `lab-trends-list-cell-${columnName.replace(' ', '-').toLocaleLowerCase()}`,
       headerClassName: `lab-trends-list-header-${columnName.replace(' ', '-').toLocaleLowerCase()}`,
     }));
-
 
     return (
       <div>
@@ -90,6 +95,8 @@ export class LabTrendsPage extends PureComponent {
             defaultPageSize={10}
           />
         </div>
+        <br />
+        <button type="button" className="btn btn-lg btn-danger" onClick={() => this.handleNavigateBack(history)}>Back</button>
       </div>
     );
   }
