@@ -107,11 +107,14 @@ exports[`<LabResultEntry /> component renders correctly with valid props 1`] = `
           }
         }
         nameField=""
-        patientHeaderDetail={
+        patients={
           Object {
-            "display": "Y2A7LR - williams willy john",
+            "some-patient-uuid": Object {
+              "display": "Y2A7LR - williams willy john",
+            },
           }
         }
+        selectedPatient="some-patient-uuid"
       >
         <LabResultEntry
           CONSTANTS={
@@ -190,9 +193,11 @@ exports[`<LabResultEntry /> component renders correctly with valid props 1`] = `
             }
           }
           nameField=""
-          patientHeaderDetail={
+          patients={
             Object {
-              "display": "Y2A7LR - williams willy john",
+              "some-patient-uuid": Object {
+                "display": "Y2A7LR - williams willy john",
+              },
             }
           }
           selectedLabConcept={
@@ -211,6 +216,7 @@ exports[`<LabResultEntry /> component renders correctly with valid props 1`] = `
               ],
             }
           }
+          selectedPatient="some-patient-uuid"
         >
           <div
             className="container-fluid"
@@ -263,7 +269,7 @@ exports[`<LabResultEntry /> component renders correctly with valid props 1`] = `
                         <span
                           className="test-details"
                         >
-                          Oct 29 9:36 AM
+                          Oct 30 4:43 PM
                         </span>
                       </span>
                     </div>
@@ -445,7 +451,7 @@ exports[`<LabResultEntry /> component renders correctly with valid props 1`] = `
                                     Specimen Collection Date:  
                                   </span>
                                   <WithFormContext(Connect(EncounterDate))
-                                    defaultDate={"2018-10-28T23:00:00.000Z"}
+                                    defaultDate={"2018-10-29T23:00:00.000Z"}
                                     field="dateFromField"
                                     handleDateChange={[Function]}
                                     label="Specimen Collection Date:"
@@ -691,7 +697,7 @@ exports[`<LabResultEntry /> component renders correctly with valid props 1`] = `
                                       Specimen Collection Date:  
                                     </span>
                                     <WithFormContext(Connect(EncounterDate))
-                                      defaultDate={"2018-10-28T23:00:00.000Z"}
+                                      defaultDate={"2018-10-29T23:00:00.000Z"}
                                       field="dateFromField"
                                       handleDateChange={[Function]}
                                       label="Specimen Collection Date:"
@@ -975,12 +981,15 @@ exports[`<LabResultEntry /> component should redirect when location has an empty
         }
       }
       nameField=""
-      patientHeaderDetail={
+      patients={
         Object {
-          "display": "Y2A7LR - williams willy john",
+          "some-patient-uuid": Object {
+            "display": "Y2A7LR - williams willy john",
+          },
         }
       }
       selectedLabConcept={Object {}}
+      selectedPatient="some-patient-uuid"
       store={
         Object {
           "clearActions": [Function],
@@ -1034,11 +1043,6 @@ exports[`<LabResultEntry /> component should redirect when location has an empty
           }
         }
         nameField=""
-        patientHeaderDetail={
-          Object {
-            "display": "Y2A7LR - williams willy john",
-          }
-        }
         selectedLabConcept={null}
         store={
           Object {
@@ -1149,12 +1153,15 @@ exports[`<LabResultEntry /> component should render <Loader /> component when se
     }
   }
   nameField=""
-  patientHeaderDetail={
+  patients={
     Object {
-      "display": "Y2A7LR - williams willy john",
+      "some-patient-uuid": Object {
+        "display": "Y2A7LR - williams willy john",
+      },
     }
   }
   selectedLabConcept={Object {}}
+  selectedPatient="some-patient-uuid"
   store={
     Object {
       "clearActions": [Function],
@@ -1221,11 +1228,6 @@ exports[`<LabResultEntry /> component should render <Loader /> component when se
       }
     }
     nameField=""
-    patientHeaderDetail={
-      Object {
-        "display": "Y2A7LR - williams willy john",
-      }
-    }
     selectedLabConcept={Object {}}
     store={
       Object {
