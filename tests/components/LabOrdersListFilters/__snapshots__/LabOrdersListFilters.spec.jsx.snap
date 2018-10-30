@@ -22,7 +22,7 @@ exports[`<LabOrdersList /> component renders correctly 1`] = `
       >
         <span>
           <CustomDatePicker
-            defaultDate={"2018-10-18T11:55:56.434Z"}
+            defaultDate={"2018-10-22T15:43:33.497Z"}
             field="dateFromField"
             formControlStyle={
               Object {
@@ -57,7 +57,7 @@ exports[`<LabOrdersList /> component renders correctly 1`] = `
                 preventOpenOnFocus={false}
                 previousMonthButtonLabel="Previous Month"
                 readOnly={false}
-                selected={"2018-10-18T11:55:56.434Z"}
+                selected={"2018-10-22T15:43:33.497Z"}
                 shouldCloseOnSelect={true}
                 showTimeSelect={false}
                 timeCaption="Time"
@@ -90,7 +90,7 @@ exports[`<LabOrdersList /> component renders correctly 1`] = `
                         onFocus={[Function]}
                         onKeyDown={[Function]}
                         readOnly={false}
-                        value="10/18/2018"
+                        value="10/22/2018"
                       />
                     </div>
                   }
@@ -117,7 +117,7 @@ exports[`<LabOrdersList /> component renders correctly 1`] = `
                               onFocus={[Function]}
                               onKeyDown={[Function]}
                               readOnly={false}
-                              value="10/18/2018"
+                              value="10/22/2018"
                             >
                               <span>
                                 <span
@@ -144,7 +144,7 @@ exports[`<LabOrdersList /> component renders correctly 1`] = `
                                       }
                                     }
                                     type="text"
-                                    value="10/18/2018"
+                                    value="10/22/2018"
                                   >
                                     <input
                                       className="form-control"
@@ -156,7 +156,7 @@ exports[`<LabOrdersList /> component renders correctly 1`] = `
                                         }
                                       }
                                       type="text"
-                                      value="10/18/2018"
+                                      value="10/22/2018"
                                     />
                                   </FormControl>
                                   <FontAwesomeIcon
@@ -210,7 +210,7 @@ exports[`<LabOrdersList /> component renders correctly 1`] = `
         </span>
         <span>
           <CustomDatePicker
-            defaultDate={"2018-10-26T11:55:56.238Z"}
+            defaultDate={"2018-10-30T15:43:30.082Z"}
             field="dateToField"
             formControlStyle={
               Object {
@@ -245,7 +245,7 @@ exports[`<LabOrdersList /> component renders correctly 1`] = `
                 preventOpenOnFocus={false}
                 previousMonthButtonLabel="Previous Month"
                 readOnly={false}
-                selected={"2018-10-26T11:55:56.238Z"}
+                selected={"2018-10-30T15:43:30.082Z"}
                 shouldCloseOnSelect={true}
                 showTimeSelect={false}
                 timeCaption="Time"
@@ -278,7 +278,7 @@ exports[`<LabOrdersList /> component renders correctly 1`] = `
                         onFocus={[Function]}
                         onKeyDown={[Function]}
                         readOnly={false}
-                        value="10/26/2018"
+                        value="10/30/2018"
                       />
                     </div>
                   }
@@ -305,7 +305,7 @@ exports[`<LabOrdersList /> component renders correctly 1`] = `
                               onFocus={[Function]}
                               onKeyDown={[Function]}
                               readOnly={false}
-                              value="10/26/2018"
+                              value="10/30/2018"
                             >
                               <span>
                                 <span
@@ -332,7 +332,7 @@ exports[`<LabOrdersList /> component renders correctly 1`] = `
                                       }
                                     }
                                     type="text"
-                                    value="10/26/2018"
+                                    value="10/30/2018"
                                   >
                                     <input
                                       className="form-control"
@@ -344,7 +344,7 @@ exports[`<LabOrdersList /> component renders correctly 1`] = `
                                         }
                                       }
                                       type="text"
-                                      value="10/26/2018"
+                                      value="10/30/2018"
                                     />
                                   </FormControl>
                                   <FontAwesomeIcon
@@ -448,6 +448,7 @@ exports[`<LabOrdersList /> component renders correctly 1`] = `
             "Hémogramme automatisé",
           ]
         }
+        placeholder="Select from the list"
       >
         <div>
           <span
@@ -468,6 +469,12 @@ exports[`<LabOrdersList /> component renders correctly 1`] = `
               }
               value=""
             >
+              <option
+                key="0"
+                value=""
+              >
+                Select from the list
+              </option>
               <option
                 key="All"
                 value="All"

@@ -8,9 +8,12 @@ let mountedComponent;
 
 
 let props = {
-  patientHeaderDetail: {
-    display: "Y2A7LR - williams willy john",
+  patients: {
+    'some-patient-uuid': {
+      display: "Y2A7LR - williams willy john",
+    },
   },
+  selectedPatient: 'some-patient-uuid',
   conceptMembers: {
     '1234-abcd': {
       hiNormal: 22,
@@ -74,6 +77,12 @@ const state = {
       display: "Y2A7LR - williams willy john",
     },
   },
+  patients: {
+    'some-patient-uuid': {
+      display: "Y2A7LR - williams willy john",
+    },
+  },
+  selectedPatient: 'some-patient-uuid',
   openmrs: {
     patients: {
       abcd: {
