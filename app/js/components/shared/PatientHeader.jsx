@@ -8,44 +8,24 @@
  */
 import React, { PureComponent } from 'react';
 import { connect } from 'react-redux';
-import { withRouter } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import {
   PatientHeader as Header,
 } from '@openmrs/react-components';
 
 export class PatientHeader extends PureComponent {
-  constructor(props) {
-    super(props);
-    this.state = {
-      showPatientHeader: false,
-    };
-  }
-
-  componentWillReceiveProps(nextProps) {
-    const { location } = nextProps;
-    if (location.pathname === '/labtrends' || location.pathname === '/labresults') {
-      this.setState({ showPatientHeader: true });
-    } else {
-      this.setState({ showPatientHeader: false });
-    }
-  }
-
   render() {
     const { patientHeaderDetail } = this.props;
-    const { showPatientHeader } = this.state;
     return (
       <div className="container-fluid">
-        {showPatientHeader && <Header patient={patientHeaderDetail} />}
+        {patientHeaderDetail && <Header patient={patientHeaderDetail} />}
       </div>
     );
   }
 }
 
-
 PatientHeader.propTypes = {
   patientHeaderDetail: PropTypes.object.isRequired,
-  location: PropTypes.object.isRequired,
 };
 
 const mapStateToProps = ({
@@ -55,4 +35,4 @@ const mapStateToProps = ({
   patientHeaderDetail: patients[selectedPatient],
 });
 
-export default withRouter(connect(mapStateToProps)(PatientHeader));
+export default connect(mapStateToProps)(PatientHeader);

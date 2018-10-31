@@ -60,10 +60,31 @@ export class LabResultEntry extends PureComponent {
       dispatch(patientAction.getPatient(patientUUID));
       dispatch(constantsActions.fetchLabResultsDidNotPerformReasonAnswer(CONSTANTS.labResultsDidNotPerformReasonQuestion));
       dispatch(constantsActions.fetchLabResultsTestLocationAnswer(CONSTANTS.labResultsTestLocationQuestion));
+      dispatch(patientAction.fetchPatientLabTestResults(state.patient.uuid));
       dispatch(fetchLabConcept(conceptUUID));
     } else {
       this.shouldRedirect();
     }
+  }
+
+  getEncounter() {
+    const {
+      CONSTANTS, selectedPatient, patients, history: { location: { state } },
+    } = this.props;
+
+    const patient = patients[selectedPatient] || {};
+
+    const { encounters = [] } = patient;
+
+    const matchedEncounter = encounters.filter((encounter) => {
+      const testOrderObs = encounter.obs.filter(
+        item => item.concept.uuid === CONSTANTS.labResultsTestOrderNumberConcept,
+      );
+      const testOrderNumber = testOrderObs[0].value;
+      const matched = testOrderNumber === state.orderNumber;
+      return matched;
+    });
+    return matchedEncounter[0];
   }
 
   shouldRedirect() {
@@ -71,15 +92,28 @@ export class LabResultEntry extends PureComponent {
   }
 
   renderForm(selectedLabConcept) {
-    const { patients, selectedPatient } = this.props;
-    const patient = patients[selectedPatient] || {};
     const {
-      CONSTANTS, conceptMembers, history: { location: { state } },
+      CONSTANTS, conceptMembers, selectedPatient, patients, history: { location: { state } },
     } = this.props;
+
+    const patient = patients[selectedPatient] || {};
+
+
+    const encounter = this.getEncounter();
+    const hasEncounter = !R.isEmpty(encounter);
 
     const encounterType = {
       uuid: CONSTANTS.labResultsEncounterType,
     };
+
+    const encounterFormPageDefaultValues = [
+      {
+        type: "obs",
+        path: "test-order-number",
+        concept: CONSTANTS.labResultsTestOrderNumberConcept,
+        value: state.orderNumber,
+      },
+    ];
 
     const hasMembers = selectedLabConcept.set;
     const hasAnswers = !!selectedLabConcept.answers.length;
@@ -220,21 +254,30 @@ export class LabResultEntry extends PureComponent {
             && (<span className="range-header-text">NORMAL RANGE</span>)
           }
           <span className="encounter-form-componnent">
-            <EncounterFormPage
-              defaultValues={[
-                {
-                  type: "obs",
-                  path: "test-order-number",
-                  concept: "393dec41-2fb5-428f-acfa-36ea85da6666",
-                  value: state.orderNumber,
-                },
-              ]}
-              backLink="/"
-              encounterType={encounterType}
-              formContent={observations}
-              patient={patient}
-              formId="result-entry-form"
-            />
+            {hasEncounter
+              ? (
+                <EncounterFormPage
+                  encounter={encounter}
+                  defaultValues={encounterFormPageDefaultValues}
+                  backLink="/"
+                  afterSubmitLink="/"
+                  encounterType={encounterType}
+                  formContent={observations}
+                  patient={patient}
+                  formId="result-entry-form"
+                />
+              )
+              : (
+                <EncounterFormPage
+                  defaultValues={encounterFormPageDefaultValues}
+                  backLink="/"
+                  encounterType={encounterType}
+                  formContent={observations}
+                  patient={patient}
+                  formId="result-entry-form"
+                />
+              )
+            }
           </span>
         </div>
       </div>
@@ -330,6 +373,7 @@ export class LabResultEntry extends PureComponent {
     const {
       location, selectedLabConcept,
     } = this.props;
+
 
     if (!location.state || redirect) {
       return <Redirect to="/" />;
