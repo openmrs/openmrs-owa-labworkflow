@@ -151,6 +151,7 @@ exports[`<LabResultEntry /> component renders correctly with valid props 1`] = `
             }
           }
           dispatch={[Function]}
+          formId="mockForm"
           history={
             Object {
               "location": Object {
@@ -169,6 +170,7 @@ exports[`<LabResultEntry /> component renders correctly with valid props 1`] = `
               },
             }
           }
+          isDidNotPerformCheckboxSelected={false}
           labTests={
             Array [
               "Hémogramme automatisé",
@@ -269,7 +271,7 @@ exports[`<LabResultEntry /> component renders correctly with valid props 1`] = `
                         <span
                           className="test-details"
                         >
-                          Oct 30 4:43 PM
+                          Nov 01 3:16 PM
                         </span>
                       </span>
                     </div>
@@ -318,11 +320,12 @@ exports[`<LabResultEntry /> component renders correctly with valid props 1`] = `
                     className="encounter-form-componnent"
                   >
                     <Connect(EncounterFormPage)
+                      afterSubmitLink="/"
                       backLink="/"
                       defaultValues={
                         Array [
                           Object {
-                            "concept": "393dec41-2fb5-428f-acfa-36ea85da6666",
+                            "concept": "mock-test-orderno-concept",
                             "path": "test-order-number",
                             "type": "obs",
                             "value": "ORD-1",
@@ -397,6 +400,7 @@ exports[`<LabResultEntry /> component renders correctly with valid props 1`] = `
                                   Reason: 
                                 </span>
                                 <WithObsGroupContext(WithFormContext(Connect(Obs)))
+                                  disabled={true}
                                   dropDownStyle={
                                     Object {
                                       "heigth": "40px",
@@ -451,7 +455,7 @@ exports[`<LabResultEntry /> component renders correctly with valid props 1`] = `
                                     Specimen Collection Date:  
                                   </span>
                                   <WithFormContext(Connect(EncounterDate))
-                                    defaultDate={"2018-10-29T23:00:00.000Z"}
+                                    defaultDate={"2018-10-31T23:00:00.000Z"}
                                     field="dateFromField"
                                     handleDateChange={[Function]}
                                     label="Specimen Collection Date:"
@@ -563,11 +567,12 @@ exports[`<LabResultEntry /> component renders correctly with valid props 1`] = `
                       }
                     >
                       <EncounterFormPage
+                        afterSubmitLink="/"
                         backLink="/"
                         defaultValues={
                           Array [
                             Object {
-                              "concept": "393dec41-2fb5-428f-acfa-36ea85da6666",
+                              "concept": "mock-test-orderno-concept",
                               "path": "test-order-number",
                               "type": "obs",
                               "value": "ORD-1",
@@ -643,6 +648,7 @@ exports[`<LabResultEntry /> component renders correctly with valid props 1`] = `
                                     Reason: 
                                   </span>
                                   <WithObsGroupContext(WithFormContext(Connect(Obs)))
+                                    disabled={true}
                                     dropDownStyle={
                                       Object {
                                         "heigth": "40px",
@@ -697,7 +703,7 @@ exports[`<LabResultEntry /> component renders correctly with valid props 1`] = `
                                       Specimen Collection Date:  
                                     </span>
                                     <WithFormContext(Connect(EncounterDate))
-                                      defaultDate={"2018-10-29T23:00:00.000Z"}
+                                      defaultDate={"2018-10-31T23:00:00.000Z"}
                                       field="dateFromField"
                                       handleDateChange={[Function]}
                                       label="Specimen Collection Date:"
@@ -1014,6 +1020,7 @@ exports[`<LabResultEntry /> component should redirect when location has an empty
         }
         clearNameEMRField={[MockFunction]}
         dispatch={[Function]}
+        formId="mockForm"
         history={
           Object {
             "location": Object {
@@ -1032,6 +1039,7 @@ exports[`<LabResultEntry /> component should redirect when location has an empty
             },
           }
         }
+        isDidNotPerformCheckboxSelected={false}
         labTests={
           Array [
             "Hémogramme automatisé",
@@ -1186,6 +1194,7 @@ exports[`<LabResultEntry /> component should render <Loader /> component when se
     }
     clearNameEMRField={[MockFunction]}
     dispatch={[Function]}
+    formId="mockForm"
     history={
       Object {
         "location": Object {
@@ -1204,6 +1213,7 @@ exports[`<LabResultEntry /> component should render <Loader /> component when se
         },
       }
     }
+    isDidNotPerformCheckboxSelected={false}
     labTests={
       Array [
         "Hémogramme automatisé",

@@ -28,6 +28,7 @@ import {
   formValidations,
   constantsActions,
   Loader,
+  formUtil,
 } from '@openmrs/react-components';
 import patientAction from '../actions/patientAction';
 
@@ -98,7 +99,8 @@ export class LabResultEntry extends PureComponent {
       isDidNotPerformCheckboxSelected, dispatch, formId,
     } = this.props;
     if (!(isDidNotPerformCheckboxSelected)) {
-      dispatch(change(formId, `obs|path=did-not-perform-dropdown|conceptPath=${CONSTANTS.labResultsDidNotPerformReasonQuestion}`, ''));
+      const obsFieldName = formUtil.obsFieldName('did-not-perform-dropdown', CONSTANTS.labResultsDidNotPerformReasonQuestion);
+      dispatch(change(formId, obsFieldName, ''));
     }
 
     const patient = patients[selectedPatient] || {};
@@ -468,7 +470,8 @@ const mapStateToProps = (state) => {
   let isDidNotPerformCheckboxSelected = true;
   if (formId) {
     const selector = formValueSelector(formId);
-    isDidNotPerformCheckboxSelected = !!(selector(state, `obs|path=did-not-perform-checkbox|conceptPath=${CONSTANTS.labResultsDidNotPerformQuestion}`));
+    const obsFieldName = formUtil.obsFieldName('did-not-perform-checkbox', CONSTANTS.labResultsDidNotPerformQuestion);
+    isDidNotPerformCheckboxSelected = !!(selector(state, obsFieldName));
   }
   return {
     patients,

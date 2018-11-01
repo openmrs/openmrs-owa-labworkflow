@@ -100,7 +100,9 @@ const state = {
       labResultsDidNotPerformReason: 'mock-uuid',
     },
   },
-  form: {},
+  form: {
+    mockForm: {},
+  },
   selectedLabConcept: {
     answers: [],
     set: true,
@@ -182,6 +184,9 @@ describe('<LabResultEntry /> component', () => {
           display: "Y2A7LR - williams willy john",
         },
       },
+      form: {
+        mockForm: {},
+      },
       selectedLabConcept: {},
       openmrs: {
         CONSTANTS: {
@@ -210,6 +215,9 @@ describe('<LabResultEntry /> component', () => {
         patient: {
           display: "Y2A7LR - williams willy john",
         },
+      },
+      form: {
+        mockForm: {},
       },
       openmrs: {
         CONSTANTS: {
