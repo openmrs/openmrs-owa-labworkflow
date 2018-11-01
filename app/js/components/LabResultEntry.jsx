@@ -10,6 +10,7 @@ import React, { PureComponent } from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import R from 'ramda';
+import { formValueSelector, change } from 'redux-form';
 
 import {
   Grid,
@@ -94,7 +95,11 @@ export class LabResultEntry extends PureComponent {
   renderForm(selectedLabConcept) {
     const {
       CONSTANTS, conceptMembers, selectedPatient, patients, history: { location: { state } },
+      isDidNotPerformCheckboxSelected, dispatch, formId,
     } = this.props;
+    if (!(isDidNotPerformCheckboxSelected)) {
+      dispatch(change(formId, `obs|path=did-not-perform-dropdown|conceptPath=${CONSTANTS.labResultsDidNotPerformReasonQuestion}`, ''));
+    }
 
     const patient = patients[selectedPatient] || {};
 
@@ -165,6 +170,7 @@ export class LabResultEntry extends PureComponent {
               <Obs
                 conceptAnswers={CONSTANTS.labResultsDidNotPerformReasonAnswer}
                 widget="dropdown"
+                disabled={!(isDidNotPerformCheckboxSelected)}
                 concept={CONSTANTS.labResultsDidNotPerformReasonQuestion}
                 path="did-not-perform-dropdown"
                 dropDownStyle={{ heigth: '40px', width: '100%' }}
@@ -456,14 +462,22 @@ const mapStateToProps = (state) => {
     conceptMembers,
     patients,
     selectedPatient,
+    form,
   } = state;
-
+  const formId = Object.keys(form)[0];
+  let isDidNotPerformCheckboxSelected = true;
+  if (formId) {
+    const selector = formValueSelector(formId);
+    isDidNotPerformCheckboxSelected = !!(selector(state, `obs|path=did-not-perform-checkbox|conceptPath=${CONSTANTS.labResultsDidNotPerformQuestion}`));
+  }
   return {
     patients,
     selectedPatient,
     selectedLabConcept,
     CONSTANTS,
     conceptMembers,
+    isDidNotPerformCheckboxSelected,
+    formId,
   };
 };
 
