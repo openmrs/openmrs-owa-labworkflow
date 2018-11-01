@@ -267,11 +267,11 @@ exports[`<LabResultEntry /> component renders correctly with valid props 1`] = `
                       <span
                         className="test-details-label"
                       >
-                        Order Date: 
+                        Order Number: 
                         <span
                           className="test-details"
                         >
-                          Nov 01 3:16 PM
+                          ORD-1
                         </span>
                       </span>
                     </div>
@@ -286,6 +286,20 @@ exports[`<LabResultEntry /> component renders correctly with valid props 1`] = `
                           className="test-details"
                         >
                           ROUTINE
+                        </span>
+                      </span>
+                    </div>
+                    <div
+                      className="col-xs-7 order-date-detail"
+                    >
+                      <span
+                        className="test-details-label"
+                      >
+                        Order Date: 
+                        <span
+                          className="test-details"
+                        >
+                          Nov 01 5:14 AM
                         </span>
                       </span>
                     </div>
