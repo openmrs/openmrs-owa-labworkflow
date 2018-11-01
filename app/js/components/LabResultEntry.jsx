@@ -10,6 +10,7 @@ import React, { PureComponent } from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import R from 'ramda';
+import { formValueSelector, change } from 'redux-form';
 
 import {
   Grid,
@@ -27,6 +28,7 @@ import {
   formValidations,
   constantsActions,
   Loader,
+  formUtil,
 } from '@openmrs/react-components';
 import patientAction from '../actions/patientAction';
 
@@ -94,7 +96,12 @@ export class LabResultEntry extends PureComponent {
   renderForm(selectedLabConcept) {
     const {
       CONSTANTS, conceptMembers, selectedPatient, patients, history: { location: { state } },
+      isDidNotPerformCheckboxSelected, dispatch, formId,
     } = this.props;
+    if (!(isDidNotPerformCheckboxSelected)) {
+      const obsFieldName = formUtil.obsFieldName('did-not-perform-dropdown', CONSTANTS.labResultsDidNotPerformReasonQuestion);
+      dispatch(change(formId, obsFieldName, ''));
+    }
 
     const patient = patients[selectedPatient] || {};
 
@@ -165,6 +172,7 @@ export class LabResultEntry extends PureComponent {
               <Obs
                 conceptAnswers={CONSTANTS.labResultsDidNotPerformReasonAnswer}
                 widget="dropdown"
+                disabled={!(isDidNotPerformCheckboxSelected)}
                 concept={CONSTANTS.labResultsDidNotPerformReasonQuestion}
                 path="did-not-perform-dropdown"
                 dropDownStyle={{ heigth: '40px', width: '100%' }}
@@ -456,14 +464,23 @@ const mapStateToProps = (state) => {
     conceptMembers,
     patients,
     selectedPatient,
+    form,
   } = state;
-
+  const formId = Object.keys(form)[0];
+  let isDidNotPerformCheckboxSelected = true;
+  if (formId) {
+    const selector = formValueSelector(formId);
+    const obsFieldName = formUtil.obsFieldName('did-not-perform-checkbox', CONSTANTS.labResultsDidNotPerformQuestion);
+    isDidNotPerformCheckboxSelected = !!(selector(state, obsFieldName));
+  }
   return {
     patients,
     selectedPatient,
     selectedLabConcept,
     CONSTANTS,
     conceptMembers,
+    isDidNotPerformCheckboxSelected,
+    formId,
   };
 };
 
