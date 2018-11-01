@@ -151,6 +151,7 @@ exports[`<LabResultEntry /> component renders correctly with valid props 1`] = `
             }
           }
           dispatch={[Function]}
+          formId="mockForm"
           history={
             Object {
               "location": Object {
@@ -169,6 +170,7 @@ exports[`<LabResultEntry /> component renders correctly with valid props 1`] = `
               },
             }
           }
+          isDidNotPerformCheckboxSelected={false}
           labTests={
             Array [
               "Hémogramme automatisé",
@@ -412,6 +414,7 @@ exports[`<LabResultEntry /> component renders correctly with valid props 1`] = `
                                   Reason: 
                                 </span>
                                 <WithObsGroupContext(WithFormContext(Connect(Obs)))
+                                  disabled={true}
                                   dropDownStyle={
                                     Object {
                                       "heigth": "40px",
@@ -659,6 +662,7 @@ exports[`<LabResultEntry /> component renders correctly with valid props 1`] = `
                                     Reason: 
                                   </span>
                                   <WithObsGroupContext(WithFormContext(Connect(Obs)))
+                                    disabled={true}
                                     dropDownStyle={
                                       Object {
                                         "heigth": "40px",
@@ -1030,6 +1034,7 @@ exports[`<LabResultEntry /> component should redirect when location has an empty
         }
         clearNameEMRField={[MockFunction]}
         dispatch={[Function]}
+        formId="mockForm"
         history={
           Object {
             "location": Object {
@@ -1048,6 +1053,7 @@ exports[`<LabResultEntry /> component should redirect when location has an empty
             },
           }
         }
+        isDidNotPerformCheckboxSelected={false}
         labTests={
           Array [
             "Hémogramme automatisé",
@@ -1202,6 +1208,7 @@ exports[`<LabResultEntry /> component should render <Loader /> component when se
     }
     clearNameEMRField={[MockFunction]}
     dispatch={[Function]}
+    formId="mockForm"
     history={
       Object {
         "location": Object {
@@ -1220,6 +1227,7 @@ exports[`<LabResultEntry /> component should render <Loader /> component when se
         },
       }
     }
+    isDidNotPerformCheckboxSelected={false}
     labTests={
       Array [
         "Hémogramme automatisé",
