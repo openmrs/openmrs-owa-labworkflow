@@ -265,11 +265,11 @@ exports[`<LabResultEntry /> component renders correctly with valid props 1`] = `
                       <span
                         className="test-details-label"
                       >
-                        Order Date: 
+                        Order Number: 
                         <span
                           className="test-details"
                         >
-                          Oct 30 4:43 PM
+                          ORD-1
                         </span>
                       </span>
                     </div>
@@ -284,6 +284,20 @@ exports[`<LabResultEntry /> component renders correctly with valid props 1`] = `
                           className="test-details"
                         >
                           ROUTINE
+                        </span>
+                      </span>
+                    </div>
+                    <div
+                      className="col-xs-7 order-date-detail"
+                    >
+                      <span
+                        className="test-details-label"
+                      >
+                        Order Date: 
+                        <span
+                          className="test-details"
+                        >
+                          Nov 01 5:14 AM
                         </span>
                       </span>
                     </div>
@@ -318,11 +332,12 @@ exports[`<LabResultEntry /> component renders correctly with valid props 1`] = `
                     className="encounter-form-componnent"
                   >
                     <Connect(EncounterFormPage)
+                      afterSubmitLink="/"
                       backLink="/"
                       defaultValues={
                         Array [
                           Object {
-                            "concept": "393dec41-2fb5-428f-acfa-36ea85da6666",
+                            "concept": "mock-test-orderno-concept",
                             "path": "test-order-number",
                             "type": "obs",
                             "value": "ORD-1",
@@ -451,7 +466,7 @@ exports[`<LabResultEntry /> component renders correctly with valid props 1`] = `
                                     Specimen Collection Date:  
                                   </span>
                                   <WithFormContext(Connect(EncounterDate))
-                                    defaultDate={"2018-10-29T23:00:00.000Z"}
+                                    defaultDate={"2018-10-31T23:00:00.000Z"}
                                     field="dateFromField"
                                     handleDateChange={[Function]}
                                     label="Specimen Collection Date:"
@@ -563,11 +578,12 @@ exports[`<LabResultEntry /> component renders correctly with valid props 1`] = `
                       }
                     >
                       <EncounterFormPage
+                        afterSubmitLink="/"
                         backLink="/"
                         defaultValues={
                           Array [
                             Object {
-                              "concept": "393dec41-2fb5-428f-acfa-36ea85da6666",
+                              "concept": "mock-test-orderno-concept",
                               "path": "test-order-number",
                               "type": "obs",
                               "value": "ORD-1",
@@ -697,7 +713,7 @@ exports[`<LabResultEntry /> component renders correctly with valid props 1`] = `
                                       Specimen Collection Date:  
                                     </span>
                                     <WithFormContext(Connect(EncounterDate))
-                                      defaultDate={"2018-10-29T23:00:00.000Z"}
+                                      defaultDate={"2018-10-31T23:00:00.000Z"}
                                       field="dateFromField"
                                       handleDateChange={[Function]}
                                       label="Specimen Collection Date:"
