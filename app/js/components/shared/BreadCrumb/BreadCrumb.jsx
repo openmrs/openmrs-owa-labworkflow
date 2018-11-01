@@ -9,9 +9,9 @@
  */
 
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import { Link, withRouter } from 'react-router-dom';
-import { FormattedMessage } from 'react-intl';
 
 import './breadCrumb.css';
 
@@ -39,41 +39,37 @@ class BreadCrumb extends Component {
     const {
       currentTab,
     } = this.state;
+    let familyName = '';
+    const { patientHeaderDetail, history } = this.props;
+    if (typeof patientHeaderDetail !== 'undefined' && patientHeaderDetail.hasOwnProperty('person')) {
+      familyName = patientHeaderDetail.person.personName.familyName;
+    }
     let outputBreadcrumb;
 
     const homePageBreadcrumb = (
-      <Link to="/">
-        <span
-          className="glyphicon glyphicon-chevron-right breadcrumb-item separator"
-          aria-hidden="true" />
-        <span className="title breadcrumb-item">
-          <u>
-            <FormattedMessage
-              id="app.breadCrumb.homePageBreadcrumb.title"
-              defaultMessage="Lab test results"
-              description="the homepage breadcrumb title" />
-          </u>
-        </span>
-      </Link>
+      <span>
+        <Link to="/">
+          <span
+            className="glyphicon glyphicon-chevron-right breadcrumb-item separator"
+            aria-hidden="true" />
+          <span className="title breadcrumb-item">
+            <u>
+            Lab
+            </u>
+          </span>
+        </Link>
+        <Link to="/">
+          <span
+            className="glyphicon glyphicon-chevron-right breadcrumb-item separator"
+            aria-hidden="true" />
+          <span className="title breadcrumb-item">
+            <u>Lab Test Results</u>
+          </span>
+        </Link>
+      </span>
     );
 
     switch (currentTab) {
-      case 'FakeBreadcrumbPage':
-        outputBreadcrumb = (
-          <span>
-            <span>{ homePageBreadcrumb }</span>
-            <Link to="FakeBreadcrumbPage">
-              <span
-                className="glyphicon glyphicon-chevron-right breadcrumb-item separator"
-                aria-hidden="true" />
-              <span className="title breadcrumb-item">
-                <u>FakeBreadcrumbPage</u>
-              </span>
-            </Link>
-          </span>
-        );
-        break;
-
       case 'LabResultEntry':
         outputBreadcrumb = (
           <span>
@@ -83,7 +79,63 @@ class BreadCrumb extends Component {
                 className="glyphicon glyphicon-chevron-right breadcrumb-item separator"
                 aria-hidden="true" />
               <span className="title breadcrumb-item">
-                <u>Test result</u>
+                {familyName || ''}
+                {' '}
+Lab Result
+              </span>
+            </Link>
+          </span>
+        );
+        break;
+
+      case 'labresults':
+        outputBreadcrumb = (
+          <span>
+            <Link to="LabResultEntry">
+              <span
+                className="glyphicon glyphicon-chevron-right breadcrumb-item separator"
+                aria-hidden="true" />
+              <span className="title breadcrumb-item">
+                <u>{`${familyName} test`}</u>
+              </span>
+            </Link>
+            <Link to="labresults">
+              <span
+                className="glyphicon glyphicon-chevron-right breadcrumb-item separator"
+                aria-hidden="true" />
+              <span className="title breadcrumb-item">
+                Patient Labs
+              </span>
+            </Link>
+          </span>
+        );
+        break;
+
+      case 'labtrends':
+        outputBreadcrumb = (
+          <span>
+            <Link to="LabResultEntry">
+              <span
+                className="glyphicon glyphicon-chevron-right breadcrumb-item separator"
+                aria-hidden="true" />
+              <span className="title breadcrumb-item">
+                <u>{`${familyName} test`}</u>
+              </span>
+            </Link>
+            <Link to="labresults">
+              <span
+                className="glyphicon glyphicon-chevron-right breadcrumb-item separator"
+                aria-hidden="true" />
+              <span className="title breadcrumb-item">
+                <u>Patient Labs</u>
+              </span>
+            </Link>
+            <Link to="labresults">
+              <span
+                className="glyphicon glyphicon-chevron-right breadcrumb-item separator"
+                aria-hidden="true" />
+              <span className="title breadcrumb-item">
+                {`${history.location.state.display} Trend`}
               </span>
             </Link>
           </span>
@@ -107,5 +159,15 @@ class BreadCrumb extends Component {
 
 BreadCrumb.propTypes = {
   history: PropTypes.shape({}).isRequired,
+  patientHeaderDetail: PropTypes.shape({}),
 };
-export default withRouter(BreadCrumb);
+
+const mapStateToProps = ({
+  patients,
+  selectedPatient,
+}) => ({
+  patientHeaderDetail: patients[selectedPatient],
+});
+
+
+export default withRouter(connect(mapStateToProps)(BreadCrumb));
