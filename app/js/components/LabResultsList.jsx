@@ -218,7 +218,7 @@ export class LabResultsList extends PureComponent {
               className: `lab-results-list-cell-${columnName.replace(' ', '-').toLocaleLowerCase()}`,
               headerClassName: 'lab-results-list-header',
             }));
-            if (isPanel) {
+            if (isPanel && row.original.status === 'Taken') {
               return (
                 <div className="collapsible-panel">
                   <SortableTable
@@ -291,6 +291,9 @@ export class LabResultsList extends PureComponent {
         const testOrderObs = encounter.obs.filter(
           item => item.concept.uuid === labResultsTestOrderNumberConcept,
         );
+        const resultDateObs = encounter.obs.filter(
+          item => item.concept.uuid === labResultsDateConcept,
+        );
         const testOrderNumber = testOrderObs[0].value;
         const matchedOrder = orders.filter(order => order.orderNumber === testOrderNumber);
         const hasObs = !R.isEmpty(encounter.obs);
@@ -303,13 +306,14 @@ export class LabResultsList extends PureComponent {
           const obs = R.pipe(
             R.filter(item => !concealedConceptUUIDs.includes(item.concept.uuid)),
           )(encounter.obs);
-          if (!R.isEmpty(encounter.obs)) {
+          if (!R.isEmpty(obs)) {
             return {
               order: matchedOrder[0],
               encounter: {
                 ...encounter,
                 obs,
               },
+              resultDate: resultDateObs[0],
               status: 'Taken',
             };
           }
@@ -320,6 +324,7 @@ export class LabResultsList extends PureComponent {
               ...encounter,
               obs,
             },
+            resultDate: resultDateObs[0],
             status: 'Reported',
           };
         }
