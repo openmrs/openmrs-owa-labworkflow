@@ -13,7 +13,7 @@ import {
   SortableTable,
 } from '@openmrs/react-components';
 
-import RangeCell from "./RangeCell";
+import ConceptDisplay from "./ConceptDisplay";
 import { fetchLabTestResults } from '../actions/labOrdersAction';
 import { getTestResultDate, getSampleDate, getResultValue } from '../utils/helpers';
 
@@ -44,7 +44,7 @@ export const Cell = ({ columnName, conceptUuid, value }) => {
 
     case 'NORMAL RANGE':
       return (
-        <RangeCell conceptUUID={conceptUuid} />
+        <ConceptDisplay conceptUUID={conceptUuid} type="range" />
       );
     default:
       return null;

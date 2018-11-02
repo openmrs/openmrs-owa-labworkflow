@@ -6,7 +6,7 @@ import {
   SortableTable, Loader, constantsActions, CustomDatePicker as DatePicker,
 } from '@openmrs/react-components';
 import moment from 'moment';
-import RangeCell from './RangeCell';
+import ConceptDisplay from './ConceptDisplay';
 import patientAction from '../actions/patientAction';
 import { filterThrough } from '../utils/helpers';
 import "../../css/lab-results-view.scss";
@@ -65,12 +65,12 @@ const Cell = ({
         case 'RESULT':
           return (
             <div className="table_cell result">
-              <span>{labResult.value.display || labResult.value}</span>
+              <ConceptDisplay conceptUUID={labResult.concept.uuid} type="result" value={labResult.value.display || labResult.value} />
             </div>
           );
         case 'NORMAL RANGE':
           return (
-            <RangeCell conceptUUID={labResult.concept.uuid} />
+            <ConceptDisplay conceptUUID={labResult.concept.uuid} type="range" />
           );
         default:
           return null;
@@ -93,17 +93,13 @@ const Cell = ({
       }
       case 'RESULT':
         return (
-          <div
-            className="table_cell result" onClick={(e) => {
-              e.preventDefault();
-              navigate(value);
-            }}>
-            <span>{value.value.display || value.value}</span>
+          <div className="table_cell result">
+            <ConceptDisplay conceptUUID={value.concept.uuid} type="result" value={value.value.display || value.value} />
           </div>
         );
       case 'NORMAL RANGE':
         return (
-          <RangeCell conceptUUID={value.concept.uuid} />
+          <ConceptDisplay conceptUUID={value.concept.uuid} type="range" />
         );
 
       default: {
@@ -222,7 +218,7 @@ export class LabResultsList extends PureComponent {
               className: `lab-results-list-cell-${columnName.replace(' ', '-').toLocaleLowerCase()}`,
               headerClassName: 'lab-results-list-header',
             }));
-            if (isPanel) {
+            if (isPanel && row.original.status === 'Taken') {
               return (
                 <div className="collapsible-panel">
                   <SortableTable
@@ -295,6 +291,9 @@ export class LabResultsList extends PureComponent {
         const testOrderObs = encounter.obs.filter(
           item => item.concept.uuid === labResultsTestOrderNumberConcept,
         );
+        const resultDateObs = encounter.obs.filter(
+          item => item.concept.uuid === labResultsDateConcept,
+        );
         const testOrderNumber = testOrderObs[0].value;
         const matchedOrder = orders.filter(order => order.orderNumber === testOrderNumber);
         const hasObs = !R.isEmpty(encounter.obs);
@@ -307,13 +306,14 @@ export class LabResultsList extends PureComponent {
           const obs = R.pipe(
             R.filter(item => !concealedConceptUUIDs.includes(item.concept.uuid)),
           )(encounter.obs);
-          if (!R.isEmpty(encounter.obs)) {
+          if (!R.isEmpty(obs)) {
             return {
               order: matchedOrder[0],
               encounter: {
                 ...encounter,
                 obs,
               },
+              resultDate: resultDateObs[0],
               status: 'Taken',
             };
           }
@@ -324,6 +324,7 @@ export class LabResultsList extends PureComponent {
               ...encounter,
               obs,
             },
+            resultDate: resultDateObs[0],
             status: 'Reported',
           };
         }
