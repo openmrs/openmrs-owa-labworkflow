@@ -1,6 +1,7 @@
 import React from 'react';
 import { HashRouter } from 'react-router-dom';
 import { Provider } from 'react-redux';
+import { mountWithIntl } from "@openmrs/react-components";
 import LabTrendsPage from '../../../app/js/components/LabTrendsPage';
 
 let props;
@@ -56,7 +57,7 @@ const store = mockStore({
 
 const getComponent = () => {
   if (!mountedComponent) {
-    mountedComponent = mount(
+    mountedComponent = mountWithIntl(
       <Provider store={store}>
         <HashRouter>
           <LabTrendsPage {...props} />

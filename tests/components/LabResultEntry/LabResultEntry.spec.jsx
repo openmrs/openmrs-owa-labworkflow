@@ -1,6 +1,8 @@
 import React from 'react';
 import { HashRouter } from 'react-router-dom';
 import { Provider } from 'react-redux';
+import { mountWithIntl } from '@openmrs/react-components';
+
 import LabResultEntry from '../../../app/js/components/LabResultEntry';
 
 
@@ -152,7 +154,7 @@ const context = {
 
 const getComponent = () => {
   if (!mountedComponent) {
-    mountedComponent = mount(
+    mountedComponent = mountWithIntl(
       <Provider store={store}>
         <HashRouter>
           <LabResultEntry {...props} />
@@ -230,7 +232,7 @@ describe('<LabResultEntry /> component', () => {
         },
       },
     });
-    const component = mount(
+    const component = mountWithIntl(
       <HashRouter>
         <LabResultEntry {...props} store={store} />
       </HashRouter>,

@@ -6,6 +6,8 @@ import {
   SortableTable, Loader, constantsActions, CustomDatePicker as DatePicker,
 } from '@openmrs/react-components';
 import moment from 'moment';
+import { FormattedMessage } from 'react-intl';
+
 import ConceptDisplay from './ConceptDisplay';
 import patientAction from '../actions/patientAction';
 import { filterThrough } from '../utils/helpers';
@@ -189,7 +191,9 @@ export class LabResultsList extends PureComponent {
     const columnMetadata = fields.map(columnName => ({
       Header:
   <span className={`labs-result-table-head-${columnName.replace(' ', '-').toLocaleLowerCase()}`}>
-    {columnName}
+    <FormattedMessage
+      id={`app.labResultsList.${columnName.replace(" ", "_")}`}
+      defaultMessage={`${columnName}`} />
   </span>,
       accessor: "",
       Cell: data => <Cell {...data} columnName={columnName} dateAndTimeFormat={dateAndTimeFormat} type="single" show={false} navigate={this.handleShowLabTrendsPage} />,
@@ -247,7 +251,11 @@ export class LabResultsList extends PureComponent {
         <span>
           <DatePicker
             labelClassName="line"
-            label="From: "
+            label={(
+              <FormattedMessage
+                id="app.labResultsList.date1FilterLabel"
+                defaultMessage="From: " />
+            )}
             defaultDate={moment().subtract(8, 'days')}
             formControlStyle={{
               marginRight: '5px',
@@ -260,7 +268,11 @@ export class LabResultsList extends PureComponent {
         <span>
           <DatePicker
             labelClassName="line"
-            label="To: "
+            label={(
+              <FormattedMessage
+                id="app.labResultsList.date2FilterLabel"
+                defaultMessage="To: " />
+            )}
             field="dateToField"
             formControlStyle={{
               marginRight: '5px',
@@ -349,7 +361,9 @@ export class LabResultsList extends PureComponent {
       return (
         <div className="main-container">
           <h2>
-            Lab Test Results
+            <FormattedMessage
+              id="app.labResultsList.title"
+              defaultMessage="Lab Test Results" />
           </h2>
 
           <React.Fragment>
