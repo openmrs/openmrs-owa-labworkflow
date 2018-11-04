@@ -196,13 +196,42 @@ export class LabResultsList extends PureComponent {
       className: `lab-results-list-cell-${columnName.replace(' ', '-').toLocaleLowerCase()}`,
       headerClassName: `lab-result-list-header-${columnName.replace(' ', '-').toLocaleLowerCase()}`,
     }));
+    const expanderColumn = [
+      {
+        expander: true,
+        getProps: (state, rowInfo, column) => {
+          const isPanel = (rowInfo.original.order.concept.set) && (rowInfo.original.status === "Taken");
+          return {
+            style: {
+              display: !isPanel ? 'none' : 'block',
+            },
+          };
+        },
+      },
+      {
+        Header: '',
+        headerClassName: 'expander-cell-header',
+        getProps: (state, rowInfo, column) => {
+          let isNotExpanded = rowInfo.original.order.concept.set === false;
+          if (rowInfo.original.status !== "Taken") {
+            isNotExpanded = true;
+          }
+          return {
+            style: {
+              display: isNotExpanded ? 'block' : 'none',
+            },
+            className: 'expander-cell',
+          };
+        },
+      }];
+    const columns = expanderColumn.concat(columnMetadata);
     return (
       <div className="lab-results-list">
         <SortableTable
           data={labResults}
           filters={filters}
           getDataWithFilters={filterThrough}
-          columnMetadata={columnMetadata}
+          columnMetadata={columns}
           filteredFields={fields}
           filterType="none"
           showFilter={false}

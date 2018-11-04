@@ -31,6 +31,7 @@
     display: flex;
     justify-content: center;
     font-size: 12px !important;
+    padding-left: 30px;
   }
 
 }
@@ -156,6 +157,16 @@ i.scale:hover {
 .abnormal-value {
     color: red;
     font-weight: 800
+}
+
+.expander-cell{
+    flex: initial !important;
+    width: 35px !important;
+    border-right: 0 !important;
+}
+
+.expander-cell-header {
+    display: none;
 }
 
 @keyframes spin {
