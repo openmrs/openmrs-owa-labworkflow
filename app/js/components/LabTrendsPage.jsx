@@ -15,7 +15,9 @@ import {
 
 import ConceptDisplay from "./ConceptDisplay";
 import { fetchLabTestResults } from '../actions/labOrdersAction';
-import { getTestResultDate, getSampleDate, getResultValue } from '../utils/helpers';
+import {
+  getTestResultDate, getSampleDate, getResultValue, calculateTableRows,
+} from '../utils/helpers';
 
 import "../../css/lab-orders-trends-page.scss";
 
@@ -92,7 +94,8 @@ export class LabTrendsPage extends PureComponent {
             filteredFields={fields}
             isSortable={false}
             noDataMessage="No orders found"
-            defaultPageSize={10}
+            minRows={0}
+            defaultPageSize={calculateTableRows(results.length)}
           />
         </div>
         <br />
