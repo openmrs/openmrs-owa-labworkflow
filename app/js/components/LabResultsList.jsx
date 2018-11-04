@@ -13,7 +13,7 @@ import "../../css/lab-results-view.scss";
 
 
 const patientUUID = process.env.NODE_ENV !== 'production'
-  ? 'ab408b4d-c29d-418d-8bbe-4d1a0903b373' // your patient uuid will go here
+  ? '70c9de3d-ce33-420b-818b-332acbfaf776' // your patient uuid will go here
   : '76f0fd80-2b5b-496a-8b68-539d7e532ad2';
 
 const Cell = ({
