@@ -314,7 +314,7 @@ export class LabResultsList extends PureComponent {
                 obs,
               },
               resultDate: resultDateObs[0],
-              status: 'Taken',
+              status: 'Reported',
             };
           }
 
@@ -325,7 +325,7 @@ export class LabResultsList extends PureComponent {
               obs,
             },
             resultDate: resultDateObs[0],
-            status: 'Reported',
+            status: 'Taken',
           };
         }
       });
