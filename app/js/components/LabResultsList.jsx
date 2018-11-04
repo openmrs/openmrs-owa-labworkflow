@@ -13,7 +13,7 @@ import "../../css/lab-results-view.scss";
 
 
 const patientUUID = process.env.NODE_ENV !== 'production'
-  ? '70c9de3d-ce33-420b-818b-332acbfaf776' // your patient uuid will go here
+  ? 'ab408b4d-c29d-418d-8bbe-4d1a0903b373' // your patient uuid will go here
   : '76f0fd80-2b5b-496a-8b68-539d7e532ad2';
 
 const Cell = ({
@@ -200,7 +200,7 @@ export class LabResultsList extends PureComponent {
       {
         expander: true,
         getProps: (state, rowInfo, column) => {
-          const isPanel = (rowInfo.original.order.concept.set) && (rowInfo.original.status === "Taken");
+          const isPanel = (rowInfo.original.order.concept.set) && (rowInfo.original.status === "Reported");
           return {
             style: {
               display: !isPanel ? 'none' : 'block',
@@ -213,7 +213,7 @@ export class LabResultsList extends PureComponent {
         headerClassName: 'expander-cell-header',
         getProps: (state, rowInfo, column) => {
           let isNotExpanded = rowInfo.original.order.concept.set === false;
-          if (rowInfo.original.status !== "Taken") {
+          if (rowInfo.original.status !== "Reported") {
             isNotExpanded = true;
           }
           return {
@@ -239,7 +239,7 @@ export class LabResultsList extends PureComponent {
           noDataMessage="No results found"
           defaultPageSize={10}
           subComponent={(row) => {
-            const isPanel = (row.original.order.concept.set) && (row.original.status !== "Ordered");
+            const isPanel = (row.original.order.concept.set) && (row.original.status === "Reported");
             const rowFields = ["TYPE", "RESULT", "NORMAL RANGE"];
             const rowColumnMetadata = rowFields.map(columnName => ({
               accessor: "",
@@ -247,7 +247,7 @@ export class LabResultsList extends PureComponent {
               className: `lab-results-list-cell-${columnName.replace(' ', '-').toLocaleLowerCase()}`,
               headerClassName: 'lab-results-list-header',
             }));
-            if (isPanel && row.original.status === 'Taken') {
+            if (isPanel) {
               return (
                 <div className="collapsible-panel">
                   <SortableTable
@@ -343,7 +343,7 @@ export class LabResultsList extends PureComponent {
                 obs,
               },
               resultDate: resultDateObs[0],
-              status: 'Taken',
+              status: 'Reported',
             };
           }
 
@@ -354,7 +354,7 @@ export class LabResultsList extends PureComponent {
               obs,
             },
             resultDate: resultDateObs[0],
-            status: 'Reported',
+            status: 'Taken',
           };
         }
       });
