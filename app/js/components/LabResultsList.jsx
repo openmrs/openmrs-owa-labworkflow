@@ -196,13 +196,42 @@ export class LabResultsList extends PureComponent {
       className: `lab-results-list-cell-${columnName.replace(' ', '-').toLocaleLowerCase()}`,
       headerClassName: `lab-result-list-header-${columnName.replace(' ', '-').toLocaleLowerCase()}`,
     }));
+    const expanderColumn = [
+      {
+        expander: true,
+        getProps: (state, rowInfo, column) => {
+          const isPanel = (rowInfo.original.order.concept.set) && (rowInfo.original.status === "Reported");
+          return {
+            style: {
+              display: !isPanel ? 'none' : 'block',
+            },
+          };
+        },
+      },
+      {
+        Header: '',
+        headerClassName: 'expander-cell-header',
+        getProps: (state, rowInfo, column) => {
+          let isNotExpanded = rowInfo.original.order.concept.set === false;
+          if (rowInfo.original.status !== "Reported") {
+            isNotExpanded = true;
+          }
+          return {
+            style: {
+              display: isNotExpanded ? 'block' : 'none',
+            },
+            className: 'expander-cell',
+          };
+        },
+      }];
+    const columns = expanderColumn.concat(columnMetadata);
     return (
       <div className="lab-results-list">
         <SortableTable
           data={labResults}
           filters={filters}
           getDataWithFilters={filterThrough}
-          columnMetadata={columnMetadata}
+          columnMetadata={columns}
           filteredFields={fields}
           filterType="none"
           showFilter={false}
@@ -210,7 +239,7 @@ export class LabResultsList extends PureComponent {
           noDataMessage="No results found"
           defaultPageSize={10}
           subComponent={(row) => {
-            const isPanel = (row.original.order.concept.set) && (row.original.status !== "Ordered");
+            const isPanel = (row.original.order.concept.set) && (row.original.status === "Reported");
             const rowFields = ["TYPE", "RESULT", "NORMAL RANGE"];
             const rowColumnMetadata = rowFields.map(columnName => ({
               accessor: "",
@@ -218,7 +247,7 @@ export class LabResultsList extends PureComponent {
               className: `lab-results-list-cell-${columnName.replace(' ', '-').toLocaleLowerCase()}`,
               headerClassName: 'lab-results-list-header',
             }));
-            if (isPanel && row.original.status === 'Taken') {
+            if (isPanel) {
               return (
                 <div className="collapsible-panel">
                   <SortableTable
@@ -314,7 +343,7 @@ export class LabResultsList extends PureComponent {
                 obs,
               },
               resultDate: resultDateObs[0],
-              status: 'Taken',
+              status: 'Reported',
             };
           }
 
@@ -325,7 +354,7 @@ export class LabResultsList extends PureComponent {
               obs,
             },
             resultDate: resultDateObs[0],
-            status: 'Reported',
+            status: 'Taken',
           };
         }
       });
