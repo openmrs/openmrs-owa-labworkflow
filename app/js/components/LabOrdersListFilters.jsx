@@ -4,15 +4,18 @@ import moment from 'moment';
 import {
   FormControl,
 } from 'react-bootstrap';
+import { FormattedMessage } from 'react-intl';
 import { CustomDatePicker as DatePicker, Dropdown } from '@openmrs/react-components';
-
 
 class LabOrderListFilters extends PureComponent {
   renderNameEMROrOrderIdFilter() {
     const { handleFieldChange, clearNameEMRField, nameField } = this.props;
     return (
       <span className="form-filter-group one-third">
-        <span>Search for a sample</span>
+        <FormattedMessage
+          id="app.labOrdersListFilters.textSearchTitle"
+          defaultMessage="Search for a sample"
+          description="Label for text search input" />
         <span className="name-emrid-order-filter">
           <i className="small icon-search" />
           <FormControl
@@ -34,7 +37,12 @@ class LabOrderListFilters extends PureComponent {
         <span>
           <DatePicker
             labelClassName="line"
-            label="From: "
+            label={(
+              <FormattedMessage
+                id="app.labOrdersListFilters.searchDateFromLabel"
+                defaultMessage="From: "
+                description="Label for the first date search input" />
+            )}
             defaultDate={moment().subtract(8, 'days')}
             formControlStyle={{
               marginRight: '5px',
@@ -47,7 +55,12 @@ class LabOrderListFilters extends PureComponent {
         <span>
           <DatePicker
             labelClassName="line"
-            label="To: "
+            label={(
+              <FormattedMessage
+                id="app.labOrdersListFilters.searchDateToLabel"
+                defaultMessage="To: "
+                description="Label for the second date search input" />
+            )}
             field="dateToField"
             formControlStyle={{
               marginRight: '5px',
@@ -65,7 +78,12 @@ class LabOrderListFilters extends PureComponent {
     return (
       <Dropdown
         className="form-filter-group"
-        label="Test Type"
+        label={(
+          <FormattedMessage
+            id="app.labOrdersListFilters.searchDropdownLabel"
+            defaultMessage="Test Type"
+            description="Label for the dropdown search input" />
+        )}
         defaultValue="All"
         list={labTests}
         field="testTypeField"

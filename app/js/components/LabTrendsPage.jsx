@@ -12,6 +12,7 @@ import PropTypes from 'prop-types';
 import {
   SortableTable,
 } from '@openmrs/react-components';
+import { FormattedMessage } from 'react-intl';
 
 import ConceptDisplay from "./ConceptDisplay";
 import { fetchLabTestResults } from '../actions/labOrdersAction';
@@ -74,7 +75,9 @@ export class LabTrendsPage extends PureComponent {
     const columnMetadata = fields.map(columnName => ({
       Header:
   <span className="labs-order-table-head">
-    {columnName}
+    <FormattedMessage
+      id={`app.labTrendsPage.${columnName.replace(" ", "_")}`}
+      defaultMessage={`${columnName}`} />
   </span>,
       accessor: "",
       Cell: data => <Cell {...data} columnName={columnName} conceptUuid={state.uuid} />,

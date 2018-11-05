@@ -11,7 +11,6 @@ import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import R from 'ramda';
 import { formValueSelector, change } from 'redux-form';
-
 import {
   Grid,
   Row,
@@ -19,6 +18,7 @@ import {
 } from 'react-bootstrap';
 import moment from 'moment';
 import { Redirect } from 'react-router-dom';
+import { FormattedMessage } from 'react-intl';
 
 import {
   EncounterDate,
@@ -31,7 +31,6 @@ import {
   formUtil,
 } from '@openmrs/react-components';
 import patientAction from '../actions/patientAction';
-
 import { fetchLabConcept } from '../actions/labConceptsAction';
 import '../../css/lab-result-entry.scss';
 import { formatRangeDisplayText, hasMaxAndMinValues } from '../utils/helpers';
@@ -142,7 +141,11 @@ export class LabResultEntry extends PureComponent {
             && (
               <div className="col-xs-4">
                 <span className="single-result-field">
-                  <span className="obs-date-label">Result Date:</span>
+                  <span className="obs-date-label">
+                    <FormattedMessage
+                      id="app.labResultEntry.resultDatelabel"
+                      defaultMessage="Result Date:" />
+                  </span>
                   <span className="obs-date-field">
                     <Obs
                       datatype="date"
@@ -162,13 +165,23 @@ export class LabResultEntry extends PureComponent {
                 widget="checkbox"
                 concept={CONSTANTS.labResultsDidNotPerformQuestion}
                 path="did-not-perform-checkbox"
-                checkBoxTitle="Did not perform"
+                checkBoxTitle={(
+                  <FormattedMessage
+                    id="app.labResultEntry.didNotPerformlabel"
+                    defaultMessage="Did not perform" />
+                )}
               />
             </div>
           </div>
           <div className="col-xs-4">
             <div className="did-not-perform">
-              <span className="did-not-perform-label">Reason:&nbsp;</span>
+              <span className="did-not-perform-label">
+                <FormattedMessage
+                  id="app.labResultEntry.reasonlabel"
+                  defaultMessage="Reason:" />
+&nbsp;
+
+              </span>
               <Obs
                 conceptAnswers={CONSTANTS.labResultsDidNotPerformReasonAnswer}
                 widget="dropdown"
@@ -208,11 +221,20 @@ export class LabResultEntry extends PureComponent {
                 widget="checkbox"
                 concept={CONSTANTS.labResultsEstimatedCollectionDateQuestion}
                 path="estimated-checkbox"
-                checkBoxTitle="estimated"
+                checkBoxTitle={(
+                  <FormattedMessage
+                    id="app.labResultEntry.estimatedlabel"
+                    defaultMessage="estimated " />
+                )}
               />
             </div>
             <div className="test-location">
-              <span className="test-location-label">Test location:&nbsp;</span>
+              <span className="test-location-label">
+                <FormattedMessage
+                  id="app.labResultEntry.testLocationlabel"
+                  defaultMessage="Test location: " />
+&nbsp;
+              </span>
               <Obs
                 conceptAnswers={CONSTANTS.labResultsTestLocationAnswer}
                 widget="dropdown"
@@ -223,7 +245,12 @@ export class LabResultEntry extends PureComponent {
             </div>
             <div className="specimen-collection-date">
               <div className="col-xs-10 encounter-date-container">
-                <span className="encounter-date-label">Specimen Collection Date: &nbsp;</span>
+                <span className="encounter-date-label">
+                  <FormattedMessage
+                    id="app.labResultEntry.specimenCollectionDatelabel"
+                    defaultMessage="Specimen Collection Date: " />
+&nbsp;
+                </span>
                 <EncounterDate
                   handleDateChange={() => {}}
                   labelClassName="date-picker-label"
@@ -255,7 +282,11 @@ export class LabResultEntry extends PureComponent {
     return (
       <div className="fieldset-container lab-entry-result-details">
         <div className="legend">
-          <span> Result Details </span>
+          <span>
+            <FormattedMessage
+              id="app.labResultEntry.resultDetails"
+              defaultMessage="Result Details" />
+          </span>
         </div>
         <div className="fieldset-body">
           {hasRanges
@@ -393,35 +424,55 @@ export class LabResultEntry extends PureComponent {
           && (
             <div>
               <h2 className="lab-entry-page-title">
-                Test Results -
+                <FormattedMessage
+                  id="app.labResultEntry.title"
+                  defaultMessage="Test Results -" />
                 {` ${location.state.display}`}
               </h2>
               <div className="lab-result-detail-fieldset-container">
                 <div className="fieldset-container lab-result-detail-fieldset">
                   <div className="legend">
-                    <span className="lab-result-detail-fieldset-title"> Specimen Details </span>
+                    <span className="lab-result-detail-fieldset-title">
+                      <FormattedMessage
+                        id="app.labResultEntry.specimenDetails"
+                        defaultMessage="Specimen Details" />
+                    </span>
                   </div>
                 </div>
                 <div className="fieldset-container lab-result-detail-fieldset">
                   <div className="legend">
-                    <span className="lab-result-detail-fieldset-title"> Order Details </span>
+                    <span className="lab-result-detail-fieldset-title">
+                      <FormattedMessage
+                        id="app.labResultEntry.orderDetails"
+                        defaultMessage="Order Details" />
+
+                    </span>
                   </div>
                   <div className="fieldset-body">
                     <div className="col-xs-7">
                       <span className="test-details-label">
-                  Order Number:&nbsp;
+                        <FormattedMessage
+                          id="app.labResultEntry.orderNumberlabel"
+                          defaultMessage="Order Number:" />
+&nbsp;
                         <span className="test-details">{location.state.orderNumber}</span>
                       </span>
                     </div>
                     <div className="col-xs-5">
                       <span className="test-details-label">
-                  Urgency:&nbsp;
+                        <FormattedMessage
+                          id="app.labResultEntry.urgencylabel"
+                          defaultMessage="Urgency" />
+:&nbsp;
                         <span className="test-details">{location.state.urgency}</span>
                       </span>
                     </div>
-                    <div className="col-xs-7 order-date-detail">
+                    <div className="col-xs-10 order-date-detail">
                       <span className="test-details-label">
-                  Order Date:&nbsp;
+                        <FormattedMessage
+                          id="app.labResultEntry.orderDatelabel"
+                          defaultMessage="Order Date:" />
+&nbsp;
                         <span className="test-details">{moment(location.state.concept.dateActivated).format('MMM DD h:mm A')}</span>
                       </span>
                     </div>

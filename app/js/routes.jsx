@@ -42,9 +42,9 @@ export default store => (
     <Patientheader />
     <Switch>
       <Route exact path="/" component={withLocalisation(LabOrdersList)} />
-      <Route path="/LabResultEntry" component={LabResultEntry} />
-      <Route path="/labresults" component={LabResultsList} />
-      <Route path="/labtrends" component={LabTrendsPage} />
+      <Route path="/LabResultEntry" component={withLocalisation(LabResultEntry)} />
+      <Route path="/labresults" component={withLocalisation(LabResultsList)} />
+      <Route path="/labtrends" component={withLocalisation(LabTrendsPage)} />
     </Switch>
   </div>
 );

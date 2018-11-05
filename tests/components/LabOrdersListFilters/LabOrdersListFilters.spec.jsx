@@ -1,4 +1,5 @@
 import React from 'react';
+import { mountWithIntl } from '@openmrs/react-components';
 import LabOrderListFilters from '../../../app/js/components/LabOrdersListFilters';
 
 
@@ -13,7 +14,7 @@ const props = {
 
 const getComponent = () => {
   if (!mountedComponent) {
-    mountedComponent = mount(<LabOrderListFilters {...props} />);
+    mountedComponent = mountWithIntl(<LabOrderListFilters {...props} />);
   }
   return mountedComponent;
 };

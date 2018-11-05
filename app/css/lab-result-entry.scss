@@ -147,6 +147,7 @@ button.pull-right.btn-success {
     line-height: 38px;
     padding-right: 20px;
     padding-bottom: 40px;
+    white-space: nowrap;
 }
 
 .custom-loader {
@@ -176,10 +177,6 @@ button.pull-right.btn-success {
     margin-left: 40px;
     margin-top: -8px;
     display: inline-block;
-    span {
-        position: absolute;
-        top: 8px;
-    }
 }
 
 .test-details-label {

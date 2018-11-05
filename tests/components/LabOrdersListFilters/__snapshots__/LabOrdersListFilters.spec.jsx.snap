@@ -4,6 +4,31 @@ exports[`<LabOrdersList /> component renders correctly 1`] = `
 <LabOrderListFilters
   clearNameEMRField={[MockFunction]}
   handleFieldChange={[MockFunction]}
+  intl={
+    Object {
+      "defaultFormats": Object {},
+      "defaultLocale": "en",
+      "formatDate": [Function],
+      "formatHTMLMessage": [Function],
+      "formatMessage": [Function],
+      "formatNumber": [Function],
+      "formatPlural": [Function],
+      "formatRelative": [Function],
+      "formatTime": [Function],
+      "formats": Object {},
+      "formatters": Object {
+        "getDateTimeFormat": [Function],
+        "getMessageFormat": [Function],
+        "getNumberFormat": [Function],
+        "getPluralFormat": [Function],
+        "getRelativeFormat": [Function],
+      },
+      "locale": "en",
+      "messages": Object {},
+      "now": [Function],
+      "textComponent": "span",
+    }
+  }
   labTests={
     Array [
       "Hémogramme automatisé",
@@ -22,7 +47,7 @@ exports[`<LabOrdersList /> component renders correctly 1`] = `
       >
         <span>
           <CustomDatePicker
-            defaultDate={"2018-10-22T15:43:33.497Z"}
+            defaultDate={"2018-10-27T06:09:20.525Z"}
             field="dateFromField"
             formControlStyle={
               Object {
@@ -31,7 +56,14 @@ exports[`<LabOrdersList /> component renders correctly 1`] = `
               }
             }
             handleDateChange={[Function]}
-            label="From: "
+            label={
+              <FormattedMessage
+                defaultMessage="From: "
+                description="Label for the first date search input"
+                id="app.labOrdersListFilters.searchDateFromLabel"
+                values={Object {}}
+              />
+            }
             labelClassName="line"
           >
             <div>
@@ -57,7 +89,7 @@ exports[`<LabOrdersList /> component renders correctly 1`] = `
                 preventOpenOnFocus={false}
                 previousMonthButtonLabel="Previous Month"
                 readOnly={false}
-                selected={"2018-10-22T15:43:33.497Z"}
+                selected={"2018-10-27T06:09:20.525Z"}
                 shouldCloseOnSelect={true}
                 showTimeSelect={false}
                 timeCaption="Time"
@@ -90,7 +122,7 @@ exports[`<LabOrdersList /> component renders correctly 1`] = `
                         onFocus={[Function]}
                         onKeyDown={[Function]}
                         readOnly={false}
-                        value="10/22/2018"
+                        value="10/27/2018"
                       />
                     </div>
                   }
@@ -117,7 +149,7 @@ exports[`<LabOrdersList /> component renders correctly 1`] = `
                               onFocus={[Function]}
                               onKeyDown={[Function]}
                               readOnly={false}
-                              value="10/22/2018"
+                              value="10/27/2018"
                             >
                               <span>
                                 <span
@@ -131,7 +163,16 @@ exports[`<LabOrdersList /> component renders correctly 1`] = `
                                   <span
                                     className="line"
                                   >
-                                    From: 
+                                    <FormattedMessage
+                                      defaultMessage="From: "
+                                      description="Label for the first date search input"
+                                      id="app.labOrdersListFilters.searchDateFromLabel"
+                                      values={Object {}}
+                                    >
+                                      <span>
+                                        From: 
+                                      </span>
+                                    </FormattedMessage>
                                   </span>
                                   <FormControl
                                     bsClass="form-control"
@@ -144,7 +185,7 @@ exports[`<LabOrdersList /> component renders correctly 1`] = `
                                       }
                                     }
                                     type="text"
-                                    value="10/22/2018"
+                                    value="10/27/2018"
                                   >
                                     <input
                                       className="form-control"
@@ -156,7 +197,7 @@ exports[`<LabOrdersList /> component renders correctly 1`] = `
                                         }
                                       }
                                       type="text"
-                                      value="10/22/2018"
+                                      value="10/27/2018"
                                     />
                                   </FormControl>
                                   <FontAwesomeIcon
@@ -210,7 +251,7 @@ exports[`<LabOrdersList /> component renders correctly 1`] = `
         </span>
         <span>
           <CustomDatePicker
-            defaultDate={"2018-10-30T15:43:30.082Z"}
+            defaultDate={"2018-11-04T06:09:18.114Z"}
             field="dateToField"
             formControlStyle={
               Object {
@@ -219,7 +260,14 @@ exports[`<LabOrdersList /> component renders correctly 1`] = `
               }
             }
             handleDateChange={[Function]}
-            label="To: "
+            label={
+              <FormattedMessage
+                defaultMessage="To: "
+                description="Label for the second date search input"
+                id="app.labOrdersListFilters.searchDateToLabel"
+                values={Object {}}
+              />
+            }
             labelClassName="line"
           >
             <div>
@@ -245,7 +293,7 @@ exports[`<LabOrdersList /> component renders correctly 1`] = `
                 preventOpenOnFocus={false}
                 previousMonthButtonLabel="Previous Month"
                 readOnly={false}
-                selected={"2018-10-30T15:43:30.082Z"}
+                selected={"2018-11-04T06:09:18.114Z"}
                 shouldCloseOnSelect={true}
                 showTimeSelect={false}
                 timeCaption="Time"
@@ -278,7 +326,7 @@ exports[`<LabOrdersList /> component renders correctly 1`] = `
                         onFocus={[Function]}
                         onKeyDown={[Function]}
                         readOnly={false}
-                        value="10/30/2018"
+                        value="11/04/2018"
                       />
                     </div>
                   }
@@ -305,7 +353,7 @@ exports[`<LabOrdersList /> component renders correctly 1`] = `
                               onFocus={[Function]}
                               onKeyDown={[Function]}
                               readOnly={false}
-                              value="10/30/2018"
+                              value="11/04/2018"
                             >
                               <span>
                                 <span
@@ -319,7 +367,16 @@ exports[`<LabOrdersList /> component renders correctly 1`] = `
                                   <span
                                     className="line"
                                   >
-                                    To: 
+                                    <FormattedMessage
+                                      defaultMessage="To: "
+                                      description="Label for the second date search input"
+                                      id="app.labOrdersListFilters.searchDateToLabel"
+                                      values={Object {}}
+                                    >
+                                      <span>
+                                        To: 
+                                      </span>
+                                    </FormattedMessage>
                                   </span>
                                   <FormControl
                                     bsClass="form-control"
@@ -332,7 +389,7 @@ exports[`<LabOrdersList /> component renders correctly 1`] = `
                                       }
                                     }
                                     type="text"
-                                    value="10/30/2018"
+                                    value="11/04/2018"
                                   >
                                     <input
                                       className="form-control"
@@ -344,7 +401,7 @@ exports[`<LabOrdersList /> component renders correctly 1`] = `
                                         }
                                       }
                                       type="text"
-                                      value="10/30/2018"
+                                      value="11/04/2018"
                                     />
                                   </FormControl>
                                   <FontAwesomeIcon
@@ -404,9 +461,16 @@ exports[`<LabOrdersList /> component renders correctly 1`] = `
       <span
         className="form-filter-group one-third"
       >
-        <span>
-          Search for a sample
-        </span>
+        <FormattedMessage
+          defaultMessage="Search for a sample"
+          description="Label for text search input"
+          id="app.labOrdersListFilters.textSearchTitle"
+          values={Object {}}
+        >
+          <span>
+            Search for a sample
+          </span>
+        </FormattedMessage>
         <span
           className="name-emrid-order-filter"
         >
@@ -441,7 +505,14 @@ exports[`<LabOrdersList /> component renders correctly 1`] = `
         defaultValue="All"
         field="testTypeField"
         handleSelect={[Function]}
-        label="Test Type"
+        label={
+          <FormattedMessage
+            defaultMessage="Test Type"
+            description="Label for the dropdown search input"
+            id="app.labOrdersListFilters.searchDropdownLabel"
+            values={Object {}}
+          />
+        }
         labelClassName=""
         list={
           Array [
@@ -457,9 +528,19 @@ exports[`<LabOrdersList /> component renders correctly 1`] = `
             <span
               className=""
             >
-              Test Type
+              <FormattedMessage
+                defaultMessage="Test Type"
+                description="Label for the dropdown search input"
+                id="app.labOrdersListFilters.searchDropdownLabel"
+                values={Object {}}
+              >
+                <span>
+                  Test Type
+                </span>
+              </FormattedMessage>
             </span>
             <select
+              disabled={false}
               onChange={[Function]}
               style={
                 Object {

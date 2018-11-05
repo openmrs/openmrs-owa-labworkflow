@@ -2,6 +2,31 @@
 
 exports[`<LabResultEntry /> component renders correctly with valid props 1`] = `
 <Provider
+  intl={
+    Object {
+      "defaultFormats": Object {},
+      "defaultLocale": "en",
+      "formatDate": [Function],
+      "formatHTMLMessage": [Function],
+      "formatMessage": [Function],
+      "formatNumber": [Function],
+      "formatPlural": [Function],
+      "formatRelative": [Function],
+      "formatTime": [Function],
+      "formats": Object {},
+      "formatters": Object {
+        "getDateTimeFormat": [Function],
+        "getMessageFormat": [Function],
+        "getNumberFormat": [Function],
+        "getPluralFormat": [Function],
+        "getRelativeFormat": [Function],
+      },
+      "locale": "en",
+      "messages": Object {},
+      "now": [Function],
+      "textComponent": "span",
+    }
+  }
   location={
     Object {
       "state": Object {},
@@ -227,7 +252,15 @@ exports[`<LabResultEntry /> component renders correctly with valid props 1`] = `
               <h2
                 className="lab-entry-page-title"
               >
-                Test Results -
+                <FormattedMessage
+                  defaultMessage="Test Results -"
+                  id="app.labResultEntry.title"
+                  values={Object {}}
+                >
+                  <span>
+                    Test Results -
+                  </span>
+                </FormattedMessage>
                  undefined
               </h2>
               <div
@@ -242,7 +275,15 @@ exports[`<LabResultEntry /> component renders correctly with valid props 1`] = `
                     <span
                       className="lab-result-detail-fieldset-title"
                     >
-                       Specimen Details 
+                      <FormattedMessage
+                        defaultMessage="Specimen Details"
+                        id="app.labResultEntry.specimenDetails"
+                        values={Object {}}
+                      >
+                        <span>
+                          Specimen Details
+                        </span>
+                      </FormattedMessage>
                     </span>
                   </div>
                 </div>
@@ -255,7 +296,15 @@ exports[`<LabResultEntry /> component renders correctly with valid props 1`] = `
                     <span
                       className="lab-result-detail-fieldset-title"
                     >
-                       Order Details 
+                      <FormattedMessage
+                        defaultMessage="Order Details"
+                        id="app.labResultEntry.orderDetails"
+                        values={Object {}}
+                      >
+                        <span>
+                          Order Details
+                        </span>
+                      </FormattedMessage>
                     </span>
                   </div>
                   <div
@@ -267,7 +316,16 @@ exports[`<LabResultEntry /> component renders correctly with valid props 1`] = `
                       <span
                         className="test-details-label"
                       >
-                        Order Number: 
+                        <FormattedMessage
+                          defaultMessage="Order Number:"
+                          id="app.labResultEntry.orderNumberlabel"
+                          values={Object {}}
+                        >
+                          <span>
+                            Order Number:
+                          </span>
+                        </FormattedMessage>
+                         
                         <span
                           className="test-details"
                         >
@@ -281,7 +339,16 @@ exports[`<LabResultEntry /> component renders correctly with valid props 1`] = `
                       <span
                         className="test-details-label"
                       >
-                        Urgency: 
+                        <FormattedMessage
+                          defaultMessage="Urgency"
+                          id="app.labResultEntry.urgencylabel"
+                          values={Object {}}
+                        >
+                          <span>
+                            Urgency
+                          </span>
+                        </FormattedMessage>
+                        : 
                         <span
                           className="test-details"
                         >
@@ -290,16 +357,25 @@ exports[`<LabResultEntry /> component renders correctly with valid props 1`] = `
                       </span>
                     </div>
                     <div
-                      className="col-xs-7 order-date-detail"
+                      className="col-xs-10 order-date-detail"
                     >
                       <span
                         className="test-details-label"
                       >
-                        Order Date: 
+                        <FormattedMessage
+                          defaultMessage="Order Date:"
+                          id="app.labResultEntry.orderDatelabel"
+                          values={Object {}}
+                        >
+                          <span>
+                            Order Date:
+                          </span>
+                        </FormattedMessage>
+                         
                         <span
                           className="test-details"
                         >
-                          Nov 01 5:14 AM
+                          Nov 04 7:09 AM
                         </span>
                       </span>
                     </div>
@@ -319,7 +395,15 @@ exports[`<LabResultEntry /> component renders correctly with valid props 1`] = `
                   className="legend"
                 >
                   <span>
-                     Result Details 
+                    <FormattedMessage
+                      defaultMessage="Result Details"
+                      id="app.labResultEntry.resultDetails"
+                      values={Object {}}
+                    >
+                      <span>
+                        Result Details
+                      </span>
+                    </FormattedMessage>
                   </span>
                 </div>
                 <div
@@ -369,7 +453,11 @@ exports[`<LabResultEntry /> component renders correctly with valid props 1`] = `
                                 <span
                                   className="obs-date-label"
                                 >
-                                  Result Date:
+                                  <FormattedMessage
+                                    defaultMessage="Result Date:"
+                                    id="app.labResultEntry.resultDatelabel"
+                                    values={Object {}}
+                                  />
                                 </span>
                                 <span
                                   className="obs-date-field"
@@ -394,7 +482,13 @@ exports[`<LabResultEntry /> component renders correctly with valid props 1`] = `
                                 className="did-not-perform-checkbox"
                               >
                                 <WithObsGroupContext(WithFormContext(Connect(Obs)))
-                                  checkBoxTitle="Did not perform"
+                                  checkBoxTitle={
+                                    <FormattedMessage
+                                      defaultMessage="Did not perform"
+                                      id="app.labResultEntry.didNotPerformlabel"
+                                      values={Object {}}
+                                    />
+                                  }
                                   concept="mock-uuid"
                                   conceptAnswer="mock-uuid"
                                   path="did-not-perform-checkbox"
@@ -411,7 +505,12 @@ exports[`<LabResultEntry /> component renders correctly with valid props 1`] = `
                                 <span
                                   className="did-not-perform-label"
                                 >
-                                  Reason: 
+                                  <FormattedMessage
+                                    defaultMessage="Reason:"
+                                    id="app.labResultEntry.reasonlabel"
+                                    values={Object {}}
+                                  />
+                                   
                                 </span>
                                 <WithObsGroupContext(WithFormContext(Connect(Obs)))
                                   disabled={true}
@@ -433,7 +532,13 @@ exports[`<LabResultEntry /> component renders correctly with valid props 1`] = `
                                 className="estimated-checkbox"
                               >
                                 <WithObsGroupContext(WithFormContext(Connect(Obs)))
-                                  checkBoxTitle="estimated"
+                                  checkBoxTitle={
+                                    <FormattedMessage
+                                      defaultMessage="estimated "
+                                      id="app.labResultEntry.estimatedlabel"
+                                      values={Object {}}
+                                    />
+                                  }
                                   path="estimated-checkbox"
                                   widget="checkbox"
                                 />
@@ -444,7 +549,12 @@ exports[`<LabResultEntry /> component renders correctly with valid props 1`] = `
                                 <span
                                   className="test-location-label"
                                 >
-                                  Test location: 
+                                  <FormattedMessage
+                                    defaultMessage="Test location: "
+                                    id="app.labResultEntry.testLocationlabel"
+                                    values={Object {}}
+                                  />
+                                   
                                 </span>
                                 <WithObsGroupContext(WithFormContext(Connect(Obs)))
                                   dropDownStyle={
@@ -466,10 +576,15 @@ exports[`<LabResultEntry /> component renders correctly with valid props 1`] = `
                                   <span
                                     className="encounter-date-label"
                                   >
-                                    Specimen Collection Date:  
+                                    <FormattedMessage
+                                      defaultMessage="Specimen Collection Date: "
+                                      id="app.labResultEntry.specimenCollectionDatelabel"
+                                      values={Object {}}
+                                    />
+                                     
                                   </span>
                                   <WithFormContext(Connect(EncounterDate))
-                                    defaultDate={"2018-10-31T23:00:00.000Z"}
+                                    defaultDate={"2018-11-03T23:00:00.000Z"}
                                     field="dateFromField"
                                     handleDateChange={[Function]}
                                     label="Specimen Collection Date:"
@@ -617,7 +732,11 @@ exports[`<LabResultEntry /> component renders correctly with valid props 1`] = `
                                   <span
                                     className="obs-date-label"
                                   >
-                                    Result Date:
+                                    <FormattedMessage
+                                      defaultMessage="Result Date:"
+                                      id="app.labResultEntry.resultDatelabel"
+                                      values={Object {}}
+                                    />
                                   </span>
                                   <span
                                     className="obs-date-field"
@@ -642,7 +761,13 @@ exports[`<LabResultEntry /> component renders correctly with valid props 1`] = `
                                   className="did-not-perform-checkbox"
                                 >
                                   <WithObsGroupContext(WithFormContext(Connect(Obs)))
-                                    checkBoxTitle="Did not perform"
+                                    checkBoxTitle={
+                                      <FormattedMessage
+                                        defaultMessage="Did not perform"
+                                        id="app.labResultEntry.didNotPerformlabel"
+                                        values={Object {}}
+                                      />
+                                    }
                                     concept="mock-uuid"
                                     conceptAnswer="mock-uuid"
                                     path="did-not-perform-checkbox"
@@ -659,7 +784,12 @@ exports[`<LabResultEntry /> component renders correctly with valid props 1`] = `
                                   <span
                                     className="did-not-perform-label"
                                   >
-                                    Reason: 
+                                    <FormattedMessage
+                                      defaultMessage="Reason:"
+                                      id="app.labResultEntry.reasonlabel"
+                                      values={Object {}}
+                                    />
+                                     
                                   </span>
                                   <WithObsGroupContext(WithFormContext(Connect(Obs)))
                                     disabled={true}
@@ -681,7 +811,13 @@ exports[`<LabResultEntry /> component renders correctly with valid props 1`] = `
                                   className="estimated-checkbox"
                                 >
                                   <WithObsGroupContext(WithFormContext(Connect(Obs)))
-                                    checkBoxTitle="estimated"
+                                    checkBoxTitle={
+                                      <FormattedMessage
+                                        defaultMessage="estimated "
+                                        id="app.labResultEntry.estimatedlabel"
+                                        values={Object {}}
+                                      />
+                                    }
                                     path="estimated-checkbox"
                                     widget="checkbox"
                                   />
@@ -692,7 +828,12 @@ exports[`<LabResultEntry /> component renders correctly with valid props 1`] = `
                                   <span
                                     className="test-location-label"
                                   >
-                                    Test location: 
+                                    <FormattedMessage
+                                      defaultMessage="Test location: "
+                                      id="app.labResultEntry.testLocationlabel"
+                                      values={Object {}}
+                                    />
+                                     
                                   </span>
                                   <WithObsGroupContext(WithFormContext(Connect(Obs)))
                                     dropDownStyle={
@@ -714,10 +855,15 @@ exports[`<LabResultEntry /> component renders correctly with valid props 1`] = `
                                     <span
                                       className="encounter-date-label"
                                     >
-                                      Specimen Collection Date:  
+                                      <FormattedMessage
+                                        defaultMessage="Specimen Collection Date: "
+                                        id="app.labResultEntry.specimenCollectionDatelabel"
+                                        values={Object {}}
+                                      />
+                                       
                                     </span>
                                     <WithFormContext(Connect(EncounterDate))
-                                      defaultDate={"2018-10-31T23:00:00.000Z"}
+                                      defaultDate={"2018-11-03T23:00:00.000Z"}
                                       field="dateFromField"
                                       handleDateChange={[Function]}
                                       label="Specimen Collection Date:"
@@ -925,7 +1071,33 @@ exports[`<LabResultEntry /> component renders correctly with valid props 1`] = `
 `;
 
 exports[`<LabResultEntry /> component should redirect when location has an empty state 1`] = `
-<HashRouter>
+<HashRouter
+  intl={
+    Object {
+      "defaultFormats": Object {},
+      "defaultLocale": "en",
+      "formatDate": [Function],
+      "formatHTMLMessage": [Function],
+      "formatMessage": [Function],
+      "formatNumber": [Function],
+      "formatPlural": [Function],
+      "formatRelative": [Function],
+      "formatTime": [Function],
+      "formats": Object {},
+      "formatters": Object {
+        "getDateTimeFormat": [Function],
+        "getMessageFormat": [Function],
+        "getNumberFormat": [Function],
+        "getPluralFormat": [Function],
+        "getRelativeFormat": [Function],
+      },
+      "locale": "en",
+      "messages": Object {},
+      "now": [Function],
+      "textComponent": "span",
+    }
+  }
+>
   <Router
     history={
       Object {
