@@ -54,8 +54,11 @@ export const Cell = ({ columnName, conceptUuid, value }) => {
   }
 };
 export class LabTrendsPage extends PureComponent {
-  state = {
-    defaultPageSize: 10,
+  constructor(props) {
+    super(props);
+    this.state = {
+      defaultPageSize: 10,
+    };
   }
 
   componentDidMount() {
