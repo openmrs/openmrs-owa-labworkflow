@@ -16,7 +16,9 @@ import { FormattedMessage } from 'react-intl';
 
 import ConceptDisplay from "./ConceptDisplay";
 import { fetchLabTestResults } from '../actions/labOrdersAction';
-import { getTestResultDate, getSampleDate, getResultValue } from '../utils/helpers';
+import {
+  getTestResultDate, getSampleDate, getResultValue, calculateTableRows,
+} from '../utils/helpers';
 
 import "../../css/lab-orders-trends-page.scss";
 
@@ -52,6 +54,10 @@ export const Cell = ({ columnName, conceptUuid, value }) => {
   }
 };
 export class LabTrendsPage extends PureComponent {
+  state = {
+    defaultPageSize: 10,
+  }
+
   componentDidMount() {
     const { dispatch, patient, history: { location: { state } } } = this.props;
     const conceptUUID = state.uuid;
@@ -71,7 +77,10 @@ export class LabTrendsPage extends PureComponent {
       history,
     } = this.props;
     const { location: { state } } = history;
+    const { defaultPageSize } = this.state;
     const fields = ["SAMPLE DATE", "RESULT DATE", "RESULT", "NORMAL RANGE"];
+    this.setState({ defaultPageSize: calculateTableRows(results.length) });
+
     const columnMetadata = fields.map(columnName => ({
       Header:
   <span className="labs-order-table-head">
@@ -95,7 +104,8 @@ export class LabTrendsPage extends PureComponent {
             filteredFields={fields}
             isSortable={false}
             noDataMessage="No orders found"
-            defaultPageSize={10}
+            minRows={0}
+            defaultPageSize={defaultPageSize}
           />
         </div>
         <br />

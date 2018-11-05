@@ -17,7 +17,7 @@ import { FormattedMessage } from 'react-intl';
 import { SortableTable, Loader, constantsActions } from '@openmrs/react-components';
 import LabOrderListFilters from './LabOrdersListFilters';
 import { fetchLabOrders } from '../actions/labOrdersAction';
-import { filterThrough } from '../utils/helpers';
+import { filterThrough, calculateTableRows } from '../utils/helpers';
 import patientAction from '../actions/patientAction';
 import "../../css/lab-orders-list.scss";
 
@@ -188,7 +188,8 @@ export class LabOrdersList extends PureComponent {
           isSortable={false}
           rowOnClick={this.handleShowResultsEntryPage}
           noDataMessage="No orders found"
-          defaultPageSize={10}
+          minRows={0}
+          defaultPageSize={calculateTableRows(orders.length)}
         />
       </div>
     );

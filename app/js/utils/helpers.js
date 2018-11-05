@@ -109,3 +109,5 @@ export const getResultValue = (data) => {
   }
   return resultValue;
 }
+
+export const calculateTableRows = (noOfRows) => ((parseInt(noOfRows) < 10) ? parseInt(noOfRows): 10)

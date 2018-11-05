@@ -15,6 +15,7 @@ export default (state = initialState.labTestResultsReducer, action) => {
       return {
         ...state,
         isLoading: false,
+        results: [],
         error: {
           message: action.payload,
           status: action.error,
