@@ -53,6 +53,10 @@ export const Cell = ({ columnName, conceptUuid, value }) => {
   }
 };
 export class LabTrendsPage extends PureComponent {
+  state = {
+    defaultPageSize: 10,
+  }
+
   componentDidMount() {
     const { dispatch, patient, history: { location: { state } } } = this.props;
     const conceptUUID = state.uuid;
@@ -72,7 +76,10 @@ export class LabTrendsPage extends PureComponent {
       history,
     } = this.props;
     const { location: { state } } = history;
+    const { defaultPageSize } = this.state;
     const fields = ["SAMPLE DATE", "RESULT DATE", "RESULT", "NORMAL RANGE"];
+    this.setState({ defaultPageSize: calculateTableRows(results.length) });
+
     const columnMetadata = fields.map(columnName => ({
       Header:
   <span className="labs-order-table-head">
@@ -95,7 +102,7 @@ export class LabTrendsPage extends PureComponent {
             isSortable={false}
             noDataMessage="No orders found"
             minRows={0}
-            defaultPageSize={calculateTableRows(results.length)}
+            defaultPageSize={defaultPageSize}
           />
         </div>
         <br />

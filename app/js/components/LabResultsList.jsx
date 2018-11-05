@@ -8,7 +8,7 @@ import {
 import moment from 'moment';
 import ConceptDisplay from './ConceptDisplay';
 import patientAction from '../actions/patientAction';
-import { filterThrough } from '../utils/helpers';
+import { filterThrough, calculateTableRows } from '../utils/helpers';
 import "../../css/lab-results-view.scss";
 
 
@@ -208,7 +208,7 @@ export class LabResultsList extends PureComponent {
           showFilter={false}
           isSortable={false}
           noDataMessage="No results found"
-          defaultPageSize={10}
+          defaultPageSize={calculateTableRows(labResults.length)}
           subComponent={(row) => {
             const isPanel = (row.original.order.concept.set) && (row.original.status !== "Ordered");
             const rowFields = ["TYPE", "RESULT", "NORMAL RANGE"];
@@ -228,7 +228,7 @@ export class LabResultsList extends PureComponent {
                     collapseOnPageChange={false}
                     showPagination={false}
                     rowOnClick={this.handleShowLabTrendsPage}
-                    defaultPageSize={row.original.encounter.obs[0].groupMembers.length}
+                    defaultPageSize={calculateTableRows(row.original.encounter.obs[0].groupMembers.length)}
                     defaultClassName=""
                   />
                 </div>
