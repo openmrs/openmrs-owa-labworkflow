@@ -253,7 +253,7 @@ export class LabResultsList extends PureComponent {
             labelClassName="line"
             label={(
               <FormattedMessage
-                id="app.labResultsList.date1FilterLabel"
+                id="app.labResultsList.dateFromFilterLabel"
                 defaultMessage="From: " />
             )}
             defaultDate={moment().subtract(8, 'days')}
@@ -270,7 +270,7 @@ export class LabResultsList extends PureComponent {
             labelClassName="line"
             label={(
               <FormattedMessage
-                id="app.labResultsList.date2FilterLabel"
+                id="app.labResultsList.dateToFilterLabel"
                 defaultMessage="To: " />
             )}
             field="dateToField"

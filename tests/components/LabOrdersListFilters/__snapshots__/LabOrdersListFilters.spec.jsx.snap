@@ -60,7 +60,7 @@ exports[`<LabOrdersList /> component renders correctly 1`] = `
               <FormattedMessage
                 defaultMessage="From: "
                 description="Label for the first date search input"
-                id="app.labOrdersListFilters.searchDate1Label"
+                id="app.labOrdersListFilters.searchDateFromLabel"
                 values={Object {}}
               />
             }
@@ -166,7 +166,7 @@ exports[`<LabOrdersList /> component renders correctly 1`] = `
                                     <FormattedMessage
                                       defaultMessage="From: "
                                       description="Label for the first date search input"
-                                      id="app.labOrdersListFilters.searchDate1Label"
+                                      id="app.labOrdersListFilters.searchDateFromLabel"
                                       values={Object {}}
                                     >
                                       <span>
@@ -264,7 +264,7 @@ exports[`<LabOrdersList /> component renders correctly 1`] = `
               <FormattedMessage
                 defaultMessage="To: "
                 description="Label for the second date search input"
-                id="app.labOrdersListFilters.searchDate2Label"
+                id="app.labOrdersListFilters.searchDateToLabel"
                 values={Object {}}
               />
             }
@@ -370,7 +370,7 @@ exports[`<LabOrdersList /> component renders correctly 1`] = `
                                     <FormattedMessage
                                       defaultMessage="To: "
                                       description="Label for the second date search input"
-                                      id="app.labOrdersListFilters.searchDate2Label"
+                                      id="app.labOrdersListFilters.searchDateToLabel"
                                       values={Object {}}
                                     >
                                       <span>

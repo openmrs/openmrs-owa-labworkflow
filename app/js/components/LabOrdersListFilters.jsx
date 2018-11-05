@@ -39,7 +39,7 @@ class LabOrderListFilters extends PureComponent {
             labelClassName="line"
             label={(
               <FormattedMessage
-                id="app.labOrdersListFilters.searchDate1Label"
+                id="app.labOrdersListFilters.searchDateFromLabel"
                 defaultMessage="From: "
                 description="Label for the first date search input" />
             )}
@@ -57,7 +57,7 @@ class LabOrderListFilters extends PureComponent {
             labelClassName="line"
             label={(
               <FormattedMessage
-                id="app.labOrdersListFilters.searchDate2Label"
+                id="app.labOrdersListFilters.searchDateToLabel"
                 defaultMessage="To: "
                 description="Label for the second date search input" />
             )}
