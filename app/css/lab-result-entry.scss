@@ -177,6 +177,15 @@ button.pull-right.btn-success {
     margin-left: 40px;
     margin-top: -8px;
     display: inline-block;
+    span {
+        display: -ms-flexbox;
+        display: flex;
+        line-height: 50px;
+        -ms-flex-pack: justify;
+        justify-content: space-between;
+        position: relative;
+        top: 1px;
+    }
 }
 
 .test-details-label {
@@ -247,8 +256,12 @@ button.pull-right.btn-success {
     left: 328px;
     white-space: nowrap;
     span {
-        position: absolute;
-        top: 15px;
+        top: 19px;
+        position: relative;
+        right: 5px;
+        display: -ms-flexbox;
+        display: flex;
+        line-height: 18px
     }
 }
 
