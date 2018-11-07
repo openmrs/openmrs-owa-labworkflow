@@ -1,4 +1,5 @@
 {
+    "app.title": "OpenMRS Dossier Médicale Électronique",
     "app.labOrdersList.title": "Résultats de tests de laboratoire",
     "app.breadCrumb.homePageBreadcrumb.title": "Flux de travail de laboratoire",
     "app.labOrdersList.EMR_ID": "EMR ID",
