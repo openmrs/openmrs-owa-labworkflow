@@ -19,6 +19,7 @@ class LabOrderListFilters extends PureComponent {
         <span className="name-emrid-order-filter">
           <i className="small icon-search" />
           <FormControl
+            autoFocus
             type="text"
             placeholder="search by ID or name, or scan sample"
             value={nameField}
