@@ -17,6 +17,7 @@ import { FormattedMessage } from 'react-intl';
 import { SortableTable, Loader, constantsActions } from '@openmrs/react-components';
 import LabOrderListFilters from './LabOrdersListFilters';
 import { fetchLabOrders } from '../actions/labOrdersAction';
+import { setSelectedConcept } from '../actions/labConceptsAction';
 import { filterThrough, calculateTableRows } from '../utils/helpers';
 import patientAction from '../actions/patientAction';
 import "../../css/lab-orders-list.scss";
@@ -119,6 +120,7 @@ export class LabOrdersList extends PureComponent {
     dispatch(constantsActions.fetchLabResultsDidNotPerformReasonQuestion());
     dispatch(constantsActions.fetchLabResultsDateConcept());
     dispatch(patientAction.setSelectedPatient(''));
+    dispatch(setSelectedConcept(''));
   }
 
   componentWillReceiveProps(nextProps) {
