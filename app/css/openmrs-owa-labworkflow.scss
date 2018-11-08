@@ -67,3 +67,7 @@ input.form-control:focus {
     border: 2px solid #037fff;
 }
 
+.ReactTable .rt-resizer {
+    z-index: 0 !important;
+}
+
