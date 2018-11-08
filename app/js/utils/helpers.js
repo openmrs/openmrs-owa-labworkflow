@@ -58,27 +58,6 @@ export const filterThrough = (filters, data) => {
   return originalData;
 }
 
-export const getTestResultDate = (data) => {
-  const encounterDatetime = data.encounter.encounterDatetime
-  let resultDate;
-  if (data.encounter.obs) {
-    const obs = data.encounter.obs;
-    obs.some(eachObs => {
-      // Checking if there is a Date of test results Obs
-      if (eachObs.uuid === 'fa17dc82-4ffe-4ea3-bf1c-c2d596821dcc') {
-        if (encounterDatetime) {
-          resultDate = eachObs.value;
-        }
-      }
-    })
-  }
-  if (resultDate) {
-    return moment(resultDate).format('DD-MMM-YYYY');
-  } else {
-    return moment(data.obsDatetime).format('DD-MMM-YYYY');
-  }
-}
-
 export const getSampleDate = (data) => {
   let sampleDate;
   if (data.encounter.obs) {

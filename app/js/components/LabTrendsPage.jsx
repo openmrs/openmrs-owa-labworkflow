@@ -17,7 +17,7 @@ import { FormattedMessage } from 'react-intl';
 import ConceptDisplay from "./ConceptDisplay";
 import { fetchLabTestResults } from '../actions/labOrdersAction';
 import {
-  getTestResultDate, getSampleDate, getResultValue, calculateTableRows,
+  getSampleDate, getResultValue, calculateTableRows,
 } from '../utils/helpers';
 
 import "../../css/lab-orders-trends-page.scss";
@@ -28,13 +28,6 @@ export const Cell = ({ columnName, conceptUuid, value }) => {
       return (
         <div className="table_cell sample-date">
           <span>{getSampleDate(value)}</span>
-        </div>
-      );
-    }
-    case 'RESULT DATE': {
-      return (
-        <div className="table_cell result-date">
-          <span>{getTestResultDate(value)}</span>
         </div>
       );
     }
@@ -81,7 +74,7 @@ export class LabTrendsPage extends PureComponent {
     } = this.props;
     const { location: { state } } = history;
     const { defaultPageSize } = this.state;
-    const fields = ["SAMPLE DATE", "RESULT DATE", "RESULT", "NORMAL RANGE"];
+    const fields = ["SAMPLE DATE", "RESULT", "NORMAL RANGE"];
     this.setState({ defaultPageSize: calculateTableRows(results.length) });
 
     const columnMetadata = fields.map(columnName => ({
