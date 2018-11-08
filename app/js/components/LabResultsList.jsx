@@ -55,27 +55,28 @@ const Cell = ({
     if (columnName === 'SAMPLE DATE' && !hasNoEncounter) {
       return (
         <div className="table_cell sample-date">
-          <span>{moment(value.encounter.encouterDatetime).format("DD-MMM-YYYY") || ''}</span>
+          <span>{moment(value.resultDate.value).format("DD-MMM-YYYY") || ''}</span>
         </div>
       );
     }
 
     if (!isPanel && !hasNoEncounter) {
       const labResult = value.encounter.obs[0];
-
-      switch (columnName) {
-        case 'RESULT':
-          return (
-            <div className="table_cell result">
-              <ConceptDisplay conceptUUID={labResult.concept.uuid} type="result" value={labResult.value.display || labResult.value} />
-            </div>
-          );
-        case 'NORMAL RANGE':
-          return (
-            <ConceptDisplay conceptUUID={labResult.concept.uuid} type="range" />
-          );
-        default:
-          return null;
+      if (labResult) {
+        switch (columnName) {
+          case 'RESULT':
+            return (
+              <div className="table_cell result">
+                <ConceptDisplay conceptUUID={labResult.concept.uuid} type="result" value={labResult.value.display || labResult.value} />
+              </div>
+            );
+          case 'NORMAL RANGE':
+            return (
+              <ConceptDisplay conceptUUID={labResult.concept.uuid} type="range" />
+            );
+          default:
+            return null;
+        }
       }
     }
     return null;
