@@ -62,20 +62,22 @@ const Cell = ({
 
     if (!isPanel && !hasNoEncounter) {
       const labResult = value.encounter.obs[0];
-
-      switch (columnName) {
-        case 'RESULT':
-          return (
-            <div className="table_cell result">
-              <ConceptDisplay conceptUUID={labResult.concept.uuid} type="result" value={labResult.value.display || labResult.value} />
-            </div>
-          );
-        case 'NORMAL RANGE':
-          return (
-            <ConceptDisplay conceptUUID={labResult.concept.uuid} type="range" />
-          );
-        default:
-          return null;
+      if (labResult) {
+        switch (columnName) {
+          case 'RESULT': {
+            return (
+              <div className="table_cell result">
+                <ConceptDisplay conceptUUID={labResult.concept.uuid} type="result" value={labResult.value.display || labResult.value} />
+              </div>
+            );
+          }
+          case 'NORMAL RANGE':
+            return (
+              <ConceptDisplay conceptUUID={labResult.concept.uuid} type="range" />
+            );
+          default:
+            return null;
+        }
       }
     }
     return null;
@@ -261,7 +263,6 @@ export class LabResultsList extends PureComponent {
                     collapseOnPageChange={false}
                     showPagination={false}
                     rowOnClick={this.handleShowLabTrendsPage}
-                    defaultPageSize={calculateTableRows(row.original.encounter.obs[0].groupMembers.length)}
                     defaultClassName=""
                   />
                 </div>
