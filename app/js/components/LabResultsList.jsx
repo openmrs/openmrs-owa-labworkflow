@@ -53,7 +53,7 @@ const Cell = ({
       );
     }
 
-    if (columnName === 'SAMPLE DATE' && !hasNoEncounter) {
+    if (columnName === 'SAMPLE DATE' && !hasNoEncounter && !R.isEmpty(value.resultDate)) {
       return (
         <div className="table_cell sample-date">
           <span>{moment(value.resultDate.value).format("DD-MMM-YYYY") || ''}</span>
@@ -363,7 +363,7 @@ export class LabResultsList extends PureComponent {
                 ...encounter,
                 obs,
               },
-              resultDate: resultDateObs[0],
+              resultDate: resultDateObs[0] || {},
               status: 'Reported',
             };
           }
@@ -374,7 +374,7 @@ export class LabResultsList extends PureComponent {
               ...encounter,
               obs,
             },
-            resultDate: resultDateObs[0],
+            resultDate: resultDateObs[0] || {},
             status: 'Taken',
           };
         }
