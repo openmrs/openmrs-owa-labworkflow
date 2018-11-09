@@ -21,7 +21,7 @@
     "app.labResultEntry.estimatedlabel": "estimated",
     "app.labResultEntry.testLocationlabel": "Test location:",
     "app.labResultEntry.resultDatelabel": "Result Date:",
-    "app.labResultEntry.didNotPerformlabel": "Did not perform:",
+    "app.labResultEntry.didNotPerformlabel": "Did not perform",
     "app.labResultEntry.reasonlabel": "Reason:",
     "app.labResultEntry.urgencylabel": "Urgency",
     "app.labResultEntry.orderNumberlabel": "Order Number:",
