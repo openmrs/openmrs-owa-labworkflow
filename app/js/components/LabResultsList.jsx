@@ -26,12 +26,7 @@ const Cell = ({
     const isPanel = value.order.concept.set;
     if (columnName === 'TYPE') {
       return (
-        // eslint-disable-next-line jsx-a11y/no-static-element-interactions
-        <div
-          className="table_cell type" onClick={(e) => {
-            e.preventDefault();
-            navigate(value);
-          }}>
+        <div className="table_cell type">
           <span>{value.order.display}</span>
         </div>
       );
@@ -86,12 +81,8 @@ const Cell = ({
     switch (columnName) {
       case 'TYPE': {
         return (
-          // eslint-disable-next-line jsx-a11y/no-static-element-interactions
           <div
-            className="table_cell type" onClick={(e) => {
-              e.preventDefault();
-              navigate(value);
-            }}>
+            className="table_cell type">
             <span>{value.concept.display}</span>
           </div>
         );
@@ -245,6 +236,7 @@ export class LabResultsList extends PureComponent {
           filteredFields={fields}
           filterType="none"
           showFilter={false}
+          rowOnClick={this.handleShowLabTrendsPage}
           isSortable={false}
           noDataMessage="No results found"
           defaultPageSize={calculateTableRows(labResults.length)}
