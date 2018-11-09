@@ -7,20 +7,28 @@
  * graphic logo is a trademark of OpenMRS Inc.
  */
 import React, { PureComponent } from 'react';
+import R from 'ramda';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
+import moment from 'moment';
+import cn from 'classnames';
+import { Redirect } from 'react-router-dom';
 import {
   SortableTable,
+  LineChart,
 } from '@openmrs/react-components';
 import { FormattedMessage } from 'react-intl';
 
 import ConceptDisplay from "./ConceptDisplay";
 import { fetchLabTestResults } from '../actions/labOrdersAction';
 import {
-  getSampleDate, getResultValue, calculateTableRows,
+  getSampleDate,
+  getResultValue,
+  calculateTableRows,
+  sortByDate,
 } from '../utils/helpers';
 
-import "../../css/lab-orders-trends-page.scss";
+import "../../css/lab-results-trends-page.scss";
 
 export const Cell = ({ columnName, conceptUuid, value }) => {
   switch (columnName) {
@@ -56,12 +64,15 @@ export class LabTrendsPage extends PureComponent {
 
   componentDidMount() {
     const { dispatch, patient, history: { location: { state } } } = this.props;
-    const conceptUUID = state.uuid;
-    const patientUUID = patient.uuid;
-    dispatch(fetchLabTestResults(patientUUID, conceptUUID));
+    if (typeof state !== 'undefined') {
+      const conceptUUID = state.uuid;
+      const patientUUID = patient.uuid;
+      dispatch(fetchLabTestResults(patientUUID, conceptUUID));
+    }
   }
 
-  handleNavigateBack(history) {
+  handleNavigateBack() {
+    const { history } = this.props;
     history.push({
       pathname: "/labresults",
     });
@@ -75,7 +86,31 @@ export class LabTrendsPage extends PureComponent {
     const { location: { state } } = history;
     const { defaultPageSize } = this.state;
     const fields = ["SAMPLE DATE", "RESULT", "NORMAL RANGE"];
+
+
+    if (!state) {
+      return <Redirect to="/labresults" />;
+    }
+
+    const isNumeric = state.datatype.display === "Numeric";
+
+    const resultTableClassName = cn({
+      'lab-result-trend-list': true,
+      full: !isNumeric,
+    });
+
+    const chartClassName = cn({
+      'lab-results-trend-chart': true,
+      hide: !isNumeric,
+    });
+
     this.setState({ defaultPageSize: calculateTableRows(results.length) });
+
+    const formatChartData = data => data.map(item => ({
+      ...item,
+      obsDatetime: moment(item.obsDatetime).format('DD-MMM-YYYY'),
+    }));
+
 
     const columnMetadata = fields.map(columnName => ({
       Header:
@@ -90,22 +125,50 @@ export class LabTrendsPage extends PureComponent {
       headerClassName: `lab-trends-list-header-${columnName.replace(' ', '-').toLocaleLowerCase()}`,
     }));
 
+    const chartMargin = {
+      top: 5,
+      right: 30,
+      left: 20,
+      bottom: 5,
+    };
+
+    const chartData = R.compose(
+      R.reverse,
+      sortByDate('obsDateTime'),
+      formatChartData,
+    )(results);
+
     return (
       <div>
         <h1>{`${state.display} Trend`}</h1>
-        <div className="lab-orders-trend-list">
-          <SortableTable
-            data={results}
-            columnMetadata={columnMetadata}
-            filteredFields={fields}
-            isSortable={false}
-            noDataMessage="No orders found"
-            minRows={0}
-            defaultPageSize={defaultPageSize}
-          />
+        <div className="lab-trends-widgets">
+          <div className={resultTableClassName}>
+            <SortableTable
+              data={results}
+              columnMetadata={columnMetadata}
+              filteredFields={fields}
+              isSortable={false}
+              noDataMessage="No orders found"
+              minRows={0}
+              defaultPageSize={defaultPageSize}
+            />
+          </div>
+          <div className={chartClassName}>
+            <LineChart
+              data={chartData}
+              height={280}
+              width={500}
+              yAxisLabel=""
+              xAxisLabel=""
+              xAxisKey="obsDatetime"
+              margin={chartMargin}
+              yAxisKey="value"
+              type="linear"
+            />
+          </div>
         </div>
         <br />
-        <button type="button" className="btn btn-lg btn-danger" onClick={() => this.handleNavigateBack(history)}>Back</button>
+        <button type="button" className="btn btn-lg btn-danger" onClick={() => this.handleNavigateBack()}>Back</button>
       </div>
     );
   }

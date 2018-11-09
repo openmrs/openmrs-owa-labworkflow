@@ -10,6 +10,22 @@
     text-align: center;
 }
 
-.lab-orders-trend-list {
-  width: 70%;
+.lab-result-trend-list {
+  width: 48%;
+  &.full {
+    width:80%
+  }
+}
+
+.lab-trends-widgets {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+}
+
+.lab-results-trend-chart {
+  width: 48%;
+  &.hide {
+    display: none;
+  }
 }

@@ -58,6 +58,10 @@ export const filterThrough = (filters, data) => {
   return originalData;
 }
 
+export const sortByDate = (path) => data => R.sort(
+  (a, b) => dateToInt(R.path(path.split('.'))(a)) - dateToInt(R.path(path.split('.'))(b)), data
+);
+
 export const getSampleDate = (data) => {
   let sampleDate;
   if (data.encounter.obs) {
