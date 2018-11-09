@@ -26,6 +26,7 @@ const Cell = ({
     const isPanel = value.order.concept.set;
     if (columnName === 'TYPE') {
       return (
+        // eslint-disable-next-line jsx-a11y/no-static-element-interactions
         <div
           className="table_cell type" onClick={(e) => {
             e.preventDefault();
@@ -86,6 +87,7 @@ const Cell = ({
     switch (columnName) {
       case 'TYPE': {
         return (
+          // eslint-disable-next-line jsx-a11y/no-static-element-interactions
           <div
             className="table_cell type" onClick={(e) => {
               e.preventDefault();
@@ -144,8 +146,11 @@ export class LabResultsList extends PureComponent {
     const { dispatch } = this.props;
     const { patientUUID } = this.state;
     dispatch(constantsActions.fetchLabResultsDateConcept());
+    dispatch(constantsActions.fetchLabResultsDidNotPerformQuestion());
+    dispatch(constantsActions.fetchLabResultsDidNotPerformReasonQuestion());
     dispatch(constantsActions.fetchLabResultsTestOrderNumberConcept());
     dispatch(constantsActions.fetchLabResultsTestLocationQuestion());
+    dispatch(constantsActions.fetchLabResultsEstimatedCollectionDateQuestion());
     dispatch(constantsActions.getDateAndTimeFormat());
     dispatch(patientAction.getPatient(patientUUID));
     dispatch(patientAction.fetchPatientLabTestResults(patientUUID));
@@ -321,6 +326,9 @@ export class LabResultsList extends PureComponent {
       labResultsTestOrderNumberConcept,
       labResultsTestLocationQuestion,
       labResultsDateConcept,
+      labResultsDidNotPerformReasonQuestion,
+      labResultsEstimatedCollectionDateQuestion,
+      labResultsDidNotPerformQuestion,
     } = this.props;
     const { patientUUID } = this.state;
     const selectedPatient = patients[patientUUID] || {};
@@ -328,8 +336,6 @@ export class LabResultsList extends PureComponent {
 
     const getPatientLabResults = () => {
       const results = encounters.map((encounter) => {
-        // TODO the assumption here is that there will only be one (and always be one) test order obs per encounter,
-        // TODO in our current model, this is correct, but may change (note that currently we are only parsing specimen collectoin encounters)
         const testOrderObs = encounter.obs.filter(
           item => item.concept.uuid === labResultsTestOrderNumberConcept,
         );
@@ -343,6 +349,9 @@ export class LabResultsList extends PureComponent {
           labResultsTestOrderNumberConcept,
           labResultsTestLocationQuestion,
           labResultsDateConcept,
+          labResultsDidNotPerformReasonQuestion,
+          labResultsEstimatedCollectionDateQuestion,
+          labResultsDidNotPerformQuestion,
         ];
         if (hasObs) {
           const obs = R.pipe(
@@ -424,6 +433,9 @@ export const mapStateToProps = ({
       labResultsTestOrderNumberConcept,
       labResultsTestLocationQuestion,
       labResultsDateConcept,
+      labResultsDidNotPerformReasonQuestion,
+      labResultsEstimatedCollectionDateQuestion,
+      labResultsDidNotPerformQuestion,
     },
   },
   patients,
@@ -433,6 +445,9 @@ export const mapStateToProps = ({
   labResultsTestOrderNumberConcept,
   labResultsTestLocationQuestion,
   labResultsDateConcept,
+  labResultsDidNotPerformReasonQuestion,
+  labResultsEstimatedCollectionDateQuestion,
+  labResultsDidNotPerformQuestion,
 });
 
 export default connect(mapStateToProps)(LabResultsList);

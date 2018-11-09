@@ -22,7 +22,10 @@ import { FormattedMessage } from 'react-intl';
 import ConceptDisplay from "./ConceptDisplay";
 import { fetchLabTestResults } from '../actions/labOrdersAction';
 import {
-  getSampleDate, getResultValue, calculateTableRows,
+  getSampleDate,
+  getResultValue,
+  calculateTableRows,
+  sortByDate,
 } from '../utils/helpers';
 
 import "../../css/lab-results-trends-page.scss";
@@ -122,6 +125,19 @@ export class LabTrendsPage extends PureComponent {
       headerClassName: `lab-trends-list-header-${columnName.replace(' ', '-').toLocaleLowerCase()}`,
     }));
 
+    const chartMargin = {
+      top: 5,
+      right: 30,
+      left: 20,
+      bottom: 5,
+    };
+
+    const chartData = R.compose(
+      R.reverse,
+      sortByDate('obsDateTime'),
+      formatChartData,
+    )(results);
+
     return (
       <div>
         <h1>{`${state.display} Trend`}</h1>
@@ -139,12 +155,13 @@ export class LabTrendsPage extends PureComponent {
           </div>
           <div className={chartClassName}>
             <LineChart
-              data={formatChartData(R.reverse(results))}
+              data={chartData}
               height={280}
               width={500}
-              yAxisLabel="units"
-              xAxisLabel="rowland"
+              yAxisLabel=""
+              xAxisLabel=""
               xAxisKey="obsDatetime"
+              margin={chartMargin}
               yAxisKey="value"
               type="linear"
             />
