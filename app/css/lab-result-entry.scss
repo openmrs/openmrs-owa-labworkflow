@@ -256,12 +256,19 @@ button.pull-right.btn-success {
     left: 328px;
     white-space: nowrap;
     span {
-        top: 19px;
+        // top: 19px;
         position: relative;
-        right: 5px;
+        // right: 5px;
         display: -ms-flexbox;
         display: flex;
-        line-height: 18px
+        line-height: 40px
+    }
+}
+
+.estimated-checkbox span > div {
+    &.checkbox {
+        position: relative;
+        bottom: 5px;
     }
 }
 
