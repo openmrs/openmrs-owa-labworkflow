@@ -389,7 +389,7 @@ export class LabResultsList extends PureComponent {
         order,
         status: 'Ordered',
       }));
-      const labResults = results.concat(orderedTests);
+      const labResults = orderedTests.concat(results);
 
       return labResults;
     };
