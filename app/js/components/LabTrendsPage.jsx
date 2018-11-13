@@ -42,7 +42,7 @@ export const Cell = ({ columnName, conceptUuid, value }) => {
     case 'RESULT':
       return (
         <div className="table_cell result">
-          <span>{getResultValue(value)}</span>
+          <ConceptDisplay conceptUUID={conceptUuid} type="result" value={value.value.display || value.value} />
         </div>
       );
 
