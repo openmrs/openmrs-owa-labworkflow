@@ -2,8 +2,7 @@ import React, { PureComponent } from 'react';
 import R from 'ramda';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
-import axios from '../config/axios';
-// import { formValidations } from '@openmrs/react-components';
+import { encounterRest } from '@openmrs/react-components';
 
 class LabsStatusDisplay extends PureComponent {
   constructor(props) {
@@ -21,8 +20,8 @@ class LabsStatusDisplay extends PureComponent {
     const {
       conceptUUID, patientUUID,
     } = this.props;
-    const encounters = await axios.get(`encounter?s=byObs&patient=${patientUUID}&obsConcept=${conceptUUID}&v=custom:(uuid,obs)`);
-    this.setState({ encounters: encounters.data.results });
+    const encounters = await encounterRest.fetchEncountersByObs(patientUUID, conceptUUID);
+    this.setState({ encounters: encounters.results });
   }
 
   getTestStatus() {
@@ -82,10 +81,11 @@ class LabsStatusDisplay extends PureComponent {
   }
 }
 
-LabsStatusDisplay.defaultProps = {
-};
-
 LabsStatusDisplay.propTypes = {
+  labResultsTestOrderNumberConcept: PropTypes.string.isRequired,
+  labResultsTestLocationQuestion: PropTypes.string.isRequired,
+  labResultsDateConcept: PropTypes.string.isRequired,
+  order: PropTypes.array.isRequired,
 };
 
 const mapStateToProps = ({
