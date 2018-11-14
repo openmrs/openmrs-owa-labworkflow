@@ -15,7 +15,6 @@ import { withRouter } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import { FormattedMessage } from 'react-intl';
 import { SortableTable, Loader, constantsActions } from '@openmrs/react-components';
-import LabsStatusDisplay from './LabsStatusDisplay';
 import LabOrderListFilters from './LabOrdersListFilters';
 import { fetchLabOrders } from '../actions/labOrdersAction';
 import { setSelectedConcept } from '../actions/labConceptsAction';
@@ -24,8 +23,9 @@ import patientAction from '../actions/patientAction';
 import "../../css/lab-orders-list.scss";
 
 const patientUUID = process.env.NODE_ENV !== 'production'
-  ? '70c9de3d-ce33-420b-818b-332acbfaf776' // your patient uuid will go here
+  ? 'ab408b4d-c29d-418d-8bbe-4d1a0903b373' // your patient uuid will go here
   : '76f0fd80-2b5b-496a-8b68-539d7e532ad2';
+
 
 export const Cell = ({ columnName, value, dateAndTimeFormat }) => {
   switch (columnName) {
@@ -83,13 +83,6 @@ export const Cell = ({ columnName, value, dateAndTimeFormat }) => {
           <span>{value.concept.display}</span>
         </div>
       );
-    case 'STATUS': {
-      const conceptUuid = value.concept.uuid;
-      const patientUuid = value.patient.uuid;
-      return (
-        <LabsStatusDisplay conceptUUID={conceptUuid} patientUUID={patientUuid} order={value} />
-      );
-    }
     default:
       return null;
   }
@@ -105,7 +98,6 @@ export class LabOrdersList extends PureComponent {
         dateToField: moment(),
         dateFromField: moment().subtract(8, 'days'),
         testTypeField: "All",
-        testStatusField: "All",
         dateField: 'dateActivated',
       },
     };
@@ -146,6 +138,7 @@ export class LabOrdersList extends PureComponent {
     });
   }
 
+
   clearNameEMRField() {
     const { filters } = this.state;
     this.setState({
@@ -169,7 +162,7 @@ export class LabOrdersList extends PureComponent {
   renderDraftOrderTable() {
     const { orders, dateAndTimeFormat } = this.props;
     const { filters } = this.state;
-    const fields = ["EMR ID", "NAME", "ORDER ID", "ORDER DATE", "COLLECTION DATE", "URGENCY", "TEST TYPE", "STATUS"];
+    const fields = ["EMR ID", "NAME", "ORDER ID", "ORDER DATE", "COLLECTION DATE", "URGENCY", "TEST TYPE"];
 
     const columnMetadata = fields.map(columnName => ({
       Header:

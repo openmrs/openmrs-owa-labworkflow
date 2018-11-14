@@ -55,12 +55,6 @@ export const filterThrough = (filters, data) => {
     const filteredData = matchSorter(originalData, inputValue, { keys: ['concept.display'] });
     originalData = filteredData;
   }
-
-  if (filters.testStatusField !== "All") {
-    const inputValue = filters.testStatusField;
-    const filteredData = matchSorter(originalData, inputValue, { keys: ['concept.display'] });
-    originalData = filteredData;
-  }
   return originalData;
 }
 

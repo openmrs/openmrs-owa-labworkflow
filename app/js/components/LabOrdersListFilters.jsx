@@ -78,7 +78,7 @@ class LabOrderListFilters extends PureComponent {
     const { labTests, handleFieldChange } = this.props;
     return (
       <Dropdown
-        className="form-filter-group dropdown-filter"
+        className="form-filter-group"
         label={(
           <FormattedMessage
             id="app.labOrdersListFilters.searchDropdownLabel"
@@ -93,25 +93,6 @@ class LabOrderListFilters extends PureComponent {
     );
   }
 
-  renderTestStatusFilter() {
-    const { handleFieldChange } = this.props;
-    return (
-      <Dropdown
-        className="form-filter-group dropdown-filter"
-        label={(
-          <FormattedMessage
-            id="app.labOrdersListFilters.testStatusSearchDropdownLabel"
-            defaultMessage="Test Status"
-            description="Label for the dropdown test status input" />
-        )}
-        defaultValue="All"
-        list={['Reported', 'Ordered', 'Taken']}
-        field="testStatusField"
-        handleSelect={(field, value) => handleFieldChange(field, value)}
-      />
-    );
-  }
-
   render() {
     return (
       <div className="order-list-filters">
@@ -121,7 +102,6 @@ class LabOrderListFilters extends PureComponent {
         <span className="bottom-filters">
           {this.renderNameEMROrOrderIdFilter()}
           {this.renderTestTypeFilter()}
-          {this.renderTestStatusFilter()}
         </span>
       </div>
     );
