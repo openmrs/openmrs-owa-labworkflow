@@ -1,4 +1,5 @@
 import React from 'react';
+import moment from 'moment';
 import { mountWithIntl } from '@openmrs/react-components';
 import LabOrderListFilters from '../../../app/js/components/LabOrdersListFilters';
 
@@ -10,6 +11,9 @@ const props = {
   clearNameEMRField: jest.fn(),
   labTests: ['Hémogramme automatisé'],
   nameField: '',
+  testTypeField: '',
+  dateToField: moment('2018-11-11'),
+  dateFromField: moment('2018-11-11'),
 };
 
 const getComponent = () => {
