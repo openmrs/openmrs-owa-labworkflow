@@ -1,9 +1,9 @@
 import { axiosInstance } from '../config';
 import { FETCH_LAB_ORDERS, SET_LAB_TEST, FETCH_LAB_TEST_RESULTS } from './actionTypes';
 
-export const fetchLabOrders = (patientUUID, testOrderType) => ({
+export const fetchLabOrders = testOrderType => ({
   type: FETCH_LAB_ORDERS,
-  payload: axiosInstance.get(`order?totalCount=true&sort=desc&status=active&patient=${patientUUID}&orderType=${testOrderType}&v=full`),
+  payload: axiosInstance.get(`order?s=default&totalCount=true&sort=desc&status=active&orderType=${testOrderType}&v=full`),
 });
 
 export const fetchLabTestResults = (patientUuid, conceptUuid) => ({

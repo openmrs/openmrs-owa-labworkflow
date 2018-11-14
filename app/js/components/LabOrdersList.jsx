@@ -23,9 +23,6 @@ import filtersAction from '../actions/filtersAction';
 import patientAction from '../actions/patientAction';
 import "../../css/lab-orders-list.scss";
 
-const patientUUID = process.env.NODE_ENV !== 'production'
-  ? '70c9de3d-ce33-420b-818b-332acbfaf776' // your patient uuid will go here
-  : '76f0fd80-2b5b-496a-8b68-539d7e532ad2';
 
 
 export const Cell = ({ columnName, value, dateAndTimeFormat }) => {
@@ -119,7 +116,7 @@ export class LabOrdersList extends PureComponent {
   componentWillReceiveProps(nextProps) {
     const { dispatch, labResultsTestOrderType } = this.props;
     if (nextProps.labResultsTestOrderType !== labResultsTestOrderType) {
-      dispatch(fetchLabOrders(patientUUID, nextProps.labResultsTestOrderType));
+      dispatch(fetchLabOrders(nextProps.labResultsTestOrderType));
     }
   }
 
