@@ -54,6 +54,11 @@ i.scale:hover {
     max-width: 90px;
 }
 
+.lab-order-list-cell-status,
+.lab-order-list-header-status {
+    max-width: 80px;
+}
+
 // style for making sure each row in the
 // sortableTablecomponent have a cursor pointer
 // instead of an arrow...
@@ -108,6 +113,10 @@ i.scale:hover {
       }
       &.one-third {
         width: 80%
+      }
+      &.dropdown-filter {
+        margin-right: 15px;
+        width: 180px;
       }
     }
   }
