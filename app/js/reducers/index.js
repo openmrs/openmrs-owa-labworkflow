@@ -14,6 +14,7 @@ import { reducers as openmrsReducers } from '@openmrs/react-components';
 import labOrderReducer from './labOrdersReducer';
 import labTestResultsReducer from './labTestResultsReducer';
 import patientReducer from './patientReducer';
+import filtersReducer from './filtersReducer';
 import {
   patientsReducer,
   selectedPatientReducer,
@@ -35,4 +36,5 @@ export default combineReducers({
   selectedLabConcept: selectedLabConceptReducer,
   conceptMembers: conceptMembersReducer,
   fetchStatus: fetchStatusReducer,
+  filters: filtersReducer,
 });

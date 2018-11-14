@@ -10,6 +10,7 @@ import { FormattedMessage } from 'react-intl';
 
 import ConceptDisplay from './ConceptDisplay';
 import patientAction from '../actions/patientAction';
+import filtersAction from '../actions/filtersAction';
 import { filterThrough, calculateTableRows } from '../utils/helpers';
 import "../../css/lab-results-view.scss";
 
@@ -120,17 +121,11 @@ export class LabResultsList extends PureComponent {
       // would need to get this from the route ideally
       // if you're working locally, endeavour to hard code a valid patientUUID on line 12
       patientUUID,
-      filters: {
-        dateToField: moment(),
-        dateFromField: moment().subtract(8, 'days'),
-        dateField: 'encounter.encounterDatetime' || '',
-      },
     };
 
     this.handleShowLabTrendsPage = this.handleShowLabTrendsPage.bind(this);
     this.handleFilterChange = this.handleFilterChange.bind(this);
   }
-
 
   componentWillMount() {
     const { dispatch } = this.props;
@@ -171,18 +166,16 @@ export class LabResultsList extends PureComponent {
   }
 
   handleFilterChange(field, value) {
-    const { filters } = this.state;
-    this.setState({
-      filters: {
-        ...filters,
-        [field]: value,
-      },
-    });
+    const { labResultListFilters, dispatch } = this.props;
+    const newFilters = {
+      ...labResultListFilters,
+      [field]: value,
+    };
+    dispatch(filtersAction.setLabResultListFilters(newFilters));
   }
 
   renderLabResultsTable(labResults) {
-    const { dateAndTimeFormat } = this.props;
-    const { filters } = this.state;
+    const { dateAndTimeFormat, labResultListFilters } = this.props;
     const fields = ["TYPE", "STATUS", "REQUEST DATE", "SAMPLE DATE", "RESULT", "NORMAL RANGE"];
 
     const columnMetadata = fields.map(columnName => ({
@@ -230,7 +223,7 @@ export class LabResultsList extends PureComponent {
       <div className="lab-results-list">
         <SortableTable
           data={labResults}
-          filters={filters}
+          filters={labResultListFilters}
           getDataWithFilters={filterThrough}
           columnMetadata={columns}
           filteredFields={fields}
@@ -272,6 +265,7 @@ export class LabResultsList extends PureComponent {
   }
 
   renderDatePickerFilters() {
+    const { labResultListFilters } = this.props;
     return (
       <span className="date-picker-filter">
         <span>
@@ -282,7 +276,7 @@ export class LabResultsList extends PureComponent {
                 id="app.labResultsList.dateFromFilterLabel"
                 defaultMessage="From: " />
             )}
-            defaultDate={moment().subtract(8, 'days')}
+            defaultDate={moment(labResultListFilters.dateFromField) || moment().subtract(8, 'days')}
             formControlStyle={{
               marginRight: '5px',
               width: '105px',
@@ -299,6 +293,7 @@ export class LabResultsList extends PureComponent {
                 id="app.labResultsList.dateToFilterLabel"
                 defaultMessage="To: " />
             )}
+            defaultDate={moment(labResultListFilters.dateToField) || moment()}
             field="dateToField"
             formControlStyle={{
               marginRight: '5px',
@@ -430,6 +425,7 @@ export const mapStateToProps = ({
     },
   },
   patients,
+  filters: { labResultListFilters },
 }) => ({
   patients,
   dateAndTimeFormat,
@@ -439,6 +435,7 @@ export const mapStateToProps = ({
   labResultsDidNotPerformReasonQuestion,
   labResultsEstimatedCollectionDateQuestion,
   labResultsDidNotPerformQuestion,
+  labResultListFilters,
 });
 
 export default connect(mapStateToProps)(LabResultsList);

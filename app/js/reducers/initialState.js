@@ -1,3 +1,5 @@
+import moment from 'moment';
+
 export default {
   labOrderReducer: {
     orders: [],
@@ -40,6 +42,13 @@ export default {
     error: {
       status: false,
       message: null,
+    },
+  },
+  filtersReducer: {
+    labResultListFilters: {
+      dateToField: moment(),
+      dateFromField: moment().subtract(8, 'days'),
+      dateField: 'encounter.encounterDatetime' || '',
     },
   },
 };
