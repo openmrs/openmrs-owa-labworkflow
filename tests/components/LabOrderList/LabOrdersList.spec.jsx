@@ -1,7 +1,7 @@
 import React from 'react';
+import moment from 'moment';
 import { mountWithIntl } from '@openmrs/react-components';
-import LabOrdersListContainer,
-{
+import {
   LabOrdersList,
   mapStateToProps,
   Cell,
@@ -34,6 +34,12 @@ const props = {
       dateAndTimeFormat: 'DD-MMM-YYYY',
     },
   },
+  labOrdersListFilters: {
+    dateFromField: moment('2018-11-11'),
+    dateToField: moment('2018-11-11'),
+    testTypeField: '',
+    dateField: '',
+  },
 };
 
 const getComponent = () => {
@@ -62,6 +68,12 @@ describe('LabOrdersListContainer container', () => {
       labOrders: {
         orders,
         isLoading: false,
+      },
+      labOrdersListFilters: {
+        dateFromField: moment('2018-11-11'),
+        dateToField: moment('2018-11-11'),
+        testTypeField: '',
+        dateField: '',
       },
     };
     const component = getComponent();

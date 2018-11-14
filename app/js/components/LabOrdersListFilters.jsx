@@ -32,7 +32,7 @@ class LabOrderListFilters extends PureComponent {
   }
 
   renderDatePickerFilters() {
-    const { handleFieldChange } = this.props;
+    const { handleFieldChange, dateFromField, dateToField } = this.props;
     return (
       <span className="date-picker-filter">
         <span>
@@ -44,7 +44,7 @@ class LabOrderListFilters extends PureComponent {
                 defaultMessage="From: "
                 description="Label for the first date search input" />
             )}
-            defaultDate={moment().subtract(8, 'days')}
+            defaultDate={dateFromField || moment().subtract(8, 'days')}
             formControlStyle={{
               marginRight: '5px',
               width: '105px',
@@ -62,6 +62,7 @@ class LabOrderListFilters extends PureComponent {
                 defaultMessage="To: "
                 description="Label for the second date search input" />
             )}
+            defaultDate={dateToField || moment()}
             field="dateToField"
             formControlStyle={{
               marginRight: '5px',
@@ -75,7 +76,7 @@ class LabOrderListFilters extends PureComponent {
   }
 
   renderTestTypeFilter() {
-    const { labTests, handleFieldChange } = this.props;
+    const { labTests, handleFieldChange, testTypeField } = this.props;
     return (
       <Dropdown
         className="form-filter-group"
@@ -86,6 +87,7 @@ class LabOrderListFilters extends PureComponent {
             description="Label for the dropdown search input" />
         )}
         defaultValue="All"
+        input={{ value: testTypeField }}
         list={labTests}
         field="testTypeField"
         handleSelect={(field, value) => handleFieldChange(field, value)}
@@ -117,6 +119,9 @@ LabOrderListFilters.propTypes = {
   clearNameEMRField: PropTypes.func.isRequired,
   labTests: PropTypes.array.isRequired,
   nameField: PropTypes.string,
+  testTypeField: PropTypes.string.isRequired,
+  dateToField: PropTypes.object.isRequired,
+  dateFromField: PropTypes.object.isRequired,
 };
 
 export default LabOrderListFilters;

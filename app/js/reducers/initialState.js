@@ -50,5 +50,12 @@ export default {
       dateFromField: moment().subtract(8, 'days'),
       dateField: 'encounter.encounterDatetime' || '',
     },
+    labOrdersListFilters: {
+      nameField: "",
+      dateToField: moment(),
+      dateFromField: moment().subtract(8, 'days'),
+      testTypeField: "All",
+      dateField: 'dateActivated',
+    },
   },
 };

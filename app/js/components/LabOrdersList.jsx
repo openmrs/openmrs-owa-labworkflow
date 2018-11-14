@@ -19,11 +19,12 @@ import LabOrderListFilters from './LabOrdersListFilters';
 import { fetchLabOrders } from '../actions/labOrdersAction';
 import { setSelectedConcept } from '../actions/labConceptsAction';
 import { filterThrough, calculateTableRows } from '../utils/helpers';
+import filtersAction from '../actions/filtersAction';
 import patientAction from '../actions/patientAction';
 import "../../css/lab-orders-list.scss";
 
 const patientUUID = process.env.NODE_ENV !== 'production'
-  ? 'ab408b4d-c29d-418d-8bbe-4d1a0903b373' // your patient uuid will go here
+  ? '70c9de3d-ce33-420b-818b-332acbfaf776' // your patient uuid will go here
   : '76f0fd80-2b5b-496a-8b68-539d7e532ad2';
 
 
@@ -92,15 +93,7 @@ export const Cell = ({ columnName, value, dateAndTimeFormat }) => {
 export class LabOrdersList extends PureComponent {
   constructor() {
     super();
-    this.state = {
-      filters: {
-        nameField: "",
-        dateToField: moment(),
-        dateFromField: moment().subtract(8, 'days'),
-        testTypeField: "All",
-        dateField: 'dateActivated',
-      },
-    };
+
     this.handleFilterChange = this.handleFilterChange.bind(this);
     this.clearNameEMRField = this.clearNameEMRField.bind(this);
     this.handleShowResultsEntryPage = this.handleShowResultsEntryPage.bind(this);
@@ -138,30 +131,26 @@ export class LabOrdersList extends PureComponent {
     });
   }
 
-
   clearNameEMRField() {
-    const { filters } = this.state;
-    this.setState({
-      filters: {
-        ...filters,
-        nameField: "",
-      },
-    });
+    const { dispatch, labOrdersListFilters } = this.props;
+    const newFilters = {
+      ...labOrdersListFilters,
+      nameField: "",
+    };
+    dispatch(filtersAction.setLabOrdersListFilters(newFilters));
   }
 
   handleFilterChange(field, value) {
-    const { filters } = this.state;
-    this.setState({
-      filters: {
-        ...filters,
-        [field]: value,
-      },
-    });
+    const { dispatch, labOrdersListFilters } = this.props;
+    const newFilters = {
+      ...labOrdersListFilters,
+      [field]: value,
+    };
+    dispatch(filtersAction.setLabOrdersListFilters(newFilters));
   }
 
   renderDraftOrderTable() {
-    const { orders, dateAndTimeFormat } = this.props;
-    const { filters } = this.state;
+    const { orders, dateAndTimeFormat, labOrdersListFilters } = this.props;
     const fields = ["EMR ID", "NAME", "ORDER ID", "ORDER DATE", "COLLECTION DATE", "URGENCY", "TEST TYPE"];
 
     const columnMetadata = fields.map(columnName => ({
@@ -181,7 +170,7 @@ export class LabOrdersList extends PureComponent {
       <div className="lab-order-list">
         <SortableTable
           data={orders}
-          filters={filters}
+          filters={labOrdersListFilters}
           getDataWithFilters={filterThrough}
           columnMetadata={columnMetadata}
           filteredFields={fields}
@@ -198,8 +187,11 @@ export class LabOrdersList extends PureComponent {
   }
 
   render() {
-    const { labTests, orders } = this.props;
-    const { filters: { dateFromField, dateToField, nameField } } = this.state;
+    const {
+      labTests, orders, labOrdersListFilters: {
+        dateFromField, dateToField, nameField, testTypeField,
+      },
+    } = this.props;
     if (!R.isEmpty(orders) && !R.isEmpty(labTests)) {
       return (
         <div className="main-container">
@@ -215,8 +207,9 @@ export class LabOrdersList extends PureComponent {
               handleFieldChange={this.handleFilterChange}
               clearNameEMRField={this.clearNameEMRField}
               labTests={labTests}
-              dateFromField={dateFromField}
-              dateToField={dateToField}
+              testTypeField={testTypeField}
+              dateFromField={moment(dateFromField)}
+              dateToField={moment(dateToField)}
               nameField={nameField}
             />
             {this.renderDraftOrderTable()}
@@ -239,11 +232,13 @@ LabOrdersList.propTypes = {
 export const mapStateToProps = ({
   labOrders: { orders, labTests },
   openmrs: { CONSTANTS: { dateAndTimeFormat, labResultsTestOrderType } },
+  filters: { labOrdersListFilters },
 }) => ({
   orders,
   labTests,
   dateAndTimeFormat,
   labResultsTestOrderType,
+  labOrdersListFilters,
 });
 
 const LabOrdersListContainer = (
