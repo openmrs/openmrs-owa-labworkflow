@@ -53,8 +53,14 @@ export const filterThrough = (filters, data) => {
   if (filters.testTypeField !== "All") {
     const inputValue = filters.testTypeField;
     const filteredData = matchSorter(originalData, inputValue, { keys: ['concept.display'] });
+
+    // Temporary filtering out the `Pathology procedure ordered` on the frontEnd pending
+    // when it's fixed on the backEnd
+    filteredData.filter(data => data.concept && data.concept.display !== 'Pathology procedure ordered');
+
     originalData = filteredData;
   }
+
   return originalData;
 }
 
