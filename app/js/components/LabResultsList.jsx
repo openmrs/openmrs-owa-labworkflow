@@ -2,7 +2,6 @@ import React, { PureComponent } from 'react';
 import R from 'ramda';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
-import qs from 'querystringify';
 import {
   SortableTable, Loader, constantsActions, CustomDatePicker as DatePicker,
 } from '@openmrs/react-components';
@@ -130,8 +129,8 @@ export class LabResultsList extends PureComponent {
 
   componentWillMount() {
     const { dispatch } = this.props;
-    const params = qs.parse(decodeURIComponent(window.location.search));
-    const { patient, returnUrl } = params;
+    const patient = new URLSearchParams(window.location.search).get('patient');
+    
     const patientUuid = patient || patientUUID;
     if (patientUuid) {
       dispatch(constantsActions.fetchLabResultsDateConcept());
@@ -145,7 +144,7 @@ export class LabResultsList extends PureComponent {
       dispatch(patientAction.fetchPatientLabTestResults(patientUuid));
     } else {
       // we would need to route back to the returnUrl once that functionality is in place
-      window.location.href = returnUrl;
+      window.location.href = '/';
     }
   }
 
