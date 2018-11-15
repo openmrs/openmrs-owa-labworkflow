@@ -3,7 +3,6 @@ import moment from 'moment';
 import { mountWithIntl } from '@openmrs/react-components';
 import {
   LabOrdersList,
-  mapStateToProps,
   Cell,
 } from '../../../app/js/components/LabOrdersList';
 
@@ -59,25 +58,7 @@ describe('<LabOrdersList /> component', () => {
 
 describe('LabOrdersListContainer container', () => {
   it('should pass required props from state to <LabOrdersList /> component', () => {
-    const state = {
-      openmrs: {
-        CONSTANTS: {
-          dateAndTimeFormat: '',
-        },
-      },
-      labOrders: {
-        orders,
-        isLoading: false,
-      },
-      labOrdersListFilters: {
-        dateFromField: moment('2018-11-11'),
-        dateToField: moment('2018-11-11'),
-        testTypeField: '',
-        dateField: '',
-      },
-    };
     const component = getComponent();
-    mapStateToProps(state);
     expect(component).toMatchSnapshot();
   });
 
