@@ -238,8 +238,11 @@ export class LabResultsList extends PureComponent {
           showFilter={false}
           rowOnClick={this.handleShowLabTrendsPage}
           isSortable={false}
+          onPageSizeChange={pageSize => this.handleFilterChange('pageSize', pageSize)}
+          onPageChange={page => this.handleFilterChange('page', page)}
+          page={labResultListFilters.page}
           noDataMessage="No results found"
-          defaultPageSize={calculateTableRows(labResults.length)}
+          defaultPageSize={labResultListFilters.pageSize || calculateTableRows(labResults.length)}
           subComponent={(row) => {
             const isPanel = (row.original.order.concept.set) && (row.original.status === "Reported");
             const rowFields = ["TYPE", "RESULT", "NORMAL RANGE"];

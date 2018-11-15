@@ -174,10 +174,13 @@ export class LabOrdersList extends PureComponent {
           filterType="none"
           showFilter={false}
           isSortable={false}
+          onPageChange={page => this.handleFilterChange('page', page)}
+          onPageSizeChange={pageSize => this.handleFilterChange('pageSize', pageSize)}
           rowOnClick={this.handleShowResultsEntryPage}
           noDataMessage="No orders found"
           minRows={0}
-          defaultPageSize={calculateTableRows(orders.length)}
+          page={labOrdersListFilters.page}
+          defaultPageSize={labOrdersListFilters.pageSize || calculateTableRows(orders.length)}
         />
       </div>
     );
