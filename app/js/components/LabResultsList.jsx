@@ -125,7 +125,6 @@ export class LabResultsList extends PureComponent {
 
     this.handleShowLabTrendsPage = this.handleShowLabTrendsPage.bind(this);
     this.handleFilterChange = this.handleFilterChange.bind(this);
-    this.onPageSizeChange = this.onPageSizeChange.bind(this);
   }
 
   componentWillMount() {
@@ -171,15 +170,6 @@ export class LabResultsList extends PureComponent {
     const newFilters = {
       ...labResultListFilters,
       [field]: value,
-    };
-    dispatch(filtersAction.setLabResultListFilters(newFilters));
-  }
-
-  onPageSizeChange(pageSize) {
-    const { labResultListFilters, dispatch } = this.props;
-    const newFilters = {
-      ...labResultListFilters,
-      pageSize,
     };
     dispatch(filtersAction.setLabResultListFilters(newFilters));
   }
@@ -241,7 +231,9 @@ export class LabResultsList extends PureComponent {
           showFilter={false}
           rowOnClick={this.handleShowLabTrendsPage}
           isSortable={false}
-          onPageSizeChange={pageSize => this.onPageSizeChange(pageSize)}
+          onPageSizeChange={pageSize => this.handleFilterChange('pageSize', pageSize)}
+          onPageChange={page => this.handleFilterChange('page', page)}
+          page={labResultListFilters.page}
           noDataMessage="No results found"
           defaultPageSize={labResultListFilters.pageSize || calculateTableRows(labResults.length)}
           subComponent={(row) => {

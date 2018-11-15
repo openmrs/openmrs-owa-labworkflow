@@ -94,7 +94,6 @@ export class LabOrdersList extends PureComponent {
     this.handleFilterChange = this.handleFilterChange.bind(this);
     this.clearNameEMRField = this.clearNameEMRField.bind(this);
     this.handleShowResultsEntryPage = this.handleShowResultsEntryPage.bind(this);
-    this.onPageSizeChange = this.onPageSizeChange.bind(this);
   }
 
   componentDidMount() {
@@ -138,15 +137,6 @@ export class LabOrdersList extends PureComponent {
     dispatch(filtersAction.setLabOrdersListFilters(newFilters));
   }
 
-  onPageSizeChange(pageSize) {
-    const { dispatch, labOrdersListFilters } = this.props;
-    const newFilters = {
-      ...labOrdersListFilters,
-      pageSize,
-    };
-    dispatch(filtersAction.setLabOrdersListFilters(newFilters));
-  }
-
   handleFilterChange(field, value) {
     const { dispatch, labOrdersListFilters } = this.props;
     const newFilters = {
@@ -184,10 +174,12 @@ export class LabOrdersList extends PureComponent {
           filterType="none"
           showFilter={false}
           isSortable={false}
-          onPageSizeChange={pageSize => this.onPageSizeChange(pageSize)}
+          onPageChange={page => this.handleFilterChange('page', page)}
+          onPageSizeChange={pageSize => this.handleFilterChange('pageSize', pageSize)}
           rowOnClick={this.handleShowResultsEntryPage}
           noDataMessage="No orders found"
           minRows={0}
+          page={labOrdersListFilters.page}
           defaultPageSize={labOrdersListFilters.pageSize || calculateTableRows(orders.length)}
         />
       </div>
