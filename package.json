@@ -25,6 +25,7 @@
     "match-sorter": "^2.3.0",
     "moment": "^2.22.2",
     "prop-types": "^15.6.2",
+    "querystringify": "^2.1.0",
     "ramda": "^0.24.0",
     "react": "^16.4.2",
     "react-bootstrap": "^0.32.3",

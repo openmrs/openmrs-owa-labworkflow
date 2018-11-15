@@ -2,6 +2,7 @@ import React, { PureComponent } from 'react';
 import R from 'ramda';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
+import qs from 'querystringify';
 import {
   SortableTable, Loader, constantsActions, CustomDatePicker as DatePicker,
 } from '@openmrs/react-components';
@@ -129,16 +130,23 @@ export class LabResultsList extends PureComponent {
 
   componentWillMount() {
     const { dispatch } = this.props;
-    const { patientUUID } = this.state;
-    dispatch(constantsActions.fetchLabResultsDateConcept());
-    dispatch(constantsActions.fetchLabResultsDidNotPerformQuestion());
-    dispatch(constantsActions.fetchLabResultsDidNotPerformReasonQuestion());
-    dispatch(constantsActions.fetchLabResultsTestOrderNumberConcept());
-    dispatch(constantsActions.fetchLabResultsTestLocationQuestion());
-    dispatch(constantsActions.fetchLabResultsEstimatedCollectionDateQuestion());
-    dispatch(constantsActions.getDateAndTimeFormat());
-    dispatch(patientAction.getPatient(patientUUID));
-    dispatch(patientAction.fetchPatientLabTestResults(patientUUID));
+    const params = qs.parse(decodeURIComponent(window.location.search));
+    const { patient, returnUrl } = params;
+    const patientUuid = patient || patientUUID;
+    if (patientUuid) {
+      dispatch(constantsActions.fetchLabResultsDateConcept());
+      dispatch(constantsActions.fetchLabResultsDidNotPerformQuestion());
+      dispatch(constantsActions.fetchLabResultsDidNotPerformReasonQuestion());
+      dispatch(constantsActions.fetchLabResultsTestOrderNumberConcept());
+      dispatch(constantsActions.fetchLabResultsTestLocationQuestion());
+      dispatch(constantsActions.fetchLabResultsEstimatedCollectionDateQuestion());
+      dispatch(constantsActions.getDateAndTimeFormat());
+      dispatch(patientAction.getPatient(patientUuid));
+      dispatch(patientAction.fetchPatientLabTestResults(patientUuid));
+    } else {
+      // we would need to route back to the returnUrl once that functionality is in place
+      window.location.href = returnUrl;
+    }
   }
 
   handleShowLabTrendsPage(data) {
