@@ -251,13 +251,15 @@ export class LabResultEntry extends PureComponent {
                     defaultMessage="Specimen Collection Date: " />
 &nbsp;
                 </span>
-                <EncounterDate
-                  handleDateChange={() => {}}
-                  labelClassName="date-picker-label"
-                  label="Specimen Collection Date:"
-                  defaultDate={moment().startOf('day')}
-                  field="dateFromField"
-                />
+                <span className="encounter-date-field">
+                  <EncounterDate
+                    handleDateChange={() => {}}
+                    labelClassName="date-picker-label"
+                    label="Specimen Collection Date:"
+                    defaultDate={moment().startOf('day')}
+                    field="dateFromField"
+                  />
+                </span>
               </div>
               <br />
             </div>
