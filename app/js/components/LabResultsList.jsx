@@ -129,16 +129,23 @@ export class LabResultsList extends PureComponent {
 
   componentWillMount() {
     const { dispatch } = this.props;
-    const { patientUUID } = this.state;
-    dispatch(constantsActions.fetchLabResultsDateConcept());
-    dispatch(constantsActions.fetchLabResultsDidNotPerformQuestion());
-    dispatch(constantsActions.fetchLabResultsDidNotPerformReasonQuestion());
-    dispatch(constantsActions.fetchLabResultsTestOrderNumberConcept());
-    dispatch(constantsActions.fetchLabResultsTestLocationQuestion());
-    dispatch(constantsActions.fetchLabResultsEstimatedCollectionDateQuestion());
-    dispatch(constantsActions.getDateAndTimeFormat());
-    dispatch(patientAction.getPatient(patientUUID));
-    dispatch(patientAction.fetchPatientLabTestResults(patientUUID));
+    const patient = new URLSearchParams(window.location.search).get('patient');
+    
+    const patientUuid = patient || patientUUID;
+    if (patientUuid) {
+      dispatch(constantsActions.fetchLabResultsDateConcept());
+      dispatch(constantsActions.fetchLabResultsDidNotPerformQuestion());
+      dispatch(constantsActions.fetchLabResultsDidNotPerformReasonQuestion());
+      dispatch(constantsActions.fetchLabResultsTestOrderNumberConcept());
+      dispatch(constantsActions.fetchLabResultsTestLocationQuestion());
+      dispatch(constantsActions.fetchLabResultsEstimatedCollectionDateQuestion());
+      dispatch(constantsActions.getDateAndTimeFormat());
+      dispatch(patientAction.getPatient(patientUuid));
+      dispatch(patientAction.fetchPatientLabTestResults(patientUuid));
+    } else {
+      // we would need to route back to the returnUrl once that functionality is in place
+      window.location.href = '/';
+    }
   }
 
   handleShowLabTrendsPage(data) {
