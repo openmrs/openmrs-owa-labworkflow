@@ -24,7 +24,6 @@ import patientAction from '../actions/patientAction';
 import "../../css/lab-orders-list.scss";
 
 
-
 export const Cell = ({ columnName, value, dateAndTimeFormat }) => {
   switch (columnName) {
     case 'EMR ID': {
