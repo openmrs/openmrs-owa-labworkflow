@@ -48,7 +48,7 @@ class ConceptDisplay extends PureComponent {
 
     const unit = units || '';
 
-    const displayText = `${normalRange} ${unit}`;
+    const displayText = normalRange ? `${normalRange} ${unit}` : '';
 
     return (
       <span>
@@ -68,11 +68,12 @@ class ConceptDisplay extends PureComponent {
         } = concept;
 
         const validationRules = {
-          "abnormal-min-value": !R.isEmpty(lowNormal) ? abnormalMinValue(lowNormal)(value) : undefined,
-          "abnormal-max-value": !R.isEmpty(hiNormal) ? abnormalMaxValue(hiNormal)(value) : undefined,
+          "abnormal-min-value": !R.isNil(lowNormal) ? abnormalMinValue(lowNormal)(value) : undefined,
+          "abnormal-max-value": !R.isNil(hiNormal) ? abnormalMaxValue(hiNormal)(value) : undefined,
         };
 
         const resultClassName = R.isEmpty(R.reject(R.isNil)(validationRules)) ? "" : 'abnormal-value';
+
 
         return (
           <span className={resultClassName}>

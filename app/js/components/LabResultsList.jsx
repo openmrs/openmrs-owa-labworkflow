@@ -14,6 +14,7 @@ import filtersAction from '../actions/filtersAction';
 import { filterThrough, calculateTableRows } from '../utils/helpers';
 import "../../css/lab-results-view.scss";
 
+
 const Cell = ({
   value, columnName, type, navigate,
 }) => {
