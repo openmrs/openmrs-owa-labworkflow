@@ -475,7 +475,7 @@ export class LabResultEntry extends PureComponent {
                           id="app.labResultEntry.orderDatelabel"
                           defaultMessage="Order Date:" />
 &nbsp;
-                        <span className="test-details">{moment(location.state.concept.dateActivated).format('MMM DD h:mm A')}</span>
+                        <span className="test-details">{moment(location.state.dateActivated).format('MMM DD h:mm A')}</span>
                       </span>
                     </div>
                     <br />
