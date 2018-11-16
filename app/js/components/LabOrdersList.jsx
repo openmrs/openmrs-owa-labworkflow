@@ -55,12 +55,6 @@ export const Cell = ({ columnName, value, dateAndTimeFormat }) => {
           <span>{moment(value.dateActivated).format("DD-MMM-YYYY")}</span>
         </div>
       );
-    case 'COLLECTION DATE':
-      return (
-        <div className="table_cell collection-date">
-          <span>{moment(value.dateActivated).format("DD-MMM-YYYY")}</span>
-        </div>
-      );
     case 'URGENCY': {
       const urgencyClassName = cn({
         table_cell: true,
@@ -147,7 +141,7 @@ export class LabOrdersList extends PureComponent {
 
   renderDraftOrderTable() {
     const { orders, dateAndTimeFormat, labOrdersListFilters } = this.props;
-    const fields = ["EMR ID", "NAME", "ORDER ID", "ORDER DATE", "COLLECTION DATE", "URGENCY", "TEST TYPE"];
+    const fields = ["EMR ID", "NAME", "ORDER ID", "ORDER DATE", "URGENCY", "TEST TYPE"];
 
     const columnMetadata = fields.map(columnName => ({
       Header:
