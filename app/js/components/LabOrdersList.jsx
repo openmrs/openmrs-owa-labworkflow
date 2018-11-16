@@ -107,9 +107,13 @@ export class LabOrdersList extends PureComponent {
   }
 
   componentWillReceiveProps(nextProps) {
-    const { dispatch, labResultsTestOrderType } = this.props;
+    const { dispatch, labResultsTestOrderType, labOrdersListFilters } = this.props;
     if (nextProps.labResultsTestOrderType !== labResultsTestOrderType) {
-      dispatch(fetchLabOrders(nextProps.labResultsTestOrderType));
+      const options = {
+        dateToField: moment(labOrdersListFilters.dateToField).format('YYYY-MM-DD'),
+        dateFromField: moment(labOrdersListFilters.dateFromField).format('YYYY-MM-DD'),
+      };
+      dispatch(fetchLabOrders(nextProps.labResultsTestOrderType, options));
     }
   }
 
@@ -131,16 +135,42 @@ export class LabOrdersList extends PureComponent {
   }
 
   handleFilterChange(field, value) {
-    const { dispatch, labOrdersListFilters } = this.props;
+    const { dispatch, labOrdersListFilters, labResultsTestOrderType } = this.props;
     const newFilters = {
       ...labOrdersListFilters,
       [field]: value,
     };
+    if (field === 'dateToField') {
+      const options = {
+        dateToField: value,
+        dateFromField: moment(labOrdersListFilters.dateFromField).format('YYYY-MM-DD') ,
+      };
+      dispatch(fetchLabOrders(labResultsTestOrderType, options));
+    }
+    if (field === 'dateFromField') {
+      const options = {
+        dateToField: moment(labOrdersListFilters.dateToField).format('YYYY-MM-DD'),
+        dateFromField: value,
+      };
+      dispatch(fetchLabOrders(labResultsTestOrderType, options));
+    }
     dispatch(filtersAction.setLabOrdersListFilters(newFilters));
   }
 
+  renderNoDataDisplayText() {
+    const { labOrdersListFilters } = this.props;
+    const displayText = `NO ORDERS FOUND FROM ${moment(labOrdersListFilters.dateFromField).format('YYYY-MMM-DD')} TO ${moment(labOrdersListFilters.dateToField).format('YYYY-MMM-DD')}`
+    return (
+      <div className="no-data-container">
+        <span>
+          {displayText}
+        </span>
+      </div>
+    )
+  }
+
   renderDraftOrderTable() {
-    const { orders, dateAndTimeFormat, labOrdersListFilters } = this.props;
+    const { orders, dateAndTimeFormat, labOrdersListFilters, fetched } = this.props;
     const fields = ["EMR ID", "NAME", "ORDER ID", "ORDER DATE", "URGENCY", "TEST TYPE"];
 
     const columnMetadata = fields.map(columnName => ({
@@ -163,6 +193,7 @@ export class LabOrdersList extends PureComponent {
           filters={labOrdersListFilters}
           getDataWithFilters={filterThrough}
           columnMetadata={columnMetadata}
+          loading={!fetched}
           filteredFields={fields}
           filterType="none"
           showFilter={false}
@@ -181,37 +212,34 @@ export class LabOrdersList extends PureComponent {
 
   render() {
     const {
-      labTests, orders, labOrdersListFilters: {
+      labTests, orders, fetched, labOrdersListFilters: {
         dateFromField, dateToField, nameField, testTypeField,
       },
     } = this.props;
-    if (!R.isEmpty(orders) && !R.isEmpty(labTests)) {
-      return (
-        <div className="main-container">
-          <h2>
-            <FormattedMessage
-              id="app.labOrdersList.title"
-              defaultMessage="Lab Test Results"
-              description="Welcome header on LabTestResult page" />
-          </h2>
-
-          <React.Fragment>
-            <LabOrderListFilters
-              handleFieldChange={this.handleFilterChange}
-              clearNameEMRField={this.clearNameEMRField}
-              labTests={labTests}
-              testTypeField={testTypeField}
-              dateFromField={moment(dateFromField)}
-              dateToField={moment(dateToField)}
-              nameField={nameField}
-            />
-            {this.renderDraftOrderTable()}
-          </React.Fragment>
-        </div>
-      );
-    }
+    const hasData = !R.isEmpty(orders) && !R.isEmpty(labTests);
     return (
-      <Loader />
+      <div className="main-container">
+        <h2>
+          <FormattedMessage
+            id="app.labOrdersList.title"
+            defaultMessage="Lab Test Results"
+            description="Welcome header on LabTestResult page" />
+        </h2>
+        <React.Fragment>
+          <LabOrderListFilters
+            handleFieldChange={this.handleFilterChange}
+            clearNameEMRField={this.clearNameEMRField}
+            labTests={labTests}
+            testTypeField={testTypeField}
+            dateFromField={moment(dateFromField)}
+            dateToField={moment(dateToField)}
+            nameField={nameField}
+          />
+          {!fetched && <Loader />}
+          {hasData && this.renderDraftOrderTable()}
+          {(!hasData && fetched) && this.renderNoDataDisplayText()}
+        </React.Fragment>
+      </div>
     );
   }
 }
@@ -223,7 +251,7 @@ LabOrdersList.propTypes = {
 };
 
 export const mapStateToProps = ({
-  labOrders: { orders, labTests },
+  labOrders: { orders, labTests, fetched },
   openmrs: { CONSTANTS: { dateAndTimeFormat, labResultsTestOrderType } },
   filters: { labOrdersListFilters },
 }) => ({
@@ -232,6 +260,7 @@ export const mapStateToProps = ({
   dateAndTimeFormat,
   labResultsTestOrderType,
   labOrdersListFilters,
+  fetched,
 });
 
 const LabOrdersListContainer = (

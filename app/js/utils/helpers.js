@@ -45,10 +45,10 @@ export const filterThrough = (filters, data) => {
     originalData = filteredData;
   }
 
-  if (filters.dateToField && filters.dateFromField) {
-    const filteredData = getDateRange(originalData, filters.dateFromField, filters.dateToField, filters.dateField);
-    originalData = filteredData;
-  }
+  // if (filters.dateToField && filters.dateFromField) {
+  //   const filteredData = getDateRange(originalData, filters.dateFromField, filters.dateToField, filters.dateField);
+  //   originalData = filteredData;
+  // }
 
   if (filters.testTypeField !== "All") {
     const inputValue = filters.testTypeField;

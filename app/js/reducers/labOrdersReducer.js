@@ -23,6 +23,7 @@ export default (state = initialState.labOrderReducer, action) => {
     case `${FETCH_LAB_ORDERS}_LOADING`: {
       return {
         ...state,
+        fetched: false,
         isLoading: true,
       };
     }
@@ -31,6 +32,7 @@ export default (state = initialState.labOrderReducer, action) => {
       return {
         ...state,
         labTests: action.testTypes,
+        fetched: true,
       };
     }
 

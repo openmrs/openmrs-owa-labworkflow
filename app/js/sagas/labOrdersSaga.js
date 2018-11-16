@@ -15,8 +15,8 @@ export function* resetState() {
   yield takeEvery(`${FETCH_LAB_ORDERS}_SUCCESS`, clear);
 }
 
-export function* setLabTestsSaga() {
-  const { payload } = yield take(`${FETCH_LAB_ORDERS}_SUCCESS`);
+export function* setTestTypes(action) {
+  const { payload } = action;
 
   const labTestTypes = R.compose(
     R.uniq,
@@ -24,4 +24,8 @@ export function* setLabTestsSaga() {
   )(payload.data.results);
 
   yield put(setLabTestTypes(labTestTypes));
+}
+
+export function* setLabTestsSaga() {
+  yield takeEvery(`${FETCH_LAB_ORDERS}_SUCCESS`, setTestTypes);
 }
