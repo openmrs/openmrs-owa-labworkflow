@@ -8,15 +8,43 @@
  */
 import React from 'react';
 import { Route, Switch } from 'react-router-dom';
-import { Header } from '@openmrs/react-components';
+import {
+  Header,
+  setLocaleMessages,
+  withLocalisation,
+  Head,
+} from '@openmrs/react-components';
+import ReduxToastr from 'react-redux-toastr';
+import BreadCrumb from './components/shared/BreadCrumb/BreadCrumb';
+import LabResultEntry from './components/LabResultEntry';
+import LabOrdersList from './components/LabOrdersList';
+import LabResultsList from './components/LabResultsList';
+import LabTrendsPage from './components/LabTrendsPage';
+import Patientheader from './components/shared/PatientHeader';
+import messagesEN from "./translations/en.json";
+import messagesFR from "./translations/fr.json";
 
-import App from './components/App';
+setLocaleMessages({
+  en: messagesEN,
+  fr: messagesFR,
+});
 
+const LocalizedHead = withLocalisation(Head);
+const LocalizedBreadCrumb = withLocalisation(BreadCrumb);
+
+// eslint-disable-next-line
 export default store => (
   <div>
+    <ReduxToastr />
+    <LocalizedHead defaultTitle="OpenMRS Electronic Medical Record" id="app.title" />
     <Header />
+    <LocalizedBreadCrumb />
+    <Patientheader />
     <Switch>
-      <Route path="/" component={App} />
+      <Route exact path="/" component={withLocalisation(LabOrdersList)} />
+      <Route path="/LabResultEntry" component={withLocalisation(LabResultEntry)} />
+      <Route path="/labresults" component={withLocalisation(LabResultsList)} />
+      <Route path="/labtrends" component={withLocalisation(LabTrendsPage)} />
     </Switch>
   </div>
 );

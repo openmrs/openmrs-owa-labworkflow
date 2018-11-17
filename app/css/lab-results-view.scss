@@ -1,0 +1,181 @@
+.collapsible-panel {
+  margin: 15px;
+
+
+  .ReactTable .rt-tbody .rt-td {
+      border-right: 0px solid rgba(0,0,0,0.02);
+  }
+
+  .ReactTable.-striped .rt-tr.-odd {
+    background: none;
+  }
+
+  .lab-results-list-cell-type {
+    min-width: 50% !important;
+  }
+
+  .lab-results-list-header {
+    display: none;
+  }
+  .lab-results-list-cell-sample-date {
+    min-width: 80px !important;
+  }
+
+  .lab-results-list-cell-normal-range {
+    display: flex;
+    justify-content: center;
+  }
+
+  .lab-results-list-cell-result {
+    max-width: 25% !important;
+    display: flex;
+    justify-content: center;
+    font-size: 12px !important;
+    padding-left: 30px;
+  }
+
+}
+
+.lab-results-list-cell-emr-id,
+.lab-results-list-header-emr-id {
+    max-width: 80px;
+}
+
+.lab-results-list-cell-normal-range {
+    display: flex;
+    justify-content: center;
+  }
+
+i.scale:hover {
+  text-decoration: none;
+  transform: scale(1.5);
+  -webkit-transform: scale(1.5);
+  -moz-transform: scale(1.5);
+  cursor: pointer;
+}
+
+.lab-results-list {
+    position: relative;
+    margin-top: 30px;
+}
+.table_cell {
+    font-size: 15px;
+    text-transform: capitalize;
+    &.urgency {
+        &.stat {
+            text-transform: uppercase !important;
+        }
+        &.routine {
+            text-transform: lowercase !important;
+        }
+    }
+}
+
+.labs-order-table-head {
+    font-size: 16px;
+    font-weight: 800;
+}
+
+
+.lab-results-list-cell-emr-id,
+.lab-results-list-header-emr-id {
+    max-width: 80px;
+}
+
+.lab-results-list-cell-order-id,
+.lab-results-list-header-order-id {
+    max-width: 90px;
+}
+
+.lab-results-list-cell-order-date,
+.lab-results-list-header-order-date {
+    max-width: 130px;
+}
+
+.lab-results-list-cell-collection-date,
+.lab-results-list-header-collection-date {
+    max-width: 160px;
+}
+
+.lab-results-list-cell-urgency,
+.lab-results-list-header-urgency {
+    max-width: 90px;
+}
+
+// style for making sure each row in the
+// sortableTablecomponent have a cursor pointer
+// instead of an arrow...
+// target class is .rt-tr-group
+.rt-tr-group {
+  cursor: pointer;
+}
+
+.lab-results-list-cell-type,
+.lab-result-list-header-type  {
+    max-width: 190px;
+}
+
+.lab-results-list-cell-status,
+.lab-result-list-header-status {
+    max-width: 80px
+}
+
+.lab-results-list-cell-request-date,
+.lab-results-list-cell-sample-date,
+.lab-result-list-header-sample-date,
+.lab-result-list-header-request-date {
+    max-width: 140px;
+}
+
+.lab-results-list-cell-result,
+.lab-result-list-header-result {
+    max-width: 80px;
+    display: flex;
+    justify-content: center;
+}
+
+.spiner {
+    border: 0.3em solid black;
+    border-top: 0.3em #fff;
+    border-radius: 50%;
+    width: 1em;
+    height: 1em;
+    animation: spin 2s linear infinite;
+    margin: auto;
+}
+
+.lab-result-list-filters {
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-direction: column;
+    flex-direction: column;
+    width: 100%;
+    background: white;
+    padding: 10px;
+}
+
+.abnormal-value {
+    color: red;
+    font-weight: 800
+}
+
+.expander-cell{
+    flex: initial !important;
+    width: 35px !important;
+    border-right: 0 !important;
+}
+
+.expander-cell-header {
+    display: none;
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+
+
+
+
+

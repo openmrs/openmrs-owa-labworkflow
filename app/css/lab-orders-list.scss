@@ -1,0 +1,150 @@
+
+i.scale:hover {
+  text-decoration: none;
+  transform: scale(1.5);
+  -webkit-transform: scale(1.5);
+  -moz-transform: scale(1.5);
+  cursor: pointer;
+}
+
+.lab-order-list {
+    position: relative;
+    margin-top: 30px;
+}
+.table_cell {
+    font-size: 15px;
+    text-transform: capitalize;
+    &.urgency {
+        &.stat {
+            text-transform: uppercase !important;
+        }
+        &.routine {
+            text-transform: lowercase !important;
+        }
+    }
+}
+
+.labs-order-table-head {
+    font-size: 16px;
+    font-weight: 800;
+}
+
+.lab-order-list-cell-emr-id,
+.lab-order-list-header-emr-id {
+    max-width: 80px;
+}
+
+.lab-order-list-cell-order-id,
+.lab-order-list-header-order-id {
+    max-width: 90px;
+}
+
+.lab-order-list-cell-order-date,
+.lab-order-list-header-order-date {
+    max-width: 130px;
+}
+
+.lab-order-list-cell-collection-date,
+.lab-order-list-header-collection-date {
+    max-width: 160px;
+}
+
+.lab-order-list-cell-urgency,
+.lab-order-list-header-urgency {
+    max-width: 90px;
+}
+
+// style for making sure each row in the
+// sortableTablecomponent have a cursor pointer
+// instead of an arrow...
+// target class is .rt-tr-group
+.rt-tr-group {
+  cursor: pointer;
+}
+
+.name-emrid-order-filter {
+  display: flex;
+  width: 75%;
+  position: relative;
+
+  input {
+    width: 100% !important;
+    padding: 0px 0px 0px 40px !important;
+    border-radius: 0px !important;
+    font-size: 16px;
+    background-color: #FFF;
+    border: 1px solid #DDD;
+    color: #003f5e;
+    display: block;
+    height: 45px;
+  }
+  .icon-search{
+    position: absolute;
+    left: 1%;
+    line-height: 40px;
+  }
+  .icon-remove-sign {
+    position: absolute;
+    left: 94%;
+    line-height: 40px;
+  }
+}
+
+.order-list-filters {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  background: white;
+  padding: 10px;
+  .bottom-filters {
+    width: 100%;
+    display: flex;
+    .form-filter-group {
+      white-space: nowrap;
+      display: flex;
+      flex-direction: column;
+      &.quater {
+        width: 20%;
+      }
+      &.one-third {
+        width: 80%
+      }
+    }
+  }
+  .top-filters {
+    width: 100%;
+
+  }
+}
+.date-picker-filter{
+  display: flex;
+  position: relative;
+  margin-bottom: 25px;
+}
+
+
+.test-type-filter {
+  width: 100%;
+  height: 45px;
+}
+
+
+.line {
+  line-height: 30px;
+  margin-right: 2px;
+  margin-left: 5px;
+}
+
+.no-data-container {
+  background: white;
+  padding: 10px;
+  width: 0 auto;
+  padding-top: 10%;
+  padding-bottom: 10%;
+  font-size: 20px;
+  display: flex;
+  justify-content: center;
+  border: 1px solid;
+  font-weight: 800;
+}
+

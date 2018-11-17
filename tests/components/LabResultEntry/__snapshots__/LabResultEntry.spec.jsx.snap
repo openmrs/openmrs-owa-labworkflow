@@ -1,0 +1,1488 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<LabResultEntry /> component renders correctly with valid props 1`] = `
+<Provider
+  intl={
+    Object {
+      "defaultFormats": Object {},
+      "defaultLocale": "en",
+      "formatDate": [Function],
+      "formatHTMLMessage": [Function],
+      "formatMessage": [Function],
+      "formatNumber": [Function],
+      "formatPlural": [Function],
+      "formatRelative": [Function],
+      "formatTime": [Function],
+      "formats": Object {},
+      "formatters": Object {
+        "getDateTimeFormat": [Function],
+        "getMessageFormat": [Function],
+        "getNumberFormat": [Function],
+        "getPluralFormat": [Function],
+        "getRelativeFormat": [Function],
+      },
+      "locale": "en",
+      "messages": Object {},
+      "now": [Function],
+      "textComponent": "span",
+    }
+  }
+  location={
+    Object {
+      "state": Object {},
+    }
+  }
+  store={
+    Object {
+      "clearActions": [Function],
+      "dispatch": [Function],
+      "getActions": [Function],
+      "getState": [Function],
+      "replaceReducer": [Function],
+      "subscribe": [Function],
+    }
+  }
+>
+  <HashRouter>
+    <Router
+      history={
+        Object {
+          "action": "POP",
+          "block": [Function],
+          "createHref": [Function],
+          "go": [Function],
+          "goBack": [Function],
+          "goForward": [Function],
+          "length": 1,
+          "listen": [Function],
+          "location": Object {
+            "hash": "",
+            "pathname": "/",
+            "search": "",
+            "state": undefined,
+          },
+          "push": [Function],
+          "replace": [Function],
+        }
+      }
+    >
+      <Connect(LabResultEntry)
+        clearNameEMRField={[MockFunction]}
+        conceptMembers={
+          Object {
+            "1234-abcd": Object {
+              "hiAbsolute": 25,
+              "hiCritical": 30,
+              "hiNormal": 22,
+              "lowAbsolute": 9,
+              "lowCritical": 3,
+              "lowNormal": 11,
+              "units": "cc",
+            },
+            "pqrs-5678": Object {
+              "hiAbsolute": 25,
+              "hiCritical": 30,
+              "hiNormal": 22,
+              "lowAbsolute": 9,
+              "lowCritical": 3,
+              "lowNormal": 11,
+              "units": "cc",
+            },
+          }
+        }
+        history={
+          Object {
+            "location": Object {
+              "state": Object {
+                "concept": Object {
+                  "display": "Hémogramme automatisé",
+                  "uuid": "9i9i-99090-999",
+                },
+                "dateActivated": "2018-08-30T17:34:19.000+0100",
+                "orderNumber": "ORD-1",
+                "patient": Object {
+                  "display": "Y2A7LR - williams willy john",
+                },
+                "urgency": "ROUTINE",
+              },
+            },
+          }
+        }
+        labTests={
+          Array [
+            "Hémogramme automatisé",
+          ]
+        }
+        location={
+          Object {
+            "state": Object {
+              "auditInfo": Object {
+                "dateCreated": "2018-08-30T17:34:19.000+0100",
+              },
+              "concept": Object {
+                "display": "Hémogramme automatisé",
+              },
+              "dateActivated": "2018-08-30T17:34:19.000+0100",
+              "orderNumber": "ORD-1",
+              "patient": Object {
+                "display": "Y2A7LR - williams willy john",
+              },
+              "urgency": "ROUTINE",
+            },
+          }
+        }
+        nameField=""
+        patients={
+          Object {
+            "some-patient-uuid": Object {
+              "display": "Y2A7LR - williams willy john",
+            },
+          }
+        }
+        selectedPatient="some-patient-uuid"
+      >
+        <LabResultEntry
+          CONSTANTS={
+            Object {
+              "labResultsDateConcept": "mock-date-concept",
+              "labResultsDidNotPerformAnswer": "mock-uuid",
+              "labResultsDidNotPerformQuestion": "mock-uuid",
+              "labResultsDidNotPerformReason": "mock-uuid",
+              "labResultsEncounterType": "mock-encounter-uuid",
+              "labResultsTestOrderNumberConcept": "mock-test-orderno-concept",
+            }
+          }
+          clearNameEMRField={[MockFunction]}
+          conceptMembers={
+            Object {
+              "1234-abcd": Object {
+                "hiAbsolute": 25,
+                "hiCritical": 30,
+                "hiNormal": 22,
+                "lowAbsolute": 9,
+                "lowCritical": 3,
+                "lowNormal": 11,
+                "units": "cc",
+              },
+              "pqrs-5678": Object {
+                "hiAbsolute": 25,
+                "hiCritical": 30,
+                "hiNormal": 22,
+                "lowAbsolute": 9,
+                "lowCritical": 3,
+                "lowNormal": 11,
+                "units": "cc",
+              },
+            }
+          }
+          dispatch={[Function]}
+          formId="mockForm"
+          history={
+            Object {
+              "location": Object {
+                "state": Object {
+                  "concept": Object {
+                    "display": "Hémogramme automatisé",
+                    "uuid": "9i9i-99090-999",
+                  },
+                  "dateActivated": "2018-08-30T17:34:19.000+0100",
+                  "orderNumber": "ORD-1",
+                  "patient": Object {
+                    "display": "Y2A7LR - williams willy john",
+                  },
+                  "urgency": "ROUTINE",
+                },
+              },
+            }
+          }
+          isDidNotPerformCheckboxSelected={false}
+          labTests={
+            Array [
+              "Hémogramme automatisé",
+            ]
+          }
+          location={
+            Object {
+              "state": Object {
+                "auditInfo": Object {
+                  "dateCreated": "2018-08-30T17:34:19.000+0100",
+                },
+                "concept": Object {
+                  "display": "Hémogramme automatisé",
+                },
+                "dateActivated": "2018-08-30T17:34:19.000+0100",
+                "orderNumber": "ORD-1",
+                "patient": Object {
+                  "display": "Y2A7LR - williams willy john",
+                },
+                "urgency": "ROUTINE",
+              },
+            }
+          }
+          nameField=""
+          patients={
+            Object {
+              "some-patient-uuid": Object {
+                "display": "Y2A7LR - williams willy john",
+              },
+            }
+          }
+          selectedLabConcept={
+            Object {
+              "answers": Array [],
+              "set": true,
+              "setMembers": Array [
+                Object {
+                  "display": "Height",
+                  "uuid": "1234-abcd",
+                },
+                Object {
+                  "display": "Weight",
+                  "uuid": "pqrs-5678",
+                },
+              ],
+            }
+          }
+          selectedPatient="some-patient-uuid"
+        >
+          <div
+            className="container-fluid"
+          >
+            <div>
+              <h2
+                className="lab-entry-page-title"
+              >
+                <FormattedMessage
+                  defaultMessage="Test Results -"
+                  id="app.labResultEntry.title"
+                  values={Object {}}
+                >
+                  <span>
+                    Test Results -
+                  </span>
+                </FormattedMessage>
+                 undefined
+              </h2>
+              <div
+                className="lab-result-detail-fieldset-container"
+              >
+                <div
+                  className="fieldset-container lab-result-detail-fieldset"
+                >
+                  <div
+                    className="legend"
+                  >
+                    <span
+                      className="lab-result-detail-fieldset-title"
+                    >
+                      <FormattedMessage
+                        defaultMessage="Specimen Details"
+                        id="app.labResultEntry.specimenDetails"
+                        values={Object {}}
+                      >
+                        <span>
+                          Specimen Details
+                        </span>
+                      </FormattedMessage>
+                    </span>
+                  </div>
+                </div>
+                <div
+                  className="fieldset-container lab-result-detail-fieldset"
+                >
+                  <div
+                    className="legend"
+                  >
+                    <span
+                      className="lab-result-detail-fieldset-title"
+                    >
+                      <FormattedMessage
+                        defaultMessage="Order Details"
+                        id="app.labResultEntry.orderDetails"
+                        values={Object {}}
+                      >
+                        <span>
+                          Order Details
+                        </span>
+                      </FormattedMessage>
+                    </span>
+                  </div>
+                  <div
+                    className="fieldset-body"
+                  >
+                    <div
+                      className="col-xs-7"
+                    >
+                      <span
+                        className="test-details-label"
+                      >
+                        <FormattedMessage
+                          defaultMessage="Order Number:"
+                          id="app.labResultEntry.orderNumberlabel"
+                          values={Object {}}
+                        >
+                          <span>
+                            Order Number:
+                          </span>
+                        </FormattedMessage>
+                         
+                        <span
+                          className="test-details"
+                        >
+                          ORD-1
+                        </span>
+                      </span>
+                    </div>
+                    <div
+                      className="col-xs-5"
+                    >
+                      <span
+                        className="test-details-label"
+                      >
+                        <FormattedMessage
+                          defaultMessage="Urgency"
+                          id="app.labResultEntry.urgencylabel"
+                          values={Object {}}
+                        >
+                          <span>
+                            Urgency
+                          </span>
+                        </FormattedMessage>
+                        : 
+                        <span
+                          className="test-details"
+                        >
+                          ROUTINE
+                        </span>
+                      </span>
+                    </div>
+                    <div
+                      className="col-xs-10 order-date-detail"
+                    >
+                      <span
+                        className="test-details-label"
+                      >
+                        <FormattedMessage
+                          defaultMessage="Order Date:"
+                          id="app.labResultEntry.orderDatelabel"
+                          values={Object {}}
+                        >
+                          <span>
+                            Order Date:
+                          </span>
+                        </FormattedMessage>
+                         
+                        <span
+                          className="test-details"
+                        >
+                          Aug 30 5:34 PM
+                        </span>
+                      </span>
+                    </div>
+                    <br />
+                    <br />
+                  </div>
+                </div>
+              </div>
+            </div>
+            <br />
+            <br />
+            <div>
+              <div
+                className="fieldset-container lab-entry-result-details"
+              >
+                <div
+                  className="legend"
+                >
+                  <span>
+                    <FormattedMessage
+                      defaultMessage="Result Details"
+                      id="app.labResultEntry.resultDetails"
+                      values={Object {}}
+                    >
+                      <span>
+                        Result Details
+                      </span>
+                    </FormattedMessage>
+                  </span>
+                </div>
+                <div
+                  className="fieldset-body"
+                >
+                  <span
+                    className="range-header-text"
+                  >
+                    NORMAL RANGE
+                  </span>
+                  <span
+                    className="encounter-form-componnent"
+                  >
+                    <Connect(EncounterFormPage)
+                      afterSubmitLink="/"
+                      backLink="/"
+                      defaultValues={
+                        Array [
+                          Object {
+                            "concept": "mock-test-orderno-concept",
+                            "path": "test-order-number",
+                            "type": "obs",
+                            "value": "ORD-1",
+                          },
+                        ]
+                      }
+                      encounterType={
+                        Object {
+                          "uuid": "mock-encounter-uuid",
+                        }
+                      }
+                      formContent={
+                        <Grid
+                          bsClass="container"
+                          componentClass="div"
+                          fluid={false}
+                        >
+                          <div
+                            className="observation"
+                          >
+                            <div
+                              className="col-xs-4"
+                            >
+                              <span
+                                className="single-result-field"
+                              >
+                                <span
+                                  className="obs-date-label"
+                                >
+                                  <FormattedMessage
+                                    defaultMessage="Result Date:"
+                                    id="app.labResultEntry.resultDatelabel"
+                                    values={Object {}}
+                                  />
+                                </span>
+                                <span
+                                  className="obs-date-field"
+                                >
+                                  <WithObsGroupContext(WithFormContext(Connect(Obs)))
+                                    concept="mock-date-concept"
+                                    datatype="date"
+                                    path="result-date"
+                                    validate={
+                                      Array [
+                                        [Function],
+                                      ]
+                                    }
+                                  />
+                                </span>
+                              </span>
+                            </div>
+                            <div
+                              className="col-xs-4"
+                            >
+                              <div
+                                className="did-not-perform-checkbox"
+                              >
+                                <WithObsGroupContext(WithFormContext(Connect(Obs)))
+                                  checkBoxTitle={
+                                    <FormattedMessage
+                                      defaultMessage="Did not perform"
+                                      id="app.labResultEntry.didNotPerformlabel"
+                                      values={Object {}}
+                                    />
+                                  }
+                                  concept="mock-uuid"
+                                  conceptAnswer="mock-uuid"
+                                  path="did-not-perform-checkbox"
+                                  widget="checkbox"
+                                />
+                              </div>
+                            </div>
+                            <div
+                              className="col-xs-4"
+                            >
+                              <div
+                                className="did-not-perform"
+                              >
+                                <span
+                                  className="did-not-perform-label"
+                                >
+                                  <FormattedMessage
+                                    defaultMessage="Reason:"
+                                    id="app.labResultEntry.reasonlabel"
+                                    values={Object {}}
+                                  />
+                                   
+                                </span>
+                                <WithObsGroupContext(WithFormContext(Connect(Obs)))
+                                  disabled={true}
+                                  dropDownStyle={
+                                    Object {
+                                      "heigth": "40px",
+                                      "width": "100%",
+                                    }
+                                  }
+                                  path="did-not-perform-dropdown"
+                                  widget="dropdown"
+                                />
+                              </div>
+                            </div>
+                            <div
+                              className="specimen-detail"
+                            >
+                              <div
+                                className="estimated-checkbox"
+                              >
+                                <WithObsGroupContext(WithFormContext(Connect(Obs)))
+                                  checkBoxTitle={
+                                    <FormattedMessage
+                                      defaultMessage="estimated "
+                                      id="app.labResultEntry.estimatedlabel"
+                                      values={Object {}}
+                                    />
+                                  }
+                                  path="estimated-checkbox"
+                                  widget="checkbox"
+                                />
+                              </div>
+                              <div
+                                className="test-location"
+                              >
+                                <span
+                                  className="test-location-label"
+                                >
+                                  <FormattedMessage
+                                    defaultMessage="Test location: "
+                                    id="app.labResultEntry.testLocationlabel"
+                                    values={Object {}}
+                                  />
+                                   
+                                </span>
+                                <WithObsGroupContext(WithFormContext(Connect(Obs)))
+                                  dropDownStyle={
+                                    Object {
+                                      "heigth": "40px",
+                                      "width": "100%",
+                                    }
+                                  }
+                                  path="test-location-dropdown"
+                                  widget="dropdown"
+                                />
+                              </div>
+                              <div
+                                className="specimen-collection-date"
+                              >
+                                <div
+                                  className="col-xs-10 encounter-date-container"
+                                >
+                                  <span
+                                    className="encounter-date-label"
+                                  >
+                                    <FormattedMessage
+                                      defaultMessage="Specimen Collection Date: "
+                                      id="app.labResultEntry.specimenCollectionDatelabel"
+                                      values={Object {}}
+                                    />
+                                     
+                                  </span>
+                                  <span
+                                    className="encounter-date-field"
+                                  >
+                                    <WithFormContext(Connect(EncounterDate))
+                                      defaultDate={"2018-11-16T23:00:00.000Z"}
+                                      field="dateFromField"
+                                      handleDateChange={[Function]}
+                                      label="Specimen Collection Date:"
+                                      labelClassName="date-picker-label"
+                                    />
+                                  </span>
+                                </div>
+                                <br />
+                              </div>
+                            </div>
+                            <Row
+                              bsClass="row"
+                              componentClass="div"
+                            >
+                              <WithObsGroupContext(ObsGroup)>
+                                <FormGroup
+                                  bsClass="form-group"
+                                  controlId="Height"
+                                >
+                                  <span
+                                    className="member-display-label"
+                                  >
+                                    Height
+                                  </span>
+                                  <span
+                                    className="obs-component"
+                                  >
+                                    <WithObsGroupContext(WithFormContext(Connect(Obs)))
+                                      concept="1234-abcd"
+                                      path="1234-abcd"
+                                      validate={
+                                        Array [
+                                          [Function],
+                                          [Function],
+                                        ]
+                                      }
+                                      warn={
+                                        Array [
+                                          [Function],
+                                          [Function],
+                                          [Function],
+                                          [Function],
+                                        ]
+                                      }
+                                    />
+                                  </span>
+                                  <span
+                                    className="units"
+                                  >
+                                    cc
+                                  </span>
+                                  <span
+                                    className="valid-range"
+                                  >
+                                    11 - 22
+                                  </span>
+                                </FormGroup>
+                                <FormGroup
+                                  bsClass="form-group"
+                                  controlId="Weight"
+                                >
+                                  <span
+                                    className="member-display-label"
+                                  >
+                                    Weight
+                                  </span>
+                                  <span
+                                    className="obs-component"
+                                  >
+                                    <WithObsGroupContext(WithFormContext(Connect(Obs)))
+                                      concept="pqrs-5678"
+                                      path="pqrs-5678"
+                                      validate={
+                                        Array [
+                                          [Function],
+                                          [Function],
+                                        ]
+                                      }
+                                      warn={
+                                        Array [
+                                          [Function],
+                                          [Function],
+                                          [Function],
+                                          [Function],
+                                        ]
+                                      }
+                                    />
+                                  </span>
+                                  <span
+                                    className="units"
+                                  >
+                                    cc
+                                  </span>
+                                  <span
+                                    className="valid-range"
+                                  >
+                                    11 - 22
+                                  </span>
+                                </FormGroup>
+                              </WithObsGroupContext(ObsGroup)>
+                            </Row>
+                          </div>
+                        </Grid>
+                      }
+                      formId="result-entry-form"
+                      patient={
+                        Object {
+                          "display": "Y2A7LR - williams willy john",
+                        }
+                      }
+                    >
+                      <EncounterFormPage
+                        afterSubmitLink="/"
+                        backLink="/"
+                        defaultValues={
+                          Array [
+                            Object {
+                              "concept": "mock-test-orderno-concept",
+                              "path": "test-order-number",
+                              "type": "obs",
+                              "value": "ORD-1",
+                            },
+                          ]
+                        }
+                        dispatch={[Function]}
+                        encounterType={
+                          Object {
+                            "uuid": "mock-encounter-uuid",
+                          }
+                        }
+                        formContent={
+                          <Grid
+                            bsClass="container"
+                            componentClass="div"
+                            fluid={false}
+                          >
+                            <div
+                              className="observation"
+                            >
+                              <div
+                                className="col-xs-4"
+                              >
+                                <span
+                                  className="single-result-field"
+                                >
+                                  <span
+                                    className="obs-date-label"
+                                  >
+                                    <FormattedMessage
+                                      defaultMessage="Result Date:"
+                                      id="app.labResultEntry.resultDatelabel"
+                                      values={Object {}}
+                                    />
+                                  </span>
+                                  <span
+                                    className="obs-date-field"
+                                  >
+                                    <WithObsGroupContext(WithFormContext(Connect(Obs)))
+                                      concept="mock-date-concept"
+                                      datatype="date"
+                                      path="result-date"
+                                      validate={
+                                        Array [
+                                          [Function],
+                                        ]
+                                      }
+                                    />
+                                  </span>
+                                </span>
+                              </div>
+                              <div
+                                className="col-xs-4"
+                              >
+                                <div
+                                  className="did-not-perform-checkbox"
+                                >
+                                  <WithObsGroupContext(WithFormContext(Connect(Obs)))
+                                    checkBoxTitle={
+                                      <FormattedMessage
+                                        defaultMessage="Did not perform"
+                                        id="app.labResultEntry.didNotPerformlabel"
+                                        values={Object {}}
+                                      />
+                                    }
+                                    concept="mock-uuid"
+                                    conceptAnswer="mock-uuid"
+                                    path="did-not-perform-checkbox"
+                                    widget="checkbox"
+                                  />
+                                </div>
+                              </div>
+                              <div
+                                className="col-xs-4"
+                              >
+                                <div
+                                  className="did-not-perform"
+                                >
+                                  <span
+                                    className="did-not-perform-label"
+                                  >
+                                    <FormattedMessage
+                                      defaultMessage="Reason:"
+                                      id="app.labResultEntry.reasonlabel"
+                                      values={Object {}}
+                                    />
+                                     
+                                  </span>
+                                  <WithObsGroupContext(WithFormContext(Connect(Obs)))
+                                    disabled={true}
+                                    dropDownStyle={
+                                      Object {
+                                        "heigth": "40px",
+                                        "width": "100%",
+                                      }
+                                    }
+                                    path="did-not-perform-dropdown"
+                                    widget="dropdown"
+                                  />
+                                </div>
+                              </div>
+                              <div
+                                className="specimen-detail"
+                              >
+                                <div
+                                  className="estimated-checkbox"
+                                >
+                                  <WithObsGroupContext(WithFormContext(Connect(Obs)))
+                                    checkBoxTitle={
+                                      <FormattedMessage
+                                        defaultMessage="estimated "
+                                        id="app.labResultEntry.estimatedlabel"
+                                        values={Object {}}
+                                      />
+                                    }
+                                    path="estimated-checkbox"
+                                    widget="checkbox"
+                                  />
+                                </div>
+                                <div
+                                  className="test-location"
+                                >
+                                  <span
+                                    className="test-location-label"
+                                  >
+                                    <FormattedMessage
+                                      defaultMessage="Test location: "
+                                      id="app.labResultEntry.testLocationlabel"
+                                      values={Object {}}
+                                    />
+                                     
+                                  </span>
+                                  <WithObsGroupContext(WithFormContext(Connect(Obs)))
+                                    dropDownStyle={
+                                      Object {
+                                        "heigth": "40px",
+                                        "width": "100%",
+                                      }
+                                    }
+                                    path="test-location-dropdown"
+                                    widget="dropdown"
+                                  />
+                                </div>
+                                <div
+                                  className="specimen-collection-date"
+                                >
+                                  <div
+                                    className="col-xs-10 encounter-date-container"
+                                  >
+                                    <span
+                                      className="encounter-date-label"
+                                    >
+                                      <FormattedMessage
+                                        defaultMessage="Specimen Collection Date: "
+                                        id="app.labResultEntry.specimenCollectionDatelabel"
+                                        values={Object {}}
+                                      />
+                                       
+                                    </span>
+                                    <span
+                                      className="encounter-date-field"
+                                    >
+                                      <WithFormContext(Connect(EncounterDate))
+                                        defaultDate={"2018-11-16T23:00:00.000Z"}
+                                        field="dateFromField"
+                                        handleDateChange={[Function]}
+                                        label="Specimen Collection Date:"
+                                        labelClassName="date-picker-label"
+                                      />
+                                    </span>
+                                  </div>
+                                  <br />
+                                </div>
+                              </div>
+                              <Row
+                                bsClass="row"
+                                componentClass="div"
+                              >
+                                <WithObsGroupContext(ObsGroup)>
+                                  <FormGroup
+                                    bsClass="form-group"
+                                    controlId="Height"
+                                  >
+                                    <span
+                                      className="member-display-label"
+                                    >
+                                      Height
+                                    </span>
+                                    <span
+                                      className="obs-component"
+                                    >
+                                      <WithObsGroupContext(WithFormContext(Connect(Obs)))
+                                        concept="1234-abcd"
+                                        path="1234-abcd"
+                                        validate={
+                                          Array [
+                                            [Function],
+                                            [Function],
+                                          ]
+                                        }
+                                        warn={
+                                          Array [
+                                            [Function],
+                                            [Function],
+                                            [Function],
+                                            [Function],
+                                          ]
+                                        }
+                                      />
+                                    </span>
+                                    <span
+                                      className="units"
+                                    >
+                                      cc
+                                    </span>
+                                    <span
+                                      className="valid-range"
+                                    >
+                                      11 - 22
+                                    </span>
+                                  </FormGroup>
+                                  <FormGroup
+                                    bsClass="form-group"
+                                    controlId="Weight"
+                                  >
+                                    <span
+                                      className="member-display-label"
+                                    >
+                                      Weight
+                                    </span>
+                                    <span
+                                      className="obs-component"
+                                    >
+                                      <WithObsGroupContext(WithFormContext(Connect(Obs)))
+                                        concept="pqrs-5678"
+                                        path="pqrs-5678"
+                                        validate={
+                                          Array [
+                                            [Function],
+                                            [Function],
+                                          ]
+                                        }
+                                        warn={
+                                          Array [
+                                            [Function],
+                                            [Function],
+                                            [Function],
+                                            [Function],
+                                          ]
+                                        }
+                                      />
+                                    </span>
+                                    <span
+                                      className="units"
+                                    >
+                                      cc
+                                    </span>
+                                    <span
+                                      className="valid-range"
+                                    >
+                                      11 - 22
+                                    </span>
+                                  </FormGroup>
+                                </WithObsGroupContext(ObsGroup)>
+                              </Row>
+                            </div>
+                          </Grid>
+                        }
+                        formId="result-entry-form"
+                        patient={
+                          Object {
+                            "display": "Y2A7LR - williams willy john",
+                          }
+                        }
+                      >
+                        <div
+                          style={
+                            Object {
+                              "paddingLeft": "0px",
+                              "paddingRight": "0px",
+                            }
+                          }
+                        >
+                          <Grid
+                            bsClass="container"
+                            componentClass="div"
+                            fluid={false}
+                            style={
+                              Object {
+                                "paddingLeft": "0px",
+                                "paddingRight": "0px",
+                              }
+                            }
+                          >
+                            <div
+                              className="container"
+                              style={
+                                Object {
+                                  "paddingLeft": "0px",
+                                  "paddingRight": "0px",
+                                }
+                              }
+                            >
+                              <Row
+                                bsClass="row"
+                                componentClass="div"
+                              >
+                                <div
+                                  className="row"
+                                >
+                                  <Col
+                                    bsClass="col"
+                                    componentClass="div"
+                                    md={20}
+                                    sm={20}
+                                    style={
+                                      Object {
+                                        "height": "40px",
+                                      }
+                                    }
+                                  >
+                                    <div
+                                      className="col-md-20 col-sm-20"
+                                      style={
+                                        Object {
+                                          "height": "40px",
+                                        }
+                                      }
+                                    >
+                                      <span>
+                                        <h2 />
+                                      </span>
+                                    </div>
+                                  </Col>
+                                </div>
+                              </Row>
+                            </div>
+                          </Grid>
+                          <Loader>
+                            <div
+                              className="custom-loader"
+                            >
+                              <div />
+                              <div />
+                              <div />
+                              <div />
+                              <div />
+                              <div />
+                              <div />
+                              <div />
+                              <div />
+                              <div />
+                              <div />
+                              <div />
+                            </div>
+                          </Loader>
+                        </div>
+                      </EncounterFormPage>
+                    </Connect(EncounterFormPage)>
+                  </span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </LabResultEntry>
+      </Connect(LabResultEntry)>
+    </Router>
+  </HashRouter>
+</Provider>
+`;
+
+exports[`<LabResultEntry /> component should redirect when location has an empty state 1`] = `
+<HashRouter
+  intl={
+    Object {
+      "defaultFormats": Object {},
+      "defaultLocale": "en",
+      "formatDate": [Function],
+      "formatHTMLMessage": [Function],
+      "formatMessage": [Function],
+      "formatNumber": [Function],
+      "formatPlural": [Function],
+      "formatRelative": [Function],
+      "formatTime": [Function],
+      "formats": Object {},
+      "formatters": Object {
+        "getDateTimeFormat": [Function],
+        "getMessageFormat": [Function],
+        "getNumberFormat": [Function],
+        "getPluralFormat": [Function],
+        "getRelativeFormat": [Function],
+      },
+      "locale": "en",
+      "messages": Object {},
+      "now": [Function],
+      "textComponent": "span",
+    }
+  }
+>
+  <Router
+    history={
+      Object {
+        "action": "REPLACE",
+        "block": [Function],
+        "createHref": [Function],
+        "go": [Function],
+        "goBack": [Function],
+        "goForward": [Function],
+        "length": 1,
+        "listen": [Function],
+        "location": Object {
+          "hash": "",
+          "pathname": "/",
+          "search": "",
+          "state": undefined,
+        },
+        "push": [Function],
+        "replace": [Function],
+      }
+    }
+  >
+    <Connect(LabResultEntry)
+      clearNameEMRField={[MockFunction]}
+      conceptMembers={
+        Object {
+          "1234-abcd": Object {
+            "hiAbsolute": 25,
+            "hiCritical": 30,
+            "hiNormal": 22,
+            "lowAbsolute": 9,
+            "lowCritical": 3,
+            "lowNormal": 11,
+            "units": "cc",
+          },
+          "pqrs-5678": Object {
+            "hiAbsolute": 25,
+            "hiCritical": 30,
+            "hiNormal": 22,
+            "lowAbsolute": 9,
+            "lowCritical": 3,
+            "lowNormal": 11,
+            "units": "cc",
+          },
+        }
+      }
+      history={
+        Object {
+          "location": Object {
+            "state": Object {
+              "concept": Object {
+                "display": "Hémogramme automatisé",
+                "uuid": "9i9i-99090-999",
+              },
+              "dateActivated": "2018-08-30T17:34:19.000+0100",
+              "orderNumber": "ORD-1",
+              "patient": Object {
+                "display": "Y2A7LR - williams willy john",
+              },
+              "urgency": "ROUTINE",
+            },
+          },
+        }
+      }
+      labTests={
+        Array [
+          "Hémogramme automatisé",
+        ]
+      }
+      location={
+        Object {
+          "state": null,
+        }
+      }
+      nameField=""
+      patients={
+        Object {
+          "some-patient-uuid": Object {
+            "display": "Y2A7LR - williams willy john",
+          },
+        }
+      }
+      selectedLabConcept={Object {}}
+      selectedPatient="some-patient-uuid"
+      store={
+        Object {
+          "clearActions": [Function],
+          "dispatch": [Function],
+          "getActions": [Function],
+          "getState": [Function],
+          "replaceReducer": [Function],
+          "subscribe": [Function],
+        }
+      }
+    >
+      <LabResultEntry
+        CONSTANTS={
+          Object {
+            "labResultsDateConcept": "mock-date-concept",
+            "labResultsDidNotPerformAnswer": "mock-uuid",
+            "labResultsDidNotPerformQuestion": "mock-uuid",
+            "labResultsDidNotPerformReason": "mock-uuid",
+            "labResultsEncounterType": "mock-encounter-uuid",
+            "labResultsTestOrderNumberConcept": "mock-test-orderno-concept",
+          }
+        }
+        clearNameEMRField={[MockFunction]}
+        dispatch={[Function]}
+        formId="mockForm"
+        history={
+          Object {
+            "location": Object {
+              "state": Object {
+                "concept": Object {
+                  "display": "Hémogramme automatisé",
+                  "uuid": "9i9i-99090-999",
+                },
+                "dateActivated": "2018-08-30T17:34:19.000+0100",
+                "orderNumber": "ORD-1",
+                "patient": Object {
+                  "display": "Y2A7LR - williams willy john",
+                },
+                "urgency": "ROUTINE",
+              },
+            },
+          }
+        }
+        isDidNotPerformCheckboxSelected={false}
+        labTests={
+          Array [
+            "Hémogramme automatisé",
+          ]
+        }
+        location={
+          Object {
+            "state": null,
+          }
+        }
+        nameField=""
+        selectedLabConcept={null}
+        store={
+          Object {
+            "clearActions": [Function],
+            "dispatch": [Function],
+            "getActions": [Function],
+            "getState": [Function],
+            "replaceReducer": [Function],
+            "subscribe": [Function],
+          }
+        }
+        storeSubscription={
+          Subscription {
+            "listeners": Object {
+              "clear": [Function],
+              "get": [Function],
+              "notify": [Function],
+              "subscribe": [Function],
+            },
+            "onStateChange": [Function],
+            "parentSub": undefined,
+            "store": Object {
+              "clearActions": [Function],
+              "dispatch": [Function],
+              "getActions": [Function],
+              "getState": [Function],
+              "replaceReducer": [Function],
+              "subscribe": [Function],
+            },
+            "unsubscribe": [Function],
+          }
+        }
+      >
+        <Redirect
+          push={false}
+          to="/"
+        />
+      </LabResultEntry>
+    </Connect(LabResultEntry)>
+  </Router>
+</HashRouter>
+`;
+
+exports[`<LabResultEntry /> component should render <Loader /> component when selectedLabConcept is empty 1`] = `
+<Connect(LabResultEntry)
+  clearNameEMRField={[MockFunction]}
+  conceptMembers={
+    Object {
+      "1234-abcd": Object {
+        "hiAbsolute": 25,
+        "hiCritical": 30,
+        "hiNormal": 22,
+        "lowAbsolute": 9,
+        "lowCritical": 3,
+        "lowNormal": 11,
+        "units": "cc",
+      },
+      "pqrs-5678": Object {
+        "hiAbsolute": 25,
+        "hiCritical": 30,
+        "hiNormal": 22,
+        "lowAbsolute": 9,
+        "lowCritical": 3,
+        "lowNormal": 11,
+        "units": "cc",
+      },
+    }
+  }
+  history={
+    Object {
+      "location": Object {
+        "state": Object {
+          "concept": Object {
+            "display": "Hémogramme automatisé",
+            "uuid": "9i9i-99090-999",
+          },
+          "dateActivated": "2018-08-30T17:34:19.000+0100",
+          "orderNumber": "ORD-1",
+          "patient": Object {
+            "display": "Y2A7LR - williams willy john",
+          },
+          "urgency": "ROUTINE",
+        },
+      },
+    }
+  }
+  labTests={
+    Array [
+      "Hémogramme automatisé",
+    ]
+  }
+  location={
+    Object {
+      "state": Object {
+        "auditInfo": Object {
+          "dateCreated": "2018-08-30T17:34:19.000+0100",
+        },
+        "concept": Object {
+          "display": "Hémogramme automatisé",
+        },
+        "dateActivated": "2018-08-30T17:34:19.000+0100",
+        "orderNumber": "ORD-1",
+        "patient": Object {
+          "display": "Y2A7LR - williams willy john",
+        },
+        "urgency": "ROUTINE",
+      },
+    }
+  }
+  nameField=""
+  patients={
+    Object {
+      "some-patient-uuid": Object {
+        "display": "Y2A7LR - williams willy john",
+      },
+    }
+  }
+  selectedLabConcept={Object {}}
+  selectedPatient="some-patient-uuid"
+  store={
+    Object {
+      "clearActions": [Function],
+      "dispatch": [Function],
+      "getActions": [Function],
+      "getState": [Function],
+      "replaceReducer": [Function],
+      "subscribe": [Function],
+    }
+  }
+>
+  <LabResultEntry
+    CONSTANTS={
+      Object {
+        "labResultsDateConcept": "mock-date-concept",
+        "labResultsDidNotPerformAnswer": "mock-uuid",
+        "labResultsDidNotPerformQuestion": "mock-uuid",
+        "labResultsDidNotPerformReason": "mock-uuid",
+        "labResultsEncounterType": "mock-encounter-uuid",
+        "labResultsTestOrderNumberConcept": "mock-test-orderno-concept",
+      }
+    }
+    clearNameEMRField={[MockFunction]}
+    dispatch={[Function]}
+    formId="mockForm"
+    history={
+      Object {
+        "location": Object {
+          "state": Object {
+            "concept": Object {
+              "display": "Hémogramme automatisé",
+              "uuid": "9i9i-99090-999",
+            },
+            "dateActivated": "2018-08-30T17:34:19.000+0100",
+            "orderNumber": "ORD-1",
+            "patient": Object {
+              "display": "Y2A7LR - williams willy john",
+            },
+            "urgency": "ROUTINE",
+          },
+        },
+      }
+    }
+    isDidNotPerformCheckboxSelected={false}
+    labTests={
+      Array [
+        "Hémogramme automatisé",
+      ]
+    }
+    location={
+      Object {
+        "state": Object {
+          "auditInfo": Object {
+            "dateCreated": "2018-08-30T17:34:19.000+0100",
+          },
+          "concept": Object {
+            "display": "Hémogramme automatisé",
+          },
+          "dateActivated": "2018-08-30T17:34:19.000+0100",
+          "orderNumber": "ORD-1",
+          "patient": Object {
+            "display": "Y2A7LR - williams willy john",
+          },
+          "urgency": "ROUTINE",
+        },
+      }
+    }
+    nameField=""
+    selectedLabConcept={Object {}}
+    store={
+      Object {
+        "clearActions": [Function],
+        "dispatch": [Function],
+        "getActions": [Function],
+        "getState": [Function],
+        "replaceReducer": [Function],
+        "subscribe": [Function],
+      }
+    }
+    storeSubscription={
+      Subscription {
+        "listeners": Object {
+          "clear": [Function],
+          "get": [Function],
+          "notify": [Function],
+          "subscribe": [Function],
+        },
+        "onStateChange": [Function],
+        "parentSub": undefined,
+        "store": Object {
+          "clearActions": [Function],
+          "dispatch": [Function],
+          "getActions": [Function],
+          "getState": [Function],
+          "replaceReducer": [Function],
+          "subscribe": [Function],
+        },
+        "unsubscribe": [Function],
+      }
+    }
+  >
+    <Loader>
+      <div
+        className="custom-loader"
+      >
+        <div />
+        <div />
+        <div />
+        <div />
+        <div />
+        <div />
+        <div />
+        <div />
+        <div />
+        <div />
+        <div />
+        <div />
+      </div>
+    </Loader>
+  </LabResultEntry>
+</Connect(LabResultEntry)>
+`;

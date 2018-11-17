@@ -8,19 +8,24 @@
  */
 import React from 'react';
 import { render } from 'react-dom';
-import { BrowserRouter } from 'react-router-dom';
+import { HashRouter } from 'react-router-dom';
 import { Provider } from 'react-redux';
+import { ConnectedRouter } from 'connected-react-router';
 import 'babel-polyfill';
+import 'react-redux-toastr/lib/css/react-redux-toastr.min.css';
 
-import createStore from './redux-store';
+
+import createStore, { history } from './redux-store';
 import routes from './routes';
 
 const store = createStore();
 
 render((
   <Provider store={store}>
-    <BrowserRouter>
-      {routes(store)}
-    </BrowserRouter>
+    <ConnectedRouter history={history}>
+      <HashRouter>
+        {routes(store)}
+      </HashRouter>
+    </ConnectedRouter>
   </Provider>
 ), document.getElementById('app'));

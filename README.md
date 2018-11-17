@@ -105,6 +105,12 @@ You may experience problems due to the `Access-Control-Allow-Origin` header not
 being set by OpenMRS. To fix this you'll need to enable Cross-Origin Resource
 Sharing in Tomcat.
 
+## Usage
+Before using the Lab Workflow Application, the administrator should make the following one time configurations using the admin portal.
+
+1. Create a setting `labworkflowowa.labResultsEncounterType`.
+2. Create a date format, setting `labworkflowowa.dateAndTimeFormat` as the name, with a value of the date format, e.g. `DD-MMM-YYYY HH:mm`, in the global properties
+
 See instructions [here](http://enable-cors.org/server_tomcat.html) for Tomcat 7 and [here](https://www.dforge.net/2013/09/16/enabling-cors-on-apache-tomcat-6/) for Tomcat 6.
 
 ## License

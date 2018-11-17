@@ -1,0 +1,295 @@
+.legend {
+    position: relative;
+    width: max-content;
+    bottom: 14px;
+    background: #d3d3d3;
+    left: 20px;
+    border: 1px solid;
+    padding: 2px;
+    display: flex;
+    justify-content: center;
+    font-weight: 900;
+    font-size: 14px;
+    flex-direction: row;
+    text-align: center;
+}
+
+.lab-entry-page-title {
+    margin-bottom: 20px;
+}
+
+fieldset {
+    border: 0 none;;
+}
+
+.lab-result-detail-fieldset {
+    width: 48%;
+    display: inline-table;
+    min-height: 120px;
+    margin-left: 1%;
+    margin-right: 1%;
+}
+
+.lab-result-detail-fieldset-title{
+    font-size: 14px;
+}
+
+.result-input {
+    width: 70px;
+    border: 1px solid black;
+    padding: 0px 5px;
+}
+
+.result-detail-range {
+    font-size: 13px;
+}
+
+.fieldset-container {
+    background-color: #d3d3d3;
+    border: 2px solid;
+}
+
+span.test-details {
+  font-size: 16px;
+}
+
+a.link-cancel {
+  color: white
+}
+
+.swal-button--NO {
+  background: #f66;
+ }
+.swal-button--YES,
+.swal-button--confirm {
+  background: #8eb82a;
+}
+
+button.pull-right.btn-success {
+  background: #5cb85c;
+}
+
+.date-picker-label {
+  line-height: 35px;
+  margin-right: 10px;
+  font-size: 14px;
+  width: 100%;
+}
+
+.row {
+    background-color: inherit !important;
+}
+
+
+.range-header-text {
+    position: relative;
+    left: 82%;
+    font-weight: 900;
+    text-decoration: underline;
+    top: 90px;
+}
+
+.units {
+    line-height: 40px;
+    width: 20%;
+}
+
+.valid-range {
+    left: 800px;
+    position: absolute;
+    line-height: 40px;
+}
+
+.control-label {
+    line-height: 13px;
+}
+
+.fieldset-body {
+    width: 99%;
+    height: 100%;
+    padding: 0px 15px;
+    position: relative;
+    align-self: left;
+}
+
+.form-horizontal .form-group {
+    margin-right: 0px !important;
+    margin-left: 0px !important;
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+}
+
+.member-display-label {
+    width: 45%;
+    padding-left: 15px;
+    line-height: 40px
+}
+
+.obs-component {
+    padding-right: 2%;
+}
+.col-md-20 {
+    &.col-sm-20 {
+        display: none;
+    }
+}
+
+.order-date-detail {
+    margin-top: 15px;
+}
+
+.single-result-field {
+    display: flex;
+    padding-bottom: 15px;
+}
+.obs-date-label {
+    line-height: 38px;
+    padding-right: 20px;
+    padding-bottom: 40px;
+    white-space: nowrap;
+}
+
+.custom-loader {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+}
+
+.did-not-perform {
+    display: flex
+}
+
+.did-not-perform-label {
+    line-height: 38px;
+}
+
+.specimen-detail {
+    position: absolute;
+    top: -250px;
+}
+
+.test-location-label {
+    line-height: 36px;
+}
+
+.did-not-perform-checkbox {
+    margin-left: 40px;
+    margin-top: -8px;
+    display: inline-block;
+    span {
+        display: -ms-flexbox;
+        margin-right: 1px;
+        display: flex;
+        line-height: 50px;
+        -ms-flex-pack: justify;
+        justify-content: space-between;
+        position: relative;
+        top: 1px;
+    }
+}
+
+.test-details-label {
+    font-size: 14px;
+}
+
+.lab-entry-result-details {
+    & .form-horizontal {
+        & .col-xs-offset-2 {
+            margin-left: 0px;
+        }
+        & .react-datepicker__input-container {
+            & .icon-calendar.scale.small.add-on {
+                line-height: 40px;
+            }
+        }
+        .container:nth-child(1) {
+            min-height: 350px;
+        }
+        .container:nth-child(2) {
+            & .row {
+                display: flex;
+                padding-top: 50px;
+                position: absolute;
+                .col-sm-2.col-xs-offset-1 {
+                    margin-left: 680px;
+                }
+            }
+        }
+    }
+}
+
+.encounter-date-container {
+    padding: 0px;
+
+    .encounter-date-label {
+        font-size: 14px;
+        position: absolute;
+        top: 11px;
+    }
+    .encounter-date-field {
+        position: absolute;
+        left: 180px;
+    }
+
+    span {
+        white-space: nowrap;
+        .datepicker-view {
+
+        }
+    }
+}
+
+.observation {
+    svg {
+        margin-top: 5px
+    }
+}
+
+.test-location {
+    display: flex;
+    position: absolute;
+    white-space: nowrap;
+    top: 120px;
+}
+
+.specimen-collection-date {
+    position: absolute;
+    top: 75px;
+}
+
+.estimated-checkbox {
+    position: absolute;
+    top: 67px;
+    left: 328px;
+    white-space: nowrap;
+    span {
+        position: relative;
+        margin-right: 1px;
+        display: -ms-flexbox;
+        display: flex;
+        line-height: 58px;
+    }
+}
+
+.estimated-checkbox span > div {
+    &.checkbox {
+        position: relative;
+        bottom: -2px;
+    }
+}
+
+.obs-checkbox-edit-value {
+    display: inline-block;
+    margin-top: 15px;
+}
+
+.obs-dropdown-label {
+    white-space: nowrap;
+    line-height: 35px;
+}
+
+.observation-dropdown {
+    left: -588px;
+    margin-top: 10px;
+}

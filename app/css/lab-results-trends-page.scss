@@ -1,0 +1,31 @@
+.lab-trends-list-cell-sample-date,
+.lab-trends-list-header-sample-date,
+.lab-trends-list-cell-normal-range,
+.lab-trends-list-header-normal-range,
+.lab-trends-list-cell-result,
+.lab-trends-list-header-result,
+.lab-trends-list-cell-result-date,
+.lab-trends-list-header-result-date {
+    max-width: 150px;
+    text-align: center;
+}
+
+.lab-result-trend-list {
+  width: 48%;
+  &.full {
+    width:80%
+  }
+}
+
+.lab-trends-widgets {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+}
+
+.lab-results-trend-chart {
+  width: 48%;
+  &.hide {
+    display: none;
+  }
+}
