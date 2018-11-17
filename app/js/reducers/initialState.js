@@ -5,6 +5,7 @@ export default {
     orders: [],
     labTests: [],
     isLoading: false,
+    fetched: false,
     error: {
       status: false,
       message: null,

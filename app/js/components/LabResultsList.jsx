@@ -378,8 +378,12 @@ export class LabResultsList extends PureComponent {
         }
       });
 
+      // remove all results without an order
+      // const filteredResults = results.filter
+      const filteredResults = results.filter(item => R.isEmpty(item.order));
       const filteredOrders = orders.filter((order) => {
-        const matchedResult = results.filter(item => item.order.orderNumber === order.orderNumber);
+
+        const matchedResult = filteredResults.filter(item => item.order.orderNumber === order.orderNumber);
         return R.isEmpty(matchedResult);
       });
 
@@ -387,7 +391,7 @@ export class LabResultsList extends PureComponent {
         order,
         status: 'Ordered',
       }));
-      const labResults = orderedTests.concat(results);
+      const labResults = orderedTests.concat(filteredResults);
 
       return labResults;
     };

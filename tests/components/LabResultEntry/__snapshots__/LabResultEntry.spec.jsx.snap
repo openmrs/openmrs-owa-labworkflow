@@ -375,7 +375,7 @@ exports[`<LabResultEntry /> component renders correctly with valid props 1`] = `
                         <span
                           className="test-details"
                         >
-                          Nov 04 7:09 AM
+                          Aug 30 5:34 PM
                         </span>
                       </span>
                     </div>
@@ -583,13 +583,17 @@ exports[`<LabResultEntry /> component renders correctly with valid props 1`] = `
                                     />
                                      
                                   </span>
-                                  <WithFormContext(Connect(EncounterDate))
-                                    defaultDate={"2018-11-03T23:00:00.000Z"}
-                                    field="dateFromField"
-                                    handleDateChange={[Function]}
-                                    label="Specimen Collection Date:"
-                                    labelClassName="date-picker-label"
-                                  />
+                                  <span
+                                    className="encounter-date-field"
+                                  >
+                                    <WithFormContext(Connect(EncounterDate))
+                                      defaultDate={"2018-11-16T23:00:00.000Z"}
+                                      field="dateFromField"
+                                      handleDateChange={[Function]}
+                                      label="Specimen Collection Date:"
+                                      labelClassName="date-picker-label"
+                                    />
+                                  </span>
                                 </div>
                                 <br />
                               </div>
@@ -862,13 +866,17 @@ exports[`<LabResultEntry /> component renders correctly with valid props 1`] = `
                                       />
                                        
                                     </span>
-                                    <WithFormContext(Connect(EncounterDate))
-                                      defaultDate={"2018-11-03T23:00:00.000Z"}
-                                      field="dateFromField"
-                                      handleDateChange={[Function]}
-                                      label="Specimen Collection Date:"
-                                      labelClassName="date-picker-label"
-                                    />
+                                    <span
+                                      className="encounter-date-field"
+                                    >
+                                      <WithFormContext(Connect(EncounterDate))
+                                        defaultDate={"2018-11-16T23:00:00.000Z"}
+                                        field="dateFromField"
+                                        handleDateChange={[Function]}
+                                        label="Specimen Collection Date:"
+                                        labelClassName="date-picker-label"
+                                      />
+                                    </span>
                                   </div>
                                   <br />
                                 </div>
@@ -1029,7 +1037,7 @@ exports[`<LabResultEntry /> component renders correctly with valid props 1`] = `
                                       }
                                     >
                                       <span>
-                                        <h1 />
+                                        <h2 />
                                       </span>
                                     </div>
                                   </Col>
