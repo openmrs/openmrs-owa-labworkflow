@@ -117,7 +117,7 @@ export class LabResultsList extends PureComponent {
     this.state = {
       patientUUID: new URLSearchParams(window.location.search).get('patient'),
       returnUrl: new URLSearchParams(window.location.search).get('returnUrl'),
-    }
+    };
 
     this.handleShowLabTrendsPage = this.handleShowLabTrendsPage.bind(this);
     this.handleFilterChange = this.handleFilterChange.bind(this);
@@ -380,7 +380,7 @@ export class LabResultsList extends PureComponent {
 
       // remove all results without an order
       // const filteredResults = results.filter
-      const filteredResults = results.filter(item => !R.isEmpty(item.order));
+      const filteredResults = results.filter(item => !R.isNil(item.order));
       const filteredOrders = orders.filter((order) => {
         const matchedResult = filteredResults.filter(
           item => item.order.orderNumber === order.orderNumber,
