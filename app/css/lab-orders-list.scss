@@ -107,7 +107,7 @@ i.scale:hover {
         width: 20%;
       }
       &.one-third {
-        width: 80%
+        width: 70%
       }
     }
   }
@@ -146,5 +146,17 @@ i.scale:hover {
   justify-content: center;
   border: 1px solid;
   font-weight: 800;
+}
+
+.status-dropdown {
+  width: 15%;
+  margin-right: 5%;
+  font-size: 12px;
+}
+
+.type-dropdown {
+  width: 15%;
+  margin-left: 5%;
+  font-size: 12px;
 }
 
