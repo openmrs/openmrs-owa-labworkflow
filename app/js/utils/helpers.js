@@ -51,6 +51,12 @@ export const filterThrough = (filters, data) => {
     originalData = filteredData;
   }
 
+  if (filters.testStatusField !== "All") {
+    const inputValue = filters.testStatusField;
+    const filteredData = matchSorter(originalData, inputValue, { keys: ['labResult.resultStatus'] });
+    originalData = filteredData;
+  }
+
   return originalData;
 }
 

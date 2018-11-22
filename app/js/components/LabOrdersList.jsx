@@ -229,7 +229,7 @@ export class LabOrdersList extends PureComponent {
   render() {
     const {
       labTests, orders, fetched, labOrdersListFilters: {
-        dateFromField, dateToField, nameField, testTypeField,
+        dateFromField, dateToField, nameField, testTypeField, testStatusField,
       },
     } = this.props;
     const hasData = !R.isEmpty(orders) && !R.isEmpty(labTests);
@@ -247,6 +247,7 @@ export class LabOrdersList extends PureComponent {
             clearNameEMRField={this.clearNameEMRField}
             labTests={labTests}
             testTypeField={testTypeField}
+            testStatusField={testStatusField}
             dateFromField={moment(dateFromField)}
             dateToField={moment(dateToField)}
             nameField={nameField}

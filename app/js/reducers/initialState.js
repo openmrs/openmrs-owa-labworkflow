@@ -56,6 +56,7 @@ export default {
       dateToField: moment(),
       dateFromField: moment().subtract(8, 'days'),
       testTypeField: "All",
+      testStatusField: "All",
       dateField: 'dateActivated',
     },
   },
