@@ -16,6 +16,7 @@ import PropTypes from 'prop-types';
 import { FormattedMessage } from 'react-intl';
 import { SortableTable, Loader, constantsActions } from '@openmrs/react-components';
 import LabOrderListFilters from './LabOrdersListFilters';
+import EncounterDisplay from './EncounterDisplay';
 import { fetchLabOrders } from '../actions/labOrdersAction';
 import { setSelectedConcept } from '../actions/labConceptsAction';
 import { filterThrough, calculateTableRows } from '../utils/helpers';
@@ -52,18 +53,21 @@ export const Cell = ({ columnName, value, dateAndTimeFormat }) => {
     case 'STATUS':
       return (
         <div className="table_cell order-id">
-          <span>{value.labResult.resultStatus}</span>
+          <EncounterDisplay
+            orderUUID={value.uuid}
+            type="status"
+          />
         </div>
       );
     case 'COLLECTION DATE': {
-      if (value.labResult.resultStatus !== "Ordered") {
-        return (
-          <div className="table_cell order-date">
-            <span>{moment(value.labResult.encounter.encounterDatetime).format("DD-MMM-YYYY") || ''}</span>
-          </div>
-        );
-      }
-      return null;
+      return (
+        <div className="table_cell order-date">
+          <EncounterDisplay
+            orderUUID={value.uuid}
+            type="collectionDate"
+          />
+        </div>
+      );
     }
     case 'ORDER DATE':
       return (
