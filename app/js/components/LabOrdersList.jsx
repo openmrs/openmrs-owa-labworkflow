@@ -49,6 +49,22 @@ export const Cell = ({ columnName, value, dateAndTimeFormat }) => {
           <span>{value.orderNumber}</span>
         </div>
       );
+    case 'STATUS':
+      return (
+        <div className="table_cell order-id">
+          <span>{value.labResult.resultStatus}</span>
+        </div>
+      );
+    case 'COLLECTION DATE': {
+      if (value.labResult.resultStatus !== "Ordered") {
+        return (
+          <div className="table_cell order-date">
+            <span>{moment(value.labResult.encounter.encounterDatetime).format("DD-MMM-YYYY") || ''}</span>
+          </div>
+        );
+      }
+      return null;
+    }
     case 'ORDER DATE':
       return (
         <div className="table_cell order-date">
@@ -171,7 +187,7 @@ export class LabOrdersList extends PureComponent {
 
   renderDraftOrderTable() {
     const { orders, dateAndTimeFormat, labOrdersListFilters, fetched } = this.props;
-    const fields = ["EMR ID", "NAME", "ORDER ID", "ORDER DATE", "URGENCY", "TEST TYPE"];
+    const fields = ["EMR ID", "NAME", "ORDER ID", "ORDER DATE", "COLLECTION DATE", "STATUS", "URGENCY", "TEST TYPE"];
 
     const columnMetadata = fields.map(columnName => ({
       Header:
@@ -236,7 +252,7 @@ export class LabOrdersList extends PureComponent {
             nameField={nameField}
           />
           {!fetched && <Loader />}
-          {hasData && this.renderDraftOrderTable()}
+          {(hasData && fetched) && this.renderDraftOrderTable()}
           {(!hasData && fetched) && this.renderNoDataDisplayText()}
         </React.Fragment>
       </div>

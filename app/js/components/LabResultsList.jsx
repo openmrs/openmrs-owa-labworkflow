@@ -55,7 +55,7 @@ const Cell = ({
 
     if (!isPanel && !hasNoEncounter) {
       const labResult = value.encounter.obs[0];
-      if (labResult) {
+      if (labResult && labResult.value) {
         switch (columnName) {
           case 'RESULT':
             return (

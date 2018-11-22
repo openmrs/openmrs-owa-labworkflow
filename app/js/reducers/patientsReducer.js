@@ -24,7 +24,6 @@ export const patientsReducer = (state = initialState.patients, action) => {
       };
     case SET_PATIENT_DATA: {
       const { patientUUID } = action;
-      const pat = state[patientUUID];
       const patientInfo = {
         ...state[patientUUID],
         ...action.meta,

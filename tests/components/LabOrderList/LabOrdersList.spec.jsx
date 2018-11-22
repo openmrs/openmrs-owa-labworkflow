@@ -15,6 +15,12 @@ const orders = [
     concept: {
       display: "Hémogramme automatisé",
     },
+    labResult: {
+      encounter: {
+        encounterDatetime: '2018-08-30T17:34:19.000+0100',
+      },
+      resultStatus: "Reported",
+    },
     urgency: 'ROUTINE',
     dateActivated: "2018-08-30T17:34:19.000+0100",
     patient: {
@@ -133,6 +139,12 @@ describe('LabOrdersListContainer container', () => {
           concept: {
             display: "Hémogramme automatisé",
           },
+          labResult: {
+            encounter: {
+              encounterDatetime: '2018-08-30T17:34:19.000+0100',
+            },
+            resultStatus: "Reported",
+          },
           urgency: 'ROUTINE',
           dateActivated: "2018-08-30T17:34:19.000+0100",
           patient: {
@@ -152,6 +164,12 @@ describe('LabOrdersListContainer container', () => {
           orderNumber: "ORD-1",
           concept: {
             display: "Hémogramme automatisé",
+          },
+          labResult: {
+            encounter: {
+              encounterDatetime: '2018-08-30T17:34:19.000+0100',
+            },
+            resultStatus: "Reported",
           },
           urgency: 'ROUTINE',
           dateActivated: "2018-08-30T17:34:19.000+0100",
