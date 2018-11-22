@@ -55,7 +55,7 @@ const Cell = ({
 
     if (!isPanel && !hasNoEncounter) {
       const labResult = value.encounter.obs[0];
-      if (labResult) {
+      if (labResult && labResult.value) {
         switch (columnName) {
           case 'RESULT':
             return (
@@ -115,7 +115,7 @@ export class LabResultsList extends PureComponent {
     super();
 
     this.state = {
-      patientUUID: new URLSearchParams(window.location.search).get('patient'),
+      patientUUID: new URLSearchParams(window.location.search).get('patient') || 'e3d2a986-2f13-45e8-9cbd-9c34974816d6',
       returnUrl: new URLSearchParams(window.location.search).get('returnUrl'),
     };
 
