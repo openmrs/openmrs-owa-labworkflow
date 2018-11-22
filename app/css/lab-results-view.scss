@@ -134,16 +134,6 @@ i.scale:hover {
     justify-content: center;
 }
 
-.spiner {
-    border: 0.3em solid black;
-    border-top: 0.3em #fff;
-    border-radius: 50%;
-    width: 1em;
-    height: 1em;
-    animation: spin 2s linear infinite;
-    margin: auto;
-}
-
 .lab-result-list-filters {
     display: -ms-flexbox;
     display: flex;
