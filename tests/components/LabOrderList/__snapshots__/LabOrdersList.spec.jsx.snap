@@ -690,83 +690,181 @@ exports[`<LabOrdersList /> component renders correctly 1`] = `
               />
             </span>
           </span>
-          <Dropdown
-            className="form-filter-group"
-            defaultValue="All"
-            field="testTypeField"
-            handleSelect={[Function]}
-            input={
-              Object {
-                "value": "",
-              }
-            }
-            label={
-              <FormattedMessage
-                defaultMessage="Test Type"
-                description="Label for the dropdown search input"
-                id="app.labOrdersListFilters.searchDropdownLabel"
-                values={Object {}}
-              />
-            }
-            labelClassName=""
-            list={
-              Array [
-                "Hémogramme automatisé",
-              ]
-            }
-            placeholder="Select from the list"
+          <span
+            className="status-dropdown"
           >
-            <div>
-              <span
-                className="form-filter-group"
-              >
+            <Dropdown
+              className="form-filter-group"
+              defaultValue="All"
+              field="testStatusField"
+              handleSelect={[Function]}
+              input={
+                Object {
+                  "value": undefined,
+                }
+              }
+              label={
+                <FormattedMessage
+                  defaultMessage="Status"
+                  description="Label for the test status dropdown"
+                  id="app.labOrdersListFilters.statusDropdownLabel"
+                  values={Object {}}
+                />
+              }
+              labelClassName=""
+              list={
+                Array [
+                  "Ordered",
+                  "Reported",
+                  "Taken",
+                ]
+              }
+              placeholder="Select from the list"
+            >
+              <div>
                 <span
-                  className=""
+                  className="form-filter-group"
                 >
-                  <FormattedMessage
-                    defaultMessage="Test Type"
-                    description="Label for the dropdown search input"
-                    id="app.labOrdersListFilters.searchDropdownLabel"
-                    values={Object {}}
+                  <span
+                    className=""
                   >
-                    <span>
-                      Test Type
-                    </span>
-                  </FormattedMessage>
-                </span>
-                <select
-                  disabled={false}
-                  onChange={[Function]}
-                  style={
-                    Object {
-                      "height": "45px",
-                      "width": "100%",
+                    <FormattedMessage
+                      defaultMessage="Status"
+                      description="Label for the test status dropdown"
+                      id="app.labOrdersListFilters.statusDropdownLabel"
+                      values={Object {}}
+                    >
+                      <span>
+                        Status
+                      </span>
+                    </FormattedMessage>
+                  </span>
+                  <select
+                    disabled={false}
+                    onChange={[Function]}
+                    style={
+                      Object {
+                        "height": "45px",
+                        "width": "100%",
+                      }
                     }
-                  }
-                  value=""
+                  >
+                    <option
+                      key="0"
+                      value=""
+                    >
+                      Select from the list
+                    </option>
+                    <option
+                      key="All"
+                      value="All"
+                    >
+                      All
+                    </option>
+                    <option
+                      key="Ordered"
+                      value="Ordered"
+                    >
+                      Ordered
+                    </option>
+                    <option
+                      key="Reported"
+                      value="Reported"
+                    >
+                      Reported
+                    </option>
+                    <option
+                      key="Taken"
+                      value="Taken"
+                    >
+                      Taken
+                    </option>
+                  </select>
+                </span>
+              </div>
+            </Dropdown>
+          </span>
+          <span
+            className="type-dropdown"
+          >
+            <Dropdown
+              className="form-filter-group"
+              defaultValue="All"
+              field="testTypeField"
+              handleSelect={[Function]}
+              input={
+                Object {
+                  "value": "",
+                }
+              }
+              label={
+                <FormattedMessage
+                  defaultMessage="Test Type"
+                  description="Label for the test type dropdown"
+                  id="app.labOrdersListFilters.searchDropdownLabel"
+                  values={Object {}}
+                />
+              }
+              labelClassName=""
+              list={
+                Array [
+                  "Hémogramme automatisé",
+                ]
+              }
+              placeholder="Select from the list"
+            >
+              <div>
+                <span
+                  className="form-filter-group"
                 >
-                  <option
-                    key="0"
+                  <span
+                    className=""
+                  >
+                    <FormattedMessage
+                      defaultMessage="Test Type"
+                      description="Label for the test type dropdown"
+                      id="app.labOrdersListFilters.searchDropdownLabel"
+                      values={Object {}}
+                    >
+                      <span>
+                        Test Type
+                      </span>
+                    </FormattedMessage>
+                  </span>
+                  <select
+                    disabled={false}
+                    onChange={[Function]}
+                    style={
+                      Object {
+                        "height": "45px",
+                        "width": "100%",
+                      }
+                    }
                     value=""
                   >
-                    Select from the list
-                  </option>
-                  <option
-                    key="All"
-                    value="All"
-                  >
-                    All
-                  </option>
-                  <option
-                    key="Hémogramme automatisé"
-                    value="Hémogramme automatisé"
-                  >
-                    Hémogramme automatisé
-                  </option>
-                </select>
-              </span>
-            </div>
-          </Dropdown>
+                    <option
+                      key="0"
+                      value=""
+                    >
+                      Select from the list
+                    </option>
+                    <option
+                      key="All"
+                      value="All"
+                    >
+                      All
+                    </option>
+                    <option
+                      key="Hémogramme automatisé"
+                      value="Hémogramme automatisé"
+                    >
+                      Hémogramme automatisé
+                    </option>
+                  </select>
+                </span>
+              </div>
+            </Dropdown>
+          </span>
         </span>
       </div>
     </LabOrderListFilters>
@@ -790,65 +888,6 @@ exports[`<LabOrdersList /> component renders correctly 1`] = `
     </Loader>
   </div>
 </LabOrdersList>
-`;
-
-exports[`LabOrdersListContainer container <Cell /> component returns COLLECTION DATE column 1`] = `
-<_Cell
-  columnName="COLLECTION DATE"
-  dateAndTimeFormat="DD-MMM-YYYY HH:mm"
-  intl={
-    Object {
-      "defaultFormats": Object {},
-      "defaultLocale": "en",
-      "formatDate": [Function],
-      "formatHTMLMessage": [Function],
-      "formatMessage": [Function],
-      "formatNumber": [Function],
-      "formatPlural": [Function],
-      "formatRelative": [Function],
-      "formatTime": [Function],
-      "formats": Object {},
-      "formatters": Object {
-        "getDateTimeFormat": [Function],
-        "getMessageFormat": [Function],
-        "getNumberFormat": [Function],
-        "getPluralFormat": [Function],
-        "getRelativeFormat": [Function],
-      },
-      "locale": "en",
-      "messages": Object {},
-      "now": [Function],
-      "textComponent": "span",
-    }
-  }
-  value={
-    Object {
-      "concept": Object {
-        "display": "Hémogramme automatisé",
-      },
-      "dateActivated": "2018-08-30T17:34:19.000+0100",
-      "labResult": Object {
-        "encounter": Object {
-          "encounterDatetime": "2018-08-30T17:34:19.000+0100",
-        },
-        "resultStatus": "Reported",
-      },
-      "orderNumber": "ORD-1",
-      "patient": Object {
-        "display": "Y2A7LR - williams willy john",
-      },
-      "urgency": "ROUTINE",
-    }
-  }
->
-  <div
-    className="table_cell order-date"
-  >
-    <span>
-      30-Aug-2018
-    </span>
-  </div>
-</_Cell>
 `;
 
 exports[`LabOrdersListContainer container <Cell /> component returns EMR ID section 1`] = `
@@ -1097,65 +1136,6 @@ exports[`LabOrdersListContainer container <Cell /> component returns TEST TYPE c
   >
     <span>
       Hémogramme automatisé
-    </span>
-  </div>
-</_Cell>
-`;
-
-exports[`LabOrdersListContainer container <Cell /> component returns URGENCY column 1`] = `
-<_Cell
-  columnName="COLLECTION DATE"
-  dateAndTimeFormat="DD-MMM-YYYY HH:mm"
-  intl={
-    Object {
-      "defaultFormats": Object {},
-      "defaultLocale": "en",
-      "formatDate": [Function],
-      "formatHTMLMessage": [Function],
-      "formatMessage": [Function],
-      "formatNumber": [Function],
-      "formatPlural": [Function],
-      "formatRelative": [Function],
-      "formatTime": [Function],
-      "formats": Object {},
-      "formatters": Object {
-        "getDateTimeFormat": [Function],
-        "getMessageFormat": [Function],
-        "getNumberFormat": [Function],
-        "getPluralFormat": [Function],
-        "getRelativeFormat": [Function],
-      },
-      "locale": "en",
-      "messages": Object {},
-      "now": [Function],
-      "textComponent": "span",
-    }
-  }
-  value={
-    Object {
-      "concept": Object {
-        "display": "Hémogramme automatisé",
-      },
-      "dateActivated": "2018-08-30T17:34:19.000+0100",
-      "labResult": Object {
-        "encounter": Object {
-          "encounterDatetime": "2018-08-30T17:34:19.000+0100",
-        },
-        "resultStatus": "Reported",
-      },
-      "orderNumber": "ORD-1",
-      "patient": Object {
-        "display": "Y2A7LR - williams willy john",
-      },
-      "urgency": "ROUTINE",
-    }
-  }
->
-  <div
-    className="table_cell order-date"
-  >
-    <span>
-      30-Aug-2018
     </span>
   </div>
 </_Cell>
@@ -1771,83 +1751,181 @@ exports[`LabOrdersListContainer container should pass required props from state 
               />
             </span>
           </span>
-          <Dropdown
-            className="form-filter-group"
-            defaultValue="All"
-            field="testTypeField"
-            handleSelect={[Function]}
-            input={
-              Object {
-                "value": "",
-              }
-            }
-            label={
-              <FormattedMessage
-                defaultMessage="Test Type"
-                description="Label for the dropdown search input"
-                id="app.labOrdersListFilters.searchDropdownLabel"
-                values={Object {}}
-              />
-            }
-            labelClassName=""
-            list={
-              Array [
-                "Hémogramme automatisé",
-              ]
-            }
-            placeholder="Select from the list"
+          <span
+            className="status-dropdown"
           >
-            <div>
-              <span
-                className="form-filter-group"
-              >
+            <Dropdown
+              className="form-filter-group"
+              defaultValue="All"
+              field="testStatusField"
+              handleSelect={[Function]}
+              input={
+                Object {
+                  "value": undefined,
+                }
+              }
+              label={
+                <FormattedMessage
+                  defaultMessage="Status"
+                  description="Label for the test status dropdown"
+                  id="app.labOrdersListFilters.statusDropdownLabel"
+                  values={Object {}}
+                />
+              }
+              labelClassName=""
+              list={
+                Array [
+                  "Ordered",
+                  "Reported",
+                  "Taken",
+                ]
+              }
+              placeholder="Select from the list"
+            >
+              <div>
                 <span
-                  className=""
+                  className="form-filter-group"
                 >
-                  <FormattedMessage
-                    defaultMessage="Test Type"
-                    description="Label for the dropdown search input"
-                    id="app.labOrdersListFilters.searchDropdownLabel"
-                    values={Object {}}
+                  <span
+                    className=""
                   >
-                    <span>
-                      Test Type
-                    </span>
-                  </FormattedMessage>
-                </span>
-                <select
-                  disabled={false}
-                  onChange={[Function]}
-                  style={
-                    Object {
-                      "height": "45px",
-                      "width": "100%",
+                    <FormattedMessage
+                      defaultMessage="Status"
+                      description="Label for the test status dropdown"
+                      id="app.labOrdersListFilters.statusDropdownLabel"
+                      values={Object {}}
+                    >
+                      <span>
+                        Status
+                      </span>
+                    </FormattedMessage>
+                  </span>
+                  <select
+                    disabled={false}
+                    onChange={[Function]}
+                    style={
+                      Object {
+                        "height": "45px",
+                        "width": "100%",
+                      }
                     }
-                  }
-                  value=""
+                  >
+                    <option
+                      key="0"
+                      value=""
+                    >
+                      Select from the list
+                    </option>
+                    <option
+                      key="All"
+                      value="All"
+                    >
+                      All
+                    </option>
+                    <option
+                      key="Ordered"
+                      value="Ordered"
+                    >
+                      Ordered
+                    </option>
+                    <option
+                      key="Reported"
+                      value="Reported"
+                    >
+                      Reported
+                    </option>
+                    <option
+                      key="Taken"
+                      value="Taken"
+                    >
+                      Taken
+                    </option>
+                  </select>
+                </span>
+              </div>
+            </Dropdown>
+          </span>
+          <span
+            className="type-dropdown"
+          >
+            <Dropdown
+              className="form-filter-group"
+              defaultValue="All"
+              field="testTypeField"
+              handleSelect={[Function]}
+              input={
+                Object {
+                  "value": "",
+                }
+              }
+              label={
+                <FormattedMessage
+                  defaultMessage="Test Type"
+                  description="Label for the test type dropdown"
+                  id="app.labOrdersListFilters.searchDropdownLabel"
+                  values={Object {}}
+                />
+              }
+              labelClassName=""
+              list={
+                Array [
+                  "Hémogramme automatisé",
+                ]
+              }
+              placeholder="Select from the list"
+            >
+              <div>
+                <span
+                  className="form-filter-group"
                 >
-                  <option
-                    key="0"
+                  <span
+                    className=""
+                  >
+                    <FormattedMessage
+                      defaultMessage="Test Type"
+                      description="Label for the test type dropdown"
+                      id="app.labOrdersListFilters.searchDropdownLabel"
+                      values={Object {}}
+                    >
+                      <span>
+                        Test Type
+                      </span>
+                    </FormattedMessage>
+                  </span>
+                  <select
+                    disabled={false}
+                    onChange={[Function]}
+                    style={
+                      Object {
+                        "height": "45px",
+                        "width": "100%",
+                      }
+                    }
                     value=""
                   >
-                    Select from the list
-                  </option>
-                  <option
-                    key="All"
-                    value="All"
-                  >
-                    All
-                  </option>
-                  <option
-                    key="Hémogramme automatisé"
-                    value="Hémogramme automatisé"
-                  >
-                    Hémogramme automatisé
-                  </option>
-                </select>
-              </span>
-            </div>
-          </Dropdown>
+                    <option
+                      key="0"
+                      value=""
+                    >
+                      Select from the list
+                    </option>
+                    <option
+                      key="All"
+                      value="All"
+                    >
+                      All
+                    </option>
+                    <option
+                      key="Hémogramme automatisé"
+                      value="Hémogramme automatisé"
+                    >
+                      Hémogramme automatisé
+                    </option>
+                  </select>
+                </span>
+              </div>
+            </Dropdown>
+          </span>
         </span>
       </div>
     </LabOrderListFilters>
