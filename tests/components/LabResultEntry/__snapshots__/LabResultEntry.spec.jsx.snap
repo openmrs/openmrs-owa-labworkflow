@@ -616,7 +616,7 @@ exports[`<LabResultEntry /> component renders correctly with valid props 1`] = `
                                     className="encounter-date-field"
                                   >
                                     <WithFormContext(Connect(EncounterDate))
-                                      defaultDate={"2018-11-21T23:00:00.000Z"}
+                                      defaultDate={"2018-11-22T23:00:00.000Z"}
                                       field="dateFromField"
                                       handleDateChange={[Function]}
                                       label="Specimen Collection Date:"
@@ -904,7 +904,7 @@ exports[`<LabResultEntry /> component renders correctly with valid props 1`] = `
                                       className="encounter-date-field"
                                     >
                                       <WithFormContext(Connect(EncounterDate))
-                                        defaultDate={"2018-11-21T23:00:00.000Z"}
+                                        defaultDate={"2018-11-22T23:00:00.000Z"}
                                         field="dateFromField"
                                         handleDateChange={[Function]}
                                         label="Specimen Collection Date:"
