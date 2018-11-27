@@ -35,7 +35,7 @@ const computeResultStatus = (encounter, constants) => {
         R.filter(item => !concealedConceptUUIDs.includes(item.concept.uuid)),
       )(encounter.obs);
 
-      if (!R.isNil(obs)) {
+      if (!R.isEmpty(obs)) {
         return "Reported";
       }
       return "Taken";
