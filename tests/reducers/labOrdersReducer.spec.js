@@ -3,6 +3,7 @@ import initialState from '../../app/js/reducers/initialState';
 import {
   FETCH_LAB_ORDERS,
   SET_LAB_TEST,
+  SET_ORDER_LAB_ENCOUNTER,
 } from '../../app/js/actions/actionTypes';
 
 
@@ -46,7 +47,7 @@ describe('labOrdersReducer', () => {
   });
   it(`sets the apprioprate state for SET_LAB_TEST action type`, () => {
     const setLabTestsAction = {
-      type: `SET_LAB_TEST`,
+      type: SET_LAB_TEST,
       testTypes: ['testType1', 'testType2'],
     };
     const nextState = labOrdersReducer(initialState.labOrderReducer, setLabTestsAction);
@@ -54,6 +55,25 @@ describe('labOrdersReducer', () => {
     expect(nextState.labTests).toEqual(setLabTestsAction.testTypes);
     expect(nextState.error.status).toEqual(false);
     expect(nextState.error.message).toEqual(null);
+  });
+  it(`sets the apprioprate state for SET_ORDER_LAB_ENCOUNTER action type`, () => {
+    const action = {
+      type: SET_ORDER_LAB_ENCOUNTER,
+      order: {
+        uuid: 'some-order-uuid',
+        labResults: {
+          resultStatus: "Taken",
+          encounter: {
+            uuid: 'some-encounter-uuid',
+          },
+        },
+      },
+    };
+    const nextState = labOrdersReducer({
+      ...initialState.labOrderReducer,
+      orders: [{ uuid: 'some-order-uuid' }],
+    }, action);
+    expect(nextState.orders).toEqual([action.order]);
   });
   it(`returns the default state if no action type matches`, () => {
     const someOtherAction = {
