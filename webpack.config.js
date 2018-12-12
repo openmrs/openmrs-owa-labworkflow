@@ -14,7 +14,7 @@ const fs = require('fs');
 const target = require('yargs').argv.target;
 const targetPort = require('yargs').argv.targetPort;
 
-const UglifyPlugin = webpack.optimize.UglifyJsPlugin;
+const UglifyPlugin = require('uglifyjs-webpack-plugin');
 const CommonsChunkPlugin = webpack.optimize.CommonsChunkPlugin;
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const BrowserSyncPlugin = require('browser-sync-webpack-plugin');
@@ -110,16 +110,7 @@ if (env === 'production') {
 	plugins.push(new webpack.DefinePlugin({
 		'process.env.NODE_ENV': JSON.stringify('production')
 	}));
-	plugins.push(new UglifyPlugin({
-		output: {
-			comments: false,
-		},
-		minimize: true,
-		sourceMap: false,
-		compress: {
-			warnings: false
-		}
-	}));
+	plugins.push(new UglifyPlugin());
 	outputFile = `${outputFile}.min.[chunkhash].js`;
 	vendorOutputFile = "vendor.bundle.[chunkhash].js";
 	outputPath = `${__dirname}/dist/`;
