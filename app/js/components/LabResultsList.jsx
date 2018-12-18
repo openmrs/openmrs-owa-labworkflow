@@ -15,10 +15,6 @@ import { filterThrough, calculateTableRows } from '../utils/helpers';
 import "../../css/lab-results-view.scss";
 
 
-const patientUUID = process.env.NODE_ENV !== 'production'
-  ? '70c9de3d-ce33-420b-818b-332acbfaf776' // your patient uuid will go here
-  : '76f0fd80-2b5b-496a-8b68-539d7e532ad2';
-
 const Cell = ({
   value, columnName, type, navigate,
 }) => {
@@ -59,7 +55,7 @@ const Cell = ({
 
     if (!isPanel && !hasNoEncounter) {
       const labResult = value.encounter.obs[0];
-      if (labResult) {
+      if (labResult && labResult.value) {
         switch (columnName) {
           case 'RESULT':
             return (
@@ -117,22 +113,23 @@ Cell.propTypes = {
 export class LabResultsList extends PureComponent {
   constructor() {
     super();
+
     this.state = {
-      // would need to get this from the route ideally
-      // if you're working locally, endeavour to hard code a valid patientUUID on line 12
-      patientUUID,
+      patientUUID: new URLSearchParams(window.location.search).get('patient'),
+      returnUrl: new URLSearchParams(window.location.search).get('returnUrl'),
     };
 
     this.handleShowLabTrendsPage = this.handleShowLabTrendsPage.bind(this);
     this.handleFilterChange = this.handleFilterChange.bind(this);
+    this.handleNavigateBack = this.handleNavigateBack.bind(this);
   }
 
   componentWillMount() {
     const { dispatch } = this.props;
-    const patient = new URLSearchParams(window.location.search).get('patient');
-    
-    const patientUuid = patient || patientUUID;
-    if (patientUuid) {
+
+    const { patientUUID, returnUrl } = this.state;
+
+    if (patientUUID) {
       dispatch(constantsActions.fetchLabResultsDateConcept());
       dispatch(constantsActions.fetchLabResultsDidNotPerformQuestion());
       dispatch(constantsActions.fetchLabResultsDidNotPerformReasonQuestion());
@@ -140,11 +137,10 @@ export class LabResultsList extends PureComponent {
       dispatch(constantsActions.fetchLabResultsTestLocationQuestion());
       dispatch(constantsActions.fetchLabResultsEstimatedCollectionDateQuestion());
       dispatch(constantsActions.getDateAndTimeFormat());
-      dispatch(patientAction.getPatient(patientUuid));
-      dispatch(patientAction.fetchPatientLabTestResults(patientUuid));
+      dispatch(patientAction.getPatient(patientUUID));
+      dispatch(patientAction.fetchPatientLabTestResults(patientUUID));
     } else {
-      // we would need to route back to the returnUrl once that functionality is in place
-      window.location.href = '/';
+      window.location.href = returnUrl;
     }
   }
 
@@ -179,6 +175,11 @@ export class LabResultsList extends PureComponent {
       [field]: value,
     };
     dispatch(filtersAction.setLabResultListFilters(newFilters));
+  }
+
+  handleNavigateBack() {
+    const { returnUrl } = this.state;
+    window.location = returnUrl;
   }
 
   renderLabResultsTable(labResults) {
@@ -326,7 +327,7 @@ export class LabResultsList extends PureComponent {
       labResultsEstimatedCollectionDateQuestion,
       labResultsDidNotPerformQuestion,
     } = this.props;
-    const { patientUUID } = this.state;
+    const { patientUUID, returnUrl } = this.state;
     const selectedPatient = patients[patientUUID] || {};
     const { encounters = [], orders = [] } = selectedPatient;
 
@@ -377,8 +378,13 @@ export class LabResultsList extends PureComponent {
         }
       });
 
+      // remove all results without an order
+      // const filteredResults = results.filter
+      const filteredResults = results.filter(item => !R.isNil(item.order));
       const filteredOrders = orders.filter((order) => {
-        const matchedResult = results.filter(item => item.order.orderNumber === order.orderNumber);
+        const matchedResult = filteredResults.filter(
+          item => item.order.orderNumber === order.orderNumber,
+        );
         return R.isEmpty(matchedResult);
       });
 
@@ -386,7 +392,7 @@ export class LabResultsList extends PureComponent {
         order,
         status: 'Ordered',
       }));
-      const labResults = orderedTests.concat(results);
+      const labResults = orderedTests.concat(filteredResults);
 
       return labResults;
     };
@@ -407,6 +413,8 @@ export class LabResultsList extends PureComponent {
             </div>
             {this.renderLabResultsTable(labResults)}
           </React.Fragment>
+          <br />
+          <button type="button" className="btn btn-lg btn-danger" onClick={() => this.handleNavigateBack()}>Back</button>
         </div>
       );
     }

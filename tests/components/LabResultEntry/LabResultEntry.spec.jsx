@@ -45,6 +45,12 @@ let props = {
       concept: {
         display: "Hémogramme automatisé",
       },
+      labResult: {
+        encounter: {
+          encounterDatetime: '2018-08-30T17:34:19.000+0100',
+        },
+        resultStatus: "Reported",
+      },
       urgency: 'ROUTINE',
       dateActivated: "2018-08-30T17:34:19.000+0100",
       patient: {
@@ -62,6 +68,12 @@ let props = {
         concept: {
           uuid: '9i9i-99090-999',
           display: "Hémogramme automatisé",
+        },
+        labResult: {
+          encounter: {
+            encounterDatetime: '2018-08-30T17:34:19.000+0100',
+          },
+          resultStatus: "Reported",
         },
         urgency: 'ROUTINE',
         dateActivated: "2018-08-30T17:34:19.000+0100",

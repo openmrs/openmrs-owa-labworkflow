@@ -3,6 +3,8 @@
 exports[`<LabOrdersList /> component renders correctly 1`] = `
 <LabOrderListFilters
   clearNameEMRField={[MockFunction]}
+  dateFromField={"2018-11-10T23:00:00.000Z"}
+  dateToField={"2018-11-10T23:00:00.000Z"}
   handleFieldChange={[MockFunction]}
   intl={
     Object {
@@ -35,6 +37,7 @@ exports[`<LabOrdersList /> component renders correctly 1`] = `
     ]
   }
   nameField=""
+  testTypeField=""
 >
   <div
     className="order-list-filters"
@@ -47,7 +50,7 @@ exports[`<LabOrdersList /> component renders correctly 1`] = `
       >
         <span>
           <CustomDatePicker
-            defaultDate={"2018-10-27T06:09:20.525Z"}
+            defaultDate={"2018-11-10T23:00:00.000Z"}
             field="dateFromField"
             formControlStyle={
               Object {
@@ -89,7 +92,7 @@ exports[`<LabOrdersList /> component renders correctly 1`] = `
                 preventOpenOnFocus={false}
                 previousMonthButtonLabel="Previous Month"
                 readOnly={false}
-                selected={"2018-10-27T06:09:20.525Z"}
+                selected={"2018-11-10T23:00:00.000Z"}
                 shouldCloseOnSelect={true}
                 showTimeSelect={false}
                 timeCaption="Time"
@@ -122,7 +125,7 @@ exports[`<LabOrdersList /> component renders correctly 1`] = `
                         onFocus={[Function]}
                         onKeyDown={[Function]}
                         readOnly={false}
-                        value="10/27/2018"
+                        value="11/11/2018"
                       />
                     </div>
                   }
@@ -149,7 +152,7 @@ exports[`<LabOrdersList /> component renders correctly 1`] = `
                               onFocus={[Function]}
                               onKeyDown={[Function]}
                               readOnly={false}
-                              value="10/27/2018"
+                              value="11/11/2018"
                             >
                               <span>
                                 <span
@@ -185,7 +188,7 @@ exports[`<LabOrdersList /> component renders correctly 1`] = `
                                       }
                                     }
                                     type="text"
-                                    value="10/27/2018"
+                                    value="11/11/2018"
                                   >
                                     <input
                                       className="form-control"
@@ -197,7 +200,7 @@ exports[`<LabOrdersList /> component renders correctly 1`] = `
                                         }
                                       }
                                       type="text"
-                                      value="10/27/2018"
+                                      value="11/11/2018"
                                     />
                                   </FormControl>
                                   <FontAwesomeIcon
@@ -251,7 +254,7 @@ exports[`<LabOrdersList /> component renders correctly 1`] = `
         </span>
         <span>
           <CustomDatePicker
-            defaultDate={"2018-11-04T06:09:18.114Z"}
+            defaultDate={"2018-11-10T23:00:00.000Z"}
             field="dateToField"
             formControlStyle={
               Object {
@@ -293,7 +296,7 @@ exports[`<LabOrdersList /> component renders correctly 1`] = `
                 preventOpenOnFocus={false}
                 previousMonthButtonLabel="Previous Month"
                 readOnly={false}
-                selected={"2018-11-04T06:09:18.114Z"}
+                selected={"2018-11-10T23:00:00.000Z"}
                 shouldCloseOnSelect={true}
                 showTimeSelect={false}
                 timeCaption="Time"
@@ -326,7 +329,7 @@ exports[`<LabOrdersList /> component renders correctly 1`] = `
                         onFocus={[Function]}
                         onKeyDown={[Function]}
                         readOnly={false}
-                        value="11/04/2018"
+                        value="11/11/2018"
                       />
                     </div>
                   }
@@ -353,7 +356,7 @@ exports[`<LabOrdersList /> component renders correctly 1`] = `
                               onFocus={[Function]}
                               onKeyDown={[Function]}
                               readOnly={false}
-                              value="11/04/2018"
+                              value="11/11/2018"
                             >
                               <span>
                                 <span
@@ -389,7 +392,7 @@ exports[`<LabOrdersList /> component renders correctly 1`] = `
                                       }
                                     }
                                     type="text"
-                                    value="11/04/2018"
+                                    value="11/11/2018"
                                   >
                                     <input
                                       className="form-control"
@@ -401,7 +404,7 @@ exports[`<LabOrdersList /> component renders correctly 1`] = `
                                         }
                                       }
                                       type="text"
-                                      value="11/04/2018"
+                                      value="11/11/2018"
                                     />
                                   </FormControl>
                                   <FontAwesomeIcon
@@ -478,6 +481,7 @@ exports[`<LabOrdersList /> component renders correctly 1`] = `
             className="small icon-search"
           />
           <FormControl
+            autoFocus={true}
             bsClass="form-control"
             componentClass="input"
             onChange={[Function]}
@@ -486,6 +490,7 @@ exports[`<LabOrdersList /> component renders correctly 1`] = `
             value=""
           >
             <input
+              autoFocus={true}
               className="form-control"
               onChange={[Function]}
               placeholder="search by ID or name, or scan sample"
@@ -500,78 +505,181 @@ exports[`<LabOrdersList /> component renders correctly 1`] = `
           />
         </span>
       </span>
-      <Dropdown
-        className="form-filter-group"
-        defaultValue="All"
-        field="testTypeField"
-        handleSelect={[Function]}
-        label={
-          <FormattedMessage
-            defaultMessage="Test Type"
-            description="Label for the dropdown search input"
-            id="app.labOrdersListFilters.searchDropdownLabel"
-            values={Object {}}
-          />
-        }
-        labelClassName=""
-        list={
-          Array [
-            "Hémogramme automatisé",
-          ]
-        }
-        placeholder="Select from the list"
+      <span
+        className="status-dropdown"
       >
-        <div>
-          <span
-            className="form-filter-group"
-          >
+        <Dropdown
+          className="form-filter-group"
+          defaultValue="All"
+          field="testStatusField"
+          handleSelect={[Function]}
+          input={
+            Object {
+              "value": undefined,
+            }
+          }
+          label={
+            <FormattedMessage
+              defaultMessage="Status"
+              description="Label for the test status dropdown"
+              id="app.labOrdersListFilters.statusDropdownLabel"
+              values={Object {}}
+            />
+          }
+          labelClassName=""
+          list={
+            Array [
+              "Ordered",
+              "Reported",
+              "Taken",
+            ]
+          }
+          placeholder="Select from the list"
+        >
+          <div>
             <span
-              className=""
+              className="form-filter-group"
             >
-              <FormattedMessage
-                defaultMessage="Test Type"
-                description="Label for the dropdown search input"
-                id="app.labOrdersListFilters.searchDropdownLabel"
-                values={Object {}}
+              <span
+                className=""
               >
-                <span>
-                  Test Type
-                </span>
-              </FormattedMessage>
-            </span>
-            <select
-              disabled={false}
-              onChange={[Function]}
-              style={
-                Object {
-                  "height": "45px",
-                  "width": "100%",
+                <FormattedMessage
+                  defaultMessage="Status"
+                  description="Label for the test status dropdown"
+                  id="app.labOrdersListFilters.statusDropdownLabel"
+                  values={Object {}}
+                >
+                  <span>
+                    Status
+                  </span>
+                </FormattedMessage>
+              </span>
+              <select
+                disabled={false}
+                onChange={[Function]}
+                style={
+                  Object {
+                    "height": "45px",
+                    "width": "100%",
+                  }
                 }
-              }
-              value=""
+              >
+                <option
+                  key="0"
+                  value=""
+                >
+                  Select from the list
+                </option>
+                <option
+                  key="All"
+                  value="All"
+                >
+                  All
+                </option>
+                <option
+                  key="Ordered"
+                  value="Ordered"
+                >
+                  Ordered
+                </option>
+                <option
+                  key="Reported"
+                  value="Reported"
+                >
+                  Reported
+                </option>
+                <option
+                  key="Taken"
+                  value="Taken"
+                >
+                  Taken
+                </option>
+              </select>
+            </span>
+          </div>
+        </Dropdown>
+      </span>
+      <span
+        className="type-dropdown"
+      >
+        <Dropdown
+          className="form-filter-group"
+          defaultValue="All"
+          field="testTypeField"
+          handleSelect={[Function]}
+          input={
+            Object {
+              "value": "",
+            }
+          }
+          label={
+            <FormattedMessage
+              defaultMessage="Test Type"
+              description="Label for the test type dropdown"
+              id="app.labOrdersListFilters.searchDropdownLabel"
+              values={Object {}}
+            />
+          }
+          labelClassName=""
+          list={
+            Array [
+              "Hémogramme automatisé",
+            ]
+          }
+          placeholder="Select from the list"
+        >
+          <div>
+            <span
+              className="form-filter-group"
             >
-              <option
-                key="0"
+              <span
+                className=""
+              >
+                <FormattedMessage
+                  defaultMessage="Test Type"
+                  description="Label for the test type dropdown"
+                  id="app.labOrdersListFilters.searchDropdownLabel"
+                  values={Object {}}
+                >
+                  <span>
+                    Test Type
+                  </span>
+                </FormattedMessage>
+              </span>
+              <select
+                disabled={false}
+                onChange={[Function]}
+                style={
+                  Object {
+                    "height": "45px",
+                    "width": "100%",
+                  }
+                }
                 value=""
               >
-                Select from the list
-              </option>
-              <option
-                key="All"
-                value="All"
-              >
-                All
-              </option>
-              <option
-                key="Hémogramme automatisé"
-                value="Hémogramme automatisé"
-              >
-                Hémogramme automatisé
-              </option>
-            </select>
-          </span>
-        </div>
-      </Dropdown>
+                <option
+                  key="0"
+                  value=""
+                >
+                  Select from the list
+                </option>
+                <option
+                  key="All"
+                  value="All"
+                >
+                  All
+                </option>
+                <option
+                  key="Hémogramme automatisé"
+                  value="Hémogramme automatisé"
+                >
+                  Hémogramme automatisé
+                </option>
+              </select>
+            </span>
+          </div>
+        </Dropdown>
+      </span>
     </span>
   </div>
 </LabOrderListFilters>

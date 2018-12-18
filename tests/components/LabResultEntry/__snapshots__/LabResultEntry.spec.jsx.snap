@@ -99,6 +99,12 @@ exports[`<LabResultEntry /> component renders correctly with valid props 1`] = `
                   "uuid": "9i9i-99090-999",
                 },
                 "dateActivated": "2018-08-30T17:34:19.000+0100",
+                "labResult": Object {
+                  "encounter": Object {
+                    "encounterDatetime": "2018-08-30T17:34:19.000+0100",
+                  },
+                  "resultStatus": "Reported",
+                },
                 "orderNumber": "ORD-1",
                 "patient": Object {
                   "display": "Y2A7LR - williams willy john",
@@ -123,6 +129,12 @@ exports[`<LabResultEntry /> component renders correctly with valid props 1`] = `
                 "display": "Hémogramme automatisé",
               },
               "dateActivated": "2018-08-30T17:34:19.000+0100",
+              "labResult": Object {
+                "encounter": Object {
+                  "encounterDatetime": "2018-08-30T17:34:19.000+0100",
+                },
+                "resultStatus": "Reported",
+              },
               "orderNumber": "ORD-1",
               "patient": Object {
                 "display": "Y2A7LR - williams willy john",
@@ -186,6 +198,12 @@ exports[`<LabResultEntry /> component renders correctly with valid props 1`] = `
                     "uuid": "9i9i-99090-999",
                   },
                   "dateActivated": "2018-08-30T17:34:19.000+0100",
+                  "labResult": Object {
+                    "encounter": Object {
+                      "encounterDatetime": "2018-08-30T17:34:19.000+0100",
+                    },
+                    "resultStatus": "Reported",
+                  },
                   "orderNumber": "ORD-1",
                   "patient": Object {
                     "display": "Y2A7LR - williams willy john",
@@ -211,6 +229,12 @@ exports[`<LabResultEntry /> component renders correctly with valid props 1`] = `
                   "display": "Hémogramme automatisé",
                 },
                 "dateActivated": "2018-08-30T17:34:19.000+0100",
+                "labResult": Object {
+                  "encounter": Object {
+                    "encounterDatetime": "2018-08-30T17:34:19.000+0100",
+                  },
+                  "resultStatus": "Reported",
+                },
                 "orderNumber": "ORD-1",
                 "patient": Object {
                   "display": "Y2A7LR - williams willy john",
@@ -375,7 +399,7 @@ exports[`<LabResultEntry /> component renders correctly with valid props 1`] = `
                         <span
                           className="test-details"
                         >
-                          Nov 04 7:09 AM
+                          Aug 30 5:34 PM
                         </span>
                       </span>
                     </div>
@@ -429,6 +453,11 @@ exports[`<LabResultEntry /> component renders correctly with valid props 1`] = `
                             "value": "ORD-1",
                           },
                         ]
+                      }
+                      encounter={
+                        Object {
+                          "encounterDatetime": "2018-08-30T17:34:19.000+0100",
+                        }
                       }
                       encounterType={
                         Object {
@@ -583,13 +612,17 @@ exports[`<LabResultEntry /> component renders correctly with valid props 1`] = `
                                     />
                                      
                                   </span>
-                                  <WithFormContext(Connect(EncounterDate))
-                                    defaultDate={"2018-11-03T23:00:00.000Z"}
-                                    field="dateFromField"
-                                    handleDateChange={[Function]}
-                                    label="Specimen Collection Date:"
-                                    labelClassName="date-picker-label"
-                                  />
+                                  <span
+                                    className="encounter-date-field"
+                                  >
+                                    <WithFormContext(Connect(EncounterDate))
+                                      defaultDate={"2018-11-26T23:00:00.000Z"}
+                                      field="dateFromField"
+                                      handleDateChange={[Function]}
+                                      label="Specimen Collection Date:"
+                                      labelClassName="date-picker-label"
+                                    />
+                                  </span>
                                 </div>
                                 <br />
                               </div>
@@ -709,6 +742,11 @@ exports[`<LabResultEntry /> component renders correctly with valid props 1`] = `
                           ]
                         }
                         dispatch={[Function]}
+                        encounter={
+                          Object {
+                            "encounterDatetime": "2018-08-30T17:34:19.000+0100",
+                          }
+                        }
                         encounterType={
                           Object {
                             "uuid": "mock-encounter-uuid",
@@ -862,13 +900,17 @@ exports[`<LabResultEntry /> component renders correctly with valid props 1`] = `
                                       />
                                        
                                     </span>
-                                    <WithFormContext(Connect(EncounterDate))
-                                      defaultDate={"2018-11-03T23:00:00.000Z"}
-                                      field="dateFromField"
-                                      handleDateChange={[Function]}
-                                      label="Specimen Collection Date:"
-                                      labelClassName="date-picker-label"
-                                    />
+                                    <span
+                                      className="encounter-date-field"
+                                    >
+                                      <WithFormContext(Connect(EncounterDate))
+                                        defaultDate={"2018-11-26T23:00:00.000Z"}
+                                        field="dateFromField"
+                                        handleDateChange={[Function]}
+                                        label="Specimen Collection Date:"
+                                        labelClassName="date-picker-label"
+                                      />
+                                    </span>
                                   </div>
                                   <br />
                                 </div>
@@ -1029,7 +1071,7 @@ exports[`<LabResultEntry /> component renders correctly with valid props 1`] = `
                                       }
                                     >
                                       <span>
-                                        <h1 />
+                                        <h2 />
                                       </span>
                                     </div>
                                   </Col>
@@ -1153,6 +1195,12 @@ exports[`<LabResultEntry /> component should redirect when location has an empty
                 "uuid": "9i9i-99090-999",
               },
               "dateActivated": "2018-08-30T17:34:19.000+0100",
+              "labResult": Object {
+                "encounter": Object {
+                  "encounterDatetime": "2018-08-30T17:34:19.000+0100",
+                },
+                "resultStatus": "Reported",
+              },
               "orderNumber": "ORD-1",
               "patient": Object {
                 "display": "Y2A7LR - williams willy john",
@@ -1216,6 +1264,12 @@ exports[`<LabResultEntry /> component should redirect when location has an empty
                   "uuid": "9i9i-99090-999",
                 },
                 "dateActivated": "2018-08-30T17:34:19.000+0100",
+                "labResult": Object {
+                  "encounter": Object {
+                    "encounterDatetime": "2018-08-30T17:34:19.000+0100",
+                  },
+                  "resultStatus": "Reported",
+                },
                 "orderNumber": "ORD-1",
                 "patient": Object {
                   "display": "Y2A7LR - williams willy john",
@@ -1314,6 +1368,12 @@ exports[`<LabResultEntry /> component should render <Loader /> component when se
             "uuid": "9i9i-99090-999",
           },
           "dateActivated": "2018-08-30T17:34:19.000+0100",
+          "labResult": Object {
+            "encounter": Object {
+              "encounterDatetime": "2018-08-30T17:34:19.000+0100",
+            },
+            "resultStatus": "Reported",
+          },
           "orderNumber": "ORD-1",
           "patient": Object {
             "display": "Y2A7LR - williams willy john",
@@ -1338,6 +1398,12 @@ exports[`<LabResultEntry /> component should render <Loader /> component when se
           "display": "Hémogramme automatisé",
         },
         "dateActivated": "2018-08-30T17:34:19.000+0100",
+        "labResult": Object {
+          "encounter": Object {
+            "encounterDatetime": "2018-08-30T17:34:19.000+0100",
+          },
+          "resultStatus": "Reported",
+        },
         "orderNumber": "ORD-1",
         "patient": Object {
           "display": "Y2A7LR - williams willy john",
@@ -1390,6 +1456,12 @@ exports[`<LabResultEntry /> component should render <Loader /> component when se
               "uuid": "9i9i-99090-999",
             },
             "dateActivated": "2018-08-30T17:34:19.000+0100",
+            "labResult": Object {
+              "encounter": Object {
+                "encounterDatetime": "2018-08-30T17:34:19.000+0100",
+              },
+              "resultStatus": "Reported",
+            },
             "orderNumber": "ORD-1",
             "patient": Object {
               "display": "Y2A7LR - williams willy john",
@@ -1415,6 +1487,12 @@ exports[`<LabResultEntry /> component should render <Loader /> component when se
             "display": "Hémogramme automatisé",
           },
           "dateActivated": "2018-08-30T17:34:19.000+0100",
+          "labResult": Object {
+            "encounter": Object {
+              "encounterDatetime": "2018-08-30T17:34:19.000+0100",
+            },
+            "resultStatus": "Reported",
+          },
           "orderNumber": "ORD-1",
           "patient": Object {
             "display": "Y2A7LR - williams willy john",

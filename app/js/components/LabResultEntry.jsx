@@ -61,7 +61,6 @@ export class LabResultEntry extends PureComponent {
       dispatch(patientAction.getPatient(patientUUID));
       dispatch(constantsActions.fetchLabResultsDidNotPerformReasonAnswer(CONSTANTS.labResultsDidNotPerformReasonQuestion));
       dispatch(constantsActions.fetchLabResultsTestLocationAnswer(CONSTANTS.labResultsTestLocationQuestion));
-      dispatch(patientAction.fetchPatientLabTestResults(state.patient.uuid));
       dispatch(fetchLabConcept(conceptUUID));
     } else {
       this.shouldRedirect();
@@ -70,22 +69,13 @@ export class LabResultEntry extends PureComponent {
 
   getEncounter() {
     const {
-      CONSTANTS, selectedPatient, patients, history: { location: { state } },
+      history: { location: { state } },
     } = this.props;
 
-    const patient = patients[selectedPatient] || {};
-
-    const { encounters = [] } = patient;
-
-    const matchedEncounter = encounters.filter((encounter) => {
-      const testOrderObs = encounter.obs.filter(
-        item => item.concept.uuid === CONSTANTS.labResultsTestOrderNumberConcept,
-      );
-      const testOrderNumber = testOrderObs[0].value;
-      const matched = testOrderNumber === state.orderNumber;
-      return matched;
-    });
-    return matchedEncounter[0];
+    if (state.labResult.encounter) {
+      return state.labResult.encounter;
+    }
+    return null;
   }
 
   shouldRedirect() {
@@ -412,9 +402,10 @@ export class LabResultEntry extends PureComponent {
   render() {
     const { redirect } = this.state;
     const {
-      location, selectedLabConcept,
+      location,
+      selectedLabConcept,
+      form,
     } = this.props;
-
 
     if (!location.state || redirect) {
       return <Redirect to="/" />;
@@ -475,7 +466,7 @@ export class LabResultEntry extends PureComponent {
                           id="app.labResultEntry.orderDatelabel"
                           defaultMessage="Order Date:" />
 &nbsp;
-                        <span className="test-details">{moment(location.state.concept.dateActivated).format('MMM DD h:mm A')}</span>
+                        <span className="test-details">{moment(location.state.dateActivated).format('MMM DD h:mm A')}</span>
                       </span>
                     </div>
                     <br />

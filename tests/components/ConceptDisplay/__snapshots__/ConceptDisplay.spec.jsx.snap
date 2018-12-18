@@ -1,0 +1,226 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`ConceptDisplay Component should render for concept value of type range when there is valid units 1`] = `
+<Provider
+  intl={
+    Object {
+      "defaultFormats": Object {},
+      "defaultLocale": "en",
+      "formatDate": [Function],
+      "formatHTMLMessage": [Function],
+      "formatMessage": [Function],
+      "formatNumber": [Function],
+      "formatPlural": [Function],
+      "formatRelative": [Function],
+      "formatTime": [Function],
+      "formats": Object {},
+      "formatters": Object {
+        "getDateTimeFormat": [Function],
+        "getMessageFormat": [Function],
+        "getNumberFormat": [Function],
+        "getPluralFormat": [Function],
+        "getRelativeFormat": [Function],
+      },
+      "locale": "en",
+      "messages": Object {},
+      "now": [Function],
+      "textComponent": "span",
+    }
+  }
+  store={
+    Object {
+      "clearActions": [Function],
+      "dispatch": [Function],
+      "getActions": [Function],
+      "getState": [Function],
+      "replaceReducer": [Function],
+      "subscribe": [Function],
+    }
+  }
+>
+  <Connect(ConceptDisplay)
+    conceptUUID="some-concept-uuid"
+    type="result"
+    value={30}
+  >
+    <ConceptDisplay
+      concept={
+        Object {
+          "hiNormal": 50,
+          "lowNormal": 40,
+          "units": "mmgh",
+        }
+      }
+      conceptMembers={
+        Object {
+          "some-concept-uuid": Object {
+            "hiNormal": 50,
+            "lowNormal": 40,
+            "units": "mmgh",
+          },
+        }
+      }
+      conceptUUID="some-concept-uuid"
+      dispatch={[Function]}
+      type="result"
+      value={30}
+    >
+      <span
+        className="abnormal-value"
+      >
+        30
+      </span>
+    </ConceptDisplay>
+  </Connect(ConceptDisplay)>
+</Provider>
+`;
+
+exports[`ConceptDisplay Component should render for concept value of type range when unit is null 1`] = `
+<Provider
+  intl={
+    Object {
+      "defaultFormats": Object {},
+      "defaultLocale": "en",
+      "formatDate": [Function],
+      "formatHTMLMessage": [Function],
+      "formatMessage": [Function],
+      "formatNumber": [Function],
+      "formatPlural": [Function],
+      "formatRelative": [Function],
+      "formatTime": [Function],
+      "formats": Object {},
+      "formatters": Object {
+        "getDateTimeFormat": [Function],
+        "getMessageFormat": [Function],
+        "getNumberFormat": [Function],
+        "getPluralFormat": [Function],
+        "getRelativeFormat": [Function],
+      },
+      "locale": "en",
+      "messages": Object {},
+      "now": [Function],
+      "textComponent": "span",
+    }
+  }
+  store={
+    Object {
+      "clearActions": [Function],
+      "dispatch": [Function],
+      "getActions": [Function],
+      "getState": [Function],
+      "replaceReducer": [Function],
+      "subscribe": [Function],
+    }
+  }
+>
+  <Connect(ConceptDisplay)
+    conceptUUID="some-concept-uuid"
+    type="result"
+    value={30}
+  >
+    <ConceptDisplay
+      concept={
+        Object {
+          "hiNormal": 50,
+          "lowNormal": 40,
+          "units": "mmgh",
+        }
+      }
+      conceptMembers={
+        Object {
+          "some-concept-uuid": Object {
+            "hiNormal": 50,
+            "lowNormal": 40,
+            "units": "mmgh",
+          },
+        }
+      }
+      conceptUUID="some-concept-uuid"
+      dispatch={[Function]}
+      type="result"
+      value={30}
+    >
+      <span
+        className="abnormal-value"
+      >
+        30
+      </span>
+    </ConceptDisplay>
+  </Connect(ConceptDisplay)>
+</Provider>
+`;
+
+exports[`ConceptDisplay Component should render for concept value of type result 1`] = `
+<Provider
+  intl={
+    Object {
+      "defaultFormats": Object {},
+      "defaultLocale": "en",
+      "formatDate": [Function],
+      "formatHTMLMessage": [Function],
+      "formatMessage": [Function],
+      "formatNumber": [Function],
+      "formatPlural": [Function],
+      "formatRelative": [Function],
+      "formatTime": [Function],
+      "formats": Object {},
+      "formatters": Object {
+        "getDateTimeFormat": [Function],
+        "getMessageFormat": [Function],
+        "getNumberFormat": [Function],
+        "getPluralFormat": [Function],
+        "getRelativeFormat": [Function],
+      },
+      "locale": "en",
+      "messages": Object {},
+      "now": [Function],
+      "textComponent": "span",
+    }
+  }
+  store={
+    Object {
+      "clearActions": [Function],
+      "dispatch": [Function],
+      "getActions": [Function],
+      "getState": [Function],
+      "replaceReducer": [Function],
+      "subscribe": [Function],
+    }
+  }
+>
+  <Connect(ConceptDisplay)
+    conceptUUID="some-concept-uuid"
+    type="result"
+    value={30}
+  >
+    <ConceptDisplay
+      concept={
+        Object {
+          "hiNormal": 50,
+          "lowNormal": 40,
+          "units": "mmgh",
+        }
+      }
+      conceptMembers={
+        Object {
+          "some-concept-uuid": Object {
+            "hiNormal": 50,
+            "lowNormal": 40,
+            "units": "mmgh",
+          },
+        }
+      }
+      conceptUUID="some-concept-uuid"
+      dispatch={[Function]}
+      type="result"
+      value={30}
+    >
+      <span
+        className="abnormal-value"
+      >
+        30
+      </span>
+    </ConceptDisplay>
+  </Connect(ConceptDisplay)>
+</Provider>
+`;

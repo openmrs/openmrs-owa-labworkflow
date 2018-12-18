@@ -75,6 +75,27 @@ class LabOrderListFilters extends PureComponent {
     );
   }
 
+  renderTestStatusFilter() {
+    const { handleFieldChange, testStatusField } = this.props;
+    const statusOptions = ["Ordered", "Reported", "Taken"];
+    return (
+      <Dropdown
+        className="form-filter-group"
+        label={(
+          <FormattedMessage
+            id="app.labOrdersListFilters.statusDropdownLabel"
+            defaultMessage="Status"
+            description="Label for the test status dropdown" />
+        )}
+        defaultValue="All"
+        input={{ value: testStatusField }}
+        list={statusOptions}
+        field="testStatusField"
+        handleSelect={(field, value) => handleFieldChange(field, value)}
+      />
+    );
+  }
+
   renderTestTypeFilter() {
     const { labTests, handleFieldChange, testTypeField } = this.props;
     return (
@@ -84,7 +105,7 @@ class LabOrderListFilters extends PureComponent {
           <FormattedMessage
             id="app.labOrdersListFilters.searchDropdownLabel"
             defaultMessage="Test Type"
-            description="Label for the dropdown search input" />
+            description="Label for the test type dropdown" />
         )}
         defaultValue="All"
         input={{ value: testTypeField }}
@@ -103,7 +124,12 @@ class LabOrderListFilters extends PureComponent {
         </span>
         <span className="bottom-filters">
           {this.renderNameEMROrOrderIdFilter()}
-          {this.renderTestTypeFilter()}
+          <span className="status-dropdown">
+            {this.renderTestStatusFilter()}
+          </span>
+          <span className="type-dropdown">
+            {this.renderTestTypeFilter()}
+          </span>
         </span>
       </div>
     );
@@ -119,6 +145,7 @@ LabOrderListFilters.propTypes = {
   clearNameEMRField: PropTypes.func.isRequired,
   labTests: PropTypes.array.isRequired,
   nameField: PropTypes.string,
+  testStatusField: PropTypes.string.isRequired,
   testTypeField: PropTypes.string.isRequired,
   dateToField: PropTypes.object.isRequired,
   dateFromField: PropTypes.object.isRequired,

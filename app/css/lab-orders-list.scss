@@ -107,7 +107,7 @@ i.scale:hover {
         width: 20%;
       }
       &.one-third {
-        width: 80%
+        width: 90%
       }
     }
   }
@@ -135,4 +135,28 @@ i.scale:hover {
   margin-left: 5px;
 }
 
+.no-data-container {
+  background: white;
+  padding: 10px;
+  width: 0 auto;
+  padding-top: 10%;
+  padding-bottom: 10%;
+  font-size: 20px;
+  display: flex;
+  justify-content: center;
+  border: 1px solid;
+  font-weight: 800;
+}
+
+.status-dropdown {
+  width: 20%;
+  margin-right: 5%;
+  font-size: 12px;
+}
+
+.type-dropdown {
+  width: 20%;
+  margin-left: 5%;
+  font-size: 12px;
+}
 

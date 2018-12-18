@@ -5,6 +5,7 @@ export default {
     orders: [],
     labTests: [],
     isLoading: false,
+    fetched: false,
     error: {
       status: false,
       message: null,
@@ -55,6 +56,7 @@ export default {
       dateToField: moment(),
       dateFromField: moment().subtract(8, 'days'),
       testTypeField: "All",
+      testStatusField: "All",
       dateField: 'dateActivated',
     },
   },

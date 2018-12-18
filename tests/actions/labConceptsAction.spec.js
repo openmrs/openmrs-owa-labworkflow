@@ -3,6 +3,7 @@ import {
   setMember,
   setSelectedConcept,
   setFetchStatus,
+  fetchConcept,
 } from '../../app/js/actions/labConceptsAction';
 
 import {
@@ -10,6 +11,7 @@ import {
   SET_CONCEPT_MEMBER,
   SET_CONCEPT,
   SET_FETCH_STATUS,
+  FETCH_CONCEPT,
 } from '../../app/js/actions/actionTypes';
 
 const {
@@ -69,6 +71,21 @@ describe('setFetchStatus action', () => {
 
     const store = mockStore({});
     store.dispatch(setFetchStatus(true));
+    const dispatchedActions = store.getActions();
+    const dispatchedActionTypes = dispatchedActions.map(action => action.type);
+    expect(dispatchedActionTypes).toEqual(expectedActionTypes);
+  });
+});
+
+describe('fetchConcept action', () => {
+  it('should dispatch an action to fetch a single concept', () => {
+    const conceptUUID = 'a244-56ui';
+    const expectedActionTypes = [
+      FETCH_CONCEPT,
+    ];
+
+    const store = mockStore({});
+    store.dispatch(fetchConcept(conceptUUID));
     const dispatchedActions = store.getActions();
     const dispatchedActionTypes = dispatchedActions.map(action => action.type);
     expect(dispatchedActionTypes).toEqual(expectedActionTypes);
