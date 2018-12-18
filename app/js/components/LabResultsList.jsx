@@ -286,7 +286,7 @@ export class LabResultsList extends PureComponent {
                 id="app.labResultsList.dateFromFilterLabel"
                 defaultMessage="From: " />
             )}
-            defaultDate={moment(labResultListFilters.dateFromField) || moment().subtract(8, 'days')}
+            defaultDate={moment(labResultListFilters.dateFromField).format() || moment().subtract(8, 'days').format()}
             formControlStyle={{
               marginRight: '5px',
               width: '105px',
@@ -303,7 +303,7 @@ export class LabResultsList extends PureComponent {
                 id="app.labResultsList.dateToFilterLabel"
                 defaultMessage="To: " />
             )}
-            defaultDate={moment(labResultListFilters.dateToField) || moment()}
+            defaultDate={moment(labResultListFilters.dateToField).format() || moment().format()}
             field="dateToField"
             formControlStyle={{
               marginRight: '5px',

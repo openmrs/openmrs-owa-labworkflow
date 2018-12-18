@@ -44,7 +44,7 @@ class LabOrderListFilters extends PureComponent {
                 defaultMessage="From: "
                 description="Label for the first date search input" />
             )}
-            defaultDate={dateFromField || moment().subtract(8, 'days')}
+            defaultDate={dateFromField || moment().subtract(8, 'days').format()}
             formControlStyle={{
               marginRight: '5px',
               width: '105px',
@@ -62,7 +62,7 @@ class LabOrderListFilters extends PureComponent {
                 defaultMessage="To: "
                 description="Label for the second date search input" />
             )}
-            defaultDate={dateToField || moment()}
+            defaultDate={dateToField || moment().format()}
             field="dateToField"
             formControlStyle={{
               marginRight: '5px',
