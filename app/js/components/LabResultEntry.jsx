@@ -22,7 +22,7 @@ import { FormattedMessage } from 'react-intl';
 
 import {
   EncounterDate,
-  EncounterFormPage,
+  EncounterFormPanel,
   Obs,
   ObsGroup,
   formValidations,
@@ -287,7 +287,7 @@ export class LabResultEntry extends PureComponent {
           <span className="encounter-form-componnent">
             {hasEncounter
               ? (
-                <EncounterFormPage
+                <EncounterFormPanel
                   encounter={encounter}
                   defaultValues={encounterFormPageDefaultValues}
                   backLink="/"
@@ -299,7 +299,7 @@ export class LabResultEntry extends PureComponent {
                 />
               )
               : (
-                <EncounterFormPage
+                <EncounterFormPanel
                   defaultValues={encounterFormPageDefaultValues}
                   backLink="/"
                   encounterType={encounterType}
