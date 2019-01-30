@@ -26,6 +26,7 @@ export default (state = initialState.labOrderReducer, action) => {
       return {
         ...state,
         isLoading: false,
+        fetched: true,
         orders: action.payload.data.results,
       };
     }
