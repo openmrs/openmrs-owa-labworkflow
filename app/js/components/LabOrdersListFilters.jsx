@@ -119,9 +119,9 @@ class LabOrderListFilters extends PureComponent {
   render() {
     return (
       <div className="order-list-filters">
-        <span className="top-filters">
+       {/* <span className="top-filters">
           {this.renderDatePickerFilters()}
-        </span>
+        </span>*/}
         <span className="bottom-filters">
           {this.renderNameEMROrOrderIdFilter()}
           <span className="status-dropdown">
