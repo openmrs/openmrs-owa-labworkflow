@@ -13,6 +13,7 @@ import {
 } from '@openmrs/react-components';
 import {
   FETCH_LAB_ORDERS,
+  UPDATE_LAB_ORDER_WITH_ENCOUNTER,
   SET_ORDER_LAB_ENCOUNTER,
   SET_ORDER_LIST_FETCH_STATUS,
 } from '../actions/actionTypes';
@@ -70,7 +71,7 @@ export function* setLabTestsSaga() {
 
 export function* fetchAndSetTestResultEncounter(args) {
   const state = yield select();
-  const { order, count } = args;
+  const { order, count = -1 } = args;
   const patientUUID = order.patient.uuid;
   const encounterTypeUUID = state.openmrs.CONSTANTS.labResultsEncounterType;
   try {
@@ -130,4 +131,5 @@ export function* fetchEncounters(action) {
 
 export function* setEncounters() {
   yield takeEvery(`${FETCH_LAB_ORDERS}_SUCCESS`, fetchEncounters);
+  yield takeEvery(UPDATE_LAB_ORDER_WITH_ENCOUNTER, fetchAndSetTestResultEncounter);
 }

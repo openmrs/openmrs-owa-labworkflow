@@ -1,6 +1,7 @@
 import { axiosInstance } from '../config';
 import {
   FETCH_LAB_ORDERS,
+  UPDATE_LAB_ORDER_WITH_ENCOUNTER,
   SET_LAB_TEST,
   FETCH_LAB_TEST_RESULTS,
   SET_ORDER_LAB_ENCOUNTER,
@@ -9,6 +10,11 @@ import {
 export const fetchLabOrders = (testOrderType, options) => ({
   type: FETCH_LAB_ORDERS,
   payload: axiosInstance.get(`order?s=default&totalCount=true&sort=desc&status=active&orderTypes=${testOrderType}&activatedOnOrAfterDate=${options.dateFromField}&activatedOnOrBeforeDate=${options.dateToField}&v=full`),
+});
+
+export const updateLabOrderWithhEncounter = labOrder => ({
+  type: UPDATE_LAB_ORDER_WITH_ENCOUNTER,
+  order: labOrder,
 });
 
 export const fetchLabTestResults = (patientUuid, conceptUuid) => ({
