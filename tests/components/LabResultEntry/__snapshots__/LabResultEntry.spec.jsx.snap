@@ -441,7 +441,7 @@ exports[`<LabResultEntry /> component renders correctly with valid props 1`] = `
                   <span
                     className="encounter-form-componnent"
                   >
-                    <Connect(EncounterFormPage)
+                    <Connect(EncounterFormPanel)
                       afterSubmitLink="/"
                       backLink="/"
                       defaultValues={
@@ -616,7 +616,7 @@ exports[`<LabResultEntry /> component renders correctly with valid props 1`] = `
                                     className="encounter-date-field"
                                   >
                                     <WithFormContext(Connect(EncounterDate))
-                                      defaultDate={"2018-11-26T23:00:00.000Z"}
+                                      defaultDate={"2019-01-29T23:00:00.000Z"}
                                       field="dateFromField"
                                       handleDateChange={[Function]}
                                       label="Specimen Collection Date:"
@@ -728,7 +728,7 @@ exports[`<LabResultEntry /> component renders correctly with valid props 1`] = `
                         }
                       }
                     >
-                      <EncounterFormPage
+                      <EncounterFormPanel
                         afterSubmitLink="/"
                         backLink="/"
                         defaultValues={
@@ -904,7 +904,7 @@ exports[`<LabResultEntry /> component renders correctly with valid props 1`] = `
                                       className="encounter-date-field"
                                     >
                                       <WithFormContext(Connect(EncounterDate))
-                                        defaultDate={"2018-11-26T23:00:00.000Z"}
+                                        defaultDate={"2019-01-29T23:00:00.000Z"}
                                         field="dateFromField"
                                         handleDateChange={[Function]}
                                         label="Specimen Collection Date:"
@@ -1043,41 +1043,7 @@ exports[`<LabResultEntry /> component renders correctly with valid props 1`] = `
                                   "paddingRight": "0px",
                                 }
                               }
-                            >
-                              <Row
-                                bsClass="row"
-                                componentClass="div"
-                              >
-                                <div
-                                  className="row"
-                                >
-                                  <Col
-                                    bsClass="col"
-                                    componentClass="div"
-                                    md={20}
-                                    sm={20}
-                                    style={
-                                      Object {
-                                        "height": "40px",
-                                      }
-                                    }
-                                  >
-                                    <div
-                                      className="col-md-20 col-sm-20"
-                                      style={
-                                        Object {
-                                          "height": "40px",
-                                        }
-                                      }
-                                    >
-                                      <span>
-                                        <h2 />
-                                      </span>
-                                    </div>
-                                  </Col>
-                                </div>
-                              </Row>
-                            </div>
+                            />
                           </Grid>
                           <Loader>
                             <div
@@ -1098,8 +1064,8 @@ exports[`<LabResultEntry /> component renders correctly with valid props 1`] = `
                             </div>
                           </Loader>
                         </div>
-                      </EncounterFormPage>
-                    </Connect(EncounterFormPage)>
+                      </EncounterFormPanel>
+                    </Connect(EncounterFormPanel)>
                   </span>
                 </div>
               </div>

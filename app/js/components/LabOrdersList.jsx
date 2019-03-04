@@ -163,7 +163,7 @@ export class LabOrdersList extends PureComponent {
     if (field === 'dateToField') {
       const options = {
         dateToField: value,
-        dateFromField: moment(labOrdersListFilters.dateFromField).format('YYYY-MM-DD') ,
+        dateFromField: moment(labOrdersListFilters.dateFromField).format('YYYY-MM-DD'),
       };
       dispatch(fetchLabOrders(labResultsTestOrderType, options));
     }
@@ -179,18 +179,20 @@ export class LabOrdersList extends PureComponent {
 
   renderNoDataDisplayText() {
     const { labOrdersListFilters } = this.props;
-    const displayText = `NO ORDERS FOUND FROM ${moment(labOrdersListFilters.dateFromField).format('YYYY-MMM-DD')} TO ${moment(labOrdersListFilters.dateToField).format('YYYY-MMM-DD')}`
+    const displayText = `NO ORDERS FOUND FROM ${moment(labOrdersListFilters.dateFromField).format('YYYY-MMM-DD')} TO ${moment(labOrdersListFilters.dateToField).format('YYYY-MMM-DD')}`;
     return (
       <div className="no-data-container">
         <span>
           {displayText}
         </span>
       </div>
-    )
+    );
   }
 
   renderDraftOrderTable() {
-    const { orders, dateAndTimeFormat, labOrdersListFilters, fetched } = this.props;
+    const {
+ orders, dateAndTimeFormat, labOrdersListFilters, fetched 
+} = this.props;
     const fields = ["EMR ID", "NAME", "ORDER ID", "ORDER DATE", "COLLECTION DATE", "STATUS", "URGENCY", "TEST TYPE"];
 
     const columnMetadata = fields.map(columnName => ({
