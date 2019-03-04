@@ -258,18 +258,24 @@ exports[`<LabOrdersList /> component renders correctly 1`] = `
                   <DatePicker
                     allowSameDay={false}
                     customInput={<DateDisplayComponent />}
-                    dateFormat="L"
-                    dateFormatCalendar="MMMM YYYY"
+                    dateFormat="MM/dd/yyyy"
+                    dateFormatCalendar="LLLL yyyy"
                     disabled={false}
                     disabledKeyboardNavigation={false}
                     dropdownMode="scroll"
-                    excludeDates={false}
+                    excludeDates={
+                      Array [
+                        false,
+                      ]
+                    }
                     monthsShown={1}
                     nextMonthButtonLabel="Next month"
                     onBlur={[Function]}
                     onChange={[Function]}
                     onClickOutside={[Function]}
                     onFocus={[Function]}
+                    onInputClick={[Function]}
+                    onInputError={[Function]}
                     onKeyDown={[Function]}
                     onMonthChange={[Function]}
                     onSelect={[Function]}
@@ -277,7 +283,8 @@ exports[`<LabOrdersList /> component renders correctly 1`] = `
                     preventOpenOnFocus={false}
                     previousMonthButtonLabel="Previous Month"
                     readOnly={false}
-                    selected={"2018-11-10T23:00:00.000Z"}
+                    renderDayContents={[Function]}
+                    selected={2018-11-10T23:00:00.000Z}
                     shouldCloseOnSelect={true}
                     showTimeSelect={false}
                     timeCaption="Time"
@@ -297,6 +304,7 @@ exports[`<LabOrdersList /> component renders correctly 1`] = `
                         }
                       }
                       popperPlacement="bottom-start"
+                      popperProps={Object {}}
                       targetComponent={
                         <div
                           className="react-datepicker__input-container"
@@ -315,12 +323,10 @@ exports[`<LabOrdersList /> component renders correctly 1`] = `
                         </div>
                       }
                     >
-                      <Manager
-                        tag="div"
-                      >
-                        <div>
-                          <Target
-                            className="react-datepicker-wrapper"
+                      <Manager>
+                        <Reference>
+                          <InnerReference
+                            getReferenceRef={[Function]}
                           >
                             <div
                               className="react-datepicker-wrapper"
@@ -429,8 +435,8 @@ exports[`<LabOrdersList /> component renders correctly 1`] = `
                                 </DateDisplayComponent>
                               </div>
                             </div>
-                          </Target>
-                        </div>
+                          </InnerReference>
+                        </Reference>
                       </Manager>
                     </PopperComponent>
                   </DatePicker>
@@ -462,18 +468,24 @@ exports[`<LabOrdersList /> component renders correctly 1`] = `
                   <DatePicker
                     allowSameDay={false}
                     customInput={<DateDisplayComponent />}
-                    dateFormat="L"
-                    dateFormatCalendar="MMMM YYYY"
+                    dateFormat="MM/dd/yyyy"
+                    dateFormatCalendar="LLLL yyyy"
                     disabled={false}
                     disabledKeyboardNavigation={false}
                     dropdownMode="scroll"
-                    excludeDates={false}
+                    excludeDates={
+                      Array [
+                        false,
+                      ]
+                    }
                     monthsShown={1}
                     nextMonthButtonLabel="Next month"
                     onBlur={[Function]}
                     onChange={[Function]}
                     onClickOutside={[Function]}
                     onFocus={[Function]}
+                    onInputClick={[Function]}
+                    onInputError={[Function]}
                     onKeyDown={[Function]}
                     onMonthChange={[Function]}
                     onSelect={[Function]}
@@ -481,7 +493,8 @@ exports[`<LabOrdersList /> component renders correctly 1`] = `
                     preventOpenOnFocus={false}
                     previousMonthButtonLabel="Previous Month"
                     readOnly={false}
-                    selected={"2018-11-10T23:00:00.000Z"}
+                    renderDayContents={[Function]}
+                    selected={2018-11-10T23:00:00.000Z}
                     shouldCloseOnSelect={true}
                     showTimeSelect={false}
                     timeCaption="Time"
@@ -501,6 +514,7 @@ exports[`<LabOrdersList /> component renders correctly 1`] = `
                         }
                       }
                       popperPlacement="bottom-start"
+                      popperProps={Object {}}
                       targetComponent={
                         <div
                           className="react-datepicker__input-container"
@@ -519,12 +533,10 @@ exports[`<LabOrdersList /> component renders correctly 1`] = `
                         </div>
                       }
                     >
-                      <Manager
-                        tag="div"
-                      >
-                        <div>
-                          <Target
-                            className="react-datepicker-wrapper"
+                      <Manager>
+                        <Reference>
+                          <InnerReference
+                            getReferenceRef={[Function]}
                           >
                             <div
                               className="react-datepicker-wrapper"
@@ -633,8 +645,8 @@ exports[`<LabOrdersList /> component renders correctly 1`] = `
                                 </DateDisplayComponent>
                               </div>
                             </div>
-                          </Target>
-                        </div>
+                          </InnerReference>
+                        </Reference>
                       </Manager>
                     </PopperComponent>
                   </DatePicker>
@@ -840,7 +852,6 @@ exports[`<LabOrdersList /> component renders correctly 1`] = `
                         "width": "100%",
                       }
                     }
-                    value=""
                   >
                     <option
                       key="0"
@@ -1319,18 +1330,24 @@ exports[`LabOrdersListContainer container should pass required props from state 
                   <DatePicker
                     allowSameDay={false}
                     customInput={<DateDisplayComponent />}
-                    dateFormat="L"
-                    dateFormatCalendar="MMMM YYYY"
+                    dateFormat="MM/dd/yyyy"
+                    dateFormatCalendar="LLLL yyyy"
                     disabled={false}
                     disabledKeyboardNavigation={false}
                     dropdownMode="scroll"
-                    excludeDates={false}
+                    excludeDates={
+                      Array [
+                        false,
+                      ]
+                    }
                     monthsShown={1}
                     nextMonthButtonLabel="Next month"
                     onBlur={[Function]}
                     onChange={[Function]}
                     onClickOutside={[Function]}
                     onFocus={[Function]}
+                    onInputClick={[Function]}
+                    onInputError={[Function]}
                     onKeyDown={[Function]}
                     onMonthChange={[Function]}
                     onSelect={[Function]}
@@ -1338,7 +1355,8 @@ exports[`LabOrdersListContainer container should pass required props from state 
                     preventOpenOnFocus={false}
                     previousMonthButtonLabel="Previous Month"
                     readOnly={false}
-                    selected={"2018-11-10T23:00:00.000Z"}
+                    renderDayContents={[Function]}
+                    selected={2018-11-10T23:00:00.000Z}
                     shouldCloseOnSelect={true}
                     showTimeSelect={false}
                     timeCaption="Time"
@@ -1358,6 +1376,7 @@ exports[`LabOrdersListContainer container should pass required props from state 
                         }
                       }
                       popperPlacement="bottom-start"
+                      popperProps={Object {}}
                       targetComponent={
                         <div
                           className="react-datepicker__input-container"
@@ -1376,12 +1395,10 @@ exports[`LabOrdersListContainer container should pass required props from state 
                         </div>
                       }
                     >
-                      <Manager
-                        tag="div"
-                      >
-                        <div>
-                          <Target
-                            className="react-datepicker-wrapper"
+                      <Manager>
+                        <Reference>
+                          <InnerReference
+                            getReferenceRef={[Function]}
                           >
                             <div
                               className="react-datepicker-wrapper"
@@ -1490,8 +1507,8 @@ exports[`LabOrdersListContainer container should pass required props from state 
                                 </DateDisplayComponent>
                               </div>
                             </div>
-                          </Target>
-                        </div>
+                          </InnerReference>
+                        </Reference>
                       </Manager>
                     </PopperComponent>
                   </DatePicker>
@@ -1523,18 +1540,24 @@ exports[`LabOrdersListContainer container should pass required props from state 
                   <DatePicker
                     allowSameDay={false}
                     customInput={<DateDisplayComponent />}
-                    dateFormat="L"
-                    dateFormatCalendar="MMMM YYYY"
+                    dateFormat="MM/dd/yyyy"
+                    dateFormatCalendar="LLLL yyyy"
                     disabled={false}
                     disabledKeyboardNavigation={false}
                     dropdownMode="scroll"
-                    excludeDates={false}
+                    excludeDates={
+                      Array [
+                        false,
+                      ]
+                    }
                     monthsShown={1}
                     nextMonthButtonLabel="Next month"
                     onBlur={[Function]}
                     onChange={[Function]}
                     onClickOutside={[Function]}
                     onFocus={[Function]}
+                    onInputClick={[Function]}
+                    onInputError={[Function]}
                     onKeyDown={[Function]}
                     onMonthChange={[Function]}
                     onSelect={[Function]}
@@ -1542,7 +1565,8 @@ exports[`LabOrdersListContainer container should pass required props from state 
                     preventOpenOnFocus={false}
                     previousMonthButtonLabel="Previous Month"
                     readOnly={false}
-                    selected={"2018-11-10T23:00:00.000Z"}
+                    renderDayContents={[Function]}
+                    selected={2018-11-10T23:00:00.000Z}
                     shouldCloseOnSelect={true}
                     showTimeSelect={false}
                     timeCaption="Time"
@@ -1562,6 +1586,7 @@ exports[`LabOrdersListContainer container should pass required props from state 
                         }
                       }
                       popperPlacement="bottom-start"
+                      popperProps={Object {}}
                       targetComponent={
                         <div
                           className="react-datepicker__input-container"
@@ -1580,12 +1605,10 @@ exports[`LabOrdersListContainer container should pass required props from state 
                         </div>
                       }
                     >
-                      <Manager
-                        tag="div"
-                      >
-                        <div>
-                          <Target
-                            className="react-datepicker-wrapper"
+                      <Manager>
+                        <Reference>
+                          <InnerReference
+                            getReferenceRef={[Function]}
                           >
                             <div
                               className="react-datepicker-wrapper"
@@ -1694,8 +1717,8 @@ exports[`LabOrdersListContainer container should pass required props from state 
                                 </DateDisplayComponent>
                               </div>
                             </div>
-                          </Target>
-                        </div>
+                          </InnerReference>
+                        </Reference>
                       </Manager>
                     </PopperComponent>
                   </DatePicker>
@@ -1901,7 +1924,6 @@ exports[`LabOrdersListContainer container should pass required props from state 
                         "width": "100%",
                       }
                     }
-                    value=""
                   >
                     <option
                       key="0"

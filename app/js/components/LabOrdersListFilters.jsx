@@ -44,11 +44,7 @@ class LabOrderListFilters extends PureComponent {
                 defaultMessage="From: "
                 description="Label for the first date search input" />
             )}
-            defaultDate={dateFromField || moment().subtract(8, 'days').format()}
-            formControlStyle={{
-              marginRight: '5px',
-              width: '105px',
-            }}
+            defaultDate={dateFromField.format('YYYY-MM-DD') || moment().subtract(8, 'days').format()}
             handleDateChange={(field, value) => handleFieldChange(field, value)}
             field="dateFromField"
           />
@@ -62,12 +58,8 @@ class LabOrderListFilters extends PureComponent {
                 defaultMessage="To: "
                 description="Label for the second date search input" />
             )}
-            defaultDate={dateToField || moment().format()}
+            defaultDate={dateToField.format('YYYY-MM-DD') || moment().format()}
             field="dateToField"
-            formControlStyle={{
-              marginRight: '5px',
-              width: '105px',
-            }}
             handleDateChange={(field, value) => handleFieldChange(field, value)}
           />
         </span>
@@ -119,9 +111,9 @@ class LabOrderListFilters extends PureComponent {
   render() {
     return (
       <div className="order-list-filters">
-       {/* <span className="top-filters">
+        <span className="top-filters">
           {this.renderDatePickerFilters()}
-        </span>*/}
+        </span>
         <span className="bottom-filters">
           {this.renderNameEMROrOrderIdFilter()}
           <span className="status-dropdown">

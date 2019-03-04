@@ -139,6 +139,7 @@ export class LabResultEntry extends PureComponent {
                   <span className="obs-date-field">
                     <Obs
                       datatype="date"
+                      defaultDate={undefined}
                       concept={CONSTANTS.labResultsDateConcept}
                       path="result-date"
                       validate={[maxDateRange]}
@@ -410,6 +411,7 @@ export class LabResultEntry extends PureComponent {
     if (!location.state || redirect) {
       return <Redirect to="/" />;
     }
+
     if (!R.isEmpty(selectedLabConcept)) {
       return (
         <div className="container-fluid">
