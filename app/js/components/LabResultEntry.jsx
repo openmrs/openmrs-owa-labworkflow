@@ -102,6 +102,8 @@ export class LabResultEntry extends PureComponent {
       uuid: CONSTANTS.labResultsEncounterType,
     };
 
+    const selectedOrder = state;
+
     const encounterFormPageDefaultValues = [
       {
         type: "obs",
@@ -297,6 +299,7 @@ export class LabResultEntry extends PureComponent {
                   formContent={observations}
                   patient={patient}
                   formId="result-entry-form"
+                  orderForObs={selectedOrder}
                 />
               )
               : (
@@ -307,6 +310,7 @@ export class LabResultEntry extends PureComponent {
                   formContent={observations}
                   patient={patient}
                   formId="result-entry-form"
+                  orderForObs={selectedOrder}
                 />
               )
             }
