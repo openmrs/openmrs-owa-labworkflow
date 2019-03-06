@@ -32,6 +32,7 @@ import {
 } from '@openmrs/react-components';
 import patientAction from '../actions/patientAction';
 import { fetchLabConcept } from '../actions/labConceptsAction';
+import { updateLabOrderWithhEncounter } from '../actions/labOrdersAction';
 import '../../css/lab-result-entry.scss';
 import { formatRangeDisplayText, hasMaxAndMinValues } from '../utils/helpers';
 
@@ -50,6 +51,7 @@ export class LabResultEntry extends PureComponent {
     super(props);
     this.state = {
       redirect: false,
+      labOrder: {},
     };
   }
 
@@ -58,6 +60,7 @@ export class LabResultEntry extends PureComponent {
     if (typeof state !== 'undefined') {
       const conceptUUID = state.concept.uuid;
       const patientUUID = state.patient.uuid;
+      this.setState({ labOrder: state });
       dispatch(patientAction.getPatient(patientUUID));
       dispatch(constantsActions.fetchLabResultsDidNotPerformReasonAnswer(CONSTANTS.labResultsDidNotPerformReasonQuestion));
       dispatch(constantsActions.fetchLabResultsTestLocationAnswer(CONSTANTS.labResultsTestLocationQuestion));
@@ -65,6 +68,12 @@ export class LabResultEntry extends PureComponent {
     } else {
       this.shouldRedirect();
     }
+  }
+
+  componentWillUnmount() {
+    const { dispatch } = this.props;
+    const { labOrder } = this.state;
+    dispatch(updateLabOrderWithhEncounter(labOrder));
   }
 
   getEncounter() {
