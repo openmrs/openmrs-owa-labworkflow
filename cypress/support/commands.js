@@ -44,6 +44,7 @@ Cypress.Commands.add('login', (username = Cypress.env('username'), password = Cy
     .type(password)
     .should('have.value', password);
 
+  // get the first available location
   cy.get('#sessionLocation').get('li').first().click();
 
 
