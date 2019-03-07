@@ -6,3 +6,10 @@ npm-debug.log**
 *.zip
 coverage
 .idea
+
+# cypress
+cypress.env.json
+/cypress/screenshots
+/cypress/integration/examples
+/cypress/videos
+
