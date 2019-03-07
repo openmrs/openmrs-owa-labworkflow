@@ -7,3 +7,6 @@ LICENSE
 *.yml
 *.zip
 *.json
+
+# cypress
+cypress
