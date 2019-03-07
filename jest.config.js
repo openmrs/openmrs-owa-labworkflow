@@ -51,6 +51,10 @@ module.exports = {
     "node_modules",
   ],
 
+  testPathIgnorePatterns: [
+    "/cypress/",
+  ],
+
   // node modules dependencies that needs ignoring in tests
   transformIgnorePatterns: [
     "node_modules/(?!ramda)"
