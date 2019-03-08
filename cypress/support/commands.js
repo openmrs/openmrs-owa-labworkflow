@@ -59,3 +59,7 @@ Cypress.Commands.add('logout', () => {
     .find('a')
     .click();
 });
+
+Cypress.Commands.add('navigateToLabWorkflow', () => {
+  cy.visit('/openmrs/owa/labworkflow/index.html#/');
+});
