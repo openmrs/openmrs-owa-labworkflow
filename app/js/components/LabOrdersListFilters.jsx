@@ -19,6 +19,7 @@ class LabOrderListFilters extends PureComponent {
         <span className="name-emrid-order-filter">
           <i className="small icon-search" />
           <FormControl
+            id="emr-name-search"
             autoFocus
             type="text"
             placeholder="search by ID or name, or scan sample"
@@ -73,6 +74,7 @@ class LabOrderListFilters extends PureComponent {
     return (
       <Dropdown
         className="form-filter-group"
+        id="test-status-dropdown"
         label={(
           <FormattedMessage
             id="app.labOrdersListFilters.statusDropdownLabel"
@@ -93,6 +95,7 @@ class LabOrderListFilters extends PureComponent {
     return (
       <Dropdown
         className="form-filter-group"
+        id="test-type-dropdown"
         label={(
           <FormattedMessage
             id="app.labOrdersListFilters.searchDropdownLabel"

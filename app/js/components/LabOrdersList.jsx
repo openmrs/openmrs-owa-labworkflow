@@ -29,7 +29,7 @@ export const Cell = ({ columnName, value, dateAndTimeFormat }) => {
   switch (columnName) {
     case 'EMR ID': {
       // TODO: refactor this and name column to use React Components patientUtils
-      const emrID = value.patient.display.split('-')[0];
+      const emrID = value.patient.display.split('-')[0].trim();
       return (
         <div className="table_cell emr-id">
           <span>{emrID}</span>
@@ -37,7 +37,7 @@ export const Cell = ({ columnName, value, dateAndTimeFormat }) => {
       );
     }
     case 'NAME': {
-      const displayName = value.patient.display.split('-')[1];
+      const displayName = value.patient.display.split('-')[1].trim();
       return (
         <div className="table_cell order-date">
           <span>{displayName}</span>
