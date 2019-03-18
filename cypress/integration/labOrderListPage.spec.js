@@ -1,4 +1,3 @@
-import { MOCKS } from '../support/constants';
 describe('LabOrderList Page', () => {
   before(()  => {
     cy.login();
@@ -48,7 +47,7 @@ describe('LabOrderList Page', () => {
 
     cy.get('.rt-tbody')
       .children()
-      .should('have.length', 3);
+      .should('have.length', 2);
   });
   it('should filter patients by order status of reported', () => {
     cy.get('#emr-name-search')
@@ -71,7 +70,7 @@ describe('LabOrderList Page', () => {
 
     cy.get('.rt-tbody')
       .children()
-      .should('have.length', 0);
+      .should('have.length', 1);
   });
   it('should filter patients by Test Type', () => {
     cy.get('#emr-name-search')
@@ -86,10 +85,6 @@ describe('LabOrderList Page', () => {
     cy.get('.rt-tbody')
       .children()
       .should('have.length', 1);
-  });
-  it.skip('should navigate to the lab result entry page when an order is clicked', () => {
-    // should figure out this bit once we get the system settings loaded
-    // TODO: add test stubs for navugating with the different order status types of ORDERED, REPORTED & TAKEN
   });
   after(() => {
     cy.logout();

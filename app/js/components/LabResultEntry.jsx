@@ -255,6 +255,7 @@ export class LabResultEntry extends PureComponent {
                 </span>
                 <span className="encounter-date-field">
                   <EncounterDate
+                    id="specimen-collection-date"
                     handleDateChange={() => {}}
                     labelClassName="date-picker-label"
                     label="Specimen Collection Date:"

@@ -83,6 +83,18 @@ Cypress.Commands.add('fetchEncounters', () => {
   });
 });
 
+Cypress.Commands.add('fetchConcepts', () => {
+  cy.server();
+  MOCKS.CONCEPTS.forEach((mock) => {
+    cy.route({
+      method: 'GET',
+      url: mock.URL,
+      response: mock.RESPONSE,
+      status: 200,
+    });
+  });
+});
+
 Cypress.Commands.add('fetchSystemSettiings', () => {
   cy.server();
   cy.route({
@@ -161,4 +173,8 @@ Cypress.Commands.add('fetchSystemSettiings', () => {
 
 Cypress.Commands.add('navigateToLabWorkflow', () => {
   cy.visit('/openmrs/owa/labworkflow/index.html#/');
+});
+
+Cypress.Commands.add('navigateToHomePage', () => {
+  cy.visit('/openmrs/index.htm?lang=en_us');
 });
