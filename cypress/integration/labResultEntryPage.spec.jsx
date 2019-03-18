@@ -2,10 +2,6 @@ import { MOCKS } from '../support/constants';
 
 describe('Lab Result Entry Page', () => {
   describe('Navigate', () => {
-    before(() => {
-      // cy.login();
-    });
-
     beforeEach(() => {
       cy.login();
       cy.server()
