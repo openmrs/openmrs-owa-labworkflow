@@ -87,6 +87,9 @@ export function* fetchAndSetTestResultEncounter(args) {
       const testOrderObs = encounter.obs.filter(
         item => item.concept.uuid === state.openmrs.CONSTANTS.labResultsTestOrderNumberConcept,
       );
+
+      if (testOrderObs.length <= 0) return false;
+
       const testOrderNumber = testOrderObs[0].value;
       const matched = testOrderNumber === order.orderNumber;
       return matched;
@@ -105,6 +108,7 @@ export function* fetchAndSetTestResultEncounter(args) {
 
     yield put(setOrderLabEncounter(count, orderWithEncounter));
   } catch (error) {
+    console.log('error', error);
     yield put({ type: "FETCH_LAB_ORDERS_FAILURE", payload: error, error: true });
   }
 }
