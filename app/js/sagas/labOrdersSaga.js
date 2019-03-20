@@ -87,6 +87,9 @@ export function* fetchAndSetTestResultEncounter(args) {
       const testOrderObs = encounter.obs.filter(
         item => item.concept.uuid === state.openmrs.CONSTANTS.labResultsTestOrderNumberConcept,
       );
+
+      if (testOrderObs.length <= 0) return false;
+
       const testOrderNumber = testOrderObs[0].value;
       const matched = testOrderNumber === order.orderNumber;
       return matched;

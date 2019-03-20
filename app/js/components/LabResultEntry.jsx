@@ -120,6 +120,12 @@ export class LabResultEntry extends PureComponent {
         concept: CONSTANTS.labResultsTestOrderNumberConcept,
         value: state.orderNumber,
       },
+      {
+        type: "obs",
+        path: "result-date",
+        concept: CONSTANTS.labResultsDateConcept,
+        value: new Date(),
+      },
     ];
 
     const hasMembers = selectedLabConcept.set;
