@@ -108,7 +108,6 @@ export function* fetchAndSetTestResultEncounter(args) {
 
     yield put(setOrderLabEncounter(count, orderWithEncounter));
   } catch (error) {
-    console.log('error', error);
     yield put({ type: "FETCH_LAB_ORDERS_FAILURE", payload: error, error: true });
   }
 }
