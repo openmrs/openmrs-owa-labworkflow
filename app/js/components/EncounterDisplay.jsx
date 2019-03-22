@@ -24,7 +24,8 @@ class EncounterDisplay extends PureComponent {
       }
 
       if (type === "collectionDate") {
-        if (labResult.resultStatus !== "Ordered") {
+        const statusesWithoutEncounter = ["Ordered", "Cancelled", "Expired"];
+        if (!statusesWithoutEncounter.includes(labResult.resultStatus)) {
           return (
             <div className="table_cell test-type">
               {moment(labResult.encounter.encounterDatetime).format("DD-MMM-YYYY")}

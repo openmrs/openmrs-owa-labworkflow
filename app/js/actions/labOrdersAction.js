@@ -9,7 +9,7 @@ import {
 
 export const fetchLabOrders = (testOrderType, options) => ({
   type: FETCH_LAB_ORDERS,
-  payload: axiosInstance.get(`order?s=default&totalCount=true&sort=desc&status=active&orderTypes=${testOrderType}&activatedOnOrAfterDate=${options.dateFromField}&activatedOnOrBeforeDate=${options.dateToField}&v=full`),
+  payload: axiosInstance.get(`order?s=default&totalCount=true&sort=desc&orderTypes=${testOrderType}&activatedOnOrAfterDate=${options.dateFromField}&activatedOnOrBeforeDate=${options.dateToField}&v=full`),
 });
 
 export const updateLabOrderWithhEncounter = labOrder => ({

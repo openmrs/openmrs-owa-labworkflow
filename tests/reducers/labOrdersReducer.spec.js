@@ -4,6 +4,7 @@ import {
   FETCH_LAB_ORDERS,
   SET_LAB_TEST,
   SET_ORDER_LAB_ENCOUNTER,
+  SET_LAB_ORDERS,
 } from '../../app/js/actions/actionTypes';
 
 
@@ -19,17 +20,18 @@ describe('labOrdersReducer', () => {
     expect(nextState.error.message).toEqual(null);
   });
   it(`sets the apprioprate state after FETCH_LAB_ORDERS_SUCCESS is dispatched`, () => {
+    const orders = [
+      { orderNumber: 'ORD-1' },
+      { orderNumber: 'ORD-2' },
+      { orderNumber: 'ORD-3' },
+    ];
     const successAction = {
-      type: `${FETCH_LAB_ORDERS}_SUCCESS`,
-      payload: {
-        data: {
-          results: ['some valid result'],
-        },
-      },
+      type: SET_LAB_ORDERS,
+      orders,
     };
     const nextState = labOrdersReducer(initialState.labOrderReducer, successAction);
     expect(nextState.isLoading).toEqual(false);
-    expect(nextState.orders).toEqual(successAction.payload.data.results);
+    expect(nextState.orders).toEqual(orders);
     expect(nextState.error.status).toEqual(false);
     expect(nextState.error.message).toEqual(null);
   });

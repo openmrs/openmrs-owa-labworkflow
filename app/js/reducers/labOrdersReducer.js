@@ -5,6 +5,7 @@ import {
   SET_LAB_TEST,
   SET_ORDER_LAB_ENCOUNTER,
   SET_ORDER_LIST_FETCH_STATUS,
+  SET_LAB_ORDERS,
 } from '../actions/actionTypes';
 
 
@@ -22,12 +23,12 @@ export default (state = initialState.labOrderReducer, action) => {
     };
   }
   switch (action.type) {
-    case `${FETCH_LAB_ORDERS}_SUCCESS`: {
+    case SET_LAB_ORDERS: {
       return {
         ...state,
         isLoading: false,
         fetched: true,
-        orders: action.payload.data.results,
+        orders: action.orders,
       };
     }
     case `${FETCH_LAB_ORDERS}_FAILURE`: {

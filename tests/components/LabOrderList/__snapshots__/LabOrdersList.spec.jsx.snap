@@ -235,12 +235,12 @@ exports[`<LabOrdersList /> component renders correctly 1`] = `
           >
             <span>
               <CustomDatePicker
-                defaultDate={"2018-11-10T23:00:00.000Z"}
+                defaultDate="2018-11-11"
                 field="dateFromField"
                 formControlStyle={
                   Object {
                     "marginRight": "5px",
-                    "width": "105px",
+                    "width": "110px",
                   }
                 }
                 handleDateChange={[Function]}
@@ -258,7 +258,7 @@ exports[`<LabOrdersList /> component renders correctly 1`] = `
                   <DatePicker
                     allowSameDay={false}
                     customInput={<DateDisplayComponent />}
-                    dateFormat="MM/dd/yyyy"
+                    dateFormat="dd MMM YYYY"
                     dateFormatCalendar="LLLL yyyy"
                     disabled={false}
                     disabledKeyboardNavigation={false}
@@ -284,7 +284,7 @@ exports[`<LabOrdersList /> component renders correctly 1`] = `
                     previousMonthButtonLabel="Previous Month"
                     readOnly={false}
                     renderDayContents={[Function]}
-                    selected={2018-11-10T23:00:00.000Z}
+                    selected="2018-11-11"
                     shouldCloseOnSelect={true}
                     showTimeSelect={false}
                     timeCaption="Time"
@@ -318,7 +318,7 @@ exports[`<LabOrdersList /> component renders correctly 1`] = `
                             onFocus={[Function]}
                             onKeyDown={[Function]}
                             readOnly={false}
-                            value="11/11/2018"
+                            value="11 Nov 2018"
                           />
                         </div>
                       }
@@ -343,7 +343,7 @@ exports[`<LabOrdersList /> component renders correctly 1`] = `
                                   onFocus={[Function]}
                                   onKeyDown={[Function]}
                                   readOnly={false}
-                                  value="11/11/2018"
+                                  value="11 Nov 2018"
                                 >
                                   <span>
                                     <span
@@ -371,27 +371,29 @@ exports[`<LabOrdersList /> component renders correctly 1`] = `
                                       <FormControl
                                         bsClass="form-control"
                                         componentClass="input"
+                                        onClick={[Function]}
                                         placeholder=""
                                         style={
                                           Object {
                                             "marginRight": "5px",
-                                            "width": "105px",
+                                            "width": "110px",
                                           }
                                         }
                                         type="text"
-                                        value="11/11/2018"
+                                        value="11 Nov 2018"
                                       >
                                         <input
                                           className="form-control"
+                                          onClick={[Function]}
                                           placeholder=""
                                           style={
                                             Object {
                                               "marginRight": "5px",
-                                              "width": "105px",
+                                              "width": "110px",
                                             }
                                           }
                                           type="text"
-                                          value="11/11/2018"
+                                          value="11 Nov 2018"
                                         />
                                       </FormControl>
                                       <FontAwesomeIcon
@@ -445,12 +447,12 @@ exports[`<LabOrdersList /> component renders correctly 1`] = `
             </span>
             <span>
               <CustomDatePicker
-                defaultDate={"2018-11-10T23:00:00.000Z"}
+                defaultDate="2018-11-11"
                 field="dateToField"
                 formControlStyle={
                   Object {
                     "marginRight": "5px",
-                    "width": "105px",
+                    "width": "110px",
                   }
                 }
                 handleDateChange={[Function]}
@@ -468,7 +470,7 @@ exports[`<LabOrdersList /> component renders correctly 1`] = `
                   <DatePicker
                     allowSameDay={false}
                     customInput={<DateDisplayComponent />}
-                    dateFormat="MM/dd/yyyy"
+                    dateFormat="dd MMM YYYY"
                     dateFormatCalendar="LLLL yyyy"
                     disabled={false}
                     disabledKeyboardNavigation={false}
@@ -494,7 +496,7 @@ exports[`<LabOrdersList /> component renders correctly 1`] = `
                     previousMonthButtonLabel="Previous Month"
                     readOnly={false}
                     renderDayContents={[Function]}
-                    selected={2018-11-10T23:00:00.000Z}
+                    selected="2018-11-11"
                     shouldCloseOnSelect={true}
                     showTimeSelect={false}
                     timeCaption="Time"
@@ -528,7 +530,7 @@ exports[`<LabOrdersList /> component renders correctly 1`] = `
                             onFocus={[Function]}
                             onKeyDown={[Function]}
                             readOnly={false}
-                            value="11/11/2018"
+                            value="11 Nov 2018"
                           />
                         </div>
                       }
@@ -553,7 +555,7 @@ exports[`<LabOrdersList /> component renders correctly 1`] = `
                                   onFocus={[Function]}
                                   onKeyDown={[Function]}
                                   readOnly={false}
-                                  value="11/11/2018"
+                                  value="11 Nov 2018"
                                 >
                                   <span>
                                     <span
@@ -581,27 +583,29 @@ exports[`<LabOrdersList /> component renders correctly 1`] = `
                                       <FormControl
                                         bsClass="form-control"
                                         componentClass="input"
+                                        onClick={[Function]}
                                         placeholder=""
                                         style={
                                           Object {
                                             "marginRight": "5px",
-                                            "width": "105px",
+                                            "width": "110px",
                                           }
                                         }
                                         type="text"
-                                        value="11/11/2018"
+                                        value="11 Nov 2018"
                                       >
                                         <input
                                           className="form-control"
+                                          onClick={[Function]}
                                           placeholder=""
                                           style={
                                             Object {
                                               "marginRight": "5px",
-                                              "width": "105px",
+                                              "width": "110px",
                                             }
                                           }
                                           type="text"
-                                          value="11/11/2018"
+                                          value="11 Nov 2018"
                                         />
                                       </FormControl>
                                       <FontAwesomeIcon
@@ -681,6 +685,7 @@ exports[`<LabOrdersList /> component renders correctly 1`] = `
                 autoFocus={true}
                 bsClass="form-control"
                 componentClass="input"
+                id="emr-name-search"
                 onChange={[Function]}
                 placeholder="search by ID or name, or scan sample"
                 type="text"
@@ -689,6 +694,7 @@ exports[`<LabOrdersList /> component renders correctly 1`] = `
                 <input
                   autoFocus={true}
                   className="form-control"
+                  id="emr-name-search"
                   onChange={[Function]}
                   placeholder="search by ID or name, or scan sample"
                   type="text"
@@ -710,6 +716,7 @@ exports[`<LabOrdersList /> component renders correctly 1`] = `
               defaultValue="All"
               field="testStatusField"
               handleSelect={[Function]}
+              id="test-status-dropdown"
               input={
                 Object {
                   "value": undefined,
@@ -753,6 +760,7 @@ exports[`<LabOrdersList /> component renders correctly 1`] = `
                   </span>
                   <select
                     disabled={false}
+                    id="test-status-dropdown"
                     onChange={[Function]}
                     style={
                       Object {
@@ -804,6 +812,7 @@ exports[`<LabOrdersList /> component renders correctly 1`] = `
               defaultValue="All"
               field="testTypeField"
               handleSelect={[Function]}
+              id="test-type-dropdown"
               input={
                 Object {
                   "value": "",
@@ -845,6 +854,7 @@ exports[`<LabOrdersList /> component renders correctly 1`] = `
                   </span>
                   <select
                     disabled={false}
+                    id="test-type-dropdown"
                     onChange={[Function]}
                     style={
                       Object {
@@ -941,7 +951,7 @@ exports[`LabOrdersListContainer container <Cell /> component returns EMR ID sect
     className="table_cell emr-id"
   >
     <span>
-      Y2A7LR 
+      Y2A7LR
     </span>
   </div>
 </_Cell>
@@ -987,7 +997,7 @@ exports[`LabOrdersListContainer container <Cell /> component returns NAME column
     className="table_cell order-date"
   >
     <span>
-       williams willy john
+      williams willy john
     </span>
   </div>
 </_Cell>
@@ -1307,12 +1317,12 @@ exports[`LabOrdersListContainer container should pass required props from state 
           >
             <span>
               <CustomDatePicker
-                defaultDate={"2018-11-10T23:00:00.000Z"}
+                defaultDate="2018-11-11"
                 field="dateFromField"
                 formControlStyle={
                   Object {
                     "marginRight": "5px",
-                    "width": "105px",
+                    "width": "110px",
                   }
                 }
                 handleDateChange={[Function]}
@@ -1330,7 +1340,7 @@ exports[`LabOrdersListContainer container should pass required props from state 
                   <DatePicker
                     allowSameDay={false}
                     customInput={<DateDisplayComponent />}
-                    dateFormat="MM/dd/yyyy"
+                    dateFormat="dd MMM YYYY"
                     dateFormatCalendar="LLLL yyyy"
                     disabled={false}
                     disabledKeyboardNavigation={false}
@@ -1356,7 +1366,7 @@ exports[`LabOrdersListContainer container should pass required props from state 
                     previousMonthButtonLabel="Previous Month"
                     readOnly={false}
                     renderDayContents={[Function]}
-                    selected={2018-11-10T23:00:00.000Z}
+                    selected="2018-11-11"
                     shouldCloseOnSelect={true}
                     showTimeSelect={false}
                     timeCaption="Time"
@@ -1390,7 +1400,7 @@ exports[`LabOrdersListContainer container should pass required props from state 
                             onFocus={[Function]}
                             onKeyDown={[Function]}
                             readOnly={false}
-                            value="11/11/2018"
+                            value="11 Nov 2018"
                           />
                         </div>
                       }
@@ -1415,7 +1425,7 @@ exports[`LabOrdersListContainer container should pass required props from state 
                                   onFocus={[Function]}
                                   onKeyDown={[Function]}
                                   readOnly={false}
-                                  value="11/11/2018"
+                                  value="11 Nov 2018"
                                 >
                                   <span>
                                     <span
@@ -1443,27 +1453,29 @@ exports[`LabOrdersListContainer container should pass required props from state 
                                       <FormControl
                                         bsClass="form-control"
                                         componentClass="input"
+                                        onClick={[Function]}
                                         placeholder=""
                                         style={
                                           Object {
                                             "marginRight": "5px",
-                                            "width": "105px",
+                                            "width": "110px",
                                           }
                                         }
                                         type="text"
-                                        value="11/11/2018"
+                                        value="11 Nov 2018"
                                       >
                                         <input
                                           className="form-control"
+                                          onClick={[Function]}
                                           placeholder=""
                                           style={
                                             Object {
                                               "marginRight": "5px",
-                                              "width": "105px",
+                                              "width": "110px",
                                             }
                                           }
                                           type="text"
-                                          value="11/11/2018"
+                                          value="11 Nov 2018"
                                         />
                                       </FormControl>
                                       <FontAwesomeIcon
@@ -1517,12 +1529,12 @@ exports[`LabOrdersListContainer container should pass required props from state 
             </span>
             <span>
               <CustomDatePicker
-                defaultDate={"2018-11-10T23:00:00.000Z"}
+                defaultDate="2018-11-11"
                 field="dateToField"
                 formControlStyle={
                   Object {
                     "marginRight": "5px",
-                    "width": "105px",
+                    "width": "110px",
                   }
                 }
                 handleDateChange={[Function]}
@@ -1540,7 +1552,7 @@ exports[`LabOrdersListContainer container should pass required props from state 
                   <DatePicker
                     allowSameDay={false}
                     customInput={<DateDisplayComponent />}
-                    dateFormat="MM/dd/yyyy"
+                    dateFormat="dd MMM YYYY"
                     dateFormatCalendar="LLLL yyyy"
                     disabled={false}
                     disabledKeyboardNavigation={false}
@@ -1566,7 +1578,7 @@ exports[`LabOrdersListContainer container should pass required props from state 
                     previousMonthButtonLabel="Previous Month"
                     readOnly={false}
                     renderDayContents={[Function]}
-                    selected={2018-11-10T23:00:00.000Z}
+                    selected="2018-11-11"
                     shouldCloseOnSelect={true}
                     showTimeSelect={false}
                     timeCaption="Time"
@@ -1600,7 +1612,7 @@ exports[`LabOrdersListContainer container should pass required props from state 
                             onFocus={[Function]}
                             onKeyDown={[Function]}
                             readOnly={false}
-                            value="11/11/2018"
+                            value="11 Nov 2018"
                           />
                         </div>
                       }
@@ -1625,7 +1637,7 @@ exports[`LabOrdersListContainer container should pass required props from state 
                                   onFocus={[Function]}
                                   onKeyDown={[Function]}
                                   readOnly={false}
-                                  value="11/11/2018"
+                                  value="11 Nov 2018"
                                 >
                                   <span>
                                     <span
@@ -1653,27 +1665,29 @@ exports[`LabOrdersListContainer container should pass required props from state 
                                       <FormControl
                                         bsClass="form-control"
                                         componentClass="input"
+                                        onClick={[Function]}
                                         placeholder=""
                                         style={
                                           Object {
                                             "marginRight": "5px",
-                                            "width": "105px",
+                                            "width": "110px",
                                           }
                                         }
                                         type="text"
-                                        value="11/11/2018"
+                                        value="11 Nov 2018"
                                       >
                                         <input
                                           className="form-control"
+                                          onClick={[Function]}
                                           placeholder=""
                                           style={
                                             Object {
                                               "marginRight": "5px",
-                                              "width": "105px",
+                                              "width": "110px",
                                             }
                                           }
                                           type="text"
-                                          value="11/11/2018"
+                                          value="11 Nov 2018"
                                         />
                                       </FormControl>
                                       <FontAwesomeIcon
@@ -1753,6 +1767,7 @@ exports[`LabOrdersListContainer container should pass required props from state 
                 autoFocus={true}
                 bsClass="form-control"
                 componentClass="input"
+                id="emr-name-search"
                 onChange={[Function]}
                 placeholder="search by ID or name, or scan sample"
                 type="text"
@@ -1761,6 +1776,7 @@ exports[`LabOrdersListContainer container should pass required props from state 
                 <input
                   autoFocus={true}
                   className="form-control"
+                  id="emr-name-search"
                   onChange={[Function]}
                   placeholder="search by ID or name, or scan sample"
                   type="text"
@@ -1782,6 +1798,7 @@ exports[`LabOrdersListContainer container should pass required props from state 
               defaultValue="All"
               field="testStatusField"
               handleSelect={[Function]}
+              id="test-status-dropdown"
               input={
                 Object {
                   "value": undefined,
@@ -1825,6 +1842,7 @@ exports[`LabOrdersListContainer container should pass required props from state 
                   </span>
                   <select
                     disabled={false}
+                    id="test-status-dropdown"
                     onChange={[Function]}
                     style={
                       Object {
@@ -1876,6 +1894,7 @@ exports[`LabOrdersListContainer container should pass required props from state 
               defaultValue="All"
               field="testTypeField"
               handleSelect={[Function]}
+              id="test-type-dropdown"
               input={
                 Object {
                   "value": "",
@@ -1917,6 +1936,7 @@ exports[`LabOrdersListContainer container should pass required props from state 
                   </span>
                   <select
                     disabled={false}
+                    id="test-type-dropdown"
                     onChange={[Function]}
                     style={
                       Object {

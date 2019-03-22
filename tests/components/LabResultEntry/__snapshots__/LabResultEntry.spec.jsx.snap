@@ -616,9 +616,10 @@ exports[`<LabResultEntry /> component renders correctly with valid props 1`] = `
                                     className="encounter-date-field"
                                   >
                                     <WithFormContext(Connect(EncounterDate))
-                                      defaultDate={"2019-01-29T23:00:00.000Z"}
+                                      defaultDate={"2019-03-21T23:00:00.000Z"}
                                       field="dateFromField"
                                       handleDateChange={[Function]}
+                                      id="specimen-collection-date"
                                       label="Specimen Collection Date:"
                                       labelClassName="date-picker-label"
                                     />
@@ -722,6 +723,26 @@ exports[`<LabResultEntry /> component renders correctly with valid props 1`] = `
                         </Grid>
                       }
                       formId="result-entry-form"
+                      orderForObs={
+                        Object {
+                          "concept": Object {
+                            "display": "Hémogramme automatisé",
+                            "uuid": "9i9i-99090-999",
+                          },
+                          "dateActivated": "2018-08-30T17:34:19.000+0100",
+                          "labResult": Object {
+                            "encounter": Object {
+                              "encounterDatetime": "2018-08-30T17:34:19.000+0100",
+                            },
+                            "resultStatus": "Reported",
+                          },
+                          "orderNumber": "ORD-1",
+                          "patient": Object {
+                            "display": "Y2A7LR - williams willy john",
+                          },
+                          "urgency": "ROUTINE",
+                        }
+                      }
                       patient={
                         Object {
                           "display": "Y2A7LR - williams willy john",
@@ -904,9 +925,10 @@ exports[`<LabResultEntry /> component renders correctly with valid props 1`] = `
                                       className="encounter-date-field"
                                     >
                                       <WithFormContext(Connect(EncounterDate))
-                                        defaultDate={"2019-01-29T23:00:00.000Z"}
+                                        defaultDate={"2019-03-21T23:00:00.000Z"}
                                         field="dateFromField"
                                         handleDateChange={[Function]}
+                                        id="specimen-collection-date"
                                         label="Specimen Collection Date:"
                                         labelClassName="date-picker-label"
                                       />
@@ -1010,11 +1032,32 @@ exports[`<LabResultEntry /> component renders correctly with valid props 1`] = `
                           </Grid>
                         }
                         formId="result-entry-form"
+                        orderForObs={
+                          Object {
+                            "concept": Object {
+                              "display": "Hémogramme automatisé",
+                              "uuid": "9i9i-99090-999",
+                            },
+                            "dateActivated": "2018-08-30T17:34:19.000+0100",
+                            "labResult": Object {
+                              "encounter": Object {
+                                "encounterDatetime": "2018-08-30T17:34:19.000+0100",
+                              },
+                              "resultStatus": "Reported",
+                            },
+                            "orderNumber": "ORD-1",
+                            "patient": Object {
+                              "display": "Y2A7LR - williams willy john",
+                            },
+                            "urgency": "ROUTINE",
+                          }
+                        }
                         patient={
                           Object {
                             "display": "Y2A7LR - williams willy john",
                           }
                         }
+                        showDate={false}
                       >
                         <div
                           style={
