@@ -141,7 +141,6 @@ export function* fetchAndSetTestResultEncounter(args) {
 
 export function* fetchEncounters(action) {
   const { orders } = action;
-  // const orders = payload.data.results;
   let iterator = 0;
   let forkedProcess;
   try {
