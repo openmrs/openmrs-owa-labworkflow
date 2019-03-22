@@ -16,11 +16,12 @@ import {
   UPDATE_LAB_ORDER_WITH_ENCOUNTER,
   SET_ORDER_LAB_ENCOUNTER,
   SET_ORDER_LIST_FETCH_STATUS,
+  SET_LAB_ORDERS,
 } from '../actions/actionTypes';
 import { setLabTestTypes, setOrderLabEncounter } from '../actions/labOrdersAction';
 import { setSelectedConcept } from '../actions/labConceptsAction';
 
-const computeResultStatus = (encounter, constants) => {
+const computeResultStatus = (encounter, constants, order) => {
   const concealedConceptUUIDs = [
     constants.labResultsTestOrderNumberConcept,
     constants.labResultsTestLocationQuestion,
@@ -42,6 +43,14 @@ const computeResultStatus = (encounter, constants) => {
       return "Taken";
     }
   }
+
+  if (order.dateStopped !== null) {
+    return "Cancelled";
+  }
+
+  if (order.autoExpireDate !== null) {
+    return "Expired";
+  }
   return "Ordered";
 };
 
@@ -52,6 +61,23 @@ export function* clear() {
 
 export function* resetState() {
   yield takeEvery(`${FETCH_LAB_ORDERS}_SUCCESS`, clear);
+}
+
+export function* filterAndSetOrders(action) {
+  const { payload } = action;
+
+  const result = payload.data.results;
+  // filter out orders where action="DISCONTINUE"
+  const orders = result.filter(order => order.action !== "DISCONTINUE");
+
+  yield put({ type: SET_LAB_ORDERS, orders });
+
+  const labTestTypes = R.compose(
+    R.uniq,
+    R.map(R.path(['concept', 'display'])),
+  )(orders);
+
+  yield put(setLabTestTypes(labTestTypes));
 }
 
 export function* setTestTypes(action) {
@@ -66,7 +92,7 @@ export function* setTestTypes(action) {
 }
 
 export function* setLabTestsSaga() {
-  yield takeEvery(`${FETCH_LAB_ORDERS}_SUCCESS`, setTestTypes);
+  yield takeEvery(`${FETCH_LAB_ORDERS}_SUCCESS`, filterAndSetOrders);
 }
 
 export function* fetchAndSetTestResultEncounter(args) {
@@ -102,6 +128,7 @@ export function* fetchAndSetTestResultEncounter(args) {
         resultStatus: computeResultStatus(
           matchedEncounter[0] || null,
           state.openmrs.CONSTANTS,
+          order,
         ),
       },
     };
@@ -113,8 +140,8 @@ export function* fetchAndSetTestResultEncounter(args) {
 }
 
 export function* fetchEncounters(action) {
-  const { payload } = action;
-  const orders = payload.data.results;
+  const { orders } = action;
+  // const orders = payload.data.results;
   let iterator = 0;
   let forkedProcess;
   try {
@@ -133,6 +160,6 @@ export function* fetchEncounters(action) {
 }
 
 export function* setEncounters() {
-  yield takeEvery(`${FETCH_LAB_ORDERS}_SUCCESS`, fetchEncounters);
+  yield takeEvery(SET_LAB_ORDERS, fetchEncounters);
   yield takeEvery(UPDATE_LAB_ORDER_WITH_ENCOUNTER, fetchAndSetTestResultEncounter);
 }

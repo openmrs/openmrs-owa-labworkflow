@@ -1,5 +1,10 @@
 import { setLabTestsSaga, resetState, clear } from '../../app/js/sagas/labOrdersSaga';
-import { FETCH_LAB_ORDERS, SET_LAB_TEST, SET_CONCEPT } from '../../app/js/actions/actionTypes';
+import {
+  FETCH_LAB_ORDERS,
+  SET_LAB_TEST,
+  SET_CONCEPT,
+  SET_LAB_ORDERS,
+} from '../../app/js/actions/actionTypes';
 
 let sagaTester;
 
@@ -29,6 +34,7 @@ describe('setLabTestsSaga', () => {
   it('should dispatch SET_LAB_TEST', () => {
     const expectedActions = [
       `${FETCH_LAB_ORDERS}_SUCCESS`,
+      SET_LAB_ORDERS,
       SET_LAB_TEST,
     ];
 
