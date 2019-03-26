@@ -70,7 +70,7 @@ class LabOrderListFilters extends PureComponent {
 
   renderTestStatusFilter() {
     const { handleFieldChange, testStatusField } = this.props;
-    const statusOptions = ["Ordered", "Reported", "Taken"];
+    const statusOptions = ["Ordered", "Reported", "Taken", "Cancelled/Expired"];
     return (
       <Dropdown
         className="form-filter-group"
