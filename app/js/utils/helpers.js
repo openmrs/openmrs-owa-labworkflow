@@ -52,8 +52,23 @@ export const filterThrough = (filters, data) => {
   }
 
   if (filters.testStatusField !== "All") {
-    const inputValue = filters.testStatusField;
-    const filteredData = matchSorter(originalData, inputValue, { keys: ['labResult.resultStatus'] });
+    let inputValue = filters.testStatusField;
+    let filteredData = [];
+    if (filters.testStatusField === "Cancelled/Expired") {
+      const cancelledData = matchSorter(originalData, "Cancelled", { keys: ['labResult.resultStatus'] });
+      const expiredData = matchSorter(originalData, "Expired", { keys: ['labResult.resultStatus'] });
+      filteredData = cancelledData.concat(expiredData);
+    } else {
+      filteredData = matchSorter(originalData, inputValue, { keys: ['labResult.resultStatus'] });
+    }
+    originalData = filteredData;
+  }
+
+  if (filters.testStatusField === "All") {
+    const filteredData = originalData.filter((data) => {
+      if (!data.labResult) return false;
+      return (data.labResult.resultStatus !== "Cancelled") && (data.labResult.resultStatus !== "Expired");
+    });
     originalData = filteredData;
   }
 
