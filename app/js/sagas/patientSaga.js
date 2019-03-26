@@ -40,7 +40,7 @@ function* fetchAndSetTestResults(action) {
     if (encounterTypeResponse && labResultsTestOrderTypeResponse) {
       const labResultsTestOrderType = labResultsTestOrderTypeResponse.results[0].value;
       const encounterTypeUUID = encounterTypeResponse.results[0].value;
-      const patientOrdersResponse = yield call(orderRest.fetchActiveOrdersByPatient, patientUUID,
+      const patientOrdersResponse = yield call(orderRest.fetchAllOrdersByPatient, patientUUID,
         labResultsTestOrderType);
 
       const patientEncountersResponse = yield call(
@@ -53,7 +53,7 @@ function* fetchAndSetTestResults(action) {
         if (patientOrdersResponse.results.length) {
           yield put(patientAction.setPatientData({
             meta: {
-              orders: patientOrdersResponse.results,
+              orders: patientOrdersResponse.results.filter(order => order.action !== "DISCONTINUE"),
               encounters: patientEncountersResponse.results,
             },
             patientUUID,
