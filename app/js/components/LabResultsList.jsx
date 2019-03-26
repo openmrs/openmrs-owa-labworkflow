@@ -339,6 +339,9 @@ export class LabResultsList extends PureComponent {
         const resultDateObs = encounter.obs.filter(
           item => item.concept.uuid === labResultsDateConcept,
         );
+
+        if (testOrderObs.length <= 0) return false;
+
         const testOrderNumber = testOrderObs[0].value;
         const matchedOrder = orders.filter(order => order.orderNumber === testOrderNumber);
         const hasObs = !R.isEmpty(encounter.obs);
@@ -379,7 +382,6 @@ export class LabResultsList extends PureComponent {
       });
 
       // remove all results without an order
-      // const filteredResults = results.filter
       const filteredResults = results.filter(item => !R.isNil(item.order));
       const filteredOrders = orders.filter((order) => {
         const matchedResult = filteredResults.filter(
@@ -388,10 +390,20 @@ export class LabResultsList extends PureComponent {
         return R.isEmpty(matchedResult);
       });
 
-      const orderedTests = filteredOrders.map(order => ({
-        order,
-        status: 'Ordered',
-      }));
+      const orderedTests = filteredOrders.map((order) => {
+        let status = "Ordered";
+        if (order.dateStopped !== null) {
+          status = "Cancelled";
+        }
+      
+        if (order.autoExpireDate !== null) {
+          status = "Expired";
+        }
+        return {
+          order,
+          status,
+        };
+      });
       const labResults = orderedTests.concat(filteredResults);
 
       return labResults;
