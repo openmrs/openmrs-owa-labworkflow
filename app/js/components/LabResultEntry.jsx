@@ -64,6 +64,8 @@ export class LabResultEntry extends PureComponent {
       dispatch(patientAction.getPatient(patientUUID));
       dispatch(constantsActions.fetchLabResultsDidNotPerformReasonAnswer(CONSTANTS.labResultsDidNotPerformReasonQuestion));
       dispatch(constantsActions.fetchLabResultsTestLocationAnswer(CONSTANTS.labResultsTestLocationQuestion));
+      dispatch(constantsActions.fetchLabResultsEncounterType());
+      dispatch(constantsActions.fetchLabResultsEncounterRole());
       dispatch(fetchLabConcept(conceptUUID));
     } else {
       this.shouldRedirect();
@@ -109,6 +111,10 @@ export class LabResultEntry extends PureComponent {
 
     const encounterType = {
       uuid: CONSTANTS.labResultsEncounterType,
+    };
+
+    const encounterRole = {
+      uuid: CONSTANTS.labResultsEncounterRole,
     };
 
     const selectedOrder = state;
@@ -310,6 +316,7 @@ export class LabResultEntry extends PureComponent {
                   patient={patient}
                   formId="result-entry-form"
                   orderForObs={selectedOrder}
+                  encounterRole={encounterRole}
                 />
               )
               : (
@@ -321,6 +328,7 @@ export class LabResultEntry extends PureComponent {
                   patient={patient}
                   formId="result-entry-form"
                   orderForObs={selectedOrder}
+                  encounterRole={encounterRole}
                 />
               )
             }
