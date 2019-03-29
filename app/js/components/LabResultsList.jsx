@@ -19,7 +19,8 @@ const Cell = ({
   value, columnName, type, navigate,
 }) => {
   if (type === 'single') {
-    const hasNoEncounter = value.status === 'Ordered';
+    const statusesWithoutEncounter = ["Ordered", "Cancelled", "Expired"];
+    const hasNoEncounter = statusesWithoutEncounter.includes(value.status);
     const isPanel = value.order.concept.set;
     if (columnName === 'TYPE') {
       return (
