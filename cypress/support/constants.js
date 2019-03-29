@@ -138,7 +138,7 @@ export const MOCKS = {
     },
   },
   ORDERS: {
-    URL: `/openmrs/ws/rest/v1/order?s=default&totalCount=true&sort=desc&status=active&orderTypes=52a447d3-a64a-11e3-9aeb-50e549534c5e&activatedOnOrAfterDate=${moment(endDate).format('YYYY-MM-DD')}&activatedOnOrBeforeDate=${moment(startDate).format('YYYY-MM-DD')}&v=full`,
+    URL: `/openmrs/ws/rest/v1/order?s=default&totalCount=true&sort=desc&orderTypes=52a447d3-a64a-11e3-9aeb-50e549534c5e&activatedOnOrAfterDate=${moment(endDate).format('YYYY-MM-DD')}&activatedOnOrBeforeDate=${moment(startDate).format('YYYY-MM-DD')}&v=full`,
     RESPONSE: {
       results: [
         {
@@ -305,7 +305,7 @@ export const MOCKS = {
           "dateActivated": "2018-09-10T10:13:45.000-0400",
           "scheduledDate": null,
           "dateStopped": null,
-          "autoExpireDate": "2018-09-17T10:13:44.000-0400",
+          "autoExpireDate": null,
           "encounter": {
               "uuid": "8d06597a-4c85-409d-9877-990e54551ee6",
               "display": "Test Order 09/10/2018",
