@@ -24,8 +24,12 @@ export class PatientHeader extends PureComponent {
   }
 }
 
+PatientHeader.defaultProps = {
+  patientHeaderDetail: undefined,
+};
+
 PatientHeader.propTypes = {
-  patientHeaderDetail: PropTypes.object.isRequired,
+  patientHeaderDetail: PropTypes.object,
 };
 
 const mapStateToProps = ({
