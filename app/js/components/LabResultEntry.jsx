@@ -113,6 +113,7 @@ export class LabResultEntry extends PureComponent {
       uuid: CONSTANTS.labResultsEncounterType,
     };
 
+    // TODO not currently used
     const encounterRole = {
       uuid: CONSTANTS.labResultsEncounterRole,
     };
@@ -316,7 +317,6 @@ export class LabResultEntry extends PureComponent {
                   patient={patient}
                   formId="result-entry-form"
                   orderForObs={selectedOrder}
-                  encounterRole={encounterRole}
                 />
               )
               : (
@@ -328,7 +328,6 @@ export class LabResultEntry extends PureComponent {
                   patient={patient}
                   formId="result-entry-form"
                   orderForObs={selectedOrder}
-                  encounterRole={encounterRole}
                 />
               )
             }
