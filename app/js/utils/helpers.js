@@ -39,7 +39,7 @@ export const formatRangeDisplayText = (min, max) => {
 export const filterThrough = (filters, data) => {
   let originalData = data;
 
-  if (filters.dateField === "encounter.encounterDatetime") {
+  if (filters.dateField === "order.dateActivated") {
     if (filters.dateToField && filters.dateFromField) {
       const filteredData  = getDateRange(originalData, filters.dateFromField, filters.dateToField, filters.dateField);
       originalData = filteredData;
