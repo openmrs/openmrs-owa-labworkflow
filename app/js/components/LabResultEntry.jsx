@@ -522,13 +522,15 @@ LabResultEntry.defaultProps = {
 LabResultEntry.propTypes = {
   patients: PropTypes.object.isRequired,
   history: PropTypes.object.isRequired,
-  testLocationConcept: PropTypes.object.isRequired,
   dispatch: PropTypes.func.isRequired,
   selectedLabConcept: PropTypes.object,
   location: PropTypes.object.isRequired,
   CONSTANTS: PropTypes.object.isRequired,
   conceptMembers: PropTypes.object.isRequired,
-  selectedPatient: PropTypes.string.isRequired,
+  selectedPatient: PropTypes.oneOfType([
+    PropTypes.string,
+    PropTypes.object,
+  ]).isRequired,
 };
 
 const mapStateToProps = (state) => {
