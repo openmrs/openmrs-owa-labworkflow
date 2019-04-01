@@ -31,3 +31,8 @@ export const setOrderLabEncounter = (count, order) => ({
   type: `${SET_ORDER_LAB_ENCOUNTER}_${count}`,
   order,
 });
+
+export const updateOrder = order => ({
+  type: "UPDATE_ORDER",
+  payload: axiosInstance.post(`encounter`, order),
+});

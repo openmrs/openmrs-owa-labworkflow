@@ -160,3 +160,33 @@ i.scale:hover {
   font-size: 12px;
 }
 
+.discontinue-actn-btn {
+  display: flex;
+  justify-content: center;
+}
+
+.tooltips {
+  position: relative;
+}
+.tooltips:after {
+  position: absolute;
+  padding: 3px;
+  color: white;
+  background: rgba(0, 0, 0, 0.75);
+  color: #fff;
+  opacity: 0;
+  content: attr(data-tooltip);
+  transition: all .2s ease-in-out .25s;
+  visibility: hidden;
+  z-index: 2;
+  font-size: 12px;
+  font-weight: 800;
+  border-radius: 3px;
+  height: 20px;
+  width: 50px;
+}
+.tooltips:hover:after {
+  opacity: 1;
+  visibility: visible;
+}
+
