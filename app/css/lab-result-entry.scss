@@ -151,8 +151,10 @@ button.pull-right.btn-success {
 }
 
 .custom-loader {
-    position: fixed;
+    position: absolute;
+    left: 50%;
     top: 50%;
+    margin: 0 auto;
 }
 
 .did-not-perform {
