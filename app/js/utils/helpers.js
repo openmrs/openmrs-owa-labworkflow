@@ -39,6 +39,13 @@ export const formatRangeDisplayText = (min, max) => {
 export const filterThrough = (filters, data) => {
   let originalData = data;
 
+  if (filters.dateField === "order.dateActivated") {
+    if (filters.dateToField && filters.dateFromField) {
+      const filteredData  = getDateRange(originalData, filters.dateFromField, filters.dateToField, filters.dateField);
+      originalData = filteredData;
+    }
+  }
+
   if (filters.nameField !== "") {
     const inputValue = filters.nameField;
     const filteredData = matchSorter(originalData, inputValue, { keys: ['patient.display'] });

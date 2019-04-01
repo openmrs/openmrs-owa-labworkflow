@@ -49,7 +49,7 @@ export default {
     labResultListFilters: {
       dateToField: moment(),
       dateFromField: moment().subtract(8, 'days'),
-      dateField: 'encounter.encounterDatetime' || '',
+      dateField: 'order.dateActivated',
     },
     labOrdersListFilters: {
       nameField: "",
