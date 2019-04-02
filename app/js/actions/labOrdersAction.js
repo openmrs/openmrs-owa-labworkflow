@@ -5,6 +5,7 @@ import {
   SET_LAB_TEST,
   FETCH_LAB_TEST_RESULTS,
   SET_ORDER_LAB_ENCOUNTER,
+  CANCEL_ORDER,
 } from './actionTypes';
 
 export const fetchLabOrders = (testOrderType, options) => ({
@@ -32,7 +33,7 @@ export const setOrderLabEncounter = (count, order) => ({
   order,
 });
 
-export const updateOrder = order => ({
-  type: "UPDATE_ORDER",
+export const cancelOrder = order => ({
+  type: CANCEL_ORDER,
   payload: axiosInstance.post(`encounter`, order),
 });

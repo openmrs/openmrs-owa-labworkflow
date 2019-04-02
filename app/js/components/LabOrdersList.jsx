@@ -18,7 +18,7 @@ import swal from 'sweetalert';
 import { SortableTable, Loader, constantsActions } from '@openmrs/react-components';
 import LabOrderListFilters from './LabOrdersListFilters';
 import EncounterDisplay from './EncounterDisplay';
-import { fetchLabOrders, updateOrder } from '../actions/labOrdersAction';
+import { fetchLabOrders, cancelOrder } from '../actions/labOrdersAction';
 import { setSelectedConcept } from '../actions/labConceptsAction';
 import { filterThrough, calculateTableRows } from '../utils/helpers';
 import filtersAction from '../actions/filtersAction';
@@ -134,6 +134,9 @@ export class LabOrdersList extends PureComponent {
     dispatch(constantsActions.getDateAndTimeFormat());
     dispatch(constantsActions.fetchLabResultsEncounterType());
     dispatch(constantsActions.fetchLabResultsDidNotPerformQuestion());
+    dispatch(constantsActions.fetchLabResultsEncounterRole());
+    dispatch(constantsActions.fetchTestOrderEncounterRole());
+    dispatch(constantsActions.fetchTestOrderEncounterType());
     dispatch(constantsActions.fetchLabResultsTestOrderType());
     dispatch(constantsActions.fetchLabResultsDidNotPerformAnswer());
     dispatch(constantsActions.fetchLabResultsTestOrderNumberConcept());
@@ -175,7 +178,13 @@ export class LabOrdersList extends PureComponent {
   }
 
   async handleCancel(order) {
-    const { currentProvider, dispatch, labResultsTestOrderType } = this.props;
+    const {
+      currentProvider,
+      dispatch,
+      testOrderEncounterType,
+      sessionLocation,
+      testOrderEncounterRole,
+    } = this.props;
     const cancelConfirmation = await swal("Are you sure you would like to cancel this order ?", {
       buttons: {
         YES: "YES",
@@ -184,18 +193,31 @@ export class LabOrdersList extends PureComponent {
     });
     if (cancelConfirmation === "YES") {
       const cancelledOrder = {
-        ...order,
+        careSetting: order.careSetting,
+        concept: order.concept,
+        patient: order.patient.uuid,
+        encounter: null,
+        action: "DISCONTINUE",
         orderer: currentProvider.uuid,
         previousOrder: order.uuid,
+        type: order.type,
+        urgency: order.urgency,
       };
 
       const payload = {
-        encounterType: cancelledOrder.encounter.uuid,
+        encounterProviders: [
+          {
+            encounterRole: testOrderEncounterRole,
+            provider: currentProvider.uuid,
+          },
+        ],
+        encounterType: testOrderEncounterType,
         orders: [cancelledOrder],
-        patient: cancelledOrder.patient.uuid,
+        patient: order.patient.uuid,
+        location: sessionLocation,
       };
 
-      // dispatch(updateOrder(payload));
+      dispatch(cancelOrder(payload));
     }
   }
 
@@ -327,9 +349,12 @@ export const mapStateToProps = ({
     CONSTANTS: {
       dateAndTimeFormat,
       labResultsTestOrderType,
+      testOrderEncounterRole,
+      testOrderEncounterType,
     },
     session: {
       currentProvider,
+      sessionLocation,
     },
   },
   filters: { labOrdersListFilters },
@@ -341,6 +366,9 @@ export const mapStateToProps = ({
   labOrdersListFilters,
   fetched,
   currentProvider,
+  sessionLocation,
+  testOrderEncounterRole,
+  testOrderEncounterType,
 });
 
 const LabOrdersListContainer = (
