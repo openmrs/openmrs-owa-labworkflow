@@ -11,7 +11,7 @@ import { FormattedMessage } from 'react-intl';
 import ConceptDisplay from './ConceptDisplay';
 import patientAction from '../actions/patientAction';
 import filtersAction from '../actions/filtersAction';
-import { filterThrough, calculateTableRows } from '../utils/helpers';
+import { filterThrough, calculateTableRows, sortByDate } from '../utils/helpers';
 import "../../css/lab-results-view.scss";
 
 
@@ -116,7 +116,7 @@ export class LabResultsList extends PureComponent {
     super();
 
     this.state = {
-      patientUUID: new URLSearchParams(window.location.search).get('patient'),
+      patientUUID: "53ec0ef3-8f21-4594-bd48-4fe4a253b1de", // new URLSearchParams(window.location.search).get('patient'),
       returnUrl: new URLSearchParams(window.location.search).get('returnUrl'),
     };
 
@@ -228,10 +228,11 @@ export class LabResultsList extends PureComponent {
         },
       }];
     const columns = expanderColumn.concat(columnMetadata);
+    const sortedListData = sortByDate('order.dateActivated')(labResults).reverse();
     return (
       <div className="lab-results-list">
         <SortableTable
-          data={labResults}
+          data={sortedListData}
           filters={labResultListFilters}
           getDataWithFilters={filterThrough}
           columnMetadata={columns}
