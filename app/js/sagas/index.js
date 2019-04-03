@@ -5,6 +5,7 @@ import {
   clear,
   resetState,
   setEncounters,
+  cancelOrder,
 } from './labOrdersSaga';
 import { setLabConcepts, fetchConcept } from './conceptSaga';
 
@@ -18,6 +19,7 @@ const sagas = {
   setLabConcepts,
   fetchConcept,
   setEncounters,
+  cancelOrder,
 };
 
 const initSagas = (sagaMiddleware) => {

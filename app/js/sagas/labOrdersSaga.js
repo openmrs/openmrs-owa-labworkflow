@@ -1,4 +1,5 @@
 import R from 'ramda';
+import moment from 'moment';
 import {
   take,
   takeEvery,
@@ -17,8 +18,9 @@ import {
   SET_ORDER_LAB_ENCOUNTER,
   SET_ORDER_LIST_FETCH_STATUS,
   SET_LAB_ORDERS,
+  CANCEL_ORDER,
 } from '../actions/actionTypes';
-import { setLabTestTypes, setOrderLabEncounter } from '../actions/labOrdersAction';
+import { setLabTestTypes, setOrderLabEncounter, fetchLabOrders } from '../actions/labOrdersAction';
 import { setSelectedConcept } from '../actions/labConceptsAction';
 
 const computeResultStatus = (encounter, constants, order) => {
@@ -161,4 +163,19 @@ export function* fetchEncounters(action) {
 export function* setEncounters() {
   yield takeEvery(SET_LAB_ORDERS, fetchEncounters);
   yield takeEvery(UPDATE_LAB_ORDER_WITH_ENCOUNTER, fetchAndSetTestResultEncounter);
+}
+
+function* updateOrders() {
+  const state = yield select();
+  const { labOrdersListFilters } = state.filters;
+  const { labResultsTestOrderType } = state.openmrs.CONSTANTS;
+  const options = {
+    dateToField: moment(labOrdersListFilters.dateToField).format('YYYY-MM-DD'),
+    dateFromField: moment(labOrdersListFilters.dateFromField).format('YYYY-MM-DD'),
+  };
+  yield put(fetchLabOrders(labResultsTestOrderType, options));
+}
+
+export function* cancelOrder() {
+  yield takeEvery(`${CANCEL_ORDER}_SUCCESS`, updateOrders);
 }

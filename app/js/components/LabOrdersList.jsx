@@ -14,10 +14,11 @@ import moment from 'moment';
 import { withRouter } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import { FormattedMessage } from 'react-intl';
+import swal from 'sweetalert';
 import { SortableTable, Loader, constantsActions } from '@openmrs/react-components';
 import LabOrderListFilters from './LabOrdersListFilters';
 import EncounterDisplay from './EncounterDisplay';
-import { fetchLabOrders } from '../actions/labOrdersAction';
+import { fetchLabOrders, cancelOrder } from '../actions/labOrdersAction';
 import { setSelectedConcept } from '../actions/labConceptsAction';
 import { filterThrough, calculateTableRows } from '../utils/helpers';
 import filtersAction from '../actions/filtersAction';
@@ -25,7 +26,7 @@ import patientAction from '../actions/patientAction';
 import "../../css/lab-orders-list.scss";
 
 
-export const Cell = ({ columnName, value, dateAndTimeFormat }) => {
+export const Cell = ({ columnName, value, handleCancel }) => {
   switch (columnName) {
     case 'EMR ID': {
       // TODO: refactor this and name column to use React Components patientUtils
@@ -94,6 +95,24 @@ export const Cell = ({ columnName, value, dateAndTimeFormat }) => {
           <span>{value.concept.display}</span>
         </div>
       );
+    case 'ACTIONS':
+      if (value.labResult && (value.labResult.resultStatus === "Ordered")) {
+        return (
+          <div className="discontinue-actn-btn">
+            <span
+              className="glyphicon glyphicon-remove tooltips"
+              data-tooltip="Cancel"
+              aria-hidden="true"
+              onClick={(e) => {
+                e.preventDefault();
+                e.stopPropagation();
+                handleCancel(value);
+              }}
+            />
+          </div>
+        );
+      }
+      return null;
     default:
       return null;
   }
@@ -107,6 +126,7 @@ export class LabOrdersList extends PureComponent {
     this.handleFilterChange = this.handleFilterChange.bind(this);
     this.clearNameEMRField = this.clearNameEMRField.bind(this);
     this.handleShowResultsEntryPage = this.handleShowResultsEntryPage.bind(this);
+    this.handleCancel = this.handleCancel.bind(this);
   }
 
   componentDidMount() {
@@ -154,6 +174,34 @@ export class LabOrdersList extends PureComponent {
     dispatch(filtersAction.setLabOrdersListFilters(newFilters));
   }
 
+  async handleCancel(order) {
+    const {
+      currentProvider,
+      dispatch,
+    } = this.props;
+    const cancelConfirmation = await swal("Are you sure you would like to cancel this order ?", {
+      buttons: {
+        YES: "YES",
+        NO: 'NO',
+      },
+    });
+    if (cancelConfirmation === "YES") {
+      const cancelledOrder = {
+        careSetting: order.careSetting,
+        concept: order.concept,
+        patient: order.patient.uuid,
+        encounter: order.encounter,
+        action: "DISCONTINUE",
+        orderer: currentProvider.uuid,
+        previousOrder: order.uuid,
+        type: order.type,
+        urgency: order.urgency,
+      };
+
+      dispatch(cancelOrder(cancelledOrder));
+    }
+  }
+
   handleFilterChange(field, value) {
     const { dispatch, labOrdersListFilters, labResultsTestOrderType } = this.props;
     const newFilters = {
@@ -191,9 +239,12 @@ export class LabOrdersList extends PureComponent {
 
   renderDraftOrderTable() {
     const {
- orders, dateAndTimeFormat, labOrdersListFilters, fetched 
+      orders,
+      dateAndTimeFormat,
+      labOrdersListFilters,
+      fetched,
 } = this.props;
-    const fields = ["EMR ID", "NAME", "ORDER ID", "ORDER DATE", "COLLECTION DATE", "STATUS", "URGENCY", "TEST TYPE"];
+    const fields = ["EMR ID", "NAME", "ORDER ID", "ORDER DATE", "COLLECTION DATE", "STATUS", "URGENCY", "TEST TYPE", "ACTIONS"];
 
     const columnMetadata = fields.map(columnName => ({
       Header:
@@ -204,7 +255,7 @@ export class LabOrdersList extends PureComponent {
       description={`LabOrderList table header for ${columnName}`} />
   </span>,
       accessor: "",
-      Cell: data => <Cell {...data} columnName={columnName} dateAndTimeFormat={dateAndTimeFormat} />,
+      Cell: data => <Cell {...data} columnName={columnName} handleCancel={this.handleCancel} />,
       className: `lab-order-list-cell-${columnName.replace(' ', '-').toLocaleLowerCase()}`,
       headerClassName: `lab-order-list-header-${columnName.replace(' ', '-').toLocaleLowerCase()}`,
     }));
@@ -275,7 +326,18 @@ LabOrdersList.propTypes = {
 
 export const mapStateToProps = ({
   labOrders: { orders, labTests, fetched },
-  openmrs: { CONSTANTS: { dateAndTimeFormat, labResultsTestOrderType } },
+  openmrs: {
+    CONSTANTS: {
+      dateAndTimeFormat,
+      labResultsTestOrderType,
+      testOrderEncounterRole,
+      testOrderEncounterType,
+    },
+    session: {
+      currentProvider,
+      sessionLocation,
+    },
+  },
   filters: { labOrdersListFilters },
 }) => ({
   orders,
@@ -284,6 +346,8 @@ export const mapStateToProps = ({
   labResultsTestOrderType,
   labOrdersListFilters,
   fetched,
+  currentProvider,
+  sessionLocation,
 });
 
 const LabOrdersListContainer = (
