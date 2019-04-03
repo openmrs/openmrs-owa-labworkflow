@@ -29,6 +29,8 @@ import {
   constantsActions,
   Loader,
   formUtil,
+  globalPropertyActions,
+  selectors
 } from '@openmrs/react-components';
 import patientAction from '../actions/patientAction';
 import { fetchLabConcept } from '../actions/labConceptsAction';
@@ -64,9 +66,10 @@ export class LabResultEntry extends PureComponent {
       dispatch(patientAction.getPatient(patientUUID));
       dispatch(constantsActions.fetchLabResultsDidNotPerformReasonAnswer(CONSTANTS.labResultsDidNotPerformReasonQuestion));
       dispatch(constantsActions.fetchLabResultsTestLocationAnswer(CONSTANTS.labResultsTestLocationQuestion));
-      dispatch(constantsActions.fetchLabResultsEncounterType());
-      dispatch(constantsActions.fetchLabResultsEncounterRole());
       dispatch(fetchLabConcept(conceptUUID));
+
+      // confirm that all global properties to be used on this page have been loaded; TODO: better way to do this in bulk?
+      dispatch(globalPropertyActions.fetchGlobalProperty("labworkflowowa.labResultsEncounterType"));  // TODO extract GP names into constants?
     } else {
       this.shouldRedirect();
     }
@@ -96,7 +99,7 @@ export class LabResultEntry extends PureComponent {
   renderForm(selectedLabConcept) {
     const {
       CONSTANTS, conceptMembers, selectedPatient, patients, history: { location: { state } },
-      isDidNotPerformCheckboxSelected, dispatch, formId,
+      isDidNotPerformCheckboxSelected, dispatch, formId, encounterTypeUuid,
     } = this.props;
     if (!(isDidNotPerformCheckboxSelected)) {
       const obsFieldName = formUtil.obsFieldName('did-not-perform-dropdown', CONSTANTS.labResultsDidNotPerformReasonQuestion);
@@ -110,12 +113,7 @@ export class LabResultEntry extends PureComponent {
     const hasEncounter = !R.isEmpty(encounter);
 
     const encounterType = {
-      uuid: CONSTANTS.labResultsEncounterType,
-    };
-
-    // TODO not currently used
-    const encounterRole = {
-      uuid: CONSTANTS.labResultsEncounterRole,
+      uuid: encounterTypeUuid,
     };
 
     const selectedOrder = state;
@@ -548,6 +546,7 @@ const mapStateToProps = (state) => {
     const obsFieldName = formUtil.obsFieldName('did-not-perform-checkbox', CONSTANTS.labResultsDidNotPerformQuestion);
     isDidNotPerformCheckboxSelected = !!(selector(state, obsFieldName));
   }
+  const encounterTypeUuid = selectors.getGlobalProperty(state, "labworkflowowa.labResultsEncounterType");
   return {
     patients,
     selectedPatient,
@@ -556,6 +555,7 @@ const mapStateToProps = (state) => {
     conceptMembers,
     isDidNotPerformCheckboxSelected,
     formId,
+    encounterTypeUuid,
   };
 };
 
