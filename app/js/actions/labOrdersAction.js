@@ -35,5 +35,5 @@ export const setOrderLabEncounter = (count, order) => ({
 
 export const cancelOrder = order => ({
   type: CANCEL_ORDER,
-  payload: axiosInstance.post(`encounter`, order),
+  payload: axiosInstance.post(`order`, order),
 });

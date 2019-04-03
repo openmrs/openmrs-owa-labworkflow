@@ -181,9 +181,6 @@ export class LabOrdersList extends PureComponent {
     const {
       currentProvider,
       dispatch,
-      testOrderEncounterType,
-      sessionLocation,
-      testOrderEncounterRole,
     } = this.props;
     const cancelConfirmation = await swal("Are you sure you would like to cancel this order ?", {
       buttons: {
@@ -196,7 +193,7 @@ export class LabOrdersList extends PureComponent {
         careSetting: order.careSetting,
         concept: order.concept,
         patient: order.patient.uuid,
-        encounter: null,
+        encounter: order.encounter,
         action: "DISCONTINUE",
         orderer: currentProvider.uuid,
         previousOrder: order.uuid,
@@ -204,20 +201,7 @@ export class LabOrdersList extends PureComponent {
         urgency: order.urgency,
       };
 
-      const payload = {
-        encounterProviders: [
-          {
-            encounterRole: testOrderEncounterRole,
-            provider: currentProvider.uuid,
-          },
-        ],
-        encounterType: testOrderEncounterType,
-        orders: [cancelledOrder],
-        patient: order.patient.uuid,
-        location: sessionLocation,
-      };
-
-      dispatch(cancelOrder(payload));
+      dispatch(cancelOrder(cancelledOrder));
     }
   }
 
@@ -367,8 +351,6 @@ export const mapStateToProps = ({
   fetched,
   currentProvider,
   sessionLocation,
-  testOrderEncounterRole,
-  testOrderEncounterType,
 });
 
 const LabOrdersListContainer = (
