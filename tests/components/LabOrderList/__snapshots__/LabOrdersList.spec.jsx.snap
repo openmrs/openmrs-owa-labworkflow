@@ -157,8 +157,8 @@ exports[`<LabOrdersList /> component renders correctly 1`] = `
   labOrdersListFilters={
     Object {
       "dateField": "",
-      "dateFromField": "2018-11-10T23:00:00.000Z",
-      "dateToField": "2018-11-10T23:00:00.000Z",
+      "dateFromField": "2018-11-11T05:00:00.000Z",
+      "dateToField": "2018-11-11T05:00:00.000Z",
       "testTypeField": "",
     }
   }
@@ -213,8 +213,8 @@ exports[`<LabOrdersList /> component renders correctly 1`] = `
     </h2>
     <LabOrderListFilters
       clearNameEMRField={[Function]}
-      dateFromField={"2018-11-10T23:00:00.000Z"}
-      dateToField={"2018-11-10T23:00:00.000Z"}
+      dateFromField={"2018-11-11T05:00:00.000Z"}
+      dateToField={"2018-11-11T05:00:00.000Z"}
       handleFieldChange={[Function]}
       labTests={
         Array [
@@ -257,7 +257,27 @@ exports[`<LabOrdersList /> component renders correctly 1`] = `
                 <div>
                   <DatePicker
                     allowSameDay={false}
-                    customInput={<DateDisplayComponent />}
+                    customInput={
+                      <DateDisplay
+                        error={true}
+                        formControlStyle={
+                          Object {
+                            "marginRight": "5px",
+                            "width": "110px",
+                          }
+                        }
+                        hasInput={false}
+                        label={
+                          <FormattedMessage
+                            defaultMessage="From: "
+                            description="Label for the first date search input"
+                            id="app.labOrdersListFilters.searchDateFromLabel"
+                            values={Object {}}
+                          />
+                        }
+                        labelClassName="line"
+                      />
+                    }
                     dateFormat="dd MMM YYYY"
                     dateFormatCalendar="LLLL yyyy"
                     disabled={false}
@@ -284,7 +304,7 @@ exports[`<LabOrdersList /> component renders correctly 1`] = `
                     previousMonthButtonLabel="Previous Month"
                     readOnly={false}
                     renderDayContents={[Function]}
-                    selected="2018-11-11"
+                    selected={2018-11-11T00:00:00.000Z}
                     shouldCloseOnSelect={true}
                     showTimeSelect={false}
                     timeCaption="Time"
@@ -309,16 +329,33 @@ exports[`<LabOrdersList /> component renders correctly 1`] = `
                         <div
                           className="react-datepicker__input-container"
                         >
-                          <DateDisplayComponent
+                          <DateDisplay
                             className=""
                             disabled={false}
+                            error={true}
+                            formControlStyle={
+                              Object {
+                                "marginRight": "5px",
+                                "width": "110px",
+                              }
+                            }
+                            hasInput={false}
+                            label={
+                              <FormattedMessage
+                                defaultMessage="From: "
+                                description="Label for the first date search input"
+                                id="app.labOrdersListFilters.searchDateFromLabel"
+                                values={Object {}}
+                              />
+                            }
+                            labelClassName="line"
                             onBlur={[Function]}
                             onChange={[Function]}
                             onClick={[Function]}
                             onFocus={[Function]}
                             onKeyDown={[Function]}
                             readOnly={false}
-                            value="11 Nov 2018"
+                            value="10 Nov 2018"
                           />
                         </div>
                       }
@@ -334,16 +371,33 @@ exports[`<LabOrdersList /> component renders correctly 1`] = `
                               <div
                                 className="react-datepicker__input-container"
                               >
-                                <DateDisplayComponent
+                                <DateDisplay
                                   className=""
                                   disabled={false}
+                                  error={true}
+                                  formControlStyle={
+                                    Object {
+                                      "marginRight": "5px",
+                                      "width": "110px",
+                                    }
+                                  }
+                                  hasInput={false}
+                                  label={
+                                    <FormattedMessage
+                                      defaultMessage="From: "
+                                      description="Label for the first date search input"
+                                      id="app.labOrdersListFilters.searchDateFromLabel"
+                                      values={Object {}}
+                                    />
+                                  }
+                                  labelClassName="line"
                                   onBlur={[Function]}
                                   onChange={[Function]}
                                   onClick={[Function]}
                                   onFocus={[Function]}
                                   onKeyDown={[Function]}
                                   readOnly={false}
-                                  value="11 Nov 2018"
+                                  value="10 Nov 2018"
                                 >
                                   <span>
                                     <span
@@ -371,6 +425,7 @@ exports[`<LabOrdersList /> component renders correctly 1`] = `
                                       <FormControl
                                         bsClass="form-control"
                                         componentClass="input"
+                                        onChange={[Function]}
                                         onClick={[Function]}
                                         placeholder=""
                                         style={
@@ -380,10 +435,11 @@ exports[`<LabOrdersList /> component renders correctly 1`] = `
                                           }
                                         }
                                         type="text"
-                                        value="11 Nov 2018"
+                                        value="10 Nov 2018"
                                       >
                                         <input
                                           className="form-control"
+                                          onChange={[Function]}
                                           onClick={[Function]}
                                           placeholder=""
                                           style={
@@ -393,7 +449,7 @@ exports[`<LabOrdersList /> component renders correctly 1`] = `
                                             }
                                           }
                                           type="text"
-                                          value="11 Nov 2018"
+                                          value="10 Nov 2018"
                                         />
                                       </FormControl>
                                       <FontAwesomeIcon
@@ -434,7 +490,7 @@ exports[`<LabOrdersList /> component renders correctly 1`] = `
                                       </FontAwesomeIcon>
                                     </span>
                                   </span>
-                                </DateDisplayComponent>
+                                </DateDisplay>
                               </div>
                             </div>
                           </InnerReference>
@@ -469,7 +525,27 @@ exports[`<LabOrdersList /> component renders correctly 1`] = `
                 <div>
                   <DatePicker
                     allowSameDay={false}
-                    customInput={<DateDisplayComponent />}
+                    customInput={
+                      <DateDisplay
+                        error={true}
+                        formControlStyle={
+                          Object {
+                            "marginRight": "5px",
+                            "width": "110px",
+                          }
+                        }
+                        hasInput={false}
+                        label={
+                          <FormattedMessage
+                            defaultMessage="To: "
+                            description="Label for the second date search input"
+                            id="app.labOrdersListFilters.searchDateToLabel"
+                            values={Object {}}
+                          />
+                        }
+                        labelClassName="line"
+                      />
+                    }
                     dateFormat="dd MMM YYYY"
                     dateFormatCalendar="LLLL yyyy"
                     disabled={false}
@@ -496,7 +572,7 @@ exports[`<LabOrdersList /> component renders correctly 1`] = `
                     previousMonthButtonLabel="Previous Month"
                     readOnly={false}
                     renderDayContents={[Function]}
-                    selected="2018-11-11"
+                    selected={2018-11-11T00:00:00.000Z}
                     shouldCloseOnSelect={true}
                     showTimeSelect={false}
                     timeCaption="Time"
@@ -521,16 +597,33 @@ exports[`<LabOrdersList /> component renders correctly 1`] = `
                         <div
                           className="react-datepicker__input-container"
                         >
-                          <DateDisplayComponent
+                          <DateDisplay
                             className=""
                             disabled={false}
+                            error={true}
+                            formControlStyle={
+                              Object {
+                                "marginRight": "5px",
+                                "width": "110px",
+                              }
+                            }
+                            hasInput={false}
+                            label={
+                              <FormattedMessage
+                                defaultMessage="To: "
+                                description="Label for the second date search input"
+                                id="app.labOrdersListFilters.searchDateToLabel"
+                                values={Object {}}
+                              />
+                            }
+                            labelClassName="line"
                             onBlur={[Function]}
                             onChange={[Function]}
                             onClick={[Function]}
                             onFocus={[Function]}
                             onKeyDown={[Function]}
                             readOnly={false}
-                            value="11 Nov 2018"
+                            value="10 Nov 2018"
                           />
                         </div>
                       }
@@ -546,16 +639,33 @@ exports[`<LabOrdersList /> component renders correctly 1`] = `
                               <div
                                 className="react-datepicker__input-container"
                               >
-                                <DateDisplayComponent
+                                <DateDisplay
                                   className=""
                                   disabled={false}
+                                  error={true}
+                                  formControlStyle={
+                                    Object {
+                                      "marginRight": "5px",
+                                      "width": "110px",
+                                    }
+                                  }
+                                  hasInput={false}
+                                  label={
+                                    <FormattedMessage
+                                      defaultMessage="To: "
+                                      description="Label for the second date search input"
+                                      id="app.labOrdersListFilters.searchDateToLabel"
+                                      values={Object {}}
+                                    />
+                                  }
+                                  labelClassName="line"
                                   onBlur={[Function]}
                                   onChange={[Function]}
                                   onClick={[Function]}
                                   onFocus={[Function]}
                                   onKeyDown={[Function]}
                                   readOnly={false}
-                                  value="11 Nov 2018"
+                                  value="10 Nov 2018"
                                 >
                                   <span>
                                     <span
@@ -583,6 +693,7 @@ exports[`<LabOrdersList /> component renders correctly 1`] = `
                                       <FormControl
                                         bsClass="form-control"
                                         componentClass="input"
+                                        onChange={[Function]}
                                         onClick={[Function]}
                                         placeholder=""
                                         style={
@@ -592,10 +703,11 @@ exports[`<LabOrdersList /> component renders correctly 1`] = `
                                           }
                                         }
                                         type="text"
-                                        value="11 Nov 2018"
+                                        value="10 Nov 2018"
                                       >
                                         <input
                                           className="form-control"
+                                          onChange={[Function]}
                                           onClick={[Function]}
                                           placeholder=""
                                           style={
@@ -605,7 +717,7 @@ exports[`<LabOrdersList /> component renders correctly 1`] = `
                                             }
                                           }
                                           type="text"
-                                          value="11 Nov 2018"
+                                          value="10 Nov 2018"
                                         />
                                       </FormControl>
                                       <FontAwesomeIcon
@@ -646,7 +758,7 @@ exports[`<LabOrdersList /> component renders correctly 1`] = `
                                       </FontAwesomeIcon>
                                     </span>
                                   </span>
-                                </DateDisplayComponent>
+                                </DateDisplay>
                               </div>
                             </div>
                           </InnerReference>
@@ -736,6 +848,7 @@ exports[`<LabOrdersList /> component renders correctly 1`] = `
                   "Ordered",
                   "Reported",
                   "Taken",
+                  "Cancelled/Expired",
                 ]
               }
               placeholder="Select from the list"
@@ -798,6 +911,12 @@ exports[`<LabOrdersList /> component renders correctly 1`] = `
                       value="Taken"
                     >
                       Taken
+                    </option>
+                    <option
+                      key="Cancelled/Expired"
+                      value="Cancelled/Expired"
+                    >
+                      Cancelled/Expired
                     </option>
                   </select>
                 </span>
@@ -1239,8 +1358,8 @@ exports[`LabOrdersListContainer container should pass required props from state 
   labOrdersListFilters={
     Object {
       "dateField": "",
-      "dateFromField": "2018-11-10T23:00:00.000Z",
-      "dateToField": "2018-11-10T23:00:00.000Z",
+      "dateFromField": "2018-11-11T05:00:00.000Z",
+      "dateToField": "2018-11-11T05:00:00.000Z",
       "testTypeField": "",
     }
   }
@@ -1295,8 +1414,8 @@ exports[`LabOrdersListContainer container should pass required props from state 
     </h2>
     <LabOrderListFilters
       clearNameEMRField={[Function]}
-      dateFromField={"2018-11-10T23:00:00.000Z"}
-      dateToField={"2018-11-10T23:00:00.000Z"}
+      dateFromField={"2018-11-11T05:00:00.000Z"}
+      dateToField={"2018-11-11T05:00:00.000Z"}
       handleFieldChange={[Function]}
       labTests={
         Array [
@@ -1339,7 +1458,27 @@ exports[`LabOrdersListContainer container should pass required props from state 
                 <div>
                   <DatePicker
                     allowSameDay={false}
-                    customInput={<DateDisplayComponent />}
+                    customInput={
+                      <DateDisplay
+                        error={true}
+                        formControlStyle={
+                          Object {
+                            "marginRight": "5px",
+                            "width": "110px",
+                          }
+                        }
+                        hasInput={false}
+                        label={
+                          <FormattedMessage
+                            defaultMessage="From: "
+                            description="Label for the first date search input"
+                            id="app.labOrdersListFilters.searchDateFromLabel"
+                            values={Object {}}
+                          />
+                        }
+                        labelClassName="line"
+                      />
+                    }
                     dateFormat="dd MMM YYYY"
                     dateFormatCalendar="LLLL yyyy"
                     disabled={false}
@@ -1366,7 +1505,7 @@ exports[`LabOrdersListContainer container should pass required props from state 
                     previousMonthButtonLabel="Previous Month"
                     readOnly={false}
                     renderDayContents={[Function]}
-                    selected="2018-11-11"
+                    selected={2018-11-11T00:00:00.000Z}
                     shouldCloseOnSelect={true}
                     showTimeSelect={false}
                     timeCaption="Time"
@@ -1391,16 +1530,33 @@ exports[`LabOrdersListContainer container should pass required props from state 
                         <div
                           className="react-datepicker__input-container"
                         >
-                          <DateDisplayComponent
+                          <DateDisplay
                             className=""
                             disabled={false}
+                            error={true}
+                            formControlStyle={
+                              Object {
+                                "marginRight": "5px",
+                                "width": "110px",
+                              }
+                            }
+                            hasInput={false}
+                            label={
+                              <FormattedMessage
+                                defaultMessage="From: "
+                                description="Label for the first date search input"
+                                id="app.labOrdersListFilters.searchDateFromLabel"
+                                values={Object {}}
+                              />
+                            }
+                            labelClassName="line"
                             onBlur={[Function]}
                             onChange={[Function]}
                             onClick={[Function]}
                             onFocus={[Function]}
                             onKeyDown={[Function]}
                             readOnly={false}
-                            value="11 Nov 2018"
+                            value="10 Nov 2018"
                           />
                         </div>
                       }
@@ -1416,16 +1572,33 @@ exports[`LabOrdersListContainer container should pass required props from state 
                               <div
                                 className="react-datepicker__input-container"
                               >
-                                <DateDisplayComponent
+                                <DateDisplay
                                   className=""
                                   disabled={false}
+                                  error={true}
+                                  formControlStyle={
+                                    Object {
+                                      "marginRight": "5px",
+                                      "width": "110px",
+                                    }
+                                  }
+                                  hasInput={false}
+                                  label={
+                                    <FormattedMessage
+                                      defaultMessage="From: "
+                                      description="Label for the first date search input"
+                                      id="app.labOrdersListFilters.searchDateFromLabel"
+                                      values={Object {}}
+                                    />
+                                  }
+                                  labelClassName="line"
                                   onBlur={[Function]}
                                   onChange={[Function]}
                                   onClick={[Function]}
                                   onFocus={[Function]}
                                   onKeyDown={[Function]}
                                   readOnly={false}
-                                  value="11 Nov 2018"
+                                  value="10 Nov 2018"
                                 >
                                   <span>
                                     <span
@@ -1453,6 +1626,7 @@ exports[`LabOrdersListContainer container should pass required props from state 
                                       <FormControl
                                         bsClass="form-control"
                                         componentClass="input"
+                                        onChange={[Function]}
                                         onClick={[Function]}
                                         placeholder=""
                                         style={
@@ -1462,10 +1636,11 @@ exports[`LabOrdersListContainer container should pass required props from state 
                                           }
                                         }
                                         type="text"
-                                        value="11 Nov 2018"
+                                        value="10 Nov 2018"
                                       >
                                         <input
                                           className="form-control"
+                                          onChange={[Function]}
                                           onClick={[Function]}
                                           placeholder=""
                                           style={
@@ -1475,7 +1650,7 @@ exports[`LabOrdersListContainer container should pass required props from state 
                                             }
                                           }
                                           type="text"
-                                          value="11 Nov 2018"
+                                          value="10 Nov 2018"
                                         />
                                       </FormControl>
                                       <FontAwesomeIcon
@@ -1516,7 +1691,7 @@ exports[`LabOrdersListContainer container should pass required props from state 
                                       </FontAwesomeIcon>
                                     </span>
                                   </span>
-                                </DateDisplayComponent>
+                                </DateDisplay>
                               </div>
                             </div>
                           </InnerReference>
@@ -1551,7 +1726,27 @@ exports[`LabOrdersListContainer container should pass required props from state 
                 <div>
                   <DatePicker
                     allowSameDay={false}
-                    customInput={<DateDisplayComponent />}
+                    customInput={
+                      <DateDisplay
+                        error={true}
+                        formControlStyle={
+                          Object {
+                            "marginRight": "5px",
+                            "width": "110px",
+                          }
+                        }
+                        hasInput={false}
+                        label={
+                          <FormattedMessage
+                            defaultMessage="To: "
+                            description="Label for the second date search input"
+                            id="app.labOrdersListFilters.searchDateToLabel"
+                            values={Object {}}
+                          />
+                        }
+                        labelClassName="line"
+                      />
+                    }
                     dateFormat="dd MMM YYYY"
                     dateFormatCalendar="LLLL yyyy"
                     disabled={false}
@@ -1578,7 +1773,7 @@ exports[`LabOrdersListContainer container should pass required props from state 
                     previousMonthButtonLabel="Previous Month"
                     readOnly={false}
                     renderDayContents={[Function]}
-                    selected="2018-11-11"
+                    selected={2018-11-11T00:00:00.000Z}
                     shouldCloseOnSelect={true}
                     showTimeSelect={false}
                     timeCaption="Time"
@@ -1603,16 +1798,33 @@ exports[`LabOrdersListContainer container should pass required props from state 
                         <div
                           className="react-datepicker__input-container"
                         >
-                          <DateDisplayComponent
+                          <DateDisplay
                             className=""
                             disabled={false}
+                            error={true}
+                            formControlStyle={
+                              Object {
+                                "marginRight": "5px",
+                                "width": "110px",
+                              }
+                            }
+                            hasInput={false}
+                            label={
+                              <FormattedMessage
+                                defaultMessage="To: "
+                                description="Label for the second date search input"
+                                id="app.labOrdersListFilters.searchDateToLabel"
+                                values={Object {}}
+                              />
+                            }
+                            labelClassName="line"
                             onBlur={[Function]}
                             onChange={[Function]}
                             onClick={[Function]}
                             onFocus={[Function]}
                             onKeyDown={[Function]}
                             readOnly={false}
-                            value="11 Nov 2018"
+                            value="10 Nov 2018"
                           />
                         </div>
                       }
@@ -1628,16 +1840,33 @@ exports[`LabOrdersListContainer container should pass required props from state 
                               <div
                                 className="react-datepicker__input-container"
                               >
-                                <DateDisplayComponent
+                                <DateDisplay
                                   className=""
                                   disabled={false}
+                                  error={true}
+                                  formControlStyle={
+                                    Object {
+                                      "marginRight": "5px",
+                                      "width": "110px",
+                                    }
+                                  }
+                                  hasInput={false}
+                                  label={
+                                    <FormattedMessage
+                                      defaultMessage="To: "
+                                      description="Label for the second date search input"
+                                      id="app.labOrdersListFilters.searchDateToLabel"
+                                      values={Object {}}
+                                    />
+                                  }
+                                  labelClassName="line"
                                   onBlur={[Function]}
                                   onChange={[Function]}
                                   onClick={[Function]}
                                   onFocus={[Function]}
                                   onKeyDown={[Function]}
                                   readOnly={false}
-                                  value="11 Nov 2018"
+                                  value="10 Nov 2018"
                                 >
                                   <span>
                                     <span
@@ -1665,6 +1894,7 @@ exports[`LabOrdersListContainer container should pass required props from state 
                                       <FormControl
                                         bsClass="form-control"
                                         componentClass="input"
+                                        onChange={[Function]}
                                         onClick={[Function]}
                                         placeholder=""
                                         style={
@@ -1674,10 +1904,11 @@ exports[`LabOrdersListContainer container should pass required props from state 
                                           }
                                         }
                                         type="text"
-                                        value="11 Nov 2018"
+                                        value="10 Nov 2018"
                                       >
                                         <input
                                           className="form-control"
+                                          onChange={[Function]}
                                           onClick={[Function]}
                                           placeholder=""
                                           style={
@@ -1687,7 +1918,7 @@ exports[`LabOrdersListContainer container should pass required props from state 
                                             }
                                           }
                                           type="text"
-                                          value="11 Nov 2018"
+                                          value="10 Nov 2018"
                                         />
                                       </FormControl>
                                       <FontAwesomeIcon
@@ -1728,7 +1959,7 @@ exports[`LabOrdersListContainer container should pass required props from state 
                                       </FontAwesomeIcon>
                                     </span>
                                   </span>
-                                </DateDisplayComponent>
+                                </DateDisplay>
                               </div>
                             </div>
                           </InnerReference>
@@ -1818,6 +2049,7 @@ exports[`LabOrdersListContainer container should pass required props from state 
                   "Ordered",
                   "Reported",
                   "Taken",
+                  "Cancelled/Expired",
                 ]
               }
               placeholder="Select from the list"
@@ -1880,6 +2112,12 @@ exports[`LabOrdersListContainer container should pass required props from state 
                       value="Taken"
                     >
                       Taken
+                    </option>
+                    <option
+                      key="Cancelled/Expired"
+                      value="Cancelled/Expired"
+                    >
+                      Cancelled/Expired
                     </option>
                   </select>
                 </span>

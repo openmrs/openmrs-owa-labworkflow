@@ -160,7 +160,6 @@ exports[`<LabResultEntry /> component renders correctly with valid props 1`] = `
               "labResultsDidNotPerformAnswer": "mock-uuid",
               "labResultsDidNotPerformQuestion": "mock-uuid",
               "labResultsDidNotPerformReason": "mock-uuid",
-              "labResultsEncounterType": "mock-encounter-uuid",
               "labResultsTestOrderNumberConcept": "mock-test-orderno-concept",
             }
           }
@@ -399,7 +398,7 @@ exports[`<LabResultEntry /> component renders correctly with valid props 1`] = `
                         <span
                           className="test-details"
                         >
-                          Aug 30 5:34 PM
+                          Aug 30 12:34 PM
                         </span>
                       </span>
                     </div>
@@ -461,7 +460,7 @@ exports[`<LabResultEntry /> component renders correctly with valid props 1`] = `
                       }
                       encounterType={
                         Object {
-                          "uuid": "mock-encounter-uuid",
+                          "uuid": undefined,
                         }
                       }
                       formContent={
@@ -616,7 +615,7 @@ exports[`<LabResultEntry /> component renders correctly with valid props 1`] = `
                                     className="encounter-date-field"
                                   >
                                     <WithFormContext(Connect(EncounterDate))
-                                      defaultDate={"2019-03-21T23:00:00.000Z"}
+                                      defaultDate={"2019-04-03T04:00:00.000Z"}
                                       field="dateFromField"
                                       handleDateChange={[Function]}
                                       id="specimen-collection-date"
@@ -770,7 +769,7 @@ exports[`<LabResultEntry /> component renders correctly with valid props 1`] = `
                         }
                         encounterType={
                           Object {
-                            "uuid": "mock-encounter-uuid",
+                            "uuid": undefined,
                           }
                         }
                         formContent={
@@ -925,7 +924,7 @@ exports[`<LabResultEntry /> component renders correctly with valid props 1`] = `
                                       className="encounter-date-field"
                                     >
                                       <WithFormContext(Connect(EncounterDate))
-                                        defaultDate={"2019-03-21T23:00:00.000Z"}
+                                        defaultDate={"2019-04-03T04:00:00.000Z"}
                                         field="dateFromField"
                                         handleDateChange={[Function]}
                                         id="specimen-collection-date"
@@ -1257,7 +1256,6 @@ exports[`<LabResultEntry /> component should redirect when location has an empty
             "labResultsDidNotPerformAnswer": "mock-uuid",
             "labResultsDidNotPerformQuestion": "mock-uuid",
             "labResultsDidNotPerformReason": "mock-uuid",
-            "labResultsEncounterType": "mock-encounter-uuid",
             "labResultsTestOrderNumberConcept": "mock-test-orderno-concept",
           }
         }
@@ -1449,7 +1447,6 @@ exports[`<LabResultEntry /> component should render <Loader /> component when se
         "labResultsDidNotPerformAnswer": "mock-uuid",
         "labResultsDidNotPerformQuestion": "mock-uuid",
         "labResultsDidNotPerformReason": "mock-uuid",
-        "labResultsEncounterType": "mock-encounter-uuid",
         "labResultsTestOrderNumberConcept": "mock-test-orderno-concept",
       }
     }
