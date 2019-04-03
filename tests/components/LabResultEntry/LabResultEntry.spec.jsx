@@ -108,10 +108,14 @@ const state = {
     CONSTANTS: {
       labResultsTestOrderNumberConcept: 'mock-test-orderno-concept',
       labResultsDateConcept: 'mock-date-concept',
-      labResultsEncounterType: 'mock-encounter-uuid',
       labResultsDidNotPerformAnswer: 'mock-uuid',
       labResultsDidNotPerformQuestion: 'mock-uuid',
       labResultsDidNotPerformReason: 'mock-uuid',
+    },
+    metadata: {
+      globalProperties: {
+        labResultsEncounterType: 'mock-encounter-uuid',
+      },
     },
   },
   form: {
@@ -206,10 +210,14 @@ describe('<LabResultEntry /> component', () => {
         CONSTANTS: {
           labResultsTestOrderNumberConcept: 'mock-test-orderno-concept',
           labResultsDateConcept: 'mock-date-concept',
-          labResultsEncounterType: 'mock-encounter-uuid',
           labResultsDidNotPerformAnswer: 'mock-uuid',
           labResultsDidNotPerformQuestion: 'mock-uuid',
           labResultsDidNotPerformReason: 'mock-uuid',
+        },
+        metadata: {
+          globalProperties: {
+            labResultsEncounterType: 'mock-encounter-uuid',
+          },
         },
       },
     });
@@ -237,10 +245,14 @@ describe('<LabResultEntry /> component', () => {
         CONSTANTS: {
           labResultsTestOrderNumberConcept: 'mock-test-orderno-concept',
           labResultsDateConcept: 'mock-date-concept',
-          labResultsEncounterType: 'mock-encounter-uuid',
           labResultsDidNotPerformAnswer: 'mock-uuid',
           labResultsDidNotPerformQuestion: 'mock-uuid',
           labResultsDidNotPerformReason: 'mock-uuid',
+        },
+        metadata: {
+          globalProperties: {
+            labResultsEncounterType: 'mock-encounter-uuid',
+          },
         },
       },
     });

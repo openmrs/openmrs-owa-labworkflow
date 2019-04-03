@@ -30,7 +30,7 @@ import {
   Loader,
   formUtil,
   globalPropertyActions,
-  selectors
+  selectors,
 } from '@openmrs/react-components';
 import patientAction from '../actions/patientAction';
 import { fetchLabConcept } from '../actions/labConceptsAction';
