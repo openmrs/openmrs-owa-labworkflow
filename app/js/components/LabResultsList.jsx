@@ -116,7 +116,7 @@ export class LabResultsList extends PureComponent {
     super();
 
     this.state = {
-      patientUUID: "53ec0ef3-8f21-4594-bd48-4fe4a253b1de", // new URLSearchParams(window.location.search).get('patient'),
+      patientUUID: new URLSearchParams(window.location.search).get('patient'),
       returnUrl: new URLSearchParams(window.location.search).get('returnUrl'),
     };
 
