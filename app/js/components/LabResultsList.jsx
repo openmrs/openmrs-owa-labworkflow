@@ -11,6 +11,7 @@ import { FormattedMessage } from 'react-intl';
 import ConceptDisplay from './ConceptDisplay';
 import patientAction from '../actions/patientAction';
 import filtersAction from '../actions/filtersAction';
+import { loadGlobalProperties, selectProperty } from '../utils/globalProperty';
 import { filterThrough, calculateTableRows, sortByDate } from '../utils/helpers';
 import "../../css/lab-results-view.scss";
 
@@ -131,13 +132,7 @@ export class LabResultsList extends PureComponent {
     const { patientUUID, returnUrl } = this.state;
 
     if (patientUUID) {
-      dispatch(constantsActions.fetchLabResultsDateConcept());
-      dispatch(constantsActions.fetchLabResultsDidNotPerformQuestion());
-      dispatch(constantsActions.fetchLabResultsDidNotPerformReasonQuestion());
-      dispatch(constantsActions.fetchLabResultsTestOrderNumberConcept());
-      dispatch(constantsActions.fetchLabResultsTestLocationQuestion());
-      dispatch(constantsActions.fetchLabResultsEstimatedCollectionDateQuestion());
-      dispatch(constantsActions.getDateAndTimeFormat());
+      loadGlobalProperties(dispatch);
       dispatch(patientAction.getPatient(patientUUID));
       dispatch(patientAction.fetchPatientLabTestResults(patientUUID));
     } else {
@@ -444,30 +439,16 @@ LabResultsList.propTypes = {
   navigate: PropTypes.func.isRequired,
 };
 
-export const mapStateToProps = ({
-  openmrs: {
-    CONSTANTS: {
-      dateAndTimeFormat,
-      labResultsTestOrderNumberConcept,
-      labResultsTestLocationQuestion,
-      labResultsDateConcept,
-      labResultsDidNotPerformReasonQuestion,
-      labResultsEstimatedCollectionDateQuestion,
-      labResultsDidNotPerformQuestion,
-    },
-  },
-  patients,
-  filters: { labResultListFilters },
-}) => ({
-  patients,
-  dateAndTimeFormat,
-  labResultsTestOrderNumberConcept,
-  labResultsTestLocationQuestion,
-  labResultsDateConcept,
-  labResultsDidNotPerformReasonQuestion,
-  labResultsEstimatedCollectionDateQuestion,
-  labResultsDidNotPerformQuestion,
-  labResultListFilters,
+export const mapStateToProps = state => ({
+  patients: state.patients,
+  dateAndTimeFormat: selectProperty(state, 'dateAndTimeFormat') || '',
+  labResultsTestOrderNumberConcept: selectProperty(state, 'labResultsTestOrderNumberConcept') || '',
+  labResultsTestLocationQuestion: selectProperty(state, 'labResultsTestLocationQuestion') || '',
+  labResultsDateConcept: selectProperty(state, 'labResultsDateConcept') || '',
+  labResultsDidNotPerformReasonQuestion: selectProperty(state, 'labResultsDidNotPerformReasonQuestion') || '',
+  labResultsEstimatedCollectionDateQuestion: selectProperty(state, 'labResultsEstimatedCollectionDateQuestion') || '',
+  labResultsDidNotPerformQuestion: selectProperty(state, 'labResultsDidNotPerformQuestion') || '',
+  labResultListFilters: state.filters.labResultListFilters,
 });
 
 export default connect(mapStateToProps)(LabResultsList);

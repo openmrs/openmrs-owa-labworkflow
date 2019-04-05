@@ -11,6 +11,7 @@ import {
 } from 'redux-saga/effects';
 import {
   encounterRest,
+  selectors,
 } from '@openmrs/react-components';
 import {
   FETCH_LAB_ORDERS,
@@ -22,16 +23,18 @@ import {
 } from '../actions/actionTypes';
 import { setLabTestTypes, setOrderLabEncounter, fetchLabOrders } from '../actions/labOrdersAction';
 import { setSelectedConcept } from '../actions/labConceptsAction';
+import { selectProperty } from '../utils/globalProperty';
 
-const computeResultStatus = (encounter, constants, order) => {
+const computeResultStatus = (encounter, state, order) => {
   const concealedConceptUUIDs = [
-    constants.labResultsTestOrderNumberConcept,
-    constants.labResultsTestLocationQuestion,
-    constants.labResultsDateConcept,
-    constants.labResultsDidNotPerformReasonQuestion,
-    constants.labResultsEstimatedCollectionDateQuestion,
-    constants.labResultsDidNotPerformQuestion,
+    selectProperty(state, 'labResultsTestOrderNumberConcept'),
+    selectProperty(state,'labResultsTestLocationQuestion'),
+    selectProperty(state, 'labResultsDateConcept'),
+    selectProperty(state, 'labResultsDidNotPerformReasonQuestion'),
+    selectProperty(state, 'labResultsEstimatedCollectionDateQuestion'),
+    selectProperty(state, 'labResultsDidNotPerformQuestion'),
   ];
+
   if (encounter) {
     const hasObs = !R.isNil(encounter.obs);
     if (hasObs) {
@@ -110,10 +113,11 @@ export function* fetchAndSetTestResultEncounter(args) {
     );
 
     const encounters = encounterResponse.results;
+    const labResultsTestOrderNumberConcept = selectProperty(state, 'labResultsTestOrderNumberConcept');
 
     const matchedEncounter = encounters.filter((encounter) => {
       const testOrderObs = encounter.obs.filter(
-        item => item.concept.uuid === state.openmrs.CONSTANTS.labResultsTestOrderNumberConcept,
+        item => item.concept.uuid === labResultsTestOrderNumberConcept,
       );
 
       if (testOrderObs.length <= 0) return false;
@@ -129,7 +133,7 @@ export function* fetchAndSetTestResultEncounter(args) {
         encounter: matchedEncounter[0] || null,
         resultStatus: computeResultStatus(
           matchedEncounter[0] || null,
-          state.openmrs.CONSTANTS,
+          state,
           order,
         ),
       },

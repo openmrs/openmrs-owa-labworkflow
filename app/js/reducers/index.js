@@ -15,6 +15,7 @@ import labOrderReducer from './labOrdersReducer';
 import labTestResultsReducer from './labTestResultsReducer';
 import patientReducer from './patientReducer';
 import filtersReducer from './filtersReducer';
+import constantsReducer from './constantsReducer';
 import {
   patientsReducer,
   selectedPatientReducer,
@@ -37,4 +38,5 @@ export default combineReducers({
   conceptMembers: conceptMembersReducer,
   fetchStatus: fetchStatusReducer,
   filters: filtersReducer,
+  CONSTANTS: constantsReducer,
 });
