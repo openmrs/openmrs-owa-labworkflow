@@ -28,7 +28,7 @@ import { selectProperty } from '../utils/globalProperty';
 const computeResultStatus = (encounter, state, order) => {
   const concealedConceptUUIDs = [
     selectProperty(state, 'labResultsTestOrderNumberConcept'),
-    selectProperty(state,'labResultsTestLocationQuestion'),
+    selectProperty(state, 'labResultsTestLocationQuestion'),
     selectProperty(state, 'labResultsDateConcept'),
     selectProperty(state, 'labResultsDidNotPerformReasonQuestion'),
     selectProperty(state, 'labResultsEstimatedCollectionDateQuestion'),
