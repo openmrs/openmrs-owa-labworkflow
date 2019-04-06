@@ -26,17 +26,16 @@ import {
   Obs,
   ObsGroup,
   formValidations,
-  constantsActions,
   Loader,
   formUtil,
-  globalPropertyActions,
-  selectors,
 } from '@openmrs/react-components';
 import patientAction from '../actions/patientAction';
 import { fetchLabConcept } from '../actions/labConceptsAction';
+import constantsActions from '../actions/constantsAction';
 import { updateLabOrderWithhEncounter } from '../actions/labOrdersAction';
 import '../../css/lab-result-entry.scss';
 import { formatRangeDisplayText, hasMaxAndMinValues } from '../utils/helpers';
+import { selectProperty } from '../utils/globalProperty';
 
 const {
   minValue,
@@ -58,18 +57,20 @@ export class LabResultEntry extends PureComponent {
   }
 
   componentWillMount() {
-    const { dispatch, history: { location: { state } }, CONSTANTS } = this.props;
+    const {
+      dispatch,
+      history: { location: { state } },
+      labResultsDidNotPerformReasonQuestion,
+      labResultsTestLocationQuestion,
+    } = this.props;
     if (typeof state !== 'undefined') {
       const conceptUUID = state.concept.uuid;
       const patientUUID = state.patient.uuid;
       this.setState({ labOrder: state });
       dispatch(patientAction.getPatient(patientUUID));
-      dispatch(constantsActions.fetchLabResultsDidNotPerformReasonAnswer(CONSTANTS.labResultsDidNotPerformReasonQuestion));
-      dispatch(constantsActions.fetchLabResultsTestLocationAnswer(CONSTANTS.labResultsTestLocationQuestion));
+      dispatch(constantsActions.fetchConceptAsConstant(labResultsDidNotPerformReasonQuestion, 'labResultsDidNotPerformReasonAnswer'));
+      dispatch(constantsActions.fetchConceptAsConstant(labResultsTestLocationQuestion, 'labResultsTestLocationAnswer'));
       dispatch(fetchLabConcept(conceptUUID));
-
-      // confirm that all global properties to be used on this page have been loaded; TODO: better way to do this in bulk?
-      dispatch(globalPropertyActions.fetchGlobalProperty("labworkflowowa.labResultsEncounterType"));  // TODO extract GP names into constants?
     } else {
       this.shouldRedirect();
     }
@@ -98,11 +99,29 @@ export class LabResultEntry extends PureComponent {
 
   renderForm(selectedLabConcept) {
     const {
-      CONSTANTS, conceptMembers, selectedPatient, patients, history: { location: { state } },
-      isDidNotPerformCheckboxSelected, dispatch, formId, encounterTypeUuid,
+      labResultsDidNotPerformReasonQuestion,
+      labResultsTestOrderNumberConcept,
+      labResultsDateConcept,
+      labResultsDidNotPerformAnswer,
+      labResultsDidNotPerformQuestion,
+      labResultsDidNotPerformReasonAnswer,
+      labResultsEstimatedCollectionDateAnswer,
+      labResultsEstimatedCollectionDateQuestion,
+      labResultsTestLocationAnswer,
+      labResultsTestLocationQuestion,
+      conceptMembers,
+      selectedPatient,
+      patients,
+      history: { location: { state } },
+      isDidNotPerformCheckboxSelected,
+      dispatch,
+      formId,
+      labResultsEncounterType,
     } = this.props;
+
+
     if (!(isDidNotPerformCheckboxSelected)) {
-      const obsFieldName = formUtil.obsFieldName('did-not-perform-dropdown', CONSTANTS.labResultsDidNotPerformReasonQuestion);
+      const obsFieldName = formUtil.obsFieldName('did-not-perform-dropdown', labResultsDidNotPerformReasonQuestion);
       dispatch(change(formId, obsFieldName, ''));
     }
 
@@ -113,7 +132,7 @@ export class LabResultEntry extends PureComponent {
     const hasEncounter = !R.isEmpty(encounter);
 
     const encounterType = {
-      uuid: encounterTypeUuid,
+      uuid: labResultsEncounterType,
     };
 
     const selectedOrder = state;
@@ -122,7 +141,7 @@ export class LabResultEntry extends PureComponent {
       {
         type: "obs",
         path: "test-order-number",
-        concept: CONSTANTS.labResultsTestOrderNumberConcept,
+        concept: labResultsTestOrderNumberConcept,
         value: state.orderNumber,
       },
     ];
@@ -156,7 +175,7 @@ export class LabResultEntry extends PureComponent {
                     <Obs
                       datatype="date"
                       defaultDate={undefined}
-                      concept={CONSTANTS.labResultsDateConcept}
+                      concept={labResultsDateConcept}
                       path="result-date"
                       validate={[maxDateRange]}
                     />
@@ -168,9 +187,9 @@ export class LabResultEntry extends PureComponent {
           <div className="col-xs-4">
             <div className="did-not-perform-checkbox">
               <Obs
-                conceptAnswer={CONSTANTS.labResultsDidNotPerformAnswer}
+                conceptAnswer={labResultsDidNotPerformAnswer}
                 widget="checkbox"
-                concept={CONSTANTS.labResultsDidNotPerformQuestion}
+                concept={labResultsDidNotPerformQuestion}
                 path="did-not-perform-checkbox"
                 checkBoxTitle={(
                   <FormattedMessage
@@ -190,10 +209,10 @@ export class LabResultEntry extends PureComponent {
 
               </span>
               <Obs
-                conceptAnswers={CONSTANTS.labResultsDidNotPerformReasonAnswer}
+                conceptAnswers={labResultsDidNotPerformReasonAnswer}
                 widget="dropdown"
                 disabled={!(isDidNotPerformCheckboxSelected)}
-                concept={CONSTANTS.labResultsDidNotPerformReasonQuestion}
+                concept={labResultsDidNotPerformReasonQuestion}
                 path="did-not-perform-dropdown"
                 dropDownStyle={{ heigth: '40px', width: '100%' }}
               />
@@ -224,9 +243,9 @@ export class LabResultEntry extends PureComponent {
           <div className="specimen-detail">
             <div className="estimated-checkbox">
               <Obs
-                conceptAnswer={CONSTANTS.labResultsEstimatedCollectionDateAnswer}
+                conceptAnswer={labResultsEstimatedCollectionDateAnswer}
                 widget="checkbox"
-                concept={CONSTANTS.labResultsEstimatedCollectionDateQuestion}
+                concept={labResultsEstimatedCollectionDateQuestion}
                 path="estimated-checkbox"
                 checkBoxTitle={(
                   <FormattedMessage
@@ -243,9 +262,9 @@ export class LabResultEntry extends PureComponent {
 &nbsp;
               </span>
               <Obs
-                conceptAnswers={CONSTANTS.labResultsTestLocationAnswer}
+                conceptAnswers={labResultsTestLocationAnswer}
                 widget="dropdown"
-                concept={CONSTANTS.labResultsTestLocationQuestion}
+                concept={labResultsTestLocationQuestion}
                 path="test-location-dropdown"
                 dropDownStyle={{ heigth: '40px', width: '100%' }}
               />
@@ -533,29 +552,43 @@ LabResultEntry.propTypes = {
 const mapStateToProps = (state) => {
   const {
     selectedLabConcept,
-    openmrs: { CONSTANTS },
+    CONSTANTS: {
+      labResultsDidNotPerformReasonAnswer,
+      labResultsTestLocationAnswer,
+    },
     conceptMembers,
     patients,
     selectedPatient,
     form,
   } = state;
   const formId = Object.keys(form)[0];
+  const labResultsDidNotPerformQuestion = selectProperty(state, 'labResultsDidNotPerformQuestion');
   let isDidNotPerformCheckboxSelected = true;
   if (formId) {
     const selector = formValueSelector(formId);
-    const obsFieldName = formUtil.obsFieldName('did-not-perform-checkbox', CONSTANTS.labResultsDidNotPerformQuestion);
+    const obsFieldName = formUtil.obsFieldName('did-not-perform-checkbox', labResultsDidNotPerformQuestion);
+
     isDidNotPerformCheckboxSelected = !!(selector(state, obsFieldName));
   }
-  const encounterTypeUuid = selectors.getGlobalProperty(state, "labworkflowowa.labResultsEncounterType");
+  const labResultsEncounterType = selectProperty(state, 'labResultsEncounterType');
   return {
     patients,
     selectedPatient,
     selectedLabConcept,
-    CONSTANTS,
     conceptMembers,
     isDidNotPerformCheckboxSelected,
     formId,
-    encounterTypeUuid,
+    labResultsEncounterType,
+    labResultsDidNotPerformQuestion,
+    labResultsDidNotPerformReasonQuestion: selectProperty(state, 'labResultsDidNotPerformReasonQuestion'),
+    labResultsTestLocationQuestion: selectProperty(state, 'labResultsTestLocationQuestion'),
+    labResultsTestOrderNumberConcept: selectProperty(state, 'labResultsTestOrderNumberConcept'),
+    labResultsDateConcept: selectProperty(state, 'labResultsDateConcept'),
+    labResultsDidNotPerformReasonAnswer,
+    labResultsTestLocationAnswer,
+    labResultsEstimatedCollectionDateAnswer: selectProperty(state, 'labResultsEstimatedCollectionDateAnswer'),
+    labResultsEstimatedCollectionDateQuestion: selectProperty(state, 'labResultsEstimatedCollectionDateQuestion'),
+    labResultsDidNotPerformAnswer: selectProperty(state, 'labResultsDidNotPerformAnswer'),
   };
 };
 

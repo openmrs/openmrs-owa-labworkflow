@@ -21,6 +21,7 @@ import EncounterDisplay from './EncounterDisplay';
 import { fetchLabOrders, cancelOrder } from '../actions/labOrdersAction';
 import { setSelectedConcept } from '../actions/labConceptsAction';
 import { filterThrough, calculateTableRows } from '../utils/helpers';
+import { loadGlobalProperties, selectProperty } from '../utils/globalProperty';
 import filtersAction from '../actions/filtersAction';
 import patientAction from '../actions/patientAction';
 import "../../css/lab-orders-list.scss";
@@ -131,17 +132,7 @@ export class LabOrdersList extends PureComponent {
 
   componentDidMount() {
     const { dispatch } = this.props;
-    dispatch(constantsActions.getDateAndTimeFormat());
-    dispatch(constantsActions.fetchLabResultsEncounterType());
-    dispatch(constantsActions.fetchLabResultsDidNotPerformQuestion());
-    dispatch(constantsActions.fetchLabResultsTestOrderType());
-    dispatch(constantsActions.fetchLabResultsDidNotPerformAnswer());
-    dispatch(constantsActions.fetchLabResultsTestOrderNumberConcept());
-    dispatch(constantsActions.fetchLabResultsTestLocationQuestion());
-    dispatch(constantsActions.fetchLabResultsEstimatedCollectionDateQuestion());
-    dispatch(constantsActions.fetchLabResultsEstimatedCollectionDateAnswer());
-    dispatch(constantsActions.fetchLabResultsDidNotPerformReasonQuestion());
-    dispatch(constantsActions.fetchLabResultsDateConcept());
+    loadGlobalProperties(dispatch);
     dispatch(patientAction.setSelectedPatient(''));
     dispatch(setSelectedConcept(''));
   }
@@ -324,30 +315,15 @@ LabOrdersList.propTypes = {
   dateAndTimeFormat: PropTypes.string.isRequired,
 };
 
-export const mapStateToProps = ({
-  labOrders: { orders, labTests, fetched },
-  openmrs: {
-    CONSTANTS: {
-      dateAndTimeFormat,
-      labResultsTestOrderType,
-      testOrderEncounterRole,
-      testOrderEncounterType,
-    },
-    session: {
-      currentProvider,
-      sessionLocation,
-    },
-  },
-  filters: { labOrdersListFilters },
-}) => ({
-  orders,
-  labTests,
-  dateAndTimeFormat,
-  labResultsTestOrderType,
-  labOrdersListFilters,
-  fetched,
-  currentProvider,
-  sessionLocation,
+export const mapStateToProps = state => ({
+  orders: state.labOrders.orders,
+  labTests: state.labOrders.labTests,
+  dateAndTimeFormat: selectProperty(state, 'dateAndTimeFormat') || '',
+  labResultsTestOrderType: selectProperty(state, 'labResultsTestOrderType') || '',
+  labOrdersListFilters: state.filters.labOrdersListFilters,
+  fetched: state.labOrders.orders,
+  currentProvider: state.openmrs.session.currentProvider,
+  sessionLocation: state.openmrs.session.sessionLocation,
 });
 
 const LabOrdersListContainer = (
