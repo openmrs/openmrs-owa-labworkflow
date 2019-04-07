@@ -154,15 +154,6 @@ exports[`<LabResultEntry /> component renders correctly with valid props 1`] = `
         selectedPatient="some-patient-uuid"
       >
         <LabResultEntry
-          CONSTANTS={
-            Object {
-              "labResultsDateConcept": "mock-date-concept",
-              "labResultsDidNotPerformAnswer": "mock-uuid",
-              "labResultsDidNotPerformQuestion": "mock-uuid",
-              "labResultsDidNotPerformReason": "mock-uuid",
-              "labResultsTestOrderNumberConcept": "mock-test-orderno-concept",
-            }
-          }
           clearNameEMRField={[MockFunction]}
           conceptMembers={
             Object {
@@ -213,6 +204,8 @@ exports[`<LabResultEntry /> component renders correctly with valid props 1`] = `
             }
           }
           isDidNotPerformCheckboxSelected={false}
+          labResultsDidNotPerformReasonAnswer="mock-uuid"
+          labResultsTestLocationAnswer="mock-uuid"
           labTests={
             Array [
               "Hémogramme automatisé",
@@ -375,7 +368,7 @@ exports[`<LabResultEntry /> component renders correctly with valid props 1`] = `
                         <span
                           className="test-details"
                         >
-                          ROUTINE
+                          Routine
                         </span>
                       </span>
                     </div>
@@ -398,7 +391,7 @@ exports[`<LabResultEntry /> component renders correctly with valid props 1`] = `
                         <span
                           className="test-details"
                         >
-                          Aug 30 12:34 PM
+                          Aug 30 5:34 PM
                         </span>
                       </span>
                     </div>
@@ -446,7 +439,7 @@ exports[`<LabResultEntry /> component renders correctly with valid props 1`] = `
                       defaultValues={
                         Array [
                           Object {
-                            "concept": "mock-test-orderno-concept",
+                            "concept": undefined,
                             "path": "test-order-number",
                             "type": "obs",
                             "value": "ORD-1",
@@ -491,7 +484,6 @@ exports[`<LabResultEntry /> component renders correctly with valid props 1`] = `
                                   className="obs-date-field"
                                 >
                                   <WithObsGroupContext(WithFormContext(Connect(Obs)))
-                                    concept="mock-date-concept"
                                     datatype="date"
                                     path="result-date"
                                     validate={
@@ -517,8 +509,6 @@ exports[`<LabResultEntry /> component renders correctly with valid props 1`] = `
                                       values={Object {}}
                                     />
                                   }
-                                  concept="mock-uuid"
-                                  conceptAnswer="mock-uuid"
                                   path="did-not-perform-checkbox"
                                   widget="checkbox"
                                 />
@@ -541,6 +531,7 @@ exports[`<LabResultEntry /> component renders correctly with valid props 1`] = `
                                    
                                 </span>
                                 <WithObsGroupContext(WithFormContext(Connect(Obs)))
+                                  conceptAnswers="mock-uuid"
                                   disabled={true}
                                   dropDownStyle={
                                     Object {
@@ -585,6 +576,7 @@ exports[`<LabResultEntry /> component renders correctly with valid props 1`] = `
                                    
                                 </span>
                                 <WithObsGroupContext(WithFormContext(Connect(Obs)))
+                                  conceptAnswers="mock-uuid"
                                   dropDownStyle={
                                     Object {
                                       "heigth": "40px",
@@ -615,7 +607,7 @@ exports[`<LabResultEntry /> component renders correctly with valid props 1`] = `
                                     className="encounter-date-field"
                                   >
                                     <WithFormContext(Connect(EncounterDate))
-                                      defaultDate={"2019-04-03T04:00:00.000Z"}
+                                      defaultDate={"2019-04-06T23:00:00.000Z"}
                                       field="dateFromField"
                                       handleDateChange={[Function]}
                                       id="specimen-collection-date"
@@ -754,7 +746,7 @@ exports[`<LabResultEntry /> component renders correctly with valid props 1`] = `
                         defaultValues={
                           Array [
                             Object {
-                              "concept": "mock-test-orderno-concept",
+                              "concept": undefined,
                               "path": "test-order-number",
                               "type": "obs",
                               "value": "ORD-1",
@@ -800,7 +792,6 @@ exports[`<LabResultEntry /> component renders correctly with valid props 1`] = `
                                     className="obs-date-field"
                                   >
                                     <WithObsGroupContext(WithFormContext(Connect(Obs)))
-                                      concept="mock-date-concept"
                                       datatype="date"
                                       path="result-date"
                                       validate={
@@ -826,8 +817,6 @@ exports[`<LabResultEntry /> component renders correctly with valid props 1`] = `
                                         values={Object {}}
                                       />
                                     }
-                                    concept="mock-uuid"
-                                    conceptAnswer="mock-uuid"
                                     path="did-not-perform-checkbox"
                                     widget="checkbox"
                                   />
@@ -850,6 +839,7 @@ exports[`<LabResultEntry /> component renders correctly with valid props 1`] = `
                                      
                                   </span>
                                   <WithObsGroupContext(WithFormContext(Connect(Obs)))
+                                    conceptAnswers="mock-uuid"
                                     disabled={true}
                                     dropDownStyle={
                                       Object {
@@ -894,6 +884,7 @@ exports[`<LabResultEntry /> component renders correctly with valid props 1`] = `
                                      
                                   </span>
                                   <WithObsGroupContext(WithFormContext(Connect(Obs)))
+                                    conceptAnswers="mock-uuid"
                                     dropDownStyle={
                                       Object {
                                         "heigth": "40px",
@@ -924,7 +915,7 @@ exports[`<LabResultEntry /> component renders correctly with valid props 1`] = `
                                       className="encounter-date-field"
                                     >
                                       <WithFormContext(Connect(EncounterDate))
-                                        defaultDate={"2019-04-03T04:00:00.000Z"}
+                                        defaultDate={"2019-04-06T23:00:00.000Z"}
                                         field="dateFromField"
                                         handleDateChange={[Function]}
                                         id="specimen-collection-date"
@@ -1250,15 +1241,6 @@ exports[`<LabResultEntry /> component should redirect when location has an empty
       }
     >
       <LabResultEntry
-        CONSTANTS={
-          Object {
-            "labResultsDateConcept": "mock-date-concept",
-            "labResultsDidNotPerformAnswer": "mock-uuid",
-            "labResultsDidNotPerformQuestion": "mock-uuid",
-            "labResultsDidNotPerformReason": "mock-uuid",
-            "labResultsTestOrderNumberConcept": "mock-test-orderno-concept",
-          }
-        }
         clearNameEMRField={[MockFunction]}
         dispatch={[Function]}
         formId="mockForm"
@@ -1287,6 +1269,8 @@ exports[`<LabResultEntry /> component should redirect when location has an empty
           }
         }
         isDidNotPerformCheckboxSelected={false}
+        labResultsDidNotPerformReasonAnswer="mock-uuid"
+        labResultsTestLocationAnswer="mock-uuid"
         labTests={
           Array [
             "Hémogramme automatisé",
@@ -1441,15 +1425,6 @@ exports[`<LabResultEntry /> component should render <Loader /> component when se
   }
 >
   <LabResultEntry
-    CONSTANTS={
-      Object {
-        "labResultsDateConcept": "mock-date-concept",
-        "labResultsDidNotPerformAnswer": "mock-uuid",
-        "labResultsDidNotPerformQuestion": "mock-uuid",
-        "labResultsDidNotPerformReason": "mock-uuid",
-        "labResultsTestOrderNumberConcept": "mock-test-orderno-concept",
-      }
-    }
     clearNameEMRField={[MockFunction]}
     dispatch={[Function]}
     formId="mockForm"
@@ -1478,6 +1453,8 @@ exports[`<LabResultEntry /> component should render <Loader /> component when se
       }
     }
     isDidNotPerformCheckboxSelected={false}
+    labResultsDidNotPerformReasonAnswer="mock-uuid"
+    labResultsTestLocationAnswer="mock-uuid"
     labTests={
       Array [
         "Hémogramme automatisé",
