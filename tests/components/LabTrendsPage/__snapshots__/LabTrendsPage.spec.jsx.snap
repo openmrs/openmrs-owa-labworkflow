@@ -1017,7 +1017,7 @@ exports[`Component: LabTrendsPage renders properly 1`] = `
                                                 className="table_cell sample-date"
                                               >
                                                 <span>
-                                                  08-Nov-2018
+                                                  09-Nov-2018
                                                 </span>
                                               </div>
                                             </_Cell>
@@ -2321,7 +2321,7 @@ exports[`Component: LabTrendsPage renders properly 1`] = `
                           "uuid": "271fac91-06db-4454-b330-704446722867",
                         },
                         "id": 523,
-                        "obsDatetime": "08-Nov-2018",
+                        "obsDatetime": "09-Nov-2018",
                         "uuid": "48631bb1-2483-44c2-bda7-76548b0dd3b0",
                         "value": 56,
                       },
@@ -2373,7 +2373,7 @@ exports[`Component: LabTrendsPage renders properly 1`] = `
                             "uuid": "271fac91-06db-4454-b330-704446722867",
                           },
                           "id": 523,
-                          "obsDatetime": "08-Nov-2018",
+                          "obsDatetime": "09-Nov-2018",
                           "uuid": "48631bb1-2483-44c2-bda7-76548b0dd3b0",
                           "value": 56,
                         },
@@ -2867,7 +2867,7 @@ exports[`Component: LabTrendsPage renders properly 1`] = `
                             dataKey="obsDatetime"
                             domain={
                               Array [
-                                "08-Nov-2018",
+                                "09-Nov-2018",
                               ]
                             }
                             height={30}
@@ -2972,7 +2972,7 @@ exports[`Component: LabTrendsPage renders properly 1`] = `
                                             "isShow": true,
                                             "offset": 0,
                                             "tickCoord": 275,
-                                            "value": "08-Nov-2018",
+                                            "value": "09-Nov-2018",
                                           }
                                         }
                                         scaleToFit={false}
@@ -2999,7 +2999,7 @@ exports[`Component: LabTrendsPage renders properly 1`] = `
                                             key="0"
                                             x={275}
                                           >
-                                            08-Nov-2018
+                                            09-Nov-2018
                                           </tspan>
                                         </text>
                                       </Text>
@@ -3047,7 +3047,7 @@ exports[`Component: LabTrendsPage renders properly 1`] = `
                                 "categoricalDomain": undefined,
                                 "dataKey": "obsDatetime",
                                 "domain": Array [
-                                  "08-Nov-2018",
+                                  "09-Nov-2018",
                                 ],
                                 "duplicateDomain": undefined,
                                 "height": 30,
@@ -3289,7 +3289,7 @@ exports[`Component: LabTrendsPage renders properly 1`] = `
                                       "uuid": "271fac91-06db-4454-b330-704446722867",
                                     },
                                     "id": 523,
-                                    "obsDatetime": "08-Nov-2018",
+                                    "obsDatetime": "09-Nov-2018",
                                     "uuid": "48631bb1-2483-44c2-bda7-76548b0dd3b0",
                                     "value": 56,
                                   },
@@ -3315,7 +3315,7 @@ exports[`Component: LabTrendsPage renders properly 1`] = `
                                 "categoricalDomain": undefined,
                                 "dataKey": "obsDatetime",
                                 "domain": Array [
-                                  "08-Nov-2018",
+                                  "09-Nov-2018",
                                 ],
                                 "duplicateDomain": undefined,
                                 "height": 30,
@@ -3441,7 +3441,7 @@ exports[`Component: LabTrendsPage renders properly 1`] = `
                                             "uuid": "271fac91-06db-4454-b330-704446722867",
                                           },
                                           "id": 523,
-                                          "obsDatetime": "08-Nov-2018",
+                                          "obsDatetime": "09-Nov-2018",
                                           "uuid": "48631bb1-2483-44c2-bda7-76548b0dd3b0",
                                           "value": 56,
                                         }

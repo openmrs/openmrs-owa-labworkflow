@@ -97,6 +97,10 @@ const state = {
     },
   },
   selectedPatient: 'some-patient-uuid',
+  CONSTANTS: {
+    labResultsDidNotPerformReasonAnswer: "mock-uuid",
+    labResultsTestLocationAnswer: "mock-uuid",
+  },
   openmrs: {
     patients: {
       abcd: {
@@ -115,6 +119,11 @@ const state = {
     metadata: {
       globalProperties: {
         labResultsEncounterType: 'mock-encounter-uuid',
+        labResultsTestOrderNumberConcept: 'mock-test-orderno-concept',
+        labResultsDateConcept: 'mock-date-concept',
+        labResultsDidNotPerformAnswer: 'mock-uuid',
+        labResultsDidNotPerformQuestion: 'mock-uuid',
+        labResultsDidNotPerformReason: 'mock-uuid',
       },
     },
   },
@@ -206,6 +215,10 @@ describe('<LabResultEntry /> component', () => {
         mockForm: {},
       },
       selectedLabConcept: {},
+      CONSTANTS: {
+        labResultsDidNotPerformReasonAnswer: "mock-uuid",
+        labResultsTestLocationAnswer: "mock-uuid",
+      },
       openmrs: {
         CONSTANTS: {
           labResultsTestOrderNumberConcept: 'mock-test-orderno-concept',
@@ -217,6 +230,11 @@ describe('<LabResultEntry /> component', () => {
         metadata: {
           globalProperties: {
             labResultsEncounterType: 'mock-encounter-uuid',
+            labResultsTestOrderNumberConcept: 'mock-test-orderno-concept',
+            labResultsDateConcept: 'mock-date-concept',
+            labResultsDidNotPerformAnswer: 'mock-uuid',
+            labResultsDidNotPerformQuestion: 'mock-uuid',
+            labResultsDidNotPerformReason: 'mock-uuid',
           },
         },
       },
@@ -241,6 +259,10 @@ describe('<LabResultEntry /> component', () => {
       form: {
         mockForm: {},
       },
+      CONSTANTS: {
+        labResultsDidNotPerformReasonAnswer: "mock-uuid",
+        labResultsTestLocationAnswer: "mock-uuid",
+      },
       openmrs: {
         CONSTANTS: {
           labResultsTestOrderNumberConcept: 'mock-test-orderno-concept',
@@ -252,6 +274,11 @@ describe('<LabResultEntry /> component', () => {
         metadata: {
           globalProperties: {
             labResultsEncounterType: 'mock-encounter-uuid',
+            labResultsTestOrderNumberConcept: 'mock-test-orderno-concept',
+            labResultsDateConcept: 'mock-date-concept',
+            labResultsDidNotPerformAnswer: 'mock-uuid',
+            labResultsDidNotPerformQuestion: 'mock-uuid',
+            labResultsDidNotPerformReason: 'mock-uuid',
           },
         },
       },
