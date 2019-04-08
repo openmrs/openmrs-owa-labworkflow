@@ -497,7 +497,7 @@ export class LabResultEntry extends PureComponent {
                           id="app.labResultEntry.urgencylabel"
                           defaultMessage="Urgency" />
 :&nbsp;
-                        <span className="test-details">{location.state.urgency.charAt(0).toUpperCase() + location.state.urgency.slice(1).toLowerCase()}</span>
+                        <span className="test-details">{location.state.urgency === 'STAT' ? location.state.urgency : location.state.urgency.charAt(0).toUpperCase() + location.state.urgency.slice(1).toLowerCase()}</span>
                       </span>
                     </div>
                     <div className="col-xs-10 order-date-detail">
