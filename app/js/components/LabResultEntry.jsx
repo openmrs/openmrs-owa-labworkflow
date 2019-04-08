@@ -215,6 +215,7 @@ export class LabResultEntry extends PureComponent {
                 concept={labResultsDidNotPerformReasonQuestion}
                 path="did-not-perform-dropdown"
                 dropDownStyle={{ heigth: '40px', width: '100%' }}
+                required={!!(isDidNotPerformCheckboxSelected)}
               />
             </div>
           </div>
