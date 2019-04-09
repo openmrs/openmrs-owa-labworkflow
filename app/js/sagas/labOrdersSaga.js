@@ -104,7 +104,7 @@ export function* fetchAndSetTestResultEncounter(args) {
   const state = yield select();
   const { order, count = -1 } = args;
   const patientUUID = order.patient.uuid;
-  const encounterTypeUUID = state.openmrs.CONSTANTS.labResultsEncounterType;
+  const encounterTypeUUID = selectProperty(state, 'labResultsEncounterType');
   try {
     const encounterResponse = yield call(
       encounterRest.fetchEncountersByPatient,
