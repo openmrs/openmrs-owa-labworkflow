@@ -3,15 +3,17 @@ import {
   put,
   takeLatest,
   takeEvery,
+  select,
 } from 'redux-saga/effects';
 import {
   patientRest,
-  constantsRest,
   encounterRest,
   orderRest,
 } from '@openmrs/react-components';
 import actionTypes, { FETCH_PATIENT_LAB_TEST_RESULTS } from '../actions/actionTypes';
 import patientAction from '../actions/patientAction';
+import { selectProperty } from '../utils/globalProperty';
+
 
 function* getPatient(action) {
   try {
@@ -33,32 +35,29 @@ export function* patientSagas() {
 }
 
 function* fetchAndSetTestResults(action) {
+  const state = yield select();
   const { patientUUID } = action;
   try {
-    const encounterTypeResponse = yield call(constantsRest.fetchLabResultsEncounterType);
-    const labResultsTestOrderTypeResponse = yield call(constantsRest.fetchLabResultsTestOrderType);
-    if (encounterTypeResponse && labResultsTestOrderTypeResponse) {
-      const labResultsTestOrderType = labResultsTestOrderTypeResponse.results[0].value;
-      const encounterTypeUUID = encounterTypeResponse.results[0].value;
-      const patientOrdersResponse = yield call(orderRest.fetchAllOrdersByPatient, patientUUID,
-        labResultsTestOrderType);
+    const labResultsTestOrderType = selectProperty(state, 'labResultsTestOrderType');
+    const encounterTypeUUID = selectProperty(state, 'labResultsEncounterType');
+    const patientOrdersResponse = yield call(orderRest.fetchAllOrdersByPatient, patientUUID,
+      labResultsTestOrderType);
 
-      const patientEncountersResponse = yield call(
-        encounterRest.fetchEncountersByPatient,
-        patientUUID,
-        encounterTypeUUID,
-      );
+    const patientEncountersResponse = yield call(
+      encounterRest.fetchEncountersByPatient,
+      patientUUID,
+      encounterTypeUUID,
+    );
 
-      if (patientOrdersResponse && patientEncountersResponse) {
-        if (patientOrdersResponse.results.length) {
-          yield put(patientAction.setPatientData({
-            meta: {
-              orders: patientOrdersResponse.results.filter(order => order.action !== "DISCONTINUE"),
-              encounters: patientEncountersResponse.results,
-            },
-            patientUUID,
-          }));
-        }
+    if (patientOrdersResponse && patientEncountersResponse) {
+      if (patientOrdersResponse.results.length) {
+        yield put(patientAction.setPatientData({
+          meta: {
+            orders: patientOrdersResponse.results.filter(order => order.action !== "DISCONTINUE"),
+            encounters: patientEncountersResponse.results,
+          },
+          patientUUID,
+        }));
       }
     }
   } catch (e) {

@@ -128,15 +128,26 @@ export class LabResultsList extends PureComponent {
 
   componentWillMount() {
     const { dispatch } = this.props;
-
     const { patientUUID, returnUrl } = this.state;
 
     if (patientUUID) {
       loadGlobalProperties(dispatch);
       dispatch(patientAction.getPatient(patientUUID));
-      dispatch(patientAction.fetchPatientLabTestResults(patientUUID));
     } else {
       window.location.href = returnUrl;
+    }
+  }
+
+  componentDidUpdate() {
+    const { patientUUID } = this.state;
+    const {
+      labResultsTestOrderType,
+      labResultsEncounterType,
+      dispatch,
+    } = this.props;
+
+    if (labResultsEncounterType && labResultsTestOrderType) {
+      dispatch(patientAction.fetchPatientLabTestResults(patientUUID));
     }
   }
 
@@ -448,6 +459,8 @@ export const mapStateToProps = state => ({
   labResultsDidNotPerformReasonQuestion: selectProperty(state, 'labResultsDidNotPerformReasonQuestion') || '',
   labResultsEstimatedCollectionDateQuestion: selectProperty(state, 'labResultsEstimatedCollectionDateQuestion') || '',
   labResultsDidNotPerformQuestion: selectProperty(state, 'labResultsDidNotPerformQuestion') || '',
+  labResultsEncounterType: selectProperty(state, 'labResultsEncounterType') || '',
+  labResultsTestOrderType: selectProperty(state, 'labResultsTestOrderType') || '',
   labResultListFilters: state.filters.labResultListFilters,
 });
 
