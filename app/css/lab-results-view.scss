@@ -17,7 +17,7 @@
   .lab-results-list-header {
     display: none;
   }
-  .lab-results-list-cell-sample-date {
+  .lab-results-list-cell-collection-date {
     min-width: 80px !important;
   }
 
@@ -120,11 +120,11 @@ i.scale:hover {
     max-width: 80px
 }
 
-.lab-results-list-cell-request-date,
-.lab-results-list-cell-sample-date,
-.lab-result-list-header-sample-date,
-.lab-result-list-header-request-date {
-    max-width: 140px;
+.lab-results-list-cell-order-date,
+.lab-results-list-cell-collection-date,
+.lab-result-list-header-collection-date,
+.lab-result-list-header-order-date {
+    max-width: 200px;
 }
 
 .lab-results-list-cell-result,

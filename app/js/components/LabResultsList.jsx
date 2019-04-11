@@ -31,9 +31,9 @@ const Cell = ({
       );
     }
 
-    if (columnName === 'REQUEST DATE') {
+    if (columnName === 'ORDER DATE') {
       return (
-        <div className="table_cell request-date">
+        <div className="table_cell order-date">
           <span>{moment(value.order.dateActivated).format("DD-MMM-YYYY")}</span>
         </div>
       );
@@ -47,9 +47,9 @@ const Cell = ({
       );
     }
 
-    if (columnName === 'SAMPLE DATE' && !hasNoEncounter && !R.isEmpty(value.resultDate)) {
+    if (columnName === 'COLLECTION DATE' && !hasNoEncounter && !R.isEmpty(value.resultDate)) {
       return (
-        <div className="table_cell sample-date">
+        <div className="table_cell collection-date">
           <span>{moment(value.resultDate.value).format("DD-MMM-YYYY") || ''}</span>
         </div>
       );
@@ -78,7 +78,7 @@ const Cell = ({
   }
   if (type === 'panel') {
     switch (columnName) {
-      case 'TYPE': {
+      case 'TEST TYPE': {
         return (
           <div
             className="table_cell type">
@@ -191,7 +191,7 @@ export class LabResultsList extends PureComponent {
 
   renderLabResultsTable(labResults) {
     const { dateAndTimeFormat, labResultListFilters } = this.props;
-    const fields = ["TYPE", "STATUS", "REQUEST DATE", "SAMPLE DATE", "RESULT", "NORMAL RANGE"];
+    const fields = ["TEST TYPE", "STATUS", "ORDER DATE", "COLLECTION DATE", "RESULT", "NORMAL RANGE"];
 
     const columnMetadata = fields.map(columnName => ({
       Header:
@@ -403,7 +403,7 @@ export class LabResultsList extends PureComponent {
         if (order.dateStopped !== null) {
           status = "Cancelled";
         }
-      
+
         if (order.autoExpireDate !== null) {
           status = "Expired";
         }
