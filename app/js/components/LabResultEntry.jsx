@@ -19,6 +19,7 @@ import {
 import moment from 'moment';
 import { Redirect } from 'react-router-dom';
 import { FormattedMessage } from 'react-intl';
+import { startOfToday } from 'date-fns';
 
 import {
   EncounterDate,
@@ -284,8 +285,8 @@ export class LabResultEntry extends PureComponent {
                     handleDateChange={() => {}}
                     labelClassName="date-picker-label"
                     label="Specimen Collection Date:"
-                    defaultDate={moment().startOf('day')}
-                    field="dateFromField"
+                    defaultDate={startOfToday()}
+                    field="specimen"
                   />
                 </span>
               </div>
