@@ -15,7 +15,7 @@ import { withRouter } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import { FormattedMessage } from 'react-intl';
 import swal from 'sweetalert';
-import { SortableTable, Loader, constantsActions } from '@openmrs/react-components';
+import { SortableTable, Loader } from '@openmrs/react-components';
 import LabOrderListFilters from './LabOrdersListFilters';
 import EncounterDisplay from './EncounterDisplay';
 import { fetchLabOrders, cancelOrder } from '../actions/labOrdersAction';
