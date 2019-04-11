@@ -7,7 +7,6 @@ import {
 } from '@openmrs/react-components';
 import moment from 'moment';
 import { FormattedMessage } from 'react-intl';
-
 import ConceptDisplay from './ConceptDisplay';
 import patientAction from '../actions/patientAction';
 import filtersAction from '../actions/filtersAction';
@@ -119,6 +118,7 @@ export class LabResultsList extends PureComponent {
     this.state = {
       patientUUID: new URLSearchParams(window.location.search).get('patient'),
       returnUrl: new URLSearchParams(window.location.search).get('returnUrl'),
+      globalPropertiesFetched: false,
     };
 
     this.handleShowLabTrendsPage = this.handleShowLabTrendsPage.bind(this);
@@ -132,6 +132,7 @@ export class LabResultsList extends PureComponent {
 
     if (patientUUID) {
       loadGlobalProperties(dispatch);
+      localStorage.setItem('returnUrl', returnUrl);
       dispatch(patientAction.getPatient(patientUUID));
     } else {
       window.location.href = returnUrl;
@@ -146,7 +147,16 @@ export class LabResultsList extends PureComponent {
       dispatch,
     } = this.props;
 
-    if (labResultsEncounterType && labResultsTestOrderType) {
+    const {
+      globalPropertiesFetched,
+    } = this.state;
+
+
+    if (labResultsTestOrderType && labResultsEncounterType && !globalPropertiesFetched) {
+      // eslint-disable-next-line react/no-did-update-set-state
+      this.setState({
+        globalPropertiesFetched: true,
+      });
       dispatch(patientAction.fetchPatientLabTestResults(patientUUID));
     }
   }
@@ -189,7 +199,7 @@ export class LabResultsList extends PureComponent {
     window.location = returnUrl;
   }
 
-  renderLabResultsTable(labResults) {
+  renderLabResultsTable(labResults, fetched) {
     const { dateAndTimeFormat, labResultListFilters } = this.props;
     const fields = ["TEST TYPE", "STATUS", "ORDER DATE", "COLLECTION DATE", "RESULT", "NORMAL RANGE"];
 
@@ -241,6 +251,7 @@ export class LabResultsList extends PureComponent {
           data={sortedListData}
           filters={labResultListFilters}
           getDataWithFilters={filterThrough}
+          loading={fetched}
           columnMetadata={columns}
           filteredFields={fields}
           filterType="none"
@@ -337,7 +348,11 @@ export class LabResultsList extends PureComponent {
     } = this.props;
     const { patientUUID, returnUrl } = this.state;
     const selectedPatient = patients[patientUUID] || {};
-    const { encounters = [], orders = [] } = selectedPatient;
+    const {
+      encounters = [],
+      orders = [],
+      labResultFetchStatus = false,
+    } = selectedPatient;
 
     const getPatientLabResults = () => {
       const results = encounters.map((encounter) => {
@@ -417,6 +432,7 @@ export class LabResultsList extends PureComponent {
       return labResults;
     };
 
+
     if (!R.isEmpty(selectedPatient) && !R.isEmpty(orders)) {
       const labResults = getPatientLabResults();
       return (
@@ -431,10 +447,21 @@ export class LabResultsList extends PureComponent {
             <div className="lab-result-list-filters">
               {this.renderDatePickerFilters()}
             </div>
-            {this.renderLabResultsTable(labResults)}
+            {this.renderLabResultsTable(labResults, labResultFetchStatus)}
           </React.Fragment>
           <br />
           <button type="button" className="btn btn-lg btn-danger" onClick={() => this.handleNavigateBack()}>Back</button>
+        </div>
+      );
+    }
+    if (labResultFetchStatus && R.isEmpty(orders)) {
+      const patientName = selectedPatient.person.personName.display.toUpperCase();
+      const displayText = `NO RESULTS FOUND FOR ${patientName}`;
+      return (
+        <div className="no-data-container">
+          <span>
+            {displayText}
+          </span>
         </div>
       );
     }

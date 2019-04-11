@@ -19,15 +19,16 @@ class BreadCrumb extends Component {
   constructor(props) {
     super(props);
 
+    const { history } = this.props;
     this.state = {
-      currentTab: '',
+      currentTab: history.location.pathname.toLowerCase(),
     };
   }
 
   componentWillMount() {
     const { history } = this.props;
     history.listen((location) => {
-      const currentTab = location.pathname.split('/').pop();
+      const currentTab = location.pathname.toLowerCase();
       this.setState({
         currentTab,
       });
@@ -70,7 +71,7 @@ class BreadCrumb extends Component {
     );
 
     switch (currentTab) {
-      case 'LabResultEntry':
+      case '/labresultentry':
         outputBreadcrumb = (
           <span>
             <span>{ homePageBreadcrumb }</span>
@@ -88,38 +89,53 @@ Lab Result
         );
         break;
 
-      case 'labresults':
+      case '/labresults': {
+        const returnUrl = localStorage.getItem('returnUrl');
         outputBreadcrumb = (
           <span>
-            <Link to="LabResultEntry">
+            <a href={returnUrl}>
               <span
                 className="glyphicon glyphicon-chevron-right breadcrumb-item separator"
                 aria-hidden="true" />
               <span className="title breadcrumb-item">
-                <u>{`${familyName} test`}</u>
+                <u>{familyName}</u>
               </span>
-            </Link>
+            </a>
             <Link to="labresults">
               <span
                 className="glyphicon glyphicon-chevron-right breadcrumb-item separator"
                 aria-hidden="true" />
               <span className="title breadcrumb-item">
-                Patient Labs
+                Labs
               </span>
             </Link>
           </span>
         );
+      }
         break;
 
-      case 'labtrends':
+      case '/labtrends': {
+        let trendDisplay = "...";
+        if (history.location.state) {
+          trendDisplay = history.location.state.display;
+        }
+        const returnUrl = localStorage.getItem('returnUrl');
         outputBreadcrumb = (
           <span>
-            <Link to="LabResultEntry">
+            <a href={returnUrl}>
               <span
                 className="glyphicon glyphicon-chevron-right breadcrumb-item separator"
                 aria-hidden="true" />
               <span className="title breadcrumb-item">
-                <u>{`${familyName} test`}</u>
+                <u>{familyName}</u>
+              </span>
+            </a>
+            <Link to="labresults">
+              <span
+                className="glyphicon glyphicon-chevron-right breadcrumb-item separator"
+                aria-hidden="true" />
+              <span className="title breadcrumb-item">
+                <u>Labs</u>
               </span>
             </Link>
             <Link to="labresults">
@@ -127,19 +143,12 @@ Lab Result
                 className="glyphicon glyphicon-chevron-right breadcrumb-item separator"
                 aria-hidden="true" />
               <span className="title breadcrumb-item">
-                <u>Patient Labs</u>
-              </span>
-            </Link>
-            <Link to="labresults">
-              <span
-                className="glyphicon glyphicon-chevron-right breadcrumb-item separator"
-                aria-hidden="true" />
-              <span className="title breadcrumb-item">
-                {`${history.location.state.display} Trend`}
+                {`${trendDisplay} Trend`}
               </span>
             </Link>
           </span>
         );
+      }
         break;
 
       default:

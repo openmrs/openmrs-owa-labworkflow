@@ -16,6 +16,11 @@ body {
     font-size: 16px;
 }
 
+a {
+    text-decoration: none;
+    cursor: pointer;
+}
+
 #body-wrapper {
     margin-top: 10px;
     padding: 10px;
@@ -80,4 +85,17 @@ input.form-control:focus {
     animation: spin 2s linear infinite;
     margin: auto;
 }
+
+.no-data-container {
+    background: white;
+    padding: 10px;
+    width: 0 auto;
+    padding-top: 10%;
+    padding-bottom: 10%;
+    font-size: 20px;
+    display: flex;
+    justify-content: center;
+    border: 1px solid;
+    font-weight: 800;
+  }
 

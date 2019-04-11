@@ -59,6 +59,12 @@ function* fetchAndSetTestResults(action) {
           patientUUID,
         }));
       }
+      yield put(patientAction.setPatientData({
+        meta: {
+          labResultFetchStatus: true,
+        },
+        patientUUID,
+      }));
     }
   } catch (e) {
     yield put(patientAction.getPatientFailed(e.message));
