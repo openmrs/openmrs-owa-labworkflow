@@ -7,7 +7,6 @@ import {
 } from '@openmrs/react-components';
 import moment from 'moment';
 import { FormattedMessage } from 'react-intl';
-import { withRouter } from 'react-router-dom';
 import ConceptDisplay from './ConceptDisplay';
 import patientAction from '../actions/patientAction';
 import filtersAction from '../actions/filtersAction';
@@ -128,9 +127,9 @@ export class LabResultsList extends PureComponent {
   }
 
   componentWillMount() {
-    const { dispatch, history } = this.props;
+    const { dispatch } = this.props;
     const { patientUUID, returnUrl } = this.state;
-    
+
     if (patientUUID) {
       loadGlobalProperties(dispatch);
       localStorage.setItem('returnUrl', returnUrl);
@@ -492,4 +491,4 @@ export const mapStateToProps = state => ({
   labResultListFilters: state.filters.labResultListFilters,
 });
 
-export default withRouter(connect(mapStateToProps)(LabResultsList));
+export default connect(mapStateToProps)(LabResultsList);
