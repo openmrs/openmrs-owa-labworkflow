@@ -34,7 +34,7 @@ export const Cell = ({ columnName, conceptUuid, value }) => {
   switch (columnName) {
     case 'SAMPLE DATE': {
       return (
-        <div className="table_cell sample-date">
+        <div className="table_cell collection-date">
           <span>{getSampleDate(value)}</span>
         </div>
       );
