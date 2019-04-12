@@ -223,7 +223,7 @@ export class LabResultEntry extends PureComponent {
           {
             (hasAnswers)
             && (
-              <div className="col-xs-4 observation-dropdown">
+              <div className="col-xs-12 observation-dropdown">
                 <span className="single-result-field">
                   <span className="obs-dropdown-label">
                     {`${selectedLabConcept.display}: `}
