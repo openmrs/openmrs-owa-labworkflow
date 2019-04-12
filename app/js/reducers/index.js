@@ -10,6 +10,9 @@
 import { combineReducers } from 'redux';
 import { reducer as reduxFormReducer } from 'redux-form';
 import { reducer as toastrReducer } from 'react-redux-toastr';
+import { persistReducer } from 'redux-persist';
+import storageSession from 'redux-persist/lib/storage/session';
+import autoMergeLevel2 from 'redux-persist/lib/stateReconciler/autoMergeLevel2';
 import { reducers as openmrsReducers } from '@openmrs/react-components';
 import labOrderReducer from './labOrdersReducer';
 import labTestResultsReducer from './labTestResultsReducer';
@@ -24,6 +27,12 @@ import {
   fetchStatusReducer,
 } from './patientsReducer';
 
+const filtersPersistConfig = {
+  key: 'filters',
+  storage: storageSession,
+  stateReconciler: autoMergeLevel2,
+};
+
 
 export default combineReducers({
   openmrs: openmrsReducers,
@@ -37,6 +46,6 @@ export default combineReducers({
   selectedLabConcept: selectedLabConceptReducer,
   conceptMembers: conceptMembersReducer,
   fetchStatus: fetchStatusReducer,
-  filters: filtersReducer,
+  filters: persistReducer(filtersPersistConfig, filtersReducer),
   CONSTANTS: constantsReducer,
 });
