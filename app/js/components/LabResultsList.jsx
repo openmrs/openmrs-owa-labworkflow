@@ -265,7 +265,7 @@ export class LabResultsList extends PureComponent {
           defaultPageSize={labResultListFilters.pageSize || calculateTableRows(labResults.length)}
           subComponent={(row) => {
             const isPanel = (row.original.order.concept.set) && (row.original.status === "Reported");
-            const rowFields = ["TYPE", "RESULT", "NORMAL RANGE"];
+            const rowFields = ["TEST TYPE", "RESULT", "NORMAL RANGE"];
             const rowColumnMetadata = rowFields.map(columnName => ({
               accessor: "",
               Cell: data => <Cell {...data} columnName={columnName} type="panel" navigate={this.handleShowLabTrendsPage} />,

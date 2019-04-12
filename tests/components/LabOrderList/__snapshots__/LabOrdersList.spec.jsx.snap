@@ -178,6 +178,7 @@ exports[`<LabOrdersList /> component renders correctly 1`] = `
       "Hémogramme automatisé",
     ]
   }
+  location={Object {}}
   openmrs={
     Object {
       "CONSTANTS": Object {
@@ -1379,6 +1380,7 @@ exports[`LabOrdersListContainer container should pass required props from state 
       "Hémogramme automatisé",
     ]
   }
+  location={Object {}}
   openmrs={
     Object {
       "CONSTANTS": Object {
