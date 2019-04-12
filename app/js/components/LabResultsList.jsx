@@ -22,7 +22,7 @@ const Cell = ({
     const statusesWithoutEncounter = ["Ordered", "Cancelled", "Expired"];
     const hasNoEncounter = statusesWithoutEncounter.includes(value.status);
     const isPanel = value.order.concept.set;
-    if (columnName === 'TYPE') {
+    if (columnName === 'TEST TYPE') {
       return (
         <div className="table_cell type">
           <span>{value.order.display}</span>
