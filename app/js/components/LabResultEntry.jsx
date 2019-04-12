@@ -446,6 +446,7 @@ export class LabResultEntry extends PureComponent {
       location,
       selectedLabConcept,
       form,
+      returnUrl,
     } = this.props;
 
     if (!location.state || redirect) {
@@ -523,6 +524,13 @@ export class LabResultEntry extends PureComponent {
           <div>
             {this.renderForm(selectedLabConcept)}
           </div>
+          {returnUrl && (
+            <div>
+              <br />
+              <br />
+              <button className="cancel" type="button" onClick={() => window.location.assign(returnUrl)}>Return</button>
+            </div>
+          )}
         </div>
       );
     }
