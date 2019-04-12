@@ -540,6 +540,7 @@ exports[`<LabResultEntry /> component renders correctly with valid props 1`] = `
                                     }
                                   }
                                   path="did-not-perform-dropdown"
+                                  required={false}
                                   widget="dropdown"
                                 />
                               </div>
@@ -607,8 +608,8 @@ exports[`<LabResultEntry /> component renders correctly with valid props 1`] = `
                                     className="encounter-date-field"
                                   >
                                     <WithFormContext(Connect(EncounterDate))
-                                      defaultDate={"2019-04-06T23:00:00.000Z"}
-                                      field="dateFromField"
+                                      defaultDate={2019-04-11T23:00:00.000Z}
+                                      field="specimen"
                                       handleDateChange={[Function]}
                                       id="specimen-collection-date"
                                       label="Specimen Collection Date:"
@@ -848,6 +849,7 @@ exports[`<LabResultEntry /> component renders correctly with valid props 1`] = `
                                       }
                                     }
                                     path="did-not-perform-dropdown"
+                                    required={false}
                                     widget="dropdown"
                                   />
                                 </div>
@@ -915,8 +917,8 @@ exports[`<LabResultEntry /> component renders correctly with valid props 1`] = `
                                       className="encounter-date-field"
                                     >
                                       <WithFormContext(Connect(EncounterDate))
-                                        defaultDate={"2019-04-06T23:00:00.000Z"}
-                                        field="dateFromField"
+                                        defaultDate={2019-04-11T23:00:00.000Z}
+                                        field="specimen"
                                         handleDateChange={[Function]}
                                         id="specimen-collection-date"
                                         label="Specimen Collection Date:"

@@ -39,6 +39,7 @@ const props = {
       dateAndTimeFormat: 'DD-MMM-YYYY',
     },
   },
+  location: {},
   labOrdersListFilters: {
     dateFromField: moment('2018-11-11'),
     dateToField: moment('2018-11-11'),

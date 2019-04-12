@@ -239,8 +239,8 @@ exports[`Component: LabTrendsPage renders properly 1`] = `
                           />
                         </span>,
                         "accessor": "",
-                        "className": "lab-trends-list-cell-collection-date",
-                        "headerClassName": "lab-trends-list-header-collection-date",
+                        "className": "lab-trends-list-cell-sample-date",
+                        "headerClassName": "lab-trends-list-header-sample-date",
                       },
                       Object {
                         "Cell": [Function],
@@ -398,8 +398,8 @@ exports[`Component: LabTrendsPage renders properly 1`] = `
                               />
                             </span>,
                             "accessor": "",
-                            "className": "lab-trends-list-cell-collection-date",
-                            "headerClassName": "lab-trends-list-header-collection-date",
+                            "className": "lab-trends-list-cell-sample-date",
+                            "headerClassName": "lab-trends-list-header-sample-date",
                             "minWidth": undefined,
                           },
                           Object {
@@ -586,7 +586,7 @@ exports[`Component: LabTrendsPage renders properly 1`] = `
                                     role="row"
                                   >
                                     <ThComponent
-                                      className="lab-trends-list-header-collection-date rt-resizable-header"
+                                      className="lab-trends-list-header-sample-date rt-resizable-header"
                                       key="0-"
                                       style={
                                         Object {
@@ -598,7 +598,7 @@ exports[`Component: LabTrendsPage renders properly 1`] = `
                                       toggleSort={[Function]}
                                     >
                                       <div
-                                        className="rt-th lab-trends-list-header-collection-date rt-resizable-header"
+                                        className="rt-th lab-trends-list-header-sample-date rt-resizable-header"
                                         onClick={[Function]}
                                         role="columnheader"
                                         style={
@@ -784,7 +784,7 @@ exports[`Component: LabTrendsPage renders properly 1`] = `
                                         role="row"
                                       >
                                         <TdComponent
-                                          className="lab-trends-list-cell-collection-date"
+                                          className="lab-trends-list-cell-sample-date"
                                           key="0-"
                                           onClick={[Function]}
                                           style={
@@ -796,7 +796,7 @@ exports[`Component: LabTrendsPage renders properly 1`] = `
                                           }
                                         >
                                           <div
-                                            className="rt-td lab-trends-list-cell-collection-date"
+                                            className="rt-td lab-trends-list-cell-sample-date"
                                             onClick={[Function]}
                                             role="gridcell"
                                             style={
@@ -811,7 +811,7 @@ exports[`Component: LabTrendsPage renders properly 1`] = `
                                               classes={
                                                 Array [
                                                   undefined,
-                                                  "lab-trends-list-cell-collection-date",
+                                                  "lab-trends-list-cell-sample-date",
                                                   undefined,
                                                 ]
                                               }
@@ -835,7 +835,7 @@ exports[`Component: LabTrendsPage renders properly 1`] = `
                                                   "PivotValue": undefined,
                                                   "accessor": [Function],
                                                   "aggregate": undefined,
-                                                  "className": "lab-trends-list-cell-collection-date",
+                                                  "className": "lab-trends-list-cell-sample-date",
                                                   "filterAll": false,
                                                   "filterMethod": undefined,
                                                   "filterable": undefined,
@@ -844,7 +844,7 @@ exports[`Component: LabTrendsPage renders properly 1`] = `
                                                   "getFooterProps": [Function],
                                                   "getHeaderProps": [Function],
                                                   "getProps": [Function],
-                                                  "headerClassName": "lab-trends-list-header-collection-date",
+                                                  "headerClassName": "lab-trends-list-header-sample-date",
                                                   "headerStyle": Object {},
                                                   "id": "",
                                                   "minWidth": undefined,
@@ -1587,7 +1587,7 @@ exports[`Component: LabTrendsPage renders properly 1`] = `
                                   "PivotValue": undefined,
                                   "accessor": [Function],
                                   "aggregate": undefined,
-                                  "className": "lab-trends-list-cell-collection-date",
+                                  "className": "lab-trends-list-cell-sample-date",
                                   "filterAll": false,
                                   "filterMethod": undefined,
                                   "filterable": undefined,
@@ -1596,7 +1596,7 @@ exports[`Component: LabTrendsPage renders properly 1`] = `
                                   "getFooterProps": [Function],
                                   "getHeaderProps": [Function],
                                   "getProps": [Function],
-                                  "headerClassName": "lab-trends-list-header-collection-date",
+                                  "headerClassName": "lab-trends-list-header-sample-date",
                                   "headerStyle": Object {},
                                   "id": "",
                                   "minWidth": undefined,
@@ -1705,7 +1705,7 @@ exports[`Component: LabTrendsPage renders properly 1`] = `
                                   "PivotValue": undefined,
                                   "accessor": [Function],
                                   "aggregate": undefined,
-                                  "className": "lab-trends-list-cell-collection-date",
+                                  "className": "lab-trends-list-cell-sample-date",
                                   "filterAll": false,
                                   "filterMethod": undefined,
                                   "filterable": undefined,
@@ -1714,7 +1714,7 @@ exports[`Component: LabTrendsPage renders properly 1`] = `
                                   "getFooterProps": [Function],
                                   "getHeaderProps": [Function],
                                   "getProps": [Function],
-                                  "headerClassName": "lab-trends-list-header-collection-date",
+                                  "headerClassName": "lab-trends-list-header-sample-date",
                                   "headerStyle": Object {},
                                   "id": "",
                                   "minWidth": undefined,
@@ -1851,8 +1851,8 @@ exports[`Component: LabTrendsPage renders properly 1`] = `
                                     />
                                   </span>,
                                   "accessor": "",
-                                  "className": "lab-trends-list-cell-collection-date",
-                                  "headerClassName": "lab-trends-list-header-collection-date",
+                                  "className": "lab-trends-list-cell-sample-date",
+                                  "headerClassName": "lab-trends-list-header-sample-date",
                                   "minWidth": undefined,
                                 },
                                 Object {
