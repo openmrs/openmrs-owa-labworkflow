@@ -121,13 +121,17 @@ export const Cell = ({ columnName, value, handleCancel }) => {
 
 
 export class LabOrdersList extends PureComponent {
-  constructor() {
-    super();
+  constructor(props) {
+    super(props);
 
     this.handleFilterChange = this.handleFilterChange.bind(this);
     this.clearNameEMRField = this.clearNameEMRField.bind(this);
     this.handleShowResultsEntryPage = this.handleShowResultsEntryPage.bind(this);
     this.handleCancel = this.handleCancel.bind(this);
+
+    this.state = {
+      returnUrl: new URLSearchParams(this.props.location.search).get('returnUrl'),
+    };
   }
 
   componentDidMount() {
@@ -149,10 +153,11 @@ export class LabOrdersList extends PureComponent {
   }
 
   handleShowResultsEntryPage(order) {
-    const { history } = this.props;
+    const { history, returnUrl } = this.props;
     history.push({
       pathname: "/LabResultEntry",
       state: order,
+      returnUrl,
     });
   }
 
@@ -280,6 +285,9 @@ export class LabOrdersList extends PureComponent {
         dateFromField, dateToField, nameField, testTypeField, testStatusField,
       },
     } = this.props;
+    const {
+      returnUrl,
+    } = this.state;
     const hasData = !R.isEmpty(orders) && !R.isEmpty(labTests);
     return (
       <div className="main-container">
@@ -303,6 +311,13 @@ export class LabOrdersList extends PureComponent {
           {!fetched && <Loader />}
           {(hasData && fetched) && this.renderDraftOrderTable()}
           {(!hasData && fetched) && this.renderNoDataDisplayText()}
+          {returnUrl && (
+            <div>
+              <br />
+              <br />
+              <button className="cancel" type="button" onClick={() => window.location.assign(returnUrl)}>Return</button>
+            </div>
+          )}
         </React.Fragment>
       </div>
     );
