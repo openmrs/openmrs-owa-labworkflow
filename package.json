@@ -39,6 +39,7 @@
     "redux": "^3.6.0",
     "redux-form": "^7.4.2",
     "redux-logger": "^3.0.6",
+    "redux-persist": "^5.10.0",
     "redux-promise-middleware": "^5.1.1",
     "redux-saga": "^0.16.0",
     "redux-types": "^2.0.3",

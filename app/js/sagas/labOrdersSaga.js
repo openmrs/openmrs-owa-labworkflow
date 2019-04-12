@@ -172,7 +172,7 @@ export function* setEncounters() {
 function* updateOrders() {
   const state = yield select();
   const { labOrdersListFilters } = state.filters;
-  const { labResultsTestOrderType } = state.openmrs.CONSTANTS;
+  const labResultsTestOrderType = selectProperty(state, 'labResultsTestOrderType');
   const options = {
     dateToField: moment(labOrdersListFilters.dateToField).format('YYYY-MM-DD'),
     dateFromField: moment(labOrdersListFilters.dateFromField).format('YYYY-MM-DD'),
