@@ -33,7 +33,7 @@
     "app.labResultsList.SAMPLE_DATE": "SAMPLE DATE",
     "app.labResultsList.RESULT": "RESULT",
     "app.labResultsList.NORMAL_RANGE": "NORMAL RANGE",
-    "app.labResultsList.dateFromFilterLabel": "From:",
+    "app.labResultsList.dateFromFilterLabel": "Order Date From:",
     "app.labResultsList.dateToFilterLabel": "To:",
     "app.labTrendsPage.SAMPLE_DATE": "SAMPLE DATE",
     "app.labTrendsPage.RESULT_DATE": "RESULT DATE",
