@@ -130,7 +130,7 @@ export class LabOrdersList extends PureComponent {
     this.handleCancel = this.handleCancel.bind(this);
 
     this.state = {
-      returnUrl: new URLSearchParams(this.props.location.search).get('returnUrl'),
+      returnUrl: new URLSearchParams(location.search).get('returnUrl'),
     };
   }
 
