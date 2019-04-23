@@ -238,6 +238,7 @@ button.pull-right.btn-success {
         white-space: nowrap;
         .field-error {
             position: absolute;
+            left: -80px;
         }
     }
 }
@@ -252,12 +253,12 @@ button.pull-right.btn-success {
     display: flex;
     position: absolute;
     white-space: nowrap;
-    top: 120px;
+    top: 130px;
 }
 
 .specimen-collection-date {
     position: absolute;
-    top: 75px;
+    top: 65px;
 }
 
 .estimated-checkbox {
