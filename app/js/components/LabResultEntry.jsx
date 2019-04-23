@@ -116,14 +116,14 @@ export class LabResultEntry extends PureComponent {
       history: { location: { state } },
       isDidNotPerformCheckboxSelected,
       dispatch,
-      formId,
+      formInstanceId,
       labResultsEncounterType,
     } = this.props;
 
 
     if (!(isDidNotPerformCheckboxSelected)) {
       const obsFieldName = formUtil.obsFieldName('did-not-perform-dropdown', labResultsDidNotPerformReasonQuestion);
-      dispatch(change(formId, obsFieldName, ''));
+      dispatch(change(formInstanceId, obsFieldName, ''));
     }
 
     const patient = patients[selectedPatient] || {};
@@ -335,6 +335,7 @@ export class LabResultEntry extends PureComponent {
                   formContent={observations}
                   patient={patient}
                   formId="result-entry-form"
+                  formInstanceId={formInstanceId}
                   orderForObs={selectedOrder}
                 />
               )
@@ -346,6 +347,7 @@ export class LabResultEntry extends PureComponent {
                   formContent={observations}
                   patient={patient}
                   formId="result-entry-form"
+                  formInstanceId={formInstanceId}
                   orderForObs={selectedOrder}
                 />
               )
@@ -570,11 +572,11 @@ const mapStateToProps = (state) => {
     selectedPatient,
     form,
   } = state;
-  const formId = Object.keys(form)[0];
+  const formInstanceId = Object.keys(form)[0];
   const labResultsDidNotPerformQuestion = selectProperty(state, 'labResultsDidNotPerformQuestion');
   let isDidNotPerformCheckboxSelected = true;
-  if (formId) {
-    const selector = formValueSelector(formId);
+  if (formInstanceId) {
+    const selector = formValueSelector(formInstanceId);
     const obsFieldName = formUtil.obsFieldName('did-not-perform-checkbox', labResultsDidNotPerformQuestion);
 
     isDidNotPerformCheckboxSelected = !!(selector(state, obsFieldName));
@@ -586,7 +588,7 @@ const mapStateToProps = (state) => {
     selectedLabConcept,
     conceptMembers,
     isDidNotPerformCheckboxSelected,
-    formId,
+    formInstanceId,
     labResultsEncounterType,
     labResultsDidNotPerformQuestion,
     labResultsDidNotPerformReasonQuestion: selectProperty(state, 'labResultsDidNotPerformReasonQuestion'),
