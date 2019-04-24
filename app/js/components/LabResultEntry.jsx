@@ -296,19 +296,23 @@ export class LabResultEntry extends PureComponent {
               <br />
             </div>
           </div>
-          <Row>
-            {(hasMembers)
+          {!isDidNotPerformCheckboxSelected
+          && (
+            <Row>
+              {(hasMembers)
             && (
               <ObsGroup groupingConcept={selectedLabConcept.uuid} path={selectedLabConcept.uuid}>
                 {selectedLabConcept.setMembers.map(
                   member => this.renderFormContent(member),
                 )}
               </ObsGroup>)
-            }
-            {(isSingle)
+              }
+              {(isSingle)
           && (this.renderFormContent(selectedLabConcept))
-            }
-          </Row>
+              }
+            </Row>
+          )
+          }
         </div>
       </Grid>
     );
