@@ -46,6 +46,7 @@ const {
   criticalMaxValue,
   criticalMinValue,
   maxDateValue,
+  minDateValue,
 } = formValidations;
 
 export class LabResultEntry extends PureComponent {
@@ -159,6 +160,8 @@ export class LabResultEntry extends PureComponent {
     }
 
     const maxDateRange = maxDateValue(new Date());
+    const minDateRange = minDateValue(new Date(selectedOrder.dateActivated), 'the ordered');
+
     const observations = (
       <Grid>
         <div className="observation">
@@ -178,7 +181,7 @@ export class LabResultEntry extends PureComponent {
                       defaultDate={undefined}
                       concept={labResultsDateConcept}
                       path="result-date"
-                      validate={[maxDateRange]}
+                      validate={[maxDateRange, minDateRange]}
                     />
                   </span>
                 </span>
