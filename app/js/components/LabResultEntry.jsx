@@ -119,8 +119,8 @@ export class LabResultEntry extends PureComponent {
       dispatch,
       formId,
       labResultsEncounterType,
+      estimatedDate = new Date(),
     } = this.props;
-
 
     if (!(isDidNotPerformCheckboxSelected)) {
       const obsFieldName = formUtil.obsFieldName('did-not-perform-dropdown', labResultsDidNotPerformReasonQuestion);
@@ -161,6 +161,7 @@ export class LabResultEntry extends PureComponent {
 
     const maxDateRange = maxDateValue(new Date());
     const minDateRange = minDateValue(new Date(selectedOrder.dateActivated), 'the ordered');
+    const collectionDateRange = minDateValue(new Date(estimatedDate), 'the sample collection');
 
     const observations = (
       <Grid>
@@ -181,7 +182,7 @@ export class LabResultEntry extends PureComponent {
                       defaultDate={undefined}
                       concept={labResultsDateConcept}
                       path="result-date"
-                      validate={[maxDateRange, minDateRange]}
+                      validate={[maxDateRange, minDateRange, collectionDateRange]}
                     />
                   </span>
                 </span>
@@ -290,6 +291,7 @@ export class LabResultEntry extends PureComponent {
                     label="Specimen Collection Date:"
                     defaultDate={startOfToday()}
                     field="specimen"
+                    valiidations={[minDateRange]}
                   />
                 </span>
               </div>
@@ -580,11 +582,12 @@ const mapStateToProps = (state) => {
   const formId = Object.keys(form)[0];
   const labResultsDidNotPerformQuestion = selectProperty(state, 'labResultsDidNotPerformQuestion');
   let isDidNotPerformCheckboxSelected = true;
+  let estimatedDate;
   if (formId) {
     const selector = formValueSelector(formId);
     const obsFieldName = formUtil.obsFieldName('did-not-perform-checkbox', labResultsDidNotPerformQuestion);
-
     isDidNotPerformCheckboxSelected = !!(selector(state, obsFieldName));
+    estimatedDate = selector(state, 'encounter-datetime') || estimatedDate;
   }
   const labResultsEncounterType = selectProperty(state, 'labResultsEncounterType');
   return {
@@ -605,6 +608,7 @@ const mapStateToProps = (state) => {
     labResultsEstimatedCollectionDateAnswer: selectProperty(state, 'labResultsEstimatedCollectionDateAnswer'),
     labResultsEstimatedCollectionDateQuestion: selectProperty(state, 'labResultsEstimatedCollectionDateQuestion'),
     labResultsDidNotPerformAnswer: selectProperty(state, 'labResultsDidNotPerformAnswer'),
+    estimatedDate,
   };
 };
 
