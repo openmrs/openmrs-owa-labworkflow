@@ -8,6 +8,7 @@ import {
   cancelOrder,
 } from './labOrdersSaga';
 import { setLabConcepts, fetchConcept } from './conceptSaga';
+import { clearFormFieldsSaga } from './formSaga';
 
 const sagas = {
   setLabTestsSaga,
@@ -20,6 +21,7 @@ const sagas = {
   fetchConcept,
   setEncounters,
   cancelOrder,
+  clearFormFieldsSaga,
 };
 
 const initSagas = (sagaMiddleware) => {
