@@ -10,7 +10,7 @@ import React, { PureComponent } from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import R from 'ramda';
-import { formValueSelector, change } from 'redux-form';
+import { formValueSelector, change, untouch } from 'redux-form';
 import {
   Grid,
   Row,
@@ -32,6 +32,7 @@ import {
 } from '@openmrs/react-components';
 import patientAction from '../actions/patientAction';
 import { fetchLabConcept } from '../actions/labConceptsAction';
+import { clearFormValues, reloadForm } from '../actions/formActions';
 import constantsActions from '../actions/constantsAction';
 import { updateLabOrderWithhEncounter } from '../actions/labOrdersAction';
 import '../../css/lab-result-entry.scss';
@@ -78,6 +79,16 @@ export class LabResultEntry extends PureComponent {
     }
   }
 
+  componentDidUpdate(prevProps) {
+    const { isDidNotPerformCheckboxSelected, hasCache } = this.props;
+    if (isDidNotPerformCheckboxSelected) {
+      this.clearObsFields();
+    }
+    if (!isDidNotPerformCheckboxSelected && hasCache) {
+      this.reloadCachedValues();
+    }
+  }
+
   componentWillUnmount() {
     const { dispatch } = this.props;
     const { labOrder } = this.state;
@@ -93,6 +104,16 @@ export class LabResultEntry extends PureComponent {
       return state.labResult.encounter;
     }
     return null;
+  }
+
+  clearObsFields() {
+    const { dispatch, formId, selectedLabConcept } = this.props;
+    dispatch(clearFormValues(selectedLabConcept, formId, dispatch));
+  }
+
+  reloadCachedValues() {
+    const { dispatch } = this.props;
+    dispatch(reloadForm(dispatch));
   }
 
   shouldRedirect() {
@@ -119,7 +140,7 @@ export class LabResultEntry extends PureComponent {
       dispatch,
       formId,
       labResultsEncounterType,
-      estimatedDate = new Date(),
+      encounterDateOrToday = new Date(),
     } = this.props;
 
     if (!(isDidNotPerformCheckboxSelected)) {
@@ -161,7 +182,7 @@ export class LabResultEntry extends PureComponent {
 
     const maxDateRange = maxDateValue(new Date());
     const minDateRange = minDateValue(new Date(selectedOrder.dateActivated), 'the ordered');
-    const collectionDateRange = minDateValue(new Date(estimatedDate), 'the sample collection');
+    const collectionDateRange = minDateValue(new Date(encounterDateOrToday), 'the sample collection');
 
     const observations = (
       <Grid>
@@ -578,16 +599,23 @@ const mapStateToProps = (state) => {
     patients,
     selectedPatient,
     form,
+    currentForm,
   } = state;
   const formId = Object.keys(form)[0];
   const labResultsDidNotPerformQuestion = selectProperty(state, 'labResultsDidNotPerformQuestion');
-  let isDidNotPerformCheckboxSelected = true;
-  let estimatedDate;
+  let isDidNotPerformCheckboxSelected = false;
+  let encounterDateOrToday;
+  let hasCache = false;
+
+  if (currentForm.formId === formId) {
+    hasCache = true;
+  }
+
   if (formId) {
     const selector = formValueSelector(formId);
     const obsFieldName = formUtil.obsFieldName('did-not-perform-checkbox', labResultsDidNotPerformQuestion);
     isDidNotPerformCheckboxSelected = !!(selector(state, obsFieldName));
-    estimatedDate = selector(state, 'encounter-datetime') || estimatedDate;
+    encounterDateOrToday = selector(state, 'encounter-datetime') || encounterDateOrToday;
   }
   const labResultsEncounterType = selectProperty(state, 'labResultsEncounterType');
   return {
@@ -608,7 +636,8 @@ const mapStateToProps = (state) => {
     labResultsEstimatedCollectionDateAnswer: selectProperty(state, 'labResultsEstimatedCollectionDateAnswer'),
     labResultsEstimatedCollectionDateQuestion: selectProperty(state, 'labResultsEstimatedCollectionDateQuestion'),
     labResultsDidNotPerformAnswer: selectProperty(state, 'labResultsDidNotPerformAnswer'),
-    estimatedDate,
+    encounterDateOrToday,
+    hasCache,
   };
 };
 

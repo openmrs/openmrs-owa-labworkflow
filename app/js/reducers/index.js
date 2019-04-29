@@ -26,6 +26,7 @@ import {
   conceptMembersReducer,
   fetchStatusReducer,
 } from './patientsReducer';
+import formReducer from './formReducer';
 
 const filtersPersistConfig = {
   key: 'filters',
@@ -37,6 +38,7 @@ const filtersPersistConfig = {
 export default combineReducers({
   openmrs: openmrsReducers,
   form: reduxFormReducer,
+  currentForm: formReducer,
   toastr: toastrReducer,
   labOrders: labOrderReducer,
   labTestResults: labTestResultsReducer,
