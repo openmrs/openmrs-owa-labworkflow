@@ -140,7 +140,7 @@ export class LabResultEntry extends PureComponent {
       dispatch,
       formId,
       labResultsEncounterType,
-      estimatedDate = new Date(),
+      encounterDateOrToday = new Date(),
     } = this.props;
 
     if (!(isDidNotPerformCheckboxSelected)) {
@@ -182,7 +182,7 @@ export class LabResultEntry extends PureComponent {
 
     const maxDateRange = maxDateValue(new Date());
     const minDateRange = minDateValue(new Date(selectedOrder.dateActivated), 'the ordered');
-    const collectionDateRange = minDateValue(new Date(estimatedDate), 'the sample collection');
+    const collectionDateRange = minDateValue(new Date(encounterDateOrToday), 'the sample collection');
 
     const observations = (
       <Grid>
@@ -604,7 +604,7 @@ const mapStateToProps = (state) => {
   const formId = Object.keys(form)[0];
   const labResultsDidNotPerformQuestion = selectProperty(state, 'labResultsDidNotPerformQuestion');
   let isDidNotPerformCheckboxSelected = false;
-  let estimatedDate;
+  let encounterDateOrToday;
   let hasCache = false;
 
   if (currentForm.formId === formId) {
@@ -615,7 +615,7 @@ const mapStateToProps = (state) => {
     const selector = formValueSelector(formId);
     const obsFieldName = formUtil.obsFieldName('did-not-perform-checkbox', labResultsDidNotPerformQuestion);
     isDidNotPerformCheckboxSelected = !!(selector(state, obsFieldName));
-    estimatedDate = selector(state, 'encounter-datetime') || estimatedDate;
+    encounterDateOrToday = selector(state, 'encounter-datetime') || encounterDateOrToday;
   }
   const labResultsEncounterType = selectProperty(state, 'labResultsEncounterType');
   return {
@@ -636,7 +636,7 @@ const mapStateToProps = (state) => {
     labResultsEstimatedCollectionDateAnswer: selectProperty(state, 'labResultsEstimatedCollectionDateAnswer'),
     labResultsEstimatedCollectionDateQuestion: selectProperty(state, 'labResultsEstimatedCollectionDateQuestion'),
     labResultsDidNotPerformAnswer: selectProperty(state, 'labResultsDidNotPerformAnswer'),
-    estimatedDate,
+    encounterDateOrToday,
     hasCache,
   };
 };
