@@ -29,9 +29,17 @@ export const hasMaxAndMinValues = (
   return currentValue;
 }, false);
 
-export const formatRangeDisplayText = (min, max) => {
-  if (min && max) {
-    return `${min} - ${max}`;
+export const formatRangeDisplayText = (min = " ", max = " ") => {
+  let lowRange = "";
+  let hiRange = "";
+  if (min) {
+    lowRange = min;
+  }
+  if (max) {
+    hiRange = max;
+  }
+  if (max || min) {
+    return `${lowRange} > ${hiRange}`;
   }
   return '';
 };
