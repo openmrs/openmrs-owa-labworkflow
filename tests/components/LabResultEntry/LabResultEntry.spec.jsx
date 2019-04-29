@@ -164,6 +164,10 @@ const state = {
       units: 'cc',
     },
   },
+  currentForm: {
+    formId: null,
+    fields: {},
+  },
 };
 
 const store = mockStore(state);
@@ -238,6 +242,10 @@ describe('<LabResultEntry /> component', () => {
           },
         },
       },
+      currentForm: {
+        formId: null,
+        fields: {},
+      },
     });
     const component = mount(<LabResultEntry {...props} store={store} />);
     expect(component).toMatchSnapshot();
@@ -281,6 +289,10 @@ describe('<LabResultEntry /> component', () => {
             labResultsDidNotPerformReason: 'mock-uuid',
           },
         },
+      },
+      currentForm: {
+        formId: null,
+        fields: {},
       },
     });
     const component = mountWithIntl(
