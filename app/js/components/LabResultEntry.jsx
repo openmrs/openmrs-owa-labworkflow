@@ -246,7 +246,7 @@ export class LabResultEntry extends PureComponent {
             </div>
           </div>
           {
-            (hasAnswers)
+            (hasAnswers && !isDidNotPerformCheckboxSelected)
             && (
               <div className="col-xs-12 observation-dropdown">
                 <span className="single-result-field">
