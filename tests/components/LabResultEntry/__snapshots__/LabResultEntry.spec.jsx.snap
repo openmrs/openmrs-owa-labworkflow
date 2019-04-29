@@ -179,6 +179,7 @@ exports[`<LabResultEntry /> component renders correctly with valid props 1`] = `
           }
           dispatch={[Function]}
           formId="mockForm"
+          hasCache={false}
           history={
             Object {
               "location": Object {
@@ -489,6 +490,8 @@ exports[`<LabResultEntry /> component renders correctly with valid props 1`] = `
                                     validate={
                                       Array [
                                         [Function],
+                                        [Function],
+                                        [Function],
                                       ]
                                     }
                                   />
@@ -608,12 +611,17 @@ exports[`<LabResultEntry /> component renders correctly with valid props 1`] = `
                                     className="encounter-date-field"
                                   >
                                     <WithFormContext(Connect(EncounterDate))
-                                      defaultDate={2019-04-11T23:00:00.000Z}
+                                      defaultDate={2019-04-28T23:00:00.000Z}
                                       field="specimen"
                                       handleDateChange={[Function]}
                                       id="specimen-collection-date"
                                       label="Specimen Collection Date:"
                                       labelClassName="date-picker-label"
+                                      valiidations={
+                                        Array [
+                                          [Function],
+                                        ]
+                                      }
                                     />
                                   </span>
                                 </div>
@@ -798,6 +806,8 @@ exports[`<LabResultEntry /> component renders correctly with valid props 1`] = `
                                       validate={
                                         Array [
                                           [Function],
+                                          [Function],
+                                          [Function],
                                         ]
                                       }
                                     />
@@ -917,12 +927,17 @@ exports[`<LabResultEntry /> component renders correctly with valid props 1`] = `
                                       className="encounter-date-field"
                                     >
                                       <WithFormContext(Connect(EncounterDate))
-                                        defaultDate={2019-04-11T23:00:00.000Z}
+                                        defaultDate={2019-04-28T23:00:00.000Z}
                                         field="specimen"
                                         handleDateChange={[Function]}
                                         id="specimen-collection-date"
                                         label="Specimen Collection Date:"
                                         labelClassName="date-picker-label"
+                                        valiidations={
+                                          Array [
+                                            [Function],
+                                          ]
+                                        }
                                       />
                                     </span>
                                   </div>
@@ -1246,6 +1261,7 @@ exports[`<LabResultEntry /> component should redirect when location has an empty
         clearNameEMRField={[MockFunction]}
         dispatch={[Function]}
         formId="mockForm"
+        hasCache={false}
         history={
           Object {
             "location": Object {
@@ -1430,6 +1446,7 @@ exports[`<LabResultEntry /> component should render <Loader /> component when se
     clearNameEMRField={[MockFunction]}
     dispatch={[Function]}
     formId="mockForm"
+    hasCache={false}
     history={
       Object {
         "location": Object {
