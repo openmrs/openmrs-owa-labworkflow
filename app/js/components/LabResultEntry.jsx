@@ -312,7 +312,7 @@ export class LabResultEntry extends PureComponent {
                     label="Specimen Collection Date:"
                     defaultDate={startOfToday()}
                     field="specimen"
-                    valiidations={[minDateRange]}
+                    validations={[minDateRange]}
                   />
                 </span>
               </div>
