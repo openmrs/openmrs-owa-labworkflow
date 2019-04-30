@@ -153,12 +153,15 @@ export class LabOrdersList extends PureComponent {
   }
 
   handleShowResultsEntryPage(order) {
-    const { history, returnUrl } = this.props;
-    history.push({
-      pathname: "/LabResultEntry",
-      state: order,
-      returnUrl,
-    });
+    const discontinuedStatus = ["Cancelled", "Expired"];
+    if (!discontinuedStatus.includes(order.labResult.resultStatus)) {
+      const { history, returnUrl } = this.props;
+      history.push({
+        pathname: "/LabResultEntry",
+        state: order,
+        returnUrl,
+      });
+    }
   }
 
   clearNameEMRField() {
