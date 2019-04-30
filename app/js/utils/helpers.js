@@ -38,6 +38,9 @@ export const formatRangeDisplayText = (min = " ", max = " ") => {
   if (max) {
     hiRange = max;
   }
+  if (max && min) {
+    return `${lowRange} - ${hiRange}`;
+  }
   if (max || min) {
     return `${lowRange} > ${hiRange}`;
   }
