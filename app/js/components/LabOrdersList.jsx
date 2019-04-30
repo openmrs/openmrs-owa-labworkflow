@@ -153,8 +153,8 @@ export class LabOrdersList extends PureComponent {
   }
 
   handleShowResultsEntryPage(order) {
-    const discontinuedStatus = ["Cancelled", "Expired"];
-    if (!discontinuedStatus.includes(order.labResult.resultStatus)) {
+    const unclickableStatuses = ["Cancelled", "Expired"];
+    if (!unclickableStatuses.includes(order.labResult.resultStatus)) {
       const { history, returnUrl } = this.props;
       history.push({
         pathname: "/LabResultEntry",
