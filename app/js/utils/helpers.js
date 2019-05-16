@@ -64,7 +64,7 @@ export const filterThrough = (filters, data) => {
 
   if (filters.nameField !== "") {
     const inputValue = filters.nameField;
-    const filteredData = matchSorter(originalData, inputValue, { keys: ['patient.display'] });
+    const filteredData = matchSorter(originalData, inputValue, { keys: [{ threshold: matchSorter.rankings.CONTAINS, key: 'patient.display' }] });
     originalData = filteredData;
   }
 

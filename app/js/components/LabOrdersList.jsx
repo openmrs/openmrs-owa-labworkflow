@@ -254,6 +254,7 @@ export class LabOrdersList extends PureComponent {
       description={`LabOrderList table header for ${columnName}`} />
   </span>,
       accessor: "",
+      filterAll: true,
       Cell: data => <Cell {...data} columnName={columnName} handleCancel={this.handleCancel} />,
       className: `lab-order-list-cell-${columnName.replace(' ', '-').toLocaleLowerCase()}`,
       headerClassName: `lab-order-list-header-${columnName.replace(' ', '-').toLocaleLowerCase()}`,
