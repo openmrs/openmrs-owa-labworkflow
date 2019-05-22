@@ -203,10 +203,17 @@ export class LabOrdersList extends PureComponent {
 
   handleFilterChange(field, value) {
     const { dispatch, labOrdersListFilters, labResultsTestOrderType } = this.props;
-    const newFilters = {
+    let newFilters = {
       ...labOrdersListFilters,
       [field]: value,
     };
+    if (field === 'nameField') {
+      // defaults page to zero when a user starts typing
+      newFilters = {
+        ...newFilters,
+        page: 0,
+      };
+    }
     if (field === 'dateToField') {
       const options = {
         dateToField: value,
