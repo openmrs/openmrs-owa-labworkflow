@@ -58,6 +58,7 @@ export default {
       testTypeField: "All",
       testStatusField: "All",
       dateField: 'dateActivated',
+      page: 0,
     },
   },
 };
