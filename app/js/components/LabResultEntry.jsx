@@ -180,7 +180,7 @@ export class LabResultEntry extends PureComponent {
       hasRanges = selectedLabConcept.hiNormal !== 'null' && selectedLabConcept.lowNormal !== 'null';
     }
 
-    const maxDateRange = maxDateValue(new Date());
+    const maxDateRange = maxDateValue(new Date(), "today's");
     const minDateRange = minDateValue(new Date(selectedOrder.dateActivated), 'the ordered');
     const collectionDateRange = minDateValue(new Date(encounterDateOrToday), 'the sample collection');
 
