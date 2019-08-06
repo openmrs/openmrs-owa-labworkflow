@@ -103,6 +103,7 @@
     "build:dev": "npm run clean && NODE_ENV=\"development\" webpack --progress --colors",
     "build:prod": "npm run test && npm run build",
     "build:deploy": "NODE_ENV=\"deploy\" webpack --progress --colors --target=web",
+    "start": "npm run watch",
     "watch": "NODE_ENV=\"deploy\" webpack --progress --colors --watch --cache=false",
     "test": "npm run lint && jest -u --coverage --maxWorkers=4",
     "lint": "./node_modules/.bin/eslint app/js/**",
