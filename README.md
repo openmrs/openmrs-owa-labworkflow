@@ -55,7 +55,7 @@ When you clone this repo for the first time or pull the latest updates, you wiil
 version of React Components.
 
 Using the sample "cypress.env.json.sample" file, create a file "cypress.env.json" at the root level of this repo which sets two environmental variables for the username and password you will be using to 
-connect to the server (NOTE: this has to be valid username and password).
+connect to the server.  This would be a username and password on the underlying OpenMRS instance you have running in your dev environment.
 
 ```
 {
@@ -64,16 +64,17 @@ connect to the server (NOTE: this has to be valid username and password).
 }
 ```
 
-To run all tests:
-npm run test-cypress
-(this should fire up your server for you as well)
-
 NOTE: To run tests make sure your OpenMRS instance is running and this OWA is started and linked up to the instance.
 
 To fire up Cypress in interactive mode:
 
-1) Make sure the app is running on localhost:3000
+1) Make sure the app is running on localhost:3000  (ie "npm run watch")
 2) npm run cypress:open
+
+To just run the tests Cypress in non-interactive mode:
+  
+1) Make sure the app is running on localhost:3000   (ie "npm run watch")
+2) npm run cy:run
 
 See docs for cypress here: https://www.cypress.io/
 
