@@ -208,28 +208,7 @@ exports[`Breadcrumb component should take a snapshot on initial render 1`] = `
                         className="title breadcrumb-item"
                       >
                         <u>
-                          Lab
-                        </u>
-                      </span>
-                    </a>
-                  </Link>
-                  <Link
-                    replace={false}
-                    to="/"
-                  >
-                    <a
-                      href="/"
-                      onClick={[Function]}
-                    >
-                      <span
-                        aria-hidden="true"
-                        className="glyphicon glyphicon-chevron-right breadcrumb-item separator"
-                      />
-                      <span
-                        className="title breadcrumb-item"
-                      >
-                        <u>
-                          Lab Test Results
+                          Labs
                         </u>
                       </span>
                     </a>

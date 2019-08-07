@@ -27,7 +27,7 @@ Build the distributable using [Webpack](https://webpack.github.io/) as follows:
 npm run build:prod
 ````
 
-This will create a file called `openmrs-owa-labworkflow.zip` file in the `dist` directory,
+This will create a file called `labworkflow.zip` file in the project directory,
 which can be uploaded to the OpenMRS Open Web Apps module.
 
 ### Local Deploy
@@ -38,14 +38,14 @@ To deploy directly to your local Open Web Apps directory, run:
 npm run build:deploy
 ````
 
-This will build and deploy the app to the `/Users/andeladeveloper/Downloads/referenceapplication-standalone-2.8.0/appdata\\owa`
+This will build and deploy the app to the `/Users/andeladeveloper/Downloads/referenceapplication-standalone-2.8.0/appdata/owa`
 directory. To change the deploy directory, edit the `LOCAL_OWA_FOLDER` entry in
 `config.json`. If this file does not exists, create one in the root directory
 that looks like:
 
 ```js
 {
-  "LOCAL_OWA_FOLDER": "/Users/andeladeveloper/Downloads/referenceapplication-standalone-2.8.0/appdata\\owa"
+  "LOCAL_OWA_FOLDER": "/Users/andeladeveloper/Downloads/referenceapplication-standalone-2.8.0/appdata/owa"
 }
 ```
 

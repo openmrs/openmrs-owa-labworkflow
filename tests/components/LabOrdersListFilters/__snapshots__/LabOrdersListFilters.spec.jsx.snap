@@ -3,8 +3,8 @@
 exports[`<LabOrdersList /> component renders correctly 1`] = `
 <LabOrderListFilters
   clearNameEMRField={[MockFunction]}
-  dateFromField={"2018-11-10T23:00:00.000Z"}
-  dateToField={"2018-11-10T23:00:00.000Z"}
+  dateFromField={"2018-11-11T05:00:00.000Z"}
+  dateToField={"2018-11-11T05:00:00.000Z"}
   handleFieldChange={[MockFunction]}
   intl={
     Object {
@@ -93,7 +93,7 @@ exports[`<LabOrdersList /> component renders correctly 1`] = `
                     labelClassName="line"
                   />
                 }
-                dateFormat="dd MMM YYYY"
+                dateFormat="dd MMM yyyy"
                 dateFormatCalendar="LLLL yyyy"
                 disabled={false}
                 disabledKeyboardNavigation={false}
@@ -170,7 +170,7 @@ exports[`<LabOrdersList /> component renders correctly 1`] = `
                         onFocus={[Function]}
                         onKeyDown={[Function]}
                         readOnly={false}
-                        value="11 Nov 2018"
+                        value="10 Nov 2018"
                       />
                     </div>
                   }
@@ -212,7 +212,7 @@ exports[`<LabOrdersList /> component renders correctly 1`] = `
                               onFocus={[Function]}
                               onKeyDown={[Function]}
                               readOnly={false}
-                              value="11 Nov 2018"
+                              value="10 Nov 2018"
                             >
                               <span>
                                 <span
@@ -250,7 +250,7 @@ exports[`<LabOrdersList /> component renders correctly 1`] = `
                                       }
                                     }
                                     type="text"
-                                    value="11 Nov 2018"
+                                    value="10 Nov 2018"
                                   >
                                     <input
                                       className="form-control"
@@ -264,7 +264,7 @@ exports[`<LabOrdersList /> component renders correctly 1`] = `
                                         }
                                       }
                                       type="text"
-                                      value="11 Nov 2018"
+                                      value="10 Nov 2018"
                                     />
                                   </FormControl>
                                   <FontAwesomeIcon
@@ -361,7 +361,7 @@ exports[`<LabOrdersList /> component renders correctly 1`] = `
                     labelClassName="line"
                   />
                 }
-                dateFormat="dd MMM YYYY"
+                dateFormat="dd MMM yyyy"
                 dateFormatCalendar="LLLL yyyy"
                 disabled={false}
                 disabledKeyboardNavigation={false}
@@ -438,7 +438,7 @@ exports[`<LabOrdersList /> component renders correctly 1`] = `
                         onFocus={[Function]}
                         onKeyDown={[Function]}
                         readOnly={false}
-                        value="11 Nov 2018"
+                        value="10 Nov 2018"
                       />
                     </div>
                   }
@@ -480,7 +480,7 @@ exports[`<LabOrdersList /> component renders correctly 1`] = `
                               onFocus={[Function]}
                               onKeyDown={[Function]}
                               readOnly={false}
-                              value="11 Nov 2018"
+                              value="10 Nov 2018"
                             >
                               <span>
                                 <span
@@ -518,7 +518,7 @@ exports[`<LabOrdersList /> component renders correctly 1`] = `
                                       }
                                     }
                                     type="text"
-                                    value="11 Nov 2018"
+                                    value="10 Nov 2018"
                                   >
                                     <input
                                       className="form-control"
@@ -532,7 +532,7 @@ exports[`<LabOrdersList /> component renders correctly 1`] = `
                                         }
                                       }
                                       type="text"
-                                      value="11 Nov 2018"
+                                      value="10 Nov 2018"
                                     />
                                   </FormControl>
                                   <FontAwesomeIcon

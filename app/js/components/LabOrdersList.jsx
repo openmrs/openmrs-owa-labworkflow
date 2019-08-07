@@ -305,7 +305,7 @@ export class LabOrdersList extends PureComponent {
         <h2>
           <FormattedMessage
             id="app.labOrdersList.title"
-            defaultMessage="Lab Test Results"
+            defaultMessage="Labs"
             description="Welcome header on LabTestResult page" />
         </h2>
         <React.Fragment>

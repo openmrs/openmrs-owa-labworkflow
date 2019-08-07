@@ -55,16 +55,8 @@ class BreadCrumb extends Component {
             aria-hidden="true" />
           <span className="title breadcrumb-item">
             <u>
-            Lab
+            Labs
             </u>
-          </span>
-        </Link>
-        <Link to="/">
-          <span
-            className="glyphicon glyphicon-chevron-right breadcrumb-item separator"
-            aria-hidden="true" />
-          <span className="title breadcrumb-item">
-            <u>Lab Test Results</u>
           </span>
         </Link>
       </span>
