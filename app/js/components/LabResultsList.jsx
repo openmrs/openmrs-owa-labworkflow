@@ -207,13 +207,13 @@ export class LabResultsList extends PureComponent {
       Header:
   <span className={`labs-result-table-head-${columnName.replace(' ', '-').toLocaleLowerCase()}`}>
     <FormattedMessage
-      id={`app.labResultsList.${columnName.replace(" ", "_")}`}
+      id={`app.labOrdersList.${columnName.replace(" ", "_")}`}
       defaultMessage={`${columnName}`} />
   </span>,
       accessor: "",
       Cell: data => <Cell {...data} columnName={columnName} dateAndTimeFormat={dateAndTimeFormat} type="single" show={false} navigate={this.handleShowLabTrendsPage} />,
       className: `lab-results-list-cell-${columnName.replace(' ', '-').toLocaleLowerCase()}`,
-      headerClassName: `lab-result-list-header-${columnName.replace(' ', '-').toLocaleLowerCase()}`,
+      headerClassName: `lab-results-list-column-header lab-result-list-header-${columnName.replace(' ', '-').toLocaleLowerCase()}`,
     }));
     const expanderColumn = [
       {

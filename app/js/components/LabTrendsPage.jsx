@@ -122,7 +122,7 @@ export class LabTrendsPage extends PureComponent {
       accessor: "",
       Cell: data => <Cell {...data} columnName={columnName} conceptUuid={state.uuid} />,
       className: `lab-trends-list-cell-${columnName.replace(' ', '-').toLocaleLowerCase()}`,
-      headerClassName: `lab-trends-list-header-${columnName.replace(' ', '-').toLocaleLowerCase()}`,
+      headerClassName: `lab-trends-list-column-header lab-trends-list-header-${columnName.replace(' ', '-').toLocaleLowerCase()}`,
     }));
 
     const chartMargin = {
