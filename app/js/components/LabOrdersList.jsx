@@ -264,7 +264,7 @@ export class LabOrdersList extends PureComponent {
       filterAll: true,
       Cell: data => <Cell {...data} columnName={columnName} handleCancel={this.handleCancel} />,
       className: `lab-order-list-cell-${columnName.replace(' ', '-').toLocaleLowerCase()}`,
-      headerClassName: `lab-order-list-header-${columnName.replace(' ', '-').toLocaleLowerCase()}`,
+      headerClassName: `lab-order-list-column-header lab-order-list-header-${columnName.replace(' ', '-').toLocaleLowerCase()}`,
     }));
     return (
       <div className="lab-order-list">
@@ -305,7 +305,7 @@ export class LabOrdersList extends PureComponent {
         <h2>
           <FormattedMessage
             id="app.labOrdersList.title"
-            defaultMessage="Lab Test Results"
+            defaultMessage="Labs"
             description="Welcome header on LabTestResult page" />
         </h2>
         <React.Fragment>

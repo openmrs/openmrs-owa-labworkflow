@@ -392,7 +392,7 @@ exports[`<LabResultEntry /> component renders correctly with valid props 1`] = `
                         <span
                           className="test-details"
                         >
-                          Aug 30 5:34 PM
+                          Aug 30 12:34 PM
                         </span>
                       </span>
                     </div>
@@ -611,13 +611,13 @@ exports[`<LabResultEntry /> component renders correctly with valid props 1`] = `
                                     className="encounter-date-field"
                                   >
                                     <WithFormContext(Connect(EncounterDate))
-                                      defaultDate={2019-04-28T23:00:00.000Z}
+                                      defaultDate={2019-08-07T04:00:00.000Z}
                                       field="specimen"
                                       handleDateChange={[Function]}
                                       id="specimen-collection-date"
                                       label="Specimen Collection Date:"
                                       labelClassName="date-picker-label"
-                                      valiidations={
+                                      validations={
                                         Array [
                                           [Function],
                                         ]
@@ -927,13 +927,13 @@ exports[`<LabResultEntry /> component renders correctly with valid props 1`] = `
                                       className="encounter-date-field"
                                     >
                                       <WithFormContext(Connect(EncounterDate))
-                                        defaultDate={2019-04-28T23:00:00.000Z}
+                                        defaultDate={2019-08-07T04:00:00.000Z}
                                         field="specimen"
                                         handleDateChange={[Function]}
                                         id="specimen-collection-date"
                                         label="Specimen Collection Date:"
                                         labelClassName="date-picker-label"
-                                        valiidations={
+                                        validations={
                                           Array [
                                             [Function],
                                           ]
@@ -1039,6 +1039,7 @@ exports[`<LabResultEntry /> component renders correctly with valid props 1`] = `
                           </Grid>
                         }
                         formId="result-entry-form"
+                        manuallyExitSubmitMode={false}
                         orderForObs={
                           Object {
                             "concept": Object {

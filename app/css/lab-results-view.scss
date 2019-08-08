@@ -3,7 +3,7 @@
 
 
   .ReactTable .rt-tbody .rt-td {
-      border-right: 0px solid rgba(0,0,0,0.02);
+      border-right: 1px solid rgba(0,0,0,0.02);
   }
 
   .ReactTable.-striped .rt-tr.-odd {
@@ -34,6 +34,18 @@
     padding-left: 30px;
   }
 
+}
+
+.ReactTable .rt-thead .rt-th {
+  border-right: 1px solid rgba(0,0,0,0.96);
+}
+
+.ReactTable .rt-tbody .rt-td {
+  border-right: 1px solid rgba(0,0,0,0.96);
+}
+
+.lab-results-list-column-header {
+  text-align: left;
 }
 
 .lab-results-list-cell-emr-id,
