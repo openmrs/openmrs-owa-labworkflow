@@ -24,10 +24,12 @@ import LabTrendsPage from './components/LabTrendsPage';
 import Patientheader from './components/shared/PatientHeader';
 import messagesEN from "./translations/en.json";
 import messagesFR from "./translations/fr.json";
+import messagesHT from "./translations/ht.json";
 
 setLocaleMessages({
   en: messagesEN,
   fr: messagesFR,
+  ht: messagesHT,
 });
 
 const LocalizedHead = withLocalisation(Head);
