@@ -10,6 +10,7 @@ import React from 'react';
 import { Route, Switch } from 'react-router-dom';
 import {
   Header,
+  SystemAlert,
   setLocaleMessages,
   withLocalisation,
   Head,
@@ -38,6 +39,7 @@ export default store => (
     <ReduxToastr />
     <LocalizedHead defaultTitle="OpenMRS Electronic Medical Record" id="app.title" />
     <Header />
+    <SystemAlert />
     <LocalizedBreadCrumb />
     <Patientheader />
     <Switch>
