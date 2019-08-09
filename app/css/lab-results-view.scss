@@ -50,7 +50,44 @@
 
 .lab-results-list-cell-emr-id,
 .lab-results-list-header-emr-id {
+    min-width: 80px;
     max-width: 80px;
+}
+
+.lab-results-list-cell-test-type,
+.lab-results-list-header-test-type {
+  min-width: 165px;
+  max-width: 165px;
+}
+
+.lab-results-list-cell-status,
+.lab-results-list-header-status {
+  min-width: 90px;
+  max-width: 90px;
+}
+
+.lab-results-list-cell-order-date,
+.lab-results-list-header-order-date {
+  min-width: 130px;
+  max-width: 130px;
+}
+
+.lab-results-list-cell-collection-date,
+.lab-results-list-header-collection-date {
+  min-width: 130px;
+  max-width: 130px;
+}
+
+.lab-results-list-cell-result,
+.lab-results-list-header-result {
+  min-width: 100px;
+  max-width: 100px;
+}
+
+.lab-results-list-cell-normal-range,
+.lab-results-list-header-normal-range {
+  min-width: 130px;
+  max-width: 130px;
 }
 
 .lab-results-list-cell-normal-range {
@@ -130,13 +167,6 @@ i.scale:hover {
 .lab-results-list-cell-status,
 .lab-result-list-header-status {
     max-width: 80px
-}
-
-.lab-results-list-cell-order-date,
-.lab-results-list-cell-collection-date,
-.lab-result-list-header-collection-date,
-.lab-result-list-header-order-date {
-    max-width: 200px;
 }
 
 .lab-results-list-cell-result,

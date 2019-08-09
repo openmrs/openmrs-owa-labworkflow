@@ -41,7 +41,7 @@ export const Cell = ({ columnName, value, handleCancel }) => {
     case 'NAME': {
       const displayName = value.patient.display.split('-')[1].trim();
       return (
-        <div className="table_cell order-date">
+        <div className="table_cell name">
           <span>{displayName}</span>
         </div>
       );

@@ -1125,7 +1125,7 @@ exports[`LabOrdersListContainer container <Cell /> component returns NAME column
   }
 >
   <div
-    className="table_cell order-date"
+    className="table_cell name"
   >
     <span>
       williams willy john
