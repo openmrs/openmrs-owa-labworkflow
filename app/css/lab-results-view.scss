@@ -1,6 +1,9 @@
 .collapsible-panel {
   margin: 15px;
 
+  .ReactTable .rt-thead .rt-tbody{
+    overflow: hidden;
+  }
 
   .ReactTable .rt-tbody .rt-td {
       border-right: 1px solid rgba(0,0,0,0.02);

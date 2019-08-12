@@ -9,6 +9,10 @@ i.scale:hover {
 .lab-order-list {
     position: relative;
     margin-top: 30px;
+
+  .ReactTable .rt-tbody{
+    overflow: hidden;
+  }
 }
 .table_cell {
     font-size: 15px;
