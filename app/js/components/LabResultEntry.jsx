@@ -366,6 +366,7 @@ export class LabResultEntry extends PureComponent {
                   patient={patient}
                   formId="result-entry-form"
                   orderForObs={selectedOrder}
+                  timestampNewEncounterIfCurrentDay
                 />
               )
               : (
@@ -377,6 +378,7 @@ export class LabResultEntry extends PureComponent {
                   patient={patient}
                   formId="result-entry-form"
                   orderForObs={selectedOrder}
+                  timestampNewEncounterIfCurrentDay
                 />
               )
             }
