@@ -11,8 +11,8 @@ import { Route, Switch } from 'react-router-dom';
 import {
   Header,
   SystemAlert,
-  setLocaleMessages,
-  withLocalisation,
+  initializeLocalization,
+  withLocalization,
   Head,
 } from '@openmrs/react-components';
 import ReduxToastr from 'react-redux-toastr';
@@ -26,14 +26,14 @@ import messagesEN from "./translations/en.json";
 import messagesFR from "./translations/fr.json";
 import messagesHT from "./translations/ht.json";
 
-setLocaleMessages({
+initializeLocalization({
   en: messagesEN,
   fr: messagesFR,
   ht: messagesHT,
 });
 
-const LocalizedHead = withLocalisation(Head);
-const LocalizedBreadCrumb = withLocalisation(BreadCrumb);
+const LocalizedHead = withLocalization(Head);
+const LocalizedBreadCrumb = withLocalization(BreadCrumb);
 
 // eslint-disable-next-line
 export default store => (
@@ -45,10 +45,10 @@ export default store => (
     <LocalizedBreadCrumb />
     <Patientheader />
     <Switch>
-      <Route exact path="/" component={withLocalisation(LabOrdersList)} />
-      <Route path="/LabResultEntry" component={withLocalisation(LabResultEntry)} />
-      <Route path="/labresults" component={withLocalisation(LabResultsList)} />
-      <Route path="/labtrends" component={withLocalisation(LabTrendsPage)} />
+      <Route exact path="/" component={withLocalization(LabOrdersList)} />
+      <Route path="/LabResultEntry" component={withLocalization(LabResultEntry)} />
+      <Route path="/labresults" component={withLocalization(LabResultsList)} />
+      <Route path="/labtrends" component={withLocalization(LabTrendsPage)} />
     </Switch>
   </div>
 );
