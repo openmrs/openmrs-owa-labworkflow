@@ -9,6 +9,8 @@
   "app.labOrdersList.URGENCY": "URGENCE",
   "app.labOrdersList.TEST_TYPE": "TYPE DE TEST",
   "app.labOrdersList.ORDER_DATE": "Commandé",
+  "app.labOrdersList.STATUS": "STATUT",
+  "app.labOrdersList.ACTIONS": "Aksyon Yo",
   "app.labOrdersListFilters.textSearchTitle": "Rechercher un échantillon",
   "app.labOrdersListFilters.searchDateFromLabel": "De: ",
   "app.labOrdersListFilters.searchDateToLabel": "À: ",
