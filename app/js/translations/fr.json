@@ -15,6 +15,7 @@
     "app.labOrdersListFilters.searchDateFromLabel": "De: ",
     "app.labOrdersListFilters.searchDateToLabel": "À: ",
     "app.labOrdersListFilters.searchDropdownLabel": "Type de test",
+    "app.labOrdersListFilters.statusDropdownLabel": "Statut",
     "app.labResultEntry.title": "Résultats de test -",
     "app.labResultEntry.specimenDetails": "Spécimen Détails",
     "app.labResultEntry.orderDetails": "Ordre Détails",
@@ -40,5 +41,10 @@
     "app.labTrendsPage.SAMPLE_DATE": "ÉCHANTILLON DATE",
     "app.labTrendsPage.RESULT_DATE": "DATE DU RESULTAT",
     "app.labTrendsPage.RESULT": "RÉSULTAT",
-    "app.labTrendsPage.NORMAL_RANGE": "PLAGE NORMALE"
+    "app.labTrendsPage.NORMAL_RANGE": "PLAGE NORMALE",
+    "app.labResult.status.ordered": "Ordonné",
+    "app.labResult.status.taken": "Pris",
+    "app.labResult.status.reported": "Rapporter",
+    "app.labResult.status.canceled": "Annulé",
+    "app.labResult.status.expired": "Expiré"
 }
