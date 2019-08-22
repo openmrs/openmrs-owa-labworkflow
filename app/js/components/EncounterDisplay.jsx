@@ -23,7 +23,6 @@ class EncounterDisplay extends PureComponent {
               id={`app.labResult.status.${labResult.resultStatus.toLowerCase()}`}
               defaultMessage={`${labResult.resultStatus}`}
               description={`Lab Result Status`} />
-
           </span>
         );
       }
