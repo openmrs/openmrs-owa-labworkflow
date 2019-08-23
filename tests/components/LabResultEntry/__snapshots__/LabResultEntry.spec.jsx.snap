@@ -429,7 +429,15 @@ exports[`<LabResultEntry /> component renders correctly with valid props 1`] = `
                   <span
                     className="range-header-text"
                   >
-                    NORMAL RANGE
+                    <FormattedMessage
+                      defaultMessage="NORMAL RANGE"
+                      id="app.labOrdersList.NORMAL_RANGE"
+                      values={Object {}}
+                    >
+                      <span>
+                        NORMAL RANGE
+                      </span>
+                    </FormattedMessage>
                   </span>
                   <span
                     className="encounter-form-componnent"
@@ -611,7 +619,7 @@ exports[`<LabResultEntry /> component renders correctly with valid props 1`] = `
                                     className="encounter-date-field"
                                   >
                                     <WithFormContext(Connect(EncounterDate))
-                                      defaultDate={2019-08-22T04:00:00.000Z}
+                                      defaultDate={2019-08-23T04:00:00.000Z}
                                       field="specimen"
                                       handleDateChange={[Function]}
                                       id="specimen-collection-date"
@@ -928,7 +936,7 @@ exports[`<LabResultEntry /> component renders correctly with valid props 1`] = `
                                       className="encounter-date-field"
                                     >
                                       <WithFormContext(Connect(EncounterDate))
-                                        defaultDate={2019-08-22T04:00:00.000Z}
+                                        defaultDate={2019-08-23T04:00:00.000Z}
                                         field="specimen"
                                         handleDateChange={[Function]}
                                         id="specimen-collection-date"

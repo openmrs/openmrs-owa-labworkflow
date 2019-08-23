@@ -16,6 +16,8 @@
     "app.labOrdersList.ORDER_DATE": "Commandé",
     "app.labOrdersList.STATUS": "STATUT",
     "app.labOrdersList.ACTIONS": "ACTES",
+    "app.labOrdersList.RESULT": "RÉSULTAT",
+    "app.labOrdersList.NORMAL_RANGE": "PLAGE NORMALE",
     "app.labOrdersListFilters.textSearchTitle": "Rechercher un échantillon",
     "app.labOrdersListFilters.searchDateFromLabel": "De: ",
     "app.labOrdersListFilters.searchDateToLabel": "À: ",

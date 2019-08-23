@@ -40,7 +40,7 @@ exports[`ConceptDisplay Component should render for concept value of type range 
 >
   <Connect(ConceptDisplay)
     conceptUUID="some-concept-uuid"
-    type="range"
+    type="result"
     value={30}
   >
     <ConceptDisplay
@@ -62,16 +62,14 @@ exports[`ConceptDisplay Component should render for concept value of type range 
       }
       conceptUUID="some-concept-uuid"
       dispatch={[Function]}
-      type="range"
+      type="result"
       value={30}
     >
-      <div
-        className="table_cell test-type"
+      <span
+        className="abnormal-value"
       >
-        <span>
-          40 - 50 mmgh
-        </span>
-      </div>
+        30
+      </span>
     </ConceptDisplay>
   </Connect(ConceptDisplay)>
 </Provider>
@@ -117,7 +115,7 @@ exports[`ConceptDisplay Component should render for concept value of type range 
 >
   <Connect(ConceptDisplay)
     conceptUUID="some-concept-uuid"
-    type="range"
+    type="result"
     value={30}
   >
     <ConceptDisplay
@@ -139,16 +137,14 @@ exports[`ConceptDisplay Component should render for concept value of type range 
       }
       conceptUUID="some-concept-uuid"
       dispatch={[Function]}
-      type="range"
+      type="result"
       value={30}
     >
-      <div
-        className="table_cell test-type"
+      <span
+        className="abnormal-value"
       >
-        <span>
-          40 - 50 mmgh
-        </span>
-      </div>
+        30
+      </span>
     </ConceptDisplay>
   </Connect(ConceptDisplay)>
 </Provider>

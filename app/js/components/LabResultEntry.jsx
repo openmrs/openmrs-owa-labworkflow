@@ -351,7 +351,11 @@ export class LabResultEntry extends PureComponent {
         </div>
         <div className="fieldset-body">
           {hasRanges
-            && (<span className="range-header-text">NORMAL RANGE</span>)
+            && (<span className="range-header-text">
+            <FormattedMessage
+              id={`app.labOrdersList.NORMAL_RANGE`}
+              defaultMessage={`NORMAL RANGE`} />
+          </span>)
           }
           <span className="encounter-form-componnent">
             {hasEncounter

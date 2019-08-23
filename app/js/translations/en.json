@@ -14,6 +14,8 @@
     "app.labOrdersList.URGENCY": "URGENCY",
     "app.labOrdersList.TEST_TYPE": "TEST TYPE",
     "app.labOrdersList.ORDER_DATE": "ORDERED",
+    "app.labOrdersList.RESULT": "RESULT",
+    "app.labOrdersList.NORMAL_RANGE": "NORMAL RANGE",
     "app.labOrdersListFilters.textSearchTitle": "Search for a sample",
     "app.labOrdersListFilters.searchDateFromLabel": "From: ",
     "app.labOrdersListFilters.searchDateToLabel": "To: ",
