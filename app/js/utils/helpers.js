@@ -55,7 +55,7 @@ export const formatRangeDisplayText = (min = " ", max = " ") => {
 export const filterThrough = (filters, data) => {
   let originalData = data;
 
-  if (filters.dateField === "order.dateActivated") {
+  if (filters.dateField === "obsDatetime") {
     if (filters.dateToField && filters.dateFromField) {
       const filteredData  = getDateRange(originalData, filters.dateFromField, filters.dateToField, filters.dateField);
       originalData = filteredData;
@@ -96,30 +96,12 @@ export const filterThrough = (filters, data) => {
   }
 
   return originalData;
-}
+};
 
 export const sortByDate = (path) => data => R.sort(
   (a, b) => dateToInt(R.path(path.split('.'))(a)) - dateToInt(R.path(path.split('.'))(b)), data
 );
 
-export const getSampleDate = (data) => {
-  let sampleDate;
-  if (data.encounter.obs) {
-    const obs = data.encounter.obs;
-    obs.some(eachObs => {
-      if (eachObs.display.toLowerCase().match('sample date estimated')) {
-        sampleDate = eachObs.value;
-      }
-    })
-  }
-  if (sampleDate) {
-    return `${moment(sampleDate).format('DD-MMM-YYYY')}*`;
-  } else if(data.encounter && data.encounter.encounterDatetime){
-    return moment(data.encounter.encounterDatetime).format('DD-MMM-YYYY');
-  } else {
-    return "Unknown"
-  }
-}
 
 export const getResultValue = (data) => {
   let resultValue;
@@ -131,6 +113,6 @@ export const getResultValue = (data) => {
     resultValue = '';
   }
   return resultValue;
-}
+};
 
 export const calculateTableRows = (noOfRows) => ((parseInt(noOfRows) < 10) ? parseInt(noOfRows): 10)

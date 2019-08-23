@@ -22,8 +22,6 @@ import { FormattedMessage } from 'react-intl';
 import ConceptDisplay from "./ConceptDisplay";
 import { fetchLabTestResults } from '../actions/labOrdersAction';
 import {
-  getSampleDate,
-  getResultValue,
   calculateTableRows,
   sortByDate,
 } from '../utils/helpers';
@@ -35,14 +33,14 @@ export const Cell = ({ columnName, conceptUuid, value }) => {
     case 'SAMPLE DATE': {
       return (
         <div className="table_cell collection-date">
-          <span>{getSampleDate(value)}</span>
+          <span>{moment(value.obsDatetime).format("DD-MMM-YYYY") || ''}</span>
         </div>
       );
     }
     case 'RESULT':
       return (
         <div className="table_cell result">
-          <ConceptDisplay conceptUUID={conceptUuid} type="result" value={value.value.display || value.value} />
+          <ConceptDisplay conceptUUID={conceptUuid} type="result" value={value.value && value.value.display ? value.value.display : value.value} />
         </div>
       );
 

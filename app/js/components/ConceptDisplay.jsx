@@ -106,7 +106,10 @@ ConceptDisplay.propTypes = {
   conceptUUID: PropTypes.string.isRequired,
   dispatch: PropTypes.func.isRequired,
   type: PropTypes.string.isRequired,
-  value: PropTypes.string,
+  value: PropTypes.oneOfType([
+    PropTypes.string,
+    PropTypes.number,
+  ]),
 };
 
 const mapStateToProps = ({
