@@ -863,7 +863,12 @@ exports[`<LabOrdersList /> component renders correctly 1`] = `
                   "Cancelled/Expired",
                 ]
               }
-              placeholder="Select from the list"
+              placeholder={
+                <LocalizedMessage
+                  defaultMessage="Select from the list"
+                  id="reactcomponents.select.from.list"
+                />
+              }
             >
               <div>
                 <span
@@ -898,7 +903,10 @@ exports[`<LabOrdersList /> component renders correctly 1`] = `
                       key="0"
                       value=""
                     >
-                      Select from the list
+                      <LocalizedMessage
+                        defaultMessage="Select from the list"
+                        id="reactcomponents.select.from.list"
+                      />
                     </option>
                     <option
                       key="All"
@@ -963,7 +971,12 @@ exports[`<LabOrdersList /> component renders correctly 1`] = `
                   "Hémogramme automatisé",
                 ]
               }
-              placeholder="Select from the list"
+              placeholder={
+                <LocalizedMessage
+                  defaultMessage="Select from the list"
+                  id="reactcomponents.select.from.list"
+                />
+              }
             >
               <div>
                 <span
@@ -998,7 +1011,10 @@ exports[`<LabOrdersList /> component renders correctly 1`] = `
                       key="0"
                       value=""
                     >
-                      Select from the list
+                      <LocalizedMessage
+                        defaultMessage="Select from the list"
+                        id="reactcomponents.select.from.list"
+                      />
                     </option>
                     <option
                       key="All"
@@ -2065,7 +2081,12 @@ exports[`LabOrdersListContainer container should pass required props from state 
                   "Cancelled/Expired",
                 ]
               }
-              placeholder="Select from the list"
+              placeholder={
+                <LocalizedMessage
+                  defaultMessage="Select from the list"
+                  id="reactcomponents.select.from.list"
+                />
+              }
             >
               <div>
                 <span
@@ -2100,7 +2121,10 @@ exports[`LabOrdersListContainer container should pass required props from state 
                       key="0"
                       value=""
                     >
-                      Select from the list
+                      <LocalizedMessage
+                        defaultMessage="Select from the list"
+                        id="reactcomponents.select.from.list"
+                      />
                     </option>
                     <option
                       key="All"
@@ -2165,7 +2189,12 @@ exports[`LabOrdersListContainer container should pass required props from state 
                   "Hémogramme automatisé",
                 ]
               }
-              placeholder="Select from the list"
+              placeholder={
+                <LocalizedMessage
+                  defaultMessage="Select from the list"
+                  id="reactcomponents.select.from.list"
+                />
+              }
             >
               <div>
                 <span
@@ -2200,7 +2229,10 @@ exports[`LabOrdersListContainer container should pass required props from state 
                       key="0"
                       value=""
                     >
-                      Select from the list
+                      <LocalizedMessage
+                        defaultMessage="Select from the list"
+                        id="reactcomponents.select.from.list"
+                      />
                     </option>
                     <option
                       key="All"
