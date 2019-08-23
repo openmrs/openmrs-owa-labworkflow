@@ -233,11 +233,30 @@ export class LabOrdersList extends PureComponent {
 
   renderNoDataDisplayText() {
     const { labOrdersListFilters } = this.props;
-    const displayText = `NO ORDERS FOUND FROM ${moment(labOrdersListFilters.dateFromField).format('YYYY-MMM-DD')} TO ${moment(labOrdersListFilters.dateToField).format('YYYY-MMM-DD')}`;
+
+    const fromDate = `${moment(labOrdersListFilters.dateFromField).format('YYYY-MMM-DD')}`;
+    const toDate = `${moment(labOrdersListFilters.dateToField).format('YYYY-MMM-DD')}`;
     return (
       <div className="no-data-container">
         <span>
-          {displayText}
+          <FormattedMessage
+            id="app.orders.not.found"
+            defaultMessage="No orders found"
+            description="No orders found" />
+          &nbsp;
+          <FormattedMessage
+            id="app.from.label"
+            defaultMessage="from"
+            description="from" />
+          &nbsp;
+          { fromDate }
+          &nbsp;
+          <FormattedMessage
+            id="app.to.label"
+            defaultMessage="to"
+            description="to" />
+          &nbsp;
+          { toDate }
         </span>
       </div>
     );
@@ -281,7 +300,12 @@ export class LabOrdersList extends PureComponent {
           onPageChange={page => this.handleFilterChange('page', page)}
           onPageSizeChange={pageSize => this.handleFilterChange('pageSize', pageSize)}
           rowOnClick={this.handleShowResultsEntryPage}
-          noDataMessage="No orders found"
+          noDataMessage={
+            <FormattedMessage
+              id="app.orders.not.found"
+              defaultMessage="No orders found"
+              description="No orders found" />
+          }
           minRows={0}
           page={labOrdersListFilters.page}
           defaultPageSize={labOrdersListFilters.pageSize || calculateTableRows(orders.length)}

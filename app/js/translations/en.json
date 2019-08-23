@@ -2,6 +2,11 @@
     "app.title": "OpenMRS Electronic Medical Record",
     "app.labOrdersList.title": "Labs",
     "app.breadCrumb.homePageBreadcrumb.title": "Labs",
+    "app.from.label": "from",
+    "app.to.label": "to",
+    "app.for.label": "for",
+    "app.orders.not.found": "No orders found",
+    "app.results.not.found": "No results found",
     "app.labOrdersList.EMR_ID": "EMR ID",
     "app.labOrdersList.NAME": "NAME",
     "app.labOrdersList.ORDER_ID": "ORDER ID",
@@ -13,6 +18,7 @@
     "app.labOrdersListFilters.searchDateFromLabel": "From: ",
     "app.labOrdersListFilters.searchDateToLabel": "To: ",
     "app.labOrdersListFilters.searchDropdownLabel": "Test Type",
+    "app.labOrdersListFilters.statusDropdownLabel": "Status",
     "app.labResultEntry.title": "Test Results -",
     "app.labResultEntry.specimenDetails": "Specimen Details",
     "app.labResultEntry.orderDetails": "Order Details",
@@ -38,5 +44,10 @@
     "app.labTrendsPage.SAMPLE_DATE": "SAMPLE DATE",
     "app.labTrendsPage.RESULT_DATE": "RESULT DATE",
     "app.labTrendsPage.RESULT": "RESULT",
-    "app.labTrendsPage.NORMAL_RANGE": "NORMAL RANGE"
+    "app.labTrendsPage.NORMAL_RANGE": "NORMAL RANGE",
+    "app.labResult.status.ordered": "Ordered",
+    "app.labResult.status.taken": "Taken",
+    "app.labResult.status.reported": "Reported",
+    "app.labResult.status.canceled": "Canceled",
+    "app.labResult.status.expired": "Expired"
 }

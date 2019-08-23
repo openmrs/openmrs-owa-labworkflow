@@ -3,6 +3,7 @@ import R from 'ramda';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import moment from 'moment';
+import { FormattedMessage } from 'react-intl';
 
 
 class EncounterDisplay extends PureComponent {
@@ -18,7 +19,10 @@ class EncounterDisplay extends PureComponent {
       if (type === "status") {
         return (
           <span>
-            {labResult.resultStatus}
+            <FormattedMessage
+              id={`app.labResult.status.${labResult.resultStatus.toLowerCase()}`}
+              defaultMessage={`${labResult.resultStatus}`}
+              description={`Lab Result Status`} />
           </span>
         );
       }
