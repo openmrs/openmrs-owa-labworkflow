@@ -38,34 +38,47 @@ function* fetchAndSetTestResults(action) {
   const state = yield select();
   const { patientUUID } = action;
   try {
-    const labResultsTestOrderType = selectProperty(state, 'labResultsTestOrderType');
-    const encounterTypeUUID = selectProperty(state, 'labResultsEncounterType');
-    const patientOrdersResponse = yield call(orderRest.fetchAllOrdersByPatient, patientUUID,
-      labResultsTestOrderType);
+    const encounterTypeUUID = selectProperty(state, 'labResultsEntryEncounterType');
+    const additionalEncounterTypeUUIDs = selectProperty(state, 'labResultsEncounterTypes');
 
-    const patientEncountersResponse = yield call(
-      encounterRest.fetchEncountersByPatient,
-      patientUUID,
-      encounterTypeUUID,
-    );
+    let encounterTypeUUIDs = [encounterTypeUUID];
 
-    if (patientOrdersResponse && patientEncountersResponse) {
-      if (patientOrdersResponse.results.length) {
-        yield put(patientAction.setPatientData({
-          meta: {
-            orders: patientOrdersResponse.results.filter(order => order.action !== "DISCONTINUE"),
-            encounters: patientEncountersResponse.results,
-          },
-          patientUUID,
-        }));
+    if (additionalEncounterTypeUUIDs) {
+      encounterTypeUUIDs = [encounterTypeUUID, ...additionalEncounterTypeUUIDs
+        .split(",")
+        .filter(uuid => uuid !== encounterTypeUUID)];
+    }
+
+    let encounters = [];
+
+    // seems like yield cannot be nested in a reduce callback, so doing this the old-fashioned way
+    for (let i = 0; i < encounterTypeUUIDs.length; i += 1) {
+      const response = yield call(
+        encounterRest.fetchEncountersByPatient,
+        patientUUID,
+        encounterTypeUUIDs[i],
+      );
+
+      if (response && response.results) {
+        encounters = [...encounters, ...response.results];
       }
+    }
+
+    if (encounters.length) {
       yield put(patientAction.setPatientData({
         meta: {
-          labResultFetchStatus: true,
+          encounters,
         },
         patientUUID,
       }));
     }
+
+    yield put(patientAction.setPatientData({
+      meta: {
+        labResultFetchStatus: true,
+      },
+      patientUUID,
+    }));
   } catch (e) {
     yield put(patientAction.getPatientFailed(e.message));
   }

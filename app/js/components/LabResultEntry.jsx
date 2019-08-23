@@ -139,7 +139,7 @@ export class LabResultEntry extends PureComponent {
       isDidNotPerformCheckboxSelected,
       dispatch,
       formId,
-      labResultsEncounterType,
+      labResultsEntryEncounterType,
       encounterDateOrToday = new Date(),
     } = this.props;
 
@@ -155,7 +155,7 @@ export class LabResultEntry extends PureComponent {
     const hasEncounter = !R.isEmpty(encounter);
 
     const encounterType = {
-      uuid: labResultsEncounterType,
+      uuid: labResultsEntryEncounterType,
     };
 
     const selectedOrder = state;
@@ -619,7 +619,7 @@ const mapStateToProps = (state) => {
     isDidNotPerformCheckboxSelected = !!(selector(state, obsFieldName));
     encounterDateOrToday = selector(state, 'encounter-datetime') || encounterDateOrToday;
   }
-  const labResultsEncounterType = selectProperty(state, 'labResultsEncounterType');
+  const labResultsEntryEncounterType = selectProperty(state, 'labResultsEntryEncounterType');
   return {
     patients,
     selectedPatient,
@@ -627,7 +627,7 @@ const mapStateToProps = (state) => {
     conceptMembers,
     isDidNotPerformCheckboxSelected,
     formId,
-    labResultsEncounterType,
+    labResultsEntryEncounterType,
     labResultsDidNotPerformQuestion,
     labResultsDidNotPerformReasonQuestion: selectProperty(state, 'labResultsDidNotPerformReasonQuestion'),
     labResultsTestLocationQuestion: selectProperty(state, 'labResultsTestLocationQuestion'),

@@ -18,7 +18,7 @@ const store = mockStore({
     CONSTANTS: {
       labResultsTestOrderNumberConcept: 'mock-test-orderno-concept',
       labResultsDateConcept: 'mock-date-concept',
-      labResultsEncounterType: 'mock-encounter-uuid',
+      labResultsEntryEncounterType: 'mock-encounter-uuid',
       labResultsDidNotPerformAnswer: 'mock-uuid',
       labResultsDidNotPerformQuestion: 'mock-uuid',
       labResultsDidNotPerformReason: 'mock-uuid',

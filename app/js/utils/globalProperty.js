@@ -1,10 +1,16 @@
 import { globalPropertyActions, selectors } from '@openmrs/react-components';
 
 
-// define all global properties needed iin this owa here
+/* Define all global properties needed in OWA here
+    * labResultsEntryEncounterType: encounter type to use when creating and editing lab results
+    * labResultsEntryEncounterTypes: encounter types to search through when displaying lab results
+      (not mandatory, will default to encounter type specified in labResultsEntryEncounterType)
+ */
+
 export const APP_GLOBAL_PROPERTIES = {
   labResultsTestOrderType: "labworkflowowa.testOrderType",
-  labResultsEncounterType: "labworkflowowa.labResultsEncounterType",
+  labResultsEntryEncounterType: "labworkflowowa.labResultsEntryEncounterType",
+  labResultsEncounterTypes: "labworkflowowa.labResultsEncounterTypes",
   labResultsDateConcept: "labworkflowowa.labResultsDateConcept",
   labResultsDidNotPerformAnswer: "labworkflowowa.didNotPerformAnswer",
   labResultsDidNotPerformQuestion: "labworkflowowa.didNotPerformQuestion",

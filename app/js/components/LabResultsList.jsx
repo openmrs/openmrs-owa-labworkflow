@@ -95,8 +95,8 @@ export class LabResultsList extends PureComponent {
   componentDidUpdate() {
     const { patientUUID } = this.state;
     const {
-      labResultsTestOrderType,
-      labResultsEncounterType,
+      labResultsEntryEncounterType,
+      labResultsEncounterTypes,
       dispatch,
     } = this.props;
 
@@ -104,7 +104,7 @@ export class LabResultsList extends PureComponent {
       globalPropertiesFetched,
     } = this.state;
 
-    if (labResultsEncounterType && !globalPropertiesFetched) {
+    if (labResultsEntryEncounterType && labResultsEncounterTypes && !globalPropertiesFetched) {
       // eslint-disable-next-line react/no-did-update-set-state
       this.setState({
         globalPropertiesFetched: true,
@@ -346,7 +346,8 @@ LabResultsList.propTypes = {
 export const mapStateToProps = state => ({
   patients: state.patients,
   dateAndTimeFormat: selectProperty(state, 'dateAndTimeFormat') || '',
-  labResultsEncounterType: selectProperty(state, 'labResultsEncounterType') || '',
+  labResultsEntryEncounterType: selectProperty(state, 'labResultsEntryEncounterType') || '',
+  labResultsEncounterTypes: selectProperty(state, 'labResultsEncounterTypes') || '',
   labResultListFilters: state.filters.labResultListFilters,
 });
 

@@ -18,8 +18,8 @@ export const MOCKS = {
         }
       }
     },
-    labResultsEncounterType: {
-      URL: '/openmrs/ws/rest/v1/systemsetting?v=custom:(value)&q=labworkflowowa.labResultsEncounterType',
+    labResultsEntryEncounterType: {
+      URL: '/openmrs/ws/rest/v1/systemsetting?v=custom:(value)&q=labworkflowowa.labResultsEntryEncounterType',
       RESPONSE: {
         body: {
           results: [
