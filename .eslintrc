@@ -50,7 +50,6 @@
         "no-underscore-dangle": 0,
         "no-alert": 0,
         "no-lone-blocks": 0,
-        "padding-blocks": 0,
         "jsx-quotes": 1,
         "react/display-name": [
         1,
