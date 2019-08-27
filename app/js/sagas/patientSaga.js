@@ -64,7 +64,7 @@ function* fetchAndSetTestResults(action) {
       }
     }
 
-    if (encounters.length) {
+    if (encounters.length !== 0) {
       yield put(patientAction.setPatientData({
         meta: {
           encounters,
