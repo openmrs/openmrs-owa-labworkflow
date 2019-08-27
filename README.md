@@ -137,7 +137,7 @@ Sharing in Tomcat.
 ## Usage
 Before using the Lab Workflow Application, the administrator should make the following one time configurations using the admin portal.
 
-1. Create a setting `labworkflowowa.labResultsEncounterType`.
+1. Create a setting `labworkflowowa.labResultsEntryEncounterType`.
 2. Create a date format, setting `labworkflowowa.dateAndTimeFormat` as the name, with a value of the date format, e.g. `DD-MMM-YYYY HH:mm`, in the global properties
 
 See instructions [here](http://enable-cors.org/server_tomcat.html) for Tomcat 7 and [here](https://www.dforge.net/2013/09/16/enabling-cors-on-apache-tomcat-6/) for Tomcat 6.

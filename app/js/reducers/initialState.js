@@ -48,8 +48,8 @@ export default {
   filtersReducer: {
     labResultListFilters: {
       dateToField: moment(),
-      dateFromField: moment().subtract(8, 'days'),
-      dateField: 'order.dateActivated',
+      dateFromField: moment().subtract(10, 'years'),
+      dateField: 'obsDatetime',
     },
     labOrdersListFilters: {
       nameField: "",

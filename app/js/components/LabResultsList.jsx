@@ -15,92 +15,45 @@ import { filterThrough, calculateTableRows, sortByDate } from '../utils/helpers'
 import "../../css/lab-results-view.scss";
 
 
+const isLabSet = obs => obs.concept.conceptClass && obs.concept.conceptClass.name === 'LabSet';
+
+const isTest = obs => obs.concept.conceptClass && obs.concept.conceptClass.name === 'Test';
+
 const Cell = ({
-  value, columnName, type, navigate,
+  value, columnName,
 }) => {
-  if (type === 'single') {
-    const statusesWithoutEncounter = ["Ordered", "Cancelled", "Expired"];
-    const hasNoEncounter = statusesWithoutEncounter.includes(value.status);
-    const isPanel = value.order.concept.set;
-    if (columnName === 'TEST TYPE') {
-      return (
-        <div className="table_cell type">
-          <span>{value.order.display}</span>
-        </div>
-      );
-    }
 
-    if (columnName === 'ORDER DATE') {
-      return (
-        <div className="table_cell order-date">
-          <span>{moment(value.order.dateActivated).format("DD-MMM-YYYY")}</span>
-        </div>
-      );
-    }
-
-    if (columnName === 'STATUS') {
-      return (
-        <div className="table_cell status">
-          <span>{value.status}</span>
-        </div>
-      );
-    }
-
-    if (columnName === 'COLLECTION DATE' && !hasNoEncounter && !R.isEmpty(value.resultDate)) {
-      return (
-        <div className="table_cell collection-date">
-          <span>{moment(value.resultDate.value).format("DD-MMM-YYYY") || ''}</span>
-        </div>
-      );
-    }
-
-    if (!isPanel && !hasNoEncounter) {
-      const labResult = value.encounter.obs[0];
-      if (labResult && labResult.value) {
-        switch (columnName) {
-          case 'RESULT':
-            return (
-              <div className="table_cell result">
-                <ConceptDisplay conceptUUID={labResult.concept.uuid} type="result" value={labResult.value.display || labResult.value} />
-              </div>
-            );
-          case 'NORMAL RANGE':
-            return (
-              <ConceptDisplay conceptUUID={labResult.concept.uuid} type="range" />
-            );
-          default:
-            return null;
-        }
-      }
-    }
-    return null;
+  // TODO use concept display for this?
+  if (columnName === 'TEST TYPE') {
+    return (
+      <div className="table_cell type">
+        <span>{value.concept ? value.concept.display : ''}</span>
+      </div>
+    );
   }
-  if (type === 'panel') {
-    switch (columnName) {
-      case 'TEST TYPE': {
-        return (
-          <div
-            className="table_cell type">
-            <span>{value.concept.display}</span>
-          </div>
-        );
-      }
-      case 'RESULT':
-        return (
-          <div className="table_cell result">
-            <ConceptDisplay conceptUUID={value.concept.uuid} type="result" value={value.value.display || value.value} />
-          </div>
-        );
-      case 'NORMAL RANGE':
-        return (
-          <ConceptDisplay conceptUUID={value.concept.uuid} type="range" />
-        );
 
-      default: {
-        return null;
-      }
-    }
+  if (columnName === 'DATE') {
+    return (
+      <div className="table_cell date">
+        <span>{moment(value.obsDatetime).format("DD-MMM-YYYY") || ''}</span>
+      </div>
+    );
   }
+
+  if (columnName === 'RESULT') {
+    return (
+      <div className="table_cell result">
+        <ConceptDisplay conceptUUID={value.concept.uuid} type="result" value={value.value && value.value.display ? value.value.display : value.value} />
+      </div>
+    );
+  }
+
+  if (columnName === 'NORMAL RANGE') {
+    return (
+      <ConceptDisplay conceptUUID={value.concept.uuid} type="range" />
+    );
+  }
+
   return (
     <div className="spiner" />
   );
@@ -142,8 +95,8 @@ export class LabResultsList extends PureComponent {
   componentDidUpdate() {
     const { patientUUID } = this.state;
     const {
-      labResultsTestOrderType,
-      labResultsEncounterType,
+      labResultsEntryEncounterType,
+      labResultsEncounterTypes,
       dispatch,
     } = this.props;
 
@@ -151,8 +104,7 @@ export class LabResultsList extends PureComponent {
       globalPropertiesFetched,
     } = this.state;
 
-
-    if (labResultsTestOrderType && labResultsEncounterType && !globalPropertiesFetched) {
+    if (labResultsEntryEncounterType && labResultsEncounterTypes && !globalPropertiesFetched) {
       // eslint-disable-next-line react/no-did-update-set-state
       this.setState({
         globalPropertiesFetched: true,
@@ -161,22 +113,13 @@ export class LabResultsList extends PureComponent {
     }
   }
 
-  handleShowLabTrendsPage(data) {
+  handleShowLabTrendsPage(obs) {
+    // navigate to the lab trends page if the selected is a test (as opposed to a LabSet)
     const { history } = this.props;
-    if (data.order) {
-      if (data.encounter && data.encounter.obs[0]) {
-        const obs = data.encounter.obs[0];
-        if (!obs.groupMembers) {
-          history.push({
-            pathname: "/labtrends",
-            state: data.encounter.obs[0].concept,
-          });
-        }
-      }
-    } else if (data.concept) {
+    if (isTest(obs)) {
       history.push({
         pathname: "/labtrends",
-        state: data.concept,
+        state: obs.concept,
       });
     }
   }
@@ -201,7 +144,7 @@ export class LabResultsList extends PureComponent {
 
   renderLabResultsTable(labResults, fetched) {
     const { dateAndTimeFormat, labResultListFilters } = this.props;
-    const fields = ["TEST TYPE", "STATUS", "ORDER DATE", "COLLECTION DATE", "RESULT", "NORMAL RANGE"];
+    const fields = ["TEST TYPE", "DATE", "RESULT", "NORMAL RANGE"];
 
     const columnMetadata = fields.map(columnName => ({
       Header:
@@ -215,11 +158,12 @@ export class LabResultsList extends PureComponent {
       className: `lab-results-list-cell-${columnName.replace(' ', '-').toLocaleLowerCase()}`,
       headerClassName: `lab-results-list-column-header lab-results-list-header-${columnName.replace(' ', '-').toLocaleLowerCase()}`,
     }));
+
     const expanderColumn = [
       {
         expander: true,
         getProps: (state, rowInfo, column) => {
-          const isPanel = (rowInfo.original.order.concept.set) && (rowInfo.original.status === "Reported");
+          const isPanel = isLabSet(rowInfo.original);
           return {
             style: {
               display: !isPanel ? 'none' : 'block',
@@ -231,10 +175,7 @@ export class LabResultsList extends PureComponent {
         Header: '',
         headerClassName: 'expander-cell-header',
         getProps: (state, rowInfo, column) => {
-          let isNotExpanded = rowInfo.original.order.concept.set === false;
-          if (rowInfo.original.status !== "Reported") {
-            isNotExpanded = true;
-          }
+          const isNotExpanded = !isLabSet(rowInfo.original);
           return {
             style: {
               display: isNotExpanded ? 'block' : 'none',
@@ -244,14 +185,15 @@ export class LabResultsList extends PureComponent {
         },
       }];
     const columns = expanderColumn.concat(columnMetadata);
-    const sortedListData = sortByDate('order.dateActivated')(labResults).reverse();
+
+    const sortedListData = sortByDate('obsDatetime')(labResults).reverse();
+
     return (
       <div className="lab-results-list">
         <SortableTable
           data={sortedListData}
           filters={labResultListFilters}
           getDataWithFilters={filterThrough}
-          loading={fetched}
           columnMetadata={columns}
           filteredFields={fields}
           filterType="none"
@@ -269,7 +211,7 @@ export class LabResultsList extends PureComponent {
           }
           defaultPageSize={labResultListFilters.pageSize || calculateTableRows(labResults.length)}
           subComponent={(row) => {
-            const isPanel = (row.original.order.concept.set) && (row.original.status === "Reported");
+            const isPanel = isLabSet(row.original);
             const rowFields = ["TEST TYPE", "RESULT", "NORMAL RANGE"];
             const rowColumnMetadata = rowFields.map(columnName => ({
               accessor: "",
@@ -281,7 +223,7 @@ export class LabResultsList extends PureComponent {
               return (
                 <div className="collapsible-panel">
                   <SortableTable
-                    data={row.original.encounter.obs[0].groupMembers}
+                    data={row.original.groupMembers}
                     columnMetadata={rowColumnMetadata}
                     collapseOnDataChange={false}
                     collapseOnPageChange={false}
@@ -309,7 +251,7 @@ export class LabResultsList extends PureComponent {
             label={(
               <FormattedMessage
                 id="app.labResultsList.dateFromFilterLabel"
-                defaultMessage="Order Date From: " />
+                defaultMessage="Date From: " />
             )}
             defaultDate={moment(labResultListFilters.dateFromField).format() || moment().subtract(8, 'days').format()}
             formControlStyle={{
@@ -344,101 +286,26 @@ export class LabResultsList extends PureComponent {
   render() {
     const {
       patients,
-      labResultsTestOrderNumberConcept,
-      labResultsTestLocationQuestion,
-      labResultsDateConcept,
-      labResultsDidNotPerformReasonQuestion,
-      labResultsEstimatedCollectionDateQuestion,
-      labResultsDidNotPerformQuestion,
     } = this.props;
-    const { patientUUID, returnUrl } = this.state;
+
+    const { patientUUID } = this.state;
+
     const selectedPatient = patients[patientUUID] || {};
+
     const {
       encounters = [],
-      orders = [],
       labResultFetchStatus = false,
     } = selectedPatient;
 
     const getPatientLabResults = () => {
-      const results = encounters.map((encounter) => {
-        const testOrderObs = encounter.obs.filter(
-          item => item.concept.uuid === labResultsTestOrderNumberConcept,
-        );
-        const resultDateObs = encounter.obs.filter(
-          item => item.concept.uuid === labResultsDateConcept,
-        );
-
-        if (testOrderObs.length <= 0) return false;
-
-        const testOrderNumber = testOrderObs[0].value;
-        const matchedOrder = orders.filter(order => order.orderNumber === testOrderNumber);
-        const hasObs = !R.isEmpty(encounter.obs);
-        const concealedConceptUUIDs = [
-          labResultsTestOrderNumberConcept,
-          labResultsTestLocationQuestion,
-          labResultsDateConcept,
-          labResultsDidNotPerformReasonQuestion,
-          labResultsEstimatedCollectionDateQuestion,
-          labResultsDidNotPerformQuestion,
-        ];
-        if (hasObs) {
-          const obs = R.pipe(
-            R.filter(item => !concealedConceptUUIDs.includes(item.concept.uuid)),
-          )(encounter.obs);
-          if (!R.isEmpty(obs)) {
-            return {
-              order: matchedOrder[0],
-              encounter: {
-                ...encounter,
-                obs,
-              },
-              resultDate: resultDateObs[0] || {},
-              status: 'Reported',
-            };
-          }
-
-          return {
-            order: matchedOrder[0],
-            encounter: {
-              ...encounter,
-              obs,
-            },
-            resultDate: resultDateObs[0] || {},
-            status: 'Taken',
-          };
-        }
-      });
-
-      // remove all results without an order
-      const filteredResults = results.filter(item => !R.isNil(item.order));
-      const filteredOrders = orders.filter((order) => {
-        const matchedResult = filteredResults.filter(
-          item => item.order.orderNumber === order.orderNumber,
-        );
-        return R.isEmpty(matchedResult);
-      });
-
-      const orderedTests = filteredOrders.map((order) => {
-        let status = "Ordered";
-        if (order.dateStopped !== null) {
-          status = "Cancelled";
-        }
-
-        if (order.autoExpireDate !== null) {
-          status = "Expired";
-        }
-        return {
-          order,
-          status,
-        };
-      });
-      const labResults = orderedTests.concat(filteredResults);
-
-      return labResults;
+      // build a list of all obs from the encounters that are of type LabSet or Test
+      return encounters.reduce((acc, encounter) => {
+        const obs = encounter.obs ? encounter.obs.filter(o => isLabSet(o) || isTest(o)) : [];
+        return [...acc, ...obs];
+      }, {});
     };
 
-
-    if (!R.isEmpty(selectedPatient) && !R.isEmpty(orders)) {
+    if (!R.isEmpty(selectedPatient)) {
       const labResults = getPatientLabResults();
       return (
         <div className="main-container">
@@ -459,7 +326,8 @@ export class LabResultsList extends PureComponent {
         </div>
       );
     }
-    if (labResultFetchStatus && R.isEmpty(orders)) {
+
+    if (labResultFetchStatus && R.isEmpty(encounters)) {
       const patientName = selectedPatient.person.personName.display.toUpperCase();
       return (
         <div className="no-data-container">
@@ -486,22 +354,14 @@ export class LabResultsList extends PureComponent {
 }
 
 LabResultsList.propTypes = {
-  dateAndTimeFormat: PropTypes.string.isRequired,
-  type: PropTypes.string.isRequired,
-  navigate: PropTypes.func.isRequired,
+  dateAndTimeFormat: PropTypes.string.isRequired
 };
 
 export const mapStateToProps = state => ({
   patients: state.patients,
   dateAndTimeFormat: selectProperty(state, 'dateAndTimeFormat') || '',
-  labResultsTestOrderNumberConcept: selectProperty(state, 'labResultsTestOrderNumberConcept') || '',
-  labResultsTestLocationQuestion: selectProperty(state, 'labResultsTestLocationQuestion') || '',
-  labResultsDateConcept: selectProperty(state, 'labResultsDateConcept') || '',
-  labResultsDidNotPerformReasonQuestion: selectProperty(state, 'labResultsDidNotPerformReasonQuestion') || '',
-  labResultsEstimatedCollectionDateQuestion: selectProperty(state, 'labResultsEstimatedCollectionDateQuestion') || '',
-  labResultsDidNotPerformQuestion: selectProperty(state, 'labResultsDidNotPerformQuestion') || '',
-  labResultsEncounterType: selectProperty(state, 'labResultsEncounterType') || '',
-  labResultsTestOrderType: selectProperty(state, 'labResultsTestOrderType') || '',
+  labResultsEntryEncounterType: selectProperty(state, 'labResultsEntryEncounterType') || '',
+  labResultsEncounterTypes: selectProperty(state, 'labResultsEncounterTypes') || '',
   labResultListFilters: state.filters.labResultListFilters,
 });
 

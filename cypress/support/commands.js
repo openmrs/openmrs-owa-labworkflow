@@ -105,8 +105,8 @@ Cypress.Commands.add('fetchSystemSettiings', () => {
   });
   cy.route({
     method: 'GET',
-    url: MOCKS.SYSTEM_SETTIINGS.labResultsEncounterType.URL,
-    response: MOCKS.SYSTEM_SETTIINGS.labResultsEncounterType.RESPONSE,
+    url: MOCKS.SYSTEM_SETTIINGS.labResultsEntryEncounterType.URL,
+    response: MOCKS.SYSTEM_SETTIINGS.labResultsEntryEncounterType.RESPONSE,
     status: 200,
   });
 

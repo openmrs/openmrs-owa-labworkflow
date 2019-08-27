@@ -44,7 +44,7 @@
         "always"
         ],
         "jsx-a11y/anchor-is-valid": 0,
-        "no-trailing-spaces": 1,
+        "no-trailing-spaces": 0,
         "eol-last": 0,
         "no-unused-vars": 0,
         "no-underscore-dangle": 0,
@@ -111,4 +111,3 @@
         ]
     }
 }
-  

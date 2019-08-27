@@ -118,7 +118,7 @@ const state = {
     },
     metadata: {
       globalProperties: {
-        labResultsEncounterType: 'mock-encounter-uuid',
+        labResultsEntryEncounterType: 'mock-encounter-uuid',
         labResultsTestOrderNumberConcept: 'mock-test-orderno-concept',
         labResultsDateConcept: 'mock-date-concept',
         labResultsDidNotPerformAnswer: 'mock-uuid',
@@ -233,7 +233,7 @@ describe('<LabResultEntry /> component', () => {
         },
         metadata: {
           globalProperties: {
-            labResultsEncounterType: 'mock-encounter-uuid',
+            labResultsEntryEncounterType: 'mock-encounter-uuid',
             labResultsTestOrderNumberConcept: 'mock-test-orderno-concept',
             labResultsDateConcept: 'mock-date-concept',
             labResultsDidNotPerformAnswer: 'mock-uuid',
@@ -281,7 +281,7 @@ describe('<LabResultEntry /> component', () => {
         },
         metadata: {
           globalProperties: {
-            labResultsEncounterType: 'mock-encounter-uuid',
+            labResultsEntryEncounterType: 'mock-encounter-uuid',
             labResultsTestOrderNumberConcept: 'mock-test-orderno-concept',
             labResultsDateConcept: 'mock-date-concept',
             labResultsDidNotPerformAnswer: 'mock-uuid',

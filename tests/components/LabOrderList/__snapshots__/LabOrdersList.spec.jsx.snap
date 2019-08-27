@@ -13,7 +13,13 @@ exports[`<LabOrdersList /> component renders correctly 1`] = `
         ],
         Array [
           Object {
-            "globalProperty": "labworkflowowa.labResultsEncounterType",
+            "globalProperty": "labworkflowowa.labResultsEntryEncounterType",
+            "type": "globalproperty/FETCH_REQUESTED",
+          },
+        ],
+        Array [
+          Object {
+            "globalProperty": "labworkflowowa.labResultsEncounterTypes",
             "type": "globalproperty/FETCH_REQUESTED",
           },
         ],
@@ -84,6 +90,10 @@ exports[`<LabOrdersList /> component renders correctly 1`] = `
         ],
       ],
       "results": Array [
+        Object {
+          "isThrow": false,
+          "value": undefined,
+        },
         Object {
           "isThrow": false,
           "value": undefined,
