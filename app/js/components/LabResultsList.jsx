@@ -203,7 +203,12 @@ export class LabResultsList extends PureComponent {
           onPageSizeChange={pageSize => this.handleFilterChange('pageSize', pageSize)}
           onPageChange={page => this.handleFilterChange('page', page)}
           page={labResultListFilters.page}
-          noDataMessage={fetched ? 'No results found' : 'Loading...'}
+          noDataMessage={
+            <FormattedMessage
+              id="app.results.not.found"
+              defaultMessage="No results found"
+              description="No results found" />
+          }
           defaultPageSize={labResultListFilters.pageSize || calculateTableRows(labResults.length)}
           subComponent={(row) => {
             const isPanel = isLabSet(row.original);
@@ -324,11 +329,20 @@ export class LabResultsList extends PureComponent {
 
     if (labResultFetchStatus && R.isEmpty(encounters)) {
       const patientName = selectedPatient.person.personName.display.toUpperCase();
-      const displayText = `NO RESULTS FOUND FOR ${patientName}`;
       return (
         <div className="no-data-container">
           <span>
-            {displayText}
+            <FormattedMessage
+              id="app.results.not.found"
+              defaultMessage="No results found"
+              description="No results found" />
+            &nbsp;
+            <FormattedMessage
+              id="app.for.label"
+              defaultMessage="for"
+              description="for" />
+            &nbsp;
+            { patientName }
           </span>
         </div>
       );

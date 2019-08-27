@@ -429,7 +429,15 @@ exports[`<LabResultEntry /> component renders correctly with valid props 1`] = `
                   <span
                     className="range-header-text"
                   >
-                    NORMAL RANGE
+                    <FormattedMessage
+                      defaultMessage="NORMAL RANGE"
+                      id="app.labOrdersList.NORMAL_RANGE"
+                      values={Object {}}
+                    >
+                      <span>
+                        NORMAL RANGE
+                      </span>
+                    </FormattedMessage>
                   </span>
                   <span
                     className="encounter-form-componnent"
