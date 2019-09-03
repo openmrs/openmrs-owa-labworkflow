@@ -34,7 +34,7 @@ import patientAction from '../actions/patientAction';
 import { fetchLabConcept } from '../actions/labConceptsAction';
 import { clearFormValues, reloadForm } from '../actions/formActions';
 import constantsActions from '../actions/constantsAction';
-import { updateLabOrderWithhEncounter } from '../actions/labOrdersAction';
+import { updateLabOrderWithEncounter } from '../actions/labOrdersAction';
 import '../../css/lab-result-entry.scss';
 import { formatRangeDisplayText, hasMaxAndMinValues } from '../utils/helpers';
 import { selectProperty } from '../utils/globalProperty';
@@ -92,7 +92,7 @@ export class LabResultEntry extends PureComponent {
   componentWillUnmount() {
     const { dispatch } = this.props;
     const { labOrder } = this.state;
-    dispatch(updateLabOrderWithhEncounter(labOrder));
+    dispatch(updateLabOrderWithEncounter(labOrder));
   }
 
   getEncounter() {
