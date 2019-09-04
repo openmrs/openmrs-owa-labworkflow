@@ -6,6 +6,9 @@ import {
   FETCH_LAB_TEST_RESULTS,
   SET_ORDER_LAB_ENCOUNTER,
   CANCEL_ORDER,
+  SAVE_FULFILLER_STATUS,
+  SAVE_FULFILLER_STATUS_SUCCEEDED,
+  SAVE_FULFILLER_STATUS_FAILED,
 } from './actionTypes';
 
 export const fetchLabOrders = (testOrderType, options) => ({
@@ -36,4 +39,17 @@ export const setOrderLabEncounter = (count, order) => ({
 export const cancelOrder = order => ({
   type: CANCEL_ORDER,
   payload: axiosInstance.post(`order`, order),
+});
+
+export const saveFulfillerStatus = payload => ({
+  type: SAVE_FULFILLER_STATUS,
+  encounter: payload.encounter,
+});
+
+export const saveFulfillerStatusSucceeded = () => ({
+  type: SAVE_FULFILLER_STATUS_SUCCEEDED,
+});
+
+export const saveFulfillerStatusFailed = () => ({
+  type: SAVE_FULFILLER_STATUS_FAILED,
 });

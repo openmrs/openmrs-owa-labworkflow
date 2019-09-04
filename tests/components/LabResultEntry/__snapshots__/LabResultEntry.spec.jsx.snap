@@ -731,6 +731,11 @@ exports[`<LabResultEntry /> component renders correctly with valid props 1`] = `
                         </Grid>
                       }
                       formId="result-entry-form"
+                      formSubmittedActionCreators={
+                        Array [
+                          [Function],
+                        ]
+                      }
                       orderForObs={
                         Object {
                           "concept": Object {
@@ -1048,6 +1053,11 @@ exports[`<LabResultEntry /> component renders correctly with valid props 1`] = `
                           </Grid>
                         }
                         formId="result-entry-form"
+                        formSubmittedActionCreators={
+                          Array [
+                            [Function],
+                          ]
+                        }
                         manuallyExitSubmitMode={false}
                         orderForObs={
                           Object {

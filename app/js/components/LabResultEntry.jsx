@@ -34,7 +34,7 @@ import patientAction from '../actions/patientAction';
 import { fetchLabConcept } from '../actions/labConceptsAction';
 import { clearFormValues, reloadForm } from '../actions/formActions';
 import constantsActions from '../actions/constantsAction';
-import { updateLabOrderWithEncounter } from '../actions/labOrdersAction';
+import { updateLabOrderWithEncounter, saveFulfillerStatus } from '../actions/labOrdersAction';
 import '../../css/lab-result-entry.scss';
 import { formatRangeDisplayText, hasMaxAndMinValues } from '../utils/helpers';
 import { selectProperty } from '../utils/globalProperty';
@@ -367,6 +367,7 @@ export class LabResultEntry extends PureComponent {
                   afterSubmitLink="/"
                   encounterType={encounterType}
                   formContent={observations}
+                  formSubmittedActionCreators={[saveFulfillerStatus]}
                   patient={patient}
                   formId="result-entry-form"
                   orderForObs={selectedOrder}
@@ -379,6 +380,7 @@ export class LabResultEntry extends PureComponent {
                   backLink="/"
                   encounterType={encounterType}
                   formContent={observations}
+                  formSubmittedActionCreators={[saveFulfillerStatus]}
                   patient={patient}
                   formId="result-entry-form"
                   orderForObs={selectedOrder}
