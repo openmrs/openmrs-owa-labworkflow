@@ -6,6 +6,7 @@ import {
   resetState,
   setEncounters,
   cancelOrder,
+  saveFulfillerStatus,
 } from './labOrdersSaga';
 import { setLabConcepts, fetchConcept } from './conceptSaga';
 import { clearFormFieldsSaga } from './formSaga';
@@ -22,6 +23,7 @@ const sagas = {
   setEncounters,
   cancelOrder,
   clearFormFieldsSaga,
+  saveFulfillerStatus,
 };
 
 const initSagas = (sagaMiddleware) => {

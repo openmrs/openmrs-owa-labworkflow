@@ -11,7 +11,7 @@ import {
 } from 'redux-saga/effects';
 import {
   encounterRest,
-  selectors,
+  orderRest,
 } from '@openmrs/react-components';
 import {
   FETCH_LAB_ORDERS,
@@ -19,11 +19,53 @@ import {
   SET_ORDER_LAB_ENCOUNTER,
   SET_ORDER_LIST_FETCH_STATUS,
   SET_LAB_ORDERS,
-  CANCEL_ORDER,
+  CANCEL_ORDER, SAVE_FULFILLER_STATUS,
 } from '../actions/actionTypes';
-import { setLabTestTypes, setOrderLabEncounter, fetchLabOrders } from '../actions/labOrdersAction';
+import {
+  setLabTestTypes, setOrderLabEncounter, fetchLabOrders, saveFulfillerStatusSucceeded,
+  saveFulfillerStatusFailed,
+} from '../actions/labOrdersAction';
 import { setSelectedConcept } from '../actions/labConceptsAction';
 import { selectProperty } from '../utils/globalProperty';
+
+const getOrderNumber = (encounter, state) => {
+  const orderNumberConceptUUID = selectProperty(state, 'labResultsTestOrderNumberConcept');
+  if (encounter && encounter.obs) {
+    // TODO should only ever be one order number on per encounter, but should add better check
+    const orderNumberObs = encounter.obs.find(item => item.concept.uuid === orderNumberConceptUUID);
+    if (orderNumberObs) {
+      return orderNumberObs.value;
+    }
+  }
+  return "";
+};
+
+const computeFulfillerStatus = (encounter, state) => {
+  const concealedConceptUUIDs = [
+    selectProperty(state, 'labResultsTestOrderNumberConcept'),
+    selectProperty(state, 'labResultsTestLocationQuestion'),
+    selectProperty(state, 'labResultsDateConcept'),
+    selectProperty(state, 'labResultsDidNotPerformReasonQuestion'),
+    selectProperty(state, 'labResultsEstimatedCollectionDateQuestion'),
+    selectProperty(state, 'labResultsDidNotPerformQuestion'),
+  ];
+
+  if (encounter) {
+    const hasObs = !R.isNil(encounter.obs);
+    if (hasObs) {
+      const obs = R.pipe(
+        R.filter(item => !concealedConceptUUIDs.includes(item.concept.uuid)),
+      )(encounter.obs);
+
+      if (!R.isEmpty(obs)) {
+        return "COMPLETED";
+      }
+    }
+    return "IN_PROGRESS";
+  }
+
+  return "RECEIVED"; // likely should never get here
+};
 
 const computeResultStatus = (encounter, state, order) => {
   const concealedConceptUUIDs = [
@@ -182,4 +224,45 @@ function* updateOrders() {
 
 export function* cancelOrder() {
   yield takeEvery(`${CANCEL_ORDER}_SUCCESS`, updateOrders);
+}
+
+// the saveFulfillerStatus action is dispatched after the lab results entry page is saved
+// it updates the fulfiller status on the related order
+function* saveFulfillerStatusHelper(action) {
+  const state = yield select();
+  const orderNumber = getOrderNumber(action.encounter, state);
+
+  if (orderNumber && state.labOrders && state.labOrders.orders) {
+    const labOrder = state.labOrders.orders.find(order => order.orderNumber === orderNumber);
+
+    if (labOrder) {
+      const fulfillerStatus = computeFulfillerStatus(action.encounter, state);
+
+      if (fulfillerStatus !== labOrder.fulfillerStatus) {
+        try {
+          yield call(
+            orderRest.updateFulfillerDetails,
+            {
+              uuid: labOrder.uuid,
+            },
+            {
+              fulfillerStatus,
+            },
+          );
+          yield put(saveFulfillerStatusSucceeded());
+        } catch (error) {
+          yield put(saveFulfillerStatusFailed());
+        }
+      }
+    } else {
+      // TODO handle fetching lab order RESTfully if not found in state
+      yield put(saveFulfillerStatusFailed());
+    }
+  } else {
+    yield put(saveFulfillerStatusFailed());
+  }
+}
+
+export function* saveFulfillerStatus() {
+  yield takeEvery(SAVE_FULFILLER_STATUS, saveFulfillerStatusHelper);
 }
