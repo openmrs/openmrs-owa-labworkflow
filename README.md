@@ -68,13 +68,13 @@ NOTE: To run tests make sure your OpenMRS instance is running and this OWA is st
 
 To fire up Cypress in interactive mode:
 
-1) Make sure the app is running on localhost:3000  (ie "npm run watch")
-2) npm run cypress:open
+1) Make sure the app is running on `localhost:3000`  (ie `npm run watch`)
+2) `npm run cypress:open`
 
 To just run the tests Cypress in non-interactive mode:
   
-1) Make sure the app is running on localhost:3000   (ie "npm run watch")
-2) npm run cy:run
+1) Make sure the app is running on `localhost:3000`   (ie `npm run watch`)
+2) `npm run cy:run`
 
 See docs for cypress here: https://www.cypress.io/
 
