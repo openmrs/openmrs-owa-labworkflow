@@ -1,0 +1,14 @@
+language: node_js
+node_js:
+  - '8'
+install:
+  - npm install
+before_deploy: npm run build
+deploy:
+  provider: bintray
+  file: bintray.json
+  user: dkayiwa
+  key: $BINTRAY_API_KEY
+  dry-run: true
+  on:
+    tags: true
