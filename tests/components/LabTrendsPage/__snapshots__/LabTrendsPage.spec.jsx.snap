@@ -3069,16 +3069,18 @@ exports[`Component: LabTrendsPage renders properly 1`] = `
                           viewBox="0 0 500 280"
                           width={500}
                         >
-                          <clipPath
-                            id="recharts2-clip"
-                          >
-                            <rect
-                              height={240}
-                              width={390}
-                              x={80}
-                              y={5}
-                            />
-                          </clipPath>
+                          <defs>
+                            <clipPath
+                              id="recharts2-clip"
+                            >
+                              <rect
+                                height={240}
+                                width={390}
+                                x={80}
+                                y={5}
+                              />
+                            </clipPath>
+                          </defs>
                           <CartesianAxis
                             allowDataOverflow={false}
                             allowDecimals={true}
@@ -4134,7 +4136,6 @@ exports[`Component: LabTrendsPage renders properly 1`] = `
                         cursorStyle={Object {}}
                         filterNull={true}
                         isAnimationActive={true}
-                        itemSorter={[Function]}
                         itemStyle={Object {}}
                         labelStyle={Object {}}
                         offset={10}
@@ -4192,7 +4193,6 @@ exports[`Component: LabTrendsPage renders properly 1`] = `
                             cursorStyle={Object {}}
                             filterNull={true}
                             isAnimationActive={true}
-                            itemSorter={[Function]}
                             itemStyle={Object {}}
                             labelStyle={Object {}}
                             offset={10}

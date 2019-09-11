@@ -48,7 +48,7 @@
     "app.labTrendsPage.RESULT": "RESULT",
     "app.labTrendsPage.NORMAL_RANGE": "NORMAL RANGE",
     "app.labResult.status.ordered": "Ordered",
-    "app.labResult.status.taken": "Taken",
+    "app.labResult.status.taken": "Collected",
     "app.labResult.status.reported": "Reported",
     "app.labResult.status.canceled": "Canceled",
     "app.labResult.status.expired": "Expired"
