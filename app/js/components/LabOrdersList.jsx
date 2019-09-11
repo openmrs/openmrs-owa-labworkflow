@@ -13,7 +13,7 @@ import cn from 'classnames';
 import moment from 'moment';
 import { withRouter } from 'react-router-dom';
 import PropTypes from 'prop-types';
-import { FormattedMessage } from 'react-intl';
+import { injectIntl, FormattedMessage } from 'react-intl';
 import swal from 'sweetalert';
 import { SortableTable, Loader } from '@openmrs/react-components';
 import LabOrderListFilters from './LabOrdersListFilters';
@@ -268,8 +268,11 @@ export class LabOrdersList extends PureComponent {
       dateAndTimeFormat,
       labOrdersListFilters,
       fetched,
+      intl,
 } = this.props;
     const fields = ["EMR ID", "NAME", "ORDER ID", "ORDER DATE", "COLLECTION DATE", "STATUS", "URGENCY", "TEST TYPE", "ACTIONS"];
+
+    const noDataMessage = intl.formatMessage({ id: "app.orders.not.found", defaultMessage: "No orders found" });
 
     const columnMetadata = fields.map(columnName => ({
       Header:
@@ -300,12 +303,7 @@ export class LabOrdersList extends PureComponent {
           onPageChange={page => this.handleFilterChange('page', page)}
           onPageSizeChange={pageSize => this.handleFilterChange('pageSize', pageSize)}
           rowOnClick={this.handleShowResultsEntryPage}
-          noDataMessage={
-            <FormattedMessage
-              id="app.orders.not.found"
-              defaultMessage="No orders found"
-              description="No orders found" />
-          }
+          noDataMessage={ noDataMessage }
           minRows={0}
           page={labOrdersListFilters.page}
           defaultPageSize={labOrdersListFilters.pageSize || calculateTableRows(orders.length)}
@@ -326,6 +324,7 @@ export class LabOrdersList extends PureComponent {
     const hasData = !R.isEmpty(orders) && !R.isEmpty(labTests);
     return (
       <div className="main-container">
+        <h2>Test </h2>
         <h2>
           <FormattedMessage
             id="app.labOrdersList.title"
@@ -381,4 +380,4 @@ const LabOrdersListContainer = (
   Component,
 ) => withRouter(connect(propsFromState)(Component));
 
-export default LabOrdersListContainer(mapStateToProps, LabOrdersList);
+export default injectIntl(LabOrdersListContainer(mapStateToProps, LabOrdersList));

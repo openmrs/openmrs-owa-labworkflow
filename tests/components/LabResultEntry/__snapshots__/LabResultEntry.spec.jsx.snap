@@ -250,10 +250,12 @@ exports[`<LabResultEntry /> component renders correctly with valid props 1`] = `
               "set": true,
               "setMembers": Array [
                 Object {
+                  "answers": Array [],
                   "display": "Height",
                   "uuid": "1234-abcd",
                 },
                 Object {
+                  "answers": Array [],
                   "display": "Weight",
                   "uuid": "pqrs-5678",
                 },
@@ -641,90 +643,94 @@ exports[`<LabResultEntry /> component renders correctly with valid props 1`] = `
                               componentClass="div"
                             >
                               <WithObsGroupContext(ObsGroup)>
-                                <FormGroup
-                                  bsClass="form-group"
-                                  controlId="Height"
-                                >
-                                  <span
-                                    className="member-display-label"
+                                <div>
+                                  <FormGroup
+                                    bsClass="form-group"
+                                    controlId="Height"
                                   >
-                                    Height
-                                  </span>
-                                  <span
-                                    className="obs-component"
+                                    <span
+                                      className="member-display-label"
+                                    >
+                                      Height
+                                    </span>
+                                    <span
+                                      className="obs-component"
+                                    >
+                                      <WithObsGroupContext(WithFormContext(Connect(Obs)))
+                                        concept="1234-abcd"
+                                        path="1234-abcd"
+                                        validate={
+                                          Array [
+                                            [Function],
+                                            [Function],
+                                          ]
+                                        }
+                                        warn={
+                                          Array [
+                                            [Function],
+                                            [Function],
+                                            [Function],
+                                            [Function],
+                                          ]
+                                        }
+                                      />
+                                    </span>
+                                    <span
+                                      className="units"
+                                    >
+                                      cc
+                                    </span>
+                                    <span
+                                      className="valid-range"
+                                    >
+                                      11 - 22
+                                    </span>
+                                  </FormGroup>
+                                </div>
+                                <div>
+                                  <FormGroup
+                                    bsClass="form-group"
+                                    controlId="Weight"
                                   >
-                                    <WithObsGroupContext(WithFormContext(Connect(Obs)))
-                                      concept="1234-abcd"
-                                      path="1234-abcd"
-                                      validate={
-                                        Array [
-                                          [Function],
-                                          [Function],
-                                        ]
-                                      }
-                                      warn={
-                                        Array [
-                                          [Function],
-                                          [Function],
-                                          [Function],
-                                          [Function],
-                                        ]
-                                      }
-                                    />
-                                  </span>
-                                  <span
-                                    className="units"
-                                  >
-                                    cc
-                                  </span>
-                                  <span
-                                    className="valid-range"
-                                  >
-                                    11 - 22
-                                  </span>
-                                </FormGroup>
-                                <FormGroup
-                                  bsClass="form-group"
-                                  controlId="Weight"
-                                >
-                                  <span
-                                    className="member-display-label"
-                                  >
-                                    Weight
-                                  </span>
-                                  <span
-                                    className="obs-component"
-                                  >
-                                    <WithObsGroupContext(WithFormContext(Connect(Obs)))
-                                      concept="pqrs-5678"
-                                      path="pqrs-5678"
-                                      validate={
-                                        Array [
-                                          [Function],
-                                          [Function],
-                                        ]
-                                      }
-                                      warn={
-                                        Array [
-                                          [Function],
-                                          [Function],
-                                          [Function],
-                                          [Function],
-                                        ]
-                                      }
-                                    />
-                                  </span>
-                                  <span
-                                    className="units"
-                                  >
-                                    cc
-                                  </span>
-                                  <span
-                                    className="valid-range"
-                                  >
-                                    11 - 22
-                                  </span>
-                                </FormGroup>
+                                    <span
+                                      className="member-display-label"
+                                    >
+                                      Weight
+                                    </span>
+                                    <span
+                                      className="obs-component"
+                                    >
+                                      <WithObsGroupContext(WithFormContext(Connect(Obs)))
+                                        concept="pqrs-5678"
+                                        path="pqrs-5678"
+                                        validate={
+                                          Array [
+                                            [Function],
+                                            [Function],
+                                          ]
+                                        }
+                                        warn={
+                                          Array [
+                                            [Function],
+                                            [Function],
+                                            [Function],
+                                            [Function],
+                                          ]
+                                        }
+                                      />
+                                    </span>
+                                    <span
+                                      className="units"
+                                    >
+                                      cc
+                                    </span>
+                                    <span
+                                      className="valid-range"
+                                    >
+                                      11 - 22
+                                    </span>
+                                  </FormGroup>
+                                </div>
                               </WithObsGroupContext(ObsGroup)>
                             </Row>
                           </div>
@@ -963,90 +969,94 @@ exports[`<LabResultEntry /> component renders correctly with valid props 1`] = `
                                 componentClass="div"
                               >
                                 <WithObsGroupContext(ObsGroup)>
-                                  <FormGroup
-                                    bsClass="form-group"
-                                    controlId="Height"
-                                  >
-                                    <span
-                                      className="member-display-label"
+                                  <div>
+                                    <FormGroup
+                                      bsClass="form-group"
+                                      controlId="Height"
                                     >
-                                      Height
-                                    </span>
-                                    <span
-                                      className="obs-component"
+                                      <span
+                                        className="member-display-label"
+                                      >
+                                        Height
+                                      </span>
+                                      <span
+                                        className="obs-component"
+                                      >
+                                        <WithObsGroupContext(WithFormContext(Connect(Obs)))
+                                          concept="1234-abcd"
+                                          path="1234-abcd"
+                                          validate={
+                                            Array [
+                                              [Function],
+                                              [Function],
+                                            ]
+                                          }
+                                          warn={
+                                            Array [
+                                              [Function],
+                                              [Function],
+                                              [Function],
+                                              [Function],
+                                            ]
+                                          }
+                                        />
+                                      </span>
+                                      <span
+                                        className="units"
+                                      >
+                                        cc
+                                      </span>
+                                      <span
+                                        className="valid-range"
+                                      >
+                                        11 - 22
+                                      </span>
+                                    </FormGroup>
+                                  </div>
+                                  <div>
+                                    <FormGroup
+                                      bsClass="form-group"
+                                      controlId="Weight"
                                     >
-                                      <WithObsGroupContext(WithFormContext(Connect(Obs)))
-                                        concept="1234-abcd"
-                                        path="1234-abcd"
-                                        validate={
-                                          Array [
-                                            [Function],
-                                            [Function],
-                                          ]
-                                        }
-                                        warn={
-                                          Array [
-                                            [Function],
-                                            [Function],
-                                            [Function],
-                                            [Function],
-                                          ]
-                                        }
-                                      />
-                                    </span>
-                                    <span
-                                      className="units"
-                                    >
-                                      cc
-                                    </span>
-                                    <span
-                                      className="valid-range"
-                                    >
-                                      11 - 22
-                                    </span>
-                                  </FormGroup>
-                                  <FormGroup
-                                    bsClass="form-group"
-                                    controlId="Weight"
-                                  >
-                                    <span
-                                      className="member-display-label"
-                                    >
-                                      Weight
-                                    </span>
-                                    <span
-                                      className="obs-component"
-                                    >
-                                      <WithObsGroupContext(WithFormContext(Connect(Obs)))
-                                        concept="pqrs-5678"
-                                        path="pqrs-5678"
-                                        validate={
-                                          Array [
-                                            [Function],
-                                            [Function],
-                                          ]
-                                        }
-                                        warn={
-                                          Array [
-                                            [Function],
-                                            [Function],
-                                            [Function],
-                                            [Function],
-                                          ]
-                                        }
-                                      />
-                                    </span>
-                                    <span
-                                      className="units"
-                                    >
-                                      cc
-                                    </span>
-                                    <span
-                                      className="valid-range"
-                                    >
-                                      11 - 22
-                                    </span>
-                                  </FormGroup>
+                                      <span
+                                        className="member-display-label"
+                                      >
+                                        Weight
+                                      </span>
+                                      <span
+                                        className="obs-component"
+                                      >
+                                        <WithObsGroupContext(WithFormContext(Connect(Obs)))
+                                          concept="pqrs-5678"
+                                          path="pqrs-5678"
+                                          validate={
+                                            Array [
+                                              [Function],
+                                              [Function],
+                                            ]
+                                          }
+                                          warn={
+                                            Array [
+                                              [Function],
+                                              [Function],
+                                              [Function],
+                                              [Function],
+                                            ]
+                                          }
+                                        />
+                                      </span>
+                                      <span
+                                        className="units"
+                                      >
+                                        cc
+                                      </span>
+                                      <span
+                                        className="valid-range"
+                                      >
+                                        11 - 22
+                                      </span>
+                                    </FormGroup>
+                                  </div>
                                 </WithObsGroupContext(ObsGroup)>
                               </Row>
                             </div>

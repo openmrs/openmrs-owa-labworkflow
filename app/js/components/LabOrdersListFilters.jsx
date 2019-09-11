@@ -4,7 +4,7 @@ import moment from 'moment';
 import {
   FormControl,
 } from 'react-bootstrap';
-import { FormattedMessage } from 'react-intl';
+import { injectIntl, FormattedMessage } from 'react-intl';
 import { CustomDatePicker as DatePicker, Dropdown } from '@openmrs/react-components';
 
 class LabOrderListFilters extends PureComponent {
@@ -33,18 +33,15 @@ class LabOrderListFilters extends PureComponent {
   }
 
   renderDatePickerFilters() {
-    const { handleFieldChange, dateFromField, dateToField } = this.props;
+    const { handleFieldChange, dateFromField, dateToField, intl } = this.props;
+    const fromMessage = intl.formatMessage({ id: "app.labOrdersListFilters.searchDateFromLabel", defaultMessage: "From: " });
+    const toMessage = intl.formatMessage({ id: "app.labOrdersListFilters.searchDateToLabel", defaultMessage: "To: " });
     return (
       <span className="date-picker-filter">
         <span>
           <DatePicker
             labelClassName="line"
-            label={(
-              <FormattedMessage
-                id="app.labOrdersListFilters.searchDateFromLabel"
-                defaultMessage="From: "
-                description="Label for the first date search input" />
-            )}
+            label={ fromMessage }
             defaultDate={dateFromField.format('YYYY-MM-DD') || moment().subtract(8, 'days').format()}
             handleDateChange={(field, value) => handleFieldChange(field, value)}
             field="dateFromField"
@@ -53,12 +50,7 @@ class LabOrderListFilters extends PureComponent {
         <span>
           <DatePicker
             labelClassName="line"
-            label={(
-              <FormattedMessage
-                id="app.labOrdersListFilters.searchDateToLabel"
-                defaultMessage="To: "
-                description="Label for the second date search input" />
-            )}
+            label={ toMessage }
             defaultDate={dateToField.format('YYYY-MM-DD') || moment().format()}
             field="dateToField"
             handleDateChange={(field, value) => handleFieldChange(field, value)}
@@ -69,18 +61,14 @@ class LabOrderListFilters extends PureComponent {
   }
 
   renderTestStatusFilter() {
-    const { handleFieldChange, testStatusField } = this.props;
+    const { handleFieldChange, testStatusField, intl } = this.props;
+    const statusMessage = intl.formatMessage({ id: "app.labOrdersListFilters.statusDropdownLabel", defaultMessage: "Status" });
     const statusOptions = ["Ordered", "Reported", "Taken", "Cancelled/Expired"];
     return (
       <Dropdown
         className="form-filter-group"
         id="test-status-dropdown"
-        label={(
-          <FormattedMessage
-            id="app.labOrdersListFilters.statusDropdownLabel"
-            defaultMessage="Status"
-            description="Label for the test status dropdown" />
-        )}
+        label={ statusMessage }
         defaultValue="All"
         input={{ value: testStatusField }}
         list={statusOptions}
@@ -91,18 +79,15 @@ class LabOrderListFilters extends PureComponent {
   }
 
   renderTestTypeFilter() {
-    const { labTests, handleFieldChange, testTypeField } = this.props;
+    const { labTests, handleFieldChange, testTypeField, intl } = this.props;
+    const testTypeMsg = intl.formatMessage({ id: "app.labOrdersListFilters.searchDropdownLabel", defaultMessage: "Test Type" });
+    const allMsg = intl.formatMessage({ id: "reactcomponents.all", defaultMessage: "All" });
     return (
       <Dropdown
         className="form-filter-group"
         id="test-type-dropdown"
-        label={(
-          <FormattedMessage
-            id="app.labOrdersListFilters.searchDropdownLabel"
-            defaultMessage="Test Type"
-            description="Label for the test type dropdown" />
-        )}
-        defaultValue="All"
+        label={ testTypeMsg }
+        defaultValue={ allMsg }
         input={{ value: testTypeField }}
         list={labTests}
         field="testTypeField"
@@ -146,4 +131,4 @@ LabOrderListFilters.propTypes = {
   dateFromField: PropTypes.object.isRequired,
 };
 
-export default LabOrderListFilters;
+export default injectIntl(LabOrderListFilters);

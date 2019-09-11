@@ -1,7 +1,7 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`<LabOrdersList /> component renders correctly 1`] = `
-<LabOrderListFilters
+<InjectIntl(LabOrderListFilters)
   clearNameEMRField={[MockFunction]}
   dateFromField={"2018-11-11T05:00:00.000Z"}
   dateToField={"2018-11-11T05:00:00.000Z"}
@@ -39,832 +39,765 @@ exports[`<LabOrdersList /> component renders correctly 1`] = `
   nameField=""
   testTypeField=""
 >
-  <div
-    className="order-list-filters"
+  <LabOrderListFilters
+    clearNameEMRField={[MockFunction]}
+    dateFromField={"2018-11-11T05:00:00.000Z"}
+    dateToField={"2018-11-11T05:00:00.000Z"}
+    handleFieldChange={[MockFunction]}
+    intl={
+      Object {
+        "defaultFormats": Object {},
+        "defaultLocale": "en",
+        "formatDate": [Function],
+        "formatHTMLMessage": [Function],
+        "formatMessage": [Function],
+        "formatNumber": [Function],
+        "formatPlural": [Function],
+        "formatRelative": [Function],
+        "formatTime": [Function],
+        "formats": Object {},
+        "formatters": Object {
+          "getDateTimeFormat": [Function],
+          "getMessageFormat": [Function],
+          "getNumberFormat": [Function],
+          "getPluralFormat": [Function],
+          "getRelativeFormat": [Function],
+        },
+        "locale": "en",
+        "messages": Object {},
+        "now": [Function],
+        "textComponent": "span",
+      }
+    }
+    labTests={
+      Array [
+        "Hémogramme automatisé",
+      ]
+    }
+    nameField=""
+    testTypeField=""
   >
-    <span
-      className="top-filters"
+    <div
+      className="order-list-filters"
     >
       <span
-        className="date-picker-filter"
+        className="top-filters"
       >
-        <span>
-          <CustomDatePicker
-            defaultDate="2018-11-11"
-            field="dateFromField"
-            formControlStyle={
-              Object {
-                "marginRight": "5px",
-                "width": "110px",
-              }
-            }
-            handleDateChange={[Function]}
-            label={
-              <FormattedMessage
-                defaultMessage="From: "
-                description="Label for the first date search input"
-                id="app.labOrdersListFilters.searchDateFromLabel"
-                values={Object {}}
-              />
-            }
-            labelClassName="line"
-          >
-            <div>
-              <t
-                allowSameDay={false}
-                customInput={
-                  <DateDisplay
-                    error={true}
-                    formControlStyle={
-                      Object {
-                        "marginRight": "5px",
-                        "width": "110px",
-                      }
-                    }
-                    hasInput={false}
-                    label={
-                      <FormattedMessage
-                        defaultMessage="From: "
-                        description="Label for the first date search input"
-                        id="app.labOrdersListFilters.searchDateFromLabel"
-                        values={Object {}}
-                      />
-                    }
-                    labelClassName="line"
-                  />
-                }
-                dateFormat="dd MMM yyyy"
-                dateFormatCalendar="LLLL yyyy"
-                disabled={false}
-                disabledKeyboardNavigation={false}
-                dropdownMode="scroll"
-                excludeDates={
-                  Array [
-                    false,
-                  ]
-                }
-                inlineFocusSelectedMonth={false}
-                monthsShown={1}
-                nextMonthButtonLabel="Next Month"
-                nextYearButtonLabel="Next Year"
-                onBlur={[Function]}
-                onChange={[Function]}
-                onClickOutside={[Function]}
-                onFocus={[Function]}
-                onInputClick={[Function]}
-                onInputError={[Function]}
-                onKeyDown={[Function]}
-                onMonthChange={[Function]}
-                onSelect={[Function]}
-                onYearChange={[Function]}
-                preventOpenOnFocus={false}
-                previousMonthButtonLabel="Previous Month"
-                previousYearButtonLabel="Previous Year"
-                readOnly={false}
-                renderDayContents={[Function]}
-                selected={2018-11-11T00:00:00.000Z}
-                shouldCloseOnSelect={true}
-                showMonthYearPicker={false}
-                showQuarterYearPicker={false}
-                showTimeInput={false}
-                showTimeSelect={false}
-                strictParsing={false}
-                timeCaption="Time"
-                timeInputLabel="Time"
-                timeIntervals={30}
-                withPortal={false}
-              >
-                <t
-                  hidePopper={true}
-                  popperComponent={null}
-                  popperModifiers={
-                    Object {
-                      "preventOverflow": Object {
-                        "boundariesElement": "viewport",
-                        "enabled": true,
-                        "escapeWithReference": true,
-                      },
-                    }
-                  }
-                  popperPlacement="bottom-start"
-                  popperProps={Object {}}
-                  targetComponent={
-                    <div
-                      className="react-datepicker__input-container"
-                    >
-                      <DateDisplay
-                        className=""
-                        disabled={false}
-                        error={true}
-                        formControlStyle={
-                          Object {
-                            "marginRight": "5px",
-                            "width": "110px",
-                          }
-                        }
-                        hasInput={false}
-                        label={
-                          <FormattedMessage
-                            defaultMessage="From: "
-                            description="Label for the first date search input"
-                            id="app.labOrdersListFilters.searchDateFromLabel"
-                            values={Object {}}
-                          />
-                        }
-                        labelClassName="line"
-                        onBlur={[Function]}
-                        onChange={[Function]}
-                        onClick={[Function]}
-                        onFocus={[Function]}
-                        onKeyDown={[Function]}
-                        readOnly={false}
-                        value="10 Nov 2018"
-                      />
-                    </div>
-                  }
-                >
-                  <Manager>
-                    <Reference>
-                      <InnerReference
-                        setReferenceNode={[Function]}
-                      >
-                        <div
-                          className="react-datepicker-wrapper"
-                        >
-                          <div
-                            className="react-datepicker__input-container"
-                          >
-                            <DateDisplay
-                              className=""
-                              disabled={false}
-                              error={true}
-                              formControlStyle={
-                                Object {
-                                  "marginRight": "5px",
-                                  "width": "110px",
-                                }
-                              }
-                              hasInput={false}
-                              label={
-                                <FormattedMessage
-                                  defaultMessage="From: "
-                                  description="Label for the first date search input"
-                                  id="app.labOrdersListFilters.searchDateFromLabel"
-                                  values={Object {}}
-                                />
-                              }
-                              labelClassName="line"
-                              onBlur={[Function]}
-                              onChange={[Function]}
-                              onClick={[Function]}
-                              onFocus={[Function]}
-                              onKeyDown={[Function]}
-                              readOnly={false}
-                              value="10 Nov 2018"
-                            >
-                              <span>
-                                <span
-                                  style={
-                                    Object {
-                                      "display": "flex",
-                                      "justifyContent": "space-around",
-                                    }
-                                  }
-                                >
-                                  <span
-                                    className="line"
-                                  >
-                                    <FormattedMessage
-                                      defaultMessage="From: "
-                                      description="Label for the first date search input"
-                                      id="app.labOrdersListFilters.searchDateFromLabel"
-                                      values={Object {}}
-                                    >
-                                      <span>
-                                        From: 
-                                      </span>
-                                    </FormattedMessage>
-                                  </span>
-                                  <FormControl
-                                    bsClass="form-control"
-                                    componentClass="input"
-                                    onChange={[Function]}
-                                    onClick={[Function]}
-                                    placeholder=""
-                                    style={
-                                      Object {
-                                        "marginRight": "5px",
-                                        "width": "110px",
-                                      }
-                                    }
-                                    type="text"
-                                    value="10 Nov 2018"
-                                  >
-                                    <input
-                                      className="form-control"
-                                      onChange={[Function]}
-                                      onClick={[Function]}
-                                      placeholder=""
-                                      style={
-                                        Object {
-                                          "marginRight": "5px",
-                                          "width": "110px",
-                                        }
-                                      }
-                                      type="text"
-                                      value="10 Nov 2018"
-                                    />
-                                  </FormControl>
-                                  <FontAwesomeIcon
-                                    border={false}
-                                    className=""
-                                    fixedWidth={false}
-                                    flip={null}
-                                    icon="calendar-alt"
-                                    inverse={false}
-                                    listItem={false}
-                                    mask={null}
-                                    onClick={[Function]}
-                                    pull={null}
-                                    pulse={false}
-                                    rotation={null}
-                                    size="2x"
-                                    spin={false}
-                                    symbol={false}
-                                    title=""
-                                    transform={null}
-                                  >
-                                    <svg
-                                      aria-hidden="true"
-                                      className="svg-inline--fa fa-calendar-alt fa-w-14 fa-2x "
-                                      data-icon="calendar-alt"
-                                      data-prefix="fas"
-                                      focusable="false"
-                                      onClick={[Function]}
-                                      role="img"
-                                      style={Object {}}
-                                      viewBox="0 0 448 512"
-                                      xmlns="http://www.w3.org/2000/svg"
-                                    >
-                                      <path
-                                        d="M0 464c0 26.5 21.5 48 48 48h352c26.5 0 48-21.5 48-48V192H0v272zm320-196c0-6.6 5.4-12 12-12h40c6.6 0 12 5.4 12 12v40c0 6.6-5.4 12-12 12h-40c-6.6 0-12-5.4-12-12v-40zm0 128c0-6.6 5.4-12 12-12h40c6.6 0 12 5.4 12 12v40c0 6.6-5.4 12-12 12h-40c-6.6 0-12-5.4-12-12v-40zM192 268c0-6.6 5.4-12 12-12h40c6.6 0 12 5.4 12 12v40c0 6.6-5.4 12-12 12h-40c-6.6 0-12-5.4-12-12v-40zm0 128c0-6.6 5.4-12 12-12h40c6.6 0 12 5.4 12 12v40c0 6.6-5.4 12-12 12h-40c-6.6 0-12-5.4-12-12v-40zM64 268c0-6.6 5.4-12 12-12h40c6.6 0 12 5.4 12 12v40c0 6.6-5.4 12-12 12H76c-6.6 0-12-5.4-12-12v-40zm0 128c0-6.6 5.4-12 12-12h40c6.6 0 12 5.4 12 12v40c0 6.6-5.4 12-12 12H76c-6.6 0-12-5.4-12-12v-40zM400 64h-48V16c0-8.8-7.2-16-16-16h-32c-8.8 0-16 7.2-16 16v48H160V16c0-8.8-7.2-16-16-16h-32c-8.8 0-16 7.2-16 16v48H48C21.5 64 0 85.5 0 112v48h448v-48c0-26.5-21.5-48-48-48z"
-                                        fill="currentColor"
-                                        style={Object {}}
-                                      />
-                                    </svg>
-                                  </FontAwesomeIcon>
-                                </span>
-                              </span>
-                            </DateDisplay>
-                          </div>
-                        </div>
-                      </InnerReference>
-                    </Reference>
-                  </Manager>
-                </t>
-              </t>
-            </div>
-          </CustomDatePicker>
-        </span>
-        <span>
-          <CustomDatePicker
-            defaultDate="2018-11-11"
-            field="dateToField"
-            formControlStyle={
-              Object {
-                "marginRight": "5px",
-                "width": "110px",
-              }
-            }
-            handleDateChange={[Function]}
-            label={
-              <FormattedMessage
-                defaultMessage="To: "
-                description="Label for the second date search input"
-                id="app.labOrdersListFilters.searchDateToLabel"
-                values={Object {}}
-              />
-            }
-            labelClassName="line"
-          >
-            <div>
-              <t
-                allowSameDay={false}
-                customInput={
-                  <DateDisplay
-                    error={true}
-                    formControlStyle={
-                      Object {
-                        "marginRight": "5px",
-                        "width": "110px",
-                      }
-                    }
-                    hasInput={false}
-                    label={
-                      <FormattedMessage
-                        defaultMessage="To: "
-                        description="Label for the second date search input"
-                        id="app.labOrdersListFilters.searchDateToLabel"
-                        values={Object {}}
-                      />
-                    }
-                    labelClassName="line"
-                  />
-                }
-                dateFormat="dd MMM yyyy"
-                dateFormatCalendar="LLLL yyyy"
-                disabled={false}
-                disabledKeyboardNavigation={false}
-                dropdownMode="scroll"
-                excludeDates={
-                  Array [
-                    false,
-                  ]
-                }
-                inlineFocusSelectedMonth={false}
-                monthsShown={1}
-                nextMonthButtonLabel="Next Month"
-                nextYearButtonLabel="Next Year"
-                onBlur={[Function]}
-                onChange={[Function]}
-                onClickOutside={[Function]}
-                onFocus={[Function]}
-                onInputClick={[Function]}
-                onInputError={[Function]}
-                onKeyDown={[Function]}
-                onMonthChange={[Function]}
-                onSelect={[Function]}
-                onYearChange={[Function]}
-                preventOpenOnFocus={false}
-                previousMonthButtonLabel="Previous Month"
-                previousYearButtonLabel="Previous Year"
-                readOnly={false}
-                renderDayContents={[Function]}
-                selected={2018-11-11T00:00:00.000Z}
-                shouldCloseOnSelect={true}
-                showMonthYearPicker={false}
-                showQuarterYearPicker={false}
-                showTimeInput={false}
-                showTimeSelect={false}
-                strictParsing={false}
-                timeCaption="Time"
-                timeInputLabel="Time"
-                timeIntervals={30}
-                withPortal={false}
-              >
-                <t
-                  hidePopper={true}
-                  popperComponent={null}
-                  popperModifiers={
-                    Object {
-                      "preventOverflow": Object {
-                        "boundariesElement": "viewport",
-                        "enabled": true,
-                        "escapeWithReference": true,
-                      },
-                    }
-                  }
-                  popperPlacement="bottom-start"
-                  popperProps={Object {}}
-                  targetComponent={
-                    <div
-                      className="react-datepicker__input-container"
-                    >
-                      <DateDisplay
-                        className=""
-                        disabled={false}
-                        error={true}
-                        formControlStyle={
-                          Object {
-                            "marginRight": "5px",
-                            "width": "110px",
-                          }
-                        }
-                        hasInput={false}
-                        label={
-                          <FormattedMessage
-                            defaultMessage="To: "
-                            description="Label for the second date search input"
-                            id="app.labOrdersListFilters.searchDateToLabel"
-                            values={Object {}}
-                          />
-                        }
-                        labelClassName="line"
-                        onBlur={[Function]}
-                        onChange={[Function]}
-                        onClick={[Function]}
-                        onFocus={[Function]}
-                        onKeyDown={[Function]}
-                        readOnly={false}
-                        value="10 Nov 2018"
-                      />
-                    </div>
-                  }
-                >
-                  <Manager>
-                    <Reference>
-                      <InnerReference
-                        setReferenceNode={[Function]}
-                      >
-                        <div
-                          className="react-datepicker-wrapper"
-                        >
-                          <div
-                            className="react-datepicker__input-container"
-                          >
-                            <DateDisplay
-                              className=""
-                              disabled={false}
-                              error={true}
-                              formControlStyle={
-                                Object {
-                                  "marginRight": "5px",
-                                  "width": "110px",
-                                }
-                              }
-                              hasInput={false}
-                              label={
-                                <FormattedMessage
-                                  defaultMessage="To: "
-                                  description="Label for the second date search input"
-                                  id="app.labOrdersListFilters.searchDateToLabel"
-                                  values={Object {}}
-                                />
-                              }
-                              labelClassName="line"
-                              onBlur={[Function]}
-                              onChange={[Function]}
-                              onClick={[Function]}
-                              onFocus={[Function]}
-                              onKeyDown={[Function]}
-                              readOnly={false}
-                              value="10 Nov 2018"
-                            >
-                              <span>
-                                <span
-                                  style={
-                                    Object {
-                                      "display": "flex",
-                                      "justifyContent": "space-around",
-                                    }
-                                  }
-                                >
-                                  <span
-                                    className="line"
-                                  >
-                                    <FormattedMessage
-                                      defaultMessage="To: "
-                                      description="Label for the second date search input"
-                                      id="app.labOrdersListFilters.searchDateToLabel"
-                                      values={Object {}}
-                                    >
-                                      <span>
-                                        To: 
-                                      </span>
-                                    </FormattedMessage>
-                                  </span>
-                                  <FormControl
-                                    bsClass="form-control"
-                                    componentClass="input"
-                                    onChange={[Function]}
-                                    onClick={[Function]}
-                                    placeholder=""
-                                    style={
-                                      Object {
-                                        "marginRight": "5px",
-                                        "width": "110px",
-                                      }
-                                    }
-                                    type="text"
-                                    value="10 Nov 2018"
-                                  >
-                                    <input
-                                      className="form-control"
-                                      onChange={[Function]}
-                                      onClick={[Function]}
-                                      placeholder=""
-                                      style={
-                                        Object {
-                                          "marginRight": "5px",
-                                          "width": "110px",
-                                        }
-                                      }
-                                      type="text"
-                                      value="10 Nov 2018"
-                                    />
-                                  </FormControl>
-                                  <FontAwesomeIcon
-                                    border={false}
-                                    className=""
-                                    fixedWidth={false}
-                                    flip={null}
-                                    icon="calendar-alt"
-                                    inverse={false}
-                                    listItem={false}
-                                    mask={null}
-                                    onClick={[Function]}
-                                    pull={null}
-                                    pulse={false}
-                                    rotation={null}
-                                    size="2x"
-                                    spin={false}
-                                    symbol={false}
-                                    title=""
-                                    transform={null}
-                                  >
-                                    <svg
-                                      aria-hidden="true"
-                                      className="svg-inline--fa fa-calendar-alt fa-w-14 fa-2x "
-                                      data-icon="calendar-alt"
-                                      data-prefix="fas"
-                                      focusable="false"
-                                      onClick={[Function]}
-                                      role="img"
-                                      style={Object {}}
-                                      viewBox="0 0 448 512"
-                                      xmlns="http://www.w3.org/2000/svg"
-                                    >
-                                      <path
-                                        d="M0 464c0 26.5 21.5 48 48 48h352c26.5 0 48-21.5 48-48V192H0v272zm320-196c0-6.6 5.4-12 12-12h40c6.6 0 12 5.4 12 12v40c0 6.6-5.4 12-12 12h-40c-6.6 0-12-5.4-12-12v-40zm0 128c0-6.6 5.4-12 12-12h40c6.6 0 12 5.4 12 12v40c0 6.6-5.4 12-12 12h-40c-6.6 0-12-5.4-12-12v-40zM192 268c0-6.6 5.4-12 12-12h40c6.6 0 12 5.4 12 12v40c0 6.6-5.4 12-12 12h-40c-6.6 0-12-5.4-12-12v-40zm0 128c0-6.6 5.4-12 12-12h40c6.6 0 12 5.4 12 12v40c0 6.6-5.4 12-12 12h-40c-6.6 0-12-5.4-12-12v-40zM64 268c0-6.6 5.4-12 12-12h40c6.6 0 12 5.4 12 12v40c0 6.6-5.4 12-12 12H76c-6.6 0-12-5.4-12-12v-40zm0 128c0-6.6 5.4-12 12-12h40c6.6 0 12 5.4 12 12v40c0 6.6-5.4 12-12 12H76c-6.6 0-12-5.4-12-12v-40zM400 64h-48V16c0-8.8-7.2-16-16-16h-32c-8.8 0-16 7.2-16 16v48H160V16c0-8.8-7.2-16-16-16h-32c-8.8 0-16 7.2-16 16v48H48C21.5 64 0 85.5 0 112v48h448v-48c0-26.5-21.5-48-48-48z"
-                                        fill="currentColor"
-                                        style={Object {}}
-                                      />
-                                    </svg>
-                                  </FontAwesomeIcon>
-                                </span>
-                              </span>
-                            </DateDisplay>
-                          </div>
-                        </div>
-                      </InnerReference>
-                    </Reference>
-                  </Manager>
-                </t>
-              </t>
-            </div>
-          </CustomDatePicker>
-        </span>
-      </span>
-    </span>
-    <span
-      className="bottom-filters"
-    >
-      <span
-        className="form-filter-group one-third"
-      >
-        <FormattedMessage
-          defaultMessage="Search for a sample"
-          description="Label for text search input"
-          id="app.labOrdersListFilters.textSearchTitle"
-          values={Object {}}
+        <span
+          className="date-picker-filter"
         >
           <span>
-            Search for a sample
+            <CustomDatePicker
+              defaultDate="2018-11-11"
+              field="dateFromField"
+              formControlStyle={
+                Object {
+                  "marginRight": "5px",
+                  "width": "110px",
+                }
+              }
+              handleDateChange={[Function]}
+              label="From: "
+              labelClassName="line"
+            >
+              <div>
+                <t
+                  allowSameDay={false}
+                  customInput={
+                    <DateDisplay
+                      error={true}
+                      formControlStyle={
+                        Object {
+                          "marginRight": "5px",
+                          "width": "110px",
+                        }
+                      }
+                      hasInput={false}
+                      label="From: "
+                      labelClassName="line"
+                    />
+                  }
+                  dateFormat="dd MMM yyyy"
+                  dateFormatCalendar="LLLL yyyy"
+                  disabled={false}
+                  disabledKeyboardNavigation={false}
+                  dropdownMode="scroll"
+                  excludeDates={
+                    Array [
+                      false,
+                    ]
+                  }
+                  inlineFocusSelectedMonth={false}
+                  monthsShown={1}
+                  nextMonthButtonLabel="Next Month"
+                  nextYearButtonLabel="Next Year"
+                  onBlur={[Function]}
+                  onChange={[Function]}
+                  onClickOutside={[Function]}
+                  onFocus={[Function]}
+                  onInputClick={[Function]}
+                  onInputError={[Function]}
+                  onKeyDown={[Function]}
+                  onMonthChange={[Function]}
+                  onSelect={[Function]}
+                  onYearChange={[Function]}
+                  preventOpenOnFocus={false}
+                  previousMonthButtonLabel="Previous Month"
+                  previousYearButtonLabel="Previous Year"
+                  readOnly={false}
+                  renderDayContents={[Function]}
+                  selected={2018-11-11T00:00:00.000Z}
+                  shouldCloseOnSelect={true}
+                  showMonthYearPicker={false}
+                  showQuarterYearPicker={false}
+                  showTimeInput={false}
+                  showTimeSelect={false}
+                  strictParsing={false}
+                  timeCaption="Time"
+                  timeInputLabel="Time"
+                  timeIntervals={30}
+                  withPortal={false}
+                >
+                  <t
+                    hidePopper={true}
+                    popperComponent={null}
+                    popperModifiers={
+                      Object {
+                        "preventOverflow": Object {
+                          "boundariesElement": "viewport",
+                          "enabled": true,
+                          "escapeWithReference": true,
+                        },
+                      }
+                    }
+                    popperPlacement="bottom-start"
+                    popperProps={Object {}}
+                    targetComponent={
+                      <div
+                        className="react-datepicker__input-container"
+                      >
+                        <DateDisplay
+                          className=""
+                          disabled={false}
+                          error={true}
+                          formControlStyle={
+                            Object {
+                              "marginRight": "5px",
+                              "width": "110px",
+                            }
+                          }
+                          hasInput={false}
+                          label="From: "
+                          labelClassName="line"
+                          onBlur={[Function]}
+                          onChange={[Function]}
+                          onClick={[Function]}
+                          onFocus={[Function]}
+                          onKeyDown={[Function]}
+                          readOnly={false}
+                          value="10 Nov 2018"
+                        />
+                      </div>
+                    }
+                  >
+                    <Manager>
+                      <Reference>
+                        <InnerReference
+                          setReferenceNode={[Function]}
+                        >
+                          <div
+                            className="react-datepicker-wrapper"
+                          >
+                            <div
+                              className="react-datepicker__input-container"
+                            >
+                              <DateDisplay
+                                className=""
+                                disabled={false}
+                                error={true}
+                                formControlStyle={
+                                  Object {
+                                    "marginRight": "5px",
+                                    "width": "110px",
+                                  }
+                                }
+                                hasInput={false}
+                                label="From: "
+                                labelClassName="line"
+                                onBlur={[Function]}
+                                onChange={[Function]}
+                                onClick={[Function]}
+                                onFocus={[Function]}
+                                onKeyDown={[Function]}
+                                readOnly={false}
+                                value="10 Nov 2018"
+                              >
+                                <span>
+                                  <span
+                                    style={
+                                      Object {
+                                        "display": "flex",
+                                        "justifyContent": "space-around",
+                                      }
+                                    }
+                                  >
+                                    <span
+                                      className="line"
+                                    >
+                                      From: 
+                                    </span>
+                                    <FormControl
+                                      bsClass="form-control"
+                                      componentClass="input"
+                                      onChange={[Function]}
+                                      onClick={[Function]}
+                                      placeholder=""
+                                      style={
+                                        Object {
+                                          "marginRight": "5px",
+                                          "width": "110px",
+                                        }
+                                      }
+                                      type="text"
+                                      value="10 Nov 2018"
+                                    >
+                                      <input
+                                        className="form-control"
+                                        onChange={[Function]}
+                                        onClick={[Function]}
+                                        placeholder=""
+                                        style={
+                                          Object {
+                                            "marginRight": "5px",
+                                            "width": "110px",
+                                          }
+                                        }
+                                        type="text"
+                                        value="10 Nov 2018"
+                                      />
+                                    </FormControl>
+                                    <FontAwesomeIcon
+                                      border={false}
+                                      className=""
+                                      fixedWidth={false}
+                                      flip={null}
+                                      icon="calendar-alt"
+                                      inverse={false}
+                                      listItem={false}
+                                      mask={null}
+                                      onClick={[Function]}
+                                      pull={null}
+                                      pulse={false}
+                                      rotation={null}
+                                      size="2x"
+                                      spin={false}
+                                      symbol={false}
+                                      title=""
+                                      transform={null}
+                                    >
+                                      <svg
+                                        aria-hidden="true"
+                                        className="svg-inline--fa fa-calendar-alt fa-w-14 fa-2x "
+                                        data-icon="calendar-alt"
+                                        data-prefix="fas"
+                                        focusable="false"
+                                        onClick={[Function]}
+                                        role="img"
+                                        style={Object {}}
+                                        viewBox="0 0 448 512"
+                                        xmlns="http://www.w3.org/2000/svg"
+                                      >
+                                        <path
+                                          d="M0 464c0 26.5 21.5 48 48 48h352c26.5 0 48-21.5 48-48V192H0v272zm320-196c0-6.6 5.4-12 12-12h40c6.6 0 12 5.4 12 12v40c0 6.6-5.4 12-12 12h-40c-6.6 0-12-5.4-12-12v-40zm0 128c0-6.6 5.4-12 12-12h40c6.6 0 12 5.4 12 12v40c0 6.6-5.4 12-12 12h-40c-6.6 0-12-5.4-12-12v-40zM192 268c0-6.6 5.4-12 12-12h40c6.6 0 12 5.4 12 12v40c0 6.6-5.4 12-12 12h-40c-6.6 0-12-5.4-12-12v-40zm0 128c0-6.6 5.4-12 12-12h40c6.6 0 12 5.4 12 12v40c0 6.6-5.4 12-12 12h-40c-6.6 0-12-5.4-12-12v-40zM64 268c0-6.6 5.4-12 12-12h40c6.6 0 12 5.4 12 12v40c0 6.6-5.4 12-12 12H76c-6.6 0-12-5.4-12-12v-40zm0 128c0-6.6 5.4-12 12-12h40c6.6 0 12 5.4 12 12v40c0 6.6-5.4 12-12 12H76c-6.6 0-12-5.4-12-12v-40zM400 64h-48V16c0-8.8-7.2-16-16-16h-32c-8.8 0-16 7.2-16 16v48H160V16c0-8.8-7.2-16-16-16h-32c-8.8 0-16 7.2-16 16v48H48C21.5 64 0 85.5 0 112v48h448v-48c0-26.5-21.5-48-48-48z"
+                                          fill="currentColor"
+                                          style={Object {}}
+                                        />
+                                      </svg>
+                                    </FontAwesomeIcon>
+                                  </span>
+                                </span>
+                              </DateDisplay>
+                            </div>
+                          </div>
+                        </InnerReference>
+                      </Reference>
+                    </Manager>
+                  </t>
+                </t>
+              </div>
+            </CustomDatePicker>
           </span>
-        </FormattedMessage>
+          <span>
+            <CustomDatePicker
+              defaultDate="2018-11-11"
+              field="dateToField"
+              formControlStyle={
+                Object {
+                  "marginRight": "5px",
+                  "width": "110px",
+                }
+              }
+              handleDateChange={[Function]}
+              label="To: "
+              labelClassName="line"
+            >
+              <div>
+                <t
+                  allowSameDay={false}
+                  customInput={
+                    <DateDisplay
+                      error={true}
+                      formControlStyle={
+                        Object {
+                          "marginRight": "5px",
+                          "width": "110px",
+                        }
+                      }
+                      hasInput={false}
+                      label="To: "
+                      labelClassName="line"
+                    />
+                  }
+                  dateFormat="dd MMM yyyy"
+                  dateFormatCalendar="LLLL yyyy"
+                  disabled={false}
+                  disabledKeyboardNavigation={false}
+                  dropdownMode="scroll"
+                  excludeDates={
+                    Array [
+                      false,
+                    ]
+                  }
+                  inlineFocusSelectedMonth={false}
+                  monthsShown={1}
+                  nextMonthButtonLabel="Next Month"
+                  nextYearButtonLabel="Next Year"
+                  onBlur={[Function]}
+                  onChange={[Function]}
+                  onClickOutside={[Function]}
+                  onFocus={[Function]}
+                  onInputClick={[Function]}
+                  onInputError={[Function]}
+                  onKeyDown={[Function]}
+                  onMonthChange={[Function]}
+                  onSelect={[Function]}
+                  onYearChange={[Function]}
+                  preventOpenOnFocus={false}
+                  previousMonthButtonLabel="Previous Month"
+                  previousYearButtonLabel="Previous Year"
+                  readOnly={false}
+                  renderDayContents={[Function]}
+                  selected={2018-11-11T00:00:00.000Z}
+                  shouldCloseOnSelect={true}
+                  showMonthYearPicker={false}
+                  showQuarterYearPicker={false}
+                  showTimeInput={false}
+                  showTimeSelect={false}
+                  strictParsing={false}
+                  timeCaption="Time"
+                  timeInputLabel="Time"
+                  timeIntervals={30}
+                  withPortal={false}
+                >
+                  <t
+                    hidePopper={true}
+                    popperComponent={null}
+                    popperModifiers={
+                      Object {
+                        "preventOverflow": Object {
+                          "boundariesElement": "viewport",
+                          "enabled": true,
+                          "escapeWithReference": true,
+                        },
+                      }
+                    }
+                    popperPlacement="bottom-start"
+                    popperProps={Object {}}
+                    targetComponent={
+                      <div
+                        className="react-datepicker__input-container"
+                      >
+                        <DateDisplay
+                          className=""
+                          disabled={false}
+                          error={true}
+                          formControlStyle={
+                            Object {
+                              "marginRight": "5px",
+                              "width": "110px",
+                            }
+                          }
+                          hasInput={false}
+                          label="To: "
+                          labelClassName="line"
+                          onBlur={[Function]}
+                          onChange={[Function]}
+                          onClick={[Function]}
+                          onFocus={[Function]}
+                          onKeyDown={[Function]}
+                          readOnly={false}
+                          value="10 Nov 2018"
+                        />
+                      </div>
+                    }
+                  >
+                    <Manager>
+                      <Reference>
+                        <InnerReference
+                          setReferenceNode={[Function]}
+                        >
+                          <div
+                            className="react-datepicker-wrapper"
+                          >
+                            <div
+                              className="react-datepicker__input-container"
+                            >
+                              <DateDisplay
+                                className=""
+                                disabled={false}
+                                error={true}
+                                formControlStyle={
+                                  Object {
+                                    "marginRight": "5px",
+                                    "width": "110px",
+                                  }
+                                }
+                                hasInput={false}
+                                label="To: "
+                                labelClassName="line"
+                                onBlur={[Function]}
+                                onChange={[Function]}
+                                onClick={[Function]}
+                                onFocus={[Function]}
+                                onKeyDown={[Function]}
+                                readOnly={false}
+                                value="10 Nov 2018"
+                              >
+                                <span>
+                                  <span
+                                    style={
+                                      Object {
+                                        "display": "flex",
+                                        "justifyContent": "space-around",
+                                      }
+                                    }
+                                  >
+                                    <span
+                                      className="line"
+                                    >
+                                      To: 
+                                    </span>
+                                    <FormControl
+                                      bsClass="form-control"
+                                      componentClass="input"
+                                      onChange={[Function]}
+                                      onClick={[Function]}
+                                      placeholder=""
+                                      style={
+                                        Object {
+                                          "marginRight": "5px",
+                                          "width": "110px",
+                                        }
+                                      }
+                                      type="text"
+                                      value="10 Nov 2018"
+                                    >
+                                      <input
+                                        className="form-control"
+                                        onChange={[Function]}
+                                        onClick={[Function]}
+                                        placeholder=""
+                                        style={
+                                          Object {
+                                            "marginRight": "5px",
+                                            "width": "110px",
+                                          }
+                                        }
+                                        type="text"
+                                        value="10 Nov 2018"
+                                      />
+                                    </FormControl>
+                                    <FontAwesomeIcon
+                                      border={false}
+                                      className=""
+                                      fixedWidth={false}
+                                      flip={null}
+                                      icon="calendar-alt"
+                                      inverse={false}
+                                      listItem={false}
+                                      mask={null}
+                                      onClick={[Function]}
+                                      pull={null}
+                                      pulse={false}
+                                      rotation={null}
+                                      size="2x"
+                                      spin={false}
+                                      symbol={false}
+                                      title=""
+                                      transform={null}
+                                    >
+                                      <svg
+                                        aria-hidden="true"
+                                        className="svg-inline--fa fa-calendar-alt fa-w-14 fa-2x "
+                                        data-icon="calendar-alt"
+                                        data-prefix="fas"
+                                        focusable="false"
+                                        onClick={[Function]}
+                                        role="img"
+                                        style={Object {}}
+                                        viewBox="0 0 448 512"
+                                        xmlns="http://www.w3.org/2000/svg"
+                                      >
+                                        <path
+                                          d="M0 464c0 26.5 21.5 48 48 48h352c26.5 0 48-21.5 48-48V192H0v272zm320-196c0-6.6 5.4-12 12-12h40c6.6 0 12 5.4 12 12v40c0 6.6-5.4 12-12 12h-40c-6.6 0-12-5.4-12-12v-40zm0 128c0-6.6 5.4-12 12-12h40c6.6 0 12 5.4 12 12v40c0 6.6-5.4 12-12 12h-40c-6.6 0-12-5.4-12-12v-40zM192 268c0-6.6 5.4-12 12-12h40c6.6 0 12 5.4 12 12v40c0 6.6-5.4 12-12 12h-40c-6.6 0-12-5.4-12-12v-40zm0 128c0-6.6 5.4-12 12-12h40c6.6 0 12 5.4 12 12v40c0 6.6-5.4 12-12 12h-40c-6.6 0-12-5.4-12-12v-40zM64 268c0-6.6 5.4-12 12-12h40c6.6 0 12 5.4 12 12v40c0 6.6-5.4 12-12 12H76c-6.6 0-12-5.4-12-12v-40zm0 128c0-6.6 5.4-12 12-12h40c6.6 0 12 5.4 12 12v40c0 6.6-5.4 12-12 12H76c-6.6 0-12-5.4-12-12v-40zM400 64h-48V16c0-8.8-7.2-16-16-16h-32c-8.8 0-16 7.2-16 16v48H160V16c0-8.8-7.2-16-16-16h-32c-8.8 0-16 7.2-16 16v48H48C21.5 64 0 85.5 0 112v48h448v-48c0-26.5-21.5-48-48-48z"
+                                          fill="currentColor"
+                                          style={Object {}}
+                                        />
+                                      </svg>
+                                    </FontAwesomeIcon>
+                                  </span>
+                                </span>
+                              </DateDisplay>
+                            </div>
+                          </div>
+                        </InnerReference>
+                      </Reference>
+                    </Manager>
+                  </t>
+                </t>
+              </div>
+            </CustomDatePicker>
+          </span>
+        </span>
+      </span>
+      <span
+        className="bottom-filters"
+      >
         <span
-          className="name-emrid-order-filter"
+          className="form-filter-group one-third"
         >
-          <i
-            className="small icon-search"
-          />
-          <FormControl
-            autoFocus={true}
-            bsClass="form-control"
-            componentClass="input"
-            id="emr-name-search"
-            onChange={[Function]}
-            placeholder="search by ID or name, or scan sample"
-            type="text"
-            value=""
+          <FormattedMessage
+            defaultMessage="Search for a sample"
+            description="Label for text search input"
+            id="app.labOrdersListFilters.textSearchTitle"
+            values={Object {}}
           >
-            <input
+            <span>
+              Search for a sample
+            </span>
+          </FormattedMessage>
+          <span
+            className="name-emrid-order-filter"
+          >
+            <i
+              className="small icon-search"
+            />
+            <FormControl
               autoFocus={true}
-              className="form-control"
+              bsClass="form-control"
+              componentClass="input"
               id="emr-name-search"
               onChange={[Function]}
               placeholder="search by ID or name, or scan sample"
               type="text"
               value=""
+            >
+              <input
+                autoFocus={true}
+                className="form-control"
+                id="emr-name-search"
+                onChange={[Function]}
+                placeholder="search by ID or name, or scan sample"
+                type="text"
+                value=""
+              />
+            </FormControl>
+            <i
+              className="small scale icon-remove-sign"
+              onClick={[Function]}
+              role="toolbar"
             />
-          </FormControl>
-          <i
-            className="small scale icon-remove-sign"
-            onClick={[Function]}
-            role="toolbar"
-          />
+          </span>
+        </span>
+        <span
+          className="status-dropdown"
+        >
+          <Dropdown
+            className="form-filter-group"
+            defaultValue="All"
+            field="testStatusField"
+            handleSelect={[Function]}
+            id="test-status-dropdown"
+            input={
+              Object {
+                "value": undefined,
+              }
+            }
+            label="Status"
+            labelClassName=""
+            list={
+              Array [
+                "Ordered",
+                "Reported",
+                "Taken",
+                "Cancelled/Expired",
+              ]
+            }
+            placeholder={
+              <LocalizedMessage
+                defaultMessage="Select from the list"
+                id="reactcomponents.select.from.list"
+              />
+            }
+          >
+            <div>
+              <span
+                className="form-filter-group"
+              >
+                <span
+                  className=""
+                >
+                  Status
+                </span>
+                <select
+                  disabled={false}
+                  id="test-status-dropdown"
+                  onChange={[Function]}
+                  style={
+                    Object {
+                      "height": "45px",
+                      "width": "100%",
+                    }
+                  }
+                >
+                  <option
+                    key="0"
+                    value=""
+                  >
+                    <LocalizedMessage
+                      defaultMessage="Select from the list"
+                      id="reactcomponents.select.from.list"
+                    >
+                      <span>
+                        Select from the list
+                      </span>
+                    </LocalizedMessage>
+                  </option>
+                  <option
+                    key="All"
+                    value="All"
+                  >
+                    All
+                  </option>
+                  <option
+                    key="Ordered"
+                    value="Ordered"
+                  >
+                    Ordered
+                  </option>
+                  <option
+                    key="Reported"
+                    value="Reported"
+                  >
+                    Reported
+                  </option>
+                  <option
+                    key="Taken"
+                    value="Taken"
+                  >
+                    Taken
+                  </option>
+                  <option
+                    key="Cancelled/Expired"
+                    value="Cancelled/Expired"
+                  >
+                    Cancelled/Expired
+                  </option>
+                </select>
+              </span>
+            </div>
+          </Dropdown>
+        </span>
+        <span
+          className="type-dropdown"
+        >
+          <Dropdown
+            className="form-filter-group"
+            defaultValue="All"
+            field="testTypeField"
+            handleSelect={[Function]}
+            id="test-type-dropdown"
+            input={
+              Object {
+                "value": "",
+              }
+            }
+            label="Test Type"
+            labelClassName=""
+            list={
+              Array [
+                "Hémogramme automatisé",
+              ]
+            }
+            placeholder={
+              <LocalizedMessage
+                defaultMessage="Select from the list"
+                id="reactcomponents.select.from.list"
+              />
+            }
+          >
+            <div>
+              <span
+                className="form-filter-group"
+              >
+                <span
+                  className=""
+                >
+                  Test Type
+                </span>
+                <select
+                  disabled={false}
+                  id="test-type-dropdown"
+                  onChange={[Function]}
+                  style={
+                    Object {
+                      "height": "45px",
+                      "width": "100%",
+                    }
+                  }
+                >
+                  <option
+                    key="0"
+                    value=""
+                  >
+                    <LocalizedMessage
+                      defaultMessage="Select from the list"
+                      id="reactcomponents.select.from.list"
+                    >
+                      <span>
+                        Select from the list
+                      </span>
+                    </LocalizedMessage>
+                  </option>
+                  <option
+                    key="All"
+                    value="All"
+                  >
+                    All
+                  </option>
+                  <option
+                    key="Hémogramme automatisé"
+                    value="Hémogramme automatisé"
+                  >
+                    Hémogramme automatisé
+                  </option>
+                </select>
+              </span>
+            </div>
+          </Dropdown>
         </span>
       </span>
-      <span
-        className="status-dropdown"
-      >
-        <Dropdown
-          className="form-filter-group"
-          defaultValue="All"
-          field="testStatusField"
-          handleSelect={[Function]}
-          id="test-status-dropdown"
-          input={
-            Object {
-              "value": undefined,
-            }
-          }
-          label={
-            <FormattedMessage
-              defaultMessage="Status"
-              description="Label for the test status dropdown"
-              id="app.labOrdersListFilters.statusDropdownLabel"
-              values={Object {}}
-            />
-          }
-          labelClassName=""
-          list={
-            Array [
-              "Ordered",
-              "Reported",
-              "Taken",
-              "Cancelled/Expired",
-            ]
-          }
-          placeholder={
-            <LocalizedMessage
-              defaultMessage="Select from the list"
-              id="reactcomponents.select.from.list"
-            />
-          }
-        >
-          <div>
-            <span
-              className="form-filter-group"
-            >
-              <span
-                className=""
-              >
-                <FormattedMessage
-                  defaultMessage="Status"
-                  description="Label for the test status dropdown"
-                  id="app.labOrdersListFilters.statusDropdownLabel"
-                  values={Object {}}
-                >
-                  <span>
-                    Status
-                  </span>
-                </FormattedMessage>
-              </span>
-              <select
-                disabled={false}
-                id="test-status-dropdown"
-                onChange={[Function]}
-                style={
-                  Object {
-                    "height": "45px",
-                    "width": "100%",
-                  }
-                }
-              >
-                <option
-                  key="0"
-                  value=""
-                >
-                  <LocalizedMessage
-                    defaultMessage="Select from the list"
-                    id="reactcomponents.select.from.list"
-                  >
-                    <span>
-                      Select from the list
-                    </span>
-                  </LocalizedMessage>
-                </option>
-                <option
-                  key="All"
-                  value="All"
-                >
-                  All
-                </option>
-                <option
-                  key="Ordered"
-                  value="Ordered"
-                >
-                  Ordered
-                </option>
-                <option
-                  key="Reported"
-                  value="Reported"
-                >
-                  Reported
-                </option>
-                <option
-                  key="Taken"
-                  value="Taken"
-                >
-                  Taken
-                </option>
-                <option
-                  key="Cancelled/Expired"
-                  value="Cancelled/Expired"
-                >
-                  Cancelled/Expired
-                </option>
-              </select>
-            </span>
-          </div>
-        </Dropdown>
-      </span>
-      <span
-        className="type-dropdown"
-      >
-        <Dropdown
-          className="form-filter-group"
-          defaultValue="All"
-          field="testTypeField"
-          handleSelect={[Function]}
-          id="test-type-dropdown"
-          input={
-            Object {
-              "value": "",
-            }
-          }
-          label={
-            <FormattedMessage
-              defaultMessage="Test Type"
-              description="Label for the test type dropdown"
-              id="app.labOrdersListFilters.searchDropdownLabel"
-              values={Object {}}
-            />
-          }
-          labelClassName=""
-          list={
-            Array [
-              "Hémogramme automatisé",
-            ]
-          }
-          placeholder={
-            <LocalizedMessage
-              defaultMessage="Select from the list"
-              id="reactcomponents.select.from.list"
-            />
-          }
-        >
-          <div>
-            <span
-              className="form-filter-group"
-            >
-              <span
-                className=""
-              >
-                <FormattedMessage
-                  defaultMessage="Test Type"
-                  description="Label for the test type dropdown"
-                  id="app.labOrdersListFilters.searchDropdownLabel"
-                  values={Object {}}
-                >
-                  <span>
-                    Test Type
-                  </span>
-                </FormattedMessage>
-              </span>
-              <select
-                disabled={false}
-                id="test-type-dropdown"
-                onChange={[Function]}
-                style={
-                  Object {
-                    "height": "45px",
-                    "width": "100%",
-                  }
-                }
-              >
-                <option
-                  key="0"
-                  value=""
-                >
-                  <LocalizedMessage
-                    defaultMessage="Select from the list"
-                    id="reactcomponents.select.from.list"
-                  >
-                    <span>
-                      Select from the list
-                    </span>
-                  </LocalizedMessage>
-                </option>
-                <option
-                  key="All"
-                  value="All"
-                >
-                  All
-                </option>
-                <option
-                  key="Hémogramme automatisé"
-                  value="Hémogramme automatisé"
-                >
-                  Hémogramme automatisé
-                </option>
-              </select>
-            </span>
-          </div>
-        </Dropdown>
-      </span>
-    </span>
-  </div>
-</LabOrderListFilters>
+    </div>
+  </LabOrderListFilters>
+</InjectIntl(LabOrderListFilters)>
 `;

@@ -137,10 +137,12 @@ const state = {
       {
         uuid: '1234-abcd',
         display: "Height",
+        answers: [],
       },
       {
         uuid: 'pqrs-5678',
         display: "Weight",
+        answers: [],
       },
     ],
   },
