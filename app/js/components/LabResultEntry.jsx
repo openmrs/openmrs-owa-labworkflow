@@ -460,21 +460,42 @@ export class LabResultEntry extends PureComponent {
     }
 
     const normalRange = formatRangeDisplayText(lowNormal, hiNormal);
+    const memberHasAnswers = !!member.answers.length;
+    console.log("memberHasAnswers: " + memberHasAnswers);
+
     return (
-      <FormGroup controlId={member.display}>
-        <span className="member-display-label">
-          {member.display}
-        </span>
-        <span className="obs-component">
-          <Obs
-            {...obsProps}
-          />
-        </span>
-        <span className="units">{units || ''}</span>
-        <span className="valid-range">
-          {normalRange}
-        </span>
-      </FormGroup>
+      <div>
+          <FormGroup controlId={member.display} key={ member.uuid }>
+            <span className="member-display-label">
+              {member.display}
+            </span>
+            <span className="obs-component">
+              { (memberHasAnswers) && (
+                   <span className="obs-dropdown-field">
+                        <Obs
+                          conceptAnswers={member.answers}
+                          widget="dropdown"
+                          concept={member.uuid}
+                          path={member.uuid}
+                          dropDownStyle={{ heigth: '40px', width: '100%' }}
+                        />
+                      </span>
+                )
+              }
+              { (!memberHasAnswers) && (
+                  <Obs
+                    {...obsProps}
+                  />
+                )
+              }
+            </span>
+            <span className="units">{units || ''}</span>
+            <span className="valid-range">
+              {normalRange}
+            </span>
+          </FormGroup>
+
+      </div>
     );
   }
 
