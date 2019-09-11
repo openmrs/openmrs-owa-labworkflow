@@ -1,0 +1,21 @@
+{
+  "package": {
+    "name": "openmrs-owa-labworkflow",
+    "repo": "owa",
+    "subject": "openmrs"
+  },
+  "version": {
+    "name": "0.1.0",
+    "released": "2019-09-10"
+  },
+  "files": [
+    {
+      "includePattern": "./(.*\\.zip)",
+      "uploadPattern": "$1"
+    }
+  ],
+  "publish": true
+}
+
+
+

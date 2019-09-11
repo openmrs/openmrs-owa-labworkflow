@@ -1,5 +1,5 @@
 {
-  "name": "openmrs-owa-labworkflow",
+  "name": "@openmrs/labworkflow-owa",
   "version": "0.1.0",
   "description": "The is used to manage the workflow of lab orders",
   "repository": {
