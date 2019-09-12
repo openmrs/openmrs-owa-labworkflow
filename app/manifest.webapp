@@ -7,7 +7,7 @@
     "48": "/img/omrs-button.png"
   },
   "developer": {
-    "name": "PIH","andela"
+    "name": "PIH","andela",
     "url": "https://github.com/openmrs/openmrs-owa-labworkflow.git"
   },
   "default_locale": "en",
