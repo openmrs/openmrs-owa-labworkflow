@@ -2,6 +2,8 @@
 import matchSorter from 'match-sorter';
 import moment from 'moment';
 import R from 'ramda';
+import { getIntl } from '@openmrs/react-components';
+import store from '../export-store';
 
 const dateToInt = dateStr => new Date(dateStr).getTime();
 
@@ -55,6 +57,13 @@ export const formatRangeDisplayText = (min = " ", max = " ") => {
 export const filterThrough = (filters, data) => {
   let originalData = data;
 
+  const locale = R.path(['openmrs', 'session', 'locale'], store.getState());
+  const allMsg = getIntl(locale).formatMessage({
+    id: "reactcomponents.all",
+    defaultMessage: "All"
+  });
+
+
   if (filters.dateField === "obsDatetime") {
     if (filters.dateToField && filters.dateFromField) {
       const filteredData  = getDateRange(originalData, filters.dateFromField, filters.dateToField, filters.dateField);
@@ -68,13 +77,13 @@ export const filterThrough = (filters, data) => {
     originalData = filteredData;
   }
 
-  if (filters.testTypeField !== "All") {
+  if ((filters.testTypeField.length > 0) && filters.testTypeField !== allMsg) {
     const inputValue = filters.testTypeField;
     const filteredData = matchSorter(originalData, inputValue, { keys: ['concept.display'] });
     originalData = filteredData;
   }
 
-  if (filters.testStatusField !== "All") {
+  if ((filters.testStatusField.length > 0) && filters.testStatusField !== allMsg) {
     let inputValue = filters.testStatusField;
     let filteredData = [];
     if (filters.testStatusField === "Cancelled/Expired") {
@@ -87,7 +96,7 @@ export const filterThrough = (filters, data) => {
     originalData = filteredData;
   }
 
-  if (filters.testStatusField === "All") {
+  if ((filters.testStatusField.length === 0) || filters.testStatusField === allMsg) {
     const filteredData = originalData.filter((data) => {
       if (!data.labResult) return false;
       return (data.labResult.resultStatus !== "Cancelled") && (data.labResult.resultStatus !== "Expired");

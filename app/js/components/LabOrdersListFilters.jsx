@@ -62,6 +62,8 @@ class LabOrderListFilters extends PureComponent {
 
   renderTestStatusFilter() {
     const { handleFieldChange, testStatusField, intl } = this.props;
+    const allMsg = intl.formatMessage({ id: "reactcomponents.all", defaultMessage: "All" });
+    const selectFromListMsg = intl.formatMessage({ id: "reactcomponents.select.from.list", defaultMessage: "Select from the list" });
     const statusMessage = intl.formatMessage({ id: "app.labOrdersListFilters.statusDropdownLabel", defaultMessage: "Status" });
     const statusOptions = ["Ordered", "Reported", "Taken", "Cancelled/Expired"];
     return (
@@ -69,10 +71,11 @@ class LabOrderListFilters extends PureComponent {
         className="form-filter-group"
         id="test-status-dropdown"
         label={ statusMessage }
-        defaultValue="All"
+        defaultValue= { allMsg }
         input={{ value: testStatusField }}
         list={statusOptions}
         field="testStatusField"
+        placeholder={ selectFromListMsg }
         handleSelect={(field, value) => handleFieldChange(field, value)}
       />
     );
@@ -80,8 +83,9 @@ class LabOrderListFilters extends PureComponent {
 
   renderTestTypeFilter() {
     const { labTests, handleFieldChange, testTypeField, intl } = this.props;
-    const testTypeMsg = intl.formatMessage({ id: "app.labOrdersListFilters.searchDropdownLabel", defaultMessage: "Test Type" });
     const allMsg = intl.formatMessage({ id: "reactcomponents.all", defaultMessage: "All" });
+    const selectFromListMsg = intl.formatMessage({ id: "reactcomponents.select.from.list", defaultMessage: "Select from the list" });
+    const testTypeMsg = intl.formatMessage({ id: "app.labOrdersListFilters.searchDropdownLabel", defaultMessage: "Test Type" });
     return (
       <Dropdown
         className="form-filter-group"
@@ -91,6 +95,7 @@ class LabOrderListFilters extends PureComponent {
         input={{ value: testTypeField }}
         list={labTests}
         field="testTypeField"
+        placeholder={ selectFromListMsg }
         handleSelect={(field, value) => handleFieldChange(field, value)}
       />
     );

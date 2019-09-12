@@ -14,11 +14,11 @@ import { ConnectedRouter } from 'connected-react-router';
 import 'babel-polyfill';
 import 'react-redux-toastr/lib/css/react-redux-toastr.min.css';
 
+import { history } from './redux-store';
+import store from './export-store';
 
-import createStore, { history } from './redux-store';
 import routes from './routes';
 
-const store = createStore();
 
 render((
   <Provider store={store}>

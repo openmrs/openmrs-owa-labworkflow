@@ -31,6 +31,11 @@ describe('ConceptDisplay Component', () => {
     };
 
     const state = {
+      openmrs: {
+        session: {
+          locale: 'en'
+        }
+      },
       conceptMembers: {
         'some-concept-uuid': {
           hiNormal: 50,

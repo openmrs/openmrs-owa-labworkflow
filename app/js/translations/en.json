@@ -11,6 +11,8 @@
     "app.labOrdersList.NAME": "NAME",
     "app.labOrdersList.ORDER_ID": "ORDER ID",
     "app.labOrdersList.COLLECTION_DATE": "COLLECTED",
+    "app.labOrdersList.ACTIONS": "ACTIONS",
+    "app.labOrdersList.STATUS": "STATUS",
     "app.labOrdersList.URGENCY": "URGENCY",
     "app.labOrdersList.TEST_TYPE": "TEST TYPE",
     "app.labOrdersList.ORDER_DATE": "ORDERED",

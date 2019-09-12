@@ -11,6 +11,8 @@
     "app.labOrdersList.NAME": "NOM",
     "app.labOrdersList.ORDER_ID": "ID de commande",
     "app.labOrdersList.COLLECTION_DATE": "Collecté",
+    "app.labOrdersList.STATUS": "STATUT",
+    "app.labOrdersList.ACTIONS": "AKSYON YO",
     "app.labOrdersList.URGENCY": "URGENCE",
     "app.labOrdersList.TEST_TYPE": "TYPE DE TEST",
     "app.labOrdersList.ORDER_DATE": "Commandé",

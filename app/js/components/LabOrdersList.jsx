@@ -324,7 +324,6 @@ export class LabOrdersList extends PureComponent {
     const hasData = !R.isEmpty(orders) && !R.isEmpty(labTests);
     return (
       <div className="main-container">
-        <h2>Test </h2>
         <h2>
           <FormattedMessage
             id="app.labOrdersList.title"
