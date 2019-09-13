@@ -65,7 +65,15 @@ class LabOrderListFilters extends PureComponent {
     const allMsg = intl.formatMessage({ id: "reactcomponents.all", defaultMessage: "All" });
     const selectFromListMsg = intl.formatMessage({ id: "reactcomponents.select.from.list", defaultMessage: "Select from the list" });
     const statusMessage = intl.formatMessage({ id: "app.labOrdersListFilters.statusDropdownLabel", defaultMessage: "Status" });
-    const statusOptions = ["Ordered", "Reported", "Taken", "Cancelled/Expired"];
+
+    const statusOptions = [
+      intl.formatMessage({ id: "app.labResult.status.ordered", defaultMessage: "Ordered" }),
+      intl.formatMessage({ id: "app.labResult.status.reported", defaultMessage: "Reported" }),
+      intl.formatMessage({ id: "app.labResult.status.taken", defaultMessage: "Taken" }),
+      intl.formatMessage({ id: "app.labResult.status.canceled", defaultMessage: "Canceled" }) + "/"
+      + intl.formatMessage({ id: "app.labResult.status.expired", defaultMessage: "Expired" })
+    ];
+
     return (
       <Dropdown
         className="form-filter-group"

@@ -620,7 +620,7 @@ exports[`<LabOrdersList /> component renders correctly 1`] = `
                 "Ordered",
                 "Reported",
                 "Taken",
-                "Cancelled/Expired",
+                "Canceled/Expired",
               ]
             }
             placeholder="Select from the list"
@@ -676,10 +676,10 @@ exports[`<LabOrdersList /> component renders correctly 1`] = `
                     Taken
                   </option>
                   <option
-                    key="Cancelled/Expired"
-                    value="Cancelled/Expired"
+                    key="Canceled/Expired"
+                    value="Canceled/Expired"
                   >
-                    Cancelled/Expired
+                    Canceled/Expired
                   </option>
                 </select>
               </span>

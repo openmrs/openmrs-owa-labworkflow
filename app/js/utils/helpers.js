@@ -3,7 +3,7 @@ import matchSorter from 'match-sorter';
 import moment from 'moment';
 import R from 'ramda';
 import { getIntl } from '@openmrs/react-components';
-import { exportStore } from '../export-store';
+import exportStore  from '../export-store';
 
 const dateToInt = dateStr => new Date(dateStr).getTime();
 
@@ -62,7 +62,15 @@ export const filterThrough = (filters, data) => {
     id: "reactcomponents.all",
     defaultMessage: "All"
   });
-
+  const canceled = getIntl(locale).formatMessage({
+      id: "app.labResult.status.canceled",
+      defaultMessage: "Canceled"
+    });
+  const expired = getIntl(locale).formatMessage({
+      id: "app.labResult.status.expired",
+      defaultMessage: "Expired"
+    });
+  const canceledExpired = canceled + "/" + expired;
 
   if (filters.dateField === "obsDatetime") {
     if (filters.dateToField && filters.dateFromField) {
@@ -86,9 +94,9 @@ export const filterThrough = (filters, data) => {
   if ((filters.testStatusField.length > 0) && filters.testStatusField !== allMsg) {
     let inputValue = filters.testStatusField;
     let filteredData = [];
-    if (filters.testStatusField === "Cancelled/Expired") {
-      const cancelledData = matchSorter(originalData, "Cancelled", { keys: ['labResult.resultStatus'] });
-      const expiredData = matchSorter(originalData, "Expired", { keys: ['labResult.resultStatus'] });
+    if (filters.testStatusField === canceledExpired) {
+      const cancelledData = matchSorter(originalData, canceled, { keys: ['labResult.resultStatus'] });
+      const expiredData = matchSorter(originalData, expired, { keys: ['labResult.resultStatus'] });
       filteredData = cancelledData.concat(expiredData);
     } else {
       filteredData = matchSorter(originalData, inputValue, { keys: ['labResult.resultStatus'] });
@@ -99,7 +107,7 @@ export const filterThrough = (filters, data) => {
   if ((filters.testStatusField.length === 0) || filters.testStatusField === allMsg) {
     const filteredData = originalData.filter((data) => {
       if (!data.labResult) return false;
-      return (data.labResult.resultStatus !== "Cancelled") && (data.labResult.resultStatus !== "Expired");
+      return (data.labResult.resultStatus !== canceled) && (data.labResult.resultStatus !== expired);
     });
     originalData = filteredData;
   }
