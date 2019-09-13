@@ -15,16 +15,16 @@ import 'babel-polyfill';
 import 'react-redux-toastr/lib/css/react-redux-toastr.min.css';
 
 import { history } from './redux-store';
-import store from './export-store';
+import exportStore from './export-store';
 
 import routes from './routes';
 
 
 render((
-  <Provider store={store}>
+  <Provider store={exportStore}>
     <ConnectedRouter history={history}>
       <HashRouter>
-        {routes(store)}
+        {routes(exportStore)}
       </HashRouter>
     </ConnectedRouter>
   </Provider>

@@ -3,7 +3,7 @@ import matchSorter from 'match-sorter';
 import moment from 'moment';
 import R from 'ramda';
 import { getIntl } from '@openmrs/react-components';
-import store from '../export-store';
+import exportStore from '../export-store';
 
 const dateToInt = dateStr => new Date(dateStr).getTime();
 
@@ -57,7 +57,7 @@ export const formatRangeDisplayText = (min = " ", max = " ") => {
 export const filterThrough = (filters, data) => {
   let originalData = data;
 
-  const locale = R.path(['openmrs', 'session', 'locale'], store.getState());
+  const locale = R.path(['openmrs', 'session', 'locale'], exportStore.getState());
   const allMsg = getIntl(locale).formatMessage({
     id: "reactcomponents.all",
     defaultMessage: "All"

@@ -15,7 +15,8 @@ module.exports = {
     '/tests/mocks',
     '/tests/setup.js',
     '/app/js/openmrs-owa-labworkflow.jsx',
-    '/app/js/redux-store.jsx'
+    '/app/js/redux-store.jsx',
+    '/app/js/export-redux.jsx'
   ],
 
   // An array of file extensions your modules use
