@@ -74,13 +74,13 @@ export const filterThrough = (filters, data) => {
     originalData = filteredData;
   }
 
-  if ((filters.testTypeField.length > 0) && filters.testTypeField !== allMsg) {
+  if (typeof filters.testTypeField !== 'undefined' && (filters.testTypeField.length > 0) && filters.testTypeField !== allMsg) {
     const inputValue = filters.testTypeField;
     const filteredData = matchSorter(originalData, inputValue, { keys: ['concept.display'] });
     originalData = filteredData;
   }
 
-  if ((filters.testStatusField.length > 0) && filters.testStatusField !== allMsg) {
+  if (typeof filters.testStatusField !== 'undefined' && (filters.testStatusField.length > 0) && filters.testStatusField !== allMsg) {
     let inputValue = filters.testStatusField;
     let filteredData = [];
     if (filters.testStatusField === canceledExpired) {
@@ -93,7 +93,7 @@ export const filterThrough = (filters, data) => {
     originalData = filteredData;
   }
 
-  if ((filters.testStatusField.length === 0) || filters.testStatusField === allMsg) {
+  if ((typeof filters.testStatusField !== 'undefined' && filters.testStatusField.length === 0) || filters.testStatusField === allMsg) {
     const filteredData = originalData.filter((data) => {
       if (!data.labResult) return false;
       return (data.labResult.resultStatus !== canceled) && (data.labResult.resultStatus !== expired);

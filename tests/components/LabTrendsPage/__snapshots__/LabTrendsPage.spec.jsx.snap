@@ -4254,7 +4254,15 @@ exports[`Component: LabTrendsPage renders properly 1`] = `
               onClick={[Function]}
               type="button"
             >
-              Back
+              <FormattedMessage
+                defaultMessage="Back"
+                id="reactcomponents.back"
+                values={Object {}}
+              >
+                <span>
+                  Back
+                </span>
+              </FormattedMessage>
             </button>
           </div>
         </LabTrendsPage>

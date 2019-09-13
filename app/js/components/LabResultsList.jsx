@@ -6,7 +6,7 @@ import {
   SortableTable, Loader, constantsActions, CustomDatePicker as DatePicker,
 } from '@openmrs/react-components';
 import moment from 'moment';
-import { FormattedMessage } from 'react-intl';
+import { injectIntl, FormattedMessage } from 'react-intl';
 import ConceptDisplay from './ConceptDisplay';
 import patientAction from '../actions/patientAction';
 import filtersAction from '../actions/filtersAction';
@@ -143,7 +143,7 @@ export class LabResultsList extends PureComponent {
   }
 
   renderLabResultsTable(labResults, fetched) {
-    const { dateAndTimeFormat, labResultListFilters } = this.props;
+    const { dateAndTimeFormat, labResultListFilters, intl } = this.props;
     const fields = ["TEST TYPE", "DATE", "RESULT", "NORMAL RANGE"];
 
     const columnMetadata = fields.map(columnName => ({
@@ -187,6 +187,7 @@ export class LabResultsList extends PureComponent {
     const columns = expanderColumn.concat(columnMetadata);
 
     const sortedListData = sortByDate('obsDatetime')(labResults).reverse();
+    const noDataMessage = intl.formatMessage({ id: "app.results.not.found", defaultMessage: "No results found" });
 
     return (
       <div className="lab-results-list">
@@ -203,12 +204,7 @@ export class LabResultsList extends PureComponent {
           onPageSizeChange={pageSize => this.handleFilterChange('pageSize', pageSize)}
           onPageChange={page => this.handleFilterChange('page', page)}
           page={labResultListFilters.page}
-          noDataMessage={
-            <FormattedMessage
-              id="app.results.not.found"
-              defaultMessage="No results found"
-              description="No results found" />
-          }
+          noDataMessage={ noDataMessage }
           defaultPageSize={labResultListFilters.pageSize || calculateTableRows(labResults.length)}
           subComponent={(row) => {
             const isPanel = isLabSet(row.original);
@@ -365,4 +361,4 @@ export const mapStateToProps = state => ({
   labResultListFilters: state.filters.labResultListFilters,
 });
 
-export default connect(mapStateToProps)(LabResultsList);
+export default connect(mapStateToProps)(injectIntl(LabResultsList));

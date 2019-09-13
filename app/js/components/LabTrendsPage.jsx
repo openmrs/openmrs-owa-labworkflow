@@ -166,7 +166,11 @@ export class LabTrendsPage extends PureComponent {
           </div>
         </div>
         <br />
-        <button type="button" className="btn btn-lg btn-danger" onClick={() => this.handleNavigateBack()}>Back</button>
+        <button type="button" className="btn btn-lg btn-danger" onClick={() => this.handleNavigateBack()}>
+          <FormattedMessage
+            id="reactcomponents.back"
+            defaultMessage="Back" />
+        </button>
       </div>
     );
   }
