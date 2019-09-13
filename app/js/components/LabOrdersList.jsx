@@ -153,7 +153,7 @@ export class LabOrdersList extends PureComponent {
   }
 
   handleShowResultsEntryPage(order) {
-    const unclickableStatuses = ["Cancelled", "Expired"];
+    const unclickableStatuses = ["Canceled", "Expired"];
     if (!unclickableStatuses.includes(order.labResult.resultStatus)) {
       const { history, returnUrl } = this.props;
       history.push({

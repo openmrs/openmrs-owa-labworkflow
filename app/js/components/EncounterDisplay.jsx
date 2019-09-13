@@ -3,7 +3,7 @@ import R from 'ramda';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import moment from 'moment';
-import { FormattedMessage } from 'react-intl';
+import { injectIntl } from 'react-intl';
 
 
 class EncounterDisplay extends PureComponent {
@@ -13,22 +13,24 @@ class EncounterDisplay extends PureComponent {
         labResult = null,
       },
       type,
+      intl,
     } = this.props;
 
     if (!R.isNil(labResult)) {
       if (type === "status") {
         return (
           <span>
-            <FormattedMessage
-              id={`app.labResult.status.${labResult.resultStatus.toLowerCase()}`}
-              defaultMessage={`${labResult.resultStatus}`}
-              description={`Lab Result Status`} />
+            { labResult.resultStatus }
           </span>
         );
       }
 
       if (type === "collectionDate") {
-        const statusesWithoutEncounter = ["Ordered", "Cancelled", "Expired"];
+        const statusesWithoutEncounter = [
+          intl.formatMessage({ id: "app.labResult.status.ordered", defaultMessage: "Ordered" }),
+          intl.formatMessage({ id: "app.labResult.status.canceled", defaultMessage: "Canceled" }),
+          intl.formatMessage({ id: "app.labResult.status.expired", defaultMessage: "Expired" })
+        ];
         if (!statusesWithoutEncounter.includes(labResult.resultStatus)) {
           return (
             <div className="table_cell test-type">
@@ -59,4 +61,4 @@ const mapStateToProps = ({
   order: orders.find(item => item.uuid === orderUUID),
 });
 
-export default connect(mapStateToProps)(EncounterDisplay);
+export default connect(mapStateToProps)(injectIntl(EncounterDisplay));

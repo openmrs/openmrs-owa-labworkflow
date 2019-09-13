@@ -1,4 +1,5 @@
-import { globalPropertyActions, selectors } from '@openmrs/react-components';
+import { globalPropertyActions, selectors, getIntl } from '@openmrs/react-components';
+import R from "ramda";
 
 
 /* Define all global properties needed in OWA here
@@ -33,3 +34,7 @@ export const selectProperty = (state, property) => selectors.getGlobalProperty(
   state,
   APP_GLOBAL_PROPERTIES[property],
 );
+
+export const selectLocale = state => R.path(['openmrs', 'session', 'locale'], state);
+
+export const getMessage = (state, msgId, msgDefault) => getIntl(R.path(['openmrs', 'session', 'locale'], state)).formatMessage({ id: msgId, defaultMessage: msgDefault });

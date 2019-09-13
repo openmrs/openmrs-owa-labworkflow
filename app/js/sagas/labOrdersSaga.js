@@ -26,7 +26,7 @@ import {
   saveFulfillerStatusFailed,
 } from '../actions/labOrdersAction';
 import { setSelectedConcept } from '../actions/labConceptsAction';
-import { selectProperty } from '../utils/globalProperty';
+import { selectProperty, getMessage } from '../utils/globalProperty';
 
 const getOrderNumber = (encounter, state) => {
   const orderNumberConceptUUID = selectProperty(state, 'labResultsTestOrderNumberConcept');
@@ -85,20 +85,20 @@ const computeResultStatus = (encounter, state, order) => {
       )(encounter.obs);
 
       if (!R.isEmpty(obs)) {
-        return "Reported";
+        return getMessage(state, "app.labResult.status.reported", "Reported");
       }
-      return "Taken";
+      return getMessage(state, "app.labResult.status.taken", "Taken");
     }
   }
 
   if (order.dateStopped !== null) {
-    return "Cancelled";
+    return getMessage(state, "app.labResult.status.canceled", "Canceled");
   }
 
   if (order.autoExpireDate !== null) {
-    return "Expired";
+    return getMessage(state, "app.labResult.status.expired", "Expired");
   }
-  return "Ordered";
+  return getMessage(state, "app.labResult.status.ordered", "Ordered");
 };
 
 

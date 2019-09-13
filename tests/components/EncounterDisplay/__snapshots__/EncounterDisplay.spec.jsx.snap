@@ -38,11 +38,11 @@ exports[`EncounterDisplay Component should render for order value of type collec
     }
   }
 >
-  <Connect(EncounterDisplay)
+  <Connect(InjectIntl(EncounterDisplay))
     orderUUID="some-order-uuid"
     type="collectionDate"
   >
-    <EncounterDisplay
+    <InjectIntl(EncounterDisplay)
       dispatch={[Function]}
       order={
         Object {
@@ -59,13 +59,56 @@ exports[`EncounterDisplay Component should render for order value of type collec
       orderUUID="some-order-uuid"
       type="collectionDate"
     >
-      <div
-        className="table_cell test-type"
+      <EncounterDisplay
+        dispatch={[Function]}
+        intl={
+          Object {
+            "defaultFormats": Object {},
+            "defaultLocale": "en",
+            "formatDate": [Function],
+            "formatHTMLMessage": [Function],
+            "formatMessage": [Function],
+            "formatNumber": [Function],
+            "formatPlural": [Function],
+            "formatRelative": [Function],
+            "formatTime": [Function],
+            "formats": Object {},
+            "formatters": Object {
+              "getDateTimeFormat": [Function],
+              "getMessageFormat": [Function],
+              "getNumberFormat": [Function],
+              "getPluralFormat": [Function],
+              "getRelativeFormat": [Function],
+            },
+            "locale": "en",
+            "messages": Object {},
+            "now": [Function],
+            "textComponent": "span",
+          }
+        }
+        order={
+          Object {
+            "labResult": Object {
+              "encounter": Object {
+                "encounterDatetime": "12/2/2018",
+                "uuid": "some-encounter-uuid",
+              },
+              "resultStatus": "Reported",
+            },
+            "uuid": "some-order-uuid",
+          }
+        }
+        orderUUID="some-order-uuid"
+        type="collectionDate"
       >
-        02-Dec-2018
-      </div>
-    </EncounterDisplay>
-  </Connect(EncounterDisplay)>
+        <div
+          className="table_cell test-type"
+        >
+          02-Dec-2018
+        </div>
+      </EncounterDisplay>
+    </InjectIntl(EncounterDisplay)>
+  </Connect(InjectIntl(EncounterDisplay))>
 </Provider>
 `;
 
@@ -107,11 +150,11 @@ exports[`EncounterDisplay Component should render for order value of type status
     }
   }
 >
-  <Connect(EncounterDisplay)
+  <Connect(InjectIntl(EncounterDisplay))
     orderUUID="some-order-uuid"
     type="collectionDate"
   >
-    <EncounterDisplay
+    <InjectIntl(EncounterDisplay)
       dispatch={[Function]}
       order={
         Object {
@@ -128,12 +171,55 @@ exports[`EncounterDisplay Component should render for order value of type status
       orderUUID="some-order-uuid"
       type="collectionDate"
     >
-      <div
-        className="table_cell test-type"
+      <EncounterDisplay
+        dispatch={[Function]}
+        intl={
+          Object {
+            "defaultFormats": Object {},
+            "defaultLocale": "en",
+            "formatDate": [Function],
+            "formatHTMLMessage": [Function],
+            "formatMessage": [Function],
+            "formatNumber": [Function],
+            "formatPlural": [Function],
+            "formatRelative": [Function],
+            "formatTime": [Function],
+            "formats": Object {},
+            "formatters": Object {
+              "getDateTimeFormat": [Function],
+              "getMessageFormat": [Function],
+              "getNumberFormat": [Function],
+              "getPluralFormat": [Function],
+              "getRelativeFormat": [Function],
+            },
+            "locale": "en",
+            "messages": Object {},
+            "now": [Function],
+            "textComponent": "span",
+          }
+        }
+        order={
+          Object {
+            "labResult": Object {
+              "encounter": Object {
+                "encounterDatetime": "12/2/2018",
+                "uuid": "some-encounter-uuid",
+              },
+              "resultStatus": "Reported",
+            },
+            "uuid": "some-order-uuid",
+          }
+        }
+        orderUUID="some-order-uuid"
+        type="collectionDate"
       >
-        02-Dec-2018
-      </div>
-    </EncounterDisplay>
-  </Connect(EncounterDisplay)>
+        <div
+          className="table_cell test-type"
+        >
+          02-Dec-2018
+        </div>
+      </EncounterDisplay>
+    </InjectIntl(EncounterDisplay)>
+  </Connect(InjectIntl(EncounterDisplay))>
 </Provider>
 `;

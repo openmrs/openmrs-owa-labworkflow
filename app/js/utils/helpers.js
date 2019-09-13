@@ -2,8 +2,7 @@
 import matchSorter from 'match-sorter';
 import moment from 'moment';
 import R from 'ramda';
-import { getIntl } from '@openmrs/react-components';
-import exportStore  from '../export-store';
+import translate from './translate';
 
 const dateToInt = dateStr => new Date(dateStr).getTime();
 
@@ -57,19 +56,9 @@ export const formatRangeDisplayText = (min = " ", max = " ") => {
 export const filterThrough = (filters, data) => {
   let originalData = data;
 
-  const locale = R.path(['openmrs', 'session', 'locale'], exportStore.getState());
-  const allMsg = getIntl(locale).formatMessage({
-    id: "reactcomponents.all",
-    defaultMessage: "All"
-  });
-  const canceled = getIntl(locale).formatMessage({
-      id: "app.labResult.status.canceled",
-      defaultMessage: "Canceled"
-    });
-  const expired = getIntl(locale).formatMessage({
-      id: "app.labResult.status.expired",
-      defaultMessage: "Expired"
-    });
+  const allMsg = translate.getMessage("reactcomponents.all", "All");
+  const canceled = translate.getMessage("app.labResult.status.canceled", "Canceled");
+  const expired = translate.getMessage("app.labResult.status.expired", "Expired");
   const canceledExpired = canceled + "/" + expired;
 
   if (filters.dateField === "obsDatetime") {
