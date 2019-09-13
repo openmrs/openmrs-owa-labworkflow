@@ -3,7 +3,7 @@ import matchSorter from 'match-sorter';
 import moment from 'moment';
 import R from 'ramda';
 import { getIntl } from '@openmrs/react-components';
-import exportStore from '../export-store';
+import { exportStore } from '../export-store';
 
 const dateToInt = dateStr => new Date(dateStr).getTime();
 
