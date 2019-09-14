@@ -33,6 +33,7 @@ initializeLocalization({
 });
 
 const LocalizedHead = withLocalization(Head);
+const LocalizedHeader = withLocalization(Header);
 const LocalizedBreadCrumb = withLocalization(BreadCrumb);
 
 // eslint-disable-next-line
@@ -40,7 +41,7 @@ export default store => (
   <div>
     <ReduxToastr />
     <LocalizedHead defaultTitle="OpenMRS Electronic Medical Record" id="app.title" />
-    <Header />
+    <LocalizedHeader />
     <SystemAlert />
     <LocalizedBreadCrumb />
     <Patientheader />
