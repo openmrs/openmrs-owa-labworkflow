@@ -12,6 +12,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import { Link, withRouter } from 'react-router-dom';
+import { injectIntl, FormattedMessage } from 'react-intl';
 
 import './breadCrumb.css';
 
@@ -37,6 +38,9 @@ class BreadCrumb extends Component {
 
 
   render() {
+    const { intl } = this.props;
+    const labsMsg = intl.formatMessage({ id: "app.breadCrumb.homePageBreadcrumb.title", defaultMessage: "Labs" });
+    const labResultMsg = intl.formatMessage({ id: "app.lab.result", defaultMessage: "Lab Result" });
     const {
       currentTab,
     } = this.state;
@@ -55,7 +59,7 @@ class BreadCrumb extends Component {
             aria-hidden="true" />
           <span className="title breadcrumb-item">
             <u>
-            Labs
+              { labsMsg }
             </u>
           </span>
         </Link>
@@ -74,7 +78,7 @@ class BreadCrumb extends Component {
               <span className="title breadcrumb-item">
                 {familyName || ''}
                 {' '}
-Lab Result
+                { labResultMsg }
               </span>
             </Link>
           </span>
@@ -98,7 +102,7 @@ Lab Result
                 className="glyphicon glyphicon-chevron-right breadcrumb-item separator"
                 aria-hidden="true" />
               <span className="title breadcrumb-item">
-                Labs
+                { labsMsg }
               </span>
             </Link>
           </span>
@@ -127,7 +131,7 @@ Lab Result
                 className="glyphicon glyphicon-chevron-right breadcrumb-item separator"
                 aria-hidden="true" />
               <span className="title breadcrumb-item">
-                <u>Labs</u>
+                <u>{ labsMsg }</u>
               </span>
             </Link>
             <Link to="labresults">
@@ -171,4 +175,4 @@ const mapStateToProps = ({
 });
 
 
-export default withRouter(connect(mapStateToProps)(BreadCrumb));
+export default withRouter(connect(mapStateToProps)(injectIntl(BreadCrumb)));
