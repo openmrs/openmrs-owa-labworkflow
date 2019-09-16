@@ -13,8 +13,8 @@
     "app.labOrdersList.NAME": "NOM",
     "app.labOrdersList.ORDER_ID": "ID de commande",
     "app.labOrdersList.COLLECTION_DATE": "Collecté",
+    "app.labOrdersList.ACTIONS": "ACTIONS",
     "app.labOrdersList.STATUS": "STATUT",
-    "app.labOrdersList.ACTIONS": "ACTES",
     "app.labOrdersList.URGENCY": "URGENCE",
     "app.labOrdersList.TEST_TYPE": "TYPE DE TEST",
     "app.labOrdersList.ORDER_DATE": "Commandé",
@@ -52,7 +52,7 @@
     "app.labTrendsPage.RESULT": "RÉSULTAT",
     "app.labTrendsPage.NORMAL_RANGE": "PLAGE NORMALE",
     "app.labResult.status.ordered": "Ordonné",
-    "app.labResult.status.taken": "Pris",
+    "app.labResult.status.taken": "COLLECTE",
     "app.labResult.status.reported": "Rapporter",
     "app.labResult.status.canceled": "Annulé",
     "app.labResult.status.expired": "Expiré"
