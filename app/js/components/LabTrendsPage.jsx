@@ -17,7 +17,7 @@ import {
   SortableTable,
   LineChart,
 } from '@openmrs/react-components';
-import { FormattedMessage } from 'react-intl';
+import { injectIntl, FormattedMessage } from 'react-intl';
 
 import ConceptDisplay from "./ConceptDisplay";
 import { fetchLabTestResults } from '../actions/labOrdersAction';
@@ -80,6 +80,7 @@ export class LabTrendsPage extends PureComponent {
     const {
       labTestResults: { results },
       history,
+      intl,
     } = this.props;
     const { location: { state } } = history;
     const { defaultPageSize } = this.state;
@@ -88,6 +89,9 @@ export class LabTrendsPage extends PureComponent {
     if (!state) {
       return <Redirect to="/labresults" />;
     }
+
+    const noDataMessage = intl.formatMessage({ id: "app.orders.not.found", defaultMessage: "No orders found" });
+    const rowsMessage = intl.formatMessage({ id: "reactcomponents.table.rows", defaultMessage: "Rows" });
 
     const isNumeric = state.datatype.display === "Numeric";
 
@@ -149,7 +153,8 @@ export class LabTrendsPage extends PureComponent {
               columnMetadata={columnMetadata}
               filteredFields={fields}
               isSortable={false}
-              noDataMessage="No orders found"
+              noDataMessage={ noDataMessage }
+              rowsText={ rowsMessage }
               minRows={0}
               defaultPageSize={defaultPageSize}
             />
@@ -193,4 +198,4 @@ const mapStateToProps = ({
   patient: patients[selectedPatient],
 });
 
-export default connect(mapStateToProps)(LabTrendsPage);
+export default connect(mapStateToProps)(injectIntl(LabTrendsPage));

@@ -273,6 +273,7 @@ export class LabOrdersList extends PureComponent {
     const fields = ["EMR ID", "NAME", "ORDER ID", "ORDER DATE", "COLLECTION DATE", "STATUS", "URGENCY", "TEST TYPE", "ACTIONS"];
 
     const noDataMessage = intl.formatMessage({ id: "app.orders.not.found", defaultMessage: "No orders found" });
+    const rowsMessage = intl.formatMessage({ id: "reactcomponents.table.rows", defaultMessage: "Rows" });
 
     const columnMetadata = fields.map(columnName => ({
       Header:
@@ -304,6 +305,7 @@ export class LabOrdersList extends PureComponent {
           onPageSizeChange={pageSize => this.handleFilterChange('pageSize', pageSize)}
           rowOnClick={this.handleShowResultsEntryPage}
           noDataMessage={ noDataMessage }
+          rowsText={ rowsMessage }
           minRows={0}
           page={labOrdersListFilters.page}
           defaultPageSize={labOrdersListFilters.pageSize || calculateTableRows(orders.length)}

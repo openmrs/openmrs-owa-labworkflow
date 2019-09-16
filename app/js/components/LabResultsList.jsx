@@ -188,6 +188,7 @@ export class LabResultsList extends PureComponent {
 
     const sortedListData = sortByDate('obsDatetime')(labResults).reverse();
     const noDataMessage = intl.formatMessage({ id: "app.results.not.found", defaultMessage: "No results found" });
+    const rowsMessage = intl.formatMessage({ id: "reactcomponents.table.rows", defaultMessage: "Rows" });
 
     return (
       <div className="lab-results-list">
@@ -205,6 +206,7 @@ export class LabResultsList extends PureComponent {
           onPageChange={page => this.handleFilterChange('page', page)}
           page={labResultListFilters.page}
           noDataMessage={ noDataMessage }
+          rowsText={ rowsMessage }
           defaultPageSize={labResultListFilters.pageSize || calculateTableRows(labResults.length)}
           subComponent={(row) => {
             const isPanel = isLabSet(row.original);
