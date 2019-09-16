@@ -85,7 +85,6 @@ export class LabTrendsPage extends PureComponent {
     const { defaultPageSize } = this.state;
     const fields = ["SAMPLE DATE", "RESULT", "NORMAL RANGE"];
 
-
     if (!state) {
       return <Redirect to="/labresults" />;
     }
@@ -138,7 +137,11 @@ export class LabTrendsPage extends PureComponent {
 
     return (
       <div>
-        <h1>{`${state.display} Trend`}</h1>
+        <h1>{`${state.display} `}
+          <FormattedMessage
+            id="app.lab.results.trend"
+            defaultMessage="Trend" />
+        </h1>
         <div className="lab-trends-widgets">
           <div className={resultTableClassName}>
             <SortableTable

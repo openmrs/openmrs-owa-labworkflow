@@ -216,7 +216,16 @@ exports[`Component: LabTrendsPage renders properly 1`] = `
         >
           <div>
             <h1>
-              Hematocrit Trend
+              Hematocrit 
+              <FormattedMessage
+                defaultMessage="Trend"
+                id="app.lab.results.trend"
+                values={Object {}}
+              >
+                <span>
+                  Trend
+                </span>
+              </FormattedMessage>
             </h1>
             <div
               className="lab-trends-widgets"

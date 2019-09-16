@@ -12,7 +12,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import { Link, withRouter } from 'react-router-dom';
-import { injectIntl, FormattedMessage } from 'react-intl';
+import { injectIntl } from 'react-intl';
 
 import './breadCrumb.css';
 
@@ -26,9 +26,9 @@ class BreadCrumb extends Component {
     };
   }
 
-  componentWillMount() {
+  componentDidMount() {
     const { history } = this.props;
-    history.listen((location) => {
+    this.unlisten = history.listen((location) => {
       const currentTab = location.pathname.toLowerCase();
       this.setState({
         currentTab,
@@ -36,11 +36,16 @@ class BreadCrumb extends Component {
     });
   }
 
+  componentWillUnmount(){
+    this.unlisten();
+  }
 
   render() {
     const { intl } = this.props;
     const labsMsg = intl.formatMessage({ id: "app.breadCrumb.homePageBreadcrumb.title", defaultMessage: "Labs" });
     const labResultMsg = intl.formatMessage({ id: "app.lab.result", defaultMessage: "Lab Result" });
+    const trendMsg = intl.formatMessage({ id: "app.lab.results.trend", defaultMessage: "Trend" });
+
     const {
       currentTab,
     } = this.state;
@@ -139,7 +144,7 @@ class BreadCrumb extends Component {
                 className="glyphicon glyphicon-chevron-right breadcrumb-item separator"
                 aria-hidden="true" />
               <span className="title breadcrumb-item">
-                {`${trendDisplay} Trend`}
+                {`${trendDisplay} ${trendMsg}`}
               </span>
             </Link>
           </span>

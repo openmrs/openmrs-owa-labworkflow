@@ -8,6 +8,7 @@
     "app.orders.not.found": "Aucune commande trouvée",
     "app.results.not.found": "Aucun résultat trouvé",
     "app.lab.result": "Résultat de laboratoire",
+    "app.lab.results.trend": "Tendance",
     "app.labOrdersList.EMR_ID": "EMR ID",
     "app.labOrdersList.NAME": "NOM",
     "app.labOrdersList.ORDER_ID": "ID de commande",

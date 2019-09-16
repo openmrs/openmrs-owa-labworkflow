@@ -8,6 +8,7 @@
     "app.orders.not.found": "Pa gen lòd jwenn",
     "app.results.not.found": "Pa gen rezilta yo te jwenn",
     "app.lab.result": "Rezilta laboratwa",
+    "app.lab.results.trend": "Tandans",
     "app.labOrdersList.EMR_ID": "EMR ID",
     "app.labOrdersList.NAME": "NOM",
     "app.labOrdersList.ORDER_ID": "ID de commande",
