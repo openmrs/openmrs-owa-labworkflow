@@ -20,7 +20,8 @@ import LabOrderListFilters from './LabOrdersListFilters';
 import EncounterDisplay from './EncounterDisplay';
 import { fetchLabOrders, cancelOrder } from '../actions/labOrdersAction';
 import { setSelectedConcept } from '../actions/labConceptsAction';
-import { filterThrough, calculateTableRows } from '../utils/helpers';
+import { filterThrough, calculateTableRows, getConceptShortName } from '../utils/helpers';
+import translate from '../utils/translate';
 import { loadGlobalProperties, selectProperty } from '../utils/globalProperty';
 import filtersAction from '../actions/filtersAction';
 import patientAction from '../actions/patientAction';
@@ -28,6 +29,7 @@ import "../../css/lab-orders-list.scss";
 
 
 export const Cell = ({ columnName, value, handleCancel }) => {
+  const orderedMsg = translate.getMessage("app.labResult.status.ordered", "Ordered");
   switch (columnName) {
     case 'EMR ID': {
       // TODO: refactor this and name column to use React Components patientUtils
@@ -93,11 +95,11 @@ export const Cell = ({ columnName, value, handleCancel }) => {
     case 'TEST TYPE':
       return (
         <div className="table_cell test-type">
-          <span>{value.concept.display}</span>
+          <span>{getConceptShortName(value.concept)}</span>
         </div>
       );
     case 'ACTIONS':
-      if (value.labResult && (value.labResult.resultStatus === "Ordered")) {
+      if (value.labResult && (value.labResult.resultStatus === orderedMsg)) {
         return (
           <div className="discontinue-actn-btn">
             <span

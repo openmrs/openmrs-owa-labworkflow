@@ -1228,9 +1228,7 @@ exports[`LabOrdersListContainer container <Cell /> component returns TEST TYPE c
   <div
     className="table_cell test-type"
   >
-    <span>
-      Hémogramme automatisé
-    </span>
+    <span />
   </div>
 </_Cell>
 `;

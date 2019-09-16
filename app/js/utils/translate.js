@@ -4,8 +4,12 @@ import exportStore from '../export-store';
 
 const translate = {
 
+  getLocale() {
+    return R.path(['openmrs', 'session', 'locale'], exportStore.getState());
+  },
+
   getMessage(msgId, msgDefault) {
-    const locale = R.path(['openmrs', 'session', 'locale'], exportStore.getState());
+    const locale = translate.getLocale();
     const translatedMsg = getIntl(locale).formatMessage({
       id: msgId,
       defaultMessage: msgDefault,

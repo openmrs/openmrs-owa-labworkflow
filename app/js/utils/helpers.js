@@ -121,4 +121,34 @@ export const getResultValue = (data) => {
   return resultValue;
 };
 
+export const getConceptShortName = (concept) => {
+  let conceptName;
+  let locale = translate.getLocale();
+
+  if(concept) {
+    if (concept.names && concept.names.length > 0){
+      let foundConcept;
+      // first try to find the SHORT name in the context of the session locale
+      foundConcept = concept.names.find(function(name){
+        return (name.locale === locale && !name.voided && name.conceptNameType === 'SHORT');
+      });
+
+      if(typeof foundConcept === 'undefined' || foundConcept == null) {
+       // second attempt to find any SHORT name
+        foundConcept = concept.names.find(function(name){
+          return (!name.voided && name.conceptNameType === 'SHORT');
+        });
+
+      }
+      if(typeof foundConcept === 'undefined' || foundConcept == null) {
+        // could not find any SHORT names
+        conceptName = concept.display;
+      } else {
+        conceptName = foundConcept.name;
+      }
+    }
+  }
+  return conceptName;
+};
+
 export const calculateTableRows = (noOfRows) => ((parseInt(noOfRows) < 10) ? parseInt(noOfRows): 10)
