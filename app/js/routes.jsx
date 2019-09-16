@@ -35,6 +35,7 @@ initializeLocalization({
 const LocalizedHead = withLocalization(Head);
 const LocalizedHeader = withLocalization(Header);
 const LocalizedBreadCrumb = withLocalization(BreadCrumb);
+const LocalizedPatientHeader = withLocalization(Patientheader);
 
 // eslint-disable-next-line
 export default store => (
@@ -44,7 +45,7 @@ export default store => (
     <LocalizedHeader />
     <SystemAlert />
     <LocalizedBreadCrumb />
-    <Patientheader />
+    <LocalizedPatientHeader />
     <Switch>
       <Route exact path="/" component={withLocalization(LabOrdersList)} />
       <Route path="/LabResultEntry" component={withLocalization(LabResultEntry)} />
