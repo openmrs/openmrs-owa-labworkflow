@@ -621,7 +621,7 @@ exports[`<LabResultEntry /> component renders correctly with valid props 1`] = `
                                     className="encounter-date-field"
                                   >
                                     <WithFormContext(Connect(EncounterDate))
-                                      defaultDate={2019-09-16T04:00:00.000Z}
+                                      defaultDate={2019-09-17T04:00:00.000Z}
                                       field="specimen"
                                       handleDateChange={[Function]}
                                       id="specimen-collection-date"
@@ -650,9 +650,7 @@ exports[`<LabResultEntry /> component renders correctly with valid props 1`] = `
                                   >
                                     <span
                                       className="member-display-label"
-                                    >
-                                      Height
-                                    </span>
+                                    />
                                     <span
                                       className="obs-component"
                                     >
@@ -694,9 +692,7 @@ exports[`<LabResultEntry /> component renders correctly with valid props 1`] = `
                                   >
                                     <span
                                       className="member-display-label"
-                                    >
-                                      Weight
-                                    </span>
+                                    />
                                     <span
                                       className="obs-component"
                                     >
@@ -947,7 +943,7 @@ exports[`<LabResultEntry /> component renders correctly with valid props 1`] = `
                                       className="encounter-date-field"
                                     >
                                       <WithFormContext(Connect(EncounterDate))
-                                        defaultDate={2019-09-16T04:00:00.000Z}
+                                        defaultDate={2019-09-17T04:00:00.000Z}
                                         field="specimen"
                                         handleDateChange={[Function]}
                                         id="specimen-collection-date"
@@ -976,9 +972,7 @@ exports[`<LabResultEntry /> component renders correctly with valid props 1`] = `
                                     >
                                       <span
                                         className="member-display-label"
-                                      >
-                                        Height
-                                      </span>
+                                      />
                                       <span
                                         className="obs-component"
                                       >
@@ -1020,9 +1014,7 @@ exports[`<LabResultEntry /> component renders correctly with valid props 1`] = `
                                     >
                                       <span
                                         className="member-display-label"
-                                      >
-                                        Weight
-                                      </span>
+                                      />
                                       <span
                                         className="obs-component"
                                       >

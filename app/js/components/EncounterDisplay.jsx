@@ -34,7 +34,7 @@ class EncounterDisplay extends PureComponent {
         if (!statusesWithoutEncounter.includes(labResult.resultStatus)) {
           return (
             <div className="table_cell test-type">
-              {moment(labResult.encounter.encounterDatetime).format("DD-MMM-YYYY")}
+              { R.path(['encounter', 'encounterDatetime'], labResult) ? moment(labResult.encounter.encounterDatetime).format("DD-MMM-YYYY") : ""}
             </div>
           );
         }

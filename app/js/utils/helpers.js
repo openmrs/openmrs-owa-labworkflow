@@ -128,20 +128,19 @@ export const getConceptShortName = (concept) => {
   if(concept) {
     if (concept.names && concept.names.length > 0){
       let foundConcept;
-      // first try to find the SHORT name in the context of the session locale
+      // first, try to find the SHORT name in the current locale
       foundConcept = concept.names.find(function(name){
-        return (name.locale === locale && !name.voided && name.conceptNameType === 'SHORT');
+        return (!name.voided && name.conceptNameType === 'SHORT' && name.locale === locale);
       });
 
       if(typeof foundConcept === 'undefined' || foundConcept == null) {
-       // second attempt to find any SHORT name
+        // attempt to find the preferred name in the locale
         foundConcept = concept.names.find(function(name){
-          return (!name.voided && name.conceptNameType === 'SHORT');
+          return (!name.voided && name.locale === locale && name.localePreferred);
         });
-
       }
       if(typeof foundConcept === 'undefined' || foundConcept == null) {
-        // could not find any SHORT names
+        // could not find any locale preferred name
         conceptName = concept.display;
       } else {
         conceptName = foundConcept.name;
