@@ -179,11 +179,15 @@ export class LabOrdersList extends PureComponent {
     const {
       currentProvider,
       dispatch,
+      intl,
     } = this.props;
-    const cancelConfirmation = await swal("Are you sure you would like to cancel this order ?", {
+    const cancelMsg = translate.getMessage("app.lab.discontinue.question", "Are you sure you would like to cancel this order ?");
+    const yesMsg = intl.formatMessage({ id: "reactcomponents.yes", defaultMessage: "YES" });
+    const noMsg = intl.formatMessage({ id: "reactcomponents.no", defaultMessage: "NO" });
+    const cancelConfirmation = await swal(cancelMsg, {
       buttons: {
-        YES: "YES",
-        NO: 'NO',
+        YES: yesMsg,
+        NO: noMsg,
       },
     });
     if (cancelConfirmation === "YES") {
@@ -195,7 +199,7 @@ export class LabOrdersList extends PureComponent {
         action: "DISCONTINUE",
         orderer: currentProvider.uuid,
         previousOrder: order.uuid,
-        type: order.type,
+        type: "testorder",
         urgency: order.urgency,
       };
 

@@ -55,5 +55,10 @@
     "app.labResult.status.taken": "Collected",
     "app.labResult.status.reported": "Reported",
     "app.labResult.status.canceled": "Canceled",
-    "app.labResult.status.expired": "Expired"
+    "app.labResult.status.expired": "Expired",
+    "app.lab.discontinue":"DISCONTINUE",
+    "app.lab.discontinue.question":"Are you sure you want to discontinue this order ?",
+    "app.lab.discontinue.reason":"Reason for discontinuing",
+    "app.lab.create.success":"Order Successfully Created",
+    "app.lab.is.active":"order is active"
 }

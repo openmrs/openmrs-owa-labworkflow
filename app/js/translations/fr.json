@@ -55,5 +55,10 @@
     "app.labResult.status.taken": "COLLECTE",
     "app.labResult.status.reported": "Rapporter",
     "app.labResult.status.canceled": "Annulé",
-    "app.labResult.status.expired": "Expiré"
+    "app.labResult.status.expired": "Expiré",
+    "app.lab.discontinue":"CESSER",
+    "app.lab.discontinue.question":"Êtes-vous sûr de vouloir interrompre cette commande?",
+    "app.lab.discontinue.reason":"Raison de l'abandon",
+    "app.lab.create.success":"Commande créée avec succès",
+    "app.lab.is.active":"l'ordre est actif"
 }
