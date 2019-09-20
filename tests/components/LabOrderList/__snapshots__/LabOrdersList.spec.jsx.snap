@@ -985,33 +985,10 @@ exports[`<LabOrdersList /> component renders correctly 1`] = `
 `;
 
 exports[`LabOrdersListContainer container <Cell /> component returns EMR ID section 1`] = `
-<_Cell
+<UNDEFINED
+  cancelMsg="Cancel"
   columnName="EMR ID"
-  intl={
-    Object {
-      "defaultFormats": Object {},
-      "defaultLocale": "en",
-      "formatDate": [Function],
-      "formatHTMLMessage": [Function],
-      "formatMessage": [Function],
-      "formatNumber": [Function],
-      "formatPlural": [Function],
-      "formatRelative": [Function],
-      "formatTime": [Function],
-      "formats": Object {},
-      "formatters": Object {
-        "getDateTimeFormat": [Function],
-        "getMessageFormat": [Function],
-        "getNumberFormat": [Function],
-        "getPluralFormat": [Function],
-        "getRelativeFormat": [Function],
-      },
-      "locale": "en",
-      "messages": Object {},
-      "now": [Function],
-      "textComponent": "span",
-    }
-  }
+  orderedMsg="Ordered"
   value={
     Object {
       "patient": Object {
@@ -1019,45 +996,14 @@ exports[`LabOrdersListContainer container <Cell /> component returns EMR ID sect
       },
     }
   }
->
-  <div
-    className="table_cell emr-id"
-  >
-    <span>
-      Y2A7LR
-    </span>
-  </div>
-</_Cell>
+/>
 `;
 
 exports[`LabOrdersListContainer container <Cell /> component returns NAME column 1`] = `
-<_Cell
+<UNDEFINED
+  cancelMsg="Cancel"
   columnName="NAME"
-  intl={
-    Object {
-      "defaultFormats": Object {},
-      "defaultLocale": "en",
-      "formatDate": [Function],
-      "formatHTMLMessage": [Function],
-      "formatMessage": [Function],
-      "formatNumber": [Function],
-      "formatPlural": [Function],
-      "formatRelative": [Function],
-      "formatTime": [Function],
-      "formats": Object {},
-      "formatters": Object {
-        "getDateTimeFormat": [Function],
-        "getMessageFormat": [Function],
-        "getNumberFormat": [Function],
-        "getPluralFormat": [Function],
-        "getRelativeFormat": [Function],
-      },
-      "locale": "en",
-      "messages": Object {},
-      "now": [Function],
-      "textComponent": "span",
-    }
-  }
+  orderedMsg="Ordered"
   value={
     Object {
       "patient": Object {
@@ -1065,46 +1011,15 @@ exports[`LabOrdersListContainer container <Cell /> component returns NAME column
       },
     }
   }
->
-  <div
-    className="table_cell name"
-  >
-    <span>
-      williams willy john
-    </span>
-  </div>
-</_Cell>
+/>
 `;
 
 exports[`LabOrdersListContainer container <Cell /> component returns ORDER DATE column 1`] = `
-<_Cell
+<UNDEFINED
+  cancelMsg="Cancel"
   columnName="ORDER DATE"
   dateAndTimeFormat="DD-MMM-YYYY HH:mm"
-  intl={
-    Object {
-      "defaultFormats": Object {},
-      "defaultLocale": "en",
-      "formatDate": [Function],
-      "formatHTMLMessage": [Function],
-      "formatMessage": [Function],
-      "formatNumber": [Function],
-      "formatPlural": [Function],
-      "formatRelative": [Function],
-      "formatTime": [Function],
-      "formats": Object {},
-      "formatters": Object {
-        "getDateTimeFormat": [Function],
-        "getMessageFormat": [Function],
-        "getNumberFormat": [Function],
-        "getPluralFormat": [Function],
-        "getRelativeFormat": [Function],
-      },
-      "locale": "en",
-      "messages": Object {},
-      "now": [Function],
-      "textComponent": "span",
-    }
-  }
+  orderedMsg="Ordered"
   value={
     Object {
       "concept": Object {
@@ -1118,46 +1033,15 @@ exports[`LabOrdersListContainer container <Cell /> component returns ORDER DATE 
       "urgency": "ROUTINE",
     }
   }
->
-  <div
-    className="table_cell order-date"
-  >
-    <span>
-      30-Aug-2018
-    </span>
-  </div>
-</_Cell>
+/>
 `;
 
 exports[`LabOrdersListContainer container <Cell /> component returns ORDER ID column 1`] = `
-<_Cell
+<UNDEFINED
+  cancelMsg="Cancel"
   columnName="ORDER ID"
   dateAndTimeFormat="DD-MMM-YYYY HH:mm"
-  intl={
-    Object {
-      "defaultFormats": Object {},
-      "defaultLocale": "en",
-      "formatDate": [Function],
-      "formatHTMLMessage": [Function],
-      "formatMessage": [Function],
-      "formatNumber": [Function],
-      "formatPlural": [Function],
-      "formatRelative": [Function],
-      "formatTime": [Function],
-      "formats": Object {},
-      "formatters": Object {
-        "getDateTimeFormat": [Function],
-        "getMessageFormat": [Function],
-        "getNumberFormat": [Function],
-        "getPluralFormat": [Function],
-        "getRelativeFormat": [Function],
-      },
-      "locale": "en",
-      "messages": Object {},
-      "now": [Function],
-      "textComponent": "span",
-    }
-  }
+  orderedMsg="Ordered"
   value={
     Object {
       "concept": Object {
@@ -1171,46 +1055,15 @@ exports[`LabOrdersListContainer container <Cell /> component returns ORDER ID co
       "urgency": "ROUTINE",
     }
   }
->
-  <div
-    className="table_cell order-id"
-  >
-    <span>
-      ORD-1
-    </span>
-  </div>
-</_Cell>
+/>
 `;
 
 exports[`LabOrdersListContainer container <Cell /> component returns TEST TYPE column 1`] = `
-<_Cell
+<UNDEFINED
+  cancelMsg="Cancel"
   columnName="TEST TYPE"
   dateAndTimeFormat="DD-MMM-YYYY HH:mm"
-  intl={
-    Object {
-      "defaultFormats": Object {},
-      "defaultLocale": "en",
-      "formatDate": [Function],
-      "formatHTMLMessage": [Function],
-      "formatMessage": [Function],
-      "formatNumber": [Function],
-      "formatPlural": [Function],
-      "formatRelative": [Function],
-      "formatTime": [Function],
-      "formats": Object {},
-      "formatters": Object {
-        "getDateTimeFormat": [Function],
-        "getMessageFormat": [Function],
-        "getNumberFormat": [Function],
-        "getPluralFormat": [Function],
-        "getRelativeFormat": [Function],
-      },
-      "locale": "en",
-      "messages": Object {},
-      "now": [Function],
-      "textComponent": "span",
-    }
-  }
+  orderedMsg="Ordered"
   value={
     Object {
       "concept": Object {
@@ -1224,44 +1077,15 @@ exports[`LabOrdersListContainer container <Cell /> component returns TEST TYPE c
       "urgency": "ROUTINE",
     }
   }
->
-  <div
-    className="table_cell test-type"
-  >
-    <span />
-  </div>
-</_Cell>
+/>
 `;
 
 exports[`LabOrdersListContainer container <Cell /> component returns null when no column name is matched 1`] = `
-<_Cell
+<UNDEFINED
+  cancelMsg="Cancel"
   columnName="SOME RIDICULOUS COLUMN"
   dateAndTimeFormat="DD-MMM-YYYY HH:mm"
-  intl={
-    Object {
-      "defaultFormats": Object {},
-      "defaultLocale": "en",
-      "formatDate": [Function],
-      "formatHTMLMessage": [Function],
-      "formatMessage": [Function],
-      "formatNumber": [Function],
-      "formatPlural": [Function],
-      "formatRelative": [Function],
-      "formatTime": [Function],
-      "formats": Object {},
-      "formatters": Object {
-        "getDateTimeFormat": [Function],
-        "getMessageFormat": [Function],
-        "getNumberFormat": [Function],
-        "getPluralFormat": [Function],
-        "getRelativeFormat": [Function],
-      },
-      "locale": "en",
-      "messages": Object {},
-      "now": [Function],
-      "textComponent": "span",
-    }
-  }
+  orderedMsg="Ordered"
   value={
     Object {
       "concept": Object {

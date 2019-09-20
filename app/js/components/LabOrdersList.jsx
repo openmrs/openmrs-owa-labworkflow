@@ -21,16 +21,13 @@ import EncounterDisplay from './EncounterDisplay';
 import { fetchLabOrders, cancelOrder } from '../actions/labOrdersAction';
 import { setSelectedConcept } from '../actions/labConceptsAction';
 import { filterThrough, calculateTableRows, getConceptShortName } from '../utils/helpers';
-import translate from '../utils/translate';
 import { loadGlobalProperties, selectProperty } from '../utils/globalProperty';
 import filtersAction from '../actions/filtersAction';
 import patientAction from '../actions/patientAction';
 import "../../css/lab-orders-list.scss";
 
 
-export const Cell = ({ columnName, value, handleCancel }) => {
-  const orderedMsg = translate.getMessage("app.labResult.status.ordered", "Ordered");
-  const cancelMsg = translate.getMessage("reactcomponents.cancel", "Cancel");
+const Cell = ({ columnName, value, handleCancel, orderedMsg, cancelMsg }) => {
   switch (columnName) {
     case 'EMR ID': {
       // TODO: refactor this and name column to use React Components patientUtils
@@ -182,7 +179,7 @@ export class LabOrdersList extends PureComponent {
       dispatch,
       intl,
     } = this.props;
-    const cancelMsg = translate.getMessage("app.lab.discontinue.question", "Are you sure you would like to cancel this order ?");
+    const cancelMsg = intl.formatMessage({ id: "app.lab.discontinue.question", defaultMessage: "Are you sure you would like to cancel this order ?" });
     const yesMsg = intl.formatMessage({ id: "reactcomponents.yes", defaultMessage: "YES" });
     const noMsg = intl.formatMessage({ id: "reactcomponents.no", defaultMessage: "NO" });
     const cancelConfirmation = await swal(cancelMsg, {
@@ -281,6 +278,8 @@ export class LabOrdersList extends PureComponent {
 
     const noDataMessage = intl.formatMessage({ id: "app.orders.not.found", defaultMessage: "No orders found" });
     const rowsMessage = intl.formatMessage({ id: "reactcomponents.table.rows", defaultMessage: "Rows" });
+    const orderedMsg = intl.formatMessage({ id: "app.labResult.status.ordered", defaultMessage: "Ordered" });
+    const cancelMsg = intl.formatMessage({ id: "reactcomponents.cancel", defaultMessage: "Cancel" });
 
     const columnMetadata = fields.map(columnName => ({
       Header:
@@ -292,7 +291,7 @@ export class LabOrdersList extends PureComponent {
   </span>,
       accessor: "",
       filterAll: true,
-      Cell: data => <Cell {...data} columnName={columnName} handleCancel={this.handleCancel} />,
+      Cell: data => <Cell {...data} columnName={columnName} handleCancel={this.handleCancel} orderedMsg={orderedMsg} cancelMsg={cancelMsg}/>,
       className: `lab-order-list-cell-${columnName.replace(' ', '-').toLocaleLowerCase()}`,
       headerClassName: `lab-order-list-column-header lab-order-list-header-${columnName.replace(' ', '-').toLocaleLowerCase()}`,
     }));

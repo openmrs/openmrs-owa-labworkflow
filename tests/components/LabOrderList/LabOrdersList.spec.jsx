@@ -78,8 +78,10 @@ describe('LabOrdersListContainer container', () => {
             display: "Y2A7LR - williams willy john",
           },
         },
+        orderedMsg: 'Ordered',
+        cancelMsg: 'Cancel',
       };
-      const component = mountWithIntl(<Cell {...values} />);
+      const component = <Cell {...values} />;
       expect(component).toMatchSnapshot();
     });
     it('returns NAME column', () => {
@@ -90,8 +92,10 @@ describe('LabOrdersListContainer container', () => {
             display: "Y2A7LR - williams willy john",
           },
         },
+        orderedMsg: 'Ordered',
+        cancelMsg: 'Cancel',
       };
-      const component = mountWithIntl(<Cell {...values} />);
+      const component = <Cell {...values} />;
       expect(component).toMatchSnapshot();
     });
     it('returns ORDER ID column', () => {
@@ -109,8 +113,10 @@ describe('LabOrdersListContainer container', () => {
           },
         },
         dateAndTimeFormat: "DD-MMM-YYYY HH:mm",
+        orderedMsg: 'Ordered',
+        cancelMsg: 'Cancel',
       };
-      const component = mountWithIntl(<Cell {...values} />);
+      const component = <Cell {...values} />;
       expect(component).toMatchSnapshot();
     });
     it('returns ORDER DATE column', () => {
@@ -128,8 +134,10 @@ describe('LabOrdersListContainer container', () => {
           },
         },
         dateAndTimeFormat: "DD-MMM-YYYY HH:mm",
+        orderedMsg: 'Ordered',
+        cancelMsg: 'Cancel',
       };
-      const component = mountWithIntl(<Cell {...values} />);
+      const component = <Cell {...values} />;
       expect(component).toMatchSnapshot();
     });
     // it('returns COLLECTION DATE column', () => {
@@ -198,8 +206,10 @@ describe('LabOrdersListContainer container', () => {
           },
         },
         dateAndTimeFormat: "DD-MMM-YYYY HH:mm",
+        orderedMsg: 'Ordered',
+        cancelMsg: 'Cancel',
       };
-      const component = mountWithIntl(<Cell {...values} />);
+      const component = <Cell {...values} />;
       expect(component).toMatchSnapshot();
     });
     it('returns null when no column name is matched', () => {
@@ -217,8 +227,10 @@ describe('LabOrdersListContainer container', () => {
           },
         },
         dateAndTimeFormat: "DD-MMM-YYYY HH:mm",
+        orderedMsg: 'Ordered',
+        cancelMsg: 'Cancel',
       };
-      const component = mountWithIntl(<Cell {...values} />);
+      const component = <Cell {...values} />;
       expect(component).toMatchSnapshot();
     });
   });
