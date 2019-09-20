@@ -30,6 +30,7 @@ import "../../css/lab-orders-list.scss";
 
 export const Cell = ({ columnName, value, handleCancel }) => {
   const orderedMsg = translate.getMessage("app.labResult.status.ordered", "Ordered");
+  const cancelMsg = translate.getMessage("reactcomponents.cancel", "Cancel");
   switch (columnName) {
     case 'EMR ID': {
       // TODO: refactor this and name column to use React Components patientUtils
@@ -104,7 +105,7 @@ export const Cell = ({ columnName, value, handleCancel }) => {
           <div className="discontinue-actn-btn">
             <span
               className="glyphicon glyphicon-remove tooltips"
-              data-tooltip="Cancel"
+              data-tooltip={ cancelMsg }
               aria-hidden="true"
               onClick={(e) => {
                 e.preventDefault();
