@@ -68,8 +68,8 @@ class LabOrderListFilters extends PureComponent {
 
     const statusOptions = [
       intl.formatMessage({ id: "app.labResult.status.ordered", defaultMessage: "Ordered" }),
+      intl.formatMessage({ id: "app.labResult.status.taken", defaultMessage: "Collected" }),
       intl.formatMessage({ id: "app.labResult.status.reported", defaultMessage: "Reported" }),
-      intl.formatMessage({ id: "app.labResult.status.taken", defaultMessage: "Taken" }),
       intl.formatMessage({ id: "app.labResult.status.canceled", defaultMessage: "Canceled" }) + "/"
       + intl.formatMessage({ id: "app.labResult.status.expired", defaultMessage: "Expired" })
     ];
