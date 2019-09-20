@@ -20,14 +20,14 @@ import LabOrderListFilters from './LabOrdersListFilters';
 import EncounterDisplay from './EncounterDisplay';
 import { fetchLabOrders, cancelOrder } from '../actions/labOrdersAction';
 import { setSelectedConcept } from '../actions/labConceptsAction';
-import { filterThrough, calculateTableRows } from '../utils/helpers';
+import { filterThrough, calculateTableRows, getConceptShortName } from '../utils/helpers';
 import { loadGlobalProperties, selectProperty } from '../utils/globalProperty';
 import filtersAction from '../actions/filtersAction';
 import patientAction from '../actions/patientAction';
 import "../../css/lab-orders-list.scss";
 
 
-export const Cell = ({ columnName, value, handleCancel }) => {
+const Cell = ({ columnName, value, handleCancel, orderedMsg, cancelMsg }) => {
   switch (columnName) {
     case 'EMR ID': {
       // TODO: refactor this and name column to use React Components patientUtils
@@ -93,16 +93,16 @@ export const Cell = ({ columnName, value, handleCancel }) => {
     case 'TEST TYPE':
       return (
         <div className="table_cell test-type">
-          <span>{value.concept.display}</span>
+          <span>{getConceptShortName(value.concept)}</span>
         </div>
       );
     case 'ACTIONS':
-      if (value.labResult && (value.labResult.resultStatus === "Ordered")) {
+      if (value.labResult && (value.labResult.resultStatus === orderedMsg)) {
         return (
           <div className="discontinue-actn-btn">
             <span
               className="glyphicon glyphicon-remove tooltips"
-              data-tooltip="Cancel"
+              data-tooltip={ cancelMsg }
               aria-hidden="true"
               onClick={(e) => {
                 e.preventDefault();
@@ -177,11 +177,15 @@ export class LabOrdersList extends PureComponent {
     const {
       currentProvider,
       dispatch,
+      intl,
     } = this.props;
-    const cancelConfirmation = await swal("Are you sure you would like to cancel this order ?", {
+    const cancelMsg = intl.formatMessage({ id: "app.lab.discontinue.question", defaultMessage: "Are you sure you would like to cancel this order ?" });
+    const yesMsg = intl.formatMessage({ id: "reactcomponents.yes", defaultMessage: "YES" });
+    const noMsg = intl.formatMessage({ id: "reactcomponents.no", defaultMessage: "NO" });
+    const cancelConfirmation = await swal(cancelMsg, {
       buttons: {
-        YES: "YES",
-        NO: 'NO',
+        YES: yesMsg,
+        NO: noMsg,
       },
     });
     if (cancelConfirmation === "YES") {
@@ -193,7 +197,7 @@ export class LabOrdersList extends PureComponent {
         action: "DISCONTINUE",
         orderer: currentProvider.uuid,
         previousOrder: order.uuid,
-        type: order.type,
+        type: "testorder",
         urgency: order.urgency,
       };
 
@@ -274,6 +278,8 @@ export class LabOrdersList extends PureComponent {
 
     const noDataMessage = intl.formatMessage({ id: "app.orders.not.found", defaultMessage: "No orders found" });
     const rowsMessage = intl.formatMessage({ id: "reactcomponents.table.rows", defaultMessage: "Rows" });
+    const orderedMsg = intl.formatMessage({ id: "app.labResult.status.ordered", defaultMessage: "Ordered" });
+    const cancelMsg = intl.formatMessage({ id: "reactcomponents.cancel", defaultMessage: "Cancel" });
 
     const columnMetadata = fields.map(columnName => ({
       Header:
@@ -285,7 +291,7 @@ export class LabOrdersList extends PureComponent {
   </span>,
       accessor: "",
       filterAll: true,
-      Cell: data => <Cell {...data} columnName={columnName} handleCancel={this.handleCancel} />,
+      Cell: data => <Cell {...data} columnName={columnName} handleCancel={this.handleCancel} orderedMsg={orderedMsg} cancelMsg={cancelMsg}/>,
       className: `lab-order-list-cell-${columnName.replace(' ', '-').toLocaleLowerCase()}`,
       headerClassName: `lab-order-list-column-header lab-order-list-header-${columnName.replace(' ', '-').toLocaleLowerCase()}`,
     }));

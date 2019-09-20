@@ -194,6 +194,10 @@ i.scale:hover {
 }
 .tooltips:after {
   position: absolute;
+  z-index: 2;
+  top: -5px;
+  right: 105%;
+  text-align: center;
   padding: 3px;
   color: white;
   background: rgba(0, 0, 0, 0.75);
@@ -202,7 +206,6 @@ i.scale:hover {
   content: attr(data-tooltip);
   transition: all .2s ease-in-out .25s;
   visibility: hidden;
-  z-index: 2;
   font-size: 12px;
   font-weight: 800;
   border-radius: 3px;

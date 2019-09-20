@@ -36,7 +36,7 @@ import { clearFormValues, reloadForm } from '../actions/formActions';
 import constantsActions from '../actions/constantsAction';
 import { updateLabOrderWithEncounter, saveFulfillerStatus } from '../actions/labOrdersAction';
 import '../../css/lab-result-entry.scss';
-import { formatRangeDisplayText, hasMaxAndMinValues } from '../utils/helpers';
+import { formatRangeDisplayText, hasMaxAndMinValues, getConceptShortName } from '../utils/helpers';
 import { selectProperty } from '../utils/globalProperty';
 
 const {
@@ -251,7 +251,7 @@ export class LabResultEntry extends PureComponent {
               <div className="col-xs-12 observation-dropdown">
                 <span className="single-result-field">
                   <span className="obs-dropdown-label">
-                    {`${selectedLabConcept.display}: `}
+                    {`${getConceptShortName(selectedLabConcept)}: `}
                       &nbsp;
                   </span>
                   <span className="obs-dropdown-field">
@@ -461,13 +461,12 @@ export class LabResultEntry extends PureComponent {
 
     const normalRange = formatRangeDisplayText(lowNormal, hiNormal);
     const memberHasAnswers = !!member.answers.length;
-    console.log("memberHasAnswers: " + memberHasAnswers);
 
     return (
       <div>
           <FormGroup controlId={member.display} key={ member.uuid }>
             <span className="member-display-label">
-              {member.display}
+              {getConceptShortName(member)}
             </span>
             <span className="obs-component">
               { (memberHasAnswers) && (
@@ -522,7 +521,7 @@ export class LabResultEntry extends PureComponent {
                 <FormattedMessage
                   id="app.labResultEntry.title"
                   defaultMessage="Test Results -" />
-                {` ${location.state.display}`}
+                {` ${getConceptShortName(location.state.concept)}`}
               </h2>
               <div className="lab-result-detail-fieldset-container">
                 <div className="fieldset-container lab-result-detail-fieldset">

@@ -1,5 +1,6 @@
 import R from 'ramda';
 import moment from 'moment';
+import toastr from 'toastr';
 import {
   take,
   takeEvery,
@@ -222,8 +223,15 @@ function* updateOrders() {
   yield put(fetchLabOrders(labResultsTestOrderType, options));
 }
 
+function* cancelAndUpdateOrders() {
+  const state = yield select();
+  const cancelMsg = getMessage(state, "app.lab.order.cancel.success", "Order Canceled");
+  yield updateOrders();
+  yield toastr.success(cancelMsg, { timeout: 2000 });
+}
+
 export function* cancelOrder() {
-  yield takeEvery(`${CANCEL_ORDER}_SUCCESS`, updateOrders);
+  yield takeEvery(`${CANCEL_ORDER}_SUCCESS`, cancelAndUpdateOrders);
 }
 
 // the saveFulfillerStatus action is dispatched after the lab results entry page is saved
