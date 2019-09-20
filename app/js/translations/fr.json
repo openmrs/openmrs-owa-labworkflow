@@ -60,5 +60,5 @@
     "app.lab.discontinue.question":"Êtes-vous sûr de vouloir interrompre cette commande?",
     "app.lab.discontinue.reason":"Raison de l'abandon",
     "app.lab.create.success":"Commande créée avec succès",
-    "app.lab.is.active":"l'ordre est actif"
+    "app.lab.order.cancel.success":"Commande annulée"
 }

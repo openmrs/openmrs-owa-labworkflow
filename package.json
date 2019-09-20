@@ -44,7 +44,8 @@
     "redux-saga": "^0.16.0",
     "redux-types": "^2.0.3",
     "sinon": "^4.4.6",
-    "sweetalert": "^2.1.0"
+    "sweetalert": "^2.1.0",
+    "toastr": "^2.1.4"
   },
   "devDependencies": {
     "archiver": "^1.0.0",
