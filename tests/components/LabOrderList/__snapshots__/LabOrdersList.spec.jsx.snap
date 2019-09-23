@@ -824,8 +824,8 @@ exports[`<LabOrdersList /> component renders correctly 1`] = `
                 list={
                   Array [
                     "Ordered",
+                    "Collected",
                     "Reported",
-                    "Taken",
                     "Canceled/Expired",
                   ]
                 }
@@ -870,16 +870,16 @@ exports[`<LabOrdersList /> component renders correctly 1`] = `
                         Ordered
                       </option>
                       <option
+                        key="Collected"
+                        value="Collected"
+                      >
+                        Collected
+                      </option>
+                      <option
                         key="Reported"
                         value="Reported"
                       >
                         Reported
-                      </option>
-                      <option
-                        key="Taken"
-                        value="Taken"
-                      >
-                        Taken
                       </option>
                       <option
                         key="Canceled/Expired"
@@ -1780,8 +1780,8 @@ exports[`LabOrdersListContainer container should pass required props from state 
                 list={
                   Array [
                     "Ordered",
+                    "Collected",
                     "Reported",
-                    "Taken",
                     "Canceled/Expired",
                   ]
                 }
@@ -1826,16 +1826,16 @@ exports[`LabOrdersListContainer container should pass required props from state 
                         Ordered
                       </option>
                       <option
+                        key="Collected"
+                        value="Collected"
+                      >
+                        Collected
+                      </option>
+                      <option
                         key="Reported"
                         value="Reported"
                       >
                         Reported
-                      </option>
-                      <option
-                        key="Taken"
-                        value="Taken"
-                      >
-                        Taken
                       </option>
                       <option
                         key="Canceled/Expired"

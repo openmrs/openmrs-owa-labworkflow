@@ -27,7 +27,7 @@ import patientAction from '../actions/patientAction';
 import "../../css/lab-orders-list.scss";
 
 
-const Cell = ({ columnName, value, handleCancel, orderedMsg, cancelMsg }) => {
+const Cell = ({ columnName, value, handleCancel, cancelMsg }) => {
   switch (columnName) {
     case 'EMR ID': {
       // TODO: refactor this and name column to use React Components patientUtils
@@ -97,7 +97,7 @@ const Cell = ({ columnName, value, handleCancel, orderedMsg, cancelMsg }) => {
         </div>
       );
     case 'ACTIONS':
-      if (value.labResult && (value.labResult.resultStatus === orderedMsg)) {
+      if (value.labResult && (value.labResult.resultStatus === "Ordered")) {
         return (
           <div className="discontinue-actn-btn">
             <span
@@ -278,7 +278,6 @@ export class LabOrdersList extends PureComponent {
 
     const noDataMessage = intl.formatMessage({ id: "app.orders.not.found", defaultMessage: "No orders found" });
     const rowsMessage = intl.formatMessage({ id: "reactcomponents.table.rows", defaultMessage: "Rows" });
-    const orderedMsg = intl.formatMessage({ id: "app.labResult.status.ordered", defaultMessage: "Ordered" });
     const cancelMsg = intl.formatMessage({ id: "reactcomponents.cancel", defaultMessage: "Cancel" });
 
     const columnMetadata = fields.map(columnName => ({
@@ -291,7 +290,7 @@ export class LabOrdersList extends PureComponent {
   </span>,
       accessor: "",
       filterAll: true,
-      Cell: data => <Cell {...data} columnName={columnName} handleCancel={this.handleCancel} orderedMsg={orderedMsg} cancelMsg={cancelMsg}/>,
+      Cell: data => <Cell {...data} columnName={columnName} handleCancel={this.handleCancel} cancelMsg={cancelMsg}/>,
       className: `lab-order-list-cell-${columnName.replace(' ', '-').toLocaleLowerCase()}`,
       headerClassName: `lab-order-list-column-header lab-order-list-header-${columnName.replace(' ', '-').toLocaleLowerCase()}`,
     }));

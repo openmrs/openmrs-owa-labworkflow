@@ -86,20 +86,20 @@ const computeResultStatus = (encounter, state, order) => {
       )(encounter.obs);
 
       if (!R.isEmpty(obs)) {
-        return getMessage(state, "app.labResult.status.reported", "Reported");
+        return "Reported";
       }
-      return getMessage(state, "app.labResult.status.taken", "Taken");
+      return "Taken";
     }
   }
 
   if (order.dateStopped !== null) {
-    return getMessage(state, "app.labResult.status.canceled", "Canceled");
+    return "Canceled";
   }
 
   if (order.autoExpireDate !== null) {
-    return getMessage(state, "app.labResult.status.expired", "Expired");
+    return "Expired";
   }
-  return getMessage(state, "app.labResult.status.ordered", "Ordered");
+  return "Ordered";
 };
 
 

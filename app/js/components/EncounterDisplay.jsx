@@ -18,19 +18,16 @@ class EncounterDisplay extends PureComponent {
 
     if (!R.isNil(labResult)) {
       if (type === "status") {
+        const statusMsgId = "app.labResult.status." + labResult.resultStatus.toLowerCase();
         return (
           <span>
-            { labResult.resultStatus }
+            { intl.formatMessage({ id: statusMsgId, defaultMessage: labResult.resultStatus }) }
           </span>
         );
       }
 
       if (type === "collectionDate") {
-        const statusesWithoutEncounter = [
-          intl.formatMessage({ id: "app.labResult.status.ordered", defaultMessage: "Ordered" }),
-          intl.formatMessage({ id: "app.labResult.status.canceled", defaultMessage: "Canceled" }),
-          intl.formatMessage({ id: "app.labResult.status.expired", defaultMessage: "Expired" })
-        ];
+        const statusesWithoutEncounter = ["Ordered", "Canceled", "Expired"];
         if (!statusesWithoutEncounter.includes(labResult.resultStatus)) {
           return (
             <div className="table_cell test-type">
