@@ -88,7 +88,7 @@ const computeResultStatus = (encounter, state, order) => {
       if (!R.isEmpty(obs)) {
         return "Reported";
       }
-      return "Taken";
+      return "Collected";
     }
   }
 

@@ -56,49 +56,54 @@ export const formatRangeDisplayText = (min = " ", max = " ") => {
 export const filterThrough = (filters, data) => {
   let originalData = data;
 
-  const allMsg = translate.getMessage("reactcomponents.all", "All");
-  const canceled = translate.getMessage("app.labResult.status.canceled", "Canceled");
-  const expired = translate.getMessage("app.labResult.status.expired", "Expired");
-  const canceledExpired = canceled + "/" + expired;
-
   if (filters.dateField === "obsDatetime") {
     if (filters.dateToField && filters.dateFromField) {
-      const filteredData  = getDateRange(originalData, filters.dateFromField, filters.dateToField, filters.dateField);
-      originalData = filteredData;
+      originalData  = getDateRange(originalData, filters.dateFromField, filters.dateToField, filters.dateField);
     }
   }
 
   if (filters.nameField !== "") {
     const inputValue = filters.nameField;
-    const filteredData = matchSorter(originalData, inputValue, { keys: [{ threshold: matchSorter.rankings.CONTAINS, key: 'patient.display' }] });
-    originalData = filteredData;
+    originalData = matchSorter(originalData, inputValue, { keys: [{ threshold: matchSorter.rankings.CONTAINS, key: 'patient.display' }] });
   }
 
-  if (typeof filters.testTypeField !== 'undefined' && (filters.testTypeField.length > 0) && filters.testTypeField !== allMsg) {
+  if ( filters.testTypeField !== "All" ) {
     const inputValue = filters.testTypeField;
     const filteredData = matchSorter(originalData, inputValue, { keys: ['concept.display'] });
     originalData = filteredData;
   }
 
-  if (typeof filters.testStatusField !== 'undefined' && (filters.testStatusField.length > 0) && filters.testStatusField !== allMsg) {
-    let inputValue = filters.testStatusField;
-    let filteredData = [];
-    if (filters.testStatusField === canceledExpired) {
-      const cancelledData = matchSorter(originalData, canceled, { keys: ['labResult.resultStatus'] });
-      const expiredData = matchSorter(originalData, expired, { keys: ['labResult.resultStatus'] });
-      filteredData = cancelledData.concat(expiredData);
-    } else {
-      filteredData = matchSorter(originalData, inputValue, { keys: ['labResult.resultStatus'] });
-    }
-    originalData = filteredData;
-  }
-
-  if ((typeof filters.testStatusField !== 'undefined' && filters.testStatusField.length === 0) || filters.testStatusField === allMsg) {
-    const filteredData = originalData.filter((data) => {
-      if (!data.labResult) return false;
-      return (data.labResult.resultStatus !== canceled) && (data.labResult.resultStatus !== expired);
+  if ( filters.testStatusField === "" ) {
+    //empty filter, no Status value was selected
+    //display all orders except the Canceled or Expired
+    originalData = originalData.filter((data) => {
+      if (!data.labResult) {
+        return false;
+      } else {
+        return (data.labResult.resultStatus !== "Canceled") && (data.labResult.resultStatus !== "Expired");
+      }
     });
-    originalData = filteredData;
+  } else if ( filters.testStatusField === "All" ) {
+      // display all orders regardless the status
+      originalData= originalData.filter((data) => {
+      if (!data.labResult) {
+        return false;
+      } else {
+        return true;
+      }
+    });
+  } else if ( filters.testStatusField === "Canceled/Expired" ) {
+    // display all orders that have an Canceled or Expired status
+    originalData= originalData.filter((data) => {
+      if (!data.labResult) {
+        return false;
+      } else {
+        return (data.labResult.resultStatus === "Canceled") || (data.labResult.resultStatus === "Expired");
+      }
+    });
+  } else if (filters.testStatusField !== "") {
+    // filter by status
+    originalData = matchSorter(originalData, filters.testStatusField, { keys: ['labResult.resultStatus'] });
   }
 
   return originalData;

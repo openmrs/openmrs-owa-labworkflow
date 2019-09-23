@@ -604,7 +604,12 @@ exports[`<LabOrdersList /> component renders correctly 1`] = `
         >
           <Dropdown
             className="form-filter-group"
-            defaultValue="All"
+            defaultValue={
+              Object {
+                "display": "All",
+                "uuid": "All",
+              }
+            }
             field="testStatusField"
             handleSelect={[Function]}
             id="test-status-dropdown"
@@ -617,10 +622,22 @@ exports[`<LabOrdersList /> component renders correctly 1`] = `
             labelClassName=""
             list={
               Array [
-                "Ordered",
-                "Collected",
-                "Reported",
-                "Canceled/Expired",
+                Object {
+                  "display": "Ordered",
+                  "uuid": "Ordered",
+                },
+                Object {
+                  "display": "Collected",
+                  "uuid": "Collected",
+                },
+                Object {
+                  "display": "Reported",
+                  "uuid": "Reported",
+                },
+                Object {
+                  "display": "Canceled/Expired",
+                  "uuid": "Canceled/Expired",
+                },
               ]
             }
             placeholder="Select from the list"
