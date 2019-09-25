@@ -6,10 +6,11 @@ import {
   SET_CONCEPT,
   FETCH_CONCEPT,
 } from './actionTypes';
+import { CONCEPT_REP } from './constantsAction';
 
 export const fetchLabConcept = conceptUUID => ({
   type: FETCH_LAB_CONCEPT,
-  payload: axiosInstance.get(`/concept/${conceptUUID}?v=full`),
+  payload: axiosInstance.get(`/concept/${conceptUUID}?v=${CONCEPT_REP}`),
 });
 
 export const setMember = (member, count) => ({

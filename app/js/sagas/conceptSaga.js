@@ -16,11 +16,12 @@ import {
   FETCH_CONCEPT_FAILED,
 } from '../actions/actionTypes';
 import { setMember, setFetchStatus } from '../actions/labConceptsAction';
+import { CONCEPT_REP } from '../actions/constantsAction';
 
 
 export function* getConcept({ concept, count }) {
   const { uuid } = concept;
-  const response = yield call(conceptRest.getConcept, uuid);
+  const response = yield call(conceptRest.getConcept, uuid, CONCEPT_REP);
   yield put(setMember(response, count));
 }
 
