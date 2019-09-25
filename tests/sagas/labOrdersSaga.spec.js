@@ -16,6 +16,16 @@ const data = {
       orderNumber: "ORD-1",
       concept: {
         display: "Hémogramme automatisé",
+        names: [
+          {
+            "display": "Hémogramme automatisé",
+            "uuid": "f95db7c1-4623-4875-b5b8-931ccefb069e",
+            "name": "Hémogramme automatisé",
+            "locale": "en",
+            "localePreferred": true,
+            "conceptNameType": "SHORT",
+          }
+        ]
       },
       urgency: 'ROUTINE',
       dateActivated: "2018-08-30T17:34:19.000+0100",

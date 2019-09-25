@@ -27,7 +27,7 @@ import patientAction from '../actions/patientAction';
 import "../../css/lab-orders-list.scss";
 
 
-const Cell = ({ columnName, value, handleCancel, cancelMsg }) => {
+const Cell = ({ columnName, value, handleCancel, cancelMsg, locale }) => {
   switch (columnName) {
     case 'EMR ID': {
       // TODO: refactor this and name column to use React Components patientUtils
@@ -93,7 +93,7 @@ const Cell = ({ columnName, value, handleCancel, cancelMsg }) => {
     case 'TEST TYPE':
       return (
         <div className="table_cell test-type">
-          <span>{getConceptShortName(value.concept)}</span>
+          <span>{getConceptShortName(value.concept, locale)}</span>
         </div>
       );
     case 'ACTIONS':
@@ -273,6 +273,7 @@ export class LabOrdersList extends PureComponent {
       labOrdersListFilters,
       fetched,
       intl,
+      locale,
 } = this.props;
     const fields = ["EMR ID", "NAME", "ORDER ID", "ORDER DATE", "COLLECTION DATE", "STATUS", "URGENCY", "TEST TYPE", "ACTIONS"];
 
@@ -290,7 +291,7 @@ export class LabOrdersList extends PureComponent {
   </span>,
       accessor: "",
       filterAll: true,
-      Cell: data => <Cell {...data} columnName={columnName} handleCancel={this.handleCancel} cancelMsg={cancelMsg}/>,
+      Cell: data => <Cell {...data} columnName={columnName} handleCancel={this.handleCancel} cancelMsg={cancelMsg} locale={locale}/>,
       className: `lab-order-list-cell-${columnName.replace(' ', '-').toLocaleLowerCase()}`,
       headerClassName: `lab-order-list-column-header lab-order-list-header-${columnName.replace(' ', '-').toLocaleLowerCase()}`,
     }));
@@ -379,6 +380,7 @@ export const mapStateToProps = state => ({
   fetched: state.labOrders.orders,
   currentProvider: state.openmrs.session.currentProvider,
   sessionLocation: state.openmrs.session.sessionLocation,
+  locale: state.openmrs.session.locale,
 });
 
 const LabOrdersListContainer = (

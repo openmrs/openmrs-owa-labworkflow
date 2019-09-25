@@ -37,7 +37,7 @@ import constantsActions from '../actions/constantsAction';
 import { updateLabOrderWithEncounter, saveFulfillerStatus } from '../actions/labOrdersAction';
 import '../../css/lab-result-entry.scss';
 import { formatRangeDisplayText, hasMaxAndMinValues, getConceptShortName } from '../utils/helpers';
-import { selectProperty } from '../utils/globalProperty';
+import { selectProperty, selectLocale } from '../utils/globalProperty';
 
 const {
   minValue,
@@ -141,6 +141,7 @@ export class LabResultEntry extends PureComponent {
       formId,
       labResultsEntryEncounterType,
       encounterDateOrToday = new Date(),
+      locale,
     } = this.props;
 
     if (!(isDidNotPerformCheckboxSelected)) {
@@ -251,7 +252,7 @@ export class LabResultEntry extends PureComponent {
               <div className="col-xs-12 observation-dropdown">
                 <span className="single-result-field">
                   <span className="obs-dropdown-label">
-                    {`${getConceptShortName(selectedLabConcept)}: `}
+                    {`${getConceptShortName(selectedLabConcept, locale)}: `}
                       &nbsp;
                   </span>
                   <span className="obs-dropdown-field">
@@ -395,7 +396,7 @@ export class LabResultEntry extends PureComponent {
   }
 
   renderFormContent(member) {
-    const { conceptMembers } = this.props;
+    const { conceptMembers, locale } = this.props;
     const memberDetails = conceptMembers[member.uuid] || member;
     const {
       hiNormal,
@@ -466,7 +467,7 @@ export class LabResultEntry extends PureComponent {
       <div>
           <FormGroup controlId={member.display} key={ member.uuid }>
             <span className="member-display-label">
-              {getConceptShortName(member)}
+              {getConceptShortName(member, locale)}
             </span>
             <span className="obs-component">
               { (memberHasAnswers) && (
@@ -505,6 +506,7 @@ export class LabResultEntry extends PureComponent {
       selectedLabConcept,
       form,
       returnUrl,
+      locale,
     } = this.props;
 
     if (!location.state || redirect) {
@@ -521,7 +523,7 @@ export class LabResultEntry extends PureComponent {
                 <FormattedMessage
                   id="app.labResultEntry.title"
                   defaultMessage="Test Results -" />
-                {` ${getConceptShortName(location.state.concept)}`}
+                {` ${getConceptShortName(location.state.concept,locale)}`}
               </h2>
               <div className="lab-result-detail-fieldset-container">
                 <div className="fieldset-container lab-result-detail-fieldset">
@@ -666,6 +668,7 @@ const mapStateToProps = (state) => {
     labResultsDidNotPerformAnswer: selectProperty(state, 'labResultsDidNotPerformAnswer'),
     encounterDateOrToday,
     hasCache,
+    locale: selectLocale(state),
   };
 };
 

@@ -27,7 +27,8 @@ import {
   saveFulfillerStatusFailed,
 } from '../actions/labOrdersAction';
 import { setSelectedConcept } from '../actions/labConceptsAction';
-import { selectProperty, getMessage } from '../utils/globalProperty';
+import { selectProperty, selectLocale, getMessage } from '../utils/globalProperty';
+import { getConceptShortName } from '../utils/helpers';
 
 const getOrderNumber = (encounter, state) => {
   const orderNumberConceptUUID = selectProperty(state, 'labResultsTestOrderNumberConcept');
@@ -113,6 +114,8 @@ export function* resetState() {
 
 export function* filterAndSetOrders(action) {
   const { payload } = action;
+  const state = yield select();
+  const locale = selectLocale(state);
 
   const result = payload.data.results;
   // filter out orders where action="DISCONTINUE"
@@ -120,21 +123,20 @@ export function* filterAndSetOrders(action) {
 
   yield put({ type: SET_LAB_ORDERS, orders });
 
-  const labTestTypes = R.compose(
-    R.uniq,
-    R.map(R.path(['concept', 'display'])),
-  )(orders);
-
+  const conceptNames = orders.map(order => getConceptShortName(order.concept, locale));
+  const labTestTypes = R.uniq(conceptNames);
   yield put(setLabTestTypes(labTestTypes));
 }
 
 export function* setTestTypes(action) {
   const { payload } = action;
+  const state = yield select();
+  const locale = selectLocale(state);
 
-  const labTestTypes = R.compose(
-    R.uniq,
-    R.map(R.path(['concept', 'display'])),
-  )(payload.data.results);
+  const conceptNames = payload.data.results.map(
+    order => getConceptShortName(order.concept, locale),
+  );
+  const labTestTypes = R.uniq(conceptNames);
 
   yield put(setLabTestTypes(labTestTypes));
 }
