@@ -97,7 +97,7 @@ const computeResultStatus = (encounter, state, order) => {
     return "Canceled";
   }
 
-  if (order.autoExpireDate !== null) {
+  if (order.autoExpireDate !== null && moment(order.autoExpireDate).isBefore(new Date())) {
     return "Expired";
   }
   return "Ordered";
