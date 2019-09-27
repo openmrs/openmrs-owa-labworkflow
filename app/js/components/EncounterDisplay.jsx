@@ -6,6 +6,7 @@ import moment from 'moment';
 import { injectIntl } from 'react-intl';
 
 
+// TODO delete
 class EncounterDisplay extends PureComponent {
   render() {
     const {

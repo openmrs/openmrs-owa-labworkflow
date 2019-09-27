@@ -1,6 +1,7 @@
 /*eslint-disable*/
 import matchSorter from 'match-sorter';
 import R from 'ramda';
+import moment from "moment";
 
 const dateToInt = dateStr => new Date(dateStr).getTime();
 
@@ -71,37 +72,29 @@ export const filterThrough = (filters, data) => {
     originalData = filteredData;
   }
 
-  if ( filters.testStatusField === "" ) {
+   if ( filters.testStatusField === "" ) {
     //empty filter, no Status value was selected
     //display all orders except the Canceled or Expired
     originalData = originalData.filter((data) => {
-      if (!data.labResult) {
-        return false;
-      } else {
-        return (data.labResult.resultStatus !== "Canceled") && (data.labResult.resultStatus !== "Expired");
-      }
+      const status = computeResultStatus(data);
+      return status !== 'CANCELED' && status !== 'EXPIRED';
     });
-  } else if ( filters.testStatusField === "All" ) {
+  } else if ( filters.testStatusField === "ALL" ) {
       // display all orders regardless the status
       originalData= originalData.filter((data) => {
-      if (!data.labResult) {
-        return false;
-      } else {
         return true;
-      }
     });
-  } else if ( filters.testStatusField === "Canceled/Expired" ) {
+  } else if ( filters.testStatusField === "CANCELED_EXPIRED" ) {
     // display all orders that have an Canceled or Expired status
     originalData= originalData.filter((data) => {
-      if (!data.labResult) {
-        return false;
-      } else {
-        return (data.labResult.resultStatus === "Canceled") || (data.labResult.resultStatus === "Expired");
-      }
+      const status = computeResultStatus(data);
+      return status === 'CANCELED' || status === 'EXPIRED';
     });
   } else if (filters.testStatusField !== "") {
-    // filter by status
-    originalData = matchSorter(originalData, filters.testStatusField, { keys: ['labResult.resultStatus'] });
+     originalData= originalData.filter((data) => {
+       const status = computeResultStatus(data);
+       return status === filters.testStatusField;
+     });
   }
 
   return originalData;
@@ -154,3 +147,23 @@ export const getConceptShortName = (concept, locale) => {
 };
 
 export const calculateTableRows = (noOfRows) => ((parseInt(noOfRows) < 10) ? parseInt(noOfRows): 10)
+
+export const computeResultStatus = (order) => {
+
+  if (order.fulfillerStatus) {
+    return order.fulfillerStatus;
+  }
+
+  if (order.dateStopped !== null) {
+    return "CANCELED";
+  }
+
+  if (order.autoExpireDate !== null && moment(order.autoExpireDate).isBefore(new Date())) {
+    return "EXPIRED";
+  }
+  return "ORDERED";
+};
+
+export const isCancelable = (order) => {
+  return computeResultStatus(order) === 'ORDERED';
+};

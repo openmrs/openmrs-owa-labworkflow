@@ -69,41 +69,6 @@ const computeFulfillerStatus = (encounter, state) => {
   return "RECEIVED"; // likely should never get here
 };
 
-const computeResultStatus = (encounter, state, order) => {
-  const concealedConceptUUIDs = [
-    selectProperty(state, 'labResultsTestOrderNumberConcept'),
-    selectProperty(state, 'labResultsTestLocationQuestion'),
-    selectProperty(state, 'labResultsDateConcept'),
-    selectProperty(state, 'labResultsDidNotPerformReasonQuestion'),
-    selectProperty(state, 'labResultsEstimatedCollectionDateQuestion'),
-    selectProperty(state, 'labResultsDidNotPerformQuestion'),
-  ];
-
-  if (encounter) {
-    const hasObs = !R.isNil(encounter.obs);
-    if (hasObs) {
-      const obs = R.pipe(
-        R.filter(item => !concealedConceptUUIDs.includes(item.concept.uuid)),
-      )(encounter.obs);
-
-      if (!R.isEmpty(obs)) {
-        return "Reported";
-      }
-      return "Collected";
-    }
-  }
-
-  if (order.dateStopped !== null) {
-    return "Canceled";
-  }
-
-  if (order.autoExpireDate !== null && moment(order.autoExpireDate).isBefore(new Date())) {
-    return "Expired";
-  }
-  return "Ordered";
-};
-
-
 export function* clear() {
   yield put(setSelectedConcept());
 }
@@ -175,12 +140,7 @@ export function* fetchAndSetTestResultEncounter(args) {
     const orderWithEncounter = {
       ...order,
       labResult: {
-        encounter: matchedEncounter[0] || null,
-        resultStatus: computeResultStatus(
-          matchedEncounter[0] || null,
-          state,
-          order,
-        ),
+        encounter: matchedEncounter[0] || null
       },
     };
 
@@ -188,30 +148,6 @@ export function* fetchAndSetTestResultEncounter(args) {
   } catch (error) {
     yield put({ type: "FETCH_LAB_ORDERS_FAILURE", payload: error, error: true });
   }
-}
-
-export function* fetchEncounters(action) {
-  const { orders } = action;
-  let iterator = 0;
-  let forkedProcess;
-  try {
-    while (orders[iterator]) {
-      forkedProcess = yield fork(
-        fetchAndSetTestResultEncounter, { order: orders[iterator], count: iterator },
-      );
-      iterator += 1;
-    }
-  } finally {
-    const count = iterator - 1;
-    yield take(`${SET_ORDER_LAB_ENCOUNTER}_${count}`);
-    yield cancel(forkedProcess);
-  }
-  yield put({ type: SET_ORDER_LIST_FETCH_STATUS, status: true });
-}
-
-export function* setEncounters() {
-  yield takeEvery(SET_LAB_ORDERS, fetchEncounters);
-  yield takeEvery(UPDATE_LAB_ORDER_WITH_ENCOUNTER, fetchAndSetTestResultEncounter);
 }
 
 function* updateOrders() {

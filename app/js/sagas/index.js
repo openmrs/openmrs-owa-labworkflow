@@ -20,7 +20,6 @@ const sagas = {
   fetchPatientTestResults,
   setLabConcepts,
   fetchConcept,
-  setEncounters,
   cancelOrder,
   clearFormFieldsSaga,
   saveFulfillerStatus,
