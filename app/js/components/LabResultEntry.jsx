@@ -462,9 +462,6 @@ export class LabResultEntry extends PureComponent {
 
     const normalRange = formatRangeDisplayText(lowNormal, hiNormal);
     const memberHasAnswers = !!member.answers.length;
-    if (memberHasAnswers) {
-      console.log("memberHasAnswers = true: " + JSON.stringify(member));
-    }
 
     return (
       <div>
