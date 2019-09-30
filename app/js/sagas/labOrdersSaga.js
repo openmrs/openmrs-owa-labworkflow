@@ -140,7 +140,7 @@ export function* fetchAndSetTestResultEncounter(args) {
     const orderWithEncounter = {
       ...order,
       labResult: {
-        encounter: matchedEncounter[0] || null
+        encounter: matchedEncounter[0] || null,
       },
     };
 

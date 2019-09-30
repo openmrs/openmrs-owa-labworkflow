@@ -4,7 +4,6 @@ import {
   setLabTestsSaga,
   clear,
   resetState,
-  setEncounters,
   cancelOrder,
   saveFulfillerStatus,
 } from './labOrdersSaga';
