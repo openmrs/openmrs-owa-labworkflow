@@ -17,10 +17,9 @@ import { injectIntl, FormattedMessage } from 'react-intl';
 import swal from 'sweetalert';
 import { SortableTable, Loader } from '@openmrs/react-components';
 import LabOrderListFilters from './LabOrdersListFilters';
-import EncounterDisplay from './EncounterDisplay';
 import { fetchLabOrders, cancelOrder } from '../actions/labOrdersAction';
 import { setSelectedConcept } from '../actions/labConceptsAction';
-import { filterThrough, calculateTableRows, getConceptShortName } from '../utils/helpers';
+import { filterThrough, calculateTableRows, getConceptShortName, computeResultStatus, isCancelable } from '../utils/helpers';
 import { loadGlobalProperties, selectProperty } from '../utils/globalProperty';
 import filtersAction from '../actions/filtersAction';
 import patientAction from '../actions/patientAction';
@@ -54,23 +53,15 @@ const Cell = ({ columnName, value, handleCancel, cancelMsg, locale }) => {
       );
     case 'STATUS':
       return (
-        <div className="table_cell order-id">
-          <EncounterDisplay
-            orderUUID={value.uuid}
-            type="status"
-          />
+        <div className="table_cell status">
+          <span>
+            <FormattedMessage
+              id={"app.labResult.status." + computeResultStatus(value)}
+              defaultMessage={computeResultStatus(value)}
+            />
+          </span>
         </div>
       );
-    case 'COLLECTION DATE': {
-      return (
-        <div className="table_cell order-date">
-          <EncounterDisplay
-            orderUUID={value.uuid}
-            type="collectionDate"
-          />
-        </div>
-      );
-    }
     case 'ORDER DATE':
       return (
         <div className="table_cell order-date">
@@ -97,7 +88,7 @@ const Cell = ({ columnName, value, handleCancel, cancelMsg, locale }) => {
         </div>
       );
     case 'ACTIONS':
-      if (value.labResult && (value.labResult.resultStatus === "Ordered")) {
+      if (isCancelable(value)) {
         return (
           <div className="discontinue-actn-btn">
             <span
@@ -119,7 +110,6 @@ const Cell = ({ columnName, value, handleCancel, cancelMsg, locale }) => {
   }
 };
 
-
 export class LabOrdersList extends PureComponent {
   constructor(props) {
     super(props);
@@ -135,26 +125,34 @@ export class LabOrdersList extends PureComponent {
   }
 
   componentDidMount() {
-    const { dispatch } = this.props;
+    const { dispatch, labResultsTestOrderType } = this.props;
     loadGlobalProperties(dispatch);
     dispatch(patientAction.setSelectedPatient(''));
     dispatch(setSelectedConcept(''));
+    if (labResultsTestOrderType) {
+      this.loadOrders();
+    }
   }
 
   componentWillReceiveProps(nextProps) {
     const { dispatch, labResultsTestOrderType, labOrdersListFilters } = this.props;
     if (nextProps.labResultsTestOrderType !== labResultsTestOrderType) {
-      const options = {
-        dateToField: moment(labOrdersListFilters.dateToField).format('YYYY-MM-DD'),
-        dateFromField: moment(labOrdersListFilters.dateFromField).format('YYYY-MM-DD'),
-      };
-      dispatch(fetchLabOrders(nextProps.labResultsTestOrderType, options));
+      this.loadOrders();
     }
   }
 
+  loadOrders() {
+    const { dispatch, labResultsTestOrderType, labOrdersListFilters } = this.props;
+    const options = {
+      dateToField: moment(labOrdersListFilters.dateToField).format('YYYY-MM-DD'),
+      dateFromField: moment(labOrdersListFilters.dateFromField).format('YYYY-MM-DD'),
+    };
+    dispatch(fetchLabOrders(labResultsTestOrderType, options));
+  }
+
   handleShowResultsEntryPage(order) {
-    const unclickableStatuses = ["Canceled", "Expired"];
-    if (!unclickableStatuses.includes(order.labResult.resultStatus)) {
+    const unclickableStatuses = ["CANCELED", "EXPIRED"];
+    if (!unclickableStatuses.includes(computeResultStatus(order))) {
       const { history, returnUrl } = this.props;
       history.push({
         pathname: "/LabResultEntry",
@@ -275,7 +273,7 @@ export class LabOrdersList extends PureComponent {
       intl,
       locale,
 } = this.props;
-    const fields = ["EMR ID", "NAME", "ORDER ID", "ORDER DATE", "COLLECTION DATE", "STATUS", "URGENCY", "TEST TYPE", "ACTIONS"];
+    const fields = ["EMR ID", "NAME", "ORDER ID", "ORDER DATE", "STATUS", "URGENCY", "TEST TYPE", "ACTIONS"];
 
     const noDataMessage = intl.formatMessage({ id: "app.orders.not.found", defaultMessage: "No orders found" });
     const rowsMessage = intl.formatMessage({ id: "reactcomponents.table.rows", defaultMessage: "Rows" });

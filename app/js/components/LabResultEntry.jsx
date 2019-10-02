@@ -70,6 +70,7 @@ export class LabResultEntry extends PureComponent {
       const conceptUUID = state.concept.uuid;
       const patientUUID = state.patient.uuid;
       this.setState({ labOrder: state });
+      dispatch(updateLabOrderWithEncounter(state));
       dispatch(patientAction.getPatient(patientUUID));
       dispatch(constantsActions.fetchConceptAsConstant(labResultsDidNotPerformReasonQuestion, 'labResultsDidNotPerformReasonAnswer'));
       dispatch(constantsActions.fetchConceptAsConstant(labResultsTestLocationQuestion, 'labResultsTestLocationAnswer'));
@@ -100,7 +101,7 @@ export class LabResultEntry extends PureComponent {
       history: { location: { state } },
     } = this.props;
 
-    if (state.labResult.encounter) {
+    if (state.labResult && state.labResult.encounter) {
       return state.labResult.encounter;
     }
     return null;

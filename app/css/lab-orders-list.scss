@@ -44,50 +44,44 @@ i.scale:hover {
 
 .lab-order-list-cell-name,
 .lab-order-list-header-name {
-  min-width: 130px;
-  max-width: 130px;
+  min-width: 150px;
+  max-width: 150px;
 }
 
 .lab-order-list-cell-order-id,
 .lab-order-list-header-order-id {
-  min-width: 90px;
-  max-width: 90px;
+  min-width: 110px;
+  max-width: 110px;
 }
 
 .lab-order-list-cell-order-date,
 .lab-order-list-header-order-date {
-  min-width: 130px;
-  max-width: 130px;
-}
-
-.lab-order-list-cell-collection-date,
-.lab-order-list-header-collection-date {
-  min-width: 160px;
-  max-width: 160px;
+  min-width: 110px;
+  max-width: 110px;
 }
 
 .lab-order-list-cell-status,
 .lab-order-list-header-status {
-  min-width: 90px;
-  max-width: 90px;
+  min-width: 110px;
+  max-width: 110px;
 }
 
 .lab-order-list-cell-urgency,
 .lab-order-list-header-urgency {
-  min-width: 90px;
-  max-width: 90px;
+  min-width: 110px;
+  max-width: 110px;
 }
 
 .lab-order-list-cell-test-type,
 .lab-order-list-header-test-type {
-  min-width: 130px;
-  max-width: 130px;
+  min-width: 210px;
+  max-width: 210px;
 }
 
 .lab-order-list-cell-actions,
 .lab-order-list-header-actions {
-  min-width: 90px;
-  max-width: 90px;
+  min-width: 80px;
+  max-width: 80px;
 }
 
 // style for making sure each row in the

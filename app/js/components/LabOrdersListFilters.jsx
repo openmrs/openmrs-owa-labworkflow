@@ -63,7 +63,7 @@ class LabOrderListFilters extends PureComponent {
   renderTestStatusFilter() {
     const { handleFieldChange, testStatusField, intl } = this.props;
     const allMsg = {
-      uuid: "All",
+      uuid: "ALL",
       display: intl.formatMessage({ id: "reactcomponents.all", defaultMessage: "All" })
     };
     const selectFromListMsg = intl.formatMessage({ id: "reactcomponents.select.from.list", defaultMessage: "Select from the list" });
@@ -71,21 +71,21 @@ class LabOrderListFilters extends PureComponent {
 
     const statusOptions = [
       {
-        uuid: "Ordered",
-        display: intl.formatMessage({ id: "app.labResult.status.ordered", defaultMessage: "Ordered" })
+        uuid: "ORDERED",
+        display: intl.formatMessage({ id: "app.labResult.status.ORDERED", defaultMessage: "Ordered" })
       },
       {
-        uuid: "Collected",
-        display: intl.formatMessage({ id: "app.labResult.status.taken", defaultMessage: "Collected" }),
+        uuid: "IN_PROGRESS",
+        display: intl.formatMessage({ id: "app.labResult.status.IN_PROGRESS", defaultMessage: "Collected" }),
       },
       {
-        uuid: "Reported",
-        display: intl.formatMessage({ id: "app.labResult.status.reported", defaultMessage: "Reported" }),
+        uuid: "COMPLETED",
+        display: intl.formatMessage({ id: "app.labResult.status.COMPLETED", defaultMessage: "Reported" }),
       },
       {
-        uuid: "Canceled/Expired",
-        display: intl.formatMessage({ id: "app.labResult.status.canceled", defaultMessage: "Canceled" }) + "/"
-        + intl.formatMessage({ id: "app.labResult.status.expired", defaultMessage: "Expired" })
+        uuid: "CANCELED_EXPIRED",
+        display: intl.formatMessage({ id: "app.labResult.status.CANCELED", defaultMessage: "Canceled" }) + "/"
+        + intl.formatMessage({ id: "app.labResult.status.EXPIRED", defaultMessage: "Expired" })
       },
     ];
 

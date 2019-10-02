@@ -607,7 +607,7 @@ exports[`<LabOrdersList /> component renders correctly 1`] = `
             defaultValue={
               Object {
                 "display": "All",
-                "uuid": "All",
+                "uuid": "ALL",
               }
             }
             field="testStatusField"
@@ -624,19 +624,19 @@ exports[`<LabOrdersList /> component renders correctly 1`] = `
               Array [
                 Object {
                   "display": "Ordered",
-                  "uuid": "Ordered",
+                  "uuid": "ORDERED",
                 },
                 Object {
                   "display": "Collected",
-                  "uuid": "Collected",
+                  "uuid": "IN_PROGRESS",
                 },
                 Object {
                   "display": "Reported",
-                  "uuid": "Reported",
+                  "uuid": "COMPLETED",
                 },
                 Object {
                   "display": "Canceled/Expired",
-                  "uuid": "Canceled/Expired",
+                  "uuid": "CANCELED_EXPIRED",
                 },
               ]
             }
@@ -669,32 +669,32 @@ exports[`<LabOrdersList /> component renders correctly 1`] = `
                     Select from the list
                   </option>
                   <option
-                    key="All"
-                    value="All"
+                    key="ALL"
+                    value="ALL"
                   >
                     All
                   </option>
                   <option
-                    key="Ordered"
-                    value="Ordered"
+                    key="ORDERED"
+                    value="ORDERED"
                   >
                     Ordered
                   </option>
                   <option
-                    key="Collected"
-                    value="Collected"
+                    key="IN_PROGRESS"
+                    value="IN_PROGRESS"
                   >
                     Collected
                   </option>
                   <option
-                    key="Reported"
-                    value="Reported"
+                    key="COMPLETED"
+                    value="COMPLETED"
                   >
                     Reported
                   </option>
                   <option
-                    key="Canceled/Expired"
-                    value="Canceled/Expired"
+                    key="CANCELED_EXPIRED"
+                    value="CANCELED_EXPIRED"
                   >
                     Canceled/Expired
                   </option>
