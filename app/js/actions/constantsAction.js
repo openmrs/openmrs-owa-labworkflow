@@ -3,7 +3,7 @@ import {
   FETCH_CONCEPT_CONSTANT,
 } from './actionTypes';
 
-export const CONCEPT_REP = "custom:(id,uuid,display,answers,names:(id,uuid,name,locale,localePreferred,voided,conceptNameType),set,setMembers:(id,uuid,display,answers,set,setMembers:(id,uuid,display,names:(id,uuid,name,locale,localePreferred,voided,conceptNameType)),names:(id,uuid,name,locale,localePreferred,voided,conceptNameType))";
+export const CONCEPT_REP = "custom:(id,uuid,display,lowNormal,lowCritical,lowAbsolute,hiNormal,hiCritical,hiAbsolute,allowDecimal,answers,names:(id,uuid,name,locale,localePreferred,voided,conceptNameType),set,setMembers:(id,uuid,display,allowDecimal,answers,set,setMembers:(id,uuid,display,lowNormal,lowCritical,lowAbsolute,hiNormal,hiCritical,hiAbsolute,allowDecimal,names:(id,uuid,name,locale,localePreferred,voided,conceptNameType)),names:(id,uuid,name,locale,localePreferred,voided,conceptNameType))";
 
 const fetchConceptAsConstant = (conceptUuid, constantName) => ({
   type: FETCH_CONCEPT_CONSTANT,
