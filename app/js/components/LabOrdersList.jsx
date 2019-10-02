@@ -191,9 +191,9 @@ export class LabOrdersList extends PureComponent {
     if (cancelConfirmation === "YES") {
       const cancelledOrder = {
         careSetting: order.careSetting,
-        concept: order.concept,
+        concept: order.concept.uuid,
         patient: order.patient.uuid,
-        encounter: order.encounter,
+        encounter: order.encounter.uuid,
         action: "DISCONTINUE",
         orderer: currentProvider.uuid,
         previousOrder: order.uuid,
