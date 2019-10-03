@@ -150,6 +150,10 @@ export function* fetchAndSetTestResultEncounter(args) {
   }
 }
 
+export function* setEncounters() {
+  yield takeEvery(UPDATE_LAB_ORDER_WITH_ENCOUNTER, fetchAndSetTestResultEncounter);
+}
+
 function* updateOrders() {
   const state = yield select();
   const { labOrdersListFilters } = state.filters;

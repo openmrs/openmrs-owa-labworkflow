@@ -97,14 +97,16 @@ export class LabResultEntry extends PureComponent {
   }
 
   getEncounter() {
-    const {
-      history: { location: { state } },
-    } = this.props;
-
-    if (state.labResult && state.labResult.encounter) {
-      return state.labResult.encounter;
-    }
-    return null;
+    // this is a bit hacky... previously, we loaded in all the encounters on the LabOrdersList page,
+    // and so had the encounter information immediately available on the labOrder object passed in
+    // (see handleShowResultsEntryPage in LabOrdersList)
+    // now we don't add the encounter to the order until this page is mounted, so we have to pull
+    // the order off the "orders" object in the state
+    // TODO find a better design for this
+    const { orders } = this.props;
+    const { labOrder } = this.state;
+    const matchingOrder = orders.find(order => order.uuid === labOrder.uuid);
+    return matchingOrder && matchingOrder.labResult ? matchingOrder.labResult.encounter : null;
   }
 
   clearObsFields() {
@@ -648,7 +650,9 @@ const mapStateToProps = (state) => {
     isDidNotPerformCheckboxSelected = !!(selector(state, obsFieldName));
     encounterDateOrToday = selector(state, 'encounter-datetime') || encounterDateOrToday;
   }
+
   const labResultsEntryEncounterType = selectProperty(state, 'labResultsEntryEncounterType');
+
   return {
     patients,
     selectedPatient,
@@ -670,6 +674,7 @@ const mapStateToProps = (state) => {
     encounterDateOrToday,
     hasCache,
     locale: selectLocale(state),
+    orders: state.labOrders && state.labOrders.orders ? state.labOrders.orders : []
   };
 };
 
