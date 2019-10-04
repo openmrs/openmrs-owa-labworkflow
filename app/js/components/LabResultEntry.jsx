@@ -56,6 +56,8 @@ export class LabResultEntry extends PureComponent {
     this.state = {
       redirect: false,
       labOrder: {},
+      encounter: {},
+      isReady: false,
     };
   }
 
@@ -96,17 +98,24 @@ export class LabResultEntry extends PureComponent {
     dispatch(updateLabOrderWithEncounter(labOrder));
   }
 
-  getEncounter() {
+  updateEncounterAndIsReady() {
     // this is a bit hacky... previously, we loaded in all the encounters on the LabOrdersList page,
     // and so had the encounter information immediately available on the labOrder object passed in
     // (see handleShowResultsEntryPage in LabOrdersList)
     // now we don't add the encounter to the order until this page is mounted, so we have to pull
     // the order off the "orders" object in the state
+    // (we separate out the encounter from "isReady" to avoid a flicker between the "enter" and "view" pages
     // TODO find a better design for this
     const { orders } = this.props;
     const { labOrder } = this.state;
     const matchingOrder = orders.find(order => order.uuid === labOrder.uuid);
-    return matchingOrder && matchingOrder.labResult ? matchingOrder.labResult.encounter : null;
+
+    if (matchingOrder && matchingOrder.labResult) {
+      this.setState({
+        encounter: matchingOrder.labResult.encounter,
+        isReady: true,
+      });
+    }
   }
 
   clearObsFields() {
@@ -147,17 +156,17 @@ export class LabResultEntry extends PureComponent {
       locale,
     } = this.props;
 
+
+    this.updateEncounterAndIsReady();
+    const { encounter, isReady } = this.state;
+    const hasEncounter = !R.isEmpty(encounter);
+
     if (!(isDidNotPerformCheckboxSelected)) {
       const obsFieldName = formUtil.obsFieldName('did-not-perform-dropdown', labResultsDidNotPerformReasonQuestion);
       dispatch(change(formId, obsFieldName, ''));
     }
 
     const patient = patients[selectedPatient] || {};
-
-
-    const encounter = this.getEncounter();
-    const hasEncounter = !R.isEmpty(encounter);
-
     const encounterType = {
       uuid: labResultsEntryEncounterType,
     };
@@ -361,38 +370,40 @@ export class LabResultEntry extends PureComponent {
               defaultMessage={`NORMAL RANGE`} />
           </span>)
           }
-          <span className="encounter-form-componnent">
-            {hasEncounter
-              ? (
-                <EncounterFormPanel
-                  encounter={encounter}
-                  defaultValues={encounterFormPageDefaultValues}
-                  backLink="/"
-                  afterSubmitLink="/"
-                  encounterType={encounterType}
-                  formContent={observations}
-                  formSubmittedActionCreators={[saveFulfillerStatus]}
-                  patient={patient}
-                  formId="result-entry-form"
-                  orderForObs={selectedOrder}
-                  timestampNewEncounterIfCurrentDay
-                />
-              )
-              : (
-                <EncounterFormPanel
-                  defaultValues={encounterFormPageDefaultValues}
-                  backLink="/"
-                  encounterType={encounterType}
-                  formContent={observations}
-                  formSubmittedActionCreators={[saveFulfillerStatus]}
-                  patient={patient}
-                  formId="result-entry-form"
-                  orderForObs={selectedOrder}
-                  timestampNewEncounterIfCurrentDay
-                />
-              )
-            }
-          </span>
+          {isReady
+            && (<span className="encounter-form-componnent">
+                {hasEncounter
+                  ? (
+                    <EncounterFormPanel
+                      encounter={encounter}
+                      defaultValues={encounterFormPageDefaultValues}
+                      backLink="/"
+                      afterSubmitLink="/"
+                      encounterType={encounterType}
+                      formContent={observations}
+                      formSubmittedActionCreators={[saveFulfillerStatus]}
+                      patient={patient}
+                      formId="result-entry-form"
+                      orderForObs={selectedOrder}
+                      timestampNewEncounterIfCurrentDay
+                    />
+                  )
+                  : (
+                    <EncounterFormPanel
+                      defaultValues={encounterFormPageDefaultValues}
+                      backLink="/"
+                      encounterType={encounterType}
+                      formContent={observations}
+                      formSubmittedActionCreators={[saveFulfillerStatus]}
+                      patient={patient}
+                      formId="result-entry-form"
+                      orderForObs={selectedOrder}
+                      timestampNewEncounterIfCurrentDay
+                    />
+                  )
+                }
+            </span>)
+          }
         </div>
       </div>
     );
