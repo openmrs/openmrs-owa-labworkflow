@@ -298,6 +298,7 @@ export class LabOrdersList extends PureComponent {
         <SortableTable
           data={orders}
           filters={labOrdersListFilters}
+          locale={locale}
           getDataWithFilters={filterThrough}
           columnMetadata={columnMetadata}
           loading={!fetched}

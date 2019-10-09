@@ -2,6 +2,7 @@
 import matchSorter from 'match-sorter';
 import R from 'ramda';
 import moment from "moment";
+import { getIntl } from '@openmrs/react-components';
 
 const dateToInt = dateStr => new Date(dateStr).getTime();
 
@@ -52,9 +53,10 @@ export const formatRangeDisplayText = (min = " ", max = " ") => {
   return '';
 };
 
-export const filterThrough = (filters, data) => {
+export const filterThrough = (filters, data, locale) => {
   let originalData = data;
 
+  const defaultAll = getIntl(locale).formatMessage({ id: "reactcomponents.all", defaultMessage: "All" });
   if (filters.dateField !== undefined && filters.dateField === "obsDatetime") {
     if (filters.dateToField && filters.dateFromField) {
       originalData  = getDateRange(originalData, filters.dateFromField, filters.dateToField, filters.dateField);
@@ -66,9 +68,9 @@ export const filterThrough = (filters, data) => {
     originalData = matchSorter(originalData, inputValue, { keys: [{ threshold: matchSorter.rankings.CONTAINS, key: 'patient.display' }] });
   }
 
-  if (filters.testTypeField !== undefined && filters.testTypeField !== "All" ) {
+  if (filters.testTypeField !== undefined && filters.testTypeField !== defaultAll ) {
     const inputValue = filters.testTypeField;
-    const filteredData = matchSorter(originalData, inputValue, { keys: ['concept.display'] });
+    const filteredData = matchSorter(originalData, inputValue, { keys: [item => getConceptShortName(item.concept,locale)]});
     originalData = filteredData;
   }
 
