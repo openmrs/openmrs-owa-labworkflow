@@ -376,7 +376,7 @@ export const mapStateToProps = state => ({
   dateAndTimeFormat: selectProperty(state, 'dateAndTimeFormat') || '',
   labResultsTestOrderType: selectProperty(state, 'labResultsTestOrderType') || '',
   labOrdersListFilters: state.filters.labOrdersListFilters,
-  fetched: state.labOrders.orders,
+  //fetched: state.labOrders.orders,
   currentProvider: state.openmrs.session.currentProvider,
   sessionLocation: state.openmrs.session.sessionLocation,
   locale: state.openmrs.session.locale,
