@@ -841,6 +841,10 @@ exports[`<LabOrdersList /> component renders correctly 1`] = `
                       "uuid": "COMPLETED",
                     },
                     Object {
+                      "display": "Not Performed",
+                      "uuid": "EXCEPTION",
+                    },
+                    Object {
                       "display": "Canceled/Expired",
                       "uuid": "CANCELED_EXPIRED",
                     },
@@ -897,6 +901,12 @@ exports[`<LabOrdersList /> component renders correctly 1`] = `
                         value="COMPLETED"
                       >
                         Reported
+                      </option>
+                      <option
+                        key="EXCEPTION"
+                        value="EXCEPTION"
+                      >
+                        Not Performed
                       </option>
                       <option
                         key="CANCELED_EXPIRED"
@@ -1814,6 +1824,10 @@ exports[`LabOrdersListContainer container should pass required props from state 
                       "uuid": "COMPLETED",
                     },
                     Object {
+                      "display": "Not Performed",
+                      "uuid": "EXCEPTION",
+                    },
+                    Object {
                       "display": "Canceled/Expired",
                       "uuid": "CANCELED_EXPIRED",
                     },
@@ -1870,6 +1884,12 @@ exports[`LabOrdersListContainer container should pass required props from state 
                         value="COMPLETED"
                       >
                         Reported
+                      </option>
+                      <option
+                        key="EXCEPTION"
+                        value="EXCEPTION"
+                      >
+                        Not Performed
                       </option>
                       <option
                         key="CANCELED_EXPIRED"

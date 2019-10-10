@@ -52,6 +52,7 @@
     "app.labTrendsPage.RESULT": "RESULT",
     "app.labTrendsPage.NORMAL_RANGE": "NORMAL RANGE",
     "app.labResult.status.ORDERED": "Ordered",
+    "app.labResult.status.EXCEPTION": "Not Performed",
     "app.labResult.status.IN_PROGRESS": "Collected",
     "app.labResult.status.COMPLETED": "Reported",
     "app.labResult.status.CANCELED": "Canceled",

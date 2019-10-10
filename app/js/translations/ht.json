@@ -52,6 +52,7 @@
     "app.labTrendsPage.RESULT": "RÉSULTAT",
     "app.labTrendsPage.NORMAL_RANGE": "PLAGE NORMALE",
     "app.labResult.status.ORDERED": "Kòmande",
+    "app.labResult.status.EXCEPTION": "Pa Fèt",
     "app.labResult.status.IN_PROGRESS": "Collected",
     "app.labResult.status.COMPLETED": "Rapòte",
     "app.labResult.status.CANCELED": "Anile",

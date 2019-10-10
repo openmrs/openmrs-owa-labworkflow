@@ -3,6 +3,7 @@ import matchSorter from 'match-sorter';
 import R from 'ramda';
 import moment from "moment";
 import { getIntl } from '@openmrs/react-components';
+import FULFILLER_STATUS from "../constants";
 
 const dateToInt = dateStr => new Date(dateStr).getTime();
 
@@ -159,15 +160,15 @@ export const computeResultStatus = (order) => {
   }
 
   if (order.dateStopped !== null) {
-    return "CANCELED";
+    return FULFILLER_STATUS.CANCELED;
   }
 
   if (order.autoExpireDate !== null && moment(order.autoExpireDate).isBefore(new Date())) {
-    return "EXPIRED";
+    return FULFILLER_STATUS.EXPIRED;
   }
-  return "ORDERED";
+  return FULFILLER_STATUS.ORDERED;
 };
 
 export const isCancelable = (order) => {
-  return computeResultStatus(order) === 'ORDERED';
+  return computeResultStatus(order) === FULFILLER_STATUS.ORDERED;
 };

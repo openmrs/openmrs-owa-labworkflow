@@ -52,6 +52,7 @@
     "app.labTrendsPage.RESULT": "RÉSULTAT",
     "app.labTrendsPage.NORMAL_RANGE": "PLAGE NORMALE",
     "app.labResult.status.ORDERED": "Ordonné",
+    "app.labResult.status.EXCEPTION": "Pas Effectué",
     "app.labResult.status.IN_PROGRESS": "Collecté",
     "app.labResult.status.COMPLETED": "Rapporter",
     "app.labResult.status.CANCELED": "Annulé",

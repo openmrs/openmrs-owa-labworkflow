@@ -29,6 +29,7 @@ import {
 import { setSelectedConcept } from '../actions/labConceptsAction';
 import { selectProperty, selectLocale, getMessage } from '../utils/globalProperty';
 import { getConceptShortName } from '../utils/helpers';
+import FULFILLER_STATUS from '../constants';
 
 const getOrderNumber = (encounter, state) => {
   const orderNumberConceptUUID = selectProperty(state, 'labResultsTestOrderNumberConcept');
@@ -43,30 +44,39 @@ const getOrderNumber = (encounter, state) => {
 };
 
 const computeFulfillerStatus = (encounter, state) => {
+  const didNotPerformQuestion = selectProperty(state, 'labResultsDidNotPerformQuestion');
   const concealedConceptUUIDs = [
     selectProperty(state, 'labResultsTestOrderNumberConcept'),
     selectProperty(state, 'labResultsTestLocationQuestion'),
     selectProperty(state, 'labResultsDateConcept'),
     selectProperty(state, 'labResultsDidNotPerformReasonQuestion'),
     selectProperty(state, 'labResultsEstimatedCollectionDateQuestion'),
-    selectProperty(state, 'labResultsDidNotPerformQuestion'),
+    didNotPerformQuestion,
   ];
-
+  
   if (encounter) {
     const hasObs = !R.isNil(encounter.obs);
     if (hasObs) {
+      const notPerformedObs = R.pipe(
+        R.filter(item => item.concept.uuid === didNotPerformQuestion),
+      )(encounter.obs);
+
+      if (!R.isEmpty(notPerformedObs)) {
+        return FULFILLER_STATUS.EXCEPTION;
+      }
+
       const obs = R.pipe(
         R.filter(item => !concealedConceptUUIDs.includes(item.concept.uuid)),
       )(encounter.obs);
 
       if (!R.isEmpty(obs)) {
-        return "COMPLETED";
+        return FULFILLER_STATUS.COMPLETED;
       }
     }
-    return "IN_PROGRESS";
+    return FULFILLER_STATUS.IN_PROGRESS;
   }
 
-  return "RECEIVED"; // likely should never get here
+  return FULFILLER_STATUS.RECEIVED; // likely should never get here
 };
 
 export function* clear() {

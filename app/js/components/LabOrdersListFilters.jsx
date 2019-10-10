@@ -6,6 +6,7 @@ import {
 } from 'react-bootstrap';
 import { injectIntl, FormattedMessage } from 'react-intl';
 import { CustomDatePicker as DatePicker, Dropdown } from '@openmrs/react-components';
+import FULFILLER_STATUS from '../constants';
 
 class LabOrderListFilters extends PureComponent {
   renderNameEMROrOrderIdFilter() {
@@ -71,21 +72,25 @@ class LabOrderListFilters extends PureComponent {
 
     const statusOptions = [
       {
-        uuid: "ORDERED",
-        display: intl.formatMessage({ id: "app.labResult.status.ORDERED", defaultMessage: "Ordered" })
+        uuid:  FULFILLER_STATUS.ORDERED,
+        display: intl.formatMessage({ id: "app.labResult.status." + FULFILLER_STATUS.ORDERED, defaultMessage: "Ordered" })
       },
       {
-        uuid: "IN_PROGRESS",
-        display: intl.formatMessage({ id: "app.labResult.status.IN_PROGRESS", defaultMessage: "Collected" }),
+        uuid: FULFILLER_STATUS.IN_PROGRESS,
+        display: intl.formatMessage({ id: "app.labResult.status." + FULFILLER_STATUS.IN_PROGRESS, defaultMessage: "Collected" }),
       },
       {
-        uuid: "COMPLETED",
-        display: intl.formatMessage({ id: "app.labResult.status.COMPLETED", defaultMessage: "Reported" }),
+        uuid: FULFILLER_STATUS.COMPLETED,
+        display: intl.formatMessage({ id: "app.labResult.status." + FULFILLER_STATUS.COMPLETED, defaultMessage: "Reported" }),
       },
       {
-        uuid: "CANCELED_EXPIRED",
-        display: intl.formatMessage({ id: "app.labResult.status.CANCELED", defaultMessage: "Canceled" }) + "/"
-        + intl.formatMessage({ id: "app.labResult.status.EXPIRED", defaultMessage: "Expired" })
+        uuid: FULFILLER_STATUS.EXCEPTION,
+        display: intl.formatMessage({ id: "app.labResult.status." + FULFILLER_STATUS.EXCEPTION, defaultMessage: "Not Performed" }),
+      },
+      {
+        uuid: FULFILLER_STATUS.CANCELED_EXPIRED,
+        display: intl.formatMessage({ id: "app.labResult.status." + FULFILLER_STATUS.CANCELED, defaultMessage: "Canceled" }) + "/"
+        + intl.formatMessage({ id: "app.labResult.status." + FULFILLER_STATUS.EXPIRED, defaultMessage: "Expired" })
       },
     ];
 
