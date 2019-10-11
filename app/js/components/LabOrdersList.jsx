@@ -209,11 +209,11 @@ export class LabOrdersList extends PureComponent {
       ...labOrdersListFilters,
       [field]: value,
     };
-    if (field === 'nameField') {
+    if (field === 'nameField' || field === 'testStatusField') {
       // defaults page to zero when a user starts typing
       newFilters = {
         ...newFilters,
-        page: 0,
+        ['page']: 0,
       };
     }
     if (field === 'dateToField') {
