@@ -71,7 +71,7 @@ export const filterThrough = (filters, data, locale) => {
 
   if (filters.testTypeField !== undefined && filters.testTypeField !== defaultAll ) {
     const inputValue = filters.testTypeField;
-    const filteredData = matchSorter(originalData, inputValue, { keys: [item => getConceptShortName(item.concept,locale)]});
+    const filteredData = matchSorter(originalData, inputValue, { threshold: matchSorter.rankings.EQUAL, keys: [item => getConceptShortName(item.concept,locale)]});
     originalData = filteredData;
   }
 
