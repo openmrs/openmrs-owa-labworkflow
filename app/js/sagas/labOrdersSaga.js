@@ -20,7 +20,7 @@ import {
   SET_ORDER_LAB_ENCOUNTER,
   SET_ORDER_LIST_FETCH_STATUS,
   SET_LAB_ORDERS,
-  CANCEL_ORDER, SAVE_FULFILLER_STATUS,
+  CANCEL_ORDER, SAVE_FULFILLER_STATUS, PRINT_LAB_LABEL,
 } from '../actions/actionTypes';
 import {
   setLabTestTypes, setOrderLabEncounter, fetchLabOrders, saveFulfillerStatusSucceeded,
@@ -184,6 +184,23 @@ function* cancelAndUpdateOrders() {
 
 export function* cancelOrder() {
   yield takeEvery(`${CANCEL_ORDER}_SUCCESS`, cancelAndUpdateOrders);
+}
+
+function* printLabLabelSuccess() {
+  const state = yield select();
+  const printMsg = getMessage(state, "app.lab.print.success", "Label Printed");
+  yield toastr.success(printMsg, { timeout: 2000 });
+}
+
+function* printLabLabelFailure() {
+  const state = yield select();
+  const printMsg = getMessage(state, "app.lab.print.failure", "Fail to print label");
+  yield toastr.error(printMsg, { timeout: 2000 });
+}
+
+export function* printLabel() {
+  yield takeEvery(`${PRINT_LAB_LABEL}_SUCCESS`, printLabLabelSuccess);
+  yield takeEvery(`${PRINT_LAB_LABEL}_FAILURE`, printLabLabelFailure);
 }
 
 // the saveFulfillerStatus action is dispatched after the lab results entry page is saved

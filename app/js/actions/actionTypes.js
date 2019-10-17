@@ -10,6 +10,7 @@ export default {
   SET_PATIENT: types('set_patient', BASIC_TYPES),
 };
 export const FETCH_LAB_ORDERS = 'FETCH_LAB_ORDERS';
+export const PRINT_LAB_LABEL = 'PRINT_LAB_LABEL';
 export const UPDATE_LAB_ORDER_WITH_ENCOUNTER = 'UPDATE_LAB_ORDER_WITH_ENCOUNTER';
 export const FETCH_LAB_TEST_RESULTS = 'FETCH_LAB_TEST_RESULTS';
 export const SET_LAB_TEST = 'SET_LAB_TEST';

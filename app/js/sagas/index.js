@@ -6,6 +6,7 @@ import {
   resetState,
   setEncounters,
   cancelOrder,
+  printLabel,
   saveFulfillerStatus,
 } from './labOrdersSaga';
 import { setLabConcepts, fetchConcept } from './conceptSaga';
@@ -22,6 +23,7 @@ const sagas = {
   fetchConcept,
   setEncounters,
   cancelOrder,
+  printLabel,
   clearFormFieldsSaga,
   saveFulfillerStatus,
 };

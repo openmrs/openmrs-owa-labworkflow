@@ -17,7 +17,7 @@ import { injectIntl, FormattedMessage } from 'react-intl';
 import swal from 'sweetalert';
 import { SortableTable, Loader } from '@openmrs/react-components';
 import LabOrderListFilters from './LabOrdersListFilters';
-import { fetchLabOrders, cancelOrder } from '../actions/labOrdersAction';
+import { fetchLabOrders, cancelOrder, printLabel } from '../actions/labOrdersAction';
 import { setSelectedConcept } from '../actions/labConceptsAction';
 import { filterThrough, calculateTableRows, getConceptShortName, computeResultStatus, isCancelable } from '../utils/helpers';
 import { loadGlobalProperties, selectProperty } from '../utils/globalProperty';
@@ -26,7 +26,7 @@ import patientAction from '../actions/patientAction';
 import "../../css/lab-orders-list.scss";
 
 
-const Cell = ({ columnName, value, handleCancel, cancelMsg, locale }) => {
+const Cell = ({ columnName, value, handleCancel, cancelMsg, handlePrint, printMsg, locale }) => {
   switch (columnName) {
     case 'EMR ID': {
       // TODO: refactor this and name column to use React Components patientUtils
@@ -88,9 +88,24 @@ const Cell = ({ columnName, value, handleCancel, cancelMsg, locale }) => {
         </div>
       );
     case 'ACTIONS':
+      const printLabel =
+        <div className="order-actn-btn">
+            <span
+              className="glyphicon glyphicon-print tooltips"
+              data-tooltip={ printMsg }
+              aria-hidden="true"
+              onClick={(e) => {
+                e.preventDefault();
+                e.stopPropagation();
+                handlePrint(value);
+              }}
+            />
+        </div>
+      ;
+      let cancelOrder = null;
       if (isCancelable(value)) {
-        return (
-          <div className="discontinue-actn-btn">
+        cancelOrder =
+          <div className="order-actn-btn">
             <span
               className="glyphicon glyphicon-remove tooltips"
               data-tooltip={ cancelMsg }
@@ -102,9 +117,14 @@ const Cell = ({ columnName, value, handleCancel, cancelMsg, locale }) => {
               }}
             />
           </div>
-        );
+        ;
       }
-      return null;
+      return (
+        <div className="actions-container">
+          { printLabel }
+          { cancelOrder }
+        </div>
+      );
     default:
       return null;
   }
@@ -118,6 +138,7 @@ export class LabOrdersList extends PureComponent {
     this.clearNameEMRField = this.clearNameEMRField.bind(this);
     this.handleShowResultsEntryPage = this.handleShowResultsEntryPage.bind(this);
     this.handleCancel = this.handleCancel.bind(this);
+    this.handlePrintLabel = this.handlePrintLabel.bind(this);
 
     this.state = {
       returnUrl: new URLSearchParams(location.search).get('returnUrl'),
@@ -169,6 +190,32 @@ export class LabOrdersList extends PureComponent {
       nameField: "",
     };
     dispatch(filtersAction.setLabOrdersListFilters(newFilters));
+  }
+
+  async handlePrintLabel(order) {
+    const {
+      sessionLocation,
+      dispatch,
+      intl,
+    } = this.props;
+
+    const printMsg = intl.formatMessage({ id: "app.lab.print.label", defaultMessage: "Print Lab Label ?" });
+    const yesMsg = intl.formatMessage({ id: "reactcomponents.yes", defaultMessage: "YES" });
+    const noMsg = intl.formatMessage({ id: "reactcomponents.no", defaultMessage: "NO" });
+    const printConfirmation = await swal(printMsg, {
+      buttons: {
+        YES: yesMsg,
+        NO: noMsg,
+      },
+    });
+    if (printConfirmation === "YES") {
+      const patient = {
+        patient: order.patient.uuid,
+        sessionLocation: sessionLocation.uuid,
+      };
+
+      dispatch(printLabel(patient));
+    }
   }
 
   async handleCancel(order) {
@@ -278,6 +325,7 @@ export class LabOrdersList extends PureComponent {
     const noDataMessage = intl.formatMessage({ id: "app.orders.not.found", defaultMessage: "No orders found" });
     const rowsMessage = intl.formatMessage({ id: "reactcomponents.table.rows", defaultMessage: "Rows" });
     const cancelMsg = intl.formatMessage({ id: "reactcomponents.cancel", defaultMessage: "Cancel" });
+    const printMsg = intl.formatMessage({ id: "reactcomponents.print", defaultMessage: "Print" });
 
     const columnMetadata = fields.map(columnName => ({
       Header:
@@ -289,7 +337,7 @@ export class LabOrdersList extends PureComponent {
   </span>,
       accessor: "",
       filterAll: true,
-      Cell: data => <Cell {...data} columnName={columnName} handleCancel={this.handleCancel} cancelMsg={cancelMsg} locale={locale}/>,
+      Cell: data => <Cell {...data} columnName={columnName} handleCancel={this.handleCancel} cancelMsg={cancelMsg} handlePrint={this.handlePrintLabel} printMsg={ printMsg } locale={locale}/>,
       className: `lab-order-list-cell-${columnName.replace(' ', '-').toLocaleLowerCase()}`,
       headerClassName: `lab-order-list-column-header lab-order-list-header-${columnName.replace(' ', '-').toLocaleLowerCase()}`,
     }));

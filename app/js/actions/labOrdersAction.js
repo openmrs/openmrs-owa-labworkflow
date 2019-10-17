@@ -9,6 +9,7 @@ import {
   SAVE_FULFILLER_STATUS,
   SAVE_FULFILLER_STATUS_SUCCEEDED,
   SAVE_FULFILLER_STATUS_FAILED,
+  PRINT_LAB_LABEL,
 } from './actionTypes';
 
 const ORDER_REP = "custom:(id,uuid,display,orderNumber,dateActivated,scheduledDate,dateStopped,autoExpireDate,fulfillerStatus,orderType:(id,uuid,display,name),encounter:(id,uuid,display,encounterDatetime),careSetting:(uuid,name,careSettingType,display),accessionNumber,urgency,action,patient:(uuid,display),concept:(id,uuid,allowDecimal,display,names:(id,uuid,name,locale,localePreferred,voided,conceptNameType))";
@@ -41,6 +42,11 @@ export const setOrderLabEncounter = (count, order) => ({
 export const cancelOrder = order => ({
   type: CANCEL_ORDER,
   payload: axiosInstance.post(`order`, order),
+});
+
+export const printLabel = patient => ({
+  type: PRINT_LAB_LABEL,
+  payload: axiosInstance.post(`mirebalais/lablabelprinter`, patient),
 });
 
 export const saveFulfillerStatus = payload => ({

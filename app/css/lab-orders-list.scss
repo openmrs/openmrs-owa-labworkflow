@@ -183,6 +183,17 @@ i.scale:hover {
   justify-content: center;
 }
 
+.order-actn-btn {
+  width: 50px;
+}
+
+.actions-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+}
+
 .tooltips {
   position: relative;
 }
