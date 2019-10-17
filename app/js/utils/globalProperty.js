@@ -21,6 +21,8 @@ export const APP_GLOBAL_PROPERTIES = {
   labResultsEstimatedCollectionDateQuestion: "labworkflowowa.estimatedCollectionDateQuestion",
   labResultsEstimatedCollectionDateAnswer: "labworkflowowa.estimatedCollectionDateAnswer",
   dateAndTimeFormat: "labworkflowowa.dateAndTimeFormat",
+  enableLabelPrinting: "labworkflowowa.enableLabelPrinting",
+  labelPrintingEndpoint: "labworkflowowa.labelPrintingEndpoint",
 };
 
 export const loadGlobalProperties = (dispatch) => {

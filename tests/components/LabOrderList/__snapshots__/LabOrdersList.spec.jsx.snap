@@ -79,6 +79,18 @@ exports[`<LabOrdersList /> component renders correctly 1`] = `
         ],
         Array [
           Object {
+            "globalProperty": "labworkflowowa.enableLabelPrinting",
+            "type": "globalproperty/FETCH_REQUESTED",
+          },
+        ],
+        Array [
+          Object {
+            "globalProperty": "labworkflowowa.labelPrintingEndpoint",
+            "type": "globalproperty/FETCH_REQUESTED",
+          },
+        ],
+        Array [
+          Object {
             "patientUUID": "",
             "type": "SET_SELECTED_PATIENT",
           },
@@ -90,6 +102,14 @@ exports[`<LabOrdersList /> component renders correctly 1`] = `
         ],
       ],
       "results": Array [
+        Object {
+          "isThrow": false,
+          "value": undefined,
+        },
+        Object {
+          "isThrow": false,
+          "value": undefined,
+        },
         Object {
           "isThrow": false,
           "value": undefined,

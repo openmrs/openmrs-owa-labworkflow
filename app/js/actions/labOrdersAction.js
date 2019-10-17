@@ -46,7 +46,7 @@ export const cancelOrder = order => ({
 
 export const printLabel = patient => ({
   type: PRINT_LAB_LABEL,
-  payload: axiosInstance.post(`mirebalais/lablabelprinter`, patient),
+  payload: axiosInstance.get(`${patient.url}?patient=${patient.patient}&sessionLocation=${patient.sessionLocation}`),
 });
 
 export const saveFulfillerStatus = payload => ({

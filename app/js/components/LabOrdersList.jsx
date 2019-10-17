@@ -26,7 +26,7 @@ import patientAction from '../actions/patientAction';
 import "../../css/lab-orders-list.scss";
 
 
-const Cell = ({ columnName, value, handleCancel, cancelMsg, handlePrint, printMsg, locale }) => {
+const Cell = ({ columnName, value, handleCancel, cancelMsg, enableLabelPrinting, handlePrint, printMsg, locale }) => {
   switch (columnName) {
     case 'EMR ID': {
       // TODO: refactor this and name column to use React Components patientUtils
@@ -121,7 +121,7 @@ const Cell = ({ columnName, value, handleCancel, cancelMsg, handlePrint, printMs
       }
       return (
         <div className="actions-container">
-          { printLabel }
+          { enableLabelPrinting === 'true' ? printLabel : ''}
           { cancelOrder }
         </div>
       );
@@ -195,6 +195,7 @@ export class LabOrdersList extends PureComponent {
   async handlePrintLabel(order) {
     const {
       sessionLocation,
+      labelPrintingEndpoint,
       dispatch,
       intl,
     } = this.props;
@@ -212,6 +213,7 @@ export class LabOrdersList extends PureComponent {
       const patient = {
         patient: order.patient.uuid,
         sessionLocation: sessionLocation.uuid,
+        url: labelPrintingEndpoint,
       };
 
       dispatch(printLabel(patient));
@@ -316,6 +318,7 @@ export class LabOrdersList extends PureComponent {
       orders,
       dateAndTimeFormat,
       labOrdersListFilters,
+      enableLabelPrinting,
       fetched,
       intl,
       locale,
@@ -337,7 +340,7 @@ export class LabOrdersList extends PureComponent {
   </span>,
       accessor: "",
       filterAll: true,
-      Cell: data => <Cell {...data} columnName={columnName} handleCancel={this.handleCancel} cancelMsg={cancelMsg} handlePrint={this.handlePrintLabel} printMsg={ printMsg } locale={locale}/>,
+      Cell: data => <Cell {...data} columnName={columnName} handleCancel={this.handleCancel} cancelMsg={cancelMsg} enableLabelPrinting={ enableLabelPrinting } handlePrint={this.handlePrintLabel} printMsg={ printMsg } locale={locale}/>,
       className: `lab-order-list-cell-${columnName.replace(' ', '-').toLocaleLowerCase()}`,
       headerClassName: `lab-order-list-column-header lab-order-list-header-${columnName.replace(' ', '-').toLocaleLowerCase()}`,
     }));
@@ -423,6 +426,8 @@ export const mapStateToProps = state => ({
   labTests: state.labOrders.labTests,
   dateAndTimeFormat: selectProperty(state, 'dateAndTimeFormat') || '',
   labResultsTestOrderType: selectProperty(state, 'labResultsTestOrderType') || '',
+  enableLabelPrinting: selectProperty(state, 'enableLabelPrinting') || '',
+  labelPrintingEndpoint: selectProperty(state, 'labelPrintingEndpoint') || '',
   labOrdersListFilters: state.filters.labOrdersListFilters,
   fetched: state.labOrders.fetched,
   currentProvider: state.openmrs.session.currentProvider,
