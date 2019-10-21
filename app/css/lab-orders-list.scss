@@ -82,7 +82,7 @@ i.scale:hover {
 .lab-order-list-header-actions {
   min-width: 80px;
   max-width: 80px;
-  overflow: visible;
+  overflow: visible !important;
 }
 
 // style for making sure each row in the
