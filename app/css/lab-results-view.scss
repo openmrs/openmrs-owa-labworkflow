@@ -7,6 +7,7 @@
 
   .ReactTable .rt-tbody .rt-td {
       border-right: 1px solid rgba(0,0,0,0.02);
+      overflow: visible;
   }
 
   .ReactTable.-striped .rt-tr.-odd {
@@ -45,6 +46,7 @@
 
 .ReactTable .rt-tbody .rt-td {
   border-right: 1px solid rgba(0,0,0,0.45);
+  overflow: visible;
 }
 
 .lab-results-list-column-header {

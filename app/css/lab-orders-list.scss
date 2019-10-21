@@ -80,6 +80,7 @@ i.scale:hover {
 
 .lab-order-list-cell-actions,
 .lab-order-list-header-actions {
+  overflow: visible;
   min-width: 80px;
   max-width: 80px;
 }
@@ -184,13 +185,14 @@ i.scale:hover {
 }
 
 .order-actn-btn {
-  width: 50px;
+  width: 25px;
+  margin: 10px;
 }
 
 .actions-container {
   display: flex;
   flex-direction: row;
-  justify-content: space-between;
+  justify-content: left;
   align-items: center;
 }
 
