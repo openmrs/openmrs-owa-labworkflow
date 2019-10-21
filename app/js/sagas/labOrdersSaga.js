@@ -186,13 +186,19 @@ export function* cancelOrder() {
   yield takeEvery(`${CANCEL_ORDER}_SUCCESS`, cancelAndUpdateOrders);
 }
 
-function* printLabLabelSuccess() {
+function* printLabLabelSuccess(action) {
   const state = yield select();
-  const printMsg = getMessage(state, "app.lab.print.success", "Label Printed");
-  yield toastr.success(printMsg, { timeout: 2000 });
+  const successMsg = getMessage(state, "app.lab.print.success", "Label Printed");
+  const errorMsg = getMessage(state, "app.lab.print.failure", "Fail to print label");
+  const data = R.path(['payload', 'data'], action);
+  if (!R.isNil(data) && (data.error === true)) {
+    yield toastr.error(!R.isNil(data.message) ? data.message : errorMsg, { timeout: 2000 });
+  } else {
+    yield toastr.success(successMsg, { timeout: 2000 });
+  }
 }
 
-function* printLabLabelFailure() {
+function* printLabLabelFailure(action) {
   const state = yield select();
   const printMsg = getMessage(state, "app.lab.print.failure", "Fail to print label");
   yield toastr.error(printMsg, { timeout: 2000 });
