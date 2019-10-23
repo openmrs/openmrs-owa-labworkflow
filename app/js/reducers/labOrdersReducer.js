@@ -6,6 +6,7 @@ import {
   SET_ORDER_LAB_ENCOUNTER,
   SET_ORDER_LIST_FETCH_STATUS,
   SET_LAB_ORDERS,
+  UPDATE_LAB_ORDERS,
 } from '../actions/actionTypes';
 
 
@@ -29,6 +30,14 @@ export default (state = initialState.labOrderReducer, action) => {
         isLoading: false,
         fetched: true,
         orders: action.orders,
+      };
+    }
+    case UPDATE_LAB_ORDERS: {
+      return {
+        ...state,
+        isLoading: false,
+        fetched: true,
+        orders: [...state.orders, ...action.orders],
       };
     }
     case `${FETCH_LAB_ORDERS}_FAILURE`: {

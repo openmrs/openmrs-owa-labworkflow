@@ -23,6 +23,7 @@ export const APP_GLOBAL_PROPERTIES = {
   dateAndTimeFormat: "labworkflowowa.dateAndTimeFormat",
   enableLabelPrinting: "labworkflowowa.enableLabelPrinting",
   labelPrintingEndpoint: "labworkflowowa.labelPrintingEndpoint",
+  ordersBatchSize: "labworkflowowa.ordersBatchSize",
 };
 
 export const loadGlobalProperties = (dispatch) => {

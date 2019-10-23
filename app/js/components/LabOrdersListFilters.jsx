@@ -6,7 +6,7 @@ import {
 } from 'react-bootstrap';
 import { injectIntl, FormattedMessage } from 'react-intl';
 import { CustomDatePicker as DatePicker, Dropdown } from '@openmrs/react-components';
-import FULFILLER_STATUS from '../constants';
+import { FULFILLER_STATUS } from '../constants';
 
 class LabOrderListFilters extends PureComponent {
   renderNameEMROrOrderIdFilter() {

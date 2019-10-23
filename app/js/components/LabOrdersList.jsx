@@ -23,6 +23,7 @@ import { filterThrough, calculateTableRows, getConceptShortName, computeResultSt
 import { loadGlobalProperties, selectProperty } from '../utils/globalProperty';
 import filtersAction from '../actions/filtersAction';
 import patientAction from '../actions/patientAction';
+import { DEFAULT_ORDERS_BATCH_SIZE } from '../constants';
 import "../../css/lab-orders-list.scss";
 
 
@@ -163,10 +164,11 @@ export class LabOrdersList extends PureComponent {
   }
 
   loadOrders() {
-    const { dispatch, labResultsTestOrderType, labOrdersListFilters } = this.props;
+    const { dispatch, labResultsTestOrderType, labOrdersListFilters, ordersBatchSize } = this.props;
     const options = {
       dateToField: moment(labOrdersListFilters.dateToField).format('YYYY-MM-DD'),
       dateFromField: moment(labOrdersListFilters.dateFromField).format('YYYY-MM-DD'),
+      ordersBatchSize: (ordersBatchSize ? ordersBatchSize : DEFAULT_ORDERS_BATCH_SIZE),
     };
     dispatch(fetchLabOrders(labResultsTestOrderType, options));
   }
@@ -253,7 +255,7 @@ export class LabOrdersList extends PureComponent {
   }
 
   handleFilterChange(field, value) {
-    const { dispatch, labOrdersListFilters, labResultsTestOrderType } = this.props;
+    const { dispatch, labOrdersListFilters, labResultsTestOrderType, ordersBatchSize } = this.props;
     let newFilters = {
       ...labOrdersListFilters,
       [field]: value,
@@ -269,12 +271,14 @@ export class LabOrdersList extends PureComponent {
       const options = {
         dateToField: value,
         dateFromField: moment(labOrdersListFilters.dateFromField).format('YYYY-MM-DD'),
+        ordersBatchSize: (ordersBatchSize || DEFAULT_ORDERS_BATCH_SIZE),
       };
       dispatch(fetchLabOrders(labResultsTestOrderType, options));
     }
     if (field === 'dateFromField') {
       const options = {
         dateToField: moment(labOrdersListFilters.dateToField).format('YYYY-MM-DD'),
+        ordersBatchSize: (ordersBatchSize || DEFAULT_ORDERS_BATCH_SIZE),
         dateFromField: value,
       };
       dispatch(fetchLabOrders(labResultsTestOrderType, options));
@@ -428,6 +432,7 @@ export const mapStateToProps = state => ({
   labResultsTestOrderType: selectProperty(state, 'labResultsTestOrderType') || '',
   enableLabelPrinting: selectProperty(state, 'enableLabelPrinting') || '',
   labelPrintingEndpoint: selectProperty(state, 'labelPrintingEndpoint') || '',
+  ordersBatchSize: selectProperty(state, 'ordersBatchSize'),
   labOrdersListFilters: state.filters.labOrdersListFilters,
   fetched: state.labOrders.fetched,
   currentProvider: state.openmrs.session.currentProvider,
