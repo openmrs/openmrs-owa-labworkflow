@@ -24,6 +24,7 @@ export const APP_GLOBAL_PROPERTIES = {
   enableLabelPrinting: "labworkflowowa.enableLabelPrinting",
   labelPrintingEndpoint: "labworkflowowa.labelPrintingEndpoint",
   ordersBatchSize: "labworkflowowa.ordersBatchSize",
+  orderLabTestLink: "labworkflowowa.orderLabTestLink",
 };
 
 export const loadGlobalProperties = (dispatch) => {
