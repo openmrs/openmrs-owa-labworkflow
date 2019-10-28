@@ -225,6 +225,7 @@ export class LabResultsList extends PureComponent {
                     columnMetadata={rowColumnMetadata}
                     collapseOnDataChange={false}
                     collapseOnPageChange={false}
+                    defaultPageSize={row.original.groupMembers.length}
                     showPagination={false}
                     rowOnClick={this.handleShowLabTrendsPage}
                     defaultClassName=""
