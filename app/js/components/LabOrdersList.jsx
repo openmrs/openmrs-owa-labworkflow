@@ -159,6 +159,7 @@ export class LabOrdersList extends PureComponent {
   componentDidUpdate(prevProps) {
     const { labResultsTestOrderType, ordersBatchSize } = this.props;
 
+    // TODO: this means that these two GPs are required
     // the intent of this is to trigger loading the orders after both these GPs have been loaded
     if ((prevProps.labResultsTestOrderType !== labResultsTestOrderType
       || prevProps.ordersBatchSize !== ordersBatchSize)
