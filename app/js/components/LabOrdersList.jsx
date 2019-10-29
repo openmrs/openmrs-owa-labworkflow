@@ -156,9 +156,13 @@ export class LabOrdersList extends PureComponent {
     }
   }
 
-  componentWillReceiveProps(nextProps) {
-    const { dispatch, labResultsTestOrderType, labOrdersListFilters } = this.props;
-    if (nextProps.labResultsTestOrderType !== labResultsTestOrderType) {
+  componentDidUpdate(prevProps) {
+    const { labResultsTestOrderType, ordersBatchSize } = this.props;
+
+    // the intent of this is to trigger loading the orders after both these GPs have been loaded
+    if ((prevProps.labResultsTestOrderType !== labResultsTestOrderType
+      || prevProps.ordersBatchSize !== ordersBatchSize)
+      && labResultsTestOrderType && ordersBatchSize) {
       this.loadOrders();
     }
   }
@@ -168,7 +172,7 @@ export class LabOrdersList extends PureComponent {
     const options = {
       dateToField: moment(labOrdersListFilters.dateToField).format('YYYY-MM-DD'),
       dateFromField: moment(labOrdersListFilters.dateFromField).format('YYYY-MM-DD'),
-      ordersBatchSize: (ordersBatchSize ? ordersBatchSize : DEFAULT_ORDERS_BATCH_SIZE),
+      ordersBatchSize: (ordersBatchSize || DEFAULT_ORDERS_BATCH_SIZE),
     };
     dispatch(fetchLabOrders(labResultsTestOrderType, options));
   }
