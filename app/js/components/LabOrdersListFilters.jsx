@@ -110,7 +110,7 @@ class LabOrderListFilters extends PureComponent {
   }
 
   renderTestTypeFilter() {
-    const { labTests, handleFieldChange, testTypeField, intl } = this.props;
+  /*  const { labTests, handleFieldChange, testTypeField, intl } = this.props;
     const allMsg = intl.formatMessage({ id: "reactcomponents.all", defaultMessage: "All" });
     const selectFromListMsg = intl.formatMessage({ id: "reactcomponents.select.from.list", defaultMessage: "Select from the list" });
     const testTypeMsg = intl.formatMessage({ id: "app.labOrdersListFilters.searchDropdownLabel", defaultMessage: "Test Type" });
@@ -126,7 +126,7 @@ class LabOrderListFilters extends PureComponent {
         placeholder={ selectFromListMsg }
         handleSelect={(field, value) => handleFieldChange(field, value)}
       />
-    );
+    );*/
   }
 
   render() {

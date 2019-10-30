@@ -16,6 +16,7 @@ import {
 } from '@openmrs/react-components';
 import {
   FETCH_LAB_ORDERS,
+  FETCH_NEXT_BATCH_LAB_ORDERS,
   UPDATE_LAB_ORDER_WITH_ENCOUNTER,
   SET_ORDER_LAB_ENCOUNTER,
   SET_ORDER_LIST_FETCH_STATUS,
@@ -24,7 +25,7 @@ import {
 } from '../actions/actionTypes';
 import {
   setLabTestTypes, setOrderLabEncounter, fetchLabOrders, saveFulfillerStatusSucceeded,
-  saveFulfillerStatusFailed,
+  saveFulfillerStatusFailed, fetchNextBatchOfLabOrders, setLabOrders, updateLabOrders,
 } from '../actions/labOrdersAction';
 import { setSelectedConcept } from '../actions/labConceptsAction';
 import { selectProperty, selectLocale, getMessage } from '../utils/globalProperty';
@@ -79,16 +80,18 @@ const computeFulfillerStatus = (encounter, state) => {
   return FULFILLER_STATUS.RECEIVED; // likely should never get here
 };
 
+// TODO what is this doing?
 export function* clear() {
   yield put(setSelectedConcept());
 }
 
+// TODO what is this doing
 export function* resetState() {
   yield takeEvery(`${FETCH_LAB_ORDERS}_SUCCESS`, clear);
 }
 
-export function* filterAndSetOrders(action) {
-  const { payload } = action;
+export function* filterAndUpdateOrders(action) {
+  const { payload, type } = action;
   const state = yield select();
   const locale = selectLocale(state);
 
@@ -96,8 +99,24 @@ export function* filterAndSetOrders(action) {
   // filter out orders where action="DISCONTINUE"
   const orders = result.filter(order => order.action !== "DISCONTINUE");
 
-  yield put({ type: SET_LAB_ORDERS, orders });
+  // if this is the first batch loaded, set, otherwise update
+  if (type === `${FETCH_LAB_ORDERS}_SUCCESS`) {
+    yield put(setLabOrders(orders));
+  } else {
+    yield put(updateLabOrders(orders));
+  }
 
+
+  // if there are more batches we need to fetch, fetch them
+  if (payload.data.links) {
+    const next = payload.data.links.find(link => link.rel === 'next');
+    if (next) {
+      const queryParams = next.uri.split('order?')[1];
+      yield put(fetchNextBatchOfLabOrders(queryParams));
+    }
+  }
+
+  // TODO will need to fix this
   const conceptNames = orders.map(order => getConceptShortName(order.concept, locale));
   const labTestTypes = R.uniq(conceptNames);
   yield put(setLabTestTypes(labTestTypes));
@@ -117,7 +136,8 @@ export function* setTestTypes(action) {
 }
 
 export function* setLabTestsSaga() {
-  yield takeEvery(`${FETCH_LAB_ORDERS}_SUCCESS`, filterAndSetOrders);
+  yield takeEvery(`${FETCH_LAB_ORDERS}_SUCCESS`, filterAndUpdateOrders);
+  yield takeEvery(`${FETCH_NEXT_BATCH_LAB_ORDERS}_SUCCESS`, filterAndUpdateOrders);
 }
 
 export function* fetchAndSetTestResultEncounter(args) {
