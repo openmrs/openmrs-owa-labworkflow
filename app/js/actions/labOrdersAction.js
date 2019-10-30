@@ -1,11 +1,8 @@
 import { axiosInstance } from '../config';
 import {
   FETCH_LAB_ORDERS,
-  FETCH_NEXT_BATCH_LAB_ORDERS,
   UPDATE_LAB_ORDER_WITH_ENCOUNTER,
   SET_LAB_TEST,
-  SET_LAB_ORDERS,
-  UPDATE_LAB_ORDERS,
   FETCH_LAB_TEST_RESULTS,
   SET_ORDER_LAB_ENCOUNTER,
   CANCEL_ORDER,
@@ -15,16 +12,11 @@ import {
   PRINT_LAB_LABEL,
 } from './actionTypes';
 
-const ORDER_REP = "custom:(id,uuid,display,orderNumber,dateActivated,scheduledDate,dateStopped,autoExpireDate,fulfillerStatus,accessionNumber,urgency,action,patient:(uuid,display),concept:(uuid)";
+const ORDER_REP = "custom:(id,uuid,display,orderNumber,dateActivated,scheduledDate,dateStopped,autoExpireDate,fulfillerStatus,orderType:(id,uuid,display,name),encounter:(id,uuid,display,encounterDatetime),careSetting:(uuid,name,careSettingType,display),accessionNumber,urgency,action,patient:(uuid,display),concept:(id,uuid,allowDecimal,display,names:(id,uuid,name,locale,localePreferred,voided,conceptNameType))";
 
 export const fetchLabOrders = (testOrderType, options) => ({
   type: FETCH_LAB_ORDERS,
   payload: axiosInstance.get(`order?s=default&totalCount=true&sort=desc&orderTypes=${testOrderType}&activatedOnOrAfterDate=${options.dateFromField}&activatedOnOrBeforeDate=${options.dateToField}&v=${ORDER_REP}&limit=${options.ordersBatchSize}`),
-});
-
-export const fetchNextBatchOfLabOrders = queryParams => ({
-  type: FETCH_NEXT_BATCH_LAB_ORDERS,
-  payload: axiosInstance.get(`order?${queryParams}`),
 });
 
 export const updateLabOrderWithEncounter = labOrder => ({
@@ -68,14 +60,4 @@ export const saveFulfillerStatusSucceeded = () => ({
 
 export const saveFulfillerStatusFailed = () => ({
   type: SAVE_FULFILLER_STATUS_FAILED,
-});
-
-export const setLabOrders = orders => ({
-  type: SET_LAB_ORDERS,
-  orders,
-});
-
-export const updateLabOrders = orders => ({
-  type: UPDATE_LAB_ORDERS,
-  orders,
 });

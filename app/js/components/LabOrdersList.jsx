@@ -85,7 +85,7 @@ const Cell = ({ columnName, value, handleCancel, cancelMsg, enableLabelPrinting,
     case 'TEST TYPE':
       return (
         <div className="table_cell test-type">
-          <span>{value.display}</span>
+          <span>{getConceptShortName(value.concept, locale)}</span>
         </div>
       );
     case 'ACTIONS':
