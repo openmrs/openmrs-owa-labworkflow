@@ -322,6 +322,19 @@ export class LabOrdersList extends PureComponent {
     );
   }
 
+  renderTooManyOrdersWarning() {
+    return (
+      <div className="no-data-container">
+        <span>
+          <FormattedMessage
+            id="app.orders.tooManyOrders"
+            defaultMessage="Unable to retrieve all orders.  Please reduce the date range."
+          />
+        </span>
+      </div>
+    );
+  }
+
   renderDraftOrderTable() {
     const {
       orders,
@@ -381,7 +394,7 @@ export class LabOrdersList extends PureComponent {
 
   render() {
     const {
-      labTests, orders, fetched, labOrdersListFilters: {
+      labTests, orders, fetched, tooManyOrdersWarning, labOrdersListFilters: {
         dateFromField, dateToField, nameField, testTypeField, testStatusField,
       },
     } = this.props;
@@ -409,6 +422,7 @@ export class LabOrdersList extends PureComponent {
             nameField={nameField}
           />
           {!fetched && <Loader />}
+          {(hasData && tooManyOrdersWarning) && this.renderTooManyOrdersWarning()}
           {(hasData && fetched) && this.renderDraftOrderTable()}
           {(!hasData && fetched) && this.renderNoDataDisplayText()}
           {returnUrl && (
@@ -433,6 +447,7 @@ LabOrdersList.propTypes = {
 export const mapStateToProps = state => ({
   orders: state.labOrders.orders,
   labTests: state.labOrders.labTests,
+  tooManyOrdersWarning: state.labOrders.tooManyOrdersWarning,
   dateAndTimeFormat: selectProperty(state, 'dateAndTimeFormat') || '',
   labResultsTestOrderType: selectProperty(state, 'labResultsTestOrderType') || '',
   enableLabelPrinting: selectProperty(state, 'enableLabelPrinting') || '',
