@@ -96,7 +96,11 @@ export function* filterAndSetOrders(action) {
   // filter out orders where action="DISCONTINUE"
   const orders = result.filter(order => order.action !== "DISCONTINUE");
 
-  yield put({ type: SET_LAB_ORDERS, orders });
+  yield put({
+    type: SET_LAB_ORDERS,
+    orders,
+    tooManyOrders: orders && orders.length < payload.data.totalCount,
+  });
 
   const conceptNames = orders.map(order => getConceptShortName(order.concept, locale));
   const labTestTypes = R.uniq(conceptNames);
