@@ -14,6 +14,7 @@ const props = {
   testTypeField: '',
   dateToField: moment('2018-11-11'),
   dateFromField: moment('2018-11-11'),
+  orderLabTestLink: '',
 };
 
 const getComponent = () => {

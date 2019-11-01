@@ -394,7 +394,7 @@ export class LabOrdersList extends PureComponent {
 
   render() {
     const {
-      labTests, orders, fetched, tooManyOrdersWarning, labOrdersListFilters: {
+      labTests, orders, fetched, orderLabTestLink, tooManyOrdersWarning, labOrdersListFilters: {
         dateFromField, dateToField, nameField, testTypeField, testStatusField,
       },
     } = this.props;
@@ -420,6 +420,7 @@ export class LabOrdersList extends PureComponent {
             dateFromField={moment(dateFromField)}
             dateToField={moment(dateToField)}
             nameField={nameField}
+            orderLabTestLink={ orderLabTestLink }
           />
           {!fetched && <Loader />}
           {(hasData && tooManyOrdersWarning) && this.renderTooManyOrdersWarning()}
@@ -453,6 +454,7 @@ export const mapStateToProps = state => ({
   enableLabelPrinting: selectProperty(state, 'enableLabelPrinting') || '',
   labelPrintingEndpoint: selectProperty(state, 'labelPrintingEndpoint') || '',
   ordersBatchSize: selectProperty(state, 'ordersBatchSize'),
+  orderLabTestLink: selectProperty(state, 'orderLabTestLink'),
   labOrdersListFilters: state.filters.labOrdersListFilters,
   fetched: state.labOrders.fetched,
   currentProvider: state.openmrs.session.currentProvider,

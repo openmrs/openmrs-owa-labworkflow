@@ -130,11 +130,20 @@ class LabOrderListFilters extends PureComponent {
   }
 
   render() {
+    const { orderLabTestLink } = this.props;
+    const contextPath = window.location.href.split('/')[3];
+    const orderLabsUrl = `/${contextPath}/${orderLabTestLink}`;
     return (
       <div className="order-list-filters">
         <span className="top-filters">
-          {this.renderDatePickerFilters()}
+          <span>
+            {this.renderDatePickerFilters()}
+          </span>
+          <span>
+            <button type="button" className="btn btn-lg" onClick={() => window.location.assign(orderLabsUrl)}>Add Orders</button>
+          </span>
         </span>
+
         <span className="bottom-filters">
           {this.renderNameEMROrOrderIdFilter()}
           <span className="status-dropdown">
@@ -151,6 +160,7 @@ class LabOrderListFilters extends PureComponent {
 
 LabOrderListFilters.defaultProps = {
   nameField: "",
+  orderLabTestLink: "",
 };
 
 LabOrderListFilters.propTypes = {
@@ -158,6 +168,7 @@ LabOrderListFilters.propTypes = {
   clearNameEMRField: PropTypes.func.isRequired,
   labTests: PropTypes.array.isRequired,
   nameField: PropTypes.string,
+  orderLabTestLink: PropTypes.string,
   testStatusField: PropTypes.string.isRequired,
   testTypeField: PropTypes.string.isRequired,
   dateToField: PropTypes.object.isRequired,
