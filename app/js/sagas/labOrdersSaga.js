@@ -93,13 +93,15 @@ export function* filterAndSetOrders(action) {
   const locale = selectLocale(state);
 
   const result = payload.data.results;
+  const tooManyOrders = result && result.length < payload.data.totalCount;
+
   // filter out orders where action="DISCONTINUE"
   const orders = result.filter(order => order.action !== "DISCONTINUE");
 
   yield put({
     type: SET_LAB_ORDERS,
     orders,
-    tooManyOrders: orders && orders.length < payload.data.totalCount,
+    tooManyOrders,
   });
 
   const conceptNames = orders.map(order => getConceptShortName(order.concept, locale));
