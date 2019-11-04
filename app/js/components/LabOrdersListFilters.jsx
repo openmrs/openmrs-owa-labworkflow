@@ -33,6 +33,21 @@ class LabOrderListFilters extends PureComponent {
     );
   }
 
+  renderAddOrderButton() {
+    const { orderLabTestLink, intl } = this.props;
+    const contextPath = window.location.href.split('/')[3];
+    const orderLabsUrl = `/${contextPath}/${orderLabTestLink}`;
+    const addOrderMessage = intl.formatMessage({ id: "app.labOrders.addOrder.button", defaultMessage: "Add Order" });
+    if ( orderLabTestLink && orderLabTestLink.length > 0 ) {
+      return (
+        <span className="addOrder-span">
+              <button type="button" className="btn btn-lg addOrder-button"
+                      onClick={() => window.location.assign(orderLabsUrl)}>{ addOrderMessage }</button>
+      </span>
+      );
+    }
+  }
+
   renderDatePickerFilters() {
     const { handleFieldChange, dateFromField, dateToField, intl } = this.props;
     const fromMessage = intl.formatMessage({ id: "app.labOrdersListFilters.searchDateFromLabel", defaultMessage: "From: " });
@@ -56,7 +71,7 @@ class LabOrderListFilters extends PureComponent {
             field="dateToField"
             handleDateChange={(field, value) => handleFieldChange(field, value)}
           />
-        </span>
+          </span>
       </span>
     );
   }
@@ -130,17 +145,12 @@ class LabOrderListFilters extends PureComponent {
   }
 
   render() {
-    const { orderLabTestLink } = this.props;
-    const contextPath = window.location.href.split('/')[3];
-    const orderLabsUrl = `/${contextPath}/${orderLabTestLink}`;
     return (
       <div className="order-list-filters">
         <span className="top-filters">
-          <span>
-            {this.renderDatePickerFilters()}
-          </span>
-          <span>
-            <button type="button" className="btn btn-lg" onClick={() => window.location.assign(orderLabsUrl)}>Add Orders</button>
+          <span className="date-picker-filter">
+            { this.renderDatePickerFilters() }
+            { this.renderAddOrderButton() }
           </span>
         </span>
 

@@ -65,5 +65,6 @@
     "app.lab.discontinue.reason":"Reason for discontinuing",
     "app.lab.create.success":"Order Successfully Created",
     "app.lab.order.cancel.success":"Order Canceled",
-    "app.orders.tooManyOrders": "Unable to retrieve all orders.  Please reduce the date range."
+    "app.orders.tooManyOrders": "Unable to retrieve all orders.  Please reduce the date range.",
+    "app.labOrders.addOrder.button":"Add Order"
 }

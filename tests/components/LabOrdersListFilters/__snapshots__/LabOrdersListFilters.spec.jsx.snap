@@ -85,7 +85,9 @@ exports[`<LabOrdersList /> component renders correctly 1`] = `
       <span
         className="top-filters"
       >
-        <span>
+        <span
+          className="date-picker-filter"
+        >
           <span
             className="date-picker-filter"
           >
@@ -552,15 +554,6 @@ exports[`<LabOrdersList /> component renders correctly 1`] = `
               </CustomDatePicker>
             </span>
           </span>
-        </span>
-        <span>
-          <button
-            className="btn btn-lg"
-            onClick={[Function]}
-            type="button"
-          >
-            Add Orders
-          </button>
         </span>
       </span>
       <span
