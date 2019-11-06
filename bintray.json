@@ -2,11 +2,14 @@
   "package": {
     "name": "openmrs-owa-labworkflow",
     "repo": "owa",
-    "subject": "openmrs"
+    "subject": "openmrs",
+    "vcs_url": "https://github.com/openmrs/openmrs-owa-labworkflow",
+    "licenses": ["MPL-2.0"]
   },
   "version": {
     "name": "0.2.0",
-    "released": "2019-09-10"
+    "released": "2019-11-6",
+    "vcs_tag": "0.2.0"
   },
   "files": [
     {
@@ -16,6 +19,5 @@
   ],
   "publish": true
 }
-
 
 
