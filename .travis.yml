@@ -7,7 +7,7 @@ before_deploy: npm run build
 deploy:
   provider: bintray
   file: bintray.json
-  user: dkayiwa
+  user: mogoodrich
   key: $BINTRAY_API_KEY
   dry-run: false
   on:
