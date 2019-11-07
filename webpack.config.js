@@ -25,7 +25,9 @@ const autoprefixer = require('autoprefixer');
 
 const env = process.env.NODE_ENV;
 
-const THIS_APP_ID = 'labworkflow';
+const packageJson = require('./package.json');
+
+const THIS_APP_ID = 'labworkflow-' + packageJson.version;
 
 var plugins = [];
 const nodeModules = {};
@@ -141,11 +143,11 @@ if (env === 'deploy') {
 	outputPath = `${config.LOCAL_OWA_FOLDER}${config.LOCAL_OWA_FOLDER.slice(-1) != '/' ? '/' : ''}${THIS_APP_ID}`;
 	devtool = 'source-map';
 }
-if (env === 'development') {	
-	outputFile = `${outputFile}.js`;	
-	vendorOutputFile = "vendor.bundle.js";	
-	outputPath = `${__dirname}/dist/`;	
-	devtool = 'eval-source-map';	
+if (env === 'development') {
+	outputFile = `${outputFile}.js`;
+	vendorOutputFile = "vendor.bundle.js";
+	outputPath = `${__dirname}/dist/`;
+	devtool = 'eval-source-map';
 }
 
 plugins.push(new BrowserSyncPlugin({

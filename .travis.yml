@@ -10,5 +10,6 @@ deploy:
   user: mogoodrich
   key: $BINTRAY_API_KEY
   dry-run: false
+  skip_cleanup: true
   on:
     tags: true
