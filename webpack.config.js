@@ -27,7 +27,7 @@ const env = process.env.NODE_ENV;
 
 const packageJson = require('./package.json');
 
-const THIS_APP_ID = 'labworkflow-' + packageJson.version;
+const THIS_APP_ID = 'labworkflow';
 
 var plugins = [];
 const nodeModules = {};
@@ -119,7 +119,7 @@ if (env === 'production') {
 	plugins.push(new WebpackOnBuildPlugin(function (stats) {
 		//create zip file
 		var archiver = require('archiver');
-		var output = fs.createWriteStream(THIS_APP_ID + '.zip');
+		var output = fs.createWriteStream(THIS_APP_ID + "-" + packageJson.version + '.zip');
 		var archive = archiver('zip');
 
 		output.on('close', function () {
