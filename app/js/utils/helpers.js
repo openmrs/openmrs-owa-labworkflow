@@ -71,35 +71,8 @@ export const filterThrough = (filters, data, locale) => {
 
   if (filters.testTypeField !== undefined && filters.testTypeField !== defaultAll ) {
     const inputValue = filters.testTypeField;
-    const filteredData = matchSorter(originalData, inputValue, { threshold: matchSorter.rankings.EQUAL, keys: [item => getConceptShortName(item.concept,locale)]});
-    originalData = filteredData;
-  }
-
-  if (filters.testStatusField !== undefined) {
-    if ( filters.testStatusField === "" ) {
-      //empty filter, no Status value was selected
-      //display all orders except the Canceled or Expired
-      originalData = originalData.filter((data) => {
-        const status = computeResultStatus(data);
-        return status !== 'CANCELED' && status !== 'EXPIRED';
-      });
-    } else if ( filters.testStatusField === "ALL" ) {
-      // display all orders regardless the status
-      originalData= originalData.filter((data) => {
-        return true;
-      });
-    } else if ( filters.testStatusField === "CANCELED_EXPIRED" ) {
-      // display all orders that have an Canceled or Expired status
-      originalData= originalData.filter((data) => {
-        const status = computeResultStatus(data);
-        return status === 'CANCELED' || status === 'EXPIRED';
-      });
-    } else if (filters.testStatusField !== "") {
-      originalData= originalData.filter((data) => {
-        const status = computeResultStatus(data);
-        return status === filters.testStatusField;
-      });
-    }
+    const filteredData = matchSorter(originalData, inputValue, { threshold: matchSorter.rankings.EQUAL, keys: [item => item.concept.uuid]});
+    //originalData = filteredData;
   }
 
   return originalData;
@@ -155,16 +128,16 @@ export const calculateTableRows = (noOfRows) => ((parseInt(noOfRows) < 10) ? par
 
 export const computeResultStatus = (order) => {
 
-  if (order.fulfillerStatus) {
-    return order.fulfillerStatus;
-  }
-
   if (order.dateStopped !== null) {
     return FULFILLER_STATUS.CANCELED;
   }
 
   if (order.autoExpireDate !== null && moment(order.autoExpireDate).isBefore(new Date())) {
     return FULFILLER_STATUS.EXPIRED;
+  }
+
+  if (order.fulfillerStatus) {
+    return order.fulfillerStatus;
   }
   return FULFILLER_STATUS.ORDERED;
 };

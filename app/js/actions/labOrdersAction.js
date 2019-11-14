@@ -16,7 +16,7 @@ const ORDER_REP = "custom:(id,uuid,display,orderNumber,dateActivated,scheduledDa
 
 export const fetchLabOrders = (testOrderType, options) => ({
   type: FETCH_LAB_ORDERS,
-  payload: axiosInstance.get(`order?s=default&totalCount=true&sort=desc&orderTypes=${testOrderType}&activatedOnOrAfterDate=${options.dateFromField}&activatedOnOrBeforeDate=${options.dateToField}&v=${ORDER_REP}&limit=${options.ordersBatchSize}`),
+  payload: axiosInstance.get(`order?s=default&totalCount=true&sort=desc&orderTypes=${testOrderType}&activatedOnOrAfterDate=${options.dateFromField}&activatedOnOrBeforeDate=${options.dateToField}&excludeCanceledAndExpired=${options.excludeCanceledAndExpired}&canceledOrExpiredOnOrBeforeDate=${options.canceledOrExpiredOnOrBeforeDate ? options.canceledOrExpiredOnOrBeforeDate : ''}&fulfillerStatus=${options.fulfillerStatus ? options.fulfillerStatus : ''}&concepts=${options.conceptUuids ? options.conceptUuids : ''}&v=${ORDER_REP}&limit=${options.ordersBatchSize}`),
 });
 
 export const updateLabOrderWithEncounter = labOrder => ({

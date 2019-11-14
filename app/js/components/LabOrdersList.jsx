@@ -23,7 +23,7 @@ import { filterThrough, calculateTableRows, getConceptShortName, computeResultSt
 import { loadGlobalProperties, selectProperty } from '../utils/globalProperty';
 import filtersAction from '../actions/filtersAction';
 import patientAction from '../actions/patientAction';
-import { DEFAULT_ORDERS_BATCH_SIZE } from '../constants';
+import { DEFAULT_ORDERS_BATCH_SIZE, FULFILLER_STATUS } from '../constants';
 import "../../css/lab-orders-list.scss";
 
 
@@ -173,6 +173,7 @@ export class LabOrdersList extends PureComponent {
     const options = {
       dateToField: moment(labOrdersListFilters.dateToField).format('YYYY-MM-DD'),
       dateFromField: moment(labOrdersListFilters.dateFromField).format('YYYY-MM-DD'),
+      excludeCanceledAndExpired: true,
       ordersBatchSize: (ordersBatchSize || DEFAULT_ORDERS_BATCH_SIZE),
     };
     dispatch(fetchLabOrders(labResultsTestOrderType, options));
@@ -260,10 +261,16 @@ export class LabOrdersList extends PureComponent {
   }
 
   handleFilterChange(field, value) {
-    const { dispatch, labOrdersListFilters, labResultsTestOrderType, ordersBatchSize } = this.props;
+    const { dispatch, labOrdersListFilters, labResultsTestOrderType, labTests, ordersBatchSize } = this.props;
     let newFilters = {
       ...labOrdersListFilters,
       [field]: value,
+    };
+    let filterOptions = {
+      dateFromField: moment(labOrdersListFilters.dateFromField).format('YYYY-MM-DD'),
+      dateToField: moment(labOrdersListFilters.dateToField).format('YYYY-MM-DD'),
+      excludeCanceledAndExpired: true,
+      ordersBatchSize: (ordersBatchSize || DEFAULT_ORDERS_BATCH_SIZE),
     };
     if (field === 'nameField' || field === 'testStatusField' || field === 'testTypeField') {
       // defaults page to zero when a user starts typing
@@ -274,20 +281,65 @@ export class LabOrdersList extends PureComponent {
     }
     if (field === 'dateToField') {
       const options = {
-        dateToField: value,
         dateFromField: moment(labOrdersListFilters.dateFromField).format('YYYY-MM-DD'),
+        dateToField: value,
+        excludeCanceledAndExpired: true,
         ordersBatchSize: (ordersBatchSize || DEFAULT_ORDERS_BATCH_SIZE),
       };
       dispatch(fetchLabOrders(labResultsTestOrderType, options));
     }
     if (field === 'dateFromField') {
       const options = {
-        dateToField: moment(labOrdersListFilters.dateToField).format('YYYY-MM-DD'),
-        ordersBatchSize: (ordersBatchSize || DEFAULT_ORDERS_BATCH_SIZE),
         dateFromField: value,
+        dateToField: moment(labOrdersListFilters.dateToField).format('YYYY-MM-DD'),
+        excludeCanceledAndExpired: true,
+        ordersBatchSize: (ordersBatchSize || DEFAULT_ORDERS_BATCH_SIZE),
       };
+
       dispatch(fetchLabOrders(labResultsTestOrderType, options));
     }
+
+    if (field === 'testStatusField') {
+     console.log("field = " + field + "; value= " + value);
+     if (value === FULFILLER_STATUS.ALL) {
+       filterOptions = {
+         ...filterOptions,
+         excludeCanceledAndExpired: false,
+       };
+     } else if (value === FULFILLER_STATUS.CANCELED_EXPIRED) {
+       filterOptions = {
+         ...filterOptions,
+         excludeCanceledAndExpired: false,
+         canceledOrExpiredOnOrBeforeDate: moment(labOrdersListFilters.dateToField).format('YYYY-MM-DD'),
+       };
+     } else if (value === FULFILLER_STATUS.COMPLETED) {
+       filterOptions = {
+         ...filterOptions,
+         fulfillerStatus: FULFILLER_STATUS.COMPLETED,
+       };
+     } else if (value === FULFILLER_STATUS.IN_PROGRESS) {
+       filterOptions = {
+         ...filterOptions,
+         fulfillerStatus: FULFILLER_STATUS.IN_PROGRESS,
+       };
+     } else if (value === FULFILLER_STATUS.EXCEPTION) {
+       filterOptions = {
+         ...filterOptions,
+         excludeCanceledAndExpired: false,
+         fulfillerStatus: FULFILLER_STATUS.EXCEPTION,
+       };
+     }
+      dispatch(fetchLabOrders(labResultsTestOrderType, filterOptions));
+    } else if (field === 'testTypeField') {
+      console.log("field = " + field + "; value= " + value);
+      filterOptions = {
+        ...filterOptions,
+        conceptUuids: value,
+        excludeCanceledAndExpired: true,
+      };
+      dispatch(fetchLabOrders(labResultsTestOrderType, filterOptions));
+    }
+
     dispatch(filtersAction.setLabOrdersListFilters(newFilters));
   }
 

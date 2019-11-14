@@ -104,23 +104,16 @@ export function* filterAndSetOrders(action) {
     tooManyOrders,
   });
 
-  const conceptNames = orders.map(order => getConceptShortName(order.concept, locale));
+  const conceptNames = orders.map(order => ({
+    uuid: order.concept.uuid,
+    display: getConceptShortName(order.concept, locale),
+  }));
+
   const labTestTypes = R.uniq(conceptNames);
-  yield put(setLabTestTypes(labTestTypes));
+  const sortByNameCaseInsensitive = R.sortBy(R.compose(R.toLower, R.prop('display')));
+  yield put(setLabTestTypes(sortByNameCaseInsensitive(labTestTypes)));
 }
 
-export function* setTestTypes(action) {
-  const { payload } = action;
-  const state = yield select();
-  const locale = selectLocale(state);
-
-  const conceptNames = payload.data.results.map(
-    order => getConceptShortName(order.concept, locale),
-  );
-  const labTestTypes = R.uniq(conceptNames);
-
-  yield put(setLabTestTypes(labTestTypes));
-}
 
 export function* setLabTestsSaga() {
   yield takeEvery(`${FETCH_LAB_ORDERS}_SUCCESS`, filterAndSetOrders);
@@ -178,6 +171,7 @@ function* updateOrders() {
   const options = {
     dateToField: moment(labOrdersListFilters.dateToField).format('YYYY-MM-DD'),
     dateFromField: moment(labOrdersListFilters.dateFromField).format('YYYY-MM-DD'),
+    excludeCanceledAndExpired: true,
     ordersBatchSize: (ordersBatchSize || DEFAULT_ORDERS_BATCH_SIZE),
   };
   yield put(fetchLabOrders(labResultsTestOrderType, options));
