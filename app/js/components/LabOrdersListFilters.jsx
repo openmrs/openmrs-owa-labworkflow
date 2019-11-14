@@ -1,34 +1,35 @@
 import React, { PureComponent } from 'react';
 import PropTypes from 'prop-types';
 import moment from 'moment';
+import { injectIntl } from 'react-intl';
+import { connect } from 'react-redux';
+import patientUtil from "@openmrs/react-components/src/domain/patient/patientUtil";
 import {
-  FormControl,
-} from 'react-bootstrap';
-import { injectIntl, FormattedMessage } from 'react-intl';
-import { CustomDatePicker as DatePicker, Dropdown } from '@openmrs/react-components';
+  CustomDatePicker as DatePicker, Dropdown, PatientSearch, selectors, patientActions
+} from '@openmrs/react-components';
 import { FULFILLER_STATUS } from '../constants';
 
+
 class LabOrderListFilters extends PureComponent {
-  renderNameEMROrOrderIdFilter() {
-    const { handleFieldChange, clearNameEMRField, nameField } = this.props;
+
+  renderNameOrIdFilter() {
+    const { dispatch, patient } = this.props;
     return (
-      <span className="form-filter-group one-third">
-        <FormattedMessage
-          id="app.labOrdersListFilters.textSearchTitle"
-          defaultMessage="Search for a sample"
-          description="Label for text search input" />
-        <span className="name-emrid-order-filter">
-          <i className="small icon-search" />
-          <FormControl
-            id="emr-name-search"
-            autoFocus
-            type="text"
-            placeholder="search by ID or name, or scan sample"
-            value={nameField}
-            onChange={event => handleFieldChange('nameField', event.target.value)}
-          />
-          <i className="small scale icon-remove-sign" role="toolbar" onClick={event => clearNameEMRField()} />
-        </span>
+      <span className="name-emrid-order-filter">
+        {patient
+          ? (
+            <span>
+              {patient.name.givenName} {patient.name.familyName} ({patientUtil.getPreferredIdentifier(patient)})  <i className="small scale icon-remove-sign" role="toolbar" onClick={() => dispatch(patientActions.clearSelectedPatient())} />
+            </span>
+            )
+
+          : (<PatientSearch
+            showEmptyListContainer={false}
+            showRefreshButton={false}
+            showPatientCount={false}
+            title=""
+          />)
+        }
       </span>
     );
   }
@@ -38,18 +39,22 @@ class LabOrderListFilters extends PureComponent {
     const contextPath = window.location.href.split('/')[3];
     const orderLabsUrl = `/${contextPath}/${orderLabTestLink}`;
     const addOrderMessage = intl.formatMessage({ id: "app.labOrders.addOrder.button", defaultMessage: "Add Order" });
-    if ( orderLabTestLink && orderLabTestLink.length > 0 ) {
+    if (orderLabTestLink && orderLabTestLink.length > 0) {
       return (
         <span className="addOrder-span">
-              <button type="button" className="btn btn-lg addOrder-button"
-                      onClick={() => window.location.assign(orderLabsUrl)}>{ addOrderMessage }</button>
-      </span>
+          <button type="button" className="btn btn-lg addOrder-button" onClick={() => window.location.assign(orderLabsUrl)}>
+            { addOrderMessage }
+          </button>
+        </span>
       );
     }
+    return (<span />);
   }
 
   renderDatePickerFilters() {
-    const { handleFieldChange, dateFromField, dateToField, intl } = this.props;
+    const {
+      handleFieldChange, dateFromField, dateToField, intl,
+    } = this.props;
     const fromMessage = intl.formatMessage({ id: "app.labOrdersListFilters.searchDateFromLabel", defaultMessage: "From: " });
     const toMessage = intl.formatMessage({ id: "app.labOrdersListFilters.searchDateToLabel", defaultMessage: "To: " });
     return (
@@ -71,7 +76,7 @@ class LabOrderListFilters extends PureComponent {
             field="dateToField"
             handleDateChange={(field, value) => handleFieldChange(field, value)}
           />
-          </span>
+        </span>
       </span>
     );
   }
@@ -114,7 +119,7 @@ class LabOrderListFilters extends PureComponent {
         className="form-filter-group"
         id="test-status-dropdown"
         label={ statusMessage }
-        defaultValue= { allMsg }
+        defaultValue={ allMsg }
         input={{ value: testStatusField }}
         list={statusOptions}
         field="testStatusField"
@@ -155,7 +160,7 @@ class LabOrderListFilters extends PureComponent {
         </span>
 
         <span className="bottom-filters">
-          {this.renderNameEMROrOrderIdFilter()}
+          {this.renderNameOrIdFilter()}
           <span className="status-dropdown">
             {this.renderTestStatusFilter()}
           </span>
@@ -169,15 +174,12 @@ class LabOrderListFilters extends PureComponent {
 }
 
 LabOrderListFilters.defaultProps = {
-  nameField: "",
   orderLabTestLink: "",
 };
 
 LabOrderListFilters.propTypes = {
   handleFieldChange: PropTypes.func.isRequired,
-  clearNameEMRField: PropTypes.func.isRequired,
   labTests: PropTypes.array.isRequired,
-  nameField: PropTypes.string,
   orderLabTestLink: PropTypes.string,
   testStatusField: PropTypes.string.isRequired,
   testTypeField: PropTypes.string.isRequired,
@@ -185,4 +187,11 @@ LabOrderListFilters.propTypes = {
   dateFromField: PropTypes.object.isRequired,
 };
 
-export default injectIntl(LabOrderListFilters);
+
+const mapStateToProps = (state, props) => {
+  return {
+    patient: selectors.getSelectedPatientFromStore(state),
+  };
+};
+
+export default connect(mapStateToProps)(injectIntl(LabOrderListFilters));
