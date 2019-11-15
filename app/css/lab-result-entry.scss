@@ -50,7 +50,23 @@ fieldset {
 }
 
 span.test-details {
-  font-size: 16px;
+    font-size: 16px;
+}
+
+.urgencyDetails {
+    font-size: 16px;
+    text-transform: capitalize;
+    &.urgency {
+        &.stat {
+            text-transform: uppercase !important;
+            font-weight: bold;
+            color: red;
+        }
+        &.routine {
+            text-transform: lowercase !important;
+        }
+    }
+
 }
 
 a.link-cancel {
