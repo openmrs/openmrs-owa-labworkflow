@@ -45,7 +45,6 @@ describe('setLabTestsSaga', () => {
     const expectedActions = [
       `${FETCH_LAB_ORDERS}_SUCCESS`,
       SET_LAB_ORDERS,
-      SET_LAB_TEST,
     ];
 
     sagaTester.dispatch({ type: `${FETCH_LAB_ORDERS}_SUCCESS`, payload: { data } });

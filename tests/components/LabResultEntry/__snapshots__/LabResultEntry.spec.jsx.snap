@@ -370,9 +370,9 @@ exports[`<LabResultEntry /> component renders correctly with valid props 1`] = `
                         </FormattedMessage>
                         : 
                         <span
-                          className="test-details"
+                          className="urgencyDetails urgency routine"
                         >
-                          Routine
+                          ROUTINE
                         </span>
                       </span>
                     </div>
