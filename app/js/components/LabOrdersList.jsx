@@ -15,7 +15,7 @@ import { withRouter } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import { injectIntl, FormattedMessage } from 'react-intl';
 import swal from 'sweetalert';
-import { SortableTable, Loader } from '@openmrs/react-components';
+import { SortableTable, Loader, selectors } from '@openmrs/react-components';
 import LabOrderListFilters from './LabOrdersListFilters';
 import { fetchLabOrders, cancelOrder, printLabel } from '../actions/labOrdersAction';
 import { setSelectedConcept } from '../actions/labConceptsAction';
@@ -137,7 +137,6 @@ export class LabOrdersList extends PureComponent {
     super(props);
 
     this.handleFilterChange = this.handleFilterChange.bind(this);
-    this.clearNameEMRField = this.clearNameEMRField.bind(this);
     this.handleShowResultsEntryPage = this.handleShowResultsEntryPage.bind(this);
     this.handleCancel = this.handleCancel.bind(this);
     this.handlePrintLabel = this.handlePrintLabel.bind(this);
@@ -159,7 +158,7 @@ export class LabOrdersList extends PureComponent {
   }
 
   componentDidUpdate(prevProps) {
-    const { labResultsTestOrderType, ordersBatchSize } = this.props;
+    const { labResultsTestOrderType, ordersBatchSize, selectedPatient } = this.props;
 
     // TODO: this means that these two GPs are required
     // the intent of this is to trigger loading the orders after both these GPs have been loaded
@@ -167,6 +166,10 @@ export class LabOrdersList extends PureComponent {
       || prevProps.ordersBatchSize !== ordersBatchSize)
       && labResultsTestOrderType && ordersBatchSize) {
       this.loadOrders();
+    }
+
+    if (selectedPatient !== prevProps.selectedPatient) {
+      this.handlePatientChange();
     }
   }
 
@@ -191,15 +194,6 @@ export class LabOrdersList extends PureComponent {
         returnUrl,
       });
     }
-  }
-
-  clearNameEMRField() {
-    const { dispatch, labOrdersListFilters } = this.props;
-    const newFilters = {
-      ...labOrdersListFilters,
-      nameField: "",
-    };
-    dispatch(filtersAction.setLabOrdersListFilters(newFilters));
   }
 
   async handlePrintLabel(order) {
@@ -260,6 +254,20 @@ export class LabOrdersList extends PureComponent {
 
       dispatch(cancelOrder(cancelledOrder));
     }
+  }
+
+  handlePatientChange() {
+    const {
+      dispatch, labResultsTestOrderType, labOrdersListFilters, selectedPatient,
+    } = this.props;
+
+    const newFilters = {
+      ...labOrdersListFilters,
+      patient: selectedPatient ? selectedPatient.uuid : "",
+    };
+
+    dispatch(fetchLabOrders(labResultsTestOrderType, newFilters));
+    dispatch(filtersAction.setLabOrdersListFilters(newFilters));
   }
 
   handleFilterChange(field, value) {
@@ -453,7 +461,6 @@ export class LabOrdersList extends PureComponent {
         <React.Fragment>
           <LabOrderListFilters
             handleFieldChange={this.handleFilterChange}
-            clearNameEMRField={this.clearNameEMRField}
             labTests={labTests}
             testTypeField={testTypeField}
             testStatusField={testStatusField}
@@ -500,6 +507,7 @@ export const mapStateToProps = state => ({
   currentProvider: state.openmrs.session.currentProvider,
   sessionLocation: state.openmrs.session.sessionLocation,
   locale: state.openmrs.session.locale,
+  selectedPatient: selectors.getSelectedPatient(state)
 });
 
 const LabOrdersListContainer = (

@@ -111,16 +111,7 @@ i.scale:hover {
     display: block;
     height: 45px;
   }
-  .icon-search{
-    position: absolute;
-    left: 1%;
-    line-height: 40px;
-  }
-  .icon-remove-sign {
-    position: absolute;
-    left: 94%;
-    line-height: 40px;
-  }
+
 }
 
 .addOrder-span {
@@ -235,3 +226,8 @@ i.scale:hover {
   visibility: visible;
 }
 
+
+.card-list-container {
+  overflow: auto !important;
+  height: 100% !important;
+}

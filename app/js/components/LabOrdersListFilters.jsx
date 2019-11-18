@@ -3,13 +3,10 @@ import PropTypes from 'prop-types';
 import moment from 'moment';
 import { injectIntl } from 'react-intl';
 import { connect } from 'react-redux';
-import patientUtil from "@openmrs/react-components/src/domain/patient/patientUtil";
 import {
-  CustomDatePicker as DatePicker, Dropdown, PatientSearch, selectors, patientActions
+  CustomDatePicker as DatePicker, Dropdown, PatientSearch, selectors, patientActions, patientUtil,
 } from '@openmrs/react-components';
 import { FULFILLER_STATUS } from '../constants';
-import "../../css/lab-orders-list-filters.scss";
-
 
 class LabOrderListFilters extends PureComponent {
 
@@ -25,6 +22,8 @@ class LabOrderListFilters extends PureComponent {
             )
 
           : (<PatientSearch
+            placeholder="Search for patient"
+            selectRowAutomaticallyIfOnlyOneRow={true}
             showEmptyListContainer={false}
             showRefreshButton={false}
             showPatientCount={false}
