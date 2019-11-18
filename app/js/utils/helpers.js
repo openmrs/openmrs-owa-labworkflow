@@ -3,7 +3,7 @@ import matchSorter from 'match-sorter';
 import R from 'ramda';
 import moment from "moment";
 import { getIntl } from '@openmrs/react-components';
-import { FULFILLER_STATUS } from "../constants";
+import { FULFILLER_STATUS, DEFAULT_TABLE_PAGE_SIZE } from "../constants";
 
 const dateToInt = dateStr => new Date(dateStr).getTime();
 
@@ -119,7 +119,7 @@ export const getConceptShortName = (concept, locale) => {
   return conceptName;
 };
 
-export const calculateTableRows = (noOfRows) => ((parseInt(noOfRows) < 10) ? parseInt(noOfRows): 10)
+export const calculateTableRows = (noOfRows) => ((parseInt(noOfRows) < DEFAULT_TABLE_PAGE_SIZE) ? parseInt(noOfRows): DEFAULT_TABLE_PAGE_SIZE)
 
 export const computeResultStatus = (order) => {
 

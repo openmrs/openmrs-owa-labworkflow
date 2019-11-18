@@ -93,7 +93,8 @@ export function* resetState() {
 export function* filterAndSetOrders(action) {
   const { payload } = action;
   const result = payload.data.results;
-  const tooManyOrders = result && result.length < payload.data.totalCount;
+  const { totalCount } = payload.data;
+  const tooManyOrders = result && result.length < totalCount;
 
   // filter out orders where action="DISCONTINUE"
   const orders = result.filter(order => order.action !== "DISCONTINUE");
@@ -102,6 +103,7 @@ export function* filterAndSetOrders(action) {
     type: SET_LAB_ORDERS,
     orders,
     tooManyOrders,
+    totalCount,
   });
 }
 

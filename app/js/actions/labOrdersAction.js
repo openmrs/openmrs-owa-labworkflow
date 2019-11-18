@@ -1,5 +1,6 @@
 import moment from 'moment';
 import { axiosInstance } from '../config';
+import { DEFAULT_TABLE_PAGE_SIZE } from '../constants';
 import {
   FETCH_LAB_ORDERS,
   UPDATE_LAB_ORDER_WITH_ENCOUNTER,
@@ -24,7 +25,8 @@ export const fetchLabOrders = (testOrderType, options) => {
   }
   return ({
     type: FETCH_LAB_ORDERS,
-    payload: axiosInstance.get(`order?s=default&totalCount=true&sort=desc&orderTypes=${testOrderType}&activatedOnOrAfterDate=${moment(options.dateFromField).format('YYYY-MM-DD')}&activatedOnOrBeforeDate=${moment(options.dateToField).format('YYYY-MM-DD')}&excludeCanceledAndExpired=${options.excludeCanceledAndExpired}&canceledOrExpiredOnOrBeforeDate=${options.canceledOrExpiredOnOrBeforeDate ? options.canceledOrExpiredOnOrBeforeDate : ''}&fulfillerStatus=${options.fulfillerStatus ? options.fulfillerStatus : ''}&includeNullFulfillerStatus=${includeNullFulfillerStatus !== null ? includeNullFulfillerStatus : ''}&concepts=${options.conceptUuids ? options.conceptUuids : ''}&patient=${options.patient ? options.patient : ''}&v=${ORDER_REP}&limit=${options.ordersBatchSize}`),
+
+    payload: axiosInstance.get(`order?s=default&totalCount=true&sort=desc&orderTypes=${testOrderType}&activatedOnOrAfterDate=${moment(options.dateFromField).format('YYYY-MM-DD')}&activatedOnOrBeforeDate=${moment(options.dateToField).format('YYYY-MM-DD')}&excludeCanceledAndExpired=${options.excludeCanceledAndExpired}&canceledOrExpiredOnOrBeforeDate=${options.canceledOrExpiredOnOrBeforeDate ? options.canceledOrExpiredOnOrBeforeDate : ''}&fulfillerStatus=${options.fulfillerStatus ? options.fulfillerStatus : ''}&includeNullFulfillerStatus=${includeNullFulfillerStatus !== null ? includeNullFulfillerStatus : ''}&concepts=${options.conceptUuids ? options.conceptUuids : ''}&patient=${options.patient ? options.patient : ''}&v=${ORDER_REP}&limit=${options.pageSize ? options.pageSize : DEFAULT_TABLE_PAGE_SIZE}&startIndex=${options.page ? options.page : 0}`),
   });
 };
 

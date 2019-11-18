@@ -30,6 +30,7 @@ export default (state = initialState.labOrderReducer, action) => {
         fetched: true,
         tooManyOrdersWarning: action.tooManyOrders,
         orders: action.orders,
+        totalCount: action.totalCount,
       };
     }
     case `${FETCH_LAB_ORDERS}_FAILURE`: {

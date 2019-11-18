@@ -24,7 +24,7 @@ import { loadGlobalProperties, selectProperty } from '../utils/globalProperty';
 import filtersAction from '../actions/filtersAction';
 import patientAction from '../actions/patientAction';
 import { getLabOrderables } from '../actions/labOrderablesAction';
-import { DEFAULT_ORDERS_BATCH_SIZE, FULFILLER_STATUS } from '../constants';
+import { DEFAULT_ORDERS_BATCH_SIZE, DEFAULT_TABLE_PAGE_SIZE, FULFILLER_STATUS } from '../constants';
 import "../../css/lab-orders-list.scss";
 
 
@@ -174,12 +174,13 @@ export class LabOrdersList extends PureComponent {
   }
 
   loadOrders() {
-    const { dispatch, labResultsTestOrderType, labOrdersListFilters, ordersBatchSize } = this.props;
+    const { dispatch, labResultsTestOrderType, labOrdersListFilters, ordersBatchSize, tablePageSize } = this.props;
     const options = {
       dateToField: moment(labOrdersListFilters.dateToField).format('YYYY-MM-DD'),
       dateFromField: moment(labOrdersListFilters.dateFromField).format('YYYY-MM-DD'),
       excludeCanceledAndExpired: true,
-      ordersBatchSize: (ordersBatchSize || DEFAULT_ORDERS_BATCH_SIZE),
+      startIndex: 0,
+      ordersBatchSize: (tablePageSize || DEFAULT_TABLE_PAGE_SIZE),
     };
     dispatch(fetchLabOrders(labResultsTestOrderType, options));
   }
@@ -271,7 +272,7 @@ export class LabOrdersList extends PureComponent {
   }
 
   handleFilterChange(field, value) {
-    const { dispatch, labOrdersListFilters, labResultsTestOrderType, labTests, ordersBatchSize } = this.props;
+    const { dispatch, labOrdersListFilters, labResultsTestOrderType, ordersBatchSize } = this.props;
     let newFilters = {
       ...labOrdersListFilters,
       ordersBatchSize: (ordersBatchSize || DEFAULT_ORDERS_BATCH_SIZE),
@@ -392,6 +393,7 @@ export class LabOrdersList extends PureComponent {
       fetched,
       intl,
       locale,
+      totalCount,
 } = this.props;
     const fields = ["EMR ID", "NAME", "ORDER ID", "ORDER DATE", "STATUS", "URGENCY", "TEST TYPE", "ACTIONS"];
 
@@ -399,6 +401,12 @@ export class LabOrdersList extends PureComponent {
     const rowsMessage = intl.formatMessage({ id: "reactcomponents.table.rows", defaultMessage: "Rows" });
     const cancelMsg = intl.formatMessage({ id: "reactcomponents.cancel", defaultMessage: "Cancel" });
     const printMsg = intl.formatMessage({ id: "reactcomponents.print", defaultMessage: "Print" });
+
+    const pageSize = labOrdersListFilters.pageSize ? labOrdersListFilters.pageSize : DEFAULT_TABLE_PAGE_SIZE;
+    let pages = 0;
+    if (totalCount && parseInt(totalCount) > pageSize) {
+     pages = Math.floor(totalCount/pageSize)
+    }
 
     const columnMetadata = fields.map(columnName => ({
       Header:
@@ -420,6 +428,8 @@ export class LabOrdersList extends PureComponent {
           data={orders}
           filters={labOrdersListFilters}
           locale={locale}
+          manual={true}
+          pages={pages}
           getDataWithFilters={filterThrough}
           columnMetadata={columnMetadata}
           loading={!fetched}
@@ -496,10 +506,12 @@ export const mapStateToProps = state => ({
   orders: state.labOrders.orders,
   labTests: state.labOrders.labTests,
   tooManyOrdersWarning: state.labOrders.tooManyOrdersWarning,
+  totalCount: state.labOrders.totalCount,
   dateAndTimeFormat: selectProperty(state, 'dateAndTimeFormat') || '',
   labResultsTestOrderType: selectProperty(state, 'labResultsTestOrderType') || '',
   enableLabelPrinting: selectProperty(state, 'enableLabelPrinting') || '',
   labelPrintingEndpoint: selectProperty(state, 'labelPrintingEndpoint') || '',
+  tablePageSize: selectProperty(state, 'tablePageSize'),
   ordersBatchSize: selectProperty(state, 'ordersBatchSize'),
   orderLabTestLink: selectProperty(state, 'orderLabTestLink'),
   labOrdersListFilters: state.filters.labOrdersListFilters,

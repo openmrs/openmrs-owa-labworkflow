@@ -10,4 +10,5 @@ export const FULFILLER_STATUS = {
   EXCEPTION: 'EXCEPTION',
 };
 
+export const DEFAULT_TABLE_PAGE_SIZE = 10;
 export const DEFAULT_ORDERS_BATCH_SIZE = 500;

@@ -693,6 +693,7 @@ exports[`Component: LabTrendsPage renders properly 1`] = `
                             id="reactcomponents.table.loading"
                           />
                         }
+                        manual={false}
                         minRows={0}
                         multiSort={true}
                         nestingLevelKey="_nestingLevel"
@@ -733,6 +734,7 @@ exports[`Component: LabTrendsPage renders properly 1`] = `
                             id="reactcomponents.table.page"
                           />
                         }
+                        pages={null}
                         pivotDefaults={Object {}}
                         pivotIDKey="_pivotID"
                         pivotValKey="_pivotVal"
@@ -2824,6 +2826,7 @@ exports[`Component: LabTrendsPage renders properly 1`] = `
                                   id="reactcomponents.table.loading"
                                 />
                               }
+                              manual={false}
                               minRows={0}
                               multiSort={true}
                               nestingLevelKey="_nestingLevel"
@@ -2868,7 +2871,7 @@ exports[`Component: LabTrendsPage renders properly 1`] = `
                                   id="reactcomponents.table.page"
                                 />
                               }
-                              pages={1}
+                              pages={null}
                               pivotDefaults={Object {}}
                               pivotIDKey="_pivotID"
                               pivotValKey="_pivotVal"
