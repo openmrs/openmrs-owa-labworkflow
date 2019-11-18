@@ -23,7 +23,8 @@ import { filterThrough, calculateTableRows, getConceptShortName, computeResultSt
 import { loadGlobalProperties, selectProperty } from '../utils/globalProperty';
 import filtersAction from '../actions/filtersAction';
 import patientAction from '../actions/patientAction';
-import { DEFAULT_ORDERS_BATCH_SIZE } from '../constants';
+import { getLabOrderables } from '../actions/labOrderablesAction';
+import { DEFAULT_ORDERS_BATCH_SIZE, FULFILLER_STATUS } from '../constants';
 import "../../css/lab-orders-list.scss";
 
 
@@ -149,6 +150,7 @@ export class LabOrdersList extends PureComponent {
   componentDidMount() {
     const { dispatch, labResultsTestOrderType } = this.props;
     loadGlobalProperties(dispatch);
+    dispatch(getLabOrderables());
     dispatch(patientAction.setSelectedPatient(''));
     dispatch(setSelectedConcept(''));
     if (labResultsTestOrderType) {
@@ -173,6 +175,7 @@ export class LabOrdersList extends PureComponent {
     const options = {
       dateToField: moment(labOrdersListFilters.dateToField).format('YYYY-MM-DD'),
       dateFromField: moment(labOrdersListFilters.dateFromField).format('YYYY-MM-DD'),
+      excludeCanceledAndExpired: true,
       ordersBatchSize: (ordersBatchSize || DEFAULT_ORDERS_BATCH_SIZE),
     };
     dispatch(fetchLabOrders(labResultsTestOrderType, options));
@@ -260,11 +263,13 @@ export class LabOrdersList extends PureComponent {
   }
 
   handleFilterChange(field, value) {
-    const { dispatch, labOrdersListFilters, labResultsTestOrderType, ordersBatchSize } = this.props;
+    const { dispatch, labOrdersListFilters, labResultsTestOrderType, labTests, ordersBatchSize } = this.props;
     let newFilters = {
       ...labOrdersListFilters,
+      ordersBatchSize: (ordersBatchSize || DEFAULT_ORDERS_BATCH_SIZE),
       [field]: value,
     };
+
     if (field === 'nameField' || field === 'testStatusField' || field === 'testTypeField') {
       // defaults page to zero when a user starts typing
       newFilters = {
@@ -272,22 +277,57 @@ export class LabOrdersList extends PureComponent {
         ['page']: 0,
       };
     }
-    if (field === 'dateToField') {
-      const options = {
-        dateToField: value,
-        dateFromField: moment(labOrdersListFilters.dateFromField).format('YYYY-MM-DD'),
-        ordersBatchSize: (ordersBatchSize || DEFAULT_ORDERS_BATCH_SIZE),
+
+    if (field === 'testStatusField') {
+      newFilters = {
+        ...newFilters,
+        excludeCanceledAndExpired: false,
+        includeNullFulfillerStatus: null,
+        canceledOrExpiredOnOrBeforeDate: null,
+        fulfillerStatus: null,
       };
-      dispatch(fetchLabOrders(labResultsTestOrderType, options));
+    if (value === FULFILLER_STATUS.ORDERED) {
+       newFilters = {
+         ...newFilters,
+         includeNullFulfillerStatus: true,
+         fulfillerStatus: FULFILLER_STATUS.RECEIVED,
+       };
+     } else if (value === FULFILLER_STATUS.CANCELED_EXPIRED) {
+       newFilters = {
+         ...newFilters,
+         canceledOrExpiredOnOrBeforeDate: moment(labOrdersListFilters.dateToField).format('YYYY-MM-DD'),
+       };
+     } else if (value === FULFILLER_STATUS.COMPLETED) {
+       newFilters = {
+         ...newFilters,
+         fulfillerStatus: FULFILLER_STATUS.COMPLETED,
+       };
+     } else if (value === FULFILLER_STATUS.IN_PROGRESS) {
+       newFilters = {
+         ...newFilters,
+         fulfillerStatus: FULFILLER_STATUS.IN_PROGRESS,
+       };
+     } else if (value === FULFILLER_STATUS.EXCEPTION) {
+       newFilters = {
+         ...newFilters,
+         fulfillerStatus: FULFILLER_STATUS.EXCEPTION,
+       };
+     }
+    } else if (field === 'testTypeField') {
+      if ( value === 'All' ) {
+        newFilters = {
+          ...newFilters,
+          conceptUuids: '',
+        };
+      } else if (value && value !== 'All') {
+        newFilters = {
+          ...newFilters,
+          conceptUuids: value,
+        };
+      }
     }
-    if (field === 'dateFromField') {
-      const options = {
-        dateToField: moment(labOrdersListFilters.dateToField).format('YYYY-MM-DD'),
-        ordersBatchSize: (ordersBatchSize || DEFAULT_ORDERS_BATCH_SIZE),
-        dateFromField: value,
-      };
-      dispatch(fetchLabOrders(labResultsTestOrderType, options));
-    }
+
+    dispatch(fetchLabOrders(labResultsTestOrderType, newFilters));
     dispatch(filtersAction.setLabOrdersListFilters(newFilters));
   }
 
