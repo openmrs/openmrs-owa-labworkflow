@@ -8,6 +8,7 @@ import {
   CustomDatePicker as DatePicker, Dropdown, PatientSearch, selectors, patientActions
 } from '@openmrs/react-components';
 import { FULFILLER_STATUS } from '../constants';
+import "../../css/lab-orders-list-filters.scss";
 
 
 class LabOrderListFilters extends PureComponent {
@@ -27,6 +28,7 @@ class LabOrderListFilters extends PureComponent {
             showEmptyListContainer={false}
             showRefreshButton={false}
             showPatientCount={false}
+            showSearchButton={false}
             title=""
           />)
         }
@@ -185,6 +187,7 @@ LabOrderListFilters.propTypes = {
   testTypeField: PropTypes.string.isRequired,
   dateToField: PropTypes.object.isRequired,
   dateFromField: PropTypes.object.isRequired,
+  patient: PropTypes.object,
 };
 
 
