@@ -103,6 +103,12 @@ exports[`<LabOrdersList /> component renders correctly 1`] = `
         ],
         Array [
           Object {
+            "payload": Promise {},
+            "type": "FETCH_LAB_ORDERABLES_SETTING",
+          },
+        ],
+        Array [
+          Object {
             "patientUUID": "",
             "type": "SET_SELECTED_PATIENT",
           },
@@ -114,6 +120,10 @@ exports[`<LabOrdersList /> component renders correctly 1`] = `
         ],
       ],
       "results": Array [
+        Object {
+          "isThrow": false,
+          "value": undefined,
+        },
         Object {
           "isThrow": false,
           "value": undefined,

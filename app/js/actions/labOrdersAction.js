@@ -1,3 +1,4 @@
+import moment from 'moment';
 import { axiosInstance } from '../config';
 import {
   FETCH_LAB_ORDERS,
@@ -14,10 +15,19 @@ import {
 
 const ORDER_REP = "custom:(id,uuid,display,orderNumber,dateActivated,scheduledDate,dateStopped,autoExpireDate,fulfillerStatus,orderType:(id,uuid,display,name),encounter:(id,uuid,display,encounterDatetime),careSetting:(uuid,name,careSettingType,display),accessionNumber,urgency,action,patient:(uuid,display),concept:(id,uuid,allowDecimal,display,names:(id,uuid,name,locale,localePreferred,voided,conceptNameType))";
 
-export const fetchLabOrders = (testOrderType, options) => ({
-  type: FETCH_LAB_ORDERS,
-  payload: axiosInstance.get(`order?s=default&totalCount=true&sort=desc&orderTypes=${testOrderType}&activatedOnOrAfterDate=${options.dateFromField}&activatedOnOrBeforeDate=${options.dateToField}&excludeCanceledAndExpired=${options.excludeCanceledAndExpired}&canceledOrExpiredOnOrBeforeDate=${options.canceledOrExpiredOnOrBeforeDate ? options.canceledOrExpiredOnOrBeforeDate : ''}&fulfillerStatus=${options.fulfillerStatus ? options.fulfillerStatus : ''}&concepts=${options.conceptUuids ? options.conceptUuids : ''}&v=${ORDER_REP}&limit=${options.ordersBatchSize}`),
-});
+export const fetchLabOrders = (testOrderType, options) => {
+  let includeNullFulfillerStatus = null;
+  if (options.includeNullFulfillerStatus === true) {
+    includeNullFulfillerStatus = true;
+  } else if (options.includeNullFulfillerStatus === false) {
+    includeNullFulfillerStatus = false;
+  }
+  return ({
+    type: FETCH_LAB_ORDERS,
+    payload: axiosInstance.get(`order?s=default&totalCount=true&sort=desc&orderTypes=${testOrderType}&activatedOnOrAfterDate=${moment(options.dateFromField).format('YYYY-MM-DD')}&activatedOnOrBeforeDate=${moment(options.dateToField).format('YYYY-MM-DD')}&excludeCanceledAndExpired=${options.excludeCanceledAndExpired}&canceledOrExpiredOnOrBeforeDate=${options.canceledOrExpiredOnOrBeforeDate ? options.canceledOrExpiredOnOrBeforeDate : ''}&fulfillerStatus=${options.fulfillerStatus ? options.fulfillerStatus : ''}&includeNullFulfillerStatus=${includeNullFulfillerStatus !== null ? includeNullFulfillerStatus : ''}&concepts=${options.conceptUuids ? options.conceptUuids : ''}&v=${ORDER_REP}&limit=${options.ordersBatchSize}`),
+  });
+};
+
 
 export const updateLabOrderWithEncounter = labOrder => ({
   type: UPDATE_LAB_ORDER_WITH_ENCOUNTER,

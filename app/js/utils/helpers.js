@@ -69,11 +69,6 @@ export const filterThrough = (filters, data, locale) => {
     originalData = matchSorter(originalData, inputValue, { keys: [{ threshold: matchSorter.rankings.CONTAINS, key: 'patient.display' }] });
   }
 
-  if (filters.testTypeField !== undefined && filters.testTypeField !== defaultAll ) {
-    const inputValue = filters.testTypeField;
-    const filteredData = matchSorter(originalData, inputValue, { threshold: matchSorter.rankings.EQUAL, keys: [item => item.concept.uuid]});
-    //originalData = filteredData;
-  }
 
   return originalData;
 };
