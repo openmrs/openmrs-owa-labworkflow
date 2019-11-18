@@ -17,6 +17,7 @@ import {
   FormGroup,
 } from 'react-bootstrap';
 import moment from 'moment';
+import cn from 'classnames';
 import { Redirect } from 'react-router-dom';
 import { FormattedMessage } from 'react-intl';
 import { startOfToday } from 'date-fns';
@@ -528,6 +529,13 @@ export class LabResultEntry extends PureComponent {
     }
 
     if (!R.isEmpty(selectedLabConcept)) {
+      const urgencyClassName = cn({
+        urgencyDetails: true,
+        urgency: true,
+        stat: location.state.urgency === 'STAT',
+        routine: location.state.urgency === 'ROUTINE',
+      });
+
       return (
         <div className="container-fluid">
           {location.state
@@ -574,7 +582,7 @@ export class LabResultEntry extends PureComponent {
                           id="app.labResultEntry.urgencylabel"
                           defaultMessage="Urgency" />
 :&nbsp;
-                        <span className="test-details">{location.state.urgency === 'STAT' ? location.state.urgency : location.state.urgency.charAt(0).toUpperCase() + location.state.urgency.slice(1).toLowerCase()}</span>
+                        <span className={urgencyClassName}>{ location.state.urgency }</span>
                       </span>
                     </div>
                     <div className="col-xs-10 order-date-detail">

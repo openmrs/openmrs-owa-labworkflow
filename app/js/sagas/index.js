@@ -8,6 +8,8 @@ import {
   cancelOrder,
   printLabel,
   saveFulfillerStatus,
+  setLabOrderablesSetting,
+  updateTestTypeFilter,
 } from './labOrdersSaga';
 import { setLabConcepts, fetchConcept } from './conceptSaga';
 import { clearFormFieldsSaga } from './formSaga';
@@ -26,6 +28,8 @@ const sagas = {
   printLabel,
   clearFormFieldsSaga,
   saveFulfillerStatus,
+  setLabOrderablesSetting,
+  updateTestTypeFilter,
 };
 
 const initSagas = (sagaMiddleware) => {

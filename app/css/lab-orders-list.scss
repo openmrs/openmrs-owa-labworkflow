@@ -20,6 +20,8 @@ i.scale:hover {
     &.urgency {
         &.stat {
             text-transform: uppercase !important;
+            font-weight: bold;
+            color: red;
         }
         &.routine {
             text-transform: lowercase !important;

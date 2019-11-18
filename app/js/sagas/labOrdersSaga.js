@@ -21,11 +21,14 @@ import {
   SET_ORDER_LIST_FETCH_STATUS,
   SET_LAB_ORDERS,
   CANCEL_ORDER, SAVE_FULFILLER_STATUS, PRINT_LAB_LABEL,
+  FETCH_LAB_ORDERABLES_SETTING,
+  FETCH_LAB_ORDERABLES,
 } from '../actions/actionTypes';
 import {
   setLabTestTypes, setOrderLabEncounter, fetchLabOrders, saveFulfillerStatusSucceeded,
   saveFulfillerStatusFailed,
 } from '../actions/labOrdersAction';
+import { getLabOrderablesConceptSet, getLabOrderablesSuccess } from '../actions/labOrderablesAction';
 import { setSelectedConcept } from '../actions/labConceptsAction';
 import { selectProperty, selectLocale, getMessage } from '../utils/globalProperty';
 import { getConceptShortName } from '../utils/helpers';
@@ -89,9 +92,6 @@ export function* resetState() {
 
 export function* filterAndSetOrders(action) {
   const { payload } = action;
-  const state = yield select();
-  const locale = selectLocale(state);
-
   const result = payload.data.results;
   const tooManyOrders = result && result.length < payload.data.totalCount;
 
@@ -103,27 +103,51 @@ export function* filterAndSetOrders(action) {
     orders,
     tooManyOrders,
   });
-
-  const conceptNames = orders.map(order => getConceptShortName(order.concept, locale));
-  const labTestTypes = R.uniq(conceptNames);
-  yield put(setLabTestTypes(labTestTypes));
 }
 
-export function* setTestTypes(action) {
+export function* getLabOrderablesSet(action) {
   const { payload } = action;
+  const result = payload.data.results;
+  yield put(getLabOrderablesConceptSet(result[0].value));
+}
+
+export function* updateLabOrderablesConcepts(action) {
+  const { payload } = action;
+  const labCategories = payload.data;
+  const testTypes = [];
+
   const state = yield select();
   const locale = selectLocale(state);
 
-  const conceptNames = payload.data.results.map(
-    order => getConceptShortName(order.concept, locale),
-  );
-  const labTestTypes = R.uniq(conceptNames);
-
-  yield put(setLabTestTypes(labTestTypes));
+  if (labCategories && labCategories.setMembers && labCategories.setMembers.length > 0) {
+    labCategories.setMembers.forEach((labSet) => {
+      if (labSet.setMembers && labSet.setMembers.length > 0) {
+        labSet.setMembers.forEach((orderable) => {
+          const testType = {
+            uuid: orderable.uuid,
+            display: getConceptShortName(orderable, locale),
+          };
+          testTypes.push(testType);
+        });
+      }
+    });
+    const labTestTypes = R.uniq(testTypes);
+    const sortByNameCaseInsensitive = R.sortBy(R.compose(R.toLower, R.prop('display')));
+    yield put(setLabTestTypes(sortByNameCaseInsensitive(labTestTypes)));
+  }
+  yield put(getLabOrderablesSuccess(labCategories.display));
 }
 
 export function* setLabTestsSaga() {
   yield takeEvery(`${FETCH_LAB_ORDERS}_SUCCESS`, filterAndSetOrders);
+}
+
+export function* setLabOrderablesSetting() {
+  yield takeEvery(`${FETCH_LAB_ORDERABLES_SETTING}_SUCCESS`, getLabOrderablesSet);
+}
+
+export function* updateTestTypeFilter() {
+  yield takeEvery(`${FETCH_LAB_ORDERABLES}_SUCCESS`, updateLabOrderablesConcepts);
 }
 
 export function* fetchAndSetTestResultEncounter(args) {
@@ -178,6 +202,7 @@ function* updateOrders() {
   const options = {
     dateToField: moment(labOrdersListFilters.dateToField).format('YYYY-MM-DD'),
     dateFromField: moment(labOrdersListFilters.dateFromField).format('YYYY-MM-DD'),
+    excludeCanceledAndExpired: true,
     ordersBatchSize: (ordersBatchSize || DEFAULT_ORDERS_BATCH_SIZE),
   };
   yield put(fetchLabOrders(labResultsTestOrderType, options));
