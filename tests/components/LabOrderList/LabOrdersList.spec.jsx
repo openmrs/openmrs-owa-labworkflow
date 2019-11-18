@@ -1,5 +1,6 @@
 import React from 'react';
 import moment from 'moment';
+import { Provider } from 'react-redux';
 import { mountWithIntl } from '@openmrs/react-components';
 import {
   LabOrdersList,
@@ -48,9 +49,26 @@ const props = {
   },
 };
 
+const state = {
+  openmrs: {
+    patients: {
+      selected: "",
+    },
+    patientSearch: {
+
+    },
+  },
+};
+
+const store = mockStore(state);
+
 const getComponent = () => {
   if (!mountedComponent) {
-    mountedComponent = mountWithIntl(<LabOrdersList {...props} />);
+    mountedComponent = mountWithIntl(
+      <Provider store={store}>
+        <LabOrdersList {...props} />
+      </Provider>
+    );
   }
   return mountedComponent;
 };
