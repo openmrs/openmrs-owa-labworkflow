@@ -23,7 +23,7 @@ class LabOrderListFilters extends PureComponent {
 
           : (<PatientSearch
             placeholder="Search for patient"
-            selectRowAutomaticallyIfOnlyOneRow={true}
+            selectRowAutomaticallyIfOnlyOneRow
             showEmptyListContainer={false}
             showRefreshButton={false}
             showPatientCount={false}
