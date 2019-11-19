@@ -480,7 +480,6 @@ export class LabOrdersList extends PureComponent {
             orderLabTestLink={ orderLabTestLink }
           />
           {!fetched && <Loader />}
-          {(hasData && tooManyOrdersWarning) && this.renderTooManyOrdersWarning()}
           {(hasData && fetched) && this.renderDraftOrderTable()}
           {(!hasData && fetched) && this.renderNoDataDisplayText()}
           {returnUrl && (
