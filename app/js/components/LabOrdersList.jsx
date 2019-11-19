@@ -264,6 +264,7 @@ export class LabOrdersList extends PureComponent {
 
     const newFilters = {
       ...labOrdersListFilters,
+      page: 0,
       patient: selectedPatient ? selectedPatient.uuid : "",
     };
 
@@ -283,7 +284,7 @@ export class LabOrdersList extends PureComponent {
       // defaults page to zero when a user starts typing
       newFilters = {
         ...newFilters,
-        ['page']: 0,
+        page: 0,
       };
     }
 
