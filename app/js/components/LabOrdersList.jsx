@@ -174,14 +174,20 @@ export class LabOrdersList extends PureComponent {
   }
 
   loadOrders() {
-    const { dispatch, labResultsTestOrderType, labOrdersListFilters, ordersBatchSize, tablePageSize } = this.props;
-    const options = {
-      dateToField: moment(labOrdersListFilters.dateToField).format('YYYY-MM-DD'),
-      dateFromField: moment(labOrdersListFilters.dateFromField).format('YYYY-MM-DD'),
-      excludeCanceledAndExpired: true,
-      startIndex: 0,
-      ordersBatchSize: (tablePageSize || DEFAULT_TABLE_PAGE_SIZE),
+    const { dispatch, labResultsTestOrderType, labOrdersListFilters } = this.props;
+
+    let options = {
+      ...labOrdersListFilters,
     };
+
+    const { excludeCanceledAndExpired } = options;
+    if ( !excludeCanceledAndExpired ) {
+      options = {
+        ...options,
+        excludeCanceledAndExpired: true,
+      };
+    }
+
     dispatch(fetchLabOrders(labResultsTestOrderType, options));
   }
 
