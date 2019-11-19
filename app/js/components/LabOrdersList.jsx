@@ -286,7 +286,8 @@ export class LabOrdersList extends PureComponent {
       [field]: value,
     };
     const { excludeCanceledAndExpired } = newFilters;
-    if ( !excludeCanceledAndExpired ) {
+
+    if ( typeof excludeCanceledAndExpired === 'undefined'  ) {
       newFilters = {
         ...newFilters,
         excludeCanceledAndExpired: true,
