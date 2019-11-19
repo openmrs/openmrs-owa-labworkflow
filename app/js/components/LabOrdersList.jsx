@@ -279,8 +279,15 @@ export class LabOrdersList extends PureComponent {
       ordersBatchSize: (ordersBatchSize || DEFAULT_ORDERS_BATCH_SIZE),
       [field]: value,
     };
+    const { excludeCanceledAndExpired } = newFilters;
+    if ( !excludeCanceledAndExpired ) {
+      newFilters = {
+        ...newFilters,
+        excludeCanceledAndExpired: true,
+      };
+    }
 
-    if (field === 'nameField' || field === 'testStatusField' || field === 'testTypeField') {
+    if (field === 'nameField' || field === 'testStatusField' || field === 'testTypeField' || field === 'pageSize') {
       // defaults page to zero when a user starts typing
       newFilters = {
         ...newFilters,
@@ -291,12 +298,17 @@ export class LabOrdersList extends PureComponent {
     if (field === 'testStatusField') {
       newFilters = {
         ...newFilters,
-        excludeCanceledAndExpired: false,
+        excludeCanceledAndExpired: true,
         includeNullFulfillerStatus: null,
         canceledOrExpiredOnOrBeforeDate: null,
         fulfillerStatus: null,
       };
-    if (value === FULFILLER_STATUS.ORDERED) {
+      if (value.toUpperCase() === FULFILLER_STATUS.ALL) {
+        newFilters = {
+          ...newFilters,
+          excludeCanceledAndExpired: false,
+        };
+      } else if (value === FULFILLER_STATUS.ORDERED) {
        newFilters = {
          ...newFilters,
          includeNullFulfillerStatus: true,
@@ -305,6 +317,7 @@ export class LabOrdersList extends PureComponent {
      } else if (value === FULFILLER_STATUS.CANCELED_EXPIRED) {
        newFilters = {
          ...newFilters,
+         excludeCanceledAndExpired: false,
          canceledOrExpiredOnOrBeforeDate: moment(labOrdersListFilters.dateToField).format('YYYY-MM-DD'),
        };
      } else if (value === FULFILLER_STATUS.COMPLETED) {
@@ -372,18 +385,6 @@ export class LabOrdersList extends PureComponent {
     );
   }
 
-  renderTooManyOrdersWarning() {
-    return (
-      <div className="no-data-container">
-        <span>
-          <FormattedMessage
-            id="app.orders.tooManyOrders"
-            defaultMessage="Unable to retrieve all orders.  Please reduce the date range."
-          />
-        </span>
-      </div>
-    );
-  }
 
   renderDraftOrderTable() {
     const {
@@ -453,7 +454,7 @@ export class LabOrdersList extends PureComponent {
 
   render() {
     const {
-      labTests, orders, fetched, orderLabTestLink, tooManyOrdersWarning, labOrdersListFilters: {
+      labTests, orders, fetched, orderLabTestLink, labOrdersListFilters: {
         dateFromField, dateToField, nameField, testTypeField, testStatusField,
       },
     } = this.props;
@@ -505,7 +506,6 @@ LabOrdersList.propTypes = {
 export const mapStateToProps = state => ({
   orders: state.labOrders.orders,
   labTests: state.labOrders.labTests,
-  tooManyOrdersWarning: state.labOrders.tooManyOrdersWarning,
   totalCount: state.labOrders.totalCount,
   dateAndTimeFormat: selectProperty(state, 'dateAndTimeFormat') || '',
   labResultsTestOrderType: selectProperty(state, 'labResultsTestOrderType') || '',

@@ -28,7 +28,6 @@ export default (state = initialState.labOrderReducer, action) => {
         ...state,
         isLoading: false,
         fetched: true,
-        tooManyOrdersWarning: action.tooManyOrders,
         orders: action.orders,
         totalCount: action.totalCount,
       };
@@ -37,7 +36,6 @@ export default (state = initialState.labOrderReducer, action) => {
       return {
         ...state,
         isLoading: false,
-        tooManyOrdersWarning: false,
         error: {
           message: action.payload,
           status: action.error,
@@ -49,7 +47,6 @@ export default (state = initialState.labOrderReducer, action) => {
         ...state,
         fetched: false,
         isLoading: true,
-        tooManyOrdersWarning: false,
       };
     }
 
