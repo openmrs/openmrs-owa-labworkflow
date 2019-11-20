@@ -901,7 +901,7 @@ exports[`<LabOrdersList /> component renders correctly 1`] = `
                           searchFilterFields={null}
                           searchType="server"
                           searchValue=""
-                          selectRowAutomaticallyIfOnlyOneRow={false}
+                          selectRowAutomaticallyIfOnlyOneRow={true}
                           showEmptyListContainer={false}
                           showPatientCount={false}
                           showRefreshButton={false}
@@ -2014,7 +2014,7 @@ exports[`LabOrdersListContainer container should pass required props from state 
                           searchFilterFields={null}
                           searchType="server"
                           searchValue=""
-                          selectRowAutomaticallyIfOnlyOneRow={false}
+                          selectRowAutomaticallyIfOnlyOneRow={true}
                           showEmptyListContainer={false}
                           showPatientCount={false}
                           showRefreshButton={false}

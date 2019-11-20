@@ -92,17 +92,12 @@ export function* resetState() {
 
 export function* filterAndSetOrders(action) {
   const { payload } = action;
-  const result = payload.data.results;
+  const orders = payload.data.results;
   const { totalCount } = payload.data;
-  const tooManyOrders = result && result.length < totalCount;
-
-  // filter out orders where action="DISCONTINUE"
-  const orders = result.filter(order => order.action !== "DISCONTINUE");
 
   yield put({
     type: SET_LAB_ORDERS,
     orders,
-    tooManyOrders,
     totalCount,
   });
 }
