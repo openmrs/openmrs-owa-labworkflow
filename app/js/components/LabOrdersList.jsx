@@ -414,7 +414,7 @@ export class LabOrdersList extends PureComponent {
     const pageSize = labOrdersListFilters.pageSize ? labOrdersListFilters.pageSize : DEFAULT_TABLE_PAGE_SIZE;
     let pages = 0;
     if (totalCount && parseInt(totalCount) > pageSize) {
-     pages = Math.floor(totalCount/pageSize)
+     pages = Math.ceil(totalCount/pageSize)
     }
 
     const columnMetadata = fields.map(columnName => ({
