@@ -17,7 +17,7 @@ class LabOrderListFilters extends PureComponent {
         {patient
           ? (
             <span>
-              {patient.name.givenName} {patient.name.familyName} ({patientUtil.getPreferredIdentifier(patient)})  <i className="small scale icon-remove-sign" role="toolbar" onClick={() => dispatch(patientActions.clearSelectedPatient())} />
+              {patientUtil.getFullName(patient)} ({patientUtil.getPreferredIdentifier(patient)})  <i className="small scale icon-remove-sign" role="toolbar" onClick={() => dispatch(patientActions.clearSelectedPatient())} />
             </span>
             )
 
