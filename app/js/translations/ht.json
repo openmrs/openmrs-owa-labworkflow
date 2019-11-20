@@ -20,7 +20,7 @@
     "app.labOrdersList.ORDER_DATE": "Commandé",
     "app.labOrdersList.RESULT": "RÉSULTAT",
     "app.labOrdersList.NORMAL_RANGE": "PLAGE NORMALE",
-    "app.labOrdersListFilters.textSearchTitle": "Rechercher un échantillon",
+    "app.labOrdersListFilters.textSearchTitle": "Search for patient",
     "app.labOrdersListFilters.searchDateFromLabel": "De: ",
     "app.labOrdersListFilters.searchDateToLabel": "À: ",
     "app.labOrdersListFilters.searchDropdownLabel": "Type de test",
@@ -52,7 +52,7 @@
     "app.labTrendsPage.RESULT": "RÉSULTAT",
     "app.labTrendsPage.NORMAL_RANGE": "PLAGE NORMALE",
     "app.labResult.status.ORDERED": "Kòmande",
-    "app.labResult.status.EXCEPTION": "Pa Fèt",
+    "app.labResult.status.EXCEPTION": "Not Performed",
     "app.labResult.status.IN_PROGRESS": "Collected",
     "app.labResult.status.COMPLETED": "Rapòte",
     "app.labResult.status.CANCELED": "Anile",
@@ -65,5 +65,6 @@
     "app.lab.discontinue.reason":"Reason for discontinuing",
     "app.lab.create.success":"Order Successfully Created",
     "app.lab.order.cancel.success":"Order Canceled",
-    "app.labOrders.addOrder.button":"Ajoute lòd"
+    "app.orders.tooManyOrders": "Unable to retrieve all orders.  Please reduce the date range.",
+    "app.labOrders.addOrder.button":"Add Order"
 }

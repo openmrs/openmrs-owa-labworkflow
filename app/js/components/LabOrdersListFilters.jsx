@@ -11,7 +11,7 @@ import { FULFILLER_STATUS } from '../constants';
 class LabOrderListFilters extends PureComponent {
 
   renderNameOrIdFilter() {
-    const { dispatch, patient } = this.props;
+    const { dispatch, patient, intl } = this.props;
     return (
       <span className="name-emrid-order-filter">
         {patient
@@ -23,7 +23,7 @@ class LabOrderListFilters extends PureComponent {
 
           : (<PatientSearch
             clearSearchResultsWhenClearingSearchBox
-            placeholder="Search for patient"
+            placeholder={intl.formatMessage({ id: "app.labOrdersListFilters.textSearchTitle", defaultMessage: "Search for patient" })}
             selectRowAutomaticallyIfOnlyOneRow
             showEmptyListContainer={false}
             showRefreshButton={false}
