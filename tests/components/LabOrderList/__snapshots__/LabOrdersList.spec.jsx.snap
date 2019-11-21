@@ -843,6 +843,7 @@ exports[`<LabOrdersList /> component renders correctly 1`] = `
                   className="name-emrid-order-filter"
                 >
                   <Connect(PatientSearch)
+                    clearSearchResultsWhenClearingSearchBox={true}
                     placeholder="Search for patient"
                     selectRowAutomaticallyIfOnlyOneRow={true}
                     showEmptyListContainer={false}
@@ -854,6 +855,7 @@ exports[`<LabOrdersList /> component renders correctly 1`] = `
                     <PatientSearch
                       activeSearchType=""
                       cacheSearchResults={false}
+                      clearSearchResultsWhenClearingSearchBox={true}
                       dispatch={[Function]}
                       getPatientIdentifiers={[Function]}
                       loading={false}
@@ -1956,6 +1958,7 @@ exports[`LabOrdersListContainer container should pass required props from state 
                   className="name-emrid-order-filter"
                 >
                   <Connect(PatientSearch)
+                    clearSearchResultsWhenClearingSearchBox={true}
                     placeholder="Search for patient"
                     selectRowAutomaticallyIfOnlyOneRow={true}
                     showEmptyListContainer={false}
@@ -1967,6 +1970,7 @@ exports[`LabOrdersListContainer container should pass required props from state 
                     <PatientSearch
                       activeSearchType=""
                       cacheSearchResults={false}
+                      clearSearchResultsWhenClearingSearchBox={true}
                       dispatch={[Function]}
                       getPatientIdentifiers={[Function]}
                       loading={false}
