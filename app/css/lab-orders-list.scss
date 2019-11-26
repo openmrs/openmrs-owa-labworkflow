@@ -228,6 +228,16 @@ i.scale:hover {
 
 
 .card-list-container {
-  overflow: auto !important;
-  height: 100% !important;
+  position: absolute;
+  overflow: scroll;
+  height: auto;
+  background-color: #EEEEEE;
+  width: 100%;
+  z-index: 1;
+}
+
+.cardlist-search-container {
+  position: relative;
+  display: inline-block;
+  width: auto;
 }

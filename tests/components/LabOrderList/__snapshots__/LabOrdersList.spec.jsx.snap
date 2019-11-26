@@ -878,6 +878,11 @@ exports[`<LabOrdersList /> component renders correctly 1`] = `
                         <CardList
                           activeSearchType=""
                           card={[Function]}
+                          clearListActionCreators={
+                            Array [
+                              [Function],
+                            ]
+                          }
                           delayInterval={0}
                           dispatch={[Function]}
                           errorMessage="Error"
@@ -892,7 +897,7 @@ exports[`<LabOrdersList /> component renders correctly 1`] = `
                               [Function],
                             ]
                           }
-                          placeholder="Search by name"
+                          placeholder="Search for patient"
                           rowData={Array []}
                           rowSelectedActionCreators={
                             Array [
@@ -949,7 +954,7 @@ exports[`<LabOrdersList /> component renders correctly 1`] = `
                                     name="patient-name"
                                     onChange={[Function]}
                                     onKeyPress={[Function]}
-                                    placeholder="Search by name"
+                                    placeholder="Search for patient"
                                     type="text"
                                     value=""
                                   >
@@ -959,7 +964,7 @@ exports[`<LabOrdersList /> component renders correctly 1`] = `
                                       name="patient-name"
                                       onChange={[Function]}
                                       onKeyPress={[Function]}
-                                      placeholder="Search by name"
+                                      placeholder="Search for patient"
                                       type="text"
                                       value=""
                                     />
@@ -1993,6 +1998,11 @@ exports[`LabOrdersListContainer container should pass required props from state 
                         <CardList
                           activeSearchType=""
                           card={[Function]}
+                          clearListActionCreators={
+                            Array [
+                              [Function],
+                            ]
+                          }
                           delayInterval={0}
                           dispatch={[Function]}
                           errorMessage="Error"
@@ -2007,7 +2017,7 @@ exports[`LabOrdersListContainer container should pass required props from state 
                               [Function],
                             ]
                           }
-                          placeholder="Search by name"
+                          placeholder="Search for patient"
                           rowData={Array []}
                           rowSelectedActionCreators={
                             Array [
@@ -2064,7 +2074,7 @@ exports[`LabOrdersListContainer container should pass required props from state 
                                     name="patient-name"
                                     onChange={[Function]}
                                     onKeyPress={[Function]}
-                                    placeholder="Search by name"
+                                    placeholder="Search for patient"
                                     type="text"
                                     value=""
                                   >
@@ -2074,7 +2084,7 @@ exports[`LabOrdersListContainer container should pass required props from state 
                                       name="patient-name"
                                       onChange={[Function]}
                                       onKeyPress={[Function]}
-                                      placeholder="Search by name"
+                                      placeholder="Search for patient"
                                       type="text"
                                       value=""
                                     />
