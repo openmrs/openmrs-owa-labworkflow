@@ -20,7 +20,7 @@
     "app.labOrdersList.ORDER_DATE": "Commandé",
     "app.labOrdersList.RESULT": "RÉSULTAT",
     "app.labOrdersList.NORMAL_RANGE": "PLAGE NORMALE",
-    "app.labOrdersListFilters.textSearchTitle": "Search for patient",
+    "app.labOrdersListFilters.textSearchTitle": "Rechercher un patient\n \n \n \n \n ",
     "app.labOrdersListFilters.searchDateFromLabel": "De: ",
     "app.labOrdersListFilters.searchDateToLabel": "À: ",
     "app.labOrdersListFilters.searchDropdownLabel": "Type de test",
@@ -65,6 +65,6 @@
     "app.lab.discontinue.reason":"Raison de l'abandon",
     "app.lab.create.success":"Commande créée avec succès",
     "app.lab.order.cancel.success":"Annulé",
-    "app.orders.tooManyOrders": "Unable to retrieve all orders.  Please reduce the date range.",
-    "app.labOrders.addOrder.button":"Add Order"
+    "app.orders.tooManyOrders": "Impossible de récupérer toutes les commandes. Veuillez réduire la plage de dates.",
+    "app.labOrders.addOrder.button":"Ajouter une commande"
 }
