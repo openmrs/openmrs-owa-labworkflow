@@ -230,7 +230,7 @@ i.scale:hover {
 .card-list-container {
   position: absolute;
   overflow: scroll;
-  height: auto;
+  height: calc(100vh - 300px);
   background-color: #EEEEEE;
   width: 100%;
   z-index: 1;
