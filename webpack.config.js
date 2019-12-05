@@ -15,9 +15,6 @@ const target = require('yargs').argv.target;
 const targetPort = require('yargs').argv.targetPort;
 
 const UglifyPlugin = require('uglifyjs-webpack-plugin');
-const CommonsChunkPlugin = webpack.optimize.CommonsChunkPlugin;
-const HtmlWebpackPlugin = require('html-webpack-plugin');
-const BrowserSyncPlugin = require('browser-sync-webpack-plugin');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
 const WebpackOnBuildPlugin = require('on-build-webpack');
 
@@ -150,22 +147,6 @@ if (env === 'development') {
 	devtool = 'eval-source-map';
 }
 
-plugins.push(new BrowserSyncPlugin({
-	proxy: {
-		target: browserSyncTarget
-	}
-}));
-
-plugins.push(new CommonsChunkPlugin({
-	name: 'vendor',
-	filename: vendorOutputFile
-}));
-
-plugins.push(new HtmlWebpackPlugin({
-	template: './app/index.html',
-	inject: 'body'
-}));
-
 plugins.push(new CopyWebpackPlugin([{
 	from: './app/manifest.webapp'
 }]));
@@ -191,23 +172,13 @@ plugins.push(new webpack.LoaderOptionsPlugin({
 
 
 var webpackConfig = {
-	entry: {
-		app: `${__dirname}/app/js/openmrs-owa-labworkflow`,
-		css: `${__dirname}/app/css/openmrs-owa-labworkflow.scss`,
-		vendor: [
-			'react',
-			'redux',
-			'redux-promise-middleware',
-			'react-redux',
-			'redux-saga',
-			'redux-logger',
-		]
-	},
+	entry: `${__dirname}/app/js/openmrs-owa-labworkflow`,
 	devtool: devtool,
 	target,
 	output: {
 		path: outputPath,
 		filename: '[name]' + outputFile,
+		libraryTarget: 'system'
 	},
 	target: 'web',
 	module: {
@@ -216,6 +187,12 @@ var webpackConfig = {
 	resolve: {
 		modules: [path.resolve(__dirname), 'node_modules'],
 		extensions: ['.js', '.jsx', '.css', '.scss'],
+	},
+	devServer: {
+		disableHostCheck: true,
+		headers: {
+			'Access-Control-Allow-Origin': '*',
+		}
 	},
 	plugins,
 	externals: nodeModules,
