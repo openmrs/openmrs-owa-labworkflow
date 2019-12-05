@@ -7,12 +7,14 @@
  * graphic logo is a trademark of OpenMRS Inc.
  */
 import React from 'react';
-import { render } from 'react-dom';
-import { HashRouter } from 'react-router-dom';
+import ReactDOM, { render } from 'react-dom';
+import { BrowserRouter } from 'react-router-dom';
 import { Provider } from 'react-redux';
 import { ConnectedRouter } from 'connected-react-router';
 import 'babel-polyfill';
 import 'react-redux-toastr/lib/css/react-redux-toastr.min.css';
+import '../css/openmrs-owa-labworkflow.scss'
+import singleSpaReact from 'single-spa-react'
 
 import { history } from './redux-store';
 import exportStore from './export-store';
@@ -21,12 +23,24 @@ import routes from './routes';
 
 import '../../node_modules/toastr/build/toastr.css';
 
-render((
-  <Provider store={exportStore}>
-    <ConnectedRouter history={history}>
-      <HashRouter>
-        {routes(exportStore)}
-      </HashRouter>
-    </ConnectedRouter>
-  </Provider>
-), document.getElementById('app'));
+const lifecycles = singleSpaReact({
+  React,
+  ReactDOM,
+  rootComponent: Root
+})
+
+export const bootstrap = lifecycles.bootstrap
+export const mount = lifecycles.mount
+export const unmount = lifecycles.unmount
+
+function Root() {
+  return (
+    <Provider store={exportStore}>
+      <ConnectedRouter history={history}>
+        <BrowserRouter>
+          {routes(exportStore)}
+        </BrowserRouter>
+      </ConnectedRouter>
+    </Provider>
+  )
+}
