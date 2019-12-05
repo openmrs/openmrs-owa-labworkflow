@@ -24,6 +24,8 @@ const env = process.env.NODE_ENV;
 
 const packageJson = require('./package.json');
 
+const { BundleAnalyzerPlugin } = require('webpack-bundle-analyzer')
+
 const THIS_APP_ID = 'labworkflow';
 
 var plugins = [];
@@ -145,6 +147,10 @@ if (env === 'development') {
 	vendorOutputFile = "vendor.bundle.js";
 	outputPath = `${__dirname}/dist/`;
 	devtool = 'eval-source-map';
+}
+
+if (process.env.ANALYZE) {
+	plugins.push(new BundleAnalyzerPlugin())
 }
 
 plugins.push(new CopyWebpackPlugin([{

@@ -97,6 +97,7 @@
     "uglifyjs-webpack-plugin": "^1.0.0-beta.3",
     "url-loader": "^0.5.7",
     "webpack": "^4.41.2",
+    "webpack-bundle-analyzer": "^3.6.0",
     "webpack-cli": "^3.3.10",
     "webpack-dev-server": "^3.9.0",
     "yargs": "^4.3.1"
@@ -108,6 +109,7 @@
     "build:prod": "npm run test && npm run build",
     "build:deploy": "NODE_ENV=\"deploy\" webpack --progress --colors --target=web",
     "start": "NODE_ENV=development webpack-dev-server --mode=development",
+    "analyze": "ANALYZE=true NODE_ENV=production webpack --progress --colors",
     "watch": "NODE_ENV=\"deploy\" webpack --progress --colors --watch --cache=false",
     "test": "npm run lint && jest -u --coverage --maxWorkers=4",
     "lint": "./node_modules/.bin/eslint app/js/**",
