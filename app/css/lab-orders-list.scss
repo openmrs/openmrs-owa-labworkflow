@@ -229,11 +229,17 @@ i.scale:hover {
 
 .card-list-container {
   position: absolute;
-  overflow: scroll;
-  height: calc(100vh - 300px);
-  background-color: #EEEEEE;
+  overflow: scroll;  
+  border-style: solid;
+  background-color: rgba(216, 184, 116, 0.87);
+  max-height: 360px;
+  height: auto;
   width: 100%;
   z-index: 1;
+}
+
+.card-list:nth-child(even) { 
+  background: rgba(216, 184, 116, 0.87);
 }
 
 .cardlist-search-container {
