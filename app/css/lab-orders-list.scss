@@ -229,9 +229,10 @@ i.scale:hover {
 
 .card-list-container {
   position: absolute;
-  overflow: scroll;  
-  border-style: solid;
-  background-color: rgba(216, 184, 116, 0.87);
+  overflow-y: scroll;  
+  overflow-x: hidden;
+  border-style: ridge;
+  background-color: #FDC97D;
   max-height: 360px;
   height: auto;
   width: 100%;
@@ -239,7 +240,7 @@ i.scale:hover {
 }
 
 .card-list:nth-child(even) { 
-  background: rgba(216, 184, 116, 0.87);
+  background: #FBE1BC;
 }
 
 .cardlist-search-container {
