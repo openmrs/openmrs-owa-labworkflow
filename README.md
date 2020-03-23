@@ -128,7 +128,7 @@ Any files that you add manually must be added in the `app` directory.
 
 ## Releasing
 
-In order to release, set the new version package.json, bintray.json (also set other version information here like release date and vcs_tag) and app/manifest.webapp. Once you commit, push changes to github, and confirm the Travis tests pass, go to https://github.com/openmrs/openmrs-owa-labworkflow/releases and create a new release named after the version you want to release. Travis CI should pick up a newly created tag and deploy the release to Bintray at https://bintray.com/openmrs/owa/openmrs-owa-orderentry
+In order to release, set the new version number in package.json, bintray.json (also set other version information here like release date and vcs_tag) and app/manifest.webapp. Once you commit, push changes to github, and confirm the Travis tests pass, go to https://github.com/openmrs/openmrs-owa-labworkflow/releases and create a new release named after the version you want to release. Travis CI should pick up a newly created tag and deploy the release to Bintray at https://bintray.com/openmrs/owa/openmrs-owa-orderentry
 
 
 ### Troubleshooting

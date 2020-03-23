@@ -1,5 +1,5 @@
 {
-  "version": "0.2.0",
+  "version": "0.3.0",
   "name": "Lab Workflow",
   "description": "Allows for entering lab results for existing orders and viewing existing lab results",
   "launch_path": "index.html",
