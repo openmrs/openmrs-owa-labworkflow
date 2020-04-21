@@ -24,7 +24,9 @@ exports[`<LabOrdersList /> component renders correctly 1`] = `
       "locale": "en",
       "messages": Object {},
       "now": [Function],
+      "onError": [Function],
       "textComponent": "span",
+      "timeZone": null,
     }
   }
   store={
@@ -240,8 +242,8 @@ exports[`<LabOrdersList /> component renders correctly 1`] = `
     labOrdersListFilters={
       Object {
         "dateField": "",
-        "dateFromField": "2018-11-11T05:00:00.000Z",
-        "dateToField": "2018-11-11T05:00:00.000Z",
+        "dateFromField": "2018-11-11T08:00:00.000Z",
+        "dateToField": "2018-11-11T08:00:00.000Z",
         "testTypeField": "",
       }
     }
@@ -296,8 +298,8 @@ exports[`<LabOrdersList /> component renders correctly 1`] = `
         </FormattedMessage>
       </h2>
       <Connect(InjectIntl(LabOrderListFilters))
-        dateFromField={"2018-11-11T05:00:00.000Z"}
-        dateToField={"2018-11-11T05:00:00.000Z"}
+        dateFromField={"2018-11-11T08:00:00.000Z"}
+        dateToField={"2018-11-11T08:00:00.000Z"}
         handleFieldChange={[Function]}
         labTests={
           Array [
@@ -307,8 +309,8 @@ exports[`<LabOrdersList /> component renders correctly 1`] = `
         testTypeField=""
       >
         <InjectIntl(LabOrderListFilters)
-          dateFromField={"2018-11-11T05:00:00.000Z"}
-          dateToField={"2018-11-11T05:00:00.000Z"}
+          dateFromField={"2018-11-11T08:00:00.000Z"}
+          dateToField={"2018-11-11T08:00:00.000Z"}
           dispatch={[Function]}
           handleFieldChange={[Function]}
           labTests={
@@ -320,8 +322,8 @@ exports[`<LabOrdersList /> component renders correctly 1`] = `
           testTypeField=""
         >
           <LabOrderListFilters
-            dateFromField={"2018-11-11T05:00:00.000Z"}
-            dateToField={"2018-11-11T05:00:00.000Z"}
+            dateFromField={"2018-11-11T08:00:00.000Z"}
+            dateToField={"2018-11-11T08:00:00.000Z"}
             dispatch={[Function]}
             handleFieldChange={[Function]}
             intl={
@@ -346,7 +348,9 @@ exports[`<LabOrdersList /> component renders correctly 1`] = `
                 "locale": "en",
                 "messages": Object {},
                 "now": [Function],
+                "onError": [Function],
                 "textComponent": "span",
+                "timeZone": null,
               }
             }
             labTests={
@@ -385,7 +389,7 @@ exports[`<LabOrdersList /> component renders correctly 1`] = `
                         labelClassName="line"
                       >
                         <div>
-                          <DatePicker
+                          <t
                             allowSameDay={false}
                             customInput={
                               <DateDisplay
@@ -401,19 +405,26 @@ exports[`<LabOrdersList /> component renders correctly 1`] = `
                                 labelClassName="line"
                               />
                             }
+                            customTimeInput={null}
                             dateFormat="dd MMM yyyy"
                             dateFormatCalendar="LLLL yyyy"
                             disabled={false}
                             disabledKeyboardNavigation={false}
                             dropdownMode="scroll"
+                            enableTabLoop={true}
                             excludeDates={
                               Array [
                                 false,
                               ]
                             }
+                            excludeScrollbar={true}
+                            inlineFocusSelectedMonth={false}
                             monthsShown={1}
-                            nextMonthButtonLabel="Next month"
+                            nextMonthButtonLabel="Next Month"
+                            nextYearButtonLabel="Next Year"
                             onBlur={[Function]}
+                            onCalendarClose={[Function]}
+                            onCalendarOpen={[Function]}
                             onChange={[Function]}
                             onClickOutside={[Function]}
                             onFocus={[Function]}
@@ -425,16 +436,25 @@ exports[`<LabOrdersList /> component renders correctly 1`] = `
                             onYearChange={[Function]}
                             preventOpenOnFocus={false}
                             previousMonthButtonLabel="Previous Month"
+                            previousYearButtonLabel="Previous Year"
                             readOnly={false}
                             renderDayContents={[Function]}
-                            selected={2018-11-11T05:00:00.000Z}
+                            selected={2018-11-11T08:00:00.000Z}
                             shouldCloseOnSelect={true}
+                            showMonthYearPicker={false}
+                            showPopperArrow={true}
+                            showPreviousMonths={false}
+                            showQuarterYearPicker={false}
+                            showTimeInput={false}
                             showTimeSelect={false}
+                            strictParsing={false}
                             timeCaption="Time"
+                            timeInputLabel="Time"
                             timeIntervals={30}
                             withPortal={false}
                           >
-                            <PopperComponent
+                            <t
+                              enableTabLoop={true}
                               hidePopper={true}
                               popperComponent={null}
                               popperModifiers={
@@ -446,6 +466,7 @@ exports[`<LabOrdersList /> component renders correctly 1`] = `
                                   },
                                 }
                               }
+                              popperOnKeyDown={[Function]}
                               popperPlacement="bottom-start"
                               popperProps={Object {}}
                               targetComponent={
@@ -476,10 +497,12 @@ exports[`<LabOrdersList /> component renders correctly 1`] = `
                                 </div>
                               }
                             >
-                              <Manager>
+                              <Manager
+                                className="react-datepicker-manager"
+                              >
                                 <Reference>
                                   <InnerReference
-                                    getReferenceRef={[Function]}
+                                    setReferenceNode={[Function]}
                                   >
                                     <div
                                       className="react-datepicker-wrapper"
@@ -567,7 +590,9 @@ exports[`<LabOrdersList /> component renders correctly 1`] = `
                                                 rotation={null}
                                                 size="2x"
                                                 spin={false}
+                                                swapOpacity={false}
                                                 symbol={false}
+                                                title=""
                                                 transform={null}
                                               >
                                                 <svg
@@ -575,6 +600,7 @@ exports[`<LabOrdersList /> component renders correctly 1`] = `
                                                   className="svg-inline--fa fa-calendar-alt fa-w-14 fa-2x "
                                                   data-icon="calendar-alt"
                                                   data-prefix="fas"
+                                                  focusable="false"
                                                   onClick={[Function]}
                                                   role="img"
                                                   style={Object {}}
@@ -582,7 +608,7 @@ exports[`<LabOrdersList /> component renders correctly 1`] = `
                                                   xmlns="http://www.w3.org/2000/svg"
                                                 >
                                                   <path
-                                                    d="M436 160H12c-6.6 0-12-5.4-12-12v-36c0-26.5 21.5-48 48-48h48V12c0-6.6 5.4-12 12-12h40c6.6 0 12 5.4 12 12v52h128V12c0-6.6 5.4-12 12-12h40c6.6 0 12 5.4 12 12v52h48c26.5 0 48 21.5 48 48v36c0 6.6-5.4 12-12 12zM12 192h424c6.6 0 12 5.4 12 12v260c0 26.5-21.5 48-48 48H48c-26.5 0-48-21.5-48-48V204c0-6.6 5.4-12 12-12zm116 204c0-6.6-5.4-12-12-12H76c-6.6 0-12 5.4-12 12v40c0 6.6 5.4 12 12 12h40c6.6 0 12-5.4 12-12v-40zm0-128c0-6.6-5.4-12-12-12H76c-6.6 0-12 5.4-12 12v40c0 6.6 5.4 12 12 12h40c6.6 0 12-5.4 12-12v-40zm128 128c0-6.6-5.4-12-12-12h-40c-6.6 0-12 5.4-12 12v40c0 6.6 5.4 12 12 12h40c6.6 0 12-5.4 12-12v-40zm0-128c0-6.6-5.4-12-12-12h-40c-6.6 0-12 5.4-12 12v40c0 6.6 5.4 12 12 12h40c6.6 0 12-5.4 12-12v-40zm128 128c0-6.6-5.4-12-12-12h-40c-6.6 0-12 5.4-12 12v40c0 6.6 5.4 12 12 12h40c6.6 0 12-5.4 12-12v-40zm0-128c0-6.6-5.4-12-12-12h-40c-6.6 0-12 5.4-12 12v40c0 6.6 5.4 12 12 12h40c6.6 0 12-5.4 12-12v-40z"
+                                                    d="M0 464c0 26.5 21.5 48 48 48h352c26.5 0 48-21.5 48-48V192H0v272zm320-196c0-6.6 5.4-12 12-12h40c6.6 0 12 5.4 12 12v40c0 6.6-5.4 12-12 12h-40c-6.6 0-12-5.4-12-12v-40zm0 128c0-6.6 5.4-12 12-12h40c6.6 0 12 5.4 12 12v40c0 6.6-5.4 12-12 12h-40c-6.6 0-12-5.4-12-12v-40zM192 268c0-6.6 5.4-12 12-12h40c6.6 0 12 5.4 12 12v40c0 6.6-5.4 12-12 12h-40c-6.6 0-12-5.4-12-12v-40zm0 128c0-6.6 5.4-12 12-12h40c6.6 0 12 5.4 12 12v40c0 6.6-5.4 12-12 12h-40c-6.6 0-12-5.4-12-12v-40zM64 268c0-6.6 5.4-12 12-12h40c6.6 0 12 5.4 12 12v40c0 6.6-5.4 12-12 12H76c-6.6 0-12-5.4-12-12v-40zm0 128c0-6.6 5.4-12 12-12h40c6.6 0 12 5.4 12 12v40c0 6.6-5.4 12-12 12H76c-6.6 0-12-5.4-12-12v-40zM400 64h-48V16c0-8.8-7.2-16-16-16h-32c-8.8 0-16 7.2-16 16v48H160V16c0-8.8-7.2-16-16-16h-32c-8.8 0-16 7.2-16 16v48H48C21.5 64 0 85.5 0 112v48h448v-48c0-26.5-21.5-48-48-48z"
                                                     fill="currentColor"
                                                     style={Object {}}
                                                   />
@@ -596,8 +622,8 @@ exports[`<LabOrdersList /> component renders correctly 1`] = `
                                   </InnerReference>
                                 </Reference>
                               </Manager>
-                            </PopperComponent>
-                          </DatePicker>
+                            </t>
+                          </t>
                         </div>
                       </CustomDatePicker>
                     </span>
@@ -616,7 +642,7 @@ exports[`<LabOrdersList /> component renders correctly 1`] = `
                         labelClassName="line"
                       >
                         <div>
-                          <DatePicker
+                          <t
                             allowSameDay={false}
                             customInput={
                               <DateDisplay
@@ -632,19 +658,26 @@ exports[`<LabOrdersList /> component renders correctly 1`] = `
                                 labelClassName="line"
                               />
                             }
+                            customTimeInput={null}
                             dateFormat="dd MMM yyyy"
                             dateFormatCalendar="LLLL yyyy"
                             disabled={false}
                             disabledKeyboardNavigation={false}
                             dropdownMode="scroll"
+                            enableTabLoop={true}
                             excludeDates={
                               Array [
                                 false,
                               ]
                             }
+                            excludeScrollbar={true}
+                            inlineFocusSelectedMonth={false}
                             monthsShown={1}
-                            nextMonthButtonLabel="Next month"
+                            nextMonthButtonLabel="Next Month"
+                            nextYearButtonLabel="Next Year"
                             onBlur={[Function]}
+                            onCalendarClose={[Function]}
+                            onCalendarOpen={[Function]}
                             onChange={[Function]}
                             onClickOutside={[Function]}
                             onFocus={[Function]}
@@ -656,16 +689,25 @@ exports[`<LabOrdersList /> component renders correctly 1`] = `
                             onYearChange={[Function]}
                             preventOpenOnFocus={false}
                             previousMonthButtonLabel="Previous Month"
+                            previousYearButtonLabel="Previous Year"
                             readOnly={false}
                             renderDayContents={[Function]}
-                            selected={2018-11-11T05:00:00.000Z}
+                            selected={2018-11-11T08:00:00.000Z}
                             shouldCloseOnSelect={true}
+                            showMonthYearPicker={false}
+                            showPopperArrow={true}
+                            showPreviousMonths={false}
+                            showQuarterYearPicker={false}
+                            showTimeInput={false}
                             showTimeSelect={false}
+                            strictParsing={false}
                             timeCaption="Time"
+                            timeInputLabel="Time"
                             timeIntervals={30}
                             withPortal={false}
                           >
-                            <PopperComponent
+                            <t
+                              enableTabLoop={true}
                               hidePopper={true}
                               popperComponent={null}
                               popperModifiers={
@@ -677,6 +719,7 @@ exports[`<LabOrdersList /> component renders correctly 1`] = `
                                   },
                                 }
                               }
+                              popperOnKeyDown={[Function]}
                               popperPlacement="bottom-start"
                               popperProps={Object {}}
                               targetComponent={
@@ -707,10 +750,12 @@ exports[`<LabOrdersList /> component renders correctly 1`] = `
                                 </div>
                               }
                             >
-                              <Manager>
+                              <Manager
+                                className="react-datepicker-manager"
+                              >
                                 <Reference>
                                   <InnerReference
-                                    getReferenceRef={[Function]}
+                                    setReferenceNode={[Function]}
                                   >
                                     <div
                                       className="react-datepicker-wrapper"
@@ -798,7 +843,9 @@ exports[`<LabOrdersList /> component renders correctly 1`] = `
                                                 rotation={null}
                                                 size="2x"
                                                 spin={false}
+                                                swapOpacity={false}
                                                 symbol={false}
+                                                title=""
                                                 transform={null}
                                               >
                                                 <svg
@@ -806,6 +853,7 @@ exports[`<LabOrdersList /> component renders correctly 1`] = `
                                                   className="svg-inline--fa fa-calendar-alt fa-w-14 fa-2x "
                                                   data-icon="calendar-alt"
                                                   data-prefix="fas"
+                                                  focusable="false"
                                                   onClick={[Function]}
                                                   role="img"
                                                   style={Object {}}
@@ -813,7 +861,7 @@ exports[`<LabOrdersList /> component renders correctly 1`] = `
                                                   xmlns="http://www.w3.org/2000/svg"
                                                 >
                                                   <path
-                                                    d="M436 160H12c-6.6 0-12-5.4-12-12v-36c0-26.5 21.5-48 48-48h48V12c0-6.6 5.4-12 12-12h40c6.6 0 12 5.4 12 12v52h128V12c0-6.6 5.4-12 12-12h40c6.6 0 12 5.4 12 12v52h48c26.5 0 48 21.5 48 48v36c0 6.6-5.4 12-12 12zM12 192h424c6.6 0 12 5.4 12 12v260c0 26.5-21.5 48-48 48H48c-26.5 0-48-21.5-48-48V204c0-6.6 5.4-12 12-12zm116 204c0-6.6-5.4-12-12-12H76c-6.6 0-12 5.4-12 12v40c0 6.6 5.4 12 12 12h40c6.6 0 12-5.4 12-12v-40zm0-128c0-6.6-5.4-12-12-12H76c-6.6 0-12 5.4-12 12v40c0 6.6 5.4 12 12 12h40c6.6 0 12-5.4 12-12v-40zm128 128c0-6.6-5.4-12-12-12h-40c-6.6 0-12 5.4-12 12v40c0 6.6 5.4 12 12 12h40c6.6 0 12-5.4 12-12v-40zm0-128c0-6.6-5.4-12-12-12h-40c-6.6 0-12 5.4-12 12v40c0 6.6 5.4 12 12 12h40c6.6 0 12-5.4 12-12v-40zm128 128c0-6.6-5.4-12-12-12h-40c-6.6 0-12 5.4-12 12v40c0 6.6 5.4 12 12 12h40c6.6 0 12-5.4 12-12v-40zm0-128c0-6.6-5.4-12-12-12h-40c-6.6 0-12 5.4-12 12v40c0 6.6 5.4 12 12 12h40c6.6 0 12-5.4 12-12v-40z"
+                                                    d="M0 464c0 26.5 21.5 48 48 48h352c26.5 0 48-21.5 48-48V192H0v272zm320-196c0-6.6 5.4-12 12-12h40c6.6 0 12 5.4 12 12v40c0 6.6-5.4 12-12 12h-40c-6.6 0-12-5.4-12-12v-40zm0 128c0-6.6 5.4-12 12-12h40c6.6 0 12 5.4 12 12v40c0 6.6-5.4 12-12 12h-40c-6.6 0-12-5.4-12-12v-40zM192 268c0-6.6 5.4-12 12-12h40c6.6 0 12 5.4 12 12v40c0 6.6-5.4 12-12 12h-40c-6.6 0-12-5.4-12-12v-40zm0 128c0-6.6 5.4-12 12-12h40c6.6 0 12 5.4 12 12v40c0 6.6-5.4 12-12 12h-40c-6.6 0-12-5.4-12-12v-40zM64 268c0-6.6 5.4-12 12-12h40c6.6 0 12 5.4 12 12v40c0 6.6-5.4 12-12 12H76c-6.6 0-12-5.4-12-12v-40zm0 128c0-6.6 5.4-12 12-12h40c6.6 0 12 5.4 12 12v40c0 6.6-5.4 12-12 12H76c-6.6 0-12-5.4-12-12v-40zM400 64h-48V16c0-8.8-7.2-16-16-16h-32c-8.8 0-16 7.2-16 16v48H160V16c0-8.8-7.2-16-16-16h-32c-8.8 0-16 7.2-16 16v48H48C21.5 64 0 85.5 0 112v48h448v-48c0-26.5-21.5-48-48-48z"
                                                     fill="currentColor"
                                                     style={Object {}}
                                                   />
@@ -827,8 +875,8 @@ exports[`<LabOrdersList /> component renders correctly 1`] = `
                                   </InnerReference>
                                 </Reference>
                               </Manager>
-                            </PopperComponent>
-                          </DatePicker>
+                            </t>
+                          </t>
                         </div>
                       </CustomDatePicker>
                     </span>
@@ -1340,7 +1388,9 @@ exports[`LabOrdersListContainer container should pass required props from state 
       "locale": "en",
       "messages": Object {},
       "now": [Function],
+      "onError": [Function],
       "textComponent": "span",
+      "timeZone": null,
     }
   }
   store={
@@ -1360,8 +1410,8 @@ exports[`LabOrdersListContainer container should pass required props from state 
     labOrdersListFilters={
       Object {
         "dateField": "",
-        "dateFromField": "2018-11-11T05:00:00.000Z",
-        "dateToField": "2018-11-11T05:00:00.000Z",
+        "dateFromField": "2018-11-11T08:00:00.000Z",
+        "dateToField": "2018-11-11T08:00:00.000Z",
         "testTypeField": "",
       }
     }
@@ -1416,8 +1466,8 @@ exports[`LabOrdersListContainer container should pass required props from state 
         </FormattedMessage>
       </h2>
       <Connect(InjectIntl(LabOrderListFilters))
-        dateFromField={"2018-11-11T05:00:00.000Z"}
-        dateToField={"2018-11-11T05:00:00.000Z"}
+        dateFromField={"2018-11-11T08:00:00.000Z"}
+        dateToField={"2018-11-11T08:00:00.000Z"}
         handleFieldChange={[Function]}
         labTests={
           Array [
@@ -1427,8 +1477,8 @@ exports[`LabOrdersListContainer container should pass required props from state 
         testTypeField=""
       >
         <InjectIntl(LabOrderListFilters)
-          dateFromField={"2018-11-11T05:00:00.000Z"}
-          dateToField={"2018-11-11T05:00:00.000Z"}
+          dateFromField={"2018-11-11T08:00:00.000Z"}
+          dateToField={"2018-11-11T08:00:00.000Z"}
           dispatch={[Function]}
           handleFieldChange={[Function]}
           labTests={
@@ -1440,8 +1490,8 @@ exports[`LabOrdersListContainer container should pass required props from state 
           testTypeField=""
         >
           <LabOrderListFilters
-            dateFromField={"2018-11-11T05:00:00.000Z"}
-            dateToField={"2018-11-11T05:00:00.000Z"}
+            dateFromField={"2018-11-11T08:00:00.000Z"}
+            dateToField={"2018-11-11T08:00:00.000Z"}
             dispatch={[Function]}
             handleFieldChange={[Function]}
             intl={
@@ -1466,7 +1516,9 @@ exports[`LabOrdersListContainer container should pass required props from state 
                 "locale": "en",
                 "messages": Object {},
                 "now": [Function],
+                "onError": [Function],
                 "textComponent": "span",
+                "timeZone": null,
               }
             }
             labTests={
@@ -1505,7 +1557,7 @@ exports[`LabOrdersListContainer container should pass required props from state 
                         labelClassName="line"
                       >
                         <div>
-                          <DatePicker
+                          <t
                             allowSameDay={false}
                             customInput={
                               <DateDisplay
@@ -1521,19 +1573,26 @@ exports[`LabOrdersListContainer container should pass required props from state 
                                 labelClassName="line"
                               />
                             }
+                            customTimeInput={null}
                             dateFormat="dd MMM yyyy"
                             dateFormatCalendar="LLLL yyyy"
                             disabled={false}
                             disabledKeyboardNavigation={false}
                             dropdownMode="scroll"
+                            enableTabLoop={true}
                             excludeDates={
                               Array [
                                 false,
                               ]
                             }
+                            excludeScrollbar={true}
+                            inlineFocusSelectedMonth={false}
                             monthsShown={1}
-                            nextMonthButtonLabel="Next month"
+                            nextMonthButtonLabel="Next Month"
+                            nextYearButtonLabel="Next Year"
                             onBlur={[Function]}
+                            onCalendarClose={[Function]}
+                            onCalendarOpen={[Function]}
                             onChange={[Function]}
                             onClickOutside={[Function]}
                             onFocus={[Function]}
@@ -1545,16 +1604,25 @@ exports[`LabOrdersListContainer container should pass required props from state 
                             onYearChange={[Function]}
                             preventOpenOnFocus={false}
                             previousMonthButtonLabel="Previous Month"
+                            previousYearButtonLabel="Previous Year"
                             readOnly={false}
                             renderDayContents={[Function]}
-                            selected={2018-11-11T05:00:00.000Z}
+                            selected={2018-11-11T08:00:00.000Z}
                             shouldCloseOnSelect={true}
+                            showMonthYearPicker={false}
+                            showPopperArrow={true}
+                            showPreviousMonths={false}
+                            showQuarterYearPicker={false}
+                            showTimeInput={false}
                             showTimeSelect={false}
+                            strictParsing={false}
                             timeCaption="Time"
+                            timeInputLabel="Time"
                             timeIntervals={30}
                             withPortal={false}
                           >
-                            <PopperComponent
+                            <t
+                              enableTabLoop={true}
                               hidePopper={true}
                               popperComponent={null}
                               popperModifiers={
@@ -1566,6 +1634,7 @@ exports[`LabOrdersListContainer container should pass required props from state 
                                   },
                                 }
                               }
+                              popperOnKeyDown={[Function]}
                               popperPlacement="bottom-start"
                               popperProps={Object {}}
                               targetComponent={
@@ -1596,10 +1665,12 @@ exports[`LabOrdersListContainer container should pass required props from state 
                                 </div>
                               }
                             >
-                              <Manager>
+                              <Manager
+                                className="react-datepicker-manager"
+                              >
                                 <Reference>
                                   <InnerReference
-                                    getReferenceRef={[Function]}
+                                    setReferenceNode={[Function]}
                                   >
                                     <div
                                       className="react-datepicker-wrapper"
@@ -1687,7 +1758,9 @@ exports[`LabOrdersListContainer container should pass required props from state 
                                                 rotation={null}
                                                 size="2x"
                                                 spin={false}
+                                                swapOpacity={false}
                                                 symbol={false}
+                                                title=""
                                                 transform={null}
                                               >
                                                 <svg
@@ -1695,6 +1768,7 @@ exports[`LabOrdersListContainer container should pass required props from state 
                                                   className="svg-inline--fa fa-calendar-alt fa-w-14 fa-2x "
                                                   data-icon="calendar-alt"
                                                   data-prefix="fas"
+                                                  focusable="false"
                                                   onClick={[Function]}
                                                   role="img"
                                                   style={Object {}}
@@ -1702,7 +1776,7 @@ exports[`LabOrdersListContainer container should pass required props from state 
                                                   xmlns="http://www.w3.org/2000/svg"
                                                 >
                                                   <path
-                                                    d="M436 160H12c-6.6 0-12-5.4-12-12v-36c0-26.5 21.5-48 48-48h48V12c0-6.6 5.4-12 12-12h40c6.6 0 12 5.4 12 12v52h128V12c0-6.6 5.4-12 12-12h40c6.6 0 12 5.4 12 12v52h48c26.5 0 48 21.5 48 48v36c0 6.6-5.4 12-12 12zM12 192h424c6.6 0 12 5.4 12 12v260c0 26.5-21.5 48-48 48H48c-26.5 0-48-21.5-48-48V204c0-6.6 5.4-12 12-12zm116 204c0-6.6-5.4-12-12-12H76c-6.6 0-12 5.4-12 12v40c0 6.6 5.4 12 12 12h40c6.6 0 12-5.4 12-12v-40zm0-128c0-6.6-5.4-12-12-12H76c-6.6 0-12 5.4-12 12v40c0 6.6 5.4 12 12 12h40c6.6 0 12-5.4 12-12v-40zm128 128c0-6.6-5.4-12-12-12h-40c-6.6 0-12 5.4-12 12v40c0 6.6 5.4 12 12 12h40c6.6 0 12-5.4 12-12v-40zm0-128c0-6.6-5.4-12-12-12h-40c-6.6 0-12 5.4-12 12v40c0 6.6 5.4 12 12 12h40c6.6 0 12-5.4 12-12v-40zm128 128c0-6.6-5.4-12-12-12h-40c-6.6 0-12 5.4-12 12v40c0 6.6 5.4 12 12 12h40c6.6 0 12-5.4 12-12v-40zm0-128c0-6.6-5.4-12-12-12h-40c-6.6 0-12 5.4-12 12v40c0 6.6 5.4 12 12 12h40c6.6 0 12-5.4 12-12v-40z"
+                                                    d="M0 464c0 26.5 21.5 48 48 48h352c26.5 0 48-21.5 48-48V192H0v272zm320-196c0-6.6 5.4-12 12-12h40c6.6 0 12 5.4 12 12v40c0 6.6-5.4 12-12 12h-40c-6.6 0-12-5.4-12-12v-40zm0 128c0-6.6 5.4-12 12-12h40c6.6 0 12 5.4 12 12v40c0 6.6-5.4 12-12 12h-40c-6.6 0-12-5.4-12-12v-40zM192 268c0-6.6 5.4-12 12-12h40c6.6 0 12 5.4 12 12v40c0 6.6-5.4 12-12 12h-40c-6.6 0-12-5.4-12-12v-40zm0 128c0-6.6 5.4-12 12-12h40c6.6 0 12 5.4 12 12v40c0 6.6-5.4 12-12 12h-40c-6.6 0-12-5.4-12-12v-40zM64 268c0-6.6 5.4-12 12-12h40c6.6 0 12 5.4 12 12v40c0 6.6-5.4 12-12 12H76c-6.6 0-12-5.4-12-12v-40zm0 128c0-6.6 5.4-12 12-12h40c6.6 0 12 5.4 12 12v40c0 6.6-5.4 12-12 12H76c-6.6 0-12-5.4-12-12v-40zM400 64h-48V16c0-8.8-7.2-16-16-16h-32c-8.8 0-16 7.2-16 16v48H160V16c0-8.8-7.2-16-16-16h-32c-8.8 0-16 7.2-16 16v48H48C21.5 64 0 85.5 0 112v48h448v-48c0-26.5-21.5-48-48-48z"
                                                     fill="currentColor"
                                                     style={Object {}}
                                                   />
@@ -1716,8 +1790,8 @@ exports[`LabOrdersListContainer container should pass required props from state 
                                   </InnerReference>
                                 </Reference>
                               </Manager>
-                            </PopperComponent>
-                          </DatePicker>
+                            </t>
+                          </t>
                         </div>
                       </CustomDatePicker>
                     </span>
@@ -1736,7 +1810,7 @@ exports[`LabOrdersListContainer container should pass required props from state 
                         labelClassName="line"
                       >
                         <div>
-                          <DatePicker
+                          <t
                             allowSameDay={false}
                             customInput={
                               <DateDisplay
@@ -1752,19 +1826,26 @@ exports[`LabOrdersListContainer container should pass required props from state 
                                 labelClassName="line"
                               />
                             }
+                            customTimeInput={null}
                             dateFormat="dd MMM yyyy"
                             dateFormatCalendar="LLLL yyyy"
                             disabled={false}
                             disabledKeyboardNavigation={false}
                             dropdownMode="scroll"
+                            enableTabLoop={true}
                             excludeDates={
                               Array [
                                 false,
                               ]
                             }
+                            excludeScrollbar={true}
+                            inlineFocusSelectedMonth={false}
                             monthsShown={1}
-                            nextMonthButtonLabel="Next month"
+                            nextMonthButtonLabel="Next Month"
+                            nextYearButtonLabel="Next Year"
                             onBlur={[Function]}
+                            onCalendarClose={[Function]}
+                            onCalendarOpen={[Function]}
                             onChange={[Function]}
                             onClickOutside={[Function]}
                             onFocus={[Function]}
@@ -1776,16 +1857,25 @@ exports[`LabOrdersListContainer container should pass required props from state 
                             onYearChange={[Function]}
                             preventOpenOnFocus={false}
                             previousMonthButtonLabel="Previous Month"
+                            previousYearButtonLabel="Previous Year"
                             readOnly={false}
                             renderDayContents={[Function]}
-                            selected={2018-11-11T05:00:00.000Z}
+                            selected={2018-11-11T08:00:00.000Z}
                             shouldCloseOnSelect={true}
+                            showMonthYearPicker={false}
+                            showPopperArrow={true}
+                            showPreviousMonths={false}
+                            showQuarterYearPicker={false}
+                            showTimeInput={false}
                             showTimeSelect={false}
+                            strictParsing={false}
                             timeCaption="Time"
+                            timeInputLabel="Time"
                             timeIntervals={30}
                             withPortal={false}
                           >
-                            <PopperComponent
+                            <t
+                              enableTabLoop={true}
                               hidePopper={true}
                               popperComponent={null}
                               popperModifiers={
@@ -1797,6 +1887,7 @@ exports[`LabOrdersListContainer container should pass required props from state 
                                   },
                                 }
                               }
+                              popperOnKeyDown={[Function]}
                               popperPlacement="bottom-start"
                               popperProps={Object {}}
                               targetComponent={
@@ -1827,10 +1918,12 @@ exports[`LabOrdersListContainer container should pass required props from state 
                                 </div>
                               }
                             >
-                              <Manager>
+                              <Manager
+                                className="react-datepicker-manager"
+                              >
                                 <Reference>
                                   <InnerReference
-                                    getReferenceRef={[Function]}
+                                    setReferenceNode={[Function]}
                                   >
                                     <div
                                       className="react-datepicker-wrapper"
@@ -1918,7 +2011,9 @@ exports[`LabOrdersListContainer container should pass required props from state 
                                                 rotation={null}
                                                 size="2x"
                                                 spin={false}
+                                                swapOpacity={false}
                                                 symbol={false}
+                                                title=""
                                                 transform={null}
                                               >
                                                 <svg
@@ -1926,6 +2021,7 @@ exports[`LabOrdersListContainer container should pass required props from state 
                                                   className="svg-inline--fa fa-calendar-alt fa-w-14 fa-2x "
                                                   data-icon="calendar-alt"
                                                   data-prefix="fas"
+                                                  focusable="false"
                                                   onClick={[Function]}
                                                   role="img"
                                                   style={Object {}}
@@ -1933,7 +2029,7 @@ exports[`LabOrdersListContainer container should pass required props from state 
                                                   xmlns="http://www.w3.org/2000/svg"
                                                 >
                                                   <path
-                                                    d="M436 160H12c-6.6 0-12-5.4-12-12v-36c0-26.5 21.5-48 48-48h48V12c0-6.6 5.4-12 12-12h40c6.6 0 12 5.4 12 12v52h128V12c0-6.6 5.4-12 12-12h40c6.6 0 12 5.4 12 12v52h48c26.5 0 48 21.5 48 48v36c0 6.6-5.4 12-12 12zM12 192h424c6.6 0 12 5.4 12 12v260c0 26.5-21.5 48-48 48H48c-26.5 0-48-21.5-48-48V204c0-6.6 5.4-12 12-12zm116 204c0-6.6-5.4-12-12-12H76c-6.6 0-12 5.4-12 12v40c0 6.6 5.4 12 12 12h40c6.6 0 12-5.4 12-12v-40zm0-128c0-6.6-5.4-12-12-12H76c-6.6 0-12 5.4-12 12v40c0 6.6 5.4 12 12 12h40c6.6 0 12-5.4 12-12v-40zm128 128c0-6.6-5.4-12-12-12h-40c-6.6 0-12 5.4-12 12v40c0 6.6 5.4 12 12 12h40c6.6 0 12-5.4 12-12v-40zm0-128c0-6.6-5.4-12-12-12h-40c-6.6 0-12 5.4-12 12v40c0 6.6 5.4 12 12 12h40c6.6 0 12-5.4 12-12v-40zm128 128c0-6.6-5.4-12-12-12h-40c-6.6 0-12 5.4-12 12v40c0 6.6 5.4 12 12 12h40c6.6 0 12-5.4 12-12v-40zm0-128c0-6.6-5.4-12-12-12h-40c-6.6 0-12 5.4-12 12v40c0 6.6 5.4 12 12 12h40c6.6 0 12-5.4 12-12v-40z"
+                                                    d="M0 464c0 26.5 21.5 48 48 48h352c26.5 0 48-21.5 48-48V192H0v272zm320-196c0-6.6 5.4-12 12-12h40c6.6 0 12 5.4 12 12v40c0 6.6-5.4 12-12 12h-40c-6.6 0-12-5.4-12-12v-40zm0 128c0-6.6 5.4-12 12-12h40c6.6 0 12 5.4 12 12v40c0 6.6-5.4 12-12 12h-40c-6.6 0-12-5.4-12-12v-40zM192 268c0-6.6 5.4-12 12-12h40c6.6 0 12 5.4 12 12v40c0 6.6-5.4 12-12 12h-40c-6.6 0-12-5.4-12-12v-40zm0 128c0-6.6 5.4-12 12-12h40c6.6 0 12 5.4 12 12v40c0 6.6-5.4 12-12 12h-40c-6.6 0-12-5.4-12-12v-40zM64 268c0-6.6 5.4-12 12-12h40c6.6 0 12 5.4 12 12v40c0 6.6-5.4 12-12 12H76c-6.6 0-12-5.4-12-12v-40zm0 128c0-6.6 5.4-12 12-12h40c6.6 0 12 5.4 12 12v40c0 6.6-5.4 12-12 12H76c-6.6 0-12-5.4-12-12v-40zM400 64h-48V16c0-8.8-7.2-16-16-16h-32c-8.8 0-16 7.2-16 16v48H160V16c0-8.8-7.2-16-16-16h-32c-8.8 0-16 7.2-16 16v48H48C21.5 64 0 85.5 0 112v48h448v-48c0-26.5-21.5-48-48-48z"
                                                     fill="currentColor"
                                                     style={Object {}}
                                                   />
@@ -1947,8 +2043,8 @@ exports[`LabOrdersListContainer container should pass required props from state 
                                   </InnerReference>
                                 </Reference>
                               </Manager>
-                            </PopperComponent>
-                          </DatePicker>
+                            </t>
+                          </t>
                         </div>
                       </CustomDatePicker>
                     </span>
