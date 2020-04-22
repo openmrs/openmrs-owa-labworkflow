@@ -24,7 +24,9 @@ exports[`Component: LabTrendsPage renders properly 1`] = `
       "locale": "en",
       "messages": Object {},
       "now": [Function],
+      "onError": [Function],
       "textComponent": "span",
+      "timeZone": null,
     }
   }
   store={
@@ -270,7 +272,9 @@ exports[`Component: LabTrendsPage renders properly 1`] = `
                 "locale": "en",
                 "messages": Object {},
                 "now": [Function],
+                "onError": [Function],
                 "textComponent": "span",
+                "timeZone": null,
               }
             }
             labTestResults={
@@ -3334,16 +3338,18 @@ exports[`Component: LabTrendsPage renders properly 1`] = `
                             viewBox="0 0 500 280"
                             width={500}
                           >
-                            <clipPath
-                              id="recharts2-clip"
-                            >
-                              <rect
-                                height={240}
-                                width={390}
-                                x={80}
-                                y={5}
-                              />
-                            </clipPath>
+                            <defs>
+                              <clipPath
+                                id="recharts2-clip"
+                              >
+                                <rect
+                                  height={240}
+                                  width={390}
+                                  x={80}
+                                  y={5}
+                                />
+                              </clipPath>
+                            </defs>
                             <CartesianAxis
                               allowDataOverflow={false}
                               allowDecimals={true}
@@ -4208,7 +4214,7 @@ exports[`Component: LabTrendsPage renders properly 1`] = `
                                     },
                                     "value": 56,
                                     "x": 275,
-                                    "y": 21,
+                                    "y": 20.999999999999996,
                                   },
                                 ]
                               }
@@ -4322,7 +4328,7 @@ exports[`Component: LabTrendsPage renders properly 1`] = `
                                       <Dot
                                         className="recharts-line-dot"
                                         cx={275}
-                                        cy={21}
+                                        cy={20.999999999999996}
                                         dataKey="value"
                                         fill="#fff"
                                         height={240}
@@ -4368,7 +4374,7 @@ exports[`Component: LabTrendsPage renders properly 1`] = `
                                         <circle
                                           className="recharts-dot recharts-line-dot"
                                           cx={275}
-                                          cy={21}
+                                          cy={20.999999999999996}
                                           fill="#fff"
                                           height={240}
                                           r={3}
@@ -4386,6 +4392,12 @@ exports[`Component: LabTrendsPage renders properly 1`] = `
                         </Surface>
                         <Tooltip
                           active={false}
+                          allowEscapeViewBox={
+                            Object {
+                              "x": false,
+                              "y": false,
+                            }
+                          }
                           animationDuration={400}
                           animationEasing="ease"
                           contentStyle={Object {}}
@@ -4399,7 +4411,6 @@ exports[`Component: LabTrendsPage renders properly 1`] = `
                           cursorStyle={Object {}}
                           filterNull={true}
                           isAnimationActive={true}
-                          itemSorter={[Function]}
                           itemStyle={Object {}}
                           labelStyle={Object {}}
                           offset={10}
@@ -4444,6 +4455,12 @@ exports[`Component: LabTrendsPage renders properly 1`] = `
                           >
                             <DefaultTooltipContent
                               active={false}
+                              allowEscapeViewBox={
+                                Object {
+                                  "x": false,
+                                  "y": false,
+                                }
+                              }
                               animationDuration={400}
                               animationEasing="ease"
                               contentStyle={Object {}}
@@ -4457,7 +4474,6 @@ exports[`Component: LabTrendsPage renders properly 1`] = `
                               cursorStyle={Object {}}
                               filterNull={true}
                               isAnimationActive={true}
-                              itemSorter={[Function]}
                               itemStyle={Object {}}
                               labelStyle={Object {}}
                               offset={10}

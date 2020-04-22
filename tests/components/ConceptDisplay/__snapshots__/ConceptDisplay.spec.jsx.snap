@@ -24,7 +24,9 @@ exports[`ConceptDisplay Component should render for concept value of type range 
       "locale": "en",
       "messages": Object {},
       "now": [Function],
+      "onError": [Function],
       "textComponent": "span",
+      "timeZone": null,
     }
   }
   store={
@@ -99,7 +101,9 @@ exports[`ConceptDisplay Component should render for concept value of type range 
       "locale": "en",
       "messages": Object {},
       "now": [Function],
+      "onError": [Function],
       "textComponent": "span",
+      "timeZone": null,
     }
   }
   store={
@@ -174,7 +178,9 @@ exports[`ConceptDisplay Component should render for concept value of type result
       "locale": "en",
       "messages": Object {},
       "now": [Function],
+      "onError": [Function],
       "textComponent": "span",
+      "timeZone": null,
     }
   }
   store={

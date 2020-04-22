@@ -24,7 +24,9 @@ exports[`<LabResultEntry /> component renders correctly with valid props 1`] = `
       "locale": "en",
       "messages": Object {},
       "now": [Function],
+      "onError": [Function],
       "textComponent": "span",
+      "timeZone": null,
     }
   }
   location={
@@ -395,7 +397,7 @@ exports[`<LabResultEntry /> component renders correctly with valid props 1`] = `
                         <span
                           className="test-details"
                         >
-                          Aug 30 12:34 PM
+                          Aug 30 9:34 AM
                         </span>
                       </span>
                     </div>
@@ -477,7 +479,9 @@ exports[`<LabResultEntry /> component should redirect when location has an empty
       "locale": "en",
       "messages": Object {},
       "now": [Function],
+      "onError": [Function],
       "textComponent": "span",
+      "timeZone": null,
     }
   }
 >

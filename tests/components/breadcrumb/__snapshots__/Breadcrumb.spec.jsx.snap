@@ -32,7 +32,9 @@ exports[`Breadcrumb component should take a snapshot on initial render 1`] = `
       "locale": "en",
       "messages": Object {},
       "now": [Function],
+      "onError": [Function],
       "textComponent": "span",
+      "timeZone": null,
     }
   }
 >
@@ -233,7 +235,9 @@ exports[`Breadcrumb component should take a snapshot on initial render 1`] = `
                     "locale": "en",
                     "messages": Object {},
                     "now": [Function],
+                    "onError": [Function],
                     "textComponent": "span",
+                    "timeZone": null,
                   }
                 }
                 location={
