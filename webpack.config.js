@@ -11,6 +11,7 @@
 const webpack = require('webpack');
 const path = require('path');
 const fs = require('fs');
+const chalk = require('chalk');
 const target = require('yargs').argv.target;
 const targetPort = require('yargs').argv.targetPort;
 
@@ -43,18 +44,16 @@ var getConfig = function () {
 
 	try {
 		// look for config file
-    config = require('./config.json');
+		return require('./config.json');
 	} catch (err) {
 		// create file with defaults if not found
 		config = {
-			'LOCAL_OWA_FOLDER': '/Users/your-user/referenceapplication-standalone-2.8.0/appdata\\owa/',
-			'APP_ENTRY_POINT': 'http://localhost:8081/openmrs/owa/labworkflow/index.html'
+			'LOCAL_OWA_FOLDER': '/path/to/your/server/owa/',
+			'APP_ENTRY_POINT': 'http://localhost:8080/openmrs/owa/labworkflow/index.html'
 		};
-
-		fs.writeFile('config.json', JSON.stringify(config));
-
-	} finally {
-		return config;
+		fs.writeFileSync('config.json', JSON.stringify(config, null, 2));
+		console.log(chalk.yellow("No file 'config.json' found. Creating a default. Please fix the values and re-run."));
+		process.exit(1);
 	};
 }
 var config = getConfig();

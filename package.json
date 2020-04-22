@@ -63,6 +63,7 @@
     "babel-register": "^6.26.0",
     "browser-sync": "^2.26.7",
     "browser-sync-webpack-plugin": "^1.0.1",
+    "chalk": "^4.0.0",
     "copy-webpack-plugin": "^4.6.0",
     "css-loader": "0.28.7",
     "cypress": "^3.8.3",
@@ -108,10 +109,10 @@
     "start": "npm run watch",
     "watch": "NODE_ENV=\"deploy\" webpack --progress --colors --watch --cache=false",
     "test": "npm run lint && jest -u --coverage --maxWorkers=4",
-    "lint": "./node_modules/.bin/eslint app/js/**",
-    "lint:fix": "./node_modules/.bin/eslint --fix  app/js/**",
-    "cypress:open": "./node_modules/.bin/cypress open",
-    "cy:run": "./node_modules/.bin/cypress run",
+    "lint": "eslint app/js/**",
+    "lint:fix": "eslint --fix  app/js/**",
+    "cypress:open": "cypress open",
+    "cy:run": "cypress run",
     "test-cypress": "start-server-and-test start http://localhost:3000/ cy:run"
   },
   "keywords": [
