@@ -19,7 +19,8 @@ import exportStore from './export-store';
 
 import routes from './routes';
 
-import '../../node_modules/toastr/build/toastr.css';
+import 'toastr/build/toastr.css';
+import 'bootstrap/dist/css/bootstrap.min.css';
 
 render((
   <Provider store={exportStore}>
