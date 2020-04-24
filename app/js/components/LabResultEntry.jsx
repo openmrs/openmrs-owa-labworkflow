@@ -254,7 +254,7 @@ export class LabResultEntry extends PureComponent {
                 disabled={!(isDidNotPerformCheckboxSelected)}
                 concept={labResultsDidNotPerformReasonQuestion}
                 path="did-not-perform-dropdown"
-                dropDownStyle={{ heigth: '40px', width: '100%' }}
+                dropDownStyle={{ width: '100%' }}
                 required={!!(isDidNotPerformCheckboxSelected)}
               />
             </div>
@@ -274,7 +274,7 @@ export class LabResultEntry extends PureComponent {
                       widget="dropdown"
                       concept={selectedLabConcept.uuid}
                       path={selectedLabConcept.uuid}
-                      dropDownStyle={{ heigth: '40px', width: '100%' }}
+                      dropDownStyle={{ width: '100%' }}
                     />
                   </span>
                 </span>
@@ -307,7 +307,7 @@ export class LabResultEntry extends PureComponent {
                 widget="dropdown"
                 concept={labResultsTestLocationQuestion}
                 path="test-location-dropdown"
-                dropDownStyle={{ heigth: '40px', width: '100%' }}
+                dropDownStyle={{ width: '100%' }}
               />
             </div>
             <div className="specimen-collection-date">
@@ -492,7 +492,7 @@ export class LabResultEntry extends PureComponent {
                           widget="dropdown"
                           concept={member.uuid}
                           path={member.uuid}
-                          dropDownStyle={{ heigth: '40px', width: '100%' }}
+                          dropDownStyle={{ width: '100%' }}
                         />
                       </span>
                 )
