@@ -24,9 +24,7 @@ exports[`<LabResultEntry /> component renders correctly with valid props 1`] = `
       "locale": "en",
       "messages": Object {},
       "now": [Function],
-      "onError": [Function],
       "textComponent": "span",
-      "timeZone": null,
     }
   }
   location={
@@ -283,7 +281,7 @@ exports[`<LabResultEntry /> component renders correctly with valid props 1`] = `
                     Test Results -
                   </span>
                 </FormattedMessage>
-                 undefined
+                 null
               </h2>
               <div
                 className="lab-result-detail-fieldset-container"
@@ -479,9 +477,7 @@ exports[`<LabResultEntry /> component should redirect when location has an empty
       "locale": "en",
       "messages": Object {},
       "now": [Function],
-      "onError": [Function],
       "textComponent": "span",
-      "timeZone": null,
     }
   }
 >
