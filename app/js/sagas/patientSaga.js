@@ -8,12 +8,17 @@ import {
 import {
   patientRest,
   encounterRest,
-  orderRest,
 } from '@openmrs/react-components';
 import actionTypes, { FETCH_PATIENT_LAB_TEST_RESULTS } from '../actions/actionTypes';
 import patientAction from '../actions/patientAction';
 import { selectProperty } from '../utils/globalProperty';
 
+const conceptRep = `(uuid,display,name,conceptClass:(uuid,display,name),datatype:(uuid,display,name),units)`;
+const encounterRep = `(id,uuid,encounterDatetime,location:(id,uuid,name),encounterType:(id,uuid,name),`
+  + `obs:(id,uuid,value:(id,uuid,display,names:(id,uuid,name,locale,localePreferred,voided,conceptNameType)),`
+  + `concept:${conceptRep},obsDatetime,comment,display,`
+  + `groupMembers:(id,uuid,value:(id,uuid,display,names:(id,uuid,name,locale,localePreferred,voided,conceptNameType)),concept:${conceptRep},obsDatetime,comment,display,`
+  + `groupMembers:(id,uuid,value:(id,uuid,display,names:(id,uuid,name,locale,localePreferred,voided,conceptNameType)),concept:${conceptRep},obsDatetime,comment,display,groupMembers)))`;
 
 function* getPatient(action) {
   try {
@@ -57,6 +62,7 @@ function* fetchAndSetTestResults(action) {
         encounterRest.fetchEncountersByPatient,
         patientUUID,
         encounterTypeUUIDs[i],
+        encounterRep,
       );
 
       if (response && response.results) {

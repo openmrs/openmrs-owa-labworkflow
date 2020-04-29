@@ -11,7 +11,7 @@ import ConceptDisplay from './ConceptDisplay';
 import patientAction from '../actions/patientAction';
 import filtersAction from '../actions/filtersAction';
 import { loadGlobalProperties, selectProperty } from '../utils/globalProperty';
-import { filterThrough, calculateTableRows, sortByDate } from '../utils/helpers';
+import { filterThrough, calculateTableRows, getConceptShortName, sortByDate } from '../utils/helpers';
 import "../../css/lab-results-view.scss";
 
 
@@ -20,7 +20,7 @@ const isLabSet = obs => obs.concept.conceptClass && obs.concept.conceptClass.nam
 const isTest = obs => obs.concept.conceptClass && obs.concept.conceptClass.name === 'Test';
 
 const Cell = ({
-  value, columnName,
+  value, columnName, locale
 }) => {
 
   // TODO use concept display for this?
@@ -43,7 +43,7 @@ const Cell = ({
   if (columnName === 'RESULT') {
     return (
       <div className="table_cell result">
-        <ConceptDisplay conceptUUID={value.concept.uuid} type="result" value={value.value && value.value.display ? value.value.display : value.value} />
+        {getConceptShortName(value.value, locale)}
       </div>
     );
   }
@@ -62,6 +62,7 @@ const Cell = ({
 Cell.propTypes = {
   columnName: PropTypes.string.isRequired,
   value: PropTypes.shape({}).isRequired,
+  locale: PropTypes.string.isRequired
 };
 
 export class LabResultsList extends PureComponent {
@@ -154,7 +155,7 @@ export class LabResultsList extends PureComponent {
       defaultMessage={`${columnName}`} />
   </span>,
       accessor: "",
-      Cell: data => <Cell {...data} columnName={columnName} dateAndTimeFormat={dateAndTimeFormat} type="single" show={false} navigate={this.handleShowLabTrendsPage} />,
+      Cell: data => <Cell {...data} columnName={columnName} dateAndTimeFormat={dateAndTimeFormat} type="single" show={false} navigate={this.handleShowLabTrendsPage} locale={this.props.locale} />,
       className: `lab-results-list-cell-${columnName.replace(' ', '-').toLocaleLowerCase()}`,
       headerClassName: `lab-results-list-column-header lab-results-list-header-${columnName.replace(' ', '-').toLocaleLowerCase()}`,
     }));
@@ -362,6 +363,7 @@ export const mapStateToProps = state => ({
   labResultsEntryEncounterType: selectProperty(state, 'labResultsEntryEncounterType') || '',
   labResultsEncounterTypes: selectProperty(state, 'labResultsEncounterTypes') || '',
   labResultListFilters: state.filters.labResultListFilters,
+  locale: state.openmrs.session.locale
 });
 
 export default connect(mapStateToProps)(injectIntl(LabResultsList));

@@ -91,24 +91,23 @@ export const getResultValue = (data) => {
 };
 
 export const getConceptShortName = (concept, locale) => {
-  let conceptName;
+  let conceptName = null;
   const localeShort = locale ? (locale.split('_'))[0] : "en";
 
-  if(concept) {
-    if (concept.names && concept.names.length > 0){
+  if (concept) {
+    if (concept.names){
       let foundConcept;
       // first, try to find the SHORT name in the current locale
-      foundConcept = concept.names.find(function(name){
-        return (!name.voided && name.conceptNameType === 'SHORT' && name.locale === localeShort);
-      });
-
-      if(typeof foundConcept === 'undefined' || foundConcept == null) {
+      foundConcept = concept.names.find(name =>
+        !name.voided && name.conceptNameType === 'SHORT' && name.locale === localeShort
+      );
+      if (!foundConcept) {
         // attempt to find the preferred name in the locale
-        foundConcept = concept.names.find(function(name){
-          return (!name.voided && name.locale === localeShort && name.localePreferred);
-        });
+        foundConcept = concept.names.find(name =>
+          !name.voided && name.locale === localeShort && name.localePreferred
+        );
       }
-      if(typeof foundConcept === 'undefined' || foundConcept == null) {
+      if (!foundConcept) {
         // could not find any locale preferred name
         conceptName = concept.display;
       } else {
