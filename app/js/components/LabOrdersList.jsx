@@ -471,12 +471,12 @@ export class LabOrdersList extends PureComponent {
     const hasData = !R.isEmpty(orders) && !R.isEmpty(labTests);
     return (
       <div className="main-container">
-        <h2>
+        <h3>
           <FormattedMessage
             id="app.labOrdersList.title"
             defaultMessage="Labs"
             description="Welcome header on LabTestResult page" />
-        </h2>
+        </h3>
         <React.Fragment>
           <LabOrderListFilters
             handleFieldChange={this.handleFilterChange}
