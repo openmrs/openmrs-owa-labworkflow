@@ -8,7 +8,7 @@
  * graphic logo is a trademark of OpenMRS Inc.
  */
 
- .breadcrumb {
+ .breadcrumb-parent {
     background: none;
     margin: 0px;
     padding: 0px;
@@ -22,10 +22,10 @@
     font-size: 12px;
 }
 
-.breadcrumb>.separator {
+.breadcrumb-parent>.separator {
     font-size: 15px;
 }
 
-.breadcrumb .glyphicon {
+.breadcrumb-parent .glyphicon {
     color: #555;
 }

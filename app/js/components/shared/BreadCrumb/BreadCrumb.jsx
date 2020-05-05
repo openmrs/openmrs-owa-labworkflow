@@ -157,7 +157,7 @@ class BreadCrumb extends Component {
     }
 
     return (
-      <div className="breadcrumb">
+      <div className="breadcrumb-parent">
         <a href="../../" className="breadcrumb-item">
           <span className="glyphicon glyphicon-home breadcrumb-item" aria-hidden="true" />
         </a>
