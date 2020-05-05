@@ -201,7 +201,7 @@ export class LabResultEntry extends PureComponent {
     const collectionDateRange = minDateValue(new Date(encounterDateOrToday), 'the sample collection');
 
     const observations = (
-      <Grid>
+      <Grid fluid={true}>
         <div className="observation">
           {
             (hasMembers || hasAnswers || isSingle)
