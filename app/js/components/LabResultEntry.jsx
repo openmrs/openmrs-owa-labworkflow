@@ -96,7 +96,9 @@ export class LabResultEntry extends PureComponent {
   componentWillUnmount() {
     const { dispatch } = this.props;
     const { labOrder } = this.state;
-    dispatch(updateLabOrderWithEncounter(labOrder));
+    if (!R.isEmpty(labOrder)) {
+      dispatch(updateLabOrderWithEncounter(labOrder));
+    }
   }
 
   updateEncounterAndIsReady() {
