@@ -212,7 +212,6 @@ export class LabResultsList extends PureComponent {
     const columns = expanderColumn.concat(columnMetadata);
 
     const sortedListData = sortByDate('obsDatetime')(labResults).reverse();
-    console.log(sortedListData);
     const noDataMessage = intl.formatMessage({ id: "app.results.not.found", defaultMessage: "No results found" });
     const rowsMessage = intl.formatMessage({ id: "reactcomponents.table.rows", defaultMessage: "Rows" });
 
