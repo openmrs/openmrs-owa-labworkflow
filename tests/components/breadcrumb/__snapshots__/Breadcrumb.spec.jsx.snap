@@ -254,7 +254,7 @@ exports[`Breadcrumb component should take a snapshot on initial render 1`] = `
                 }
               >
                 <div
-                  className="breadcrumb"
+                  className="breadcrumb-parent"
                 >
                   <a
                     className="breadcrumb-item"

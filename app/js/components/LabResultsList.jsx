@@ -43,7 +43,11 @@ const Cell = ({
   if (columnName === 'RESULT') {
     return (
       <div className="table_cell result">
-        {getConceptShortName(value.value, locale)}
+        <ConceptDisplay
+          conceptUUID={value.concept.uuid}
+          type="result"
+          value={value.value ? getConceptShortName(value.value, locale) : null}
+        />
       </div>
     );
   }
@@ -147,17 +151,37 @@ export class LabResultsList extends PureComponent {
     const { dateAndTimeFormat, labResultListFilters, intl } = this.props;
     const fields = ["TEST TYPE", "DATE", "RESULT", "NORMAL RANGE"];
 
-    const columnMetadata = fields.map(columnName => ({
-      Header:
-  <span className={`labs-result-table-head-${columnName.replace(' ', '-').toLocaleLowerCase()}`}>
-    <FormattedMessage
-      id={`app.labOrdersList.${columnName.replace(" ", "_")}`}
-      defaultMessage={`${columnName}`} />
-  </span>,
+    const columnMetadata = fields.map((columnName) => ({
+      Header: (
+        <span
+          className={`labs-result-table-head-${columnName
+            .replace(" ", "-")
+            .toLocaleLowerCase()}`}
+        >
+          <FormattedMessage
+            id={`app.labOrdersList.${columnName.replace(" ", "_")}`}
+            defaultMessage={`${columnName}`}
+          />
+        </span>
+      ),
       accessor: "",
-      Cell: data => <Cell {...data} columnName={columnName} dateAndTimeFormat={dateAndTimeFormat} type="single" show={false} navigate={this.handleShowLabTrendsPage} locale={this.props.locale} />,
-      className: `lab-results-list-cell-${columnName.replace(' ', '-').toLocaleLowerCase()}`,
-      headerClassName: `lab-results-list-column-header lab-results-list-header-${columnName.replace(' ', '-').toLocaleLowerCase()}`,
+      Cell: (data) => (
+        <Cell
+          {...data}
+          columnName={columnName}
+          dateAndTimeFormat={dateAndTimeFormat}
+          type="single"
+          show={false}
+          navigate={this.handleShowLabTrendsPage}
+          locale={this.props.locale}
+        />
+      ),
+      className: `lab-results-list-cell-${columnName
+        .replace(" ", "-")
+        .toLocaleLowerCase()}`,
+      headerClassName: `lab-results-list-column-header lab-results-list-header-${columnName
+        .replace(" ", "-")
+        .toLocaleLowerCase()}`,
     }));
 
     const expanderColumn = [
@@ -188,6 +212,7 @@ export class LabResultsList extends PureComponent {
     const columns = expanderColumn.concat(columnMetadata);
 
     const sortedListData = sortByDate('obsDatetime')(labResults).reverse();
+    console.log(sortedListData);
     const noDataMessage = intl.formatMessage({ id: "app.results.not.found", defaultMessage: "No results found" });
     const rowsMessage = intl.formatMessage({ id: "reactcomponents.table.rows", defaultMessage: "Rows" });
 
