@@ -20,14 +20,14 @@ const isLabSet = obs => obs.concept.conceptClass && obs.concept.conceptClass.nam
 const isTest = obs => obs.concept.conceptClass && obs.concept.conceptClass.name === 'Test';
 
 const Cell = ({
-  value, columnName, locale
+  obs, columnName, locale
 }) => {
 
   // TODO use concept display for this?
   if (columnName === 'TEST TYPE') {
     return (
       <div className="table_cell type">
-        <span>{value.concept ? value.concept.display : ''}</span>
+        <span>{obs.concept ? obs.concept.display : ''}</span>
       </div>
     );
   }
@@ -35,7 +35,7 @@ const Cell = ({
   if (columnName === 'DATE') {
     return (
       <div className="table_cell date">
-        <span>{moment(value.obsDatetime).format("DD-MMM-YYYY") || ''}</span>
+        <span>{moment(obs.obsDatetime).format("DD-MMM-YYYY") || ''}</span>
       </div>
     );
   }
@@ -44,9 +44,9 @@ const Cell = ({
     return (
       <div className="table_cell result">
         <ConceptDisplay
-          conceptUUID={value.concept.uuid}
+          conceptUUID={obs.concept.uuid}
           type="result"
-          value={value.value ? getConceptShortName(value.value, locale) : null}
+          value={typeof obs.value === 'object' ? getConceptShortName(obs.value, locale) : obs.value}
         />
       </div>
     );
@@ -54,7 +54,7 @@ const Cell = ({
 
   if (columnName === 'NORMAL RANGE') {
     return (
-      <ConceptDisplay conceptUUID={value.concept.uuid} type="range" />
+      <ConceptDisplay conceptUUID={obs.concept.uuid} type="range" />
     );
   }
 
@@ -65,7 +65,7 @@ const Cell = ({
 
 Cell.propTypes = {
   columnName: PropTypes.string.isRequired,
-  value: PropTypes.shape({}).isRequired,
+  obs: PropTypes.shape({}).isRequired,
   locale: PropTypes.string.isRequired
 };
 
@@ -168,6 +168,7 @@ export class LabResultsList extends PureComponent {
       Cell: (data) => (
         <Cell
           {...data}
+          obs={data.value}
           columnName={columnName}
           dateAndTimeFormat={dateAndTimeFormat}
           type="single"
@@ -236,11 +237,21 @@ export class LabResultsList extends PureComponent {
           subComponent={(row) => {
             const isPanel = isLabSet(row.original);
             const rowFields = ["TEST TYPE", "RESULT", "NORMAL RANGE"];
-            const rowColumnMetadata = rowFields.map(columnName => ({
+            const rowColumnMetadata = rowFields.map((columnName) => ({
               accessor: "",
-              Cell: data => <Cell {...data} columnName={columnName} type="panel" navigate={this.handleShowLabTrendsPage} />,
-              className: `lab-results-list-cell-${columnName.replace(' ', '-').toLocaleLowerCase()}`,
-              headerClassName: 'lab-results-list-header',
+              Cell: (data) => (
+                <Cell
+                  {...data}
+                  obs={data.value}
+                  columnName={columnName}
+                  type="panel"
+                  navigate={this.handleShowLabTrendsPage}
+                />
+              ),
+              className: `lab-results-list-cell-${columnName
+                .replace(" ", "-")
+                .toLocaleLowerCase()}`,
+              headerClassName: "lab-results-list-header",
             }));
             if (isPanel) {
               return (
