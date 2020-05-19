@@ -20,14 +20,14 @@ const isLabSet = obs => obs.concept.conceptClass && obs.concept.conceptClass.nam
 const isTest = obs => obs.concept.conceptClass && obs.concept.conceptClass.name === 'Test';
 
 const Cell = ({
-  value, columnName, locale
+  obs, columnName, locale
 }) => {
 
   // TODO use concept display for this?
   if (columnName === 'TEST TYPE') {
     return (
       <div className="table_cell type">
-        <span>{value.concept ? value.concept.display : ''}</span>
+        <span>{obs.concept ? obs.concept.display : ''}</span>
       </div>
     );
   }
@@ -35,7 +35,7 @@ const Cell = ({
   if (columnName === 'DATE') {
     return (
       <div className="table_cell date">
-        <span>{moment(value.obsDatetime).format("DD-MMM-YYYY") || ''}</span>
+        <span>{moment(obs.obsDatetime).format("DD-MMM-YYYY") || ''}</span>
       </div>
     );
   }
@@ -43,14 +43,18 @@ const Cell = ({
   if (columnName === 'RESULT') {
     return (
       <div className="table_cell result">
-        {getConceptShortName(value.value, locale)}
+        <ConceptDisplay
+          conceptUUID={obs.concept.uuid}
+          type="result"
+          value={typeof obs.value === 'object' ? getConceptShortName(obs.value, locale) : obs.value}
+        />
       </div>
     );
   }
 
   if (columnName === 'NORMAL RANGE') {
     return (
-      <ConceptDisplay conceptUUID={value.concept.uuid} type="range" />
+      <ConceptDisplay conceptUUID={obs.concept.uuid} type="range" />
     );
   }
 
@@ -61,7 +65,7 @@ const Cell = ({
 
 Cell.propTypes = {
   columnName: PropTypes.string.isRequired,
-  value: PropTypes.shape({}).isRequired,
+  obs: PropTypes.shape({}).isRequired,
   locale: PropTypes.string.isRequired
 };
 
@@ -147,17 +151,38 @@ export class LabResultsList extends PureComponent {
     const { dateAndTimeFormat, labResultListFilters, intl } = this.props;
     const fields = ["TEST TYPE", "DATE", "RESULT", "NORMAL RANGE"];
 
-    const columnMetadata = fields.map(columnName => ({
-      Header:
-  <span className={`labs-result-table-head-${columnName.replace(' ', '-').toLocaleLowerCase()}`}>
-    <FormattedMessage
-      id={`app.labOrdersList.${columnName.replace(" ", "_")}`}
-      defaultMessage={`${columnName}`} />
-  </span>,
+    const columnMetadata = fields.map((columnName) => ({
+      Header: (
+        <span
+          className={`labs-result-table-head-${columnName
+            .replace(" ", "-")
+            .toLocaleLowerCase()}`}
+        >
+          <FormattedMessage
+            id={`app.labOrdersList.${columnName.replace(" ", "_")}`}
+            defaultMessage={`${columnName}`}
+          />
+        </span>
+      ),
       accessor: "",
-      Cell: data => <Cell {...data} columnName={columnName} dateAndTimeFormat={dateAndTimeFormat} type="single" show={false} navigate={this.handleShowLabTrendsPage} locale={this.props.locale} />,
-      className: `lab-results-list-cell-${columnName.replace(' ', '-').toLocaleLowerCase()}`,
-      headerClassName: `lab-results-list-column-header lab-results-list-header-${columnName.replace(' ', '-').toLocaleLowerCase()}`,
+      Cell: (data) => (
+        <Cell
+          {...data}
+          obs={data.value}
+          columnName={columnName}
+          dateAndTimeFormat={dateAndTimeFormat}
+          type="single"
+          show={false}
+          navigate={this.handleShowLabTrendsPage}
+          locale={this.props.locale}
+        />
+      ),
+      className: `lab-results-list-cell-${columnName
+        .replace(" ", "-")
+        .toLocaleLowerCase()}`,
+      headerClassName: `lab-results-list-column-header lab-results-list-header-${columnName
+        .replace(" ", "-")
+        .toLocaleLowerCase()}`,
     }));
 
     const expanderColumn = [
@@ -212,11 +237,21 @@ export class LabResultsList extends PureComponent {
           subComponent={(row) => {
             const isPanel = isLabSet(row.original);
             const rowFields = ["TEST TYPE", "RESULT", "NORMAL RANGE"];
-            const rowColumnMetadata = rowFields.map(columnName => ({
+            const rowColumnMetadata = rowFields.map((columnName) => ({
               accessor: "",
-              Cell: data => <Cell {...data} columnName={columnName} type="panel" navigate={this.handleShowLabTrendsPage} />,
-              className: `lab-results-list-cell-${columnName.replace(' ', '-').toLocaleLowerCase()}`,
-              headerClassName: 'lab-results-list-header',
+              Cell: (data) => (
+                <Cell
+                  {...data}
+                  obs={data.value}
+                  columnName={columnName}
+                  type="panel"
+                  navigate={this.handleShowLabTrendsPage}
+                />
+              ),
+              className: `lab-results-list-cell-${columnName
+                .replace(" ", "-")
+                .toLocaleLowerCase()}`,
+              headerClassName: "lab-results-list-header",
             }));
             if (isPanel) {
               return (

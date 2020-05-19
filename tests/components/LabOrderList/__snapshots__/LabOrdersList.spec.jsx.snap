@@ -283,7 +283,7 @@ exports[`<LabOrdersList /> component renders correctly 1`] = `
     <div
       className="main-container"
     >
-      <h2>
+      <h3>
         <FormattedMessage
           defaultMessage="Labs"
           description="Welcome header on LabTestResult page"
@@ -294,7 +294,7 @@ exports[`<LabOrdersList /> component renders correctly 1`] = `
             Labs
           </span>
         </FormattedMessage>
-      </h2>
+      </h3>
       <Connect(InjectIntl(LabOrderListFilters))
         dateFromField={"2018-11-11T08:00:00.000Z"}
         dateToField={"2018-11-11T08:00:00.000Z"}
@@ -1517,7 +1517,7 @@ exports[`LabOrdersListContainer container should pass required props from state 
     <div
       className="main-container"
     >
-      <h2>
+      <h3>
         <FormattedMessage
           defaultMessage="Labs"
           description="Welcome header on LabTestResult page"
@@ -1528,7 +1528,7 @@ exports[`LabOrdersListContainer container should pass required props from state 
             Labs
           </span>
         </FormattedMessage>
-      </h2>
+      </h3>
       <Connect(InjectIntl(LabOrderListFilters))
         dateFromField={"2018-11-11T08:00:00.000Z"}
         dateToField={"2018-11-11T08:00:00.000Z"}
