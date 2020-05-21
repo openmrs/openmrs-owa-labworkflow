@@ -15,7 +15,8 @@ import {
   Grid,
   Row,
   FormGroup,
-  FormControl
+  FormControl,
+  ControlLabel
 } from 'react-bootstrap';
 import moment from 'moment';
 import cn from 'classnames';
@@ -630,7 +631,7 @@ export class LabResultEntry extends PureComponent {
                         </span>
                       </span>
                     </div>
-                    <div className="col-xs-12 col-lg-6 order-date-detail">
+                    <div className="col-xs-12 order-date-detail">
                       <span className="test-details-label">
                         <FormattedMessage
                           id="app.labResultEntry.orderDatelabel"
@@ -643,13 +644,15 @@ export class LabResultEntry extends PureComponent {
                         </span>
                       </span>
                     </div>
-                    <div className="col-xs-12 col-lg-6">
-                      <span className="test-details-label">
+                    <div className="col-xs-12">
+                      <span className="test-details-label col-xs-3">
                         <FormattedMessage
                           id="app.labResultEntry.labId"
                           defaultMessage="Lab ID"
                         />
                         {": "}
+                        </span>
+                        <span className="col-xs-6">
                         <FormControl
                           name={"lab-id"}
                           value={this.state.accessionNumber}
@@ -657,7 +660,7 @@ export class LabResultEntry extends PureComponent {
                             this.setState({ accessionNumber: e.target.value })
                           }
                         />
-                      </span>
+                        </span>
                     </div>
                     <br />
                     <br />
