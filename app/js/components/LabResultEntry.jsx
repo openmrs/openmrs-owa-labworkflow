@@ -10,13 +10,12 @@ import React, { PureComponent } from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import R from 'ramda';
-import { Field, formValueSelector, change } from 'redux-form';
+import { formValueSelector, change } from 'redux-form';
 import {
   Grid,
   Row,
   FormGroup,
-  FormControl,
-  ControlLabel
+  FormControl
 } from 'react-bootstrap';
 import moment from 'moment';
 import cn from 'classnames';
@@ -651,8 +650,8 @@ export class LabResultEntry extends PureComponent {
                           defaultMessage="Lab ID"
                         />
                         {": "}
-                        </span>
-                        <span className="col-xs-6">
+                      </span>
+                      <span className="col-xs-6">
                         <FormControl
                           name={"lab-id"}
                           value={this.state.accessionNumber}
@@ -660,7 +659,7 @@ export class LabResultEntry extends PureComponent {
                             this.setState({ accessionNumber: e.target.value })
                           }
                         />
-                        </span>
+                      </span>
                     </div>
                     <br />
                     <br />
