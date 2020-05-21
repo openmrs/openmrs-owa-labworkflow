@@ -119,8 +119,6 @@ export class LabResultEntry extends PureComponent {
             });
         };
         this.setState({ isFormSubmitListenerAttached: true });
-      } else {
-        console.error("No submit button yet!");
       }
     }
   }
