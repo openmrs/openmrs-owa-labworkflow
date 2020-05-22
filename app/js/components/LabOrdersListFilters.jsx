@@ -6,6 +6,7 @@ import { connect } from 'react-redux';
 import {
   CustomDatePicker as DatePicker, Dropdown, PatientSearch, selectors, patientActions, patientUtil,
 } from '@openmrs/react-components';
+import { FormControl } from "react-bootstrap";
 import { FULFILLER_STATUS } from '../constants';
 
 class LabOrderListFilters extends PureComponent {
@@ -151,6 +152,21 @@ class LabOrderListFilters extends PureComponent {
     );
   }
 
+  renderAccessionNumberField() {
+    const { handleFieldChange, labIdField } = this.props;
+    return (
+      <FormControl
+        type="text"
+        placeholder="Enter Lab ID"
+        onBlur={ e => handleFieldChange('accessionNumber', e.target.value)}
+        onKeyUp={ e => { if (e.keyCode === 13) {
+          // keyCode 13 = Enter key
+          handleFieldChange('accessionNumber', e.target.value)
+        } } }
+      />
+    );
+  }
+
   render() {
     return (
       <div className="order-list-filters">
@@ -163,6 +179,7 @@ class LabOrderListFilters extends PureComponent {
 
         <span className="bottom-filters">
           {this.renderNameOrIdFilter()}
+          {this.renderAccessionNumberField()}
           <span className="status-dropdown">
             {this.renderTestStatusFilter()}
           </span>

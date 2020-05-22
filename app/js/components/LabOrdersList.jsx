@@ -294,14 +294,14 @@ export class LabOrdersList extends PureComponent {
     };
     const { excludeCanceledAndExpired } = newFilters;
 
-    if ( typeof excludeCanceledAndExpired === 'undefined'  ) {
+    if (typeof excludeCanceledAndExpired === 'undefined') {
       newFilters = {
         ...newFilters,
         excludeCanceledAndExpired: true,
       };
     }
 
-    if (field === 'nameField' || field === 'testStatusField' || field === 'testTypeField' || field === 'pageSize') {
+    if (field === 'nameField' || field === 'testStatusField' || field === 'testTypeField' || field === 'pageSize' || field === 'accessionNumber') {
       // defaults page to zero when a user starts typing
       newFilters = {
         ...newFilters,
@@ -323,11 +323,11 @@ export class LabOrdersList extends PureComponent {
           excludeCanceledAndExpired: false,
         };
       } else if (value === FULFILLER_STATUS.ORDERED) {
-       newFilters = {
-         ...newFilters,
-         includeNullFulfillerStatus: true,
-         fulfillerStatus: FULFILLER_STATUS.RECEIVED,
-       };
+         newFilters = {
+           ...newFilters,
+           includeNullFulfillerStatus: true,
+           fulfillerStatus: FULFILLER_STATUS.RECEIVED,
+         };
      } else if (value === FULFILLER_STATUS.CANCELED_EXPIRED) {
        newFilters = {
          ...newFilters,
@@ -469,7 +469,7 @@ export class LabOrdersList extends PureComponent {
   render() {
     const {
       labTests, orders, fetched, orderLabTestLink, labOrdersListFilters: {
-        dateFromField, dateToField, nameField, testTypeField, testStatusField,
+        dateFromField, dateToField, nameField, testTypeField, testStatusField, labIdField,
       },
     } = this.props;
     const {
@@ -487,6 +487,7 @@ export class LabOrdersList extends PureComponent {
         <React.Fragment>
           <LabOrderListFilters
             handleFieldChange={this.handleFilterChange}
+            labIdField={labIdField}
             labTests={labTests}
             testTypeField={testTypeField}
             testStatusField={testStatusField}
