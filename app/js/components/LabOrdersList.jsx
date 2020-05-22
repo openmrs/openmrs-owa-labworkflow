@@ -469,7 +469,7 @@ export class LabOrdersList extends PureComponent {
   render() {
     const {
       labTests, orders, fetched, orderLabTestLink, labOrdersListFilters: {
-        dateFromField, dateToField, nameField, testTypeField, testStatusField, labIdField,
+        dateFromField, dateToField, nameField, testTypeField, testStatusField,
       },
     } = this.props;
     const {
@@ -487,7 +487,6 @@ export class LabOrdersList extends PureComponent {
         <React.Fragment>
           <LabOrderListFilters
             handleFieldChange={this.handleFilterChange}
-            labIdField={labIdField}
             labTests={labTests}
             testTypeField={testTypeField}
             testStatusField={testStatusField}
