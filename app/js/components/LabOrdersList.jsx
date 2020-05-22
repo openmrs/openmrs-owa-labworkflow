@@ -70,6 +70,12 @@ const Cell = ({ columnName, value, handleCancel, cancelMsg, enableLabelPrinting,
           <span>{moment(value.dateActivated).format("DD-MMM-YYYY")}</span>
         </div>
       );
+    case 'LAB ID':
+      return (
+        <div className="table_cell lab-id">
+          {value.accessionNumber}
+        </div>
+      );
     case 'URGENCY': {
       const urgencyClassName = cn({
         table_cell: true,
@@ -176,6 +182,7 @@ export class LabOrdersList extends PureComponent {
   loadOrders() {
     const { dispatch, labResultsTestOrderType, labOrdersListFilters } = this.props;
 
+    // TODO: All this code literally does nothing. Get rid of it once we have tests.
     let options = {
       ...labOrdersListFilters,
     };
@@ -404,7 +411,7 @@ export class LabOrdersList extends PureComponent {
       locale,
       totalCount,
 } = this.props;
-    const fields = ["EMR ID", "NAME", "ORDER ID", "ORDER DATE", "STATUS", "URGENCY", "TEST TYPE", "ACTIONS"];
+    const fields = ["EMR ID", "NAME", "ORDER ID", "ORDER DATE", "LAB ID", "STATUS", "URGENCY", "TEST TYPE", "ACTIONS"];
 
     const noDataMessage = intl.formatMessage({ id: "app.orders.not.found", defaultMessage: "No orders found" });
     const rowsMessage = intl.formatMessage({ id: "reactcomponents.table.rows", defaultMessage: "Rows" });
