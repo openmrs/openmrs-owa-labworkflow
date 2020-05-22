@@ -192,7 +192,7 @@ export class LabResultEntry extends PureComponent {
       labResultsEntryEncounterType,
       encounterDateOrToday = new Date(),
       locale,
-    } = this.props;  // note to future programmers: doing this makes your code harder to understand
+    } = this.props;
 
     this.updateEncounterAndIsReady();
     const { encounter, isReady } = this.state;
