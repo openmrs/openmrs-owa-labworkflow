@@ -76,7 +76,6 @@ export class LabResultEntry extends PureComponent {
     if (state) {
       const conceptUUID = state.concept.uuid;
       const patientUUID = state.patient.uuid;
-      console.log(state);
       this.setState({
         labOrder: state,
         accessionNumber: state.accessionNumber || "",
@@ -654,13 +653,18 @@ export class LabResultEntry extends PureComponent {
                         {": "}
                       </span>
                       <span className="col-xs-6">
-                        <FormControl
-                          name={"lab-id"}
-                          value={this.state.accessionNumber}
-                          onChange={(e) =>
-                            this.setState({ accessionNumber: e.target.value })
-                          }
-                        />
+                        {this.props.form &&
+                        this.props.form.state === "EDITING" ? (
+                          <FormControl
+                            name={"lab-id"}
+                            value={this.state.accessionNumber}
+                            onChange={(e) =>
+                              this.setState({ accessionNumber: e.target.value })
+                            }
+                          />
+                        ) : (
+                          this.state.accessionNumber
+                        )}
                       </span>
                     </div>
                     <br />
@@ -737,7 +741,7 @@ const mapStateToProps = (state) => {
   }
 
   if (formId) {
-    const selector = formValueSelector(formId);
+    const selector = formValueSelector(`formId`);
     const obsFieldName = formUtil.obsFieldName('did-not-perform-checkbox', labResultsDidNotPerformQuestion);
     isDidNotPerformCheckboxSelected = !!(selector(state, obsFieldName));
     encounterDateOrToday = selector(state, 'encounter-datetime') || encounterDateOrToday;
@@ -746,6 +750,7 @@ const mapStateToProps = (state) => {
   const labResultsEntryEncounterType = selectProperty(state, 'labResultsEntryEncounterType');
 
   return {
+    form: state.openmrs.form[formId],
     patients,
     selectedPatient,
     selectedLabConcept,
