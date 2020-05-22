@@ -45,7 +45,7 @@ class LabOrderListFilters extends PureComponent {
     if (orderLabTestLink && orderLabTestLink.length > 0) {
       return (
         <span className="addOrder-span">
-          <button type="button" className="btn btn-lg addOrder-button" onClick={() => window.location.assign(orderLabsUrl)}>
+          <button type="button" className="btn addOrder-button" onClick={() => window.location.assign(orderLabsUrl)}>
             { addOrderMessage }
           </button>
         </span>
@@ -153,17 +153,22 @@ class LabOrderListFilters extends PureComponent {
   }
 
   renderAccessionNumberField() {
-    const { handleFieldChange, labIdField } = this.props;
+    const { handleFieldChange, labIdField, intl } = this.props;
+    const enterLabIdLabel = intl.formatMessage({ id: "app.labOrdersListFilters.accessionNumberPlaceholder", defaultMessage: "Enter Lab ID" });
+    const labIdLabel = intl.formatMessage({ id: "app.labOrdersListFilters.accessionNumber", defaultMessage: "Lab ID" });
     return (
-      <FormControl
-        type="text"
-        placeholder="Enter Lab ID"
-        onBlur={ e => handleFieldChange('accessionNumber', e.target.value)}
-        onKeyUp={ e => { if (e.keyCode === 13) {
-          // keyCode 13 = Enter key
-          handleFieldChange('accessionNumber', e.target.value)
-        } } }
-      />
+      <span className="accession-number-filter">
+        <span>Lab ID</span>
+        <FormControl
+          type="text"
+          placeholder={ enterLabIdLabel }
+          onBlur={ e => handleFieldChange('accessionNumber', e.target.value)}
+          onKeyUp={ e => { if (e.keyCode === 13) {
+            // keyCode 13 = Enter key
+            handleFieldChange('accessionNumber', e.target.value)
+          } } }
+        />
+      </span>
     );
   }
 
