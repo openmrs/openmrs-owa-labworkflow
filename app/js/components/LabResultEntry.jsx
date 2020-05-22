@@ -76,7 +76,11 @@ export class LabResultEntry extends PureComponent {
     if (state) {
       const conceptUUID = state.concept.uuid;
       const patientUUID = state.patient.uuid;
-      this.setState({ labOrder: state });
+      console.log(state);
+      this.setState({
+        labOrder: state,
+        accessionNumber: state.accessionNumber || "",
+      });
       dispatch(updateLabOrderWithEncounter(state));
       dispatch(patientAction.getPatient(patientUUID));
       dispatch(constantsActions.fetchConceptAsConstant(labResultsDidNotPerformReasonQuestion, 'labResultsDidNotPerformReasonAnswer'));
