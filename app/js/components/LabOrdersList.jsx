@@ -287,6 +287,9 @@ export class LabOrdersList extends PureComponent {
 
   handleFilterChange(field, value) {
     const { dispatch, labOrdersListFilters, labResultsTestOrderType, ordersBatchSize } = this.props;
+
+    // set the field/value on the new filter here
+    // the rest of the code in this function just handles "special cases"
     let newFilters = {
       ...labOrdersListFilters,
       ordersBatchSize: (ordersBatchSize || DEFAULT_ORDERS_BATCH_SIZE),
