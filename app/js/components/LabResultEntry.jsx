@@ -10,11 +10,12 @@ import React, { PureComponent } from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import R from 'ramda';
-import { formValueSelector, change, untouch } from 'redux-form';
+import { formValueSelector, change } from 'redux-form';
 import {
   Grid,
   Row,
   FormGroup,
+  FormControl
 } from 'react-bootstrap';
 import moment from 'moment';
 import cn from 'classnames';
@@ -30,6 +31,7 @@ import {
   formValidations,
   Loader,
   formUtil,
+  orderRest
 } from '@openmrs/react-components';
 import patientAction from '../actions/patientAction';
 import { fetchLabConcept } from '../actions/labConceptsAction';
@@ -59,6 +61,8 @@ export class LabResultEntry extends PureComponent {
       labOrder: {},
       encounter: {},
       isReady: false,
+      accessionNumber: '',
+      isFormSubmitListenerAttached: false
     };
   }
 
@@ -69,10 +73,13 @@ export class LabResultEntry extends PureComponent {
       labResultsDidNotPerformReasonQuestion,
       labResultsTestLocationQuestion,
     } = this.props;
-    if (typeof state !== 'undefined') {
+    if (state) {
       const conceptUUID = state.concept.uuid;
       const patientUUID = state.patient.uuid;
-      this.setState({ labOrder: state });
+      this.setState({
+        labOrder: state,
+        accessionNumber: state.accessionNumber || "",
+      });
       dispatch(updateLabOrderWithEncounter(state));
       dispatch(patientAction.getPatient(patientUUID));
       dispatch(constantsActions.fetchConceptAsConstant(labResultsDidNotPerformReasonQuestion, 'labResultsDidNotPerformReasonAnswer'));
@@ -90,6 +97,32 @@ export class LabResultEntry extends PureComponent {
     }
     if (!isDidNotPerformCheckboxSelected && hasCache) {
       this.reloadCachedValues();
+    }
+    if (!this.state.isFormSubmitListenerAttached) {
+      // This component's existing form handling is both highly abstracted and
+      // highly inflexible. We needed to add a type of input to it that doesn't
+      // fit its structure. Rather than attempt to hack *through* all of that, we
+      // are just hacking *onto* it.
+      //
+      // We attach an onclick event listener to the submit button. It makes an
+      // additional API call.
+      const submitButtonNode = document.querySelectorAll('[type="submit"]');
+      if (submitButtonNode[0]) {
+        submitButtonNode[0].onclick = (e) => {
+          orderRest
+            .updateFulfillerDetails(
+              { uuid: this.state.labOrder.uuid },
+              { accessionNumber: this.state.accessionNumber }
+            )
+            .catch((e) => {
+              console.error(
+                `Failed to set accession number to ${this.state.accessionNumber}`,
+                e
+              );
+            });
+        };
+        this.setState({ isFormSubmitListenerAttached: true });
+      }
     }
   }
 
@@ -135,6 +168,8 @@ export class LabResultEntry extends PureComponent {
     this.setState({ redirect: true });
   }
 
+  // Renders both the Result Details box and the Specimen Details contents
+  // Wraps everything in an EncounterFormPanel
   renderForm(selectedLabConcept) {
     const {
       labResultsDidNotPerformReasonQuestion,
@@ -158,7 +193,6 @@ export class LabResultEntry extends PureComponent {
       encounterDateOrToday = new Date(),
       locale,
     } = this.props;
-
 
     this.updateEncounterAndIsReady();
     const { encounter, isReady } = this.state;
@@ -200,6 +234,7 @@ export class LabResultEntry extends PureComponent {
     const minDateRange = minDateValue(new Date(selectedOrder.dateActivated), 'the ordered');
     const collectionDateRange = minDateValue(new Date(encounterDateOrToday), 'the sample collection');
 
+    // This is a DOM tree containing all the form input elements
     const observations = (
       <Grid fluid={true}>
         <div className="observation">
@@ -283,6 +318,7 @@ export class LabResultEntry extends PureComponent {
               </div>
             )
           }
+          {/* Specimen Details content -- gets CSS hacked to appear elsewhere on the screen */}
           <div className="specimen-detail">
             <div className="estimated-checkbox">
               <Obs
@@ -540,60 +576,95 @@ export class LabResultEntry extends PureComponent {
 
       return (
         <div className="container-fluid">
-          {location.state
-          && (
+          {location.state && (
             <div>
               <h2 className="lab-entry-page-title">
                 <FormattedMessage
                   id="app.labResultEntry.title"
-                  defaultMessage="Test Results -" />
-                {` ${getConceptShortName(location.state.concept,locale)}`}
+                  defaultMessage="Test Results -"
+                />
+                {` ${getConceptShortName(location.state.concept, locale)}`}
               </h2>
+              {/* Specimen Details box -- content is down below in the DOM, but CSS hacked into this box*/}
               <div className="lab-result-detail-fieldset-container">
                 <div className="fieldset-container lab-result-detail-fieldset">
                   <div className="legend">
                     <span className="lab-result-detail-fieldset-title">
                       <FormattedMessage
                         id="app.labResultEntry.specimenDetails"
-                        defaultMessage="Specimen Details" />
+                        defaultMessage="Specimen Details"
+                      />
                     </span>
                   </div>
                 </div>
+                {/* Order Details box */}
                 <div className="fieldset-container lab-result-detail-fieldset">
                   <div className="legend">
                     <span className="lab-result-detail-fieldset-title">
                       <FormattedMessage
                         id="app.labResultEntry.orderDetails"
-                        defaultMessage="Order Details" />
-
+                        defaultMessage="Order Details"
+                      />
                     </span>
                   </div>
                   <div className="fieldset-body">
-                    <div className="col-xs-7">
+                    <div className="col-xs-12 col-md-7">
                       <span className="test-details-label">
                         <FormattedMessage
                           id="app.labResultEntry.orderNumberlabel"
-                          defaultMessage="Order Number:" />
-&nbsp;
-                        <span className="test-details">{location.state.orderNumber}</span>
+                          defaultMessage="Order Number:"
+                        />{" "}
+                        <span className="test-details">
+                          {location.state.orderNumber}
+                        </span>
                       </span>
                     </div>
-                    <div className="col-xs-5">
+                    <div className="col-xs-12 col-md-5">
                       <span className="test-details-label">
                         <FormattedMessage
                           id="app.labResultEntry.urgencylabel"
-                          defaultMessage="Urgency" />
-:&nbsp;
-                        <span className={urgencyClassName}>{ location.state.urgency }</span>
+                          defaultMessage="Urgency"
+                        />
+                        {": "}
+                        <span className={urgencyClassName}>
+                          {location.state.urgency}
+                        </span>
                       </span>
                     </div>
-                    <div className="col-xs-10 order-date-detail">
+                    <div className="col-xs-12 order-date-detail">
                       <span className="test-details-label">
                         <FormattedMessage
                           id="app.labResultEntry.orderDatelabel"
-                          defaultMessage="Order Date:" />
-&nbsp;
-                        <span className="test-details">{moment(location.state.dateActivated).format('MMM DD h:mm A')}</span>
+                          defaultMessage="Order Date:"
+                        />{" "}
+                        <span className="test-details">
+                          {moment(location.state.dateActivated).format(
+                            "MMM DD h:mm A"
+                          )}
+                        </span>
+                      </span>
+                    </div>
+                    <div className="col-xs-12">
+                      <span className="test-details-label col-xs-3">
+                        <FormattedMessage
+                          id="app.labResultEntry.labId"
+                          defaultMessage="Lab ID"
+                        />
+                        {": "}
+                      </span>
+                      <span className="col-xs-6">
+                        {this.props.form &&
+                        this.props.form.state === "EDITING" ? (
+                          <FormControl
+                            name={"lab-id"}
+                            value={this.state.accessionNumber}
+                            onChange={(e) =>
+                              this.setState({ accessionNumber: e.target.value })
+                            }
+                          />
+                        ) : (
+                          this.state.accessionNumber
+                        )}
                       </span>
                     </div>
                     <br />
@@ -605,14 +676,18 @@ export class LabResultEntry extends PureComponent {
           )}
           <br />
           <br />
-          <div>
-            {this.renderForm(selectedLabConcept)}
-          </div>
+          <div>{this.renderForm(selectedLabConcept)}</div>
           {returnUrl && (
             <div>
               <br />
               <br />
-              <button className="cancel" type="button" onClick={() => window.location.assign(returnUrl)}>Return</button>
+              <button
+                className="cancel"
+                type="button"
+                onClick={() => window.location.assign(returnUrl)}
+              >
+                Return
+              </button>
             </div>
           )}
         </div>
@@ -666,7 +741,7 @@ const mapStateToProps = (state) => {
   }
 
   if (formId) {
-    const selector = formValueSelector(formId);
+    const selector = formValueSelector(`formId`);
     const obsFieldName = formUtil.obsFieldName('did-not-perform-checkbox', labResultsDidNotPerformQuestion);
     isDidNotPerformCheckboxSelected = !!(selector(state, obsFieldName));
     encounterDateOrToday = selector(state, 'encounter-datetime') || encounterDateOrToday;
@@ -675,6 +750,7 @@ const mapStateToProps = (state) => {
   const labResultsEntryEncounterType = selectProperty(state, 'labResultsEntryEncounterType');
 
   return {
+    form: state.openmrs.form && state.openmrs.form[formId],
     patients,
     selectedPatient,
     selectedLabConcept,
