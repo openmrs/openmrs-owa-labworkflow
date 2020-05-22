@@ -750,7 +750,7 @@ const mapStateToProps = (state) => {
   const labResultsEntryEncounterType = selectProperty(state, 'labResultsEntryEncounterType');
 
   return {
-    form: state.openmrs.form[formId],
+    form: state.openmrs.form && state.openmrs.form[formId],
     patients,
     selectedPatient,
     selectedLabConcept,

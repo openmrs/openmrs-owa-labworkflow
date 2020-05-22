@@ -331,7 +331,7 @@ exports[`<LabResultEntry /> component renders correctly with valid props 1`] = `
                     className="fieldset-body"
                   >
                     <div
-                      className="col-xs-7"
+                      className="col-xs-12 col-md-7"
                     >
                       <span
                         className="test-details-label"
@@ -345,7 +345,7 @@ exports[`<LabResultEntry /> component renders correctly with valid props 1`] = `
                             Order Number:
                           </span>
                         </FormattedMessage>
-                         
+                         
                         <span
                           className="test-details"
                         >
@@ -354,7 +354,7 @@ exports[`<LabResultEntry /> component renders correctly with valid props 1`] = `
                       </span>
                     </div>
                     <div
-                      className="col-xs-5"
+                      className="col-xs-12 col-md-5"
                     >
                       <span
                         className="test-details-label"
@@ -368,7 +368,7 @@ exports[`<LabResultEntry /> component renders correctly with valid props 1`] = `
                             Urgency
                           </span>
                         </FormattedMessage>
-                        : 
+                        : 
                         <span
                           className="urgencyDetails urgency routine"
                         >
@@ -377,7 +377,7 @@ exports[`<LabResultEntry /> component renders correctly with valid props 1`] = `
                       </span>
                     </div>
                     <div
-                      className="col-xs-10 order-date-detail"
+                      className="col-xs-12 order-date-detail"
                     >
                       <span
                         className="test-details-label"
@@ -391,13 +391,34 @@ exports[`<LabResultEntry /> component renders correctly with valid props 1`] = `
                             Order Date:
                           </span>
                         </FormattedMessage>
-                         
+                         
                         <span
                           className="test-details"
                         >
                           Aug 30 9:34 AM
                         </span>
                       </span>
+                    </div>
+                    <div
+                      className="col-xs-12"
+                    >
+                      <span
+                        className="test-details-label col-xs-3"
+                      >
+                        <FormattedMessage
+                          defaultMessage="Lab ID"
+                          id="app.labResultEntry.labId"
+                          values={Object {}}
+                        >
+                          <span>
+                            Lab ID
+                          </span>
+                        </FormattedMessage>
+                        : 
+                      </span>
+                      <span
+                        className="col-xs-6"
+                      />
                     </div>
                     <br />
                     <br />
