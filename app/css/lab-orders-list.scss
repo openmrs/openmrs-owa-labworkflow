@@ -52,7 +52,7 @@ i.scale:hover {
 
 .lab-order-list-cell-order-id,
 .lab-order-list-header-order-id {
-  min-width: 110px;
+  min-width: 80px;
   max-width: 110px;
 }
 
@@ -62,16 +62,22 @@ i.scale:hover {
   max-width: 110px;
 }
 
+.lab-order-list-cell-lab-id,
+.lab-order-list-header-lab-id {
+  min-width: 80px;
+  max-width: 80px;
+}
+
 .lab-order-list-cell-status,
 .lab-order-list-header-status {
-  min-width: 110px;
-  max-width: 110px;
+  min-width: 90px;
+  max-width: 90px;
 }
 
 .lab-order-list-cell-urgency,
 .lab-order-list-header-urgency {
-  min-width: 110px;
-  max-width: 110px;
+  min-width: 80px;
+  max-width: 80px;
 }
 
 .lab-order-list-cell-test-type,

@@ -45,6 +45,7 @@
     "app.labResultsList.SAMPLE_DATE": "SAMPLE DATE",
     "app.labResultsList.RESULT": "RESULT",
     "app.labResultsList.NORMAL_RANGE": "NORMAL RANGE",
+    "app.labOrdersList.LAB_ID": "LAB ID",
     "app.labResultsList.dateFromFilterLabel": "Date From:",
     "app.labResultsList.dateToFilterLabel": "To:",
     "app.labTrendsPage.SAMPLE_DATE": "SAMPLE DATE",
