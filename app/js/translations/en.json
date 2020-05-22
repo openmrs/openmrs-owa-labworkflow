@@ -25,6 +25,8 @@
     "app.labOrdersListFilters.searchDateToLabel": "To: ",
     "app.labOrdersListFilters.searchDropdownLabel": "Test Type",
     "app.labOrdersListFilters.statusDropdownLabel": "Status",
+    "app.labOrdersListFilters.accessionNumber": "Lab ID",
+    "app.labOrdersListFilters.accessionNumberPlaceholder": "Enter Lab ID",
     "app.labResultEntry.title": "Test Results -",
     "app.labResultEntry.specimenDetails": "Specimen Details",
     "app.labResultEntry.orderDetails": "Order Details",

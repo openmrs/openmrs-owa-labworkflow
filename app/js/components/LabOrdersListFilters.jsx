@@ -6,6 +6,7 @@ import { connect } from 'react-redux';
 import {
   CustomDatePicker as DatePicker, Dropdown, PatientSearch, selectors, patientActions, patientUtil,
 } from '@openmrs/react-components';
+import { FormControl } from "react-bootstrap";
 import { FULFILLER_STATUS } from '../constants';
 
 class LabOrderListFilters extends PureComponent {
@@ -44,7 +45,7 @@ class LabOrderListFilters extends PureComponent {
     if (orderLabTestLink && orderLabTestLink.length > 0) {
       return (
         <span className="addOrder-span">
-          <button type="button" className="btn btn-lg addOrder-button" onClick={() => window.location.assign(orderLabsUrl)}>
+          <button type="button" className="btn addOrder-button" onClick={() => window.location.assign(orderLabsUrl)}>
             { addOrderMessage }
           </button>
         </span>
@@ -151,6 +152,26 @@ class LabOrderListFilters extends PureComponent {
     );
   }
 
+  renderAccessionNumberField() {
+    const { handleFieldChange, labIdField, intl } = this.props;
+    const enterLabIdLabel = intl.formatMessage({ id: "app.labOrdersListFilters.accessionNumberPlaceholder", defaultMessage: "Enter Lab ID" });
+    const labIdLabel = intl.formatMessage({ id: "app.labOrdersListFilters.accessionNumber", defaultMessage: "Lab ID" });
+    return (
+      <span className="accession-number-filter">
+        <span>Lab ID</span>
+        <FormControl
+          type="text"
+          placeholder={ enterLabIdLabel }
+          onBlur={ e => handleFieldChange('accessionNumber', e.target.value)}
+          onKeyUp={ e => { if (e.keyCode === 13) {
+            // keyCode 13 = Enter key
+            handleFieldChange('accessionNumber', e.target.value)
+          } } }
+        />
+      </span>
+    );
+  }
+
   render() {
     return (
       <div className="order-list-filters">
@@ -163,6 +184,7 @@ class LabOrderListFilters extends PureComponent {
 
         <span className="bottom-filters">
           {this.renderNameOrIdFilter()}
+          {this.renderAccessionNumberField()}
           <span className="status-dropdown">
             {this.renderTestStatusFilter()}
           </span>

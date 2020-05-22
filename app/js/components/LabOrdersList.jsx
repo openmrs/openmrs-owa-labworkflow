@@ -287,6 +287,9 @@ export class LabOrdersList extends PureComponent {
 
   handleFilterChange(field, value) {
     const { dispatch, labOrdersListFilters, labResultsTestOrderType, ordersBatchSize } = this.props;
+
+    // set the field/value on the new filter here
+    // the rest of the code in this function just handles "special cases"
     let newFilters = {
       ...labOrdersListFilters,
       ordersBatchSize: (ordersBatchSize || DEFAULT_ORDERS_BATCH_SIZE),
@@ -294,14 +297,14 @@ export class LabOrdersList extends PureComponent {
     };
     const { excludeCanceledAndExpired } = newFilters;
 
-    if ( typeof excludeCanceledAndExpired === 'undefined'  ) {
+    if (typeof excludeCanceledAndExpired === 'undefined') {
       newFilters = {
         ...newFilters,
         excludeCanceledAndExpired: true,
       };
     }
 
-    if (field === 'nameField' || field === 'testStatusField' || field === 'testTypeField' || field === 'pageSize') {
+    if (field === 'nameField' || field === 'testStatusField' || field === 'testTypeField' || field === 'pageSize' || field === 'accessionNumber') {
       // defaults page to zero when a user starts typing
       newFilters = {
         ...newFilters,
@@ -323,11 +326,11 @@ export class LabOrdersList extends PureComponent {
           excludeCanceledAndExpired: false,
         };
       } else if (value === FULFILLER_STATUS.ORDERED) {
-       newFilters = {
-         ...newFilters,
-         includeNullFulfillerStatus: true,
-         fulfillerStatus: FULFILLER_STATUS.RECEIVED,
-       };
+         newFilters = {
+           ...newFilters,
+           includeNullFulfillerStatus: true,
+           fulfillerStatus: FULFILLER_STATUS.RECEIVED,
+         };
      } else if (value === FULFILLER_STATUS.CANCELED_EXPIRED) {
        newFilters = {
          ...newFilters,

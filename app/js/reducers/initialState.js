@@ -52,6 +52,7 @@ export default {
       dateField: 'obsDatetime',
     },
     labOrdersListFilters: {
+      accessionNumber: "",
       nameField: "",
       dateToField: moment(),
       dateFromField: moment().subtract(8, 'days'),
