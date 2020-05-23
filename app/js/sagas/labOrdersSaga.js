@@ -17,7 +17,7 @@ import {
 import {
   FETCH_LAB_ORDERS,
   UPDATE_LAB_ORDER_WITH_ENCOUNTER,
-  SET_ORDER_LAB_ENCOUNTER,
+  SET_LAB_RESULTS_ENCOUNTER,
   SET_ORDER_LIST_FETCH_STATUS,
   SET_LAB_ORDERS,
   CANCEL_ORDER, SAVE_FULFILLER_STATUS, PRINT_LAB_LABEL,
@@ -25,7 +25,7 @@ import {
   FETCH_LAB_ORDERABLES,
 } from '../actions/actionTypes';
 import {
-  setLabTestTypes, setOrderLabEncounter, fetchLabOrders, saveFulfillerStatusSucceeded,
+  setLabTestTypes, setLabResultsEncounter, fetchLabOrders, saveFulfillerStatusSucceeded,
   saveFulfillerStatusFailed,
 } from '../actions/labOrdersAction';
 import { getLabOrderablesConceptSet, getLabOrderablesSuccess } from '../actions/labOrderablesAction';
@@ -149,7 +149,7 @@ export function* updateTestTypeFilter() {
 
 export function* fetchAndSetTestResultEncounter(args) {
   const state = yield select();
-  const { order, count = -1 } = args;
+  const { order } = args;
   const patientUUID = order.patient.uuid;
   const encounterTypeUUID = selectProperty(state, 'labResultsEntryEncounterType');
   try {
@@ -174,14 +174,7 @@ export function* fetchAndSetTestResultEncounter(args) {
       return matched;
     });
 
-    const orderWithEncounter = {
-      ...order,
-      labResult: {
-        encounter: matchedEncounter[0] || null,
-      },
-    };
-
-    yield put(setOrderLabEncounter(count, orderWithEncounter));
+    yield put(setLabResultsEncounter(order, matchedEncounter[0] || null));
   } catch (error) {
     yield put({ type: "FETCH_LAB_ORDERS_FAILURE", payload: error, error: true });
   }

@@ -6,7 +6,7 @@ import {
   UPDATE_LAB_ORDER_WITH_ENCOUNTER,
   SET_LAB_TEST,
   FETCH_LAB_TEST_RESULTS,
-  SET_ORDER_LAB_ENCOUNTER,
+  SET_LAB_RESULTS_ENCOUNTER,
   CANCEL_ORDER,
   SAVE_FULFILLER_STATUS,
   SAVE_FULFILLER_STATUS_SUCCEEDED,
@@ -47,9 +47,10 @@ export const setLabTestTypes = testTypes => ({
   testTypes,
 });
 
-export const setOrderLabEncounter = (count, order) => ({
-  type: `${SET_ORDER_LAB_ENCOUNTER}_${count}`,
+export const setLabResultsEncounter = (order, encounter) => ({
+  type: SET_LAB_RESULTS_ENCOUNTER,
   order,
+  encounter,
 });
 
 export const cancelOrder = order => ({

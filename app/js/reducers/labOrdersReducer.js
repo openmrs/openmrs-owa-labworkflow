@@ -3,26 +3,31 @@ import initialState from './initialState';
 import {
   FETCH_LAB_ORDERS,
   SET_LAB_TEST,
-  SET_ORDER_LAB_ENCOUNTER,
+  SET_LAB_RESULTS_ENCOUNTER,
   SET_ORDER_LIST_FETCH_STATUS,
   SET_LAB_ORDERS,
 } from '../actions/actionTypes';
 
 
 export default (state = initialState.labOrderReducer, action) => {
-  if (action.type.includes(SET_ORDER_LAB_ENCOUNTER)) {
-    const filteredOrders = state.orders.map((item) => {
-      if (item.uuid === action.order.uuid) {
-        return action.order;
-      }
-      return item;
-    });
-    return {
-      ...state,
-      orders: filteredOrders,
-    };
-  }
   switch (action.type) {
+    case SET_LAB_RESULTS_ENCOUNTER: {
+      const filteredOrders = state.orders.map((order) => {
+        if (order.uuid === action.order.uuid) {
+          return {
+            ...order,
+            labResult: {
+              encounter: action.encounter,
+            },
+          };
+        }
+        return order;
+      });
+      return {
+        ...state,
+        orders: filteredOrders,
+      };
+    }
     case SET_LAB_ORDERS: {
       return {
         ...state,
