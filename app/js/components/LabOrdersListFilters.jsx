@@ -41,7 +41,7 @@ class LabOrderListFilters extends PureComponent {
 
     if (accessionNumberDirty) {
       this.handleFieldChange('accessionNumber', value);
-      this.setState({ accessionNumberDirty: false })
+      this.setState({ accessionNumberDirty: false });
     }
   }
 
