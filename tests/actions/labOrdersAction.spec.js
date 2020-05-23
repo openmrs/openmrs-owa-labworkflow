@@ -74,11 +74,11 @@ describe('fetchLabTestResults action', () => {
   afterEach(() => moxios.uninstall());
   it('should dispatch an action to set lab order encounter', () => {
     const expectedActionTypes = [
-      `${SET_LAB_RESULTS_ENCOUNTER}_2`,
+      `${SET_LAB_RESULTS_ENCOUNTER}`,
     ];
 
     const store = mockStore({});
-    store.dispatch(setLabResultsEncounter(2, mockOrder));
+    store.dispatch(setLabResultsEncounter(mockOrder));
     const dispatchedActions = store.getActions();
     const dispatchedActionTypes = dispatchedActions.map(action => action.type);
     expect(dispatchedActionTypes).toEqual(expectedActionTypes);

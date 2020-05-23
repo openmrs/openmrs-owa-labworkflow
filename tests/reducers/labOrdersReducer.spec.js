@@ -58,24 +58,30 @@ describe('labOrdersReducer', () => {
     expect(nextState.error.status).toEqual(false);
     expect(nextState.error.message).toEqual(null);
   });
-  it(`sets the apprioprate state for SET_ORDER_LAB_ENCOUNTER action type`, () => {
+  it(`sets the apprioprate state for SET_LAB_RESULTS_ENCOUNTER action type`, () => {
     const action = {
       type: SET_LAB_RESULTS_ENCOUNTER,
       order: {
         uuid: 'some-order-uuid',
-        labResults: {
-          resultStatus: "Taken",
-          encounter: {
-            uuid: 'some-encounter-uuid',
-          },
-        },
+      },
+      encounter: {
+        uuid: 'some-encounter-uuid',
       },
     };
     const nextState = labOrdersReducer({
       ...initialState.labOrderReducer,
       orders: [{ uuid: 'some-order-uuid' }],
     }, action);
-    expect(nextState.orders).toEqual([action.order]);
+    expect(nextState.orders).toEqual([
+      {
+        uuid: 'some-order-uuid',
+        labResult: {
+          encounter: {
+            uuid: 'some-encounter-uuid',
+          },
+        },
+      },
+    ]);
   });
   it(`returns the default state if no action type matches`, () => {
     const someOtherAction = {
