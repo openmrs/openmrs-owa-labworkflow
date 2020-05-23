@@ -40,8 +40,8 @@ exports[`<LabOrdersList /> component renders correctly 1`] = `
 >
   <Connect(InjectIntl(LabOrderListFilters))
     clearNameEMRField={[MockFunction]}
-    dateFromField={"2018-11-11T08:00:00.000Z"}
-    dateToField={"2018-11-11T08:00:00.000Z"}
+    dateFromField={"2018-11-11T05:00:00.000Z"}
+    dateToField={"2018-11-11T05:00:00.000Z"}
     handleFieldChange={[MockFunction]}
     labTests={
       Array [
@@ -54,8 +54,8 @@ exports[`<LabOrdersList /> component renders correctly 1`] = `
   >
     <InjectIntl(LabOrderListFilters)
       clearNameEMRField={[MockFunction]}
-      dateFromField={"2018-11-11T08:00:00.000Z"}
-      dateToField={"2018-11-11T08:00:00.000Z"}
+      dateFromField={"2018-11-11T05:00:00.000Z"}
+      dateToField={"2018-11-11T05:00:00.000Z"}
       dispatch={[Function]}
       handleFieldChange={[MockFunction]}
       labTests={
@@ -70,8 +70,8 @@ exports[`<LabOrdersList /> component renders correctly 1`] = `
     >
       <LabOrderListFilters
         clearNameEMRField={[MockFunction]}
-        dateFromField={"2018-11-11T08:00:00.000Z"}
-        dateToField={"2018-11-11T08:00:00.000Z"}
+        dateFromField={"2018-11-11T05:00:00.000Z"}
+        dateToField={"2018-11-11T05:00:00.000Z"}
         dispatch={[Function]}
         handleFieldChange={[MockFunction]}
         intl={
@@ -178,7 +178,7 @@ exports[`<LabOrdersList /> component renders correctly 1`] = `
                         previousMonthButtonLabel="Previous Month"
                         readOnly={false}
                         renderDayContents={[Function]}
-                        selected={2018-11-11T08:00:00.000Z}
+                        selected={2018-11-11T05:00:00.000Z}
                         shouldCloseOnSelect={true}
                         showTimeSelect={false}
                         timeCaption="Time"
@@ -409,7 +409,7 @@ exports[`<LabOrdersList /> component renders correctly 1`] = `
                         previousMonthButtonLabel="Previous Month"
                         readOnly={false}
                         renderDayContents={[Function]}
-                        selected={2018-11-11T08:00:00.000Z}
+                        selected={2018-11-11T05:00:00.000Z}
                         shouldCloseOnSelect={true}
                         showTimeSelect={false}
                         timeCaption="Time"
@@ -740,6 +740,29 @@ exports[`<LabOrdersList /> component renders correctly 1`] = `
                   </div>
                 </PatientSearch>
               </Connect(PatientSearch)>
+            </span>
+            <span
+              className="accession-number-filter"
+            >
+              <span>
+                Lab ID
+              </span>
+              <FormControl
+                bsClass="form-control"
+                componentClass="input"
+                onBlur={[Function]}
+                onKeyUp={[Function]}
+                placeholder="Enter Lab ID"
+                type="text"
+              >
+                <input
+                  className="form-control"
+                  onBlur={[Function]}
+                  onKeyUp={[Function]}
+                  placeholder="Enter Lab ID"
+                  type="text"
+                />
+              </FormControl>
             </span>
             <span
               className="status-dropdown"
