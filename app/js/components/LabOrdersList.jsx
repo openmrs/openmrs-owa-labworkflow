@@ -472,7 +472,7 @@ export class LabOrdersList extends PureComponent {
   render() {
     const {
       labTests, orders, fetched, orderLabTestLink, labOrdersListFilters: {
-        dateFromField, dateToField, nameField, testTypeField, testStatusField,
+        dateFromField, dateToField, nameField, testTypeField, testStatusField, accessionNumber
       },
     } = this.props;
     const {
@@ -497,6 +497,7 @@ export class LabOrdersList extends PureComponent {
             dateToField={moment(dateToField)}
             nameField={nameField}
             orderLabTestLink={ orderLabTestLink }
+            accessionNumber={accessionNumber}
           />
           {!fetched && <Loader />}
           {(hasData && fetched) && this.renderDraftOrderTable()}

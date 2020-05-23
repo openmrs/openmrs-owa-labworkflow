@@ -11,6 +11,65 @@ import { FULFILLER_STATUS } from '../constants';
 
 class LabOrderListFilters extends PureComponent {
 
+  constructor(props) {
+    super(props);
+
+    this.handleFieldChange = props.handleFieldChange;
+
+    this.state = {
+      accessionNumber: props.accessionNumber,
+      accessionNumberDirty: false,
+    };
+  }
+
+  // there may be a better way to do this but all this complexity is because:
+  // * unlike the other fields, we only want to trigger a new search (ie. "handleFieldChange")
+  //   on leaving field focus or hitting enter
+  // * but we do still want to hold state of the element when the use clicks into a record and back
+  // * and wanted to work around the issue where hitting enter and then leaving focus to click
+  //   leads to a double-search
+
+  updateAccessionNumberInput(value) {
+    this.setState({
+      accessionNumber: value,
+      accessionNumberDirty: true,
+    });
+  }
+
+  updateAccessionNumber(value) {
+    const { accessionNumberDirty } = this.state;
+
+    if (accessionNumberDirty) {
+      this.handleFieldChange('accessionNumber', value);
+      this.setState({ accessionNumberDirty: false })
+    }
+  }
+
+  renderAccessionNumberField() {
+    const { handleFieldChange, intl } = this.props;
+    const { accessionNumber } = this.state;
+    const enterLabIdLabel = intl.formatMessage({ id: "app.labOrdersListFilters.accessionNumberPlaceholder", defaultMessage: "Enter Lab ID" });
+    const labIdLabel = intl.formatMessage({ id: "app.labOrdersListFilters.accessionNumber", defaultMessage: "Lab ID" });
+    return (
+      <span className="accession-number-filter">
+        <span>{ labIdLabel }</span>
+        <FormControl
+          type="text"
+          placeholder={ enterLabIdLabel }
+          value={ accessionNumber }
+          onBlur={ e => this.updateAccessionNumber(e.target.value)}
+          onChange={ e => this.updateAccessionNumberInput(e.target.value)}
+          onKeyUp={ (e) => {
+            if (e.keyCode === 13) {
+              // keyCode 13 = Enter key
+              this.updateAccessionNumber(e.target.value)
+            }
+          } }
+        />
+      </span>
+    );
+  }
+
   renderNameOrIdFilter() {
     const { dispatch, patient, intl } = this.props;
     return (
@@ -209,7 +268,8 @@ LabOrderListFilters.propTypes = {
   testTypeField: PropTypes.string.isRequired,
   dateToField: PropTypes.object.isRequired,
   dateFromField: PropTypes.object.isRequired,
-  patient: PropTypes.object,
+  accessionNumber: PropTypes.string.isRequired,
+  patient: PropTypes.object
 };
 
 

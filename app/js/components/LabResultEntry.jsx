@@ -349,7 +349,7 @@ export class LabResultEntry extends PureComponent {
               />
             </div>
             <div className="specimen-collection-date">
-              <div className="col-xs-10 encounter-date-container">
+              <div className="col-xs-10 encounter-date-container" style={ { padding: '0px' } }>
                 <span className="encounter-date-label">
                   <FormattedMessage
                     id="app.labResultEntry.specimenCollectionDatelabel"
@@ -585,8 +585,8 @@ export class LabResultEntry extends PureComponent {
                 />
                 {` ${getConceptShortName(location.state.concept, locale)}`}
               </h2>
-              {/* Specimen Details box -- content is down below in the DOM, but CSS hacked into this box*/}
               <div className="lab-result-detail-fieldset-container">
+                {/* Specimen Details box -- content is down below in the DOM, but CSS hacked into this box*/}
                 <div className="fieldset-container lab-result-detail-fieldset">
                   <div className="legend">
                     <span className="lab-result-detail-fieldset-title">
