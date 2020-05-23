@@ -3,7 +3,7 @@ import initialState from '../../app/js/reducers/initialState';
 import {
   FETCH_LAB_ORDERS,
   SET_LAB_TEST,
-  SET_ORDER_LAB_ENCOUNTER,
+  SET_LAB_RESULTS_ENCOUNTER,
   SET_LAB_ORDERS,
 } from '../../app/js/actions/actionTypes';
 
@@ -60,7 +60,7 @@ describe('labOrdersReducer', () => {
   });
   it(`sets the apprioprate state for SET_ORDER_LAB_ENCOUNTER action type`, () => {
     const action = {
-      type: SET_ORDER_LAB_ENCOUNTER,
+      type: SET_LAB_RESULTS_ENCOUNTER,
       order: {
         uuid: 'some-order-uuid',
         labResults: {
