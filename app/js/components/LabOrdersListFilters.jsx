@@ -211,26 +211,6 @@ class LabOrderListFilters extends PureComponent {
     );
   }
 
-  renderAccessionNumberField() {
-    const { handleFieldChange, labIdField, intl } = this.props;
-    const enterLabIdLabel = intl.formatMessage({ id: "app.labOrdersListFilters.accessionNumberPlaceholder", defaultMessage: "Enter Lab ID" });
-    const labIdLabel = intl.formatMessage({ id: "app.labOrdersListFilters.accessionNumber", defaultMessage: "Lab ID" });
-    return (
-      <span className="accession-number-filter">
-        <span>Lab ID</span>
-        <FormControl
-          type="text"
-          placeholder={ enterLabIdLabel }
-          onBlur={ e => handleFieldChange('accessionNumber', e.target.value)}
-          onKeyUp={ e => { if (e.keyCode === 13) {
-            // keyCode 13 = Enter key
-            handleFieldChange('accessionNumber', e.target.value)
-          } } }
-        />
-      </span>
-    );
-  }
-
   render() {
     return (
       <div className="order-list-filters">
