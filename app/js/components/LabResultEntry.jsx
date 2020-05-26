@@ -235,41 +235,6 @@ export class LabResultEntry extends PureComponent {
 
     // This is a DOM tree containing all the form input elements
     const observations = (
-<<<<<<< Updated upstream
-      <Grid>
-        <div className="observation">
-          {
-            (hasMembers || hasAnswers || isSingle)
-            && (
-              <div className="col-xs-4">
-                <span className="single-result-field">
-                  <span className="obs-date-label">
-                    <FormattedMessage
-                      id="app.labResultEntry.resultDatelabel"
-                      defaultMessage="Result Date:" />
-                  </span>
-                  <span className="obs-date-field">
-                    <Obs
-                      datatype="date"
-                      defaultDate={undefined}
-                      concept={labResultsDateConcept}
-                      path="result-date"
-                      validate={[maxDateRange, minDateRange, collectionDateRange]}
-                    />
-                  </span>
-                </span>
-              </div>
-            )
-          }
-          <div className="col-xs-4">
-            <div className="did-not-perform-checkbox">
-              <Obs
-                conceptAnswer={labResultsDidNotPerformAnswer}
-                widget="checkbox"
-                concept={labResultsDidNotPerformQuestion}
-                path="did-not-perform-checkbox"
-                checkBoxTitle={(
-=======
       <div className="observation">
         {
           (hasMembers || hasAnswers || isSingle)
@@ -277,7 +242,6 @@ export class LabResultEntry extends PureComponent {
             <div className="col-xs-4">
               <span className="single-result-field">
                 <span className="obs-date-label">
->>>>>>> Stashed changes
                   <FormattedMessage
                     id="app.labResultEntry.resultDatelabel"
                     defaultMessage="Result Date:" />
