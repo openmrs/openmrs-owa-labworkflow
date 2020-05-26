@@ -212,6 +212,9 @@ button.pull-right.btn-success {
 
 .lab-entry-result-details {
     & .form-horizontal {
+        & .row.result-entry {
+            min-height: 400px;
+        }
         & .col-xs-offset-2 {
             margin-left: 0px;
         }
