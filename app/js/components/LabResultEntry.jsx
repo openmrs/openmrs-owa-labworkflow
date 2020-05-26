@@ -12,7 +12,6 @@ import PropTypes from 'prop-types';
 import R from 'ramda';
 import { formValueSelector, change } from 'redux-form';
 import {
-  Grid,
   Row,
   FormGroup,
   FormControl
@@ -236,6 +235,7 @@ export class LabResultEntry extends PureComponent {
 
     // This is a DOM tree containing all the form input elements
     const observations = (
+<<<<<<< Updated upstream
       <Grid>
         <div className="observation">
           {
@@ -269,127 +269,160 @@ export class LabResultEntry extends PureComponent {
                 concept={labResultsDidNotPerformQuestion}
                 path="did-not-perform-checkbox"
                 checkBoxTitle={(
+=======
+      <div className="observation">
+        {
+          (hasMembers || hasAnswers || isSingle)
+          && (
+            <div className="col-xs-4">
+              <span className="single-result-field">
+                <span className="obs-date-label">
+>>>>>>> Stashed changes
                   <FormattedMessage
-                    id="app.labResultEntry.didNotPerformlabel"
-                    defaultMessage="Did not perform" />
-                )}
-              />
-            </div>
-          </div>
-          <div className="col-xs-4">
-            <div className="did-not-perform">
-              <span className="did-not-perform-label">
-                <FormattedMessage
-                  id="app.labResultEntry.reasonlabel"
-                  defaultMessage="Reason:" />
-&nbsp;
-
-              </span>
-              <Obs
-                conceptAnswers={labResultsDidNotPerformReasonAnswer ? labResultsDidNotPerformReasonAnswer : []}
-                widget="dropdown"
-                disabled={!(isDidNotPerformCheckboxSelected)}
-                concept={labResultsDidNotPerformReasonQuestion}
-                path="did-not-perform-dropdown"
-                dropDownStyle={{ width: '100%' }}
-                required={!!(isDidNotPerformCheckboxSelected)}
-              />
-            </div>
-          </div>
-          {
-            (hasAnswers && !isDidNotPerformCheckboxSelected)
-            && (
-              <div className="col-xs-12 observation-dropdown">
-                <span className="single-result-field">
-                  <span className="obs-dropdown-label">
-                    {`${getConceptShortName(selectedLabConcept, locale)}: `}
-                      &nbsp;
-                  </span>
-                  <span className="obs-dropdown-field">
-                    <Obs
-                      conceptAnswers={selectedLabConcept.answers}
-                      widget="dropdown"
-                      concept={selectedLabConcept.uuid}
-                      path={selectedLabConcept.uuid}
-                      dropDownStyle={{ width: '100%' }}
-                    />
-                  </span>
+                    id="app.labResultEntry.resultDatelabel"
+                    defaultMessage="Result Date:" />
                 </span>
-              </div>
-            )
-          }
-          {/* Specimen Details content -- gets CSS hacked to appear elsewhere on the screen */}
-          <div className="specimen-detail">
-            <div className="estimated-checkbox">
-              <Obs
-                conceptAnswer={labResultsEstimatedCollectionDateAnswer}
-                widget="checkbox"
-                concept={labResultsEstimatedCollectionDateQuestion}
-                path="estimated-checkbox"
-                checkBoxTitle={(
-                  <FormattedMessage
-                    id="app.labResultEntry.estimatedlabel"
-                    defaultMessage="estimated " />
-                )}
-              />
-            </div>
-            <div className="test-location">
-              <span className="test-location-label">
-                <FormattedMessage
-                  id="app.labResultEntry.testLocationlabel"
-                  defaultMessage="Test location: " />
-&nbsp;
-              </span>
-              <Obs
-                conceptAnswers={labResultsTestLocationAnswer}
-                widget="dropdown"
-                concept={labResultsTestLocationQuestion}
-                path="test-location-dropdown"
-                dropDownStyle={{ width: '100%' }}
-              />
-            </div>
-            <div className="specimen-collection-date">
-              <div className="col-xs-10 encounter-date-container" style={ { padding: '0px' } }>
-                <span className="encounter-date-label">
-                  <FormattedMessage
-                    id="app.labResultEntry.specimenCollectionDatelabel"
-                    defaultMessage="Specimen Collection Date: " />
-&nbsp;
-                </span>
-                <span className="encounter-date-field">
-                  <EncounterDate
-                    id="specimen-collection-date"
-                    handleDateChange={() => {}}
-                    labelClassName="date-picker-label"
-                    label="Specimen Collection Date:"
-                    defaultDate={startOfToday()}
-                    field="specimen"
-                    validations={[minDateRange]}
+                <span className="obs-date-field">
+                  <Obs
+                    datatype="date"
+                    defaultDate={undefined}
+                    concept={labResultsDateConcept}
+                    path="result-date"
+                    validate={[maxDateRange, minDateRange, collectionDateRange]}
                   />
                 </span>
-              </div>
-              <br />
+              </span>
             </div>
-          </div>
-          {!isDidNotPerformCheckboxSelected
-          && (
-            <Row>
-              {(hasMembers)
-            && (
-              <ObsGroup groupingConcept={selectedLabConcept.uuid} path={selectedLabConcept.uuid}>
-                {selectedLabConcept.setMembers.map(
-                  member => this.renderFormContent(member),
-                )}
-              </ObsGroup>)
-              }
-              {(isSingle)
-          && (this.renderFormContent(selectedLabConcept))
-              }
-            </Row>
           )
-          }
+        }
+        <div className="col-xs-4">
+          <div className="did-not-perform-checkbox">
+            <Obs
+              conceptAnswer={labResultsDidNotPerformAnswer}
+              widget="checkbox"
+              concept={labResultsDidNotPerformQuestion}
+              path="did-not-perform-checkbox"
+              checkBoxTitle={(
+                <FormattedMessage
+                  id="app.labResultEntry.didNotPerformlabel"
+                  defaultMessage="Did not perform" />
+              )}
+            />
+          </div>
         </div>
-      </Grid>
+        <div className="col-xs-4">
+          <div className="did-not-perform">
+            <span className="did-not-perform-label">
+              <FormattedMessage
+                id="app.labResultEntry.reasonlabel"
+                defaultMessage="Reason:" />
+&nbsp;
+
+            </span>
+            <Obs
+              conceptAnswers={labResultsDidNotPerformReasonAnswer ? labResultsDidNotPerformReasonAnswer : []}
+              widget="dropdown"
+              disabled={!(isDidNotPerformCheckboxSelected)}
+              concept={labResultsDidNotPerformReasonQuestion}
+              path="did-not-perform-dropdown"
+              dropDownStyle={{ width: '100%' }}
+              required={!!(isDidNotPerformCheckboxSelected)}
+            />
+          </div>
+        </div>
+        {
+          (hasAnswers && !isDidNotPerformCheckboxSelected)
+          && (
+            <div className="col-xs-12 observation-dropdown">
+              <span className="single-result-field">
+                <span className="obs-dropdown-label">
+                  {`${getConceptShortName(selectedLabConcept, locale)}: `}
+                    &nbsp;
+                </span>
+                <span className="obs-dropdown-field">
+                  <Obs
+                    conceptAnswers={selectedLabConcept.answers}
+                    widget="dropdown"
+                    concept={selectedLabConcept.uuid}
+                    path={selectedLabConcept.uuid}
+                    dropDownStyle={{ width: '100%' }}
+                  />
+                </span>
+              </span>
+            </div>
+          )
+        }
+        {/* Specimen Details content -- gets CSS hacked to appear elsewhere on the screen */}
+        <div className="specimen-detail">
+          <div className="estimated-checkbox">
+            <Obs
+              conceptAnswer={labResultsEstimatedCollectionDateAnswer}
+              widget="checkbox"
+              concept={labResultsEstimatedCollectionDateQuestion}
+              path="estimated-checkbox"
+              checkBoxTitle={(
+                <FormattedMessage
+                  id="app.labResultEntry.estimatedlabel"
+                  defaultMessage="estimated " />
+              )}
+            />
+          </div>
+          <div className="test-location">
+            <span className="test-location-label">
+              <FormattedMessage
+                id="app.labResultEntry.testLocationlabel"
+                defaultMessage="Test location: " />
+&nbsp;
+            </span>
+            <Obs
+              conceptAnswers={labResultsTestLocationAnswer}
+              widget="dropdown"
+              concept={labResultsTestLocationQuestion}
+              path="test-location-dropdown"
+              dropDownStyle={{ width: '100%' }}
+            />
+          </div>
+          <div className="specimen-collection-date">
+            <div className="col-xs-10 encounter-date-container" style={ { padding: '0px' } }>
+              <span className="encounter-date-label">
+                <FormattedMessage
+                  id="app.labResultEntry.specimenCollectionDatelabel"
+                  defaultMessage="Specimen Collection Date: " />
+&nbsp;
+              </span>
+              <span className="encounter-date-field">
+                <EncounterDate
+                  id="specimen-collection-date"
+                  handleDateChange={() => {}}
+                  labelClassName="date-picker-label"
+                  label="Specimen Collection Date:"
+                  defaultDate={startOfToday()}
+                  field="specimen"
+                  validations={[minDateRange]}
+                />
+              </span>
+            </div>
+            <br />
+          </div>
+        </div>
+        {!isDidNotPerformCheckboxSelected
+        && (
+          <Row className="result-entry">
+            {(hasMembers)
+          && (
+            <ObsGroup groupingConcept={selectedLabConcept.uuid} path={selectedLabConcept.uuid}>
+              {selectedLabConcept.setMembers.map(
+                member => this.renderFormContent(member),
+              )}
+            </ObsGroup>)
+            }
+            {(isSingle)
+        && (this.renderFormContent(selectedLabConcept))
+            }
+          </Row>
+        )
+        }
+      </div>
     );
 
     return (
