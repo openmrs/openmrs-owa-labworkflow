@@ -236,7 +236,7 @@ export class LabResultEntry extends PureComponent {
 
     // This is a DOM tree containing all the form input elements
     const observations = (
-      <Grid fluid={true}>
+      <Grid>
         <div className="observation">
           {
             (hasMembers || hasAnswers || isSingle)
