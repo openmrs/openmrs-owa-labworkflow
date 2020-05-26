@@ -183,7 +183,8 @@ export class LabOrdersList extends PureComponent {
     const { dispatch, labResultsTestOrderType, labOrdersListFilters } = this.props;
 
     // TODO: All this code literally does nothing. Get rid of it once we have tests.
-    // TODO: (MG) not sure I agree that this code does nothing
+    // TODO: can likely just replace with: dispatch(fetchLabOrders(labResultsTestOrderType,
+    //       { ...labOrdersListFilters, excludeCanceledAndExpired: true }));
     let options = {
       ...labOrdersListFilters,
     };
