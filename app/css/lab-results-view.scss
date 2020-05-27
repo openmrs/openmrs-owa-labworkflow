@@ -13,28 +13,8 @@
     background: none;
   }
 
-  .lab-results-list-cell-type {
-    min-width: 50% !important;
-  }
-
   .lab-results-list-header {
     display: none;
-  }
-  .lab-results-list-cell-date {
-    min-width: 80px !important;
-  }
-
-  .lab-results-list-cell-normal-range {
-    display: flex;
-    justify-content: center;
-  }
-
-  .lab-results-list-cell-result {
-    max-width: 25% !important;
-    display: flex;
-    justify-content: center;
-    font-size: 12px !important;
-    padding-left: 30px;
   }
 
 }
@@ -51,34 +31,34 @@
   text-align: left;
 }
 
-.lab-results-list-cell-emr-id,
-.lab-results-list-header-emr-id {
-    min-width: 80px;
-    max-width: 80px;
-}
-
 .lab-results-list-cell-test-type,
 .lab-results-list-header-test-type {
-  min-width: 420px;
-  max-width: 420px;
+  min-width: 300px;
+  width: 48%;
+  flex-grow: 3 !important;
 }
 
 .lab-results-list-cell-date,
 .lab-results-list-header-date {
-  min-width: 130px;
-  max-width: 130px;
+  min-width: 120px;
+  max-width: 120px;
 }
 
 .lab-results-list-cell-result,
 .lab-results-list-header-result {
-  min-width: 150px;
-  max-width: 150px;
+  min-width: 120px;
+  width: 20%;
+}
+
+.lab-results-list-cell-result {
+  display: flex;
+  justify-content: center;
 }
 
 .lab-results-list-cell-normal-range,
 .lab-results-list-header-normal-range {
-  min-width: 180px;
-  max-width: 180px;
+  min-width: 140px;
+  width: 20%;
 }
 
 .lab-results-list-cell-normal-range {
@@ -126,23 +106,6 @@ i.scale:hover {
   cursor: pointer;
 }
 
-.lab-results-list-cell-type,
-.lab-result-list-header-type  {
-    max-width: 190px;
-}
-
-.lab-results-list-cell-status,
-.lab-result-list-header-status {
-    max-width: 80px
-}
-
-.lab-results-list-cell-result,
-.lab-result-list-header-result {
-    max-width: 80px;
-    display: flex;
-    justify-content: center;
-}
-
 .lab-result-list-filters {
     display: -ms-flexbox;
     display: flex;
@@ -159,9 +122,9 @@ i.scale:hover {
 }
 
 .expander-cell{
-    flex: initial !important;
-    width: 35px !important;
-    border-right: 0 !important;
+    min-width: 35px;
+    max-width: 35px;
+    border-right: 0;
 }
 
 .expander-cell-header {

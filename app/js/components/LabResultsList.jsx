@@ -3,7 +3,7 @@ import R from 'ramda';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import {
-  SortableTable, Loader, constantsActions, CustomDatePicker as DatePicker,
+  SortableTable, Loader, CustomDatePicker as DatePicker,
 } from '@openmrs/react-components';
 import moment from 'moment';
 import { injectIntl, FormattedMessage } from 'react-intl';
@@ -289,10 +289,6 @@ export class LabResultsList extends PureComponent {
                 defaultMessage="Date From: " />
             )}
             defaultDate={moment(labResultListFilters.dateFromField).format() || moment().subtract(8, 'days').format()}
-            formControlStyle={{
-              marginRight: '5px',
-              width: '105px',
-            }}
             handleDateChange={(field, value) => this.handleFilterChange(field, value)}
             field="dateFromField"
           />
@@ -307,10 +303,6 @@ export class LabResultsList extends PureComponent {
             )}
             defaultDate={moment(labResultListFilters.dateToField).format() || moment().format()}
             field="dateToField"
-            formControlStyle={{
-              marginRight: '5px',
-              width: '105px',
-            }}
             handleDateChange={(field, value) => this.handleFilterChange(field, value)}
           />
         </span>
