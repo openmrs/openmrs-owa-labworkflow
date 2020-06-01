@@ -738,7 +738,7 @@ const mapStateToProps = (state) => {
   }
 
   if (formId) {
-    const selector = formValueSelector(`formId`);
+    const selector = formValueSelector(formId);
     const obsFieldName = formUtil.obsFieldName('did-not-perform-checkbox', labResultsDidNotPerformQuestion);
     isDidNotPerformCheckboxSelected = !!(selector(state, obsFieldName));
     encounterDateOrToday = selector(state, 'encounter-datetime') || encounterDateOrToday;
