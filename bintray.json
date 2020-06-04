@@ -7,9 +7,9 @@
     "licenses": ["MPL-2.0"]
   },
   "version": {
-    "name": "0.3.1",
-    "released": "2020-03-24",
-    "vcs_tag": "0.3.1"
+    "name": "1.0.0",
+    "released": "2020-06-04",
+    "vcs_tag": "1.0.0"
   },
   "files": [
     {
