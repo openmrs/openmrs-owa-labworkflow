@@ -142,6 +142,7 @@ details) and upgrade the version number in the Lab Workflow package.json before 
 may inadvertently release Lab Workflow with an earlier verison of React Components than you have been testing
 against.
 
+
 ### Troubleshooting
 
 ##### [HTTP access control (CORS)](https://developer.mozilla.org/en-US/docs/Web/HTTP/Access_control_CORS)
