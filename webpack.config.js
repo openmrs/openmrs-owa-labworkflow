@@ -39,37 +39,6 @@ let outputPath;
 
 let devtool;
 
-var getConfig = function () {
-	var config;
-
-	try {
-		// look for config file
-		return require('./config.json');
-	} catch (err) {
-		// create file with defaults if not found
-		config = {
-			'LOCAL_OWA_FOLDER': '/path/to/your/server/owa/',
-			'APP_ENTRY_POINT': 'http://localhost:8080/openmrs/owa/labworkflow/index.html'
-		};
-		fs.writeFileSync('config.json', JSON.stringify(config, null, 2));
-		console.log(chalk.yellow("No file 'config.json' found. Creating a default. Please fix the values and re-run."));
-		process.exit(1);
-	};
-}
-var config = getConfig();
-
-var resolveBrowserSyncTarget = function () {
-	if (targetPort != null && targetPort != 'null') {
-		return config.APP_ENTRY_POINT.substr(0, 'http://localhost:'.length)
-			+ targetPort
-			+ config.APP_ENTRY_POINT.substr('http://localhost:'.length + targetPort.toString().length, config.APP_ENTRY_POINT.length);
-	}
-	else {
-		return config.APP_ENTRY_POINT
-	}
-};
-var browserSyncTarget = resolveBrowserSyncTarget();
-
 const rules = [
 	{
 		test: /\.jsx?$/,
@@ -105,6 +74,50 @@ const rules = [
 			'sass-loader?sourcemap&sourceMapContents&outputStyle=expanded'
 		]
 }];
+
+if (env === 'deploy' || env === 'development') {
+
+  var getConfig = function () {
+    var config;
+
+    try {
+      // look for config file
+      config = require('./config.json');
+    } catch (err) {
+      // create file with defaults if not found
+      config = {
+        'LOCAL_OWA_FOLDER': '/Users/your-user/referenceapplication-standalone-2.8.0/appdata\\owa/',
+        'APP_ENTRY_POINT': 'http://localhost:8081/openmrs/owa/labworkflow/index.html'
+      };
+
+      fs.writeFile('config.json', JSON.stringify(config));
+      console.log(chalk.yellow("No file 'config.json' found. Creating a default. Please fix the values and re-run."));
+      process.exit(1);
+    } finally {
+      return config;
+    };
+  };
+
+
+  var config = getConfig();
+
+  var resolveBrowserSyncTarget = function () {
+    if (targetPort != null && targetPort != 'null') {
+      return config.APP_ENTRY_POINT.substr(0, 'http://localhost:'.length)
+        + targetPort
+        + config.APP_ENTRY_POINT.substr('http://localhost:'.length + targetPort.toString().length, config.APP_ENTRY_POINT.length);
+    } else {
+      return config.APP_ENTRY_POINT
+    }
+  };
+  var browserSyncTarget = resolveBrowserSyncTarget();
+
+  plugins.push(new BrowserSyncPlugin({
+    proxy: {
+      target: browserSyncTarget
+    }
+  }));
+}
 
 /** Minify for production */
 if (env === 'production') {
@@ -149,11 +162,6 @@ if (env === 'development') {
 	devtool = 'eval-source-map';
 }
 
-plugins.push(new BrowserSyncPlugin({
-	proxy: {
-		target: browserSyncTarget
-	}
-}));
 
 plugins.push(new CommonsChunkPlugin({
 	name: 'vendor',
