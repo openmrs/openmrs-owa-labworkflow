@@ -132,7 +132,7 @@ In order to release, set the new version number in package.json, bintray.json (a
 like release date and vcs_tag) and app/manifest.webapp. Once you commit, push changes to github, and confirm the Travis 
 tests pass, go to https://github.com/openmrs/openmrs-owa-labworkflow/releases and create a new release named after the 
 version you want to release. Travis CI should pick up a newly created tag and deploy the release to Bintray at 
-https://bintray.com/openmrs/owa/openmrs-owa-orderentry
+https://bintray.com/openmrs/owa/openmrs-owa-labworkflow
 
 A *key thing to note* is that when releasing, Travis CI will build the  project using the version of react-components
 specified in the package.json, *while the PIH staging build* always uses the latest head of react-components
