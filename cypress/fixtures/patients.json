@@ -1,0 +1,140 @@
+{
+  "results": [
+    {
+      "uuid": "114fde3a-8c12-402e-9408-4d60c7d4e7ad",
+      "id": 147094,
+      "display": "dO5MINWupDCSTtgUyA3I - Brown, John",
+      "identifiers": [
+        {
+          "uuid": "ffc68d55-cbdf-48e8-9c3c-d52d4e16094c",
+          "identifier": "dO5MINWupDCSTtgUyA3I",
+          "identifierType": { "uuid": "e26ca279-8f57-44a5-9ed8-8cc16e90e559" },
+          "preferred": true
+        }
+      ],
+      "person": {
+        "uuid": "114fde3a-8c12-402e-9408-4d60c7d4e7ad",
+        "display": "Brown, John",
+        "gender": "M",
+        "age": 9,
+        "birthdate": "2011-01-01T00:00:00.000-0500",
+        "birthdateEstimated": true,
+        "dead": false,
+        "deathDate": null,
+        "causeOfDeath": null,
+        "names": [
+          {
+            "display": "Brown, John",
+            "uuid": "3bc47a2c-8a98-4022-9cdf-aff17866f081",
+            "givenName": "John",
+            "middleName": null,
+            "familyName": "Brown",
+            "familyName2": null,
+            "voided": false,
+            "links": [
+              {
+                "rel": "self",
+                "uri": "https://humci.pih-emr.org:443/mirebalais/ws/rest/v1/person/114fde3a-8c12-402e-9408-4d60c7d4e7ad/name/3bc47a2c-8a98-4022-9cdf-aff17866f081"
+              },
+              {
+                "rel": "full",
+                "uri": "https://humci.pih-emr.org:443/mirebalais/ws/rest/v1/person/114fde3a-8c12-402e-9408-4d60c7d4e7ad/name/3bc47a2c-8a98-4022-9cdf-aff17866f081?v=full"
+              }
+            ],
+            "resourceVersion": "1.8"
+          }
+        ],
+        "preferredName": {
+          "display": "Brown, John",
+          "uuid": "3bc47a2c-8a98-4022-9cdf-aff17866f081",
+          "givenName": "John",
+          "middleName": null,
+          "familyName": "Brown",
+          "familyName2": null,
+          "voided": false,
+          "links": [
+            {
+              "rel": "self",
+              "uri": "https://humci.pih-emr.org:443/mirebalais/ws/rest/v1/person/114fde3a-8c12-402e-9408-4d60c7d4e7ad/name/3bc47a2c-8a98-4022-9cdf-aff17866f081"
+            },
+            {
+              "rel": "full",
+              "uri": "https://humci.pih-emr.org:443/mirebalais/ws/rest/v1/person/114fde3a-8c12-402e-9408-4d60c7d4e7ad/name/3bc47a2c-8a98-4022-9cdf-aff17866f081?v=full"
+            }
+          ],
+          "resourceVersion": "1.8"
+        },
+        "addresses": [],
+        "attributes": []
+      }
+    },
+    {
+      "uuid": "279abc4b-8c73-4887-b939-8eb119e2f993",
+      "id": 147258,
+      "display": "UVoZxBUhuuO6HfWJ6Mpi - Smith, John",
+      "identifiers": [
+        {
+          "uuid": "054e5a3b-84f1-42e2-88e8-59a0f57e5cf4",
+          "identifier": "UVoZxBUhuuO6HfWJ6Mpi",
+          "identifierType": { "uuid": "e26ca279-8f57-44a5-9ed8-8cc16e90e559" },
+          "preferred": true
+        }
+      ],
+      "person": {
+        "uuid": "279abc4b-8c73-4887-b939-8eb119e2f993",
+        "display": "Smith, John",
+        "gender": "M",
+        "age": 31,
+        "birthdate": "1989-01-01T00:00:00.000-0500",
+        "birthdateEstimated": true,
+        "dead": false,
+        "deathDate": null,
+        "causeOfDeath": null,
+        "names": [
+          {
+            "display": "Smith, John",
+            "uuid": "2dd605e8-b4b6-4521-9810-a90d94be42d4",
+            "givenName": "John",
+            "middleName": null,
+            "familyName": "Smith",
+            "familyName2": null,
+            "voided": false,
+            "links": [
+              {
+                "rel": "self",
+                "uri": "https://humci.pih-emr.org:443/mirebalais/ws/rest/v1/person/279abc4b-8c73-4887-b939-8eb119e2f993/name/2dd605e8-b4b6-4521-9810-a90d94be42d4"
+              },
+              {
+                "rel": "full",
+                "uri": "https://humci.pih-emr.org:443/mirebalais/ws/rest/v1/person/279abc4b-8c73-4887-b939-8eb119e2f993/name/2dd605e8-b4b6-4521-9810-a90d94be42d4?v=full"
+              }
+            ],
+            "resourceVersion": "1.8"
+          }
+        ],
+        "preferredName": {
+          "display": "Smith, John",
+          "uuid": "2dd605e8-b4b6-4521-9810-a90d94be42d4",
+          "givenName": "John",
+          "middleName": null,
+          "familyName": "Smith",
+          "familyName2": null,
+          "voided": false,
+          "links": [
+            {
+              "rel": "self",
+              "uri": "https://humci.pih-emr.org:443/mirebalais/ws/rest/v1/person/279abc4b-8c73-4887-b939-8eb119e2f993/name/2dd605e8-b4b6-4521-9810-a90d94be42d4"
+            },
+            {
+              "rel": "full",
+              "uri": "https://humci.pih-emr.org:443/mirebalais/ws/rest/v1/person/279abc4b-8c73-4887-b939-8eb119e2f993/name/2dd605e8-b4b6-4521-9810-a90d94be42d4?v=full"
+            }
+          ],
+          "resourceVersion": "1.8"
+        },
+        "addresses": [],
+        "attributes": []
+      }
+    }
+  ]
+}

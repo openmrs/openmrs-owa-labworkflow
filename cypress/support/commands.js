@@ -48,17 +48,45 @@ Cypress.Commands.add("logout", () => {
   cy.get("li.logout").find("a").click();
 });
 
-Cypress.Commands.add("fetchOrders", () => {
+Cypress.Commands.add("mockSession", () => {
   cy.server();
   cy.route({
     method: "GET",
-    url: MOCKS.ORDERS.URL,
-    response: MOCKS.ORDERS.RESPONSE,
-    status: 200,
+    url: "/openmrs/ws/rest/v1/appui/session",
+    response: "fixture:session.json",
+    status: 200
   });
 });
 
-Cypress.Commands.add("fetchEncounters", () => {
+Cypress.Commands.add("mockPatients", () => {
+  cy.server();
+  cy.route({
+    method: "GET",
+    url: `/openmrs/ws/rest/v1/patient?q=*`,
+    response: "fixture:patients.json",
+    status: 200
+  })
+})
+
+Cypress.Commands.add("mockOrders", () => {
+  cy.server();
+  cy.fixture('orders').then(orders => {
+    console.log(orders);
+    cy.route("GET", new RegExp("/openmrs/ws/rest/v1/order.*fulfillerStatus=&.*concepts=&.*"), orders);
+    cy.route("GET", new RegExp("/openmrs/ws/rest/v1/order.*fulfillerStatus=RECEIVED&.*"), {
+      results: orders.results.filter(o => o.fulfillerStatus == null)
+    });
+    cy.route("GET", new RegExp("/openmrs/ws/rest/v1/order.*fulfillerStatus=COMPLETED&.*"), {
+      results: orders.results.filter(o => o.fulfillerStatus == "COMPLETED")
+    });
+    cy.route("GET", new RegExp(`/openmrs/ws/rest/v1/order.*concepts=3cd692c8-26fe-102b-80cb-0017a47871b2.*`), {
+      results: orders.results.filter(o => o.concept.uuid == "3cd692c8-26fe-102b-80cb-0017a47871b2")
+    });
+  })
+  
+});
+
+Cypress.Commands.add("mockEncounters", () => {
   cy.server();
   MOCKS.ENCOUNTERS.forEach((mock) => {
     cy.route({
@@ -70,7 +98,7 @@ Cypress.Commands.add("fetchEncounters", () => {
   });
 });
 
-Cypress.Commands.add("fetchConcepts", () => {
+Cypress.Commands.add("mockConcepts", () => {
   cy.server();
   MOCKS.CONCEPTS.forEach((mock) => {
     cy.route({
@@ -82,7 +110,7 @@ Cypress.Commands.add("fetchConcepts", () => {
   });
 });
 
-Cypress.Commands.add("fetchSystemSettiings", () => {
+Cypress.Commands.add("mockSystemSettings", () => {
   cy.server();
   cy.route({
     method: "GET",
@@ -160,8 +188,4 @@ Cypress.Commands.add("fetchSystemSettiings", () => {
 
 Cypress.Commands.add("navigateToLabWorkflow", () => {
   cy.visit("/openmrs/owa/labworkflow/index.html#/");
-});
-
-Cypress.Commands.add("navigateToHomePage", () => {
-  cy.visit("/openmrs/index.htm?lang=en_us");
 });

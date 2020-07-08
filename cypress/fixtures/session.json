@@ -1,0 +1,17 @@
+{
+  "authenticated": true,
+  "locale": "en",
+  "sessionLocation": {
+    "uuid": "53cd4959-5f4d-4ddc-9971-7fc27e0b7946",
+    "display": "Laboratwa Prensipal"
+  },
+  "user": {
+    "uuid": "1c3db49d-440a-11e6-a65c-00e04c680037",
+    "display": "admin",
+    "username": "admin",
+    "person": {
+      "uuid": "1296b0dc-440a-11e6-a65c-00e04c680037",
+      "display": "User, Super"
+    }
+  }
+}

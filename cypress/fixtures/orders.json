@@ -1,0 +1,360 @@
+{
+  "results": [
+    {
+      "id": 44599,
+      "uuid": "7a9c2cac-fd69-4741-a5ae-b8f8e5bb096b",
+      "display": "Mezi Troponin I",
+      "orderNumber": "ORD-41554",
+      "dateActivated": "2020-07-07T19:45:19.000-0400",
+      "scheduledDate": null,
+      "dateStopped": null,
+      "autoExpireDate": "2020-08-06T19:45:19.000-0400",
+      "fulfillerStatus": "EXCEPTION",
+      "orderType": {
+        "id": 3,
+        "uuid": "52a447d3-a64a-11e3-9aeb-50e549534c5e",
+        "display": "Test Order",
+        "name": "Test Order"
+      },
+      "encounter": {
+        "id": 281032,
+        "uuid": "1e370a5c-7a7a-4a9d-ad16-04f92e672adf",
+        "display": "Test Order 07/07/2020",
+        "encounterDatetime": "2020-07-07T19:45:19.000-0400"
+      },
+      "careSetting": {
+        "uuid": "c365e560-c3ec-11e3-9c1a-0800200c9a66",
+        "name": "Inpatient",
+        "careSettingType": "INPATIENT",
+        "display": "Inpatient"
+      },
+      "accessionNumber": null,
+      "urgency": "ROUTINE",
+      "action": "NEW",
+      "patient": {
+        "uuid": "114fde3a-8c12-402e-9408-4d60c7d4e7ad",
+        "display": "dO5MINWupDCSTtgUyA3I - Brown, John"
+      },
+      "concept": {
+        "id": 4283,
+        "uuid": "159654AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+        "allowDecimal": true,
+        "display": "Mezi Troponin I",
+        "names": [
+          {
+            "id": 19720,
+            "uuid": "0db959f3-3d36-441c-8a9c-24caa5ada920",
+            "name": "Mesure Troponine I",
+            "locale": "fr",
+            "localePreferred": true,
+            "voided": false,
+            "conceptNameType": "FULLY_SPECIFIED"
+          },
+          {
+            "id": 19721,
+            "uuid": "138081BBBBBBBBBBBBBBBBBBBBBBBBBBBBBB",
+            "name": "Mezi Troponin I",
+            "locale": "ht",
+            "localePreferred": true,
+            "voided": false,
+            "conceptNameType": "FULLY_SPECIFIED"
+          },
+          {
+            "id": 23104,
+            "uuid": "9322ad55-1703-4627-a37c-933245c5b812",
+            "name": "Troponine I",
+            "locale": "fr",
+            "localePreferred": false,
+            "voided": false,
+            "conceptNameType": "SHORT"
+          },
+          {
+            "id": 23105,
+            "uuid": "b8b35813-816c-4ebc-b620-df1abed1527f",
+            "name": "Troponin I",
+            "locale": "en",
+            "localePreferred": false,
+            "voided": false,
+            "conceptNameType": "SHORT"
+          },
+          {
+            "id": 19723,
+            "uuid": "107029BBBBBBBBBBBBBBBBBBBBBBBBBBBBBB",
+            "name": "Troponin I measurement",
+            "locale": "en",
+            "localePreferred": true,
+            "voided": false,
+            "conceptNameType": "FULLY_SPECIFIED"
+          }
+        ]
+      }
+    },
+    {
+      "id": 44600,
+      "uuid": "a8a293ca-fbf3-4760-9cc9-cad38b1aaa6a",
+      "display": "asid fosfataz",
+      "orderNumber": "ORD-41555",
+      "dateActivated": "2020-07-07T19:45:19.000-0400",
+      "scheduledDate": null,
+      "dateStopped": null,
+      "autoExpireDate": "2020-08-06T19:45:19.000-0400",
+      "fulfillerStatus": null,
+      "orderType": {
+        "id": 3,
+        "uuid": "52a447d3-a64a-11e3-9aeb-50e549534c5e",
+        "display": "Test Order",
+        "name": "Test Order"
+      },
+      "encounter": {
+        "id": 281032,
+        "uuid": "1e370a5c-7a7a-4a9d-ad16-04f92e672adf",
+        "display": "Test Order 07/07/2020",
+        "encounterDatetime": "2020-07-07T19:45:19.000-0400"
+      },
+      "careSetting": {
+        "uuid": "c365e560-c3ec-11e3-9c1a-0800200c9a66",
+        "name": "Inpatient",
+        "careSettingType": "INPATIENT",
+        "display": "Inpatient"
+      },
+      "accessionNumber": null,
+      "urgency": "ROUTINE",
+      "action": "NEW",
+      "patient": {
+        "uuid": "114fde3a-8c12-402e-9408-4d60c7d4e7ad",
+        "display": "dO5MINWupDCSTtgUyA3I - Brown, John"
+      },
+      "concept": {
+        "id": 2878,
+        "uuid": "3cd42f4c-26fe-102b-80cb-0017a47871b2",
+        "allowDecimal": false,
+        "display": "asid fosfataz",
+        "names": [
+          {
+            "id": 13421,
+            "uuid": "59e1b9a4-983a-4696-88f4-1d9bdbda37b9",
+            "name": "Phosphatase alcaline",
+            "locale": "fr",
+            "localePreferred": true,
+            "voided": false,
+            "conceptNameType": "FULLY_SPECIFIED"
+          },
+          {
+            "id": 19431,
+            "uuid": "110233BBBBBBBBBBBBBBBBBBBBBBBBBBBBBB",
+            "name": "Serum alkaline phosphatase",
+            "locale": "en",
+            "localePreferred": false,
+            "voided": false,
+            "conceptNameType": null
+          },
+          {
+            "id": 13424,
+            "uuid": "93ec6a44-07d4-102c-b5fa-0017a47871b2",
+            "name": "ALP",
+            "locale": "en",
+            "localePreferred": false,
+            "voided": false,
+            "conceptNameType": null
+          },
+          {
+            "id": 19432,
+            "uuid": "138057BBBBBBBBBBBBBBBBBBBBBBBBBBBBBB",
+            "name": "asid fosfataz",
+            "locale": "ht",
+            "localePreferred": true,
+            "voided": false,
+            "conceptNameType": "FULLY_SPECIFIED"
+          },
+          {
+            "id": 13420,
+            "uuid": "0b7b8462-15f5-102d-96e4-000c29c2a5d7",
+            "name": "ALP",
+            "locale": "en",
+            "localePreferred": false,
+            "voided": false,
+            "conceptNameType": "SHORT"
+          },
+          {
+            "id": 13419,
+            "uuid": "3e11ecbe-26fe-102b-80cb-0017a47871b2",
+            "name": "Alkaline phosphatase",
+            "locale": "en",
+            "localePreferred": true,
+            "voided": false,
+            "conceptNameType": "FULLY_SPECIFIED"
+          },
+          {
+            "id": 13422,
+            "uuid": "93ec4352-07d4-102c-b5fa-0017a47871b2",
+            "name": "Alk Phos",
+            "locale": "en",
+            "localePreferred": false,
+            "voided": false,
+            "conceptNameType": null
+          }
+        ]
+      }
+    },
+    {
+      "id": 44601,
+      "uuid": "e1ef6815-df67-4c45-9675-c0de9f44bbbc",
+      "display": "Blood urea nitrogen (mg/dL)",
+      "orderNumber": "ORD-41556",
+      "dateActivated": "2020-07-07T19:45:19.000-0400",
+      "scheduledDate": null,
+      "dateStopped": null,
+      "autoExpireDate": "2020-08-06T19:45:19.000-0400",
+      "fulfillerStatus": null,
+      "orderType": {
+        "id": 3,
+        "uuid": "52a447d3-a64a-11e3-9aeb-50e549534c5e",
+        "display": "Test Order",
+        "name": "Test Order"
+      },
+      "encounter": {
+        "id": 281032,
+        "uuid": "1e370a5c-7a7a-4a9d-ad16-04f92e672adf",
+        "display": "Test Order 07/07/2020",
+        "encounterDatetime": "2020-07-07T19:45:19.000-0400"
+      },
+      "careSetting": {
+        "uuid": "c365e560-c3ec-11e3-9c1a-0800200c9a66",
+        "name": "Inpatient",
+        "careSettingType": "INPATIENT",
+        "display": "Inpatient"
+      },
+      "accessionNumber": null,
+      "urgency": "ROUTINE",
+      "action": "NEW",
+      "patient": {
+        "uuid": "114fde3a-8c12-402e-9408-4d60c7d4e7ad",
+        "display": "dO5MINWupDCSTtgUyA3I - Brown, John"
+      },
+      "concept": {
+        "id": 5078,
+        "uuid": "7033707c-f555-4b9f-8291-e1466c54c36e",
+        "allowDecimal": true,
+        "display": "Blood urea nitrogen (mg/dL)",
+        "names": [
+          {
+            "id": 24702,
+            "uuid": "37025fe0-38cc-4880-af03-714de2b30f38",
+            "name": "Blood urea nitrogen (mg/dL)",
+            "locale": "en",
+            "localePreferred": true,
+            "voided": false,
+            "conceptNameType": "FULLY_SPECIFIED"
+          },
+          {
+            "id": 24703,
+            "uuid": "7c60fc86-68f3-4138-9db9-7110d1e411a6",
+            "name": "BUN",
+            "locale": "en",
+            "localePreferred": false,
+            "voided": false,
+            "conceptNameType": "SHORT"
+          },
+          {
+            "id": 24704,
+            "uuid": "cdf82208-4b1c-4426-8f52-7e43e0448bb2",
+            "name": "BUN (mg/dL)",
+            "locale": "en",
+            "localePreferred": false,
+            "voided": false,
+            "conceptNameType": null
+          }
+        ]
+      }
+    },
+    {
+      "id": 44589,
+      "uuid": "34ea59da-1802-4ea2-9b86-c5c3c763d3ca",
+      "display": "Panel lipid",
+      "orderNumber": "ORD-41552",
+      "dateActivated": "2020-07-06T17:35:34.000-0400",
+      "scheduledDate": null,
+      "dateStopped": null,
+      "autoExpireDate": "2020-08-05T17:35:34.000-0400",
+      "fulfillerStatus": "COMPLETED",
+      "orderType": {
+        "id": 3,
+        "uuid": "52a447d3-a64a-11e3-9aeb-50e549534c5e",
+        "display": "Test Order",
+        "name": "Test Order"
+      },
+      "encounter": {
+        "id": 280892,
+        "uuid": "76628424-b043-4ab0-96fb-65e389fc1204",
+        "display": "Test Order 07/06/2020",
+        "encounterDatetime": "2020-07-06T17:35:34.000-0400"
+      },
+      "careSetting": {
+        "uuid": "c365e560-c3ec-11e3-9c1a-0800200c9a66",
+        "name": "Inpatient",
+        "careSettingType": "INPATIENT",
+        "display": "Inpatient"
+      },
+      "accessionNumber": null,
+      "urgency": "ROUTINE",
+      "action": "NEW",
+      "patient": {
+        "uuid": "114fde3a-8c12-402e-9408-4d60c7d4e7ad",
+        "display": "dO5MINWupDCSTtgUyA3I - Brown, John"
+      },
+      "concept": {
+        "id": 2896,
+        "uuid": "3cd692c8-26fe-102b-80cb-0017a47871b2",
+        "allowDecimal": null,
+        "display": "Panel lipid",
+        "names": [
+          {
+            "id": 17590,
+            "uuid": "0d5c9e46-ee54-400e-be11-32d3f507b644",
+            "name": "Panel lipides",
+            "locale": "fr",
+            "localePreferred": true,
+            "voided": false,
+            "conceptNameType": "FULLY_SPECIFIED"
+          },
+          {
+            "id": 23100,
+            "uuid": "d2c3a340-e048-4c3f-9dd7-27311101bf08",
+            "name": "Lipides",
+            "locale": "fr",
+            "localePreferred": false,
+            "voided": false,
+            "conceptNameType": "SHORT"
+          },
+          {
+            "id": 13519,
+            "uuid": "93b3ee44-07d4-102c-b5fa-0017a47871b2",
+            "name": "Lipids",
+            "locale": "en",
+            "localePreferred": false,
+            "voided": false,
+            "conceptNameType": "SHORT"
+          },
+          {
+            "id": 19421,
+            "uuid": "138478BBBBBBBBBBBBBBBBBBBBBBBBBBBBBB",
+            "name": "Panel lipid",
+            "locale": "ht",
+            "localePreferred": true,
+            "voided": false,
+            "conceptNameType": "FULLY_SPECIFIED"
+          },
+          {
+            "id": 13521,
+            "uuid": "3e14851e-26fe-102b-80cb-0017a47871b2",
+            "name": "Lipid panel",
+            "locale": "en",
+            "localePreferred": true,
+            "voided": false,
+            "conceptNameType": "FULLY_SPECIFIED"
+          }
+        ]
+      }
+    }
+  ]
+}
