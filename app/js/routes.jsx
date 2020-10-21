@@ -51,6 +51,7 @@ export default store => (
       <Route path="/LabResultEntry" component={withLocalization(LabResultEntry)} />
       <Route path="/labresults" component={withLocalization(LabResultsList)} />
       <Route path="/labtrends" component={withLocalization(LabTrendsPage)} />
+      <Route path="/order/:orderUuid" component={withLocalization(LabOrdersList)} />
     </Switch>
   </div>
 );
