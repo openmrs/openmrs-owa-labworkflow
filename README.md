@@ -4,24 +4,38 @@
 
 This repository contains the openmrs-owa-labworkflow OpenMRS Open Web App.
 
-> Add a description of what your app does here.
-
 For further documentation about OpenMRS Open Web Apps see
 [the wiki page](https://wiki.openmrs.org/display/docs/Open+Web+Apps+Module).
 
 ## Development
 
-### Production Build
+### Prerequisites
 
-You will need NodeJS 6+ installed to do this. See the install instructions [here](https://nodejs.org/en/download/package-manager/).
+Requires [NodeJS 6+](https://nodejs.org/en/download/package-manager/).
 
-Once you have NodeJS installed, install the dependencies (first time only):
+### Setup
 
 ```sh
 npm install
 ```
 
-Build the distributable using [Webpack](https://webpack.github.io/) as follows:
+If developing on `@openmrs/react-components` at the same time, run `npm link` from
+that repository, and then `npm link @openmrs/react-components` in this one.
+
+### Developing
+
+With an OpenMRS server running locally, run
+
+```sh
+npm run watch
+```
+
+This will launch [Browersync](https://www.browsersync.io/).
+
+If no `config.json` exists, you will be prompted to edit the auto-generated one.
+Adjust `APP_ENTRY_POINT` for your local server.
+
+### Production Build
 
 ````sh
 npm run build:prod
@@ -38,63 +52,21 @@ To deploy directly to your local Open Web Apps directory, run:
 npm run build:deploy
 ````
 
-This will build and deploy the app to the `/Users/andeladeveloper/Downloads/referenceapplication-standalone-2.8.0/appdata/owa`
-directory. To change the deploy directory, edit the `LOCAL_OWA_FOLDER` entry in
-`config.json`. If this file does not exists, create one in the root directory
-that looks like:
-
-```js
-{
-  "LOCAL_OWA_FOLDER": "/Users/andeladeveloper/Downloads/referenceapplication-standalone-2.8.0/appdata/owa"
-}
-```
+This will build and deploy the app to the `owa` directory in your server's
+application data directory. This must be set using the
+`LOCAL_OWA_FOLDER` entry in `config.json`. If you don't have a `config.json`,
+this command will initialize it.
 
 ## Running Cypress tests
 
-When you clone this repo for the first time or pull the latest updates, you wiil need to run `npm install` which will also install `cypress` and `start-server-and-test` as dev dependencies, and then as usual run `npm link @openmrs/react-components` to link to the correct
-version of React Components.
+Copy `cypress.env.json.sample` to `cypress.env.json` and adjust the values as
+needed to work with your local OpenMRS server.
 
-Using the sample "cypress.env.json.sample" file, create a file "cypress.env.json" at the root level of this repo which sets two environmental variables for the username and password you will be using to 
-connect to the server.  This would be a username and password on the underlying OpenMRS instance you have running in your dev environment.
+You must have an OpenMRS server running. Run the OWA development server with `npm run watch`.
 
-```
-{
-  "username": "your-username",
-  "password": "Your-Password"
-}
-```
+Use `npm run cypress:open` for interactive mode, or `npm run cy:run` for non-interactive mode.
 
-NOTE: To run tests make sure your OpenMRS instance is running and this OWA is started and linked up to the instance.
-
-To fire up Cypress in interactive mode:
-
-1) Make sure the app is running on `localhost:3000`  (ie `npm run watch`)
-2) `npm run cypress:open`
-
-To just run the tests Cypress in non-interactive mode:
-  
-1) Make sure the app is running on `localhost:3000`   (ie `npm run watch`)
-2) `npm run cy:run`
-
-See docs for cypress here: https://www.cypress.io/
-
-### Live Reload
-
-To use [Browersync](https://www.browsersync.io/) to watch your files and reload
-the page, inject CSS or synchronize user actions across browser instances, you
-will need the `APP_ENTRY_POINT` entry in your `config.json` file:
-
-```js
-{
-  "LOCAL_OWA_FOLDER": "/Users/andeladeveloper/Downloads/referenceapplication-standalone-2.8.0/appdata\\owa",
-  "APP_ENTRY_POINT": "http://localhost:8081/openmrs-standalone/owa/openmrs-owa-labworkflow/index.html"
-}
-```
-Run Browsersync as follows:
-
-```
-npm run watch
-```
+See [docs for Cypress](https://www.cypress.io/).
 
 ### Extending
 

@@ -452,7 +452,7 @@ export class LabOrdersList extends PureComponent {
       headerClassName: `lab-order-list-column-header lab-order-list-header-${columnName.replace(' ', '-').toLocaleLowerCase()}`,
     }));
     return (
-      <div className="lab-order-list">
+      <div className="lab-order-list" data-cy="order-list">
         <SortableTable
           data={orders}
           filters={labOrdersListFilters}

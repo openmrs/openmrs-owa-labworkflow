@@ -73,7 +73,7 @@ class LabOrderListFilters extends PureComponent {
   renderNameOrIdFilter() {
     const { dispatch, patient, intl } = this.props;
     return (
-      <span className="name-emrid-order-filter">
+      <span className="name-emrid-order-filter" data-cy="patient-search">
         {patient
           ? (
             <span>
