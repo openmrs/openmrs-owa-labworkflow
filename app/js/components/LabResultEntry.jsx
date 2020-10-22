@@ -230,7 +230,6 @@ export class LabResultEntry extends PureComponent {
     }
 
     const maxDateRange = maxDateValue(new Date(), "today's");
-    const minDateRange = minDateValue(new Date(selectedOrder.dateActivated), 'the ordered');
     const collectionDateRange = minDateValue(new Date(encounterDateOrToday), 'the sample collection');
 
     // This is a DOM tree containing all the form input elements
@@ -252,7 +251,7 @@ export class LabResultEntry extends PureComponent {
                     defaultDate={undefined}
                     concept={labResultsDateConcept}
                     path="result-date"
-                    validate={[maxDateRange, minDateRange, collectionDateRange]}
+                    validate={[maxDateRange, collectionDateRange]}
                   />
                 </span>
               </span>
@@ -362,7 +361,7 @@ export class LabResultEntry extends PureComponent {
                   label="Specimen Collection Date:"
                   defaultDate={startOfToday()}
                   field="specimen"
-                  validations={[minDateRange]}
+                  validations={[maxDateRange]}
                 />
               </span>
             </div>

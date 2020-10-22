@@ -164,7 +164,7 @@ export class LabOrdersList extends PureComponent {
   }
 
   componentDidUpdate(prevProps) {
-    const { labResultsTestOrderType, ordersBatchSize, selectedPatient } = this.props;
+    const { fetched, orders, labResultsTestOrderType, ordersBatchSize, selectedPatient, match } = this.props;
 
     // TODO: this means that these two GPs are required
     // the intent of this is to trigger loading the orders after both these GPs have been loaded
@@ -176,6 +176,14 @@ export class LabOrdersList extends PureComponent {
 
     if (selectedPatient !== prevProps.selectedPatient) {
       this.handlePatientChange();
+    }
+
+    // if a specific order uuid has been specified, redirect to the display page for that order after the orders have been fetched
+    if (fetched && !prevProps.fetched && match.params.orderUuid && orders) {
+      let orderToDisplay = this.props.orders.find(o => o.uuid === match.params.orderUuid);
+      if (orderToDisplay) {
+        this.handleShowResultsEntryPage(orderToDisplay);
+      }
     }
   }
 
