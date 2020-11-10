@@ -327,7 +327,12 @@ export class LabResultsList extends PureComponent {
     const getPatientLabResults = () => {
       // build a list of all obs from the encounters that are of type LabSet or Test
       return encounters.reduce((acc, encounter) => {
-        const obs = encounter.obs ? encounter.obs.filter(o => isLabSet(o) || isTest(o)) : [];
+        // flattens to 3 levels of nested obs groups (TODO: better way to do this?)
+        const obs = encounter.obs ? encounter.obs
+          .flatMap(o => (o.groupMembers ? o.groupMembers : o))
+          .flatMap(o => (o.groupMembers ? o.groupMembers : o))
+          .flatMap(o => (o.groupMembers ? o.groupMembers : o))
+          .filter(o => isLabSet(o) || isTest(o)) : [];
         return [...acc, ...obs];
       }, {});
     };
