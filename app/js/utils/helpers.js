@@ -122,6 +122,11 @@ export const calculateTableRows = (noOfRows) => ((parseInt(noOfRows) < DEFAULT_T
 
 export const computeResultStatus = (order) => {
 
+  // FULFILLER_STATUS takes precedence (UHM-5053)
+  if (order.fulfillerStatus) {
+    return order.fulfillerStatus;
+  }
+
   if (order.dateStopped !== null) {
     return FULFILLER_STATUS.CANCELED;
   }
@@ -130,9 +135,6 @@ export const computeResultStatus = (order) => {
     return FULFILLER_STATUS.EXPIRED;
   }
 
-  if (order.fulfillerStatus) {
-    return order.fulfillerStatus;
-  }
   return FULFILLER_STATUS.ORDERED;
 };
 
