@@ -16,7 +16,7 @@ export const getDateRange = (
   item => {
     if (R.path(path.split('.'))(item)) {
       const date = moment(R.path(path.split('.'))(item));
-      return date.isAfter(moment(from)) && date.isBefore(moment(to));
+      return date.isSameOrAfter(moment(from)) && date.isSameOrBefore(moment(to));
     }
   });
 
