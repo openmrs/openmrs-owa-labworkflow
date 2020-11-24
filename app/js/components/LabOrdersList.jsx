@@ -40,7 +40,7 @@ const Cell = ({ columnName, value, handleCancel, cancelMsg, enableLabelPrinting,
       );
     }
     case 'NAME': {
-      const displayName = value.patient.display.split('-')[1].trim();
+      const displayName = ( value.patient.display && value.patient.display.indexOf('-') != -1) ? value.patient.display.split('-')[1].trim() : value.patient.person.display;
       return (
         <div className="table_cell name">
           <span>{displayName}</span>
