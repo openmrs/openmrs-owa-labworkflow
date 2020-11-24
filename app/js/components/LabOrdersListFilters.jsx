@@ -169,11 +169,6 @@ class LabOrderListFilters extends PureComponent {
         uuid: FULFILLER_STATUS.EXCEPTION,
         display: intl.formatMessage({ id: "app.labResult.status." + FULFILLER_STATUS.EXCEPTION, defaultMessage: "Not Performed" }),
       },
-      {
-        uuid: FULFILLER_STATUS.CANCELED_EXPIRED,
-        display: intl.formatMessage({ id: "app.labResult.status." + FULFILLER_STATUS.CANCELED, defaultMessage: "Canceled" }) + "/"
-        + intl.formatMessage({ id: "app.labResult.status." + FULFILLER_STATUS.EXPIRED, defaultMessage: "Expired" })
-      },
     ];
 
     return (
@@ -181,7 +176,6 @@ class LabOrderListFilters extends PureComponent {
         className="form-filter-group"
         id="test-status-dropdown"
         label={ statusMessage }
-        defaultValue={ allMsg }
         input={{ value: testStatusField }}
         list={statusOptions}
         field="testStatusField"

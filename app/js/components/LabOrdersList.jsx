@@ -201,7 +201,7 @@ export class LabOrdersList extends PureComponent {
     if ( !excludeCanceledAndExpired ) {
       options = {
         ...options,
-        excludeCanceledAndExpired: true,
+        excludeCanceledAndExpired: false,
       };
     }
 
@@ -310,7 +310,7 @@ export class LabOrdersList extends PureComponent {
     if (typeof excludeCanceledAndExpired === 'undefined') {
       newFilters = {
         ...newFilters,
-        excludeCanceledAndExpired: true,
+        excludeCanceledAndExpired: false,
       };
     }
 
@@ -325,7 +325,7 @@ export class LabOrdersList extends PureComponent {
     if (field === 'testStatusField') {
       newFilters = {
         ...newFilters,
-        excludeCanceledAndExpired: true,
+        excludeCanceledAndExpired: false,
         includeNullFulfillerStatus: null,
         canceledOrExpiredOnOrBeforeDate: null,
         fulfillerStatus: null,
@@ -350,6 +350,7 @@ export class LabOrdersList extends PureComponent {
      } else if (value === FULFILLER_STATUS.COMPLETED) {
        newFilters = {
          ...newFilters,
+         excludeCanceledAndExpired: false,
          fulfillerStatus: FULFILLER_STATUS.COMPLETED,
        };
      } else if (value === FULFILLER_STATUS.IN_PROGRESS) {
