@@ -135,10 +135,18 @@ export class LabResultsList extends PureComponent {
 
   handleFilterChange(field, value) {
     const { labResultListFilters, dispatch } = this.props;
-    const newFilters = {
+    let newFilters = {
       ...labResultListFilters,
       [field]: value,
     };
+
+    if ( field === 'pageSize' ) {
+      // defaults page to zero when changing pageSize
+      newFilters = {
+        ...newFilters,
+        page: 0,
+      };
+    }
     dispatch(filtersAction.setLabResultListFilters(newFilters));
   }
 

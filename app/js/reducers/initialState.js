@@ -50,6 +50,7 @@ export default {
       dateToField: moment(),
       dateFromField: moment().subtract(10, 'years'),
       dateField: 'obsDatetime',
+      page: 0,
     },
     labOrdersListFilters: {
       accessionNumber: "",
