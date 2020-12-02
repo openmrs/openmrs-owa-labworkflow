@@ -336,9 +336,9 @@ export class LabResultsList extends PureComponent {
       // build a list of all obs from the encounters that are of type LabSet or Test
       return encounters.reduce((acc, encounter) => {
         let obs = encounter.obs ? encounter.obs : [];
-        // flatten obs groups into a single list of obs
-        while (obs.some(o => o.groupMembers)) {
-          obs = obs.flatMap(o => (o.groupMembers ? o.groupMembers : o));
+        // flatten obs groups into a single list of Lab Sets and Tests
+        while (obs.some(o => o.groupMembers && !isLabSet(o))) {
+          obs = obs.flatMap(o => (o.groupMembers && !isLabSet(o) ? o.groupMembers : o));
         }
         obs = obs.filter(o => isLabSet(o) || isTest(o));
         return [...acc, ...obs];
