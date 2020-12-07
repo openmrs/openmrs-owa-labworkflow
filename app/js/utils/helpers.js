@@ -97,10 +97,16 @@ export const getConceptShortName = (concept, locale) => {
   if (concept) {
     if (concept.names){
       let foundConcept;
-      // first, try to find the SHORT name in the current locale
+      // first, try to find the preferred SHORT name in the current locale
       foundConcept = concept.names.find(name =>
-        !name.voided && name.conceptNameType === 'SHORT' && name.locale === localeShort
+        !name.voided && name.conceptNameType === 'SHORT' && name.locale === localeShort && name.localePreferred
       );
+      if (!foundConcept) {
+        // try to find the SHORT name in the current locale
+        foundConcept = concept.names.find(name =>
+          !name.voided && name.conceptNameType === 'SHORT' && name.locale === localeShort
+        );
+      }
       if (!foundConcept) {
         // attempt to find the preferred name in the locale
         foundConcept = concept.names.find(name =>
