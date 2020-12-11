@@ -355,7 +355,6 @@ export class LabResultsList extends PureComponent {
         while (obs.some(o => o.groupMembers && !isLabSet(o))) {
           obs = obs.flatMap(o => (o.groupMembers && !isLabSet(o) ? o.groupMembers : o));
         }
-        // add something here to filter out by set if present
         obs = obs.filter(o => (isLabSet(o) || isTest(o)) && inLabResultsToDisplayConceptSet(o));
         return [...acc, ...obs];
       }, {});
