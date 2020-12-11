@@ -1,6 +1,6 @@
 import {
   FETCH_CONCEPT_CONSTANT,
-  SET_LAB_RESULTS_TO_DISPLAY_CONCEPT_SET
+  SET_LAB_RESULTS_TO_DISPLAY_CONCEPT_SET,
 } from '../actions/actionTypes';
 
 const initialState = {
