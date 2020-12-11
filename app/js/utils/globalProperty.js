@@ -6,6 +6,8 @@ import R from "ramda";
     * labResultsEntryEncounterType: encounter type to use when creating and editing lab results
     * labResultsEntryEncounterTypes: encounter types to search through when displaying lab results
       (not mandatory, will default to encounter type specified in labResultsEntryEncounterType)
+    * labResultsToDisplayConceptSet: if set, will limit labs displayed by the Lab Results List
+      to those LabSets and Tests in this concept set (not mandatory)
  */
 
 export const APP_GLOBAL_PROPERTIES = {
@@ -20,6 +22,7 @@ export const APP_GLOBAL_PROPERTIES = {
   labResultsTestLocationQuestion: "labworkflowowa.locationOfLaboratory",
   labResultsEstimatedCollectionDateQuestion: "labworkflowowa.estimatedCollectionDateQuestion",
   labResultsEstimatedCollectionDateAnswer: "labworkflowowa.estimatedCollectionDateAnswer",
+  labResultsToDisplayConceptSet: "labworkflowowa.labResultsToDisplayConceptSet",
   dateAndTimeFormat: "labworkflowowa.dateAndTimeFormat",
   enableLabelPrinting: "labworkflowowa.enableLabelPrinting",
   labelPrintingEndpoint: "labworkflowowa.labelPrintingEndpoint",

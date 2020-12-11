@@ -5,6 +5,8 @@ import {
   SET_FETCH_STATUS,
   SET_CONCEPT,
   FETCH_CONCEPT,
+  FETCH_LAB_RESULTS_TO_DISPLAY_CONCEPT_SET,
+  SET_LAB_RESULTS_TO_DISPLAY_CONCEPT_SET,
 } from './actionTypes';
 import { CONCEPT_REP } from './constantsAction';
 
@@ -30,4 +32,15 @@ export const setFetchStatus = status => ({
 export const fetchConcept = conceptUUID => ({
   type: FETCH_CONCEPT,
   conceptUUID,
+});
+
+
+export const fetchLabResultsToDisplayConceptSet = conceptUuid => ({
+  type: FETCH_LAB_RESULTS_TO_DISPLAY_CONCEPT_SET,
+  conceptUuid,
+});
+
+export const setLabResultsToDisplayConceptSet = set => ({
+  type: SET_LAB_RESULTS_TO_DISPLAY_CONCEPT_SET,
+  set,
 });
