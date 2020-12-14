@@ -10,6 +10,7 @@ import { injectIntl, FormattedMessage } from 'react-intl';
 import ConceptDisplay from './ConceptDisplay';
 import patientAction from '../actions/patientAction';
 import filtersAction from '../actions/filtersAction';
+import { fetchLabResultsToDisplayConceptSet } from '../actions/labConceptsAction';
 import { loadGlobalProperties, selectProperty } from '../utils/globalProperty';
 import { filterThrough, calculateTableRows, getConceptShortName, sortByDate } from '../utils/helpers';
 import "../../css/lab-results-view.scss";
@@ -97,11 +98,12 @@ export class LabResultsList extends PureComponent {
     }
   }
 
-  componentDidUpdate() {
+  componentDidUpdate(prevProps) {
     const { patientUUID } = this.state;
     const {
       labResultsEntryEncounterType,
       labResultsEncounterTypes,
+      labResultsToDisplayConceptSetUUID,
       dispatch,
     } = this.props;
 
@@ -109,6 +111,12 @@ export class LabResultsList extends PureComponent {
       globalPropertiesFetched,
     } = this.state;
 
+    // load the concept set to display when (and if) that global property is loaded
+    if (labResultsToDisplayConceptSetUUID && !prevProps.labResultsToDisplayConceptSetUUID) {
+      dispatch(fetchLabResultsToDisplayConceptSet(labResultsToDisplayConceptSetUUID));
+    }
+
+    // load test results after the encounter types GPs have been loaded
     if (labResultsEntryEncounterType && labResultsEncounterTypes && !globalPropertiesFetched) {
       // eslint-disable-next-line react/no-did-update-set-state
       this.setState({
@@ -116,6 +124,7 @@ export class LabResultsList extends PureComponent {
       });
       dispatch(patientAction.fetchPatientLabTestResults(patientUUID));
     }
+
   }
 
   handleShowLabTrendsPage(obs) {
@@ -321,11 +330,17 @@ export class LabResultsList extends PureComponent {
   render() {
     const {
       patients,
+      labResultsToDisplayConceptSet,
     } = this.props;
 
     const { patientUUID } = this.state;
 
     const selectedPatient = patients[patientUUID] || {};
+
+    // returns "true" if concept set not defined
+    const inLabResultsToDisplayConceptSet = (o => !labResultsToDisplayConceptSet
+      || !(labResultsToDisplayConceptSet instanceof Set)
+      || labResultsToDisplayConceptSet.has(o.concept.uuid));
 
     const {
       encounters = [],
@@ -340,7 +355,7 @@ export class LabResultsList extends PureComponent {
         while (obs.some(o => o.groupMembers && !isLabSet(o))) {
           obs = obs.flatMap(o => (o.groupMembers && !isLabSet(o) ? o.groupMembers : o));
         }
-        obs = obs.filter(o => isLabSet(o) || isTest(o));
+        obs = obs.filter(o => (isLabSet(o) || isTest(o)) && inLabResultsToDisplayConceptSet(o));
         return [...acc, ...obs];
       }, {});
     };
@@ -402,8 +417,10 @@ export const mapStateToProps = state => ({
   dateAndTimeFormat: selectProperty(state, 'dateAndTimeFormat') || '',
   labResultsEntryEncounterType: selectProperty(state, 'labResultsEntryEncounterType') || '',
   labResultsEncounterTypes: selectProperty(state, 'labResultsEncounterTypes') || '',
+  labResultsToDisplayConceptSetUUID: selectProperty(state, 'labResultsToDisplayConceptSet') || '',
+  labResultsToDisplayConceptSet: state.CONSTANTS.labResultsToDisplayConceptSet,
   labResultListFilters: state.filters.labResultListFilters,
-  locale: state.openmrs.session.locale
+  locale: state.openmrs.session.locale,
 });
 
 export default connect(mapStateToProps)(injectIntl(LabResultsList));

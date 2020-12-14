@@ -1,8 +1,12 @@
-import { FETCH_CONCEPT_CONSTANT } from '../actions/actionTypes';
+import {
+  FETCH_CONCEPT_CONSTANT,
+  SET_LAB_RESULTS_TO_DISPLAY_CONCEPT_SET,
+} from '../actions/actionTypes';
 
 const initialState = {
   labResultsDidNotPerformReasonAnswer: {},
   labResultsTestLocationAnswer: {},
+  labResultsToDisplayConceptSet: {},
 };
 
 export default (state = initialState, action) => {
@@ -11,6 +15,13 @@ export default (state = initialState, action) => {
       return {
         ...state,
         [action.meta.constantName]: action.payload.data.answers,
+      };
+    }
+
+    case SET_LAB_RESULTS_TO_DISPLAY_CONCEPT_SET: {
+      return {
+        ...state,
+        labResultsToDisplayConceptSet: action.set,
       };
     }
 

@@ -14,8 +14,10 @@ import {
   FETCH_CONCEPT,
   FETCH_CONCEPT_SUCCEEDED,
   FETCH_CONCEPT_FAILED,
+  FETCH_LAB_RESULTS_TO_DISPLAY_CONCEPT_SET,
+  SET_LAB_RESULTS_TO_DISPLAY_CONCEPT_SET,
 } from '../actions/actionTypes';
-import { setMember, setFetchStatus } from '../actions/labConceptsAction';
+import { setMember, setFetchStatus, setLabResultsToDisplayConceptSet } from '../actions/labConceptsAction';
 import { CONCEPT_REP } from '../actions/constantsAction';
 
 
@@ -75,4 +77,42 @@ export function* fetchAndSetConcept(action) {
 
 export function* fetchConcept() {
   yield takeEvery(FETCH_CONCEPT, fetchAndSetConcept);
+}
+
+export function* fetchAndSetLabResultsToDisplayConceptSet(action) {
+  const { conceptUuid } = action;
+
+  try {
+    // hacky, only goes 5 levels deep
+    const CONCEPT_SET_REP = 'custom:(uuid,set,setMembers:(uuid,set,setMembers:(uuid,set,setMembers:(uuid,set,setMembers:(uuid,set,setMembers:(uuid,set,conceptClass:(name)),conceptClass:(name)),conceptClass:(name)),conceptClass:(name)),conceptClass:(name)),conceptClass:(name))';
+
+    const response = yield call(conceptRest.getConcept, conceptUuid, CONCEPT_SET_REP);
+
+    let concepts = response.setMembers;
+
+    // flatten the concept set
+    while (concepts.some(c => c.set)) {
+      concepts = concepts.flatMap(c => (c.set ? [...c.setMembers, {
+        uuid: c.uuid,
+        set: false,
+        conceptClass: c.conceptClass,
+      }] : c));
+    }
+
+    // filter out all that aren't lab tests or tests
+    concepts = concepts.filter(c => c.conceptClass.name === 'Test' || c.conceptClass.name === 'LabSet');
+
+    // create a set for easy lookup
+    const conceptSet = new Set();
+    concepts.forEach(c => conceptSet.add(c.uuid));
+
+    yield put(setLabResultsToDisplayConceptSet(conceptSet));
+  } catch (e) {
+    // TODO actually do something in failure case
+  }
+}
+
+export function* fetchLabResultsToDisplayConceptSet() {
+  yield takeEvery(FETCH_LAB_RESULTS_TO_DISPLAY_CONCEPT_SET,
+    fetchAndSetLabResultsToDisplayConceptSet);
 }
