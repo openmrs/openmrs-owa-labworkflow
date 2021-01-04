@@ -230,6 +230,7 @@ export class LabResultsList extends PureComponent {
     const columns = expanderColumn.concat(columnMetadata);
 
     const sortedListData = sortByDate('obsDatetime')(labResults).reverse();
+    const loadingMessage = intl.formatMessage({ id: "app.results.loading", defaultMessage: "Searching..." });
     const noDataMessage = intl.formatMessage({ id: "app.results.not.found", defaultMessage: "No results found" });
     const rowsMessage = intl.formatMessage({ id: "reactcomponents.table.rows", defaultMessage: "Rows" });
 
@@ -248,7 +249,7 @@ export class LabResultsList extends PureComponent {
           onPageSizeChange={pageSize => this.handleFilterChange('pageSize', pageSize)}
           onPageChange={page => this.handleFilterChange('page', page)}
           page={labResultListFilters.page}
-          noDataMessage={ noDataMessage }
+          noDataMessage={ fetched ? noDataMessage : loadingMessage }
           rowsText={ rowsMessage }
           defaultPageSize={labResultListFilters.pageSize || calculateTableRows(labResults.length)}
           subComponent={(row) => {
@@ -345,6 +346,8 @@ export class LabResultsList extends PureComponent {
     const {
       encounters = [],
       labResultFetchStatus = false,
+      error = false,
+      errorMessage = "",
     } = selectedPatient;
 
     const getPatientLabResults = () => {
@@ -360,7 +363,7 @@ export class LabResultsList extends PureComponent {
       }, {});
     };
 
-    if (!R.isEmpty(selectedPatient)) {
+    if (!error && !R.isEmpty(selectedPatient)) {
       const labResults = getPatientLabResults();
       return (
         <div className="main-container">
@@ -402,6 +405,21 @@ export class LabResultsList extends PureComponent {
         </div>
       );
     }
+
+    if (error) {
+      return (
+        <div className="no-data-container">
+          <span>
+            <FormattedMessage
+              id="app.results.error"
+              defaultMessage="Error" />
+            &nbsp;
+            { errorMessage }
+          </span>
+        </div>
+      );
+    }
+
     return (
       <Loader />
     );
