@@ -7,6 +7,8 @@
     "app.for.label": "pour",
     "app.orders.not.found": "Aucune commande trouvée",
     "app.results.not.found": "Aucun résultat trouvé",
+    "app.results.loading": "recherche...",
+    "app.results.error": "Erreur",
     "app.lab.result": "Résultat de laboratoire",
     "app.lab.results.trend": "Tendance",
     "app.labOrdersList.EMR_ID": "EMR ID",
