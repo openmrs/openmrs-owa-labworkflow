@@ -86,7 +86,13 @@ function* fetchAndSetTestResults(action) {
       patientUUID,
     }));
   } catch (e) {
-    yield put(patientAction.getPatientFailed(e.message));
+    yield put(patientAction.setPatientData({
+      meta: {
+        error: true,
+        errorMessage: e.message,
+      },
+      patientUUID,
+    }));
   }
 }
 
