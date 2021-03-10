@@ -9,7 +9,7 @@
   "dependencies": {
     "@openmrs/react-components": "^1.5.1",
     "@openmrs/style-referenceapplication": "^0.1.0",
-    "axios": "^0.18.0",
+    "axios": "^0.21.1",
     "babel-eslint": "^9.0.0",
     "babel-jest": "^23.4.2",
     "babel-polyfill": "^6.26.0",
