@@ -24,7 +24,6 @@ import { fetchLabTestResults } from '../actions/labOrdersAction';
 import {
   calculateTableRows,
   sortByDate,
-  filterDuplicates,
 } from '../utils/helpers';
 
 import "../../css/lab-results-trends-page.scss";
@@ -110,7 +109,7 @@ export class LabTrendsPage extends PureComponent {
 
     const formatChartData = data => data.map(item => ({
       ...item,
-      obsDatetime: moment(item.obsDatetime).valueOf(),
+      obsDatetime: moment(item.obsDatetime).format('DD-MMM-YYYY'),
     }));
 
 
@@ -134,17 +133,11 @@ export class LabTrendsPage extends PureComponent {
       bottom: 5,
     };
 
-    const resultsToDisplay = R.pipe(
-      sortByDate('encounter.encounterDatetime'),
-      sortByDate('obsDatetime'),
-      filterDuplicates,
+    const chartData = R.compose(
       R.reverse,
-    )(results);
-
-    const chartData = R.pipe(
-      R.reverse,
+      sortByDate('obsDateTime'),
       formatChartData,
-    )(resultsToDisplay);
+    )(results);
 
     return (
       <div>
@@ -156,7 +149,7 @@ export class LabTrendsPage extends PureComponent {
         <div className="lab-trends-widgets">
           <div className={resultTableClassName}>
             <SortableTable
-              data={resultsToDisplay}
+              data={results}
               columnMetadata={columnMetadata}
               filteredFields={fields}
               isSortable={false}
