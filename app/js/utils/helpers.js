@@ -77,6 +77,28 @@ export const sortByDate = (path) => data => R.sort(
   (a, b) => dateToInt(R.path(path.split('.'))(a)) - dateToInt(R.path(path.split('.'))(b)), data
 );
 
+// filters a list of obs, removing an obs if it has the same concept, value, and obsDatetime as the previous obs in the list
+export const filterDuplicates = data => data.reduce((acc, obs) => {
+  if (acc.length === 0) {
+    return [...acc, obs];
+  } else {
+    const previousObs = acc[acc.length - 1]
+    if (previousObs.obsDatetime !== obs.obsDatetime
+      || (isObject(previousObs.concept) && previousObs.concept.uuid !== obs.concept.uuid)
+      || isObject(previousObs.value) !== isObject((obs.value))
+      || (isObject(previousObs.value) && previousObs.value.uuid !== obs.value.uuid)
+      || (!isObject(previousObs.value) && previousObs.value !== obs.value)
+    ) {
+      return [...acc, obs];
+    } else {
+      return acc;
+    }
+  }
+},[]);
+
+export const isObject = obj => {
+  return typeof obj === 'object' && obj !== null;
+}
 
 export const getResultValue = (data) => {
   let resultValue;
