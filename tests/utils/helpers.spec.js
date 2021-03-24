@@ -201,4 +201,10 @@ describe('filterDuplicates', () => {
     const set = [baseValueCodedObs, differentObs];
     expect(filterDuplicates((set)).length).toBe(2);
   });
+
+
+  it('should filter even if not ajacent', () => {
+    const set = [baseValueCodedObs, baseValueNumericObs, baseValueCodedObs];
+    expect(filterDuplicates((set)).length).toBe(2);
+  });
 });
