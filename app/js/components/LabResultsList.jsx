@@ -12,7 +12,7 @@ import patientAction from '../actions/patientAction';
 import filtersAction from '../actions/filtersAction';
 import { fetchLabResultsToDisplayConceptSet } from '../actions/labConceptsAction';
 import { loadGlobalProperties, selectProperty } from '../utils/globalProperty';
-import { filterThrough, calculateTableRows, getConceptShortName, sortByDate } from '../utils/helpers';
+import { filterThrough, calculateTableRows, getConceptShortName, sortByDate, filterDuplicates } from '../utils/helpers';
 import "../../css/lab-results-view.scss";
 
 
@@ -230,6 +230,7 @@ export class LabResultsList extends PureComponent {
     const columns = expanderColumn.concat(columnMetadata);
 
     const sortedListData = sortByDate('obsDatetime')(labResults).reverse();
+    const sortedFilteredListData = filterDuplicates(sortedListData);
     const loadingMessage = intl.formatMessage({ id: "app.results.loading", defaultMessage: "Searching..." });
     const noDataMessage = intl.formatMessage({ id: "app.results.not.found", defaultMessage: "No results found" });
     const rowsMessage = intl.formatMessage({ id: "reactcomponents.table.rows", defaultMessage: "Rows" });
@@ -237,7 +238,7 @@ export class LabResultsList extends PureComponent {
     return (
       <div className="lab-results-list">
         <SortableTable
-          data={sortedListData}
+          data={sortedFilteredListData}
           filters={labResultListFilters}
           getDataWithFilters={filterThrough}
           columnMetadata={columns}

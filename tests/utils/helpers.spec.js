@@ -1,4 +1,5 @@
-import { getConceptShortName } from '../../app/js/utils/helpers';
+import { getConceptShortName, filterDuplicates } from '../../app/js/utils/helpers';
+import moment from "moment";
 
 describe("getConceptShortName", () => {
 
@@ -108,3 +109,102 @@ describe("getConceptShortName", () => {
     })
 
 })
+
+describe('filterDuplicates', () => {
+  const baseValueNumericObs = {
+    obsDatetime: moment('2020-02-02').toISOString(),
+    concept: {
+      uuid: "someUuid",
+    },
+    value: 123,
+  };
+
+  const baseValueCodedObs = {
+    obsDatetime: moment('2020-02-02').toISOString(),
+    concept: {
+      uuid: "someUuid",
+    },
+    value: {
+      uuid: "anotherUuid",
+    },
+  };
+
+  it('should filter duplicate numeric obs', () => {
+    const set = [baseValueNumericObs, baseValueNumericObs];
+    expect(set.length).toBe(2); // sanity check
+    expect(filterDuplicates((set)).length).toBe(1);
+  });
+
+  it('should filter duplicate value coded obs', () => {
+    const set = [baseValueCodedObs, baseValueCodedObs];
+    expect(set.length).toBe(2); // sanity check
+    expect(filterDuplicates((set)).length).toBe(1);
+  });
+
+  it('should not filter if one obs numeric and one value coded', () => {
+    const set = [baseValueNumericObs, baseValueCodedObs];
+    expect(filterDuplicates((set)).length).toBe(2);
+  });
+
+  it('should not filter if concepts differ', () => {
+
+    const differentObs = {
+      obsDatetime: moment('2020-02-02').toISOString(),
+      concept: {
+        uuid: "someOtherUuid",
+      },
+      value: 123,
+    };
+
+    const set = [baseValueNumericObs, differentObs];
+    expect(filterDuplicates((set)).length).toBe(2);
+  });
+
+
+  it('should not filter if obsDatetime differs', () => {
+    const differentObs = {
+      obsDatetime: moment('2019-02-02').toISOString(),
+      concept: {
+        uuid: "someUuid",
+      },
+      value: 123,
+    };
+
+    const set = [baseValueNumericObs, differentObs];
+    expect(filterDuplicates((set)).length).toBe(2);
+  });
+
+  it('should not filter if value differs', () => {
+    const differentObs = {
+      obsDatetime: moment('2020-02-02').toISOString(),
+      concept: {
+        uuid: "someUuid",
+      },
+      value: 124,
+    };
+
+    const set = [baseValueNumericObs, differentObs];
+    expect(filterDuplicates((set)).length).toBe(2);
+  });
+
+
+  it('should not filter if value coded differs', () => {
+    const differentObs = {
+      obsDatetime: moment('2020-02-02').toISOString(),
+      concept: {
+        uuid: "someUuid",
+      },
+      value: {
+        uuid: "anotherDifferentUuid",
+      },
+    };
+    const set = [baseValueCodedObs, differentObs];
+    expect(filterDuplicates((set)).length).toBe(2);
+  });
+
+
+  it('should filter even if not ajacent', () => {
+    const set = [baseValueCodedObs, baseValueNumericObs, baseValueCodedObs];
+    expect(filterDuplicates((set)).length).toBe(2);
+  });
+});
