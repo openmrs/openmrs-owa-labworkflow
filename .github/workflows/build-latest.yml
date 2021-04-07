@@ -40,5 +40,5 @@ jobs:
         run: mvn deploy:deploy-file -Pdeploy-snapshot
         if:  contains(env.ARTIFACT_NAME, '-SNAPSHOT')
         env:
-          MAVEN_REPO_USERNAME: mseaton
-          MAVEN_REPO_PASSWORD: ${{ secrets.MAVEN_REPO_PASSWORD }}
+          MAVEN_REPO_USERNAME: ${{ secrets.MAVEN_REPO_USERNAME }}
+          MAVEN_REPO_PASSWORD: ${{ secrets.MAVEN_REPO_API_KEY }}

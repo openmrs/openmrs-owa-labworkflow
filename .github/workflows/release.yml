@@ -36,5 +36,5 @@ jobs:
       - name: Deploy to Maven
         run: mvn deploy:deploy-file -Pdeploy-release
         env:
-          MAVEN_REPO_USERNAME: mseaton
-          MAVEN_REPO_PASSWORD: ${{ secrets.MAVEN_REPO_PASSWORD }}
+          MAVEN_REPO_USERNAME: ${{ secrets.MAVEN_REPO_USERNAME }}
+          MAVEN_REPO_PASSWORD: ${{ secrets.MAVEN_REPO_API_KEY }}
