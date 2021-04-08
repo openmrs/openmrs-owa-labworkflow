@@ -110,7 +110,7 @@ Releasing is done via Github Releases.  The process is as follows:
 6. Update the version number in package.json, pom.xml, and app/manifest.webapp, by incrementing to the next version number and adding a "-SNAPSHOT" suffix
 7. Commit and push to master, and confirm that the next SNAPSHOT builds successfully
 
-A *key thing to note* is that when releasing, Travis CI will build the  project using the version of react-components
+A *key thing to note* is that when releasing, the CI job will build the  project using the version of react-components
 specified in the package.json, *while the PIH staging build* always uses the latest head of react-components
 when building and deploying lab workflow.  Therefore, if changes have been made to react-components since
 the last lab workflow release, you will likely want to release react-components (see react-components README for
