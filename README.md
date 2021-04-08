@@ -100,13 +100,17 @@ Any files that you add manually must be added in the `app` directory.
 
 ## Releasing
 
-In order to release, set the new version number in package.json, bintray.json (also set other version information here 
-like release date and vcs_tag) and app/manifest.webapp. Once you commit, push changes to github, and confirm the Travis 
-tests pass, go to https://github.com/openmrs/openmrs-owa-labworkflow/releases and create a new release named after the 
-version you want to release. Travis CI should pick up a newly created tag and deploy the release to Bintray at 
-https://bintray.com/openmrs/owa/openmrs-owa-labworkflow
+Releasing is done via Github Releases.  The process is as follows:
 
-A *key thing to note* is that when releasing, Travis CI will build the  project using the version of react-components
+1. Update the version number in package.json, pom.xml, and app/manifest.webapp by removing the "-SNAPSHOT" in each.  Ensure all 3 versions match.
+2. Commit and push to master and confirm everything builds successfully in Github Actions
+3. Go to the [Releases Page](https://github.com/openmrs/openmrs-owa-labworkflow/releases) and create a new release named after the version you want to release, publish this.
+4. Confirm that the [Deploy release](https://github.com/openmrs/openmrs-owa-labworkflow/actions/workflows/release.yml) job completes successfully
+5. Confirm that the zip artifact has been successfully published to the [Maven repository](https://openmrs.jfrog.io/ui/repos/tree/General/owa%2Forg%2Fopenmrs%2Fowa%2Flabworkflow)
+6. Update the version number in package.json, pom.xml, and app/manifest.webapp, by incrementing to the next version number and adding a "-SNAPSHOT" suffix
+7. Commit and push to master, and confirm that the next SNAPSHOT builds successfully
+
+A *key thing to note* is that when releasing, the CI job will build the  project using the version of react-components
 specified in the package.json, *while the PIH staging build* always uses the latest head of react-components
 when building and deploying lab workflow.  Therefore, if changes have been made to react-components since
 the last lab workflow release, you will likely want to release react-components (see react-components README for
