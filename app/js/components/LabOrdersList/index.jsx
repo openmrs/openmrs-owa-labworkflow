@@ -17,126 +17,19 @@ import { injectIntl, FormattedMessage } from 'react-intl';
 import swal from 'sweetalert';
 import { SortableTable, Loader, selectors } from '@openmrs/react-components';
 import LabOrderListFilters from './LabOrdersListFilters';
-import { fetchLabOrders, cancelOrder, printLabel } from '../actions/labOrdersAction';
-import { setSelectedConcept } from '../actions/labConceptsAction';
-import { filterThrough, calculateTableRows, getConceptShortName, computeResultStatus, isCancelable } from '../utils/helpers';
-import { loadGlobalProperties, selectProperty } from '../utils/globalProperty';
-import filtersAction from '../actions/filtersAction';
-import patientAction from '../actions/patientAction';
-import { getLabOrderables } from '../actions/labOrderablesAction';
-import { DEFAULT_ORDERS_BATCH_SIZE, DEFAULT_TABLE_PAGE_SIZE, FULFILLER_STATUS } from '../constants';
+import { fetchLabOrders, cancelOrder, printLabel } from '../../actions/labOrdersAction';
+import { setSelectedConcept } from '../../actions/labConceptsAction';
+import { filterThrough, calculateTableRows, getConceptShortName, computeResultStatus, isCancelable } from '../../utils/helpers';
+import { loadGlobalProperties, selectProperty } from '../../utils/globalProperty';
+import filtersAction from '../../actions/filtersAction';
+import patientAction from '../../actions/patientAction';
+import { getLabOrderables } from '../../actions/labOrderablesAction';
+import { DEFAULT_ORDERS_BATCH_SIZE, DEFAULT_TABLE_PAGE_SIZE, FULFILLER_STATUS } from '../../constants';
 import "../../css/lab-orders-list.scss";
+import ReactToPrint from 'react-to-print';
+import { NoData } from './NoData';
+import { DraftOrderTable } from './DraftOrderTable';
 
-
-const Cell = ({ columnName, value, handleCancel, cancelMsg, enableLabelPrinting, handlePrint, printMsg, locale }) => {
-  switch (columnName) {
-    case 'EMR ID': {
-      // TODO: refactor this and name column to use React Components patientUtils
-      const emrID = value.patient.display.split('-')[0].trim();
-      return (
-        <div className="table_cell emr-id">
-          <span>{emrID}</span>
-        </div>
-      );
-    }
-    case 'NAME': {
-      const displayName = value.patient.person.display;
-      return (
-        <div className="table_cell name">
-          <span>{displayName}</span>
-        </div>
-      );
-    }
-    case 'ORDER ID':
-      return (
-        <div className="table_cell order-id">
-          <span>{value.orderNumber}</span>
-        </div>
-      );
-    case 'STATUS':
-      return (
-        <div className="table_cell status">
-          <span>
-            <FormattedMessage
-              id={"app.labResult.status." + computeResultStatus(value)}
-              defaultMessage={computeResultStatus(value)}
-            />
-          </span>
-        </div>
-      );
-    case 'ORDER DATE':
-      return (
-        <div className="table_cell order-date">
-          <span>{moment(value.dateActivated).format("DD-MMM-YYYY")}</span>
-        </div>
-      );
-    case 'LAB ID':
-      return (
-        <div className="table_cell lab-id">
-          {value.accessionNumber}
-        </div>
-      );
-    case 'URGENCY': {
-      const urgencyClassName = cn({
-        table_cell: true,
-        urgency: true,
-        stat: value.urgency === 'STAT',
-        routine: value.urgency === 'ROUTINE',
-      });
-      return (
-        <div className={urgencyClassName}>
-          <span>{value.urgency}</span>
-        </div>
-      );
-    }
-    case 'TEST TYPE':
-      return (
-        <div className="table_cell test-type">
-          <span>{getConceptShortName(value.concept, locale)}</span>
-        </div>
-      );
-    case 'ACTIONS':
-      const printLabel =
-        <div className="order-actn-btn">
-            <span
-              className="glyphicon glyphicon-print tooltips"
-              data-tooltip={ printMsg }
-              aria-hidden="true"
-              onClick={(e) => {
-                e.preventDefault();
-                e.stopPropagation();
-                handlePrint(value);
-              }}
-            />
-        </div>
-      ;
-      let cancelOrder = null;
-      if (isCancelable(value)) {
-        cancelOrder =
-          <div className="order-actn-btn">
-            <span
-              className="glyphicon glyphicon-remove tooltips"
-              data-tooltip={ cancelMsg }
-              aria-hidden="true"
-              onClick={(e) => {
-                e.preventDefault();
-                e.stopPropagation();
-                handleCancel(value);
-              }}
-            />
-          </div>
-        ;
-      }
-      return (
-        <div className="actions-container">
-          { enableLabelPrinting === 'true' ? printLabel : ''}
-          { cancelOrder }
-        </div>
-      );
-    default:
-      return null;
-  }
-};
 
 export class LabOrdersList extends PureComponent {
   constructor(props) {
@@ -382,104 +275,6 @@ export class LabOrdersList extends PureComponent {
     dispatch(filtersAction.setLabOrdersListFilters(newFilters));
   }
 
-  renderNoDataDisplayText() {
-    const { labOrdersListFilters } = this.props;
-
-    const fromDate = `${moment(labOrdersListFilters.dateFromField).format('YYYY-MMM-DD')}`;
-    const toDate = `${moment(labOrdersListFilters.dateToField).format('YYYY-MMM-DD')}`;
-    return (
-      <div className="no-data-container">
-        <span>
-          <FormattedMessage
-            id="app.orders.not.found"
-            defaultMessage="No orders found"
-            description="No orders found" />
-          &nbsp;
-          <FormattedMessage
-            id="app.from.label"
-            defaultMessage="from"
-            description="from" />
-          &nbsp;
-          { fromDate }
-          &nbsp;
-          <FormattedMessage
-            id="app.to.label"
-            defaultMessage="to"
-            description="to" />
-          &nbsp;
-          { toDate }
-        </span>
-      </div>
-    );
-  }
-
-
-  renderDraftOrderTable() {
-    const {
-      orders,
-      dateAndTimeFormat,
-      labOrdersListFilters,
-      enableLabelPrinting,
-      fetched,
-      intl,
-      locale,
-      totalCount,
-} = this.props;
-    const fields = ["EMR ID", "NAME", "ORDER ID", "ORDER DATE", "LAB ID", "STATUS", "URGENCY", "TEST TYPE", "ACTIONS"];
-
-    const noDataMessage = intl.formatMessage({ id: "app.orders.not.found", defaultMessage: "No orders found" });
-    const rowsMessage = intl.formatMessage({ id: "reactcomponents.table.rows", defaultMessage: "Rows" });
-    const cancelMsg = intl.formatMessage({ id: "reactcomponents.cancel", defaultMessage: "Cancel" });
-    const printMsg = intl.formatMessage({ id: "reactcomponents.print", defaultMessage: "Print" });
-
-    const pageSize = labOrdersListFilters.pageSize ? labOrdersListFilters.pageSize : DEFAULT_TABLE_PAGE_SIZE;
-    let pages = 0;
-    if (totalCount && parseInt(totalCount) > pageSize) {
-     pages = Math.ceil(totalCount/pageSize)
-    }
-
-    const columnMetadata = fields.map(columnName => ({
-      Header:
-  <span className="labs-order-table-head">
-    <FormattedMessage
-      id={`app.labOrdersList.${columnName.replace(" ", "_")}`}
-      defaultMessage={`${columnName}`}
-      description={`LabOrderList table header for ${columnName}`} />
-  </span>,
-      accessor: "",
-      filterAll: true,
-      Cell: data => <Cell {...data} columnName={columnName} handleCancel={this.handleCancel} cancelMsg={cancelMsg} enableLabelPrinting={ enableLabelPrinting } handlePrint={this.handlePrintLabel} printMsg={ printMsg } locale={locale}/>,
-      className: `lab-order-list-cell-${columnName.replace(' ', '-').toLocaleLowerCase()}`,
-      headerClassName: `lab-order-list-column-header lab-order-list-header-${columnName.replace(' ', '-').toLocaleLowerCase()}`,
-    }));
-    return (
-      <div className="lab-order-list" data-cy="order-list">
-        <SortableTable
-          data={orders}
-          filters={labOrdersListFilters}
-          locale={locale}
-          manual={true}
-          pages={pages}
-          getDataWithFilters={filterThrough}
-          columnMetadata={columnMetadata}
-          loading={!fetched}
-          filteredFields={fields}
-          filterType="none"
-          showFilter={false}
-          isSortable={false}
-          onPageChange={page => this.handleFilterChange('page', page)}
-          onPageSizeChange={pageSize => this.handleFilterChange('pageSize', pageSize)}
-          rowOnClick={this.handleShowResultsEntryPage}
-          noDataMessage={ noDataMessage }
-          rowsText={ rowsMessage }
-          minRows={0}
-          page={labOrdersListFilters.page}
-          defaultPageSize={labOrdersListFilters.pageSize || calculateTableRows(orders.length)}
-        />
-      </div>
-    );
-  }
-
   render() {
     const {
       labTests, orders, fetched, orderLabTestLink, labOrdersListFilters: {
@@ -491,7 +286,17 @@ export class LabOrdersList extends PureComponent {
     } = this.state;
     const hasData = !R.isEmpty(orders) && !R.isEmpty(labTests);
     return (
-      <div className="main-container">
+      <div className="main-container" ref={el => (this.printableComponentRef = el)}>
+        <ReactToPrint
+          trigger={() => <button>Print</button>}
+          content={() => this.printableComponentRef}
+          onBeforeGetContent={() => {
+            console.log("gonna print!");
+            this.originalTablePageSize = this.props.labOrdersListFilters.tablePageSize;
+            this.props.labOrdersListFilters.tablePageSize = 99999;
+          }}
+          onAfterPrint={() => { this.props.labOrdersListFilters.tablePageSize = this.originalTablePageSize; }}
+        />
         <h3>
           <FormattedMessage
             id="app.labOrdersList.title"
@@ -511,8 +316,8 @@ export class LabOrdersList extends PureComponent {
             accessionNumber={accessionNumber}
           />
           {!fetched && <Loader />}
-          {(hasData && fetched) && this.renderDraftOrderTable()}
-          {(!hasData && fetched) && this.renderNoDataDisplayText()}
+          {(hasData && fetched) && <DraftOrderTable />}
+          {(!hasData && fetched) && <NoData labOrdersListFilters={labOrdersListFilters} />}
           {returnUrl && (
             <div>
               <br />

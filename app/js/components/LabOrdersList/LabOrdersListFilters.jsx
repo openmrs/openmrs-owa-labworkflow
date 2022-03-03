@@ -7,7 +7,7 @@ import {
   CustomDatePicker as DatePicker, Dropdown, PatientSearch, selectors, patientActions, patientUtil,
 } from '@openmrs/react-components';
 import { FormControl } from "react-bootstrap";
-import { FULFILLER_STATUS } from '../constants';
+import { FULFILLER_STATUS } from '../../constants';
 
 class LabOrderListFilters extends PureComponent {
 
