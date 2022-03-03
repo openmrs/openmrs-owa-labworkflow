@@ -26,6 +26,7 @@
     },
     "rules": {
         "curly": 2,
+        "default-param-last": 1,
         "indent": [
         1,
         2,

@@ -3,7 +3,6 @@ import {
   CLEAR_FORM_CACHE,
 } from '../actions/actionTypes';
 
-
 const initialState = {
   formId: null,
   fields: {},

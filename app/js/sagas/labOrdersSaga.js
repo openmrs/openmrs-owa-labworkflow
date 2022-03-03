@@ -38,7 +38,9 @@ const getOrderNumber = (encounter, state) => {
   const orderNumberConceptUUID = selectProperty(state, 'labResultsTestOrderNumberConcept');
   if (encounter && encounter.obs) {
     // TODO should only ever be one order number on per encounter, but should add better check
-    const orderNumberObs = encounter.obs.find(item => item.concept.uuid === orderNumberConceptUUID);
+    const orderNumberObs = encounter.obs.find(
+      (item) => item.concept.uuid === orderNumberConceptUUID,
+    );
     if (orderNumberObs) {
       return orderNumberObs.value;
     }
@@ -61,7 +63,7 @@ const computeFulfillerStatus = (encounter, state) => {
     const hasObs = !R.isNil(encounter.obs);
     if (hasObs) {
       const notPerformedObs = R.pipe(
-        R.filter(item => item.concept.uuid === didNotPerformQuestion),
+        R.filter((item) => item.concept.uuid === didNotPerformQuestion),
       )(encounter.obs);
 
       if (!R.isEmpty(notPerformedObs)) {
@@ -69,7 +71,7 @@ const computeFulfillerStatus = (encounter, state) => {
       }
 
       const obs = R.pipe(
-        R.filter(item => !concealedConceptUUIDs.includes(item.concept.uuid)),
+        R.filter((item) => !concealedConceptUUIDs.includes(item.concept.uuid)),
       )(encounter.obs);
 
       if (!R.isEmpty(obs)) {
@@ -164,7 +166,7 @@ export function* fetchAndSetTestResultEncounter(args) {
 
     const matchedEncounter = encounters.filter((encounter) => {
       const testOrderObs = encounter.obs.filter(
-        item => item.concept.uuid === labResultsTestOrderNumberConcept,
+        (item) => item.concept.uuid === labResultsTestOrderNumberConcept,
       );
 
       if (testOrderObs.length <= 0) return false;
@@ -239,7 +241,7 @@ function* saveFulfillerStatusHelper(action) {
   const orderNumber = getOrderNumber(action.encounter, state);
 
   if (orderNumber && state.labOrders && state.labOrders.orders) {
-    const labOrder = state.labOrders.orders.find(order => order.orderNumber === orderNumber);
+    const labOrder = state.labOrders.orders.find((order) => order.orderNumber === orderNumber);
 
     if (labOrder) {
       const fulfillerStatus = computeFulfillerStatus(action.encounter, state);

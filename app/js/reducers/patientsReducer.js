@@ -11,7 +11,6 @@ import {
 } from '../actions/actionTypes';
 import initialState from './initialState';
 
-
 export const patientsReducer = (state = initialState.patients, action) => {
   switch (action.type) {
     case ADD_PATIENT:

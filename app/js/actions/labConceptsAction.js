@@ -10,7 +10,7 @@ import {
 } from './actionTypes';
 import { CONCEPT_REP } from './constantsAction';
 
-export const fetchLabConcept = conceptUUID => ({
+export const fetchLabConcept = (conceptUUID) => ({
   type: FETCH_LAB_CONCEPT,
   payload: axiosInstance.get(`/concept/${conceptUUID}?v=${CONCEPT_REP}`),
 });
@@ -24,23 +24,22 @@ export const setSelectedConcept = () => ({
   type: SET_CONCEPT,
 });
 
-export const setFetchStatus = status => ({
+export const setFetchStatus = (status) => ({
   type: SET_FETCH_STATUS,
   status,
 });
 
-export const fetchConcept = conceptUUID => ({
+export const fetchConcept = (conceptUUID) => ({
   type: FETCH_CONCEPT,
   conceptUUID,
 });
 
-
-export const fetchLabResultsToDisplayConceptSet = conceptUuid => ({
+export const fetchLabResultsToDisplayConceptSet = (conceptUuid) => ({
   type: FETCH_LAB_RESULTS_TO_DISPLAY_CONCEPT_SET,
   conceptUuid,
 });
 
-export const setLabResultsToDisplayConceptSet = set => ({
+export const setLabResultsToDisplayConceptSet = (set) => ({
   type: SET_LAB_RESULTS_TO_DISPLAY_CONCEPT_SET,
   set,
 });

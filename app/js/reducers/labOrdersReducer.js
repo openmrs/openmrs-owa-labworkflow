@@ -8,7 +8,6 @@ import {
   SET_LAB_ORDERS,
 } from '../actions/actionTypes';
 
-
 export default (state = initialState.labOrderReducer, action) => {
   switch (action.type) {
     case SET_LAB_RESULTS_ENCOUNTER: {

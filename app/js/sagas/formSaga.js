@@ -22,7 +22,6 @@ import {
   cacheFormValue,
 } from '../actions/formActions';
 
-
 export function clearField(formId, fieldName, dispatch) {
   dispatch(change(formId, fieldName, null));
   dispatch(untouch(formId, fieldName));
@@ -37,7 +36,7 @@ function* resetFormFields(action) {
   let fields = [];
 
   if (isSet) {
-    fields = concept.setMembers.map(m => m.uuid);
+    fields = concept.setMembers.map((m) => m.uuid);
   } else {
     fields = [concept.uuid];
   }

@@ -11,7 +11,7 @@ For further documentation about OpenMRS Open Web Apps see
 
 ### Prerequisites
 
-Requires [NodeJS 6+](https://nodejs.org/en/download/package-manager/).
+Requires [NodeJS 10](https://nodejs.org/en/download/package-manager/).
 
 ### Setup
 

@@ -1,7 +1,6 @@
 import { globalPropertyActions, selectors, getIntl } from '@openmrs/react-components';
 import R from "ramda";
 
-
 /* Define all global properties needed in OWA here
     * labResultsEntryEncounterType: encounter type to use when creating and editing lab results
     * labResultsEntryEncounterTypes: encounter types to search through when displaying lab results
@@ -42,6 +41,6 @@ export const selectProperty = (state, property) => selectors.getGlobalProperty(
   APP_GLOBAL_PROPERTIES[property],
 );
 
-export const selectLocale = state => R.path(['openmrs', 'session', 'locale'], state);
+export const selectLocale = (state) => R.path(['openmrs', 'session', 'locale'], state);
 
 export const getMessage = (state, msgId, msgDefault) => getIntl(R.path(['openmrs', 'session', 'locale'], state)).formatMessage({ id: msgId, defaultMessage: msgDefault });

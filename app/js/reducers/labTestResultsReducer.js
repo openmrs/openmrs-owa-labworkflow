@@ -1,7 +1,6 @@
 import initialState from './initialState';
 import { FETCH_LAB_TEST_RESULTS } from '../actions/actionTypes';
 
-
 export default (state = initialState.labTestResultsReducer, action) => {
   switch (action.type) {
     case `${FETCH_LAB_TEST_RESULTS}_SUCCESS`: {

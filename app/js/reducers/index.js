@@ -34,7 +34,6 @@ const filtersPersistConfig = {
   stateReconciler: autoMergeLevel2,
 };
 
-
 export default combineReducers({
   openmrs: openmrsReducers,
   form: reduxFormReducer,

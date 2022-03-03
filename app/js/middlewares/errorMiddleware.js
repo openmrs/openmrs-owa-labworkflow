@@ -1,7 +1,7 @@
-const isPromise = obj => Promise.resolve(obj) === obj;
+const isPromise = (obj) => Promise.resolve(obj) === obj;
 
 export default function errorMiddleware() {
-  return next => (action) => {
+  return (next) => (action) => {
     if (!isPromise(action.payload)) {
       return next(action);
     }

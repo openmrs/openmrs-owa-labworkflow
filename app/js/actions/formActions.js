@@ -14,7 +14,7 @@ export const cacheFormValue = (formId, field, value) => ({
   value,
 });
 
-export const reloadForm = dispatch => ({
+export const reloadForm = (dispatch) => ({
   type: RELOAD_FORM,
   dispatch,
 });

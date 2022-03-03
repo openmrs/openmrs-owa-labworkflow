@@ -4,41 +4,41 @@ import actionTypes, {
   SET_PATIENT_DATA,
 } from "./actionTypes";
 
-const getPatient = patientUuid => ({
+const getPatient = (patientUuid) => ({
   type: actionTypes.SET_PATIENT.REQUESTED,
   payload: {
     patientUuid,
   },
 });
 
-const getPatientSucceeded = patientRecord => ({
+const getPatientSucceeded = (patientRecord) => ({
   type: actionTypes.SET_PATIENT.SUCCEEDED,
   payload: patientRecord,
 });
 
-const getPatientFailed = message => ({
+const getPatientFailed = (message) => ({
   type: actionTypes.SET_PATIENT.FAILED,
   error: {
     message,
   },
 });
 
-const setSelectedPatient = patientUUID => ({
+const setSelectedPatient = (patientUUID) => ({
   type: SET_SELECTED_PATIENT,
   patientUUID,
 });
 
-const addPatient = patient => ({
+const addPatient = (patient) => ({
   type: ADD_PATIENT,
   patient,
 });
 
-const fetchPatientLabTestResults = patientUUID => ({
+const fetchPatientLabTestResults = (patientUUID) => ({
   type: FETCH_PATIENT_LAB_TEST_RESULTS,
   patientUUID,
 });
 
-const setPatientData = patientInfo => ({
+const setPatientData = (patientInfo) => ({
   type: SET_PATIENT_DATA,
   ...patientInfo,
 });

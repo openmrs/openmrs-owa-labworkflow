@@ -20,7 +20,6 @@ import {
 import { setMember, setFetchStatus, setLabResultsToDisplayConceptSet } from '../actions/labConceptsAction';
 import { CONCEPT_REP } from '../actions/constantsAction';
 
-
 export function* getConcept({ concept, count }) {
   const { uuid } = concept;
   const response = yield call(conceptRest.getConcept, uuid, CONCEPT_REP);
@@ -37,9 +36,7 @@ export function* setConceptMembers(action) {
     yield put(setFetchStatus(true));
     try {
       while (members[iterator]) {
-        forkedProcess = yield fork(
-          getConcept, { concept: members[iterator], count: iterator },
-        );
+        forkedProcess = yield fork(getConcept, { concept: members[iterator], count: iterator });
         iterator += 1;
       }
     } finally {
@@ -91,8 +88,8 @@ export function* fetchAndSetLabResultsToDisplayConceptSet(action) {
     let concepts = response.setMembers;
 
     // flatten the concept set
-    while (concepts.some(c => c.set)) {
-      concepts = concepts.flatMap(c => (c.set ? [...c.setMembers, {
+    while (concepts.some((c) => c.set)) {
+      concepts = concepts.flatMap((c) => (c.set ? [...c.setMembers, {
         uuid: c.uuid,
         set: false,
         conceptClass: c.conceptClass,
@@ -100,11 +97,11 @@ export function* fetchAndSetLabResultsToDisplayConceptSet(action) {
     }
 
     // filter out all that aren't lab tests or tests
-    concepts = concepts.filter(c => c.conceptClass.name === 'Test' || c.conceptClass.name === 'LabSet');
+    concepts = concepts.filter((c) => c.conceptClass.name === 'Test' || c.conceptClass.name === 'LabSet');
 
     // create a set for easy lookup
     const conceptSet = new Set();
-    concepts.forEach(c => conceptSet.add(c.uuid));
+    concepts.forEach((c) => conceptSet.add(c.uuid));
 
     yield put(setLabResultsToDisplayConceptSet(conceptSet));
   } catch (e) {
@@ -113,6 +110,8 @@ export function* fetchAndSetLabResultsToDisplayConceptSet(action) {
 }
 
 export function* fetchLabResultsToDisplayConceptSet() {
-  yield takeEvery(FETCH_LAB_RESULTS_TO_DISPLAY_CONCEPT_SET,
-    fetchAndSetLabResultsToDisplayConceptSet);
+  yield takeEvery(
+    FETCH_LAB_RESULTS_TO_DISPLAY_CONCEPT_SET,
+    fetchAndSetLabResultsToDisplayConceptSet,
+  );
 }

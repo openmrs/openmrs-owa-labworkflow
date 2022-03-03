@@ -31,8 +31,7 @@ export const fetchLabOrders = (testOrderType, options) => {
   });
 };
 
-
-export const updateLabOrderWithEncounter = labOrder => ({
+export const updateLabOrderWithEncounter = (labOrder) => ({
   type: UPDATE_LAB_ORDER_WITH_ENCOUNTER,
   order: labOrder,
 });
@@ -42,7 +41,7 @@ export const fetchLabTestResults = (patientUuid, conceptUuid) => ({
   payload: axiosInstance.get(`obs/?patient=${patientUuid}&concept=${conceptUuid}&v=custom:(id,uuid,display,obsDatetime,value:(id,uuid,display,name:(uuid,name)),encounter:(id,uuid,encounterDatetime,obs:(uuid,display,value)))`),
 });
 
-export const setLabTestTypes = testTypes => ({
+export const setLabTestTypes = (testTypes) => ({
   type: SET_LAB_TEST,
   testTypes,
 });
@@ -53,17 +52,17 @@ export const setLabResultsEncounter = (order, encounter) => ({
   encounter,
 });
 
-export const cancelOrder = order => ({
+export const cancelOrder = (order) => ({
   type: CANCEL_ORDER,
   payload: axiosInstance.post(`order`, order),
 });
 
-export const printLabel = patient => ({
+export const printLabel = (patient) => ({
   type: PRINT_LAB_LABEL,
   payload: axiosInstance.get(`${patient.url}?patient=${patient.patient}&sessionLocation=${patient.sessionLocation}`),
 });
 
-export const saveFulfillerStatus = payload => ({
+export const saveFulfillerStatus = (payload) => ({
   type: SAVE_FULFILLER_STATUS,
   encounter: payload.encounter,
 });

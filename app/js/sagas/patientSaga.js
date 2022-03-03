@@ -51,7 +51,7 @@ function* fetchAndSetTestResults(action) {
     if (additionalEncounterTypeUUIDs) {
       encounterTypeUUIDs = [encounterTypeUUID, ...additionalEncounterTypeUUIDs
         .split(",")
-        .filter(uuid => uuid !== encounterTypeUUID)];
+        .filter((uuid) => uuid !== encounterTypeUUID)];
     }
 
     let encounters = [];
