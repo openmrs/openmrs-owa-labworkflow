@@ -15,7 +15,6 @@ import {
   FETCH_CONCEPT_SUCCEEDED,
   FETCH_CONCEPT_FAILED,
   FETCH_LAB_RESULTS_TO_DISPLAY_CONCEPT_SET,
-  SET_LAB_RESULTS_TO_DISPLAY_CONCEPT_SET,
 } from '../actions/actionTypes';
 import { setMember, setFetchStatus, setLabResultsToDisplayConceptSet } from '../actions/labConceptsAction';
 import { CONCEPT_REP } from '../actions/constantsAction';
