@@ -1,6 +1,8 @@
 import React from "react";
+import moment from "moment";
+import { FormattedMessage } from "react-intl";
 
-export function NoData({ labOrdersListFilters }) {
+export default function NoData({ labOrdersListFilters }) {
   const fromDate = `${moment(labOrdersListFilters.dateFromField).format('YYYY-MMM-DD')}`;
   const toDate = `${moment(labOrdersListFilters.dateToField).format('YYYY-MMM-DD')}`;
   return (

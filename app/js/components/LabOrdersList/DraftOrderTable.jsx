@@ -1,7 +1,12 @@
 import React from "react";
+import PropTypes from "prop-types";
 import { FormattedMessage } from "react-intl";
+import { SortableTable } from "@openmrs/react-components";
+import { DEFAULT_TABLE_PAGE_SIZE } from "../../constants";
+import { calculateTableRows, filterThrough } from '../../utils/helpers';
+import Cell from "./Cell";
 
-export function DraftOrderTable({
+function DraftOrderTable({
   orders,
   labOrdersListFilters,
   enableLabelPrinting,
@@ -43,12 +48,11 @@ export function DraftOrderTable({
     defaultMessage: "Print",
   });
 
-  console.log("page size", labOrdersListFilters.pageSize);
   const pageSize = labOrdersListFilters.pageSize
     ? labOrdersListFilters.pageSize
     : DEFAULT_TABLE_PAGE_SIZE;
   let pages = 0;
-  if (totalCount && parseInt(totalCount) > pageSize) {
+  if (totalCount && parseInt(totalCount, 10) > pageSize) {
     pages = Math.ceil(totalCount / pageSize);
   }
 
@@ -89,7 +93,7 @@ export function DraftOrderTable({
         data={orders}
         filters={labOrdersListFilters}
         locale={locale}
-        manual={true}
+        manual
         pages={pages}
         getDataWithFilters={filterThrough}
         columnMetadata={columnMetadata}
@@ -99,9 +103,7 @@ export function DraftOrderTable({
         showFilter={false}
         isSortable={false}
         onPageChange={(page) => handleFilterChange("page", page)}
-        onPageSizeChange={(pageSize) =>
-          handleFilterChange("pageSize", pageSize)
-        }
+        onPageSizeChange={(newPageSize) => handleFilterChange("pageSize", newPageSize)}
         rowOnClick={handleShowResultsEntryPage}
         noDataMessage={noDataMessage}
         rowsText={rowsMessage}
@@ -114,3 +116,19 @@ export function DraftOrderTable({
     </div>
   );
 }
+
+DraftOrderTable.propTypes = {
+  orders: PropTypes.array.isRequired,
+  labOrdersListFilters: PropTypes.object.isRequired,
+  enableLabelPrinting: PropTypes.string.isRequired,
+  fetched: PropTypes.bool.isRequired,
+  intl: PropTypes.any.isRequired,
+  locale: PropTypes.string.isRequired,
+  totalCount: PropTypes.number.isRequired,
+  handleFilterChange: PropTypes.func.isRequired,
+  handleShowResultsEntryPage: PropTypes.func.isRequired,
+  handleCancel: PropTypes.func.isRequired,
+  handlePrintLabel: PropTypes.func.isRequired,
+};
+
+export default DraftOrderTable;

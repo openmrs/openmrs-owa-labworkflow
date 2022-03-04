@@ -12,18 +12,18 @@ import patientAction from '../actions/patientAction';
 import filtersAction from '../actions/filtersAction';
 import { fetchLabResultsToDisplayConceptSet } from '../actions/labConceptsAction';
 import { loadGlobalProperties, selectProperty } from '../utils/globalProperty';
-import { filterThrough, calculateTableRows, getConceptShortName, sortByDate, filterDuplicates } from '../utils/helpers';
+import {
+  filterThrough, calculateTableRows, getConceptShortName, sortByDate, filterDuplicates, 
+} from '../utils/helpers';
 import "../../css/lab-results-view.scss";
 
+const isLabSet = (obs) => obs.concept.conceptClass && obs.concept.conceptClass.name === 'LabSet';
 
-const isLabSet = obs => obs.concept.conceptClass && obs.concept.conceptClass.name === 'LabSet';
+const isTest = (obs) => obs.concept.conceptClass && obs.concept.conceptClass.name === 'Test';
 
-const isTest = obs => obs.concept.conceptClass && obs.concept.conceptClass.name === 'Test';
-
-const Cell = ({
-  obs, columnName, locale
-}) => {
-
+function Cell({
+  obs, columnName, locale,
+}) {
   // TODO use concept display for this?
   if (columnName === 'TEST TYPE') {
     return (
@@ -62,12 +62,12 @@ const Cell = ({
   return (
     <div className="spiner" />
   );
-};
+}
 
 Cell.propTypes = {
   columnName: PropTypes.string.isRequired,
   obs: PropTypes.shape({}).isRequired,
-  locale: PropTypes.string.isRequired
+  locale: PropTypes.string.isRequired,
 };
 
 export class LabResultsList extends PureComponent {
@@ -124,7 +124,6 @@ export class LabResultsList extends PureComponent {
       });
       dispatch(patientAction.fetchPatientLabTestResults(patientUUID));
     }
-
   }
 
   handleShowLabTrendsPage(obs) {
@@ -149,7 +148,7 @@ export class LabResultsList extends PureComponent {
       [field]: value,
     };
 
-    if ( field === 'pageSize' ) {
+    if (field === 'pageSize') {
       // defaults page to zero when changing pageSize
       newFilters = {
         ...newFilters,
@@ -247,11 +246,11 @@ export class LabResultsList extends PureComponent {
           showFilter={false}
           rowOnClick={this.handleShowLabTrendsPage}
           isSortable={false}
-          onPageSizeChange={pageSize => this.handleFilterChange('pageSize', pageSize)}
-          onPageChange={page => this.handleFilterChange('page', page)}
+          onPageSizeChange={(pageSize) => this.handleFilterChange('pageSize', pageSize)}
+          onPageChange={(page) => this.handleFilterChange('page', page)}
           page={labResultListFilters.page}
-          noDataMessage={ fetched ? noDataMessage : loadingMessage }
-          rowsText={ rowsMessage }
+          noDataMessage={fetched ? noDataMessage : loadingMessage}
+          rowsText={rowsMessage}
           defaultPageSize={labResultListFilters.pageSize || calculateTableRows(labResults.length)}
           subComponent={(row) => {
             const isPanel = isLabSet(row.original);
@@ -340,7 +339,7 @@ export class LabResultsList extends PureComponent {
     const selectedPatient = patients[patientUUID] || {};
 
     // returns "true" if concept set not defined
-    const inLabResultsToDisplayConceptSet = (o => !labResultsToDisplayConceptSet
+    const inLabResultsToDisplayConceptSet = ((o) => !labResultsToDisplayConceptSet
       || !(labResultsToDisplayConceptSet instanceof Set)
       || labResultsToDisplayConceptSet.has(o.concept.uuid));
 
@@ -351,19 +350,17 @@ export class LabResultsList extends PureComponent {
       errorMessage = "",
     } = selectedPatient;
 
-    const getPatientLabResults = () => {
+    const getPatientLabResults = () => 
       // build a list of all obs from the encounters that are of type LabSet or Test
-      return encounters.reduce((acc, encounter) => {
+      encounters.reduce((acc, encounter) => {
         let obs = encounter.obs ? encounter.obs : [];
         // flatten obs groups into a single list of Lab Sets and Tests
-        while (obs.some(o => o.groupMembers && !isLabSet(o))) {
-          obs = obs.flatMap(o => (o.groupMembers && !isLabSet(o) ? o.groupMembers : o));
+        while (obs.some((o) => o.groupMembers && !isLabSet(o))) {
+          obs = obs.flatMap((o) => (o.groupMembers && !isLabSet(o) ? o.groupMembers : o));
         }
-        obs = obs.filter(o => (isLabSet(o) || isTest(o)) && inLabResultsToDisplayConceptSet(o));
+        obs = obs.filter((o) => (isLabSet(o) || isTest(o)) && inLabResultsToDisplayConceptSet(o));
         return [...acc, ...obs];
       }, {});
-    };
-
     if (!error && !R.isEmpty(selectedPatient)) {
       const labResults = getPatientLabResults();
       return (
@@ -374,12 +371,10 @@ export class LabResultsList extends PureComponent {
               defaultMessage="Lab Test Results" />
           </h2>
 
-          <React.Fragment>
-            <div className="lab-result-list-filters">
-              {this.renderDatePickerFilters()}
-            </div>
-            {this.renderLabResultsTable(labResults, labResultFetchStatus)}
-          </React.Fragment>
+          <div className="lab-result-list-filters">
+            {this.renderDatePickerFilters()}
+          </div>
+          {this.renderLabResultsTable(labResults, labResultFetchStatus)}
           <br />
           <button type="button" className="btn btn-lg btn-danger" onClick={() => this.handleNavigateBack()}>Back</button>
         </div>
@@ -428,10 +423,10 @@ export class LabResultsList extends PureComponent {
 }
 
 LabResultsList.propTypes = {
-  dateAndTimeFormat: PropTypes.string.isRequired
+  dateAndTimeFormat: PropTypes.string.isRequired,
 };
 
-export const mapStateToProps = state => ({
+export const mapStateToProps = (state) => ({
   patients: state.patients,
   dateAndTimeFormat: selectProperty(state, 'dateAndTimeFormat') || '',
   labResultsEntryEncounterType: selectProperty(state, 'labResultsEntryEncounterType') || '',

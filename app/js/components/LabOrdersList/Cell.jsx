@@ -1,6 +1,12 @@
+import moment from "moment";
 import React from "react";
+import cn from "classnames";
+import { FormattedMessage } from "react-intl";
+import { computeResultStatus, getConceptShortName, isCancelable } from "../../utils/helpers";
 
-export const Cell = ({ columnName, value, handleCancel, cancelMsg, enableLabelPrinting, handlePrint, printMsg, locale }) => {
+function Cell({
+  columnName, value, handleCancel, cancelMsg, enableLabelPrinting, handlePrint, printMsg, locale, 
+}) {
   switch (columnName) {
     case 'EMR ID': {
       // TODO: refactor this and name column to use React Components patientUtils
@@ -30,7 +36,7 @@ export const Cell = ({ columnName, value, handleCancel, cancelMsg, enableLabelPr
         <div className="table_cell status">
           <span>
             <FormattedMessage
-              id={"app.labResult.status." + computeResultStatus(value)}
+              id={`app.labResult.status.${computeResultStatus(value)}`}
               defaultMessage={computeResultStatus(value)}
             />
           </span>
@@ -68,44 +74,42 @@ export const Cell = ({ columnName, value, handleCancel, cancelMsg, enableLabelPr
         </div>
       );
     case 'ACTIONS':
-      const printLabel =
-        <div className="order-actn-btn">
-            <span
-              className="glyphicon glyphicon-print tooltips"
-              data-tooltip={ printMsg }
-              aria-hidden="true"
-              onClick={(e) => {
-                e.preventDefault();
-                e.stopPropagation();
-                handlePrint(value);
-              }}
-            />
-        </div>
-      ;
-      let cancelOrder = null;
-      if (isCancelable(value)) {
-        cancelOrder =
-          <div className="order-actn-btn">
-            <span
-              className="glyphicon glyphicon-remove tooltips"
-              data-tooltip={ cancelMsg }
-              aria-hidden="true"
-              onClick={(e) => {
-                e.preventDefault();
-                e.stopPropagation();
-                handleCancel(value);
-              }}
-            />
-          </div>
-        ;
-      }
       return (
         <div className="actions-container">
-          { enableLabelPrinting === 'true' ? printLabel : ''}
-          { cancelOrder }
+          { enableLabelPrinting === 'true' ? (
+            <div className="order-actn-btn">
+              <span
+                className="glyphicon glyphicon-print tooltips"
+                data-tooltip={printMsg}
+                aria-hidden="true"
+                onClick={(e) => {
+                  e.preventDefault();
+                  e.stopPropagation();
+                  handlePrint(value);
+                }}
+              />
+            </div>
+          ) : null }
+          { isCancelable(value)
+            ? (
+              <div className="order-actn-btn">
+                <span
+                  className="glyphicon glyphicon-remove tooltips"
+                  data-tooltip={cancelMsg}
+                  aria-hidden="true"
+                  onClick={(e) => {
+                    e.preventDefault();
+                    e.stopPropagation();
+                    handleCancel(value);
+                  }}
+                />
+              </div>
+            ) : null }
         </div>
       );
     default:
       return null;
   }
-};
+}
+
+export default Cell;
