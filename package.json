@@ -112,7 +112,7 @@
     "watch": "NODE_ENV=\"deploy\" webpack --progress --colors --watch --cache=false",
     "test": "npm run lint && jest -u --coverage --maxWorkers=4",
     "lint": "eslint app/js --ext js,jsx",
-    "lint:fix": "eslint --fix  app/js",
+    "lint:fix": "eslint --fix  app/js --ext js,jsx",
     "cypress:open": "cypress open",
     "cy:run": "cypress run",
     "test-cypress": "start-server-and-test start http://localhost:3000/ cy:run"

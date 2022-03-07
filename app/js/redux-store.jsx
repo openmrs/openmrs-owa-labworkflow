@@ -8,7 +8,7 @@
  */
 
 import {
-  createStore, applyMiddleware, combineReducers, compose,
+  createStore, applyMiddleware, compose,
 } from 'redux';
 import createSagaMiddleware from 'redux-saga';
 import promiseMiddleware from 'redux-promise-middleware';
@@ -44,7 +44,7 @@ export default function () {
     compose(
       applyMiddleware(...middlewares),
       window.devToolsExtension && process.env.NODE_ENV !== 'production'
-        ? window.devToolsExtension() : f => f,
+        ? window.devToolsExtension() : (f) => f,
     ),
   );
   initSagas(sagaMiddleware);

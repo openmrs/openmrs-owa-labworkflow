@@ -22,12 +22,14 @@ import routes from './routes';
 import 'toastr/build/toastr.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
-render((
-  <Provider store={exportStore}>
-    <ConnectedRouter history={history}>
-      <HashRouter>
-        {routes(exportStore)}
-      </HashRouter>
-    </ConnectedRouter>
-  </Provider>
-), document.getElementById('app'));
+render(
+  (
+    <Provider store={exportStore}>
+      <ConnectedRouter history={history}>
+        <HashRouter>
+          {routes(exportStore)}
+        </HashRouter>
+      </ConnectedRouter>
+    </Provider>
+  ), document.getElementById('app'),
+);

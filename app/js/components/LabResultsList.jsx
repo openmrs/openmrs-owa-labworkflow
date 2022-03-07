@@ -85,7 +85,7 @@ export class LabResultsList extends PureComponent {
     this.handleNavigateBack = this.handleNavigateBack.bind(this);
   }
 
-  componentWillMount() {
+  UNSAFE_componentWillMount() {
     const { dispatch } = this.props;
     const { patientUUID, returnUrl } = this.state;
 
@@ -137,10 +137,6 @@ export class LabResultsList extends PureComponent {
     }
   }
 
-  navigate(data) {
-    this.handleShowLabTrendsPage(data);
-  }
-
   handleFilterChange(field, value) {
     const { labResultListFilters, dispatch } = this.props;
     let newFilters = {
@@ -181,9 +177,10 @@ export class LabResultsList extends PureComponent {
         </span>
       ),
       accessor: "",
+      // eslint-disable-next-line
       Cell: (data) => (
         <Cell
-          {...data}
+          {...data} // eslint-disable-line
           obs={data.value}
           columnName={columnName}
           dateAndTimeFormat={dateAndTimeFormat}
@@ -204,7 +201,7 @@ export class LabResultsList extends PureComponent {
     const expanderColumn = [
       {
         expander: true,
-        getProps: (state, rowInfo, column) => {
+        getProps: (state, rowInfo) => {
           const isPanel = isLabSet(rowInfo.original);
           return {
             style: {
@@ -216,7 +213,7 @@ export class LabResultsList extends PureComponent {
       {
         Header: '',
         headerClassName: 'expander-cell-header',
-        getProps: (state, rowInfo, column) => {
+        getProps: (state, rowInfo) => {
           const isNotExpanded = !isLabSet(rowInfo.original);
           return {
             style: {
@@ -252,14 +249,16 @@ export class LabResultsList extends PureComponent {
           noDataMessage={fetched ? noDataMessage : loadingMessage}
           rowsText={rowsMessage}
           defaultPageSize={labResultListFilters.pageSize || calculateTableRows(labResults.length)}
+          // eslint-disable-next-line
           subComponent={(row) => {
             const isPanel = isLabSet(row.original);
             const rowFields = ["TEST TYPE", "RESULT", "NORMAL RANGE"];
             const rowColumnMetadata = rowFields.map((columnName) => ({
               accessor: "",
+              // eslint-disable-next-line
               Cell: (data) => (
                 <Cell
-                  {...data}
+                  {...data} // eslint-disable-line
                   obs={data.value}
                   columnName={columnName}
                   type="panel"
@@ -350,17 +349,16 @@ export class LabResultsList extends PureComponent {
       errorMessage = "",
     } = selectedPatient;
 
-    const getPatientLabResults = () => 
+    const getPatientLabResults = () => encounters.reduce((acc, encounter) => {
       // build a list of all obs from the encounters that are of type LabSet or Test
-      encounters.reduce((acc, encounter) => {
-        let obs = encounter.obs ? encounter.obs : [];
-        // flatten obs groups into a single list of Lab Sets and Tests
-        while (obs.some((o) => o.groupMembers && !isLabSet(o))) {
-          obs = obs.flatMap((o) => (o.groupMembers && !isLabSet(o) ? o.groupMembers : o));
-        }
-        obs = obs.filter((o) => (isLabSet(o) || isTest(o)) && inLabResultsToDisplayConceptSet(o));
-        return [...acc, ...obs];
-      }, {});
+      let obs = encounter.obs ? encounter.obs : [];
+      // flatten obs groups into a single list of Lab Sets and Tests
+      while (obs.some((o) => o.groupMembers && !isLabSet(o))) {
+        obs = obs.flatMap((o) => (o.groupMembers && !isLabSet(o) ? o.groupMembers : o));
+      }
+      obs = obs.filter((o) => (isLabSet(o) || isTest(o)) && inLabResultsToDisplayConceptSet(o));
+      return [...acc, ...obs];
+    }, {});
     if (!error && !R.isEmpty(selectedPatient)) {
       const labResults = getPatientLabResults();
       return (

@@ -68,9 +68,10 @@ function OrdersTable({
     ),
     accessor: "",
     filterAll: true,
+    // eslint-disable-next-line
     Cell: (data) => (
       <Cell
-        {...data}
+        {...data} // eslint-disable-line
         columnName={columnName}
         handleCancel={handleCancel}
         cancelMsg={cancelMsg}

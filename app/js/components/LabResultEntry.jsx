@@ -14,7 +14,7 @@ import { formValueSelector, change } from 'redux-form';
 import {
   Row,
   FormGroup,
-  FormControl
+  FormControl,
 } from 'react-bootstrap';
 import moment from 'moment';
 import cn from 'classnames';
@@ -30,7 +30,7 @@ import {
   formValidations,
   Loader,
   formUtil,
-  orderRest
+  orderRest,
 } from '@openmrs/react-components';
 import patientAction from '../actions/patientAction';
 import { fetchLabConcept } from '../actions/labConceptsAction';
@@ -61,11 +61,11 @@ export class LabResultEntry extends PureComponent {
       encounter: {},
       isReady: false,
       accessionNumber: '',
-      isFormSubmitListenerAttached: false
+      isFormSubmitListenerAttached: false,
     };
   }
 
-  componentWillMount() {
+  UNSAFE_componentWillMount() {
     const {
       dispatch,
       history: { location: { state } },
@@ -89,7 +89,7 @@ export class LabResultEntry extends PureComponent {
     }
   }
 
-  componentDidUpdate(prevProps) {
+  componentDidUpdate() {
     const { isDidNotPerformCheckboxSelected, hasCache } = this.props;
     if (isDidNotPerformCheckboxSelected) {
       this.clearObsFields();
@@ -107,16 +107,16 @@ export class LabResultEntry extends PureComponent {
       // additional API call.
       const submitButtonNode = document.querySelectorAll('[type="submit"]');
       if (submitButtonNode[0]) {
-        submitButtonNode[0].onclick = (e) => {
+        submitButtonNode[0].onclick = () => {
           orderRest
             .updateFulfillerDetails(
               { uuid: this.state.labOrder.uuid },
-              { accessionNumber: this.state.accessionNumber }
+              { accessionNumber: this.state.accessionNumber },
             )
             .catch((e) => {
               console.error(
                 `Failed to set accession number to ${this.state.accessionNumber}`,
-                e
+                e,
               );
             });
         };
@@ -139,11 +139,12 @@ export class LabResultEntry extends PureComponent {
     // (see handleShowResultsEntryPage in LabOrdersList)
     // now we don't add the encounter to the order until this page is mounted, so we have to pull
     // the order off the "orders" object in the state
-    // (we separate out the encounter from "isReady" to avoid a flicker between the "enter" and "view" pages
+    // (we separate out the encounter from "isReady" to avoid a flicker between the
+    // "enter" and "view" pages
     // TODO find a better design for this
     const { orders } = this.props;
     const { labOrder } = this.state;
-    const matchingOrder = orders.find(order => order.uuid === labOrder.uuid);
+    const matchingOrder = orders.find((order) => order.uuid === labOrder.uuid);
 
     if (matchingOrder && matchingOrder.labResult) {
       this.setState({
@@ -283,7 +284,7 @@ export class LabResultEntry extends PureComponent {
 
             </span>
             <Obs
-              conceptAnswers={labResultsDidNotPerformReasonAnswer ? labResultsDidNotPerformReasonAnswer : []}
+              conceptAnswers={labResultsDidNotPerformReasonAnswer || []}
               widget="dropdown"
               disabled={!(isDidNotPerformCheckboxSelected)}
               concept={labResultsDidNotPerformReasonQuestion}
@@ -346,7 +347,7 @@ export class LabResultEntry extends PureComponent {
             />
           </div>
           <div className="specimen-collection-date">
-            <div className="col-xs-10 encounter-date-container" style={ { padding: '0px' } }>
+            <div className="col-xs-10 encounter-date-container" style={{ padding: '0px' }}>
               <span className="encounter-date-label">
                 <FormattedMessage
                   id="app.labResultEntry.specimenCollectionDatelabel"
@@ -375,16 +376,14 @@ export class LabResultEntry extends PureComponent {
           && (
             <ObsGroup groupingConcept={selectedLabConcept.uuid} path={selectedLabConcept.uuid}>
               {selectedLabConcept.setMembers.map(
-                member => this.renderFormContent(member),
+                (member) => this.renderFormContent(member),
               )}
-            </ObsGroup>)
-            }
+            </ObsGroup>
+          )}
             {(isSingle)
-        && (this.renderFormContent(selectedLabConcept))
-            }
+        && (this.renderFormContent(selectedLabConcept))}
           </Row>
-        )
-        }
+        )}
       </div>
     );
 
@@ -399,14 +398,16 @@ export class LabResultEntry extends PureComponent {
         </div>
         <div className="fieldset-body">
           {hasRanges
-            && (<span className="range-header-text">
-            <FormattedMessage
-              id={`app.labOrdersList.NORMAL_RANGE`}
-              defaultMessage={`NORMAL RANGE`} />
-          </span>)
-          }
+            && (
+              <span className="range-header-text">
+                <FormattedMessage
+                  id="app.labOrdersList.NORMAL_RANGE"
+                  defaultMessage="NORMAL RANGE" />
+              </span>
+            )}
           {isReady
-            && (<span className="encounter-form-componnent">
+            && (
+              <span className="encounter-form-componnent">
                 {hasEncounter
                   ? (
                     <EncounterFormPanel
@@ -435,10 +436,9 @@ export class LabResultEntry extends PureComponent {
                       orderForObs={selectedOrder}
                       timestampNewEncounterIfCurrentDay
                     />
-                  )
-                }
-            </span>)
-          }
+                  )}
+              </span>
+            )}
         </div>
       </div>
     );
@@ -514,35 +514,33 @@ export class LabResultEntry extends PureComponent {
 
     return (
       <div>
-          <FormGroup controlId={member.display} key={ member.uuid }>
-            <span className="member-display-label">
-              {getConceptShortName(member, locale)}
-            </span>
-            <span className="obs-component">
-              { (memberHasAnswers) && (
-                   <span className="obs-dropdown-field">
-                        <Obs
-                          conceptAnswers={member.answers}
-                          widget="dropdown"
-                          concept={member.uuid}
-                          path={member.uuid}
-                          dropDownStyle={{ width: '100%' }}
-                        />
-                      </span>
-                )
-              }
-              { (!memberHasAnswers) && (
-                  <Obs
-                    {...obsProps}
-                  />
-                )
-              }
-            </span>
-            <span className="units">{units || ''}</span>
-            <span className="valid-range">
-              {normalRange}
-            </span>
-          </FormGroup>
+        <FormGroup controlId={member.display} key={member.uuid}>
+          <span className="member-display-label">
+            {getConceptShortName(member, locale)}
+          </span>
+          <span className="obs-component">
+            { (memberHasAnswers) && (
+              <span className="obs-dropdown-field">
+                <Obs
+                  conceptAnswers={member.answers}
+                  widget="dropdown"
+                  concept={member.uuid}
+                  path={member.uuid}
+                  dropDownStyle={{ width: '100%' }}
+                />
+              </span>
+            )}
+            { (!memberHasAnswers) && (
+              <Obs
+                {...obsProps}  // eslint-disable-line
+              />
+            )}
+          </span>
+          <span className="units">{units || ''}</span>
+          <span className="valid-range">
+            {normalRange}
+          </span>
+        </FormGroup>
 
       </div>
     );
@@ -553,7 +551,6 @@ export class LabResultEntry extends PureComponent {
     const {
       location,
       selectedLabConcept,
-      form,
       returnUrl,
       locale,
     } = this.props;
@@ -582,7 +579,8 @@ export class LabResultEntry extends PureComponent {
                 {` ${getConceptShortName(location.state.concept, locale)}`}
               </h2>
               <div className="lab-result-detail-fieldset-container">
-                {/* Specimen Details box -- content is down below in the DOM, but CSS hacked into this box*/}
+                {/* Specimen Details box -- content is down below in the DOM,
+                    but hacked into this box using CSS */}
                 <div className="fieldset-container lab-result-detail-fieldset">
                   <div className="legend">
                     <span className="lab-result-detail-fieldset-title">
@@ -609,7 +607,8 @@ export class LabResultEntry extends PureComponent {
                         <FormattedMessage
                           id="app.labResultEntry.orderNumberlabel"
                           defaultMessage="Order Number:"
-                        />{" "}
+                        />
+                        {" "}
                         <span className="test-details">
                           {location.state.orderNumber}
                         </span>
@@ -632,10 +631,11 @@ export class LabResultEntry extends PureComponent {
                         <FormattedMessage
                           id="app.labResultEntry.orderDatelabel"
                           defaultMessage="Order Date:"
-                        />{" "}
+                        />
+                        {" "}
                         <span className="test-details">
                           {moment(location.state.dateActivated).format(
-                            "MMM DD h:mm A"
+                            "MMM DD h:mm A",
                           )}
                         </span>
                       </span>
@@ -649,18 +649,16 @@ export class LabResultEntry extends PureComponent {
                         {": "}
                       </span>
                       <span className="col-xs-6">
-                        {this.props.form &&
-                        this.props.form.state === "EDITING" ? (
+                        {this.props.form
+                        && this.props.form.state === "EDITING" ? (
                           <FormControl
-                            name={"lab-id"}
-                            value={this.state.accessionNumber}
-                            onChange={(e) =>
-                              this.setState({ accessionNumber: e.target.value })
-                            }
-                          />
-                        ) : (
-                          this.state.accessionNumber
-                        )}
+                              name="lab-id"
+                              value={this.state.accessionNumber}
+                              onChange={(e) => this.setState({ accessionNumber: e.target.value })}
+                            />
+                          ) : (
+                            this.state.accessionNumber
+                          )}
                       </span>
                     </div>
                     <br />
@@ -767,7 +765,7 @@ const mapStateToProps = (state) => {
     encounterDateOrToday,
     hasCache,
     locale: selectLocale(state),
-    orders: state.labOrders && state.labOrders.orders ? state.labOrders.orders : []
+    orders: state.labOrders && state.labOrders.orders ? state.labOrders.orders : [],
   };
 };
 

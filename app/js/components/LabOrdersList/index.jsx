@@ -46,7 +46,7 @@ export class LabOrdersList extends PureComponent {
     this.handlePrintLabel = this.handlePrintLabel.bind(this);
 
     this.state = {
-      returnUrl: new URLSearchParams(location.search).get("returnUrl"),
+      returnUrl: new URLSearchParams(window.location.search).get("returnUrl"),
     };
   }
 
@@ -86,7 +86,8 @@ export class LabOrdersList extends PureComponent {
       this.handlePatientChange();
     }
 
-    // if a specific order uuid has been specified, redirect to the display page for that order after the orders have been fetched
+    // if a specific order uuid has been specified, redirect to the display
+    // page for that order after the orders have been fetched
     if (fetched && !prevProps.fetched && match.params.orderUuid && orders) {
       const orderToDisplay = this.props.orders.find(
         (o) => o.uuid === match.params.orderUuid,
@@ -350,6 +351,7 @@ export class LabOrdersList extends PureComponent {
         }}
       >
         <ReactToPrint
+          // eslint-disable-next-line
           trigger={() => (
             <button type="button" className="print-button">              
               <span

@@ -4,7 +4,7 @@ import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import { formValidations } from '@openmrs/react-components';
 import { fetchConcept } from '../actions/labConceptsAction';
-import { formatRangeDisplayText, hasMaxAndMinValues } from '../utils/helpers';
+import { formatRangeDisplayText } from '../utils/helpers';
 
 const {
   abnormalMaxValue,
@@ -20,14 +20,14 @@ class ConceptDisplay extends PureComponent {
     };
   }
 
-  componentWillMount() {
+  UNSAFE_componentWillMount() {
     const { conceptUUID, dispatch, concept } = this.props;
     if (R.isEmpty(concept)) {
       dispatch(fetchConcept(conceptUUID));
     }
   }
 
-  componentWillReceiveProps(nextProps) {
+  UNSAFE_componentWillReceiveProps(nextProps) {
     const { concept } = this.state;
     if (nextProps.concept !== concept) {
       this.setState({
@@ -73,7 +73,6 @@ class ConceptDisplay extends PureComponent {
         };
 
         const resultClassName = R.isEmpty(R.reject(R.isNil)(validationRules)) ? "" : 'abnormal-value';
-
 
         return (
           <span className={resultClassName}>

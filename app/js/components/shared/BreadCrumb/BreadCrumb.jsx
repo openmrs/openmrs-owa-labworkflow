@@ -36,7 +36,7 @@ class BreadCrumb extends Component {
     });
   }
 
-  componentWillUnmount(){
+  componentWillUnmount() {
     this.unlisten();
   }
 
@@ -51,7 +51,7 @@ class BreadCrumb extends Component {
     } = this.state;
     let familyName = '';
     const { patientHeaderDetail, history } = this.props;
-    if (typeof patientHeaderDetail !== 'undefined' && patientHeaderDetail.hasOwnProperty('person')) {
+    if (patientHeaderDetail && patientHeaderDetail.person) {
       familyName = patientHeaderDetail.person.personName.familyName;
     }
     let outputBreadcrumb;
@@ -167,6 +167,10 @@ class BreadCrumb extends Component {
   }
 }
 
+BreadCrumb.defaultProps = {
+  patientHeaderDetail: null,
+};
+
 BreadCrumb.propTypes = {
   history: PropTypes.shape({}).isRequired,
   patientHeaderDetail: PropTypes.shape({}),
@@ -178,6 +182,5 @@ const mapStateToProps = ({
 }) => ({
   patientHeaderDetail: patients[selectedPatient],
 });
-
 
 export default withRouter(connect(mapStateToProps)(injectIntl(BreadCrumb)));
