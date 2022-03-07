@@ -6,7 +6,7 @@ import { DEFAULT_TABLE_PAGE_SIZE } from "../../constants";
 import { calculateTableRows, filterThrough } from '../../utils/helpers';
 import Cell from "./Cell";
 
-function DraftOrderTable({
+function OrdersTable({
   orders,
   labOrdersListFilters,
   enableLabelPrinting,
@@ -117,7 +117,7 @@ function DraftOrderTable({
   );
 }
 
-DraftOrderTable.propTypes = {
+OrdersTable.propTypes = {
   orders: PropTypes.array.isRequired,
   labOrdersListFilters: PropTypes.object.isRequired,
   enableLabelPrinting: PropTypes.string.isRequired,
@@ -131,4 +131,4 @@ DraftOrderTable.propTypes = {
   handlePrintLabel: PropTypes.func.isRequired,
 };
 
-export default DraftOrderTable;
+export default OrdersTable;

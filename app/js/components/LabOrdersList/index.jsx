@@ -34,7 +34,7 @@ import { getLabOrderables } from "../../actions/labOrderablesAction";
 import { DEFAULT_ORDERS_BATCH_SIZE, FULFILLER_STATUS } from "../../constants";
 import "./lab-orders-list.scss";
 import NoData from "./NoData";
-import DraftOrderTable from "./DraftOrderTable";
+import OrdersTable from "./OrdersTable";
 
 export class LabOrdersList extends PureComponent {
   constructor(props) {
@@ -388,7 +388,7 @@ export class LabOrdersList extends PureComponent {
         />
         {!fetched && <Loader />}
         {hasData && fetched && (
-          <DraftOrderTable
+          <OrdersTable
             orders={orders}
             labOrdersListFilters={labOrdersListFilters}
             enableLabelPrinting={enableLabelPrinting}
