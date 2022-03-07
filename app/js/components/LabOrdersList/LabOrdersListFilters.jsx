@@ -7,10 +7,9 @@ import {
   CustomDatePicker as DatePicker, Dropdown, PatientSearch, selectors, patientActions, patientUtil,
 } from '@openmrs/react-components';
 import { FormControl } from "react-bootstrap";
-import { FULFILLER_STATUS } from '../constants';
+import { FULFILLER_STATUS } from '../../constants';
 
 class LabOrderListFilters extends PureComponent {
-
   constructor(props) {
     super(props);
 
@@ -46,7 +45,7 @@ class LabOrderListFilters extends PureComponent {
   }
 
   renderAccessionNumberField() {
-    const { handleFieldChange, intl } = this.props;
+    const { intl } = this.props;
     const { accessionNumber } = this.state;
     const enterLabIdLabel = intl.formatMessage({ id: "app.labOrdersListFilters.accessionNumberPlaceholder", defaultMessage: "Enter Lab ID" });
     const labIdLabel = intl.formatMessage({ id: "app.labOrdersListFilters.accessionNumber", defaultMessage: "Lab ID" });
@@ -55,16 +54,16 @@ class LabOrderListFilters extends PureComponent {
         <span>{ labIdLabel }</span>
         <FormControl
           type="text"
-          placeholder={ enterLabIdLabel }
-          value={ accessionNumber }
-          onBlur={ e => this.updateAccessionNumber(e.target.value)}
-          onChange={ e => this.updateAccessionNumberInput(e.target.value)}
-          onKeyUp={ (e) => {
+          placeholder={enterLabIdLabel}
+          value={accessionNumber}
+          onBlur={(e) => this.updateAccessionNumber(e.target.value)}
+          onChange={(e) => this.updateAccessionNumberInput(e.target.value)}
+          onKeyUp={(e) => {
             if (e.keyCode === 13) {
               // keyCode 13 = Enter key
-              this.updateAccessionNumber(e.target.value)
+              this.updateAccessionNumber(e.target.value);
             }
-          } }
+          }}
         />
       </span>
     );
@@ -77,21 +76,28 @@ class LabOrderListFilters extends PureComponent {
         {patient
           ? (
             <span>
-              {patientUtil.getFullName(patient)} ({patientUtil.getPreferredIdentifier(patient)})  <i className="small scale icon-remove-sign" role="toolbar" onClick={() => dispatch(patientActions.clearSelectedPatient())} />
+              {patientUtil.getFullName(patient)}
+              {' '}
+              (
+              {patientUtil.getPreferredIdentifier(patient)}
+              )
+              {' '}
+              <i className="small scale icon-remove-sign" role="toolbar" onClick={() => dispatch(patientActions.clearSelectedPatient())} />
             </span>
-            )
+          )
 
-          : (<PatientSearch
-            clearSearchResultsWhenClearingSearchBox
-            placeholder={intl.formatMessage({ id: "app.labOrdersListFilters.textSearchTitle", defaultMessage: "Search for patient" })}
-            selectRowAutomaticallyIfOnlyOneRow
-            showEmptyListContainer={false}
-            showRefreshButton={false}
-            showPatientCount={false}
-            showSearchButton={false}
-            title=""
-          />)
-        }
+          : (
+            <PatientSearch
+              clearSearchResultsWhenClearingSearchBox
+              placeholder={intl.formatMessage({ id: "app.labOrdersListFilters.textSearchTitle", defaultMessage: "Search for patient" })}
+              selectRowAutomaticallyIfOnlyOneRow
+              showEmptyListContainer={false}
+              showRefreshButton={false}
+              showPatientCount={false}
+              showSearchButton={false}
+              title=""
+            />
+          )}
       </span>
     );
   }
@@ -124,7 +130,7 @@ class LabOrderListFilters extends PureComponent {
         <span>
           <DatePicker
             labelClassName="line"
-            label={ fromMessage }
+            label={fromMessage}
             defaultDate={dateFromField.format('YYYY-MM-DD') || moment().subtract(8, 'days').format()}
             handleDateChange={(field, value) => handleFieldChange(field, value)}
             field="dateFromField"
@@ -133,7 +139,7 @@ class LabOrderListFilters extends PureComponent {
         <span>
           <DatePicker
             labelClassName="line"
-            label={ toMessage }
+            label={toMessage}
             defaultDate={dateToField.format('YYYY-MM-DD') || moment().format()}
             field="dateToField"
             handleDateChange={(field, value) => handleFieldChange(field, value)}
@@ -145,29 +151,25 @@ class LabOrderListFilters extends PureComponent {
 
   renderTestStatusFilter() {
     const { handleFieldChange, testStatusField, intl } = this.props;
-    const allMsg = {
-      uuid: "ALL",
-      display: intl.formatMessage({ id: "reactcomponents.all", defaultMessage: "All" })
-    };
     const selectFromListMsg = intl.formatMessage({ id: "reactcomponents.select.from.list", defaultMessage: "Select from the list" });
     const statusMessage = intl.formatMessage({ id: "app.labOrdersListFilters.statusDropdownLabel", defaultMessage: "Status" });
 
     const statusOptions = [
       {
-        uuid:  FULFILLER_STATUS.ORDERED,
-        display: intl.formatMessage({ id: "app.labResult.status." + FULFILLER_STATUS.ORDERED, defaultMessage: "Ordered" })
+        uuid: FULFILLER_STATUS.ORDERED,
+        display: intl.formatMessage({ id: `app.labResult.status.${FULFILLER_STATUS.ORDERED}`, defaultMessage: "Ordered" }),
       },
       {
         uuid: FULFILLER_STATUS.IN_PROGRESS,
-        display: intl.formatMessage({ id: "app.labResult.status." + FULFILLER_STATUS.IN_PROGRESS, defaultMessage: "Collected" }),
+        display: intl.formatMessage({ id: `app.labResult.status.${FULFILLER_STATUS.IN_PROGRESS}`, defaultMessage: "Collected" }),
       },
       {
         uuid: FULFILLER_STATUS.COMPLETED,
-        display: intl.formatMessage({ id: "app.labResult.status." + FULFILLER_STATUS.COMPLETED, defaultMessage: "Reported" }),
+        display: intl.formatMessage({ id: `app.labResult.status.${FULFILLER_STATUS.COMPLETED}`, defaultMessage: "Reported" }),
       },
       {
         uuid: FULFILLER_STATUS.EXCEPTION,
-        display: intl.formatMessage({ id: "app.labResult.status." + FULFILLER_STATUS.EXCEPTION, defaultMessage: "Not Performed" }),
+        display: intl.formatMessage({ id: `app.labResult.status.${FULFILLER_STATUS.EXCEPTION}`, defaultMessage: "Not Performed" }),
       },
     ];
 
@@ -175,18 +177,20 @@ class LabOrderListFilters extends PureComponent {
       <Dropdown
         className="form-filter-group"
         id="test-status-dropdown"
-        label={ statusMessage }
+        label={statusMessage}
         input={{ value: testStatusField }}
         list={statusOptions}
         field="testStatusField"
-        placeholder={ selectFromListMsg }
+        placeholder={selectFromListMsg}
         handleSelect={(field, value) => handleFieldChange(field, value)}
       />
     );
   }
 
   renderTestTypeFilter() {
-    const { labTests, handleFieldChange, testTypeField, intl } = this.props;
+    const {
+      labTests, handleFieldChange, testTypeField, intl, 
+    } = this.props;
     const allMsg = intl.formatMessage({ id: "reactcomponents.all", defaultMessage: "All" });
     const selectFromListMsg = intl.formatMessage({ id: "reactcomponents.select.from.list", defaultMessage: "Select from the list" });
     const testTypeMsg = intl.formatMessage({ id: "app.labOrdersListFilters.searchDropdownLabel", defaultMessage: "Test Type" });
@@ -194,12 +198,12 @@ class LabOrderListFilters extends PureComponent {
       <Dropdown
         className="form-filter-group"
         id="test-type-dropdown"
-        label={ testTypeMsg }
-        defaultValue={ allMsg }
+        label={testTypeMsg}
+        defaultValue={allMsg}
         input={{ value: testTypeField }}
         list={labTests}
         field="testTypeField"
-        placeholder={ selectFromListMsg }
+        placeholder={selectFromListMsg}
         handleSelect={(field, value) => handleFieldChange(field, value)}
       />
     );
@@ -232,6 +236,7 @@ class LabOrderListFilters extends PureComponent {
 
 LabOrderListFilters.defaultProps = {
   orderLabTestLink: "",
+  patient: null,
 };
 
 LabOrderListFilters.propTypes = {
@@ -243,14 +248,11 @@ LabOrderListFilters.propTypes = {
   dateToField: PropTypes.object.isRequired,
   dateFromField: PropTypes.object.isRequired,
   accessionNumber: PropTypes.string.isRequired,
-  patient: PropTypes.object
+  patient: PropTypes.object,
 };
 
-
-const mapStateToProps = (state, props) => {
-  return {
-    patient: selectors.getSelectedPatientFromStore(state),
-  };
-};
+const mapStateToProps = (state) => ({
+  patient: selectors.getSelectedPatientFromStore(state),
+});
 
 export default connect(mapStateToProps)(injectIntl(LabOrderListFilters));

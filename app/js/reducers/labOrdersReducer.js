@@ -1,4 +1,3 @@
-import R from 'ramda';
 import initialState from './initialState';
 import {
   FETCH_LAB_ORDERS,

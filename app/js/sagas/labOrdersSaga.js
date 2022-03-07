@@ -2,11 +2,8 @@ import R from 'ramda';
 import moment from 'moment';
 import toastr from 'toastr';
 import {
-  take,
   takeEvery,
   put,
-  cancel,
-  fork,
   call,
   select,
 } from 'redux-saga/effects';
@@ -17,8 +14,6 @@ import {
 import {
   FETCH_LAB_ORDERS,
   UPDATE_LAB_ORDER_WITH_ENCOUNTER,
-  SET_LAB_RESULTS_ENCOUNTER,
-  SET_ORDER_LIST_FETCH_STATUS,
   SET_LAB_ORDERS,
   CANCEL_ORDER, SAVE_FULFILLER_STATUS, PRINT_LAB_LABEL,
   FETCH_LAB_ORDERABLES_SETTING,
@@ -223,7 +218,7 @@ function* printLabLabelSuccess(action) {
   }
 }
 
-function* printLabLabelFailure(action) {
+function* printLabLabelFailure() {
   const state = yield select();
   const printMsg = getMessage(state, "app.lab.print.failure", "Fail to print label");
   yield toastr.error(printMsg, { timeout: 2000 });

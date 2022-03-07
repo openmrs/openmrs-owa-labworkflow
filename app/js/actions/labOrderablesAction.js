@@ -19,10 +19,6 @@ export const getLabOrderablesFailure = (error) => ({
   error,
 });
 
-const NotFoundException = (message) => ({
-  response: message,
-});
-
 export const networkError = (error) => ({
   type: NETWORK_ERROR,
   error,

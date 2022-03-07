@@ -29,7 +29,7 @@ import {
 
 import "../../css/lab-results-trends-page.scss";
 
-export const Cell = ({ columnName, conceptUuid, value }) => {
+export function Cell({ columnName, conceptUuid, value }) {
   switch (columnName) {
     case 'SAMPLE DATE': {
       return (
@@ -52,7 +52,7 @@ export const Cell = ({ columnName, conceptUuid, value }) => {
     default:
       return null;
   }
-};
+}
 export class LabTrendsPage extends PureComponent {
   constructor(props) {
     super(props);
@@ -108,13 +108,12 @@ export class LabTrendsPage extends PureComponent {
 
     this.setState({ defaultPageSize: calculateTableRows(results.length) });
 
-    const formatChartData = data => data.map(item => ({
+    const formatChartData = (data) => data.map((item) => ({
       ...item,
       obsDatetime: moment(item.obsDatetime).valueOf(),
     }));
 
-
-    const columnMetadata = fields.map(columnName => ({
+    const columnMetadata = fields.map((columnName) => ({
       Header:
   <span className="labs-order-table-head">
     <FormattedMessage
@@ -122,7 +121,8 @@ export class LabTrendsPage extends PureComponent {
       defaultMessage={`${columnName}`} />
   </span>,
       accessor: "",
-      Cell: data => <Cell {...data} columnName={columnName} conceptUuid={state.uuid} />,
+      // eslint-disable-next-line
+      Cell: (data) => <Cell {...data} columnName={columnName} conceptUuid={state.uuid} />,
       className: `lab-trends-list-cell-${columnName.replace(' ', '-').toLocaleLowerCase()}`,
       headerClassName: `lab-trends-list-column-header lab-trends-list-header-${columnName.replace(' ', '-').toLocaleLowerCase()}`,
     }));
@@ -148,7 +148,8 @@ export class LabTrendsPage extends PureComponent {
 
     return (
       <div>
-        <h1>{`${state.display} `}
+        <h1>
+          {`${state.display} `}
           <FormattedMessage
             id="app.lab.results.trend"
             defaultMessage="Trend" />
@@ -160,8 +161,8 @@ export class LabTrendsPage extends PureComponent {
               columnMetadata={columnMetadata}
               filteredFields={fields}
               isSortable={false}
-              noDataMessage={ noDataMessage }
-              rowsText={ rowsMessage }
+              noDataMessage={noDataMessage}
+              rowsText={rowsMessage}
               minRows={0}
               defaultPageSize={defaultPageSize}
             />

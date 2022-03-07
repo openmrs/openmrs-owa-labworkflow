@@ -6,6 +6,16 @@ i.scale:hover {
   cursor: pointer;
 }
 
+.main-container {
+  position: relative;
+}
+
+.print-button {
+  position: absolute;
+  right: 0;
+  top: -10px;
+}
+
 .lab-order-list {
     position: relative;
     margin-top: 30px;
@@ -264,4 +274,63 @@ i.scale:hover {
   position: relative;
   display: inline-block;
   width: auto;
+}
+
+@media print {
+  .lab-order-list-cell-emr-id,
+  .lab-order-list-header-emr-id {
+    min-width: 60px;
+    max-width: 60px;
+  }
+
+  .lab-order-list-cell-name,
+  .lab-order-list-header-name {
+    min-width: 120px;
+    max-width: 120px;
+  }
+
+  .lab-order-list-cell-order-id,
+  .lab-order-list-header-order-id {
+    min-width: 60px;
+    max-width: 90px;
+  }
+
+  .lab-order-list-cell-order-date,
+  .lab-order-list-header-order-date {
+    min-width: 100px;
+    max-width: 100px;
+  }
+
+  .lab-order-list-cell-lab-id,
+  .lab-order-list-header-lab-id {
+    min-width: 70px;
+    max-width: 70px;
+  }
+
+  .lab-order-list-cell-status,
+  .lab-order-list-header-status {
+    min-width: 65px;
+    max-width: 65px;
+  }
+
+  .lab-order-list-cell-urgency,
+  .lab-order-list-header-urgency {
+    min-width: 65px;
+    max-width: 65px;
+  }
+
+  .lab-order-list-cell-test-type,
+  .lab-order-list-header-test-type {
+    min-width: 300px;
+    max-width: 300px;
+  }
+
+  .lab-order-list-cell-actions,
+  .lab-order-list-header-actions {
+    display: none;
+  }
+
+  .table_cell {
+    font-size: 10pt !important;
+  }
 }
