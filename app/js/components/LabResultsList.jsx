@@ -5,6 +5,7 @@ import PropTypes from 'prop-types';
 import {
   SortableTable, Loader, CustomDatePicker as DatePicker,
 } from '@openmrs/react-components';
+import ReactToPrint from "react-to-print";
 import moment from 'moment';
 import { injectIntl, FormattedMessage } from 'react-intl';
 import ConceptDisplay from './ConceptDisplay';
@@ -331,6 +332,7 @@ export class LabResultsList extends PureComponent {
     const {
       patients,
       labResultsToDisplayConceptSet,
+      labResultListFilters
     } = this.props;
 
     const { patientUUID } = this.state;
@@ -363,16 +365,38 @@ export class LabResultsList extends PureComponent {
       const labResults = getPatientLabResults();
       return (
         <div className="main-container">
-          <h2>
-            <FormattedMessage
-              id="app.labResultsList.title"
-              defaultMessage="Lab Test Results" />
-          </h2>
+          <ReactToPrint
+            // eslint-disable-next-line
+            trigger={() => (
+              <button type="button" className="print-button">              
+                <span
+                  className="glyphicon glyphicon-print"
+                  aria-hidden="true"
+                />
+              </button>
+            )}
+            content={() => this.printableComponentRef}
+            onBeforeGetContent={() => {
+              this.originalTablePageSize = labResultListFilters.pageSize;
+              return this.handleFilterChange("pageSize", 3000);
+            }}
+            onAfterPrint={() => {
+              this.handleFilterChange("pageSize", this.originalTablePageSize);
+            }}
+            documentTitle={`Lab ${moment(labResultListFilters.dateFromField).format("YYYY-MM-DD")} ${moment(labResultListFilters.dateToField).format("YYYY-MM-DD")}`}
+          />
+          <div ref={(el) => { this.printableComponentRef = el; }}>
+            <h2>
+              <FormattedMessage
+                id="app.labResultsList.title"
+                defaultMessage="Lab Test Results" />
+            </h2>
 
-          <div className="lab-result-list-filters">
-            {this.renderDatePickerFilters()}
+            <div className="lab-result-list-filters">
+              {this.renderDatePickerFilters()}
+            </div>
+            {this.renderLabResultsTable(labResults, labResultFetchStatus)}
           </div>
-          {this.renderLabResultsTable(labResults, labResultFetchStatus)}
           <br />
           <button type="button" className="btn btn-lg btn-danger" onClick={() => this.handleNavigateBack()}>Back</button>
         </div>
