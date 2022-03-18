@@ -332,7 +332,7 @@ export class LabResultsList extends PureComponent {
     const {
       patients,
       labResultsToDisplayConceptSet,
-      labResultListFilters
+      labResultListFilters,
     } = this.props;
 
     const { patientUUID } = this.state;
