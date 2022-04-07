@@ -14,7 +14,7 @@ import filtersAction from '../actions/filtersAction';
 import { fetchLabResultsToDisplayConceptSet } from '../actions/labConceptsAction';
 import { loadGlobalProperties, selectProperty } from '../utils/globalProperty';
 import {
-  filterThrough, calculateTableRows, getConceptShortName, sortByDate, filterDuplicates, 
+  filterThrough, calculateTableRows, getConceptShortName, sortByDate, filterDuplicates,
 } from '../utils/helpers';
 import "../../css/lab-results-view.scss";
 
@@ -123,6 +123,7 @@ export class LabResultsList extends PureComponent {
       this.setState({
         globalPropertiesFetched: true,
       });
+      // TODO: this loads *all* test results for a patient, which will likely be non-performent as the number of lab results for a patient grows
       dispatch(patientAction.fetchPatientLabTestResults(patientUUID));
     }
   }
@@ -368,7 +369,7 @@ export class LabResultsList extends PureComponent {
           <ReactToPrint
             // eslint-disable-next-line
             trigger={() => (
-              <button type="button" className="print-button">              
+              <button type="button" className="print-button">
                 <span
                   className="glyphicon glyphicon-print"
                   aria-hidden="true"
