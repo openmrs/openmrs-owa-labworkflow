@@ -415,7 +415,7 @@ export class LabResultsList extends PureComponent {
     }, {});
 
     // iterates through all results (including results in panels) to build an ordered list of all
-    // unique lab results within the list
+    // unique lab tests within the list
     const getAllLabTestTypes = (labResults) => {
       if (labResults && labResults.constructor === Array) {
         let obs = labResults;
