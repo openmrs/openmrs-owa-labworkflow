@@ -54,25 +54,6 @@ export const formatRangeDisplayText = (min = " ", max = " ") => {
   return '';
 };
 
-export const filterThrough = (filters, data, locale) => {
-  let originalData = data;
-
-  const defaultAll = getIntl(locale).formatMessage({ id: "reactcomponents.all", defaultMessage: "All" });
-  if (filters.dateField !== undefined && filters.dateField === "obsDatetime") {
-    if (filters.dateToField && filters.dateFromField) {
-      originalData  = getDateRange(originalData, filters.dateFromField, filters.dateToField, filters.dateField);
-    }
-  }
-
-  if (filters.nameField !== undefined && filters.nameField !== "") {
-    const inputValue = filters.nameField;
-    originalData = matchSorter(originalData, inputValue, { keys: [{ threshold: matchSorter.rankings.CONTAINS, key: 'patient.display' }] });
-  }
-
-
-  return originalData;
-};
-
 export const sortByDate = (path) => data => R.sort(
   (a, b) => dateToInt(R.path(path.split('.'))(a)) - dateToInt(R.path(path.split('.'))(b)), data
 );

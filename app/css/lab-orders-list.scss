@@ -143,19 +143,12 @@ i.scale:hover {
   }
   .top-filters {
     width: 100%;
-
+    .date-picker-filter{
+      display: flex;
+      position: relative;
+      margin-bottom: 5px;
+    }
   }
-}
-.date-picker-filter{
-  display: flex;
-  position: relative;
-  margin-bottom: 5px;
-}
-
-
-.test-type-filter {
-  width: 100%;
-  height: 45px;
 }
 
 

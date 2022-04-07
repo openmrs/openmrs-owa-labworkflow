@@ -3,7 +3,7 @@ import PropTypes from "prop-types";
 import { FormattedMessage } from "react-intl";
 import { SortableTable } from "@openmrs/react-components";
 import { DEFAULT_TABLE_PAGE_SIZE } from "../../constants";
-import { calculateTableRows, filterThrough } from '../../utils/helpers';
+import { calculateTableRows } from '../../utils/helpers';
 import Cell from "./Cell";
 
 function OrdersTable({
@@ -96,7 +96,6 @@ function OrdersTable({
         locale={locale}
         manual
         pages={pages}
-        getDataWithFilters={filterThrough}
         columnMetadata={columnMetadata}
         loading={!fetched}
         filteredFields={fields}

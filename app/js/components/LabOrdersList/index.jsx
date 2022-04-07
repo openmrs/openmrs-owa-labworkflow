@@ -32,7 +32,7 @@ import filtersAction from "../../actions/filtersAction";
 import patientAction from "../../actions/patientAction";
 import { getLabOrderables } from "../../actions/labOrderablesAction";
 import { DEFAULT_ORDERS_BATCH_SIZE, FULFILLER_STATUS } from "../../constants";
-import "./lab-orders-list.scss";
+import "../../../css/lab-orders-list.scss";
 import NoData from "./NoData";
 import OrdersTable from "./OrdersTable";
 
@@ -112,7 +112,7 @@ export class LabOrdersList extends PureComponent {
 
   async handlePrintLabel(order) {
     const {
-      sessionLocation, labelPrintingEndpoint, dispatch, intl, 
+      sessionLocation, labelPrintingEndpoint, dispatch, intl,
     } = this.props;
 
     const printMsg = intl.formatMessage({
@@ -353,7 +353,7 @@ export class LabOrdersList extends PureComponent {
         <ReactToPrint
           // eslint-disable-next-line
           trigger={() => (
-            <button type="button" className="print-button">              
+            <button type="button" className="print-button">
               <span
                 className="glyphicon glyphicon-print"
                 aria-hidden="true"

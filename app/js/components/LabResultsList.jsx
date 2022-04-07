@@ -3,7 +3,7 @@ import R from 'ramda';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import {
-  SortableTable, Loader, CustomDatePicker as DatePicker,
+  SortableTable, Loader, CustomDatePicker as DatePicker, Dropdown,
 } from '@openmrs/react-components';
 import ReactToPrint from "react-to-print";
 import moment from 'moment';
@@ -14,7 +14,11 @@ import filtersAction from '../actions/filtersAction';
 import { fetchLabResultsToDisplayConceptSet } from '../actions/labConceptsAction';
 import { loadGlobalProperties, selectProperty } from '../utils/globalProperty';
 import {
-  filterThrough, calculateTableRows, getConceptShortName, sortByDate, filterDuplicates,
+  calculateTableRows,
+  getConceptShortName,
+  sortByDate,
+  filterDuplicates,
+  getDateRange,
 } from '../utils/helpers';
 import "../../css/lab-results-view.scss";
 
@@ -123,9 +127,34 @@ export class LabResultsList extends PureComponent {
       this.setState({
         globalPropertiesFetched: true,
       });
-      // TODO: this loads *all* test results for a patient, which will likely be non-performent as the number of lab results for a patient grows
       dispatch(patientAction.fetchPatientLabTestResults(patientUUID));
     }
+  }
+
+  // eslint-disable-next-line class-methods-use-this
+  filterData(filters, data) {
+    let filteredData = data;
+
+    if (filters.dateField !== undefined && filters.dateField === "obsDatetime") {
+      if (filters.dateToField && filters.dateFromField) {
+        filteredData = getDateRange(
+          filteredData,
+          filters.dateFromField,
+          filters.dateToField,
+          filters.dateField,
+        );
+      }
+    }
+
+    if (filters.testTypeField !== undefined && filters.testTypeField !== "" && filters.testTypeField !== "All") {
+      const inputValue = filters.testTypeField;
+      filteredData = filteredData.filter(
+        (labTest) => labTest.concept.uuid === inputValue || (labTest.groupMembers
+          && labTest.groupMembers.some((panelMember) => panelMember.concept.uuid === inputValue)),
+      )
+    }
+
+    return filteredData;
   }
 
   handleShowLabTrendsPage(obs) {
@@ -238,7 +267,7 @@ export class LabResultsList extends PureComponent {
         <SortableTable
           data={sortedFilteredListData}
           filters={labResultListFilters}
-          getDataWithFilters={filterThrough}
+          getDataWithFilters={this.filterData}
           columnMetadata={columns}
           filteredFields={fields}
           filterType="none"
@@ -329,6 +358,29 @@ export class LabResultsList extends PureComponent {
     );
   }
 
+  renderTestTypeFilter(labTests) {
+    const {
+      labResultListFilters, intl,
+    } = this.props;
+    const allMsg = intl.formatMessage({ id: "reactcomponents.all", defaultMessage: "All" });
+    const selectFromListMsg = intl.formatMessage({ id: "reactcomponents.select.from.list", defaultMessage: "Select from the list" });
+    const testTypeMsg = `${intl.formatMessage({ id: "app.labOrdersListFilters.searchDropdownLabel", defaultMessage: "Test Type" })}:`;
+
+    return (
+      <Dropdown
+          id="test-type-dropdown"
+          className="test-type-filter"
+          label={testTypeMsg}
+          defaultValue={allMsg}
+          input={{ value: labResultListFilters.testTypeField }}
+          list={labTests}
+          field="testTypeField"
+          placeholder={selectFromListMsg}
+          handleSelect={(field, value) => this.handleFilterChange(field, value)}
+        />
+    );
+  }
+
   render() {
     const {
       patients,
@@ -352,8 +404,8 @@ export class LabResultsList extends PureComponent {
       errorMessage = "",
     } = selectedPatient;
 
+    // build a list of all obs from the encounters that are of type LabSet or Test
     const getPatientLabResults = () => encounters.reduce((acc, encounter) => {
-      // build a list of all obs from the encounters that are of type LabSet or Test
       let obs = encounter.obs ? encounter.obs : [];
       // flatten obs groups into a single list of Lab Sets and Tests
       while (obs.some((o) => o.groupMembers && !isLabSet(o))) {
@@ -362,8 +414,23 @@ export class LabResultsList extends PureComponent {
       obs = obs.filter((o) => (isLabSet(o) || isTest(o)) && inLabResultsToDisplayConceptSet(o));
       return [...acc, ...obs];
     }, {});
+
+    // iterates through all results (including results in panels) to build an ordered list of all
+    // unique lab tests within the list
+    const getAllLabTestTypes = (labResults) => {
+      if (labResults && labResults.constructor === Array) {
+        let obs = labResults;
+        while (obs.some((o) => o.groupMembers)) {
+          obs = obs.flatMap((o) => (o.groupMembers ? o.groupMembers : o))
+        }
+        return R.sortBy(R.compose(R.toLower, R.prop('display')))(R.uniq(obs.map(((o) => (o.concept)))))
+      }
+      return [];
+    }
+
     if (!error && !R.isEmpty(selectedPatient)) {
       const labResults = getPatientLabResults();
+      const labTestTypes = getAllLabTestTypes(labResults);
       return (
         <div className="main-container">
           <ReactToPrint
@@ -395,6 +462,7 @@ export class LabResultsList extends PureComponent {
 
             <div className="lab-result-list-filters">
               {this.renderDatePickerFilters()}
+              {this.renderTestTypeFilter(labTestTypes)}
             </div>
             {this.renderLabResultsTable(labResults, labResultFetchStatus)}
           </div>
