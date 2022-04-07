@@ -332,7 +332,7 @@ export class LabResultsList extends PureComponent {
             labelClassName="line"
             label={(
               <FormattedMessage
-                id="app.labResultsList.dateFromFilterLa"
+                id="app.labResultsList.dateFromFilterLabel"
                 defaultMessage="Date From: " />
             )}
             defaultDate={moment(labResultListFilters.dateFromField).format() || moment().subtract(8, 'days').format()}
