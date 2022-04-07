@@ -3,7 +3,7 @@ import R from 'ramda';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import {
-  SortableTable, Loader, CustomDatePicker as DatePicker, Dropdown, getIntl,
+  SortableTable, Loader, CustomDatePicker as DatePicker, Dropdown,
 } from '@openmrs/react-components';
 import ReactToPrint from "react-to-print";
 import moment from 'moment';
@@ -131,30 +131,31 @@ export class LabResultsList extends PureComponent {
     }
   }
 
-  filterData(filters, data, locale) {
-
+  // eslint-disable-next-line class-methods-use-this
+  filterData(filters, data) {
     let filteredData = data;
 
     if (filters.dateField !== undefined && filters.dateField === "obsDatetime") {
       if (filters.dateToField && filters.dateFromField) {
-        filteredData = getDateRange(filteredData, filters.dateFromField, filters.dateToField, filters.dateField);
+        filteredData = getDateRange(
+          filteredData,
+          filters.dateFromField,
+          filters.dateToField,
+          filters.dateField,
+        );
       }
     }
 
-    if (filters.testTypeField !== undefined && filters.testTypeField !== "" && filters.testTypeField!== "All") {
+    if (filters.testTypeField !== undefined && filters.testTypeField !== "" && filters.testTypeField !== "All") {
       const inputValue = filters.testTypeField;
-      filteredData = filteredData.filter((labTest) => {
-         return labTest.concept.uuid === inputValue
-           || (labTest.groupMembers && labTest.groupMembers.some((panelMember) => {
-              return panelMember.concept.uuid === inputValue
-        }))
-      })
+      filteredData = filteredData.filter(
+        (labTest) => labTest.concept.uuid === inputValue || (labTest.groupMembers
+          && labTest.groupMembers.some((panelMember) => panelMember.concept.uuid === inputValue)),
+      )
     }
 
     return filteredData;
   }
-
-
 
   handleShowLabTrendsPage(obs) {
     // navigate to the lab trends page if the selected is a test (as opposed to a LabSet)
@@ -363,7 +364,7 @@ export class LabResultsList extends PureComponent {
     } = this.props;
     const allMsg = intl.formatMessage({ id: "reactcomponents.all", defaultMessage: "All" });
     const selectFromListMsg = intl.formatMessage({ id: "reactcomponents.select.from.list", defaultMessage: "Select from the list" });
-    const testTypeMsg = intl.formatMessage({ id: "app.labOrdersListFilters.searchDropdownLabel", defaultMessage: "Test Type"}) + ':';
+    const testTypeMsg = `${intl.formatMessage({ id: "app.labOrdersListFilters.searchDropdownLabel", defaultMessage: "Test Type" })}:`;
 
     return (
       <Dropdown
@@ -419,10 +420,10 @@ export class LabResultsList extends PureComponent {
     const getAllLabTestTypes = (labResults) => {
       if (labResults && labResults.constructor === Array) {
         let obs = labResults;
-        while(obs.some((o) => o.groupMembers)) {
+        while (obs.some((o) => o.groupMembers)) {
           obs = obs.flatMap((o) => (o.groupMembers ? o.groupMembers : o))
         }
-        return R.sortBy(R.compose(R.toLower, R.prop('display')))(R.uniq(obs.map((o => (o.concept)))))
+        return R.sortBy(R.compose(R.toLower, R.prop('display')))(R.uniq(obs.map(((o) => (o.concept)))))
       }
       return [];
     }
