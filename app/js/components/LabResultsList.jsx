@@ -3,7 +3,7 @@ import R from 'ramda';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import {
-  SortableTable, Loader, CustomDatePicker as DatePicker,
+  SortableTable, Loader, CustomDatePicker as DatePicker, Dropdown, getIntl,
 } from '@openmrs/react-components';
 import ReactToPrint from "react-to-print";
 import moment from 'moment';
@@ -14,7 +14,11 @@ import filtersAction from '../actions/filtersAction';
 import { fetchLabResultsToDisplayConceptSet } from '../actions/labConceptsAction';
 import { loadGlobalProperties, selectProperty } from '../utils/globalProperty';
 import {
-  filterThrough, calculateTableRows, getConceptShortName, sortByDate, filterDuplicates, 
+  calculateTableRows,
+  getConceptShortName,
+  sortByDate,
+  filterDuplicates,
+  getDateRange,
 } from '../utils/helpers';
 import "../../css/lab-results-view.scss";
 
@@ -127,6 +131,31 @@ export class LabResultsList extends PureComponent {
     }
   }
 
+  filterData(filters, data, locale) {
+
+    let filteredData = data;
+
+    if (filters.dateField !== undefined && filters.dateField === "obsDatetime") {
+      if (filters.dateToField && filters.dateFromField) {
+        filteredData = getDateRange(filteredData, filters.dateFromField, filters.dateToField, filters.dateField);
+      }
+    }
+
+    if (filters.testTypeField !== undefined && filters.testTypeField !== "" && filters.testTypeField!== "All") {
+      const inputValue = filters.testTypeField;
+      filteredData = filteredData.filter((labTest) => {
+         return labTest.concept.uuid === inputValue
+           || (labTest.groupMembers && labTest.groupMembers.some((panelMember) => {
+              return panelMember.concept.uuid === inputValue
+        }))
+      })
+    }
+
+    return filteredData;
+  }
+
+
+
   handleShowLabTrendsPage(obs) {
     // navigate to the lab trends page if the selected is a test (as opposed to a LabSet)
     const { history } = this.props;
@@ -237,7 +266,7 @@ export class LabResultsList extends PureComponent {
         <SortableTable
           data={sortedFilteredListData}
           filters={labResultListFilters}
-          getDataWithFilters={filterThrough}
+          getDataWithFilters={this.filterData}
           columnMetadata={columns}
           filteredFields={fields}
           filterType="none"
@@ -303,7 +332,7 @@ export class LabResultsList extends PureComponent {
             labelClassName="line"
             label={(
               <FormattedMessage
-                id="app.labResultsList.dateFromFilterLabel"
+                id="app.labResultsList.dateFromFilterLa"
                 defaultMessage="Date From: " />
             )}
             defaultDate={moment(labResultListFilters.dateFromField).format() || moment().subtract(8, 'days').format()}
@@ -325,6 +354,29 @@ export class LabResultsList extends PureComponent {
           />
         </span>
       </span>
+    );
+  }
+
+  renderTestTypeFilter(labTests) {
+    const {
+      labResultListFilters, intl,
+    } = this.props;
+    const allMsg = intl.formatMessage({ id: "reactcomponents.all", defaultMessage: "All" });
+    const selectFromListMsg = intl.formatMessage({ id: "reactcomponents.select.from.list", defaultMessage: "Select from the list" });
+    const testTypeMsg = intl.formatMessage({ id: "app.labOrdersListFilters.searchDropdownLabel", defaultMessage: "Test Type"}) + ':';
+
+    return (
+      <Dropdown
+          id="test-type-dropdown"
+          className="test-type-filter"
+          label={testTypeMsg}
+          defaultValue={allMsg}
+          input={{ value: labResultListFilters.testTypeField }}
+          list={labTests}
+          field="testTypeField"
+          placeholder={selectFromListMsg}
+          handleSelect={(field, value) => this.handleFilterChange(field, value)}
+        />
     );
   }
 
@@ -351,8 +403,8 @@ export class LabResultsList extends PureComponent {
       errorMessage = "",
     } = selectedPatient;
 
+    // build a list of all obs from the encounters that are of type LabSet or Test
     const getPatientLabResults = () => encounters.reduce((acc, encounter) => {
-      // build a list of all obs from the encounters that are of type LabSet or Test
       let obs = encounter.obs ? encounter.obs : [];
       // flatten obs groups into a single list of Lab Sets and Tests
       while (obs.some((o) => o.groupMembers && !isLabSet(o))) {
@@ -361,14 +413,29 @@ export class LabResultsList extends PureComponent {
       obs = obs.filter((o) => (isLabSet(o) || isTest(o)) && inLabResultsToDisplayConceptSet(o));
       return [...acc, ...obs];
     }, {});
+
+    // iterates through all results (including results in panels) to build an ordered list of all
+    // unique lab results within the list
+    const getAllLabTestTypes = (labResults) => {
+      if (labResults && labResults.constructor === Array) {
+        let obs = labResults;
+        while(obs.some((o) => o.groupMembers)) {
+          obs = obs.flatMap((o) => (o.groupMembers ? o.groupMembers : o))
+        }
+        return R.sortBy(R.compose(R.toLower, R.prop('display')))(R.uniq(obs.map((o => (o.concept)))))
+      }
+      return [];
+    }
+
     if (!error && !R.isEmpty(selectedPatient)) {
       const labResults = getPatientLabResults();
+      const labTestTypes = getAllLabTestTypes(labResults);
       return (
         <div className="main-container">
           <ReactToPrint
             // eslint-disable-next-line
             trigger={() => (
-              <button type="button" className="print-button">              
+              <button type="button" className="print-button">
                 <span
                   className="glyphicon glyphicon-print"
                   aria-hidden="true"
@@ -394,6 +461,7 @@ export class LabResultsList extends PureComponent {
 
             <div className="lab-result-list-filters">
               {this.renderDatePickerFilters()}
+              {this.renderTestTypeFilter(labTestTypes)}
             </div>
             {this.renderLabResultsTable(labResults, labResultFetchStatus)}
           </div>
