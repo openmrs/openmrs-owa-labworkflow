@@ -416,12 +416,18 @@ export class LabResultsList extends PureComponent {
     }, {});
 
     // iterates through all results (including results in panels) to build an ordered list of all
-    // unique lab tests within the list
-    const getAllLabTestTypes = (labResults) => {
+    // unique lab tests and panels within the list
+    const getAllLabTestAndPanelTypes = (labResults) => {
       if (labResults && labResults.constructor === Array) {
         let obs = labResults;
         while (obs.some((o) => o.groupMembers)) {
-          obs = obs.flatMap((o) => (o.groupMembers ? o.groupMembers : o))
+          obs = obs.flatMap((o) => {
+            if (o.groupMembers) {
+              const { groupMembers, ...rest } = o;
+              return [rest, ...o.groupMembers]
+            }
+            return o;
+          })
         }
         return R.sortBy(R.compose(R.toLower, R.prop('display')))(R.uniq(obs.map(((o) => (o.concept)))))
       }
@@ -430,7 +436,7 @@ export class LabResultsList extends PureComponent {
 
     if (!error && !R.isEmpty(selectedPatient)) {
       const labResults = getPatientLabResults();
-      const labTestTypes = getAllLabTestTypes(labResults);
+      const labTestAndPanelTypes = getAllLabTestAndPanelTypes(labResults);
       return (
         <div className="main-container">
           <ReactToPrint
@@ -462,7 +468,7 @@ export class LabResultsList extends PureComponent {
 
             <div className="lab-result-list-filters">
               {this.renderDatePickerFilters()}
-              {this.renderTestTypeFilter(labTestTypes)}
+              {this.renderTestTypeFilter(labTestAndPanelTypes)}
             </div>
             {this.renderLabResultsTable(labResults, labResultFetchStatus)}
           </div>
