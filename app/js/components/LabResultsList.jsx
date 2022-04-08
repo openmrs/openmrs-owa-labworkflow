@@ -175,8 +175,8 @@ export class LabResultsList extends PureComponent {
       [field]: value,
     };
 
-    if (field === 'pageSize') {
-      // defaults page to zero when changing pageSize
+    if (field === 'pageSize' || field === 'dateFromField' || field === 'dateToField' || field === 'testTypeField') {
+      // defaults page to zero when changing pageSize, date filter, or test filter
       newFilters = {
         ...newFilters,
         page: 0,
