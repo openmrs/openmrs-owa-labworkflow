@@ -3,7 +3,7 @@ import R from 'ramda';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import {
-  SortableTable, Loader, CustomDatePicker as DatePicker, Dropdown,
+  SortableTable, Loader, CustomDatePicker as DatePicker, Dropdown, withLocalization,
 } from '@openmrs/react-components';
 import ReactToPrint from "react-to-print";
 import moment from 'moment';
@@ -12,6 +12,7 @@ import ConceptDisplay from './ConceptDisplay';
 import patientAction from '../actions/patientAction';
 import filtersAction from '../actions/filtersAction';
 import { fetchLabResultsToDisplayConceptSet } from '../actions/labConceptsAction';
+import Patientheader from './shared/PatientHeader';
 import { loadGlobalProperties, selectProperty } from '../utils/globalProperty';
 import {
   calculateTableRows,
@@ -83,6 +84,7 @@ export class LabResultsList extends PureComponent {
       patientUUID: new URLSearchParams(window.location.search).get('patient'),
       returnUrl: new URLSearchParams(window.location.search).get('returnUrl'),
       globalPropertiesFetched: false,
+      isPrinting: false,
     };
 
     this.handleShowLabTrendsPage = this.handleShowLabTrendsPage.bind(this);
@@ -151,7 +153,7 @@ export class LabResultsList extends PureComponent {
       filteredData = filteredData.filter(
         (labTest) => labTest.concept.uuid === inputValue || (labTest.groupMembers
           && labTest.groupMembers.some((panelMember) => panelMember.concept.uuid === inputValue)),
-      )
+      );
     }
 
     return filteredData;
@@ -368,16 +370,16 @@ export class LabResultsList extends PureComponent {
 
     return (
       <Dropdown
-          id="test-type-dropdown"
-          className="test-type-filter"
-          label={testTypeMsg}
-          defaultValue={allMsg}
-          input={{ value: labResultListFilters.testTypeField }}
-          list={labTests}
-          field="testTypeField"
-          placeholder={selectFromListMsg}
-          handleSelect={(field, value) => this.handleFilterChange(field, value)}
-        />
+        id="test-type-dropdown"
+        className="test-type-filter"
+        label={testTypeMsg}
+        defaultValue={allMsg}
+        input={{ value: labResultListFilters.testTypeField }}
+        list={labTests}
+        field="testTypeField"
+        placeholder={selectFromListMsg}
+        handleSelect={(field, value) => this.handleFilterChange(field, value)}
+      />
     );
   }
 
@@ -424,15 +426,17 @@ export class LabResultsList extends PureComponent {
           obs = obs.flatMap((o) => {
             if (o.groupMembers) {
               const { groupMembers, ...rest } = o;
-              return [rest, ...o.groupMembers]
+              return [rest, ...o.groupMembers];
             }
             return o;
-          })
+          });
         }
-        return R.sortBy(R.compose(R.toLower, R.prop('display')))(R.uniq(obs.map(((o) => (o.concept)))))
+        return R.sortBy(R.compose(R.toLower, R.prop('display')))(R.uniq(obs.map(((o) => (o.concept)))));
       }
       return [];
-    }
+    };
+    
+    const LocalizedPatientHeader = withLocalization(Patientheader);
 
     if (!error && !R.isEmpty(selectedPatient)) {
       const labResults = getPatientLabResults();
@@ -452,10 +456,14 @@ export class LabResultsList extends PureComponent {
             content={() => this.printableComponentRef}
             onBeforeGetContent={() => {
               this.originalTablePageSize = labResultListFilters.pageSize;
-              return this.handleFilterChange("pageSize", 3000);
+              return Promise.all([
+                this.setState({ isPrinting: true }),
+                this.handleFilterChange("pageSize", 3000),
+              ]);
             }}
             onAfterPrint={() => {
               this.handleFilterChange("pageSize", this.originalTablePageSize);
+              this.setState({ isPrinting: false });
             }}
             documentTitle={`Lab ${moment(labResultListFilters.dateFromField).format("YYYY-MM-DD")} ${moment(labResultListFilters.dateToField).format("YYYY-MM-DD")}`}
           />
@@ -465,7 +473,7 @@ export class LabResultsList extends PureComponent {
                 id="app.labResultsList.title"
                 defaultMessage="Lab Test Results" />
             </h2>
-
+            {this.state.isPrinting ? <LocalizedPatientHeader /> : null}
             <div className="lab-result-list-filters">
               {this.renderDatePickerFilters()}
               {this.renderTestTypeFilter(labTestAndPanelTypes)}
