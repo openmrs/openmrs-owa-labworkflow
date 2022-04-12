@@ -151,7 +151,12 @@ i.scale:hover {
     100% { transform: rotate(360deg); }
 }
 
-
+@media print {
+  .ReactTable {
+    max-width: 90%;
+    margin-left: 5%;
+  }
+}
 
 
 
