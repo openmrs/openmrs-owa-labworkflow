@@ -146,7 +146,7 @@ export class LabResultsList extends PureComponent {
       }
     }
 
-    if (filters.testTypeField !== undefined && filters.testTypeField !== "" && filters.testTypeField.length === 36) {  // === 36 to test if it's a uuid vs the "All/Tout" field
+    if (filters.testTypeField !== undefined && filters.testTypeField !== "" && filters.testTypeField.length === 36) { // === 36 to test if it's a uuid vs the "All/Tout" field
       const inputValue = filters.testTypeField;
       filteredData = filteredData.filter(
         (labTest) => labTest.concept.uuid === inputValue || (labTest.groupMembers
