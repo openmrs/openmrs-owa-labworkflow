@@ -88,6 +88,8 @@ export class LabResultsList extends PureComponent {
       globalPropertiesFetched: false,
       isPrinting: false,
     };
+    this.resolveCellsLoadingPromise = null;
+    this.cellsLoadingPromise = new Promise((resolve) => { this.resolveCellsLoadingPromise = resolve; });
 
     this.handleShowLabTrendsPage = this.handleShowLabTrendsPage.bind(this);
     this.handleFilterChange = this.handleFilterChange.bind(this);
@@ -187,7 +189,7 @@ export class LabResultsList extends PureComponent {
         page: 0,
       };
       // create a new cellsLoadingPromise because some new cells might have to load
-      this.cellsLoadingPromise = new Promise(() => {});
+      this.cellsLoadingPromise = new Promise((resolve) => { this.resolveCellsLoadingPromise = resolve; });
     }
     return dispatch(filtersAction.setLabResultListFilters(newFilters));
   }
@@ -201,7 +203,9 @@ export class LabResultsList extends PureComponent {
     this.cellsLoaded = { ...this.cellsLoaded, [name + obs.uuid]: true };
     console.log(Object.keys(this.cellsLoaded).length, "loaded. Target: ", this.currentPageSize * 2);
     if (Object.keys(this.cellsLoaded).length >= (this.currentPageSize * 2)) {
-      Promise.resolve(this.cellsLoadingPromise);
+      console.log("resolving", this.cellsLoadingPromise);
+      this.resolveCellsLoadingPromise();
+      // setTimeout(() => { console.log("resolving");  }, 5000);
     }
   }
 
@@ -478,10 +482,11 @@ export class LabResultsList extends PureComponent {
             content={() => this.printableComponentRef}
             onBeforeGetContent={() => {
               this.originalTablePageSize = labResultListFilters.pageSize || 10;
+              console.log("onBeforeGetContent promise", this.cellsLoadingPromise);
               return Promise.all([
                 this.setState({ isPrinting: true }),
                 this.handleFilterChange("pageSize", 100),
-                this.state.cellsLoadingPromise,
+                this.cellsLoadingPromise,
               ]);
             }}
             onAfterPrint={() => {
