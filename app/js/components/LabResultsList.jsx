@@ -225,21 +225,19 @@ export class LabResultsList extends PureComponent {
       ),
       accessor: "",
       // eslint-disable-next-line
-      Cell: (data) => {
-        return (
-          <Cell
-          {...data} // eslint-disable-line
-            obs={data.value}
-            columnName={columnName}
-            dateAndTimeFormat={dateAndTimeFormat}
-            type="single"
-            show={false}
-            navigate={this.handleShowLabTrendsPage}
-            locale={this.props.locale}
-            onLoaded={() => this.handleCellLoaded(columnName, data.value)}
-          />
-        );
-      },
+      Cell: (data) => (
+        <Cell
+        {...data} // eslint-disable-line
+          obs={data.value}
+          columnName={columnName}
+          dateAndTimeFormat={dateAndTimeFormat}
+          type="single"
+          show={false}
+          navigate={this.handleShowLabTrendsPage}
+          locale={this.props.locale}
+          onLoaded={() => this.handleCellLoaded(columnName, data.value)}
+        />
+      ),
       className: `lab-results-list-cell-${columnName
         .replace(" ", "-")
         .toLocaleLowerCase()}`,
