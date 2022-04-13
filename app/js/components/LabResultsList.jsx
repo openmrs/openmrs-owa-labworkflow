@@ -201,11 +201,8 @@ export class LabResultsList extends PureComponent {
 
   handleCellLoaded(name, obs) {
     this.cellsLoaded = { ...this.cellsLoaded, [name + obs.uuid]: true };
-    console.log(Object.keys(this.cellsLoaded).length, "loaded. Target: ", this.currentPageSize * 2);
     if (Object.keys(this.cellsLoaded).length >= (this.currentPageSize * 2)) {
-      console.log("resolving", this.cellsLoadingPromise);
       this.resolveCellsLoadingPromise();
-      // setTimeout(() => { console.log("resolving");  }, 5000);
     }
   }
 
@@ -482,7 +479,6 @@ export class LabResultsList extends PureComponent {
             content={() => this.printableComponentRef}
             onBeforeGetContent={() => {
               this.originalTablePageSize = labResultListFilters.pageSize || 10;
-              console.log("onBeforeGetContent promise", this.cellsLoadingPromise);
               return Promise.all([
                 this.setState({ isPrinting: true }),
                 this.handleFilterChange("pageSize", 100),
