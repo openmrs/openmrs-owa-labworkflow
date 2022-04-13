@@ -12,27 +12,19 @@ const {
 } = formValidations;
 
 class ConceptDisplay extends PureComponent {
-  constructor(props) {
-    super(props);
-
-    this.state = {
-      concept: {},
-    };
-  }
-
   UNSAFE_componentWillMount() {
-    const { conceptUUID, dispatch, concept } = this.props;
+    const {
+      conceptUUID, dispatch, concept,
+    } = this.props;
     if (R.isEmpty(concept)) {
       dispatch(fetchConcept(conceptUUID));
     }
   }
 
   UNSAFE_componentWillReceiveProps(nextProps) {
-    const { concept } = this.state;
-    if (nextProps.concept !== concept) {
-      this.setState({
-        concept,
-      });
+    const { onLoaded } = this.props;
+    if (!R.isEmpty(nextProps.concept)) {
+      onLoaded();
     }
   }
 
@@ -98,6 +90,7 @@ class ConceptDisplay extends PureComponent {
 
 ConceptDisplay.defaultProps = {
   value: '',
+  onLoaded: () => {},
 };
 
 ConceptDisplay.propTypes = {
@@ -105,6 +98,7 @@ ConceptDisplay.propTypes = {
   conceptUUID: PropTypes.string.isRequired,
   dispatch: PropTypes.func.isRequired,
   type: PropTypes.string.isRequired,
+  onLoaded: PropTypes.func,
   value: PropTypes.oneOfType([
     PropTypes.string,
     PropTypes.number,
