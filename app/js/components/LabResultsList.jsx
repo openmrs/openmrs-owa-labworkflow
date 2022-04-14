@@ -3,7 +3,7 @@ import R from 'ramda';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import {
-  SortableTable, Loader, CustomDatePicker as DatePicker, Dropdown,
+  SortableTable, Loader, CustomDatePicker as DatePicker, Dropdown, withLocalization,
 } from '@openmrs/react-components';
 import ReactToPrint from "react-to-print";
 import moment from 'moment';
@@ -12,6 +12,7 @@ import ConceptDisplay from './ConceptDisplay';
 import patientAction from '../actions/patientAction';
 import filtersAction from '../actions/filtersAction';
 import { fetchLabResultsToDisplayConceptSet } from '../actions/labConceptsAction';
+import Patientheader from './shared/PatientHeader';
 import { loadGlobalProperties, selectProperty } from '../utils/globalProperty';
 import {
   calculateTableRows,
@@ -27,7 +28,7 @@ const isLabSet = (obs) => obs.concept.conceptClass && obs.concept.conceptClass.n
 const isTest = (obs) => obs.concept.conceptClass && obs.concept.conceptClass.name === 'Test';
 
 function Cell({
-  obs, columnName, locale,
+  obs, columnName, locale, onLoaded,
 }) {
   // TODO use concept display for this?
   if (columnName === 'TEST TYPE') {
@@ -53,6 +54,7 @@ function Cell({
           conceptUUID={obs.concept.uuid}
           type="result"
           value={typeof obs.value === 'object' ? getConceptShortName(obs.value, locale) : obs.value}
+          onLoaded={onLoaded}
         />
       </div>
     );
@@ -60,7 +62,7 @@ function Cell({
 
   if (columnName === 'NORMAL RANGE') {
     return (
-      <ConceptDisplay conceptUUID={obs.concept.uuid} type="range" />
+      <ConceptDisplay conceptUUID={obs.concept.uuid} type="range" onLoaded={onLoaded} />
     );
   }
 
@@ -73,6 +75,7 @@ Cell.propTypes = {
   columnName: PropTypes.string.isRequired,
   obs: PropTypes.shape({}).isRequired,
   locale: PropTypes.string.isRequired,
+  onLoaded: PropTypes.func.isRequired,
 };
 
 export class LabResultsList extends PureComponent {
@@ -83,11 +86,17 @@ export class LabResultsList extends PureComponent {
       patientUUID: new URLSearchParams(window.location.search).get('patient'),
       returnUrl: new URLSearchParams(window.location.search).get('returnUrl'),
       globalPropertiesFetched: false,
+      isPrinting: false,
     };
+    this.resolveCellsLoadingPromise = null;
+    this.cellsLoadingPromise = new Promise((resolve) => {
+      this.resolveCellsLoadingPromise = resolve;
+    });
 
     this.handleShowLabTrendsPage = this.handleShowLabTrendsPage.bind(this);
     this.handleFilterChange = this.handleFilterChange.bind(this);
     this.handleNavigateBack = this.handleNavigateBack.bind(this);
+    this.handleCellLoaded = this.handleCellLoaded.bind(this);
   }
 
   UNSAFE_componentWillMount() {
@@ -151,7 +160,7 @@ export class LabResultsList extends PureComponent {
       filteredData = filteredData.filter(
         (labTest) => labTest.concept.uuid === inputValue || (labTest.groupMembers
           && labTest.groupMembers.some((panelMember) => panelMember.concept.uuid === inputValue)),
-      )
+      );
     }
 
     return filteredData;
@@ -181,13 +190,24 @@ export class LabResultsList extends PureComponent {
         ...newFilters,
         page: 0,
       };
+      // create a new cellsLoadingPromise because some new cells might have to load
+      this.cellsLoadingPromise = new Promise((resolve) => {
+        this.resolveCellsLoadingPromise = resolve;
+      });
     }
-    dispatch(filtersAction.setLabResultListFilters(newFilters));
+    return dispatch(filtersAction.setLabResultListFilters(newFilters));
   }
 
   handleNavigateBack() {
     const { returnUrl } = this.state;
     window.location = returnUrl;
+  }
+
+  handleCellLoaded(name, obs) {
+    this.cellsLoaded = { ...this.cellsLoaded, [name + obs.uuid]: true };
+    if (Object.keys(this.cellsLoaded).length >= (this.currentPageSize * 2)) {
+      this.resolveCellsLoadingPromise();
+    }
   }
 
   renderLabResultsTable(labResults, fetched) {
@@ -211,7 +231,7 @@ export class LabResultsList extends PureComponent {
       // eslint-disable-next-line
       Cell: (data) => (
         <Cell
-          {...data} // eslint-disable-line
+        {...data} // eslint-disable-line
           obs={data.value}
           columnName={columnName}
           dateAndTimeFormat={dateAndTimeFormat}
@@ -219,6 +239,7 @@ export class LabResultsList extends PureComponent {
           show={false}
           navigate={this.handleShowLabTrendsPage}
           locale={this.props.locale}
+          onLoaded={() => this.handleCellLoaded(columnName, data.value)}
         />
       ),
       className: `lab-results-list-cell-${columnName
@@ -258,6 +279,10 @@ export class LabResultsList extends PureComponent {
 
     const sortedListData = sortByDate('obsDatetime')(labResults).reverse();
     const sortedFilteredListData = filterDuplicates(sortedListData);
+    const pageSize = labResultListFilters.pageSize || 10;
+    const pageData = sortedFilteredListData.slice(0, pageSize);
+    this.currentPageSize = pageData.length;
+
     const loadingMessage = intl.formatMessage({ id: "app.results.loading", defaultMessage: "Searching..." });
     const noDataMessage = intl.formatMessage({ id: "app.results.not.found", defaultMessage: "No results found" });
     const rowsMessage = intl.formatMessage({ id: "reactcomponents.table.rows", defaultMessage: "Rows" });
@@ -265,7 +290,9 @@ export class LabResultsList extends PureComponent {
     return (
       <div className="lab-results-list">
         <SortableTable
-          data={sortedFilteredListData}
+          data={pageData}
+          manual
+          pages={Math.ceil(sortedFilteredListData.length / pageSize)}
           filters={labResultListFilters}
           getDataWithFilters={this.filterData}
           columnMetadata={columns}
@@ -274,7 +301,7 @@ export class LabResultsList extends PureComponent {
           showFilter={false}
           rowOnClick={this.handleShowLabTrendsPage}
           isSortable={false}
-          onPageSizeChange={(pageSize) => this.handleFilterChange('pageSize', pageSize)}
+          onPageSizeChange={(newPageSize) => this.handleFilterChange('pageSize', newPageSize)}
           onPageChange={(page) => this.handleFilterChange('page', page)}
           page={labResultListFilters.page}
           noDataMessage={fetched ? noDataMessage : loadingMessage}
@@ -368,16 +395,16 @@ export class LabResultsList extends PureComponent {
 
     return (
       <Dropdown
-          id="test-type-dropdown"
-          className="test-type-filter"
-          label={testTypeMsg}
-          defaultValue={allMsg}
-          input={{ value: labResultListFilters.testTypeField }}
-          list={labTests}
-          field="testTypeField"
-          placeholder={selectFromListMsg}
-          handleSelect={(field, value) => this.handleFilterChange(field, value)}
-        />
+        id="test-type-dropdown"
+        className="test-type-filter"
+        label={testTypeMsg}
+        defaultValue={allMsg}
+        input={{ value: labResultListFilters.testTypeField }}
+        list={labTests}
+        field="testTypeField"
+        placeholder={selectFromListMsg}
+        handleSelect={(field, value) => this.handleFilterChange(field, value)}
+      />
     );
   }
 
@@ -424,15 +451,17 @@ export class LabResultsList extends PureComponent {
           obs = obs.flatMap((o) => {
             if (o.groupMembers) {
               const { groupMembers, ...rest } = o;
-              return [rest, ...o.groupMembers]
+              return [rest, ...o.groupMembers];
             }
             return o;
-          })
+          });
         }
-        return R.sortBy(R.compose(R.toLower, R.prop('display')))(R.uniq(obs.map(((o) => (o.concept)))))
+        return R.sortBy(R.compose(R.toLower, R.prop('display')))(R.uniq(obs.map(((o) => (o.concept)))));
       }
       return [];
-    }
+    };
+    
+    const LocalizedPatientHeader = withLocalization(Patientheader);
 
     if (!error && !R.isEmpty(selectedPatient)) {
       const labResults = getPatientLabResults();
@@ -451,11 +480,16 @@ export class LabResultsList extends PureComponent {
             )}
             content={() => this.printableComponentRef}
             onBeforeGetContent={() => {
-              this.originalTablePageSize = labResultListFilters.pageSize;
-              return this.handleFilterChange("pageSize", 3000);
+              this.originalTablePageSize = labResultListFilters.pageSize || 10;
+              return Promise.all([
+                this.setState({ isPrinting: true }),
+                this.handleFilterChange("pageSize", 100),
+                this.cellsLoadingPromise,
+              ]);
             }}
             onAfterPrint={() => {
               this.handleFilterChange("pageSize", this.originalTablePageSize);
+              this.setState({ isPrinting: false });
             }}
             documentTitle={`Lab ${moment(labResultListFilters.dateFromField).format("YYYY-MM-DD")} ${moment(labResultListFilters.dateToField).format("YYYY-MM-DD")}`}
           />
@@ -465,7 +499,7 @@ export class LabResultsList extends PureComponent {
                 id="app.labResultsList.title"
                 defaultMessage="Lab Test Results" />
             </h2>
-
+            {this.state.isPrinting ? <LocalizedPatientHeader /> : null}
             <div className="lab-result-list-filters">
               {this.renderDatePickerFilters()}
               {this.renderTestTypeFilter(labTestAndPanelTypes)}
