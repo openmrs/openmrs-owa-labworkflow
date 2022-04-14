@@ -1,4 +1,4 @@
-import React, { PureComponent, useEffect, useState } from 'react';
+import React, { PureComponent } from 'react';
 import R from 'ramda';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
@@ -89,7 +89,9 @@ export class LabResultsList extends PureComponent {
       isPrinting: false,
     };
     this.resolveCellsLoadingPromise = null;
-    this.cellsLoadingPromise = new Promise((resolve) => { this.resolveCellsLoadingPromise = resolve; });
+    this.cellsLoadingPromise = new Promise((resolve) => {
+      this.resolveCellsLoadingPromise = resolve;
+    });
 
     this.handleShowLabTrendsPage = this.handleShowLabTrendsPage.bind(this);
     this.handleFilterChange = this.handleFilterChange.bind(this);
@@ -189,7 +191,9 @@ export class LabResultsList extends PureComponent {
         page: 0,
       };
       // create a new cellsLoadingPromise because some new cells might have to load
-      this.cellsLoadingPromise = new Promise((resolve) => { this.resolveCellsLoadingPromise = resolve; });
+      this.cellsLoadingPromise = new Promise((resolve) => {
+        this.resolveCellsLoadingPromise = resolve;
+      });
     }
     return dispatch(filtersAction.setLabResultListFilters(newFilters));
   }
