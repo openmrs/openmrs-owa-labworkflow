@@ -32,6 +32,7 @@ function divideIntoChunks(array, chunkSize) {
     const chunkIndex = Math.floor(index / chunkSize);
   
     if (!resultArray[chunkIndex]) {
+      // eslint-disable-next-line no-param-reassign
       resultArray[chunkIndex] = []; // start a new chunk
     }
   
@@ -522,6 +523,7 @@ export class LabResultsList extends PureComponent {
             </div>
             {this.state.isPrinting
               ? divideIntoChunks(labResults, 20).map(
+                // eslint-disable-next-line max-len
                 (labResultsChunk) => this.renderLabResultsTable(labResultsChunk, labResultFetchStatus),
               )
               : this.renderLabResultsTable(labResults, labResultFetchStatus)}
