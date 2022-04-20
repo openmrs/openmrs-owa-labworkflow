@@ -220,7 +220,6 @@ export class LabResultsList extends PureComponent {
   handleCellLoaded(name, obs) {
     this.cellsLoaded = { ...this.cellsLoaded, [name + obs.uuid]: true };
     if (Object.keys(this.cellsLoaded).length >= (this.currentPageSize * 2)) {
-      console.log("loaded", Object.keys(this.cellsLoaded).length, "of", this.currentPageSize * 2);
       this.resolveCellsLoadingPromise();
     }
   }
