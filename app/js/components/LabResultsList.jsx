@@ -27,6 +27,21 @@ const isLabSet = (obs) => obs.concept.conceptClass && obs.concept.conceptClass.n
 
 const isTest = (obs) => obs.concept.conceptClass && obs.concept.conceptClass.name === 'Test';
 
+function divideIntoChunks(array, chunkSize) {
+  return array.reduce((resultArray, item, index) => { 
+    const chunkIndex = Math.floor(index / chunkSize);
+  
+    if (!resultArray[chunkIndex]) {
+      // eslint-disable-next-line no-param-reassign
+      resultArray[chunkIndex] = []; // start a new chunk
+    }
+  
+    resultArray[chunkIndex].push(item);
+  
+    return resultArray;
+  }, []);
+}
+
 function Cell({
   obs, columnName, locale, onLoaded,
 }) {
@@ -277,11 +292,8 @@ export class LabResultsList extends PureComponent {
       }];
     const columns = expanderColumn.concat(columnMetadata);
 
-    const sortedListData = sortByDate('obsDatetime')(labResults).reverse();
-    const sortedFilteredListData = filterDuplicates(sortedListData);
     const pageSize = labResultListFilters.pageSize || 10;
-    const pageData = sortedFilteredListData.slice(0, pageSize);
-    this.currentPageSize = pageData.length;
+    const pageData = labResults.slice(0, pageSize);
 
     const loadingMessage = intl.formatMessage({ id: "app.results.loading", defaultMessage: "Searching..." });
     const noDataMessage = intl.formatMessage({ id: "app.results.not.found", defaultMessage: "No results found" });
@@ -292,7 +304,7 @@ export class LabResultsList extends PureComponent {
         <SortableTable
           data={pageData}
           manual
-          pages={Math.ceil(sortedFilteredListData.length / pageSize)}
+          pages={Math.ceil(labResults.length / pageSize)}
           filters={labResultListFilters}
           getDataWithFilters={this.filterData}
           columnMetadata={columns}
@@ -432,15 +444,19 @@ export class LabResultsList extends PureComponent {
     } = selectedPatient;
 
     // build a list of all obs from the encounters that are of type LabSet or Test
-    const getPatientLabResults = () => encounters.reduce((acc, encounter) => {
-      let obs = encounter.obs ? encounter.obs : [];
-      // flatten obs groups into a single list of Lab Sets and Tests
-      while (obs.some((o) => o.groupMembers && !isLabSet(o))) {
-        obs = obs.flatMap((o) => (o.groupMembers && !isLabSet(o) ? o.groupMembers : o));
-      }
-      obs = obs.filter((o) => (isLabSet(o) || isTest(o)) && inLabResultsToDisplayConceptSet(o));
-      return [...acc, ...obs];
-    }, {});
+    const getPatientLabResults = () => {
+      const unfiltered = encounters.reduce((acc, encounter) => {
+        let obs = encounter.obs ? encounter.obs : [];
+        // flatten obs groups into a single list of Lab Sets and Tests
+        while (obs.some((o) => o.groupMembers && !isLabSet(o))) {
+          obs = obs.flatMap((o) => (o.groupMembers && !isLabSet(o) ? o.groupMembers : o));
+        }
+        obs = obs.filter((o) => (isLabSet(o) || isTest(o)) && inLabResultsToDisplayConceptSet(o));
+        return [...acc, ...obs];
+      }, {});
+      const sorted = sortByDate('obsDatetime')(unfiltered).reverse();
+      return filterDuplicates(sorted);
+    };
 
     // iterates through all results (including results in panels) to build an ordered list of all
     // unique lab tests and panels within the list
@@ -465,6 +481,7 @@ export class LabResultsList extends PureComponent {
 
     if (!error && !R.isEmpty(selectedPatient)) {
       const labResults = getPatientLabResults();
+      this.currentPageSize = Math.min(labResults.length, labResultListFilters.pageSize || 10);
       const labTestAndPanelTypes = getAllLabTestAndPanelTypes(labResults);
       return (
         <div className="main-container">
@@ -483,7 +500,7 @@ export class LabResultsList extends PureComponent {
               this.originalTablePageSize = labResultListFilters.pageSize || 10;
               return Promise.all([
                 this.setState({ isPrinting: true }),
-                this.handleFilterChange("pageSize", 100),
+                this.handleFilterChange("pageSize", 3000),
                 this.cellsLoadingPromise,
               ]);
             }}
@@ -504,7 +521,12 @@ export class LabResultsList extends PureComponent {
               {this.renderDatePickerFilters()}
               {this.renderTestTypeFilter(labTestAndPanelTypes)}
             </div>
-            {this.renderLabResultsTable(labResults, labResultFetchStatus)}
+            {this.state.isPrinting
+              ? divideIntoChunks(labResults, 20).map(
+                // eslint-disable-next-line max-len
+                (labResultsChunk) => this.renderLabResultsTable(labResultsChunk, labResultFetchStatus),
+              )
+              : this.renderLabResultsTable(labResults, labResultFetchStatus)}
           </div>
           <br />
           <button type="button" className="btn btn-lg btn-danger" onClick={() => this.handleNavigateBack()}>Back</button>
