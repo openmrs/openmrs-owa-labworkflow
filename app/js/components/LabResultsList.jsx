@@ -301,64 +301,66 @@ export class LabResultsList extends PureComponent {
 
     return (
       <div className="lab-results-list">
-        <SortableTable
-          data={pageData}
-          manual
-          pages={Math.ceil(labResults.length / pageSize)}
-          filters={labResultListFilters}
-          getDataWithFilters={this.filterData}
-          columnMetadata={columns}
-          filteredFields={fields}
-          filterType="none"
-          showFilter={false}
-          rowOnClick={this.handleShowLabTrendsPage}
-          isSortable={false}
-          onPageSizeChange={(newPageSize) => this.handleFilterChange('pageSize', newPageSize)}
-          onPageChange={(page) => this.handleFilterChange('page', page)}
-          page={labResultListFilters.page}
-          noDataMessage={fetched ? noDataMessage : loadingMessage}
-          rowsText={rowsMessage}
-          defaultPageSize={labResultListFilters.pageSize || calculateTableRows(labResults.length)}
-          // eslint-disable-next-line
+        <div className="lab-results-list-container">
+          <SortableTable
+            data={pageData}
+            manual
+            pages={Math.ceil(labResults.length / pageSize)}
+            filters={labResultListFilters}
+            getDataWithFilters={this.filterData}
+            columnMetadata={columns}
+            filteredFields={fields}
+            filterType="none"
+            showFilter={false}
+            rowOnClick={this.handleShowLabTrendsPage}
+            isSortable={false}
+            onPageSizeChange={(newPageSize) => this.handleFilterChange('pageSize', newPageSize)}
+            onPageChange={(page) => this.handleFilterChange('page', page)}
+            page={labResultListFilters.page}
+            noDataMessage={fetched ? noDataMessage : loadingMessage}
+            rowsText={rowsMessage}
+            defaultPageSize={labResultListFilters.pageSize || calculateTableRows(labResults.length)}
+            // eslint-disable-next-line
           subComponent={(row) => {
-            const isPanel = isLabSet(row.original);
-            const rowFields = ["TEST TYPE", "RESULT", "NORMAL RANGE"];
-            const rowColumnMetadata = rowFields.map((columnName) => ({
-              accessor: "",
-              // eslint-disable-next-line
+              const isPanel = isLabSet(row.original);
+              const rowFields = ["TEST TYPE", "RESULT", "NORMAL RANGE"];
+              const rowColumnMetadata = rowFields.map((columnName) => ({
+                accessor: "",
+                // eslint-disable-next-line
               Cell: (data) => (
-                <Cell
+                  <Cell
                   {...data} // eslint-disable-line
-                  obs={data.value}
-                  columnName={columnName}
-                  type="panel"
-                  navigate={this.handleShowLabTrendsPage}
-                />
-              ),
-              className: `lab-results-list-cell-${columnName
-                .replace(" ", "-")
-                .toLocaleLowerCase()}`,
-              headerClassName: "lab-results-list-header",
-            }));
-            if (isPanel) {
-              return (
-                <div className="collapsible-panel">
-                  <SortableTable
-                    data={row.original.groupMembers}
-                    columnMetadata={rowColumnMetadata}
-                    collapseOnDataChange={false}
-                    collapseOnPageChange={false}
-                    defaultPageSize={row.original.groupMembers.length}
-                    showPagination={false}
-                    rowOnClick={this.handleShowLabTrendsPage}
-                    defaultClassName=""
+                    obs={data.value}
+                    columnName={columnName}
+                    type="panel"
+                    navigate={this.handleShowLabTrendsPage}
                   />
-                </div>
-              );
-            }
-            return '';
-          }}
-        />
+                ),
+                className: `lab-results-list-cell-${columnName
+                  .replace(" ", "-")
+                  .toLocaleLowerCase()}`,
+                headerClassName: "lab-results-list-header",
+              }));
+              if (isPanel) {
+                return (
+                  <div className="collapsible-panel">
+                    <SortableTable
+                      data={row.original.groupMembers}
+                      columnMetadata={rowColumnMetadata}
+                      collapseOnDataChange={false}
+                      collapseOnPageChange={false}
+                      defaultPageSize={row.original.groupMembers.length}
+                      showPagination={false}
+                      rowOnClick={this.handleShowLabTrendsPage}
+                      defaultClassName=""
+                    />
+                  </div>
+                );
+              }
+              return '';
+            }}
+          />
+        </div>
       </div>
     );
   }
@@ -427,7 +429,7 @@ export class LabResultsList extends PureComponent {
       labResultListFilters,
     } = this.props;
 
-    const { patientUUID } = this.state;
+    const { patientUUID, isPrinting } = this.state;
 
     const selectedPatient = patients[patientUUID] || {};
 
@@ -488,11 +490,15 @@ export class LabResultsList extends PureComponent {
           <ReactToPrint
             // eslint-disable-next-line
             trigger={() => (
-              <button type="button" className="print-button">
-                <span
-                  className="glyphicon glyphicon-print"
-                  aria-hidden="true"
-                />
+              <button type="button" className="print-button" disabled={isPrinting}>
+                { isPrinting
+                  ? <div className="spiner" />
+                  : (
+                    <span
+                      className="glyphicon glyphicon-print"
+                      aria-hidden="true"
+                    />
+                  ) }
               </button>
             )}
             content={() => this.printableComponentRef}
