@@ -326,8 +326,8 @@ export class LabResultsList extends PureComponent {
               const rowFields = ["TEST TYPE", "RESULT", "NORMAL RANGE"];
               const rowColumnMetadata = rowFields.map((columnName) => ({
                 accessor: "",
-                // eslint-disable-next-line
-              Cell: (data) => (
+                // eslint-disable-next-line react/no-unstable-nested-components
+                Cell: (data) => (
                   <Cell
                   {...data} // eslint-disable-line
                     obs={data.value}
