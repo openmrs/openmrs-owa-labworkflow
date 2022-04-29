@@ -74,6 +74,12 @@ i.scale:hover {
   cursor: pointer;
 }
 
+.lab-results-list-container {
+  position: relative;
+  page-break-inside: avoid;
+  page-break-after: always;
+}
+
 .lab-results-list {
     position: relative;
     margin-top: 30px;
