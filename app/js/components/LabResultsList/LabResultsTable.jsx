@@ -152,9 +152,10 @@ class LabResultsTable extends PureComponent {
             rowsText={rowsMessage}
             defaultPageSize={labResultListFilters.pageSize || calculateTableRows(labResults.length)}
             subComponent={
-              React.memo((data) => (
+              // eslint-disable-next-line react/no-unstable-nested-components
+              (data) => (
                 <Row rowData={data} handleShowLabTrendsPage={this.handleShowLabTrendsPage} />
-              ))
+              )
             }
           />
         </div>

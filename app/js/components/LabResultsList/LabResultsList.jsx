@@ -7,7 +7,6 @@ import {
 import ReactToPrint from "react-to-print";
 import moment from 'moment';
 import { injectIntl, FormattedMessage } from 'react-intl';
-import { Alert, ProgressBar } from 'react-bootstrap';
 import { isLabSet, isTest } from "./util";
 import patientAction from '../../actions/patientAction';
 import filtersAction from '../../actions/filtersAction';
