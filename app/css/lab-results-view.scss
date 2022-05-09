@@ -53,6 +53,7 @@
 .lab-results-list-cell-result {
   display: flex;
   justify-content: center;
+  text-align: center;
 }
 
 .lab-results-list-cell-normal-range,
@@ -64,6 +65,7 @@
 .lab-results-list-cell-normal-range {
     display: flex;
     justify-content: center;
+    text-align: center;
   }
 
 i.scale:hover {
@@ -87,6 +89,8 @@ i.scale:hover {
 .table_cell {
     font-size: 15px;
     text-transform: capitalize;
+    white-space: normal !important;
+
     &.urgency {
         &.stat {
             text-transform: uppercase !important;

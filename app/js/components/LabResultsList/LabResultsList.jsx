@@ -1,31 +1,24 @@
 import React, { PureComponent } from 'react';
 import R from 'ramda';
 import { connect } from 'react-redux';
-import PropTypes from 'prop-types';
 import {
-  SortableTable, Loader, CustomDatePicker as DatePicker, Dropdown, withLocalization,
+  Loader, CustomDatePicker as DatePicker, Dropdown, withLocalization,
 } from '@openmrs/react-components';
 import ReactToPrint from "react-to-print";
 import moment from 'moment';
 import { injectIntl, FormattedMessage } from 'react-intl';
-import ConceptDisplay from './ConceptDisplay';
-import patientAction from '../actions/patientAction';
-import filtersAction from '../actions/filtersAction';
-import { fetchLabResultsToDisplayConceptSet } from '../actions/labConceptsAction';
-import Patientheader from './shared/PatientHeader';
-import { loadGlobalProperties, selectProperty } from '../utils/globalProperty';
+import { isLabSet, isTest } from "./util";
+import patientAction from '../../actions/patientAction';
+import filtersAction from '../../actions/filtersAction';
+import { fetchLabResultsToDisplayConceptSet } from '../../actions/labConceptsAction';
+import Patientheader from '../shared/PatientHeader';
+import { loadGlobalProperties, selectProperty } from '../../utils/globalProperty';
 import {
-  calculateTableRows,
-  getConceptShortName,
   sortByDate,
   filterDuplicates,
-  getDateRange,
-} from '../utils/helpers';
-import "../../css/lab-results-view.scss";
-
-const isLabSet = (obs) => obs.concept.conceptClass && obs.concept.conceptClass.name === 'LabSet';
-
-const isTest = (obs) => obs.concept.conceptClass && obs.concept.conceptClass.name === 'Test';
+} from '../../utils/helpers';
+import "../../../css/lab-results-view.scss";
+import LabResultsTable from './LabResultsTable';
 
 function divideIntoChunks(array, chunkSize) {
   return array.reduce((resultArray, item, index) => { 
@@ -42,58 +35,7 @@ function divideIntoChunks(array, chunkSize) {
   }, []);
 }
 
-function Cell({
-  obs, columnName, locale, onLoaded,
-}) {
-  // TODO use concept display for this?
-  if (columnName === 'TEST TYPE') {
-    return (
-      <div className="table_cell type">
-        <span>{obs.concept ? obs.concept.display : ''}</span>
-      </div>
-    );
-  }
-
-  if (columnName === 'DATE') {
-    return (
-      <div className="table_cell date">
-        <span>{moment(obs.obsDatetime).format("DD-MMM-YYYY") || ''}</span>
-      </div>
-    );
-  }
-
-  if (columnName === 'RESULT') {
-    return (
-      <div className="table_cell result">
-        <ConceptDisplay
-          conceptUUID={obs.concept.uuid}
-          type="result"
-          value={typeof obs.value === 'object' ? getConceptShortName(obs.value, locale) : obs.value}
-          onLoaded={onLoaded}
-        />
-      </div>
-    );
-  }
-
-  if (columnName === 'NORMAL RANGE') {
-    return (
-      <ConceptDisplay conceptUUID={obs.concept.uuid} type="range" onLoaded={onLoaded} />
-    );
-  }
-
-  return (
-    <div className="spiner" />
-  );
-}
-
-Cell.propTypes = {
-  columnName: PropTypes.string.isRequired,
-  obs: PropTypes.shape({}).isRequired,
-  locale: PropTypes.string.isRequired,
-  onLoaded: PropTypes.func.isRequired,
-};
-
-export class LabResultsList extends PureComponent {
+class LabResultsList extends PureComponent {
   constructor() {
     super();
 
@@ -103,12 +45,13 @@ export class LabResultsList extends PureComponent {
       globalPropertiesFetched: false,
       isPrinting: false,
     };
+
+    this.cellsLoaded = {};
     this.resolveCellsLoadingPromise = null;
     this.cellsLoadingPromise = new Promise((resolve) => {
       this.resolveCellsLoadingPromise = resolve;
     });
 
-    this.handleShowLabTrendsPage = this.handleShowLabTrendsPage.bind(this);
     this.handleFilterChange = this.handleFilterChange.bind(this);
     this.handleNavigateBack = this.handleNavigateBack.bind(this);
     this.handleCellLoaded = this.handleCellLoaded.bind(this);
@@ -155,43 +98,6 @@ export class LabResultsList extends PureComponent {
     }
   }
 
-  // eslint-disable-next-line class-methods-use-this
-  filterData(filters, data) {
-    let filteredData = data;
-
-    if (filters.dateField !== undefined && filters.dateField === "obsDatetime") {
-      if (filters.dateToField && filters.dateFromField) {
-        filteredData = getDateRange(
-          filteredData,
-          filters.dateFromField,
-          filters.dateToField,
-          filters.dateField,
-        );
-      }
-    }
-
-    if (filters.testTypeField !== undefined && filters.testTypeField !== "" && filters.testTypeField.length === 36) { // === 36 to test if it's a uuid vs the "All/Tout" field
-      const inputValue = filters.testTypeField;
-      filteredData = filteredData.filter(
-        (labTest) => labTest.concept.uuid === inputValue || (labTest.groupMembers
-          && labTest.groupMembers.some((panelMember) => panelMember.concept.uuid === inputValue)),
-      );
-    }
-
-    return filteredData;
-  }
-
-  handleShowLabTrendsPage(obs) {
-    // navigate to the lab trends page if the selected is a test (as opposed to a LabSet)
-    const { history } = this.props;
-    if (isTest(obs)) {
-      history.push({
-        pathname: "/labtrends",
-        state: obs.concept,
-      });
-    }
-  }
-
   handleFilterChange(field, value) {
     const { labResultListFilters, dispatch } = this.props;
     let newFilters = {
@@ -223,146 +129,6 @@ export class LabResultsList extends PureComponent {
     if (Object.keys(this.cellsLoaded).length >= (this.currentPageSize * 2)) {
       this.resolveCellsLoadingPromise();
     }
-  }
-
-  renderLabResultsTable(labResults, fetched) {
-    const { dateAndTimeFormat, labResultListFilters, intl } = this.props;
-    const fields = ["TEST TYPE", "DATE", "RESULT", "NORMAL RANGE"];
-
-    const columnMetadata = fields.map((columnName) => ({
-      Header: (
-        <span
-          className={`labs-result-table-head-${columnName
-            .replace(" ", "-")
-            .toLocaleLowerCase()}`}
-        >
-          <FormattedMessage
-            id={`app.labOrdersList.${columnName.replace(" ", "_")}`}
-            defaultMessage={`${columnName}`}
-          />
-        </span>
-      ),
-      accessor: "",
-      // eslint-disable-next-line
-      Cell: (data) => (
-        <Cell
-        {...data} // eslint-disable-line
-          obs={data.value}
-          columnName={columnName}
-          dateAndTimeFormat={dateAndTimeFormat}
-          type="single"
-          show={false}
-          navigate={this.handleShowLabTrendsPage}
-          locale={this.props.locale}
-          onLoaded={() => this.handleCellLoaded(columnName, data.value)}
-        />
-      ),
-      className: `lab-results-list-cell-${columnName
-        .replace(" ", "-")
-        .toLocaleLowerCase()}`,
-      headerClassName: `lab-results-list-column-header lab-results-list-header-${columnName
-        .replace(" ", "-")
-        .toLocaleLowerCase()}`,
-    }));
-
-    const expanderColumn = [
-      {
-        expander: true,
-        getProps: (state, rowInfo) => {
-          const isPanel = isLabSet(rowInfo.original);
-          return {
-            style: {
-              display: !isPanel ? 'none' : 'block',
-            },
-          };
-        },
-      },
-      {
-        Header: '',
-        headerClassName: 'expander-cell-header',
-        getProps: (state, rowInfo) => {
-          const isNotExpanded = !isLabSet(rowInfo.original);
-          return {
-            style: {
-              display: isNotExpanded ? 'block' : 'none',
-            },
-            className: 'expander-cell',
-          };
-        },
-      }];
-    const columns = expanderColumn.concat(columnMetadata);
-
-    const pageSize = labResultListFilters.pageSize || 10;
-    const pageData = labResults.slice(0, pageSize);
-
-    const loadingMessage = intl.formatMessage({ id: "app.results.loading", defaultMessage: "Searching..." });
-    const noDataMessage = intl.formatMessage({ id: "app.results.not.found", defaultMessage: "No results found" });
-    const rowsMessage = intl.formatMessage({ id: "reactcomponents.table.rows", defaultMessage: "Rows" });
-
-    return (
-      <div className="lab-results-list">
-        <div className="lab-results-list-container">
-          <SortableTable
-            data={pageData}
-            manual
-            pages={Math.ceil(labResults.length / pageSize)}
-            filters={labResultListFilters}
-            getDataWithFilters={this.filterData}
-            columnMetadata={columns}
-            filteredFields={fields}
-            filterType="none"
-            showFilter={false}
-            rowOnClick={this.handleShowLabTrendsPage}
-            isSortable={false}
-            onPageSizeChange={(newPageSize) => this.handleFilterChange('pageSize', newPageSize)}
-            onPageChange={(page) => this.handleFilterChange('page', page)}
-            page={labResultListFilters.page}
-            noDataMessage={fetched ? noDataMessage : loadingMessage}
-            rowsText={rowsMessage}
-            defaultPageSize={labResultListFilters.pageSize || calculateTableRows(labResults.length)}
-            // eslint-disable-next-line
-          subComponent={(row) => {
-              const isPanel = isLabSet(row.original);
-              const rowFields = ["TEST TYPE", "RESULT", "NORMAL RANGE"];
-              const rowColumnMetadata = rowFields.map((columnName) => ({
-                accessor: "",
-                // eslint-disable-next-line react/no-unstable-nested-components
-                Cell: (data) => (
-                  <Cell
-                  {...data} // eslint-disable-line
-                    obs={data.value}
-                    columnName={columnName}
-                    type="panel"
-                    navigate={this.handleShowLabTrendsPage}
-                  />
-                ),
-                className: `lab-results-list-cell-${columnName
-                  .replace(" ", "-")
-                  .toLocaleLowerCase()}`,
-                headerClassName: "lab-results-list-header",
-              }));
-              if (isPanel) {
-                return (
-                  <div className="collapsible-panel">
-                    <SortableTable
-                      data={row.original.groupMembers}
-                      columnMetadata={rowColumnMetadata}
-                      collapseOnDataChange={false}
-                      collapseOnPageChange={false}
-                      defaultPageSize={row.original.groupMembers.length}
-                      showPagination={false}
-                      rowOnClick={this.handleShowLabTrendsPage}
-                      defaultClassName=""
-                    />
-                  </div>
-                );
-              }
-              return '';
-            }}
-          />
-        </div>
-      </div>
-    );
   }
 
   renderDatePickerFilters() {
@@ -487,18 +253,15 @@ export class LabResultsList extends PureComponent {
       const labTestAndPanelTypes = getAllLabTestAndPanelTypes(labResults);
       return (
         <div className="main-container">
+          { isPrinting && <div className="spinner big-spinner" />}
           <ReactToPrint
             // eslint-disable-next-line
             trigger={() => (
               <button type="button" className="print-button" disabled={isPrinting}>
-                { isPrinting
-                  ? <div className="spiner" />
-                  : (
-                    <span
-                      className="glyphicon glyphicon-print"
-                      aria-hidden="true"
-                    />
-                  ) }
+                <span
+                  className="glyphicon glyphicon-print"
+                  aria-hidden="true"
+                />
               </button>
             )}
             content={() => this.printableComponentRef}
@@ -530,9 +293,23 @@ export class LabResultsList extends PureComponent {
             {this.state.isPrinting
               ? divideIntoChunks(labResults, 20).map(
                 // eslint-disable-next-line max-len
-                (labResultsChunk) => this.renderLabResultsTable(labResultsChunk, labResultFetchStatus),
+                (labResultsChunk, i) => (
+                  <LabResultsTable
+                    // eslint-disable-next-line react/no-array-index-key
+                    key={`lab-results-chunk-${i}`}
+                    labResults={labResultsChunk}
+                    fetched={labResultFetchStatus}
+                    handleCellLoaded={this.handleCellLoaded}
+                    handleFilterChange={this.handleFilterChange} />
+                ),
               )
-              : this.renderLabResultsTable(labResults, labResultFetchStatus)}
+              : (
+                <LabResultsTable
+                  labResults={labResults}
+                  fetched={labResultFetchStatus}
+                  handleCellLoaded={this.handleCellLoaded}
+                  handleFilterChange={this.handleFilterChange} />
+              )}
           </div>
           <br />
           <button type="button" className="btn btn-lg btn-danger" onClick={() => this.handleNavigateBack()}>Back</button>
@@ -581,13 +358,8 @@ export class LabResultsList extends PureComponent {
   }
 }
 
-LabResultsList.propTypes = {
-  dateAndTimeFormat: PropTypes.string.isRequired,
-};
-
 export const mapStateToProps = (state) => ({
   patients: state.patients,
-  dateAndTimeFormat: selectProperty(state, 'dateAndTimeFormat') || '',
   labResultsEntryEncounterType: selectProperty(state, 'labResultsEntryEncounterType') || '',
   labResultsEncounterTypes: selectProperty(state, 'labResultsEncounterTypes') || '',
   labResultsToDisplayConceptSetUUID: selectProperty(state, 'labResultsToDisplayConceptSet') || '',

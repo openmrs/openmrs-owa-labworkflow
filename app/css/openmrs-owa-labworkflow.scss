@@ -76,7 +76,7 @@ input.form-control:focus {
     z-index: 0 !important;
 }
 
-.spiner {
+.spinner {
     border: 0.3em solid black;
     border-top: 0.3em #fff;
     border-radius: 50%;
@@ -84,6 +84,11 @@ input.form-control:focus {
     height: 1em;
     animation: spin 2s linear infinite;
     margin: auto;
+}
+
+.big-spinner {
+    width: 4em;
+    height: 4em;
 }
 
 .no-data-container {

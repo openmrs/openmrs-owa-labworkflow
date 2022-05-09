@@ -12,7 +12,7 @@ const {
 } = formValidations;
 
 class ConceptDisplay extends PureComponent {
-  UNSAFE_componentWillMount() {
+  componentDidMount() {
     const {
       conceptUUID, dispatch, concept,
     } = this.props;
@@ -83,7 +83,7 @@ class ConceptDisplay extends PureComponent {
     }
 
     return (
-      <div className="spiner" />
+      <div className="spinner" />
     );
   }
 }
