@@ -124,7 +124,10 @@ class LabResultsTable extends PureComponent {
     const columns = expanderColumn.concat(columnMetadata);
 
     const pageSize = labResultListFilters.pageSize || 10;
-    const pageData = labResults.slice(0, pageSize);
+    const page = labResultListFilters.page || 0;
+    const pageStartIndex = page * pageSize;
+    const pageEndIndex = (page + 1) * pageSize;
+    const pageData = labResults.slice(pageStartIndex, pageEndIndex);
 
     const loadingMessage = intl.formatMessage({ id: "app.results.loading", defaultMessage: "Searching..." });
     const noDataMessage = intl.formatMessage({ id: "app.results.not.found", defaultMessage: "No results found" });
