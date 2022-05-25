@@ -149,7 +149,7 @@ class LabResultsTable extends PureComponent {
             rowOnClick={this.handleShowLabTrendsPage}
             isSortable={false}
             onPageSizeChange={(newPageSize) => handleFilterChange('pageSize', newPageSize)}
-            onPageChange={(page) => handleFilterChange('page', page)}
+            onPageChange={(newPage) => handleFilterChange('page', newPage)}
             page={labResultListFilters.page}
             noDataMessage={fetched ? noDataMessage : loadingMessage}
             rowsText={rowsMessage}
