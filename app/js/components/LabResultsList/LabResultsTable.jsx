@@ -174,6 +174,7 @@ LabResultsTable.propTypes = {
   fetched: PropTypes.bool.isRequired,
   handleCellLoaded: PropTypes.func.isRequired,
   handleFilterChange: PropTypes.func.isRequired,
+  history: PropTypes.object.isRequired,
 };
 
 export const mapStateToProps = (state) => ({
