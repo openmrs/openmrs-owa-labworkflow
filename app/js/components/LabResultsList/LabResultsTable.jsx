@@ -123,11 +123,12 @@ class LabResultsTable extends PureComponent {
       }];
     const columns = expanderColumn.concat(columnMetadata);
 
+    const filteredLabResults = filterData(labResultListFilters, labResults);
     const pageSize = labResultListFilters.pageSize || 10;
     const page = labResultListFilters.page || 0;
     const pageStartIndex = page * pageSize;
     const pageEndIndex = (page + 1) * pageSize;
-    const pageData = labResults.slice(pageStartIndex, pageEndIndex);
+    const pageData = filteredLabResults.slice(pageStartIndex, pageEndIndex);
 
     const loadingMessage = intl.formatMessage({ id: "app.results.loading", defaultMessage: "Searching..." });
     const noDataMessage = intl.formatMessage({ id: "app.results.not.found", defaultMessage: "No results found" });
@@ -139,7 +140,7 @@ class LabResultsTable extends PureComponent {
           <SortableTable
             data={pageData}
             manual
-            pages={Math.ceil(labResults.length / pageSize)}
+            pages={Math.ceil(filteredLabResults.length / pageSize)}
             filters={labResultListFilters}
             getDataWithFilters={filterData}
             columnMetadata={columns}
@@ -150,10 +151,10 @@ class LabResultsTable extends PureComponent {
             isSortable={false}
             onPageSizeChange={(newPageSize) => handleFilterChange('pageSize', newPageSize)}
             onPageChange={(newPage) => handleFilterChange('page', newPage)}
-            page={labResultListFilters.page}
+            page={page}
             noDataMessage={fetched ? noDataMessage : loadingMessage}
             rowsText={rowsMessage}
-            defaultPageSize={labResultListFilters.pageSize || calculateTableRows(labResults.length)}
+            defaultPageSize={labResultListFilters.pageSize || calculateTableRows(filteredLabResults.length)}
             subComponent={
               // eslint-disable-next-line react/no-unstable-nested-components
               (data) => (
