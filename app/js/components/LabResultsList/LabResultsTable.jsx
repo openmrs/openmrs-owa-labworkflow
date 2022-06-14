@@ -154,7 +154,8 @@ class LabResultsTable extends PureComponent {
             page={page}
             noDataMessage={fetched ? noDataMessage : loadingMessage}
             rowsText={rowsMessage}
-            defaultPageSize={labResultListFilters.pageSize || calculateTableRows(filteredLabResults.length)}
+            defaultPageSize={labResultListFilters.pageSize
+              || calculateTableRows(filteredLabResults.length)}
             subComponent={
               // eslint-disable-next-line react/no-unstable-nested-components
               (data) => (
