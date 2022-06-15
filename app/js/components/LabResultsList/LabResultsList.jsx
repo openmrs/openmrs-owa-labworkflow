@@ -190,6 +190,7 @@ class LabResultsList extends PureComponent {
 
   render() {
     const {
+      history,
       patients,
       labResultsToDisplayConceptSet,
       labResultListFilters,
@@ -308,7 +309,8 @@ class LabResultsList extends PureComponent {
                   labResults={labResults}
                   fetched={labResultFetchStatus}
                   handleCellLoaded={this.handleCellLoaded}
-                  handleFilterChange={this.handleFilterChange} />
+                  handleFilterChange={this.handleFilterChange}
+                  history={history} />
               )}
           </div>
           <br />
