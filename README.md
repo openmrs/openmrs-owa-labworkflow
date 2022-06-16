@@ -110,14 +110,12 @@ Releasing is done via Github Releases.  The process is as follows:
 6. Update the version number in package.json, pom.xml, and app/manifest.webapp, by incrementing to the next version number and adding a "-SNAPSHOT" suffix
 7. Commit and push to master, and confirm that the next SNAPSHOT builds successfully
 
-A *key thing to note* is that when releasing, the CI job will build the  project using the version of react-components
-specified in the package.json, *while the PIH staging build* always uses the latest head of react-components
-when building and deploying lab workflow.  Therefore, if changes have been made to react-components since
-the last lab workflow release, you will likely want to release react-components (see react-components README for
-details) and upgrade the version number in the Lab Workflow package.json before releaseing Lab Workflow or you
-may inadvertently release Lab Workflow with an earlier verison of React Components than you have been testing
-against.
-
+A *key thing to note* is that if the react-components dependency is set to "next", to ensure that the most recent build
+is published to npm prior to releasing, or that react-components is released and the version dependency is changed to 
+this specific release prior to releasing.  This will ensure that the changes expected in react-components are in fact
+reflected in this build.  If you do change the version of react-components to a specific version for releasing, 
+typically you will want to change this back to "next" after releasing to ensure that further snapshot builds use the 
+latest react-components pre-release
 
 ### Troubleshooting
 
