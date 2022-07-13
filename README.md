@@ -110,12 +110,10 @@ Releasing is done via Github Releases.  The process is as follows:
 6. Update the version number in package.json, pom.xml, and app/manifest.webapp, by incrementing to the next version number and adding a "-SNAPSHOT" suffix
 7. Commit and push to master, and confirm that the next SNAPSHOT builds successfully
 
-A *key thing to note* is that if the react-components dependency is set to "next", to ensure that the most recent build
-is published to npm prior to releasing, or that react-components is released and the version dependency is changed to 
-this specific release prior to releasing.  This will ensure that the changes expected in react-components are in fact
-reflected in this build.  If you do change the version of react-components to a specific version for releasing, 
-typically you will want to change this back to "next" after releasing to ensure that further snapshot builds use the 
-latest react-components pre-release
+Because of the tight coupling on react-components, it is strongly recommended that prior to releasing labworkflow that
+the dependency on react components is updated to reflect an actual released version rather than the "next" tag.  Ideally
+this version is an official release, but could also be a pre-release.  Then, following the labworkflow release, one should update
+ the dependency back to the "next" version to ensure the latest updates are incorporated in the next snapshot development.
 
 ### Troubleshooting
 
