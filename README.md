@@ -11,7 +11,9 @@ For further documentation about OpenMRS Open Web Apps see
 
 ### Prerequisites
 
-Requires [NodeJS 10](https://nodejs.org/en/download/package-manager/).
+Requires [NodeJS 14](https://nodejs.org/en/download/package-manager/).
+
+(In our GitHub actions CI we are currently building using Node 14; when building against Node 16 our tests are hanging, and we've yet to debug this)
 
 ### Setup
 
