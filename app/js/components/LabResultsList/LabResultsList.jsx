@@ -36,6 +36,17 @@ function divideIntoChunks(array, chunkSize) {
   }, []);
 }
 
+function isLabCategSelected(filters, uuid) {
+  let selected = false;
+  if (filters && filters.labCategory) {
+    const labCategIds = Object.keys(filters.labCategory);
+    if (labCategIds && labCategIds.includes(uuid)) {
+      selected = true;
+    }
+  }
+  return selected;
+}
+
 class LabResultsList extends PureComponent {
   constructor() {
     super();
@@ -231,7 +242,7 @@ class LabResultsList extends PureComponent {
 
   renderLabCategories() {
     const {
-      labCategoriesSet,
+      labCategoriesSet, labResultListFilters,
     } = this.props;
 
     return (
@@ -244,7 +255,9 @@ class LabResultsList extends PureComponent {
                 type="button"
                 key={`${panel.uuid}`}
                 onClick={() => this.handleLabCategorySelection(panel)}
-                className={classNames('lab-tests-btn')}
+                className={classNames('lab-tests-btn', {
+                  active: isLabCategSelected(labResultListFilters, panel.uuid),
+                })}
               > 
                 {' '}
                 { panel.display }

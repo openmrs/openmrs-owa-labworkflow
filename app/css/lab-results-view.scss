@@ -19,6 +19,10 @@
 
 }
 
+.active {
+  border: 2px solid #009384 !important;
+}
+
 .lab-selection-form form {
   overflow: visible;  // this allows the tooltip to pop out
   display: -ms-flexbox;
@@ -37,7 +41,6 @@
   display: inline-block;
   background-color: white;
   width: 100%;
-
 }
 
 .lab-tests-btn {
@@ -46,6 +49,8 @@
   font-size: 90%;
   font-weight: bold;
   margin-bottom: 0px;
+  margin-right: 6px;
+  margin-bottom: 10px;
   padding-right: 10px;
   padding-bottom: 0px;
   padding-top: 0px;
