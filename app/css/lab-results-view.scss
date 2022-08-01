@@ -19,6 +19,38 @@
 
 }
 
+.lab-selection-form form {
+  overflow: visible;  // this allows the tooltip to pop out
+  display: -ms-flexbox;
+  display: flex;
+  width: 100%;
+  background: white;
+  padding: 0px;
+}
+
+.fieldset {
+  width: 100%;
+  padding: 0px;
+}
+
+.panel-box, .tests-box{
+  display: inline-block;
+  background-color: white;
+  width: 100%;
+
+}
+
+.lab-tests-btn {
+  word-wrap:break-word;
+  display: inline;
+  font-size: 90%;
+  font-weight: bold;
+  margin-bottom: 0px;
+  padding-right: 10px;
+  padding-bottom: 0px;
+  padding-top: 0px;
+}
+
 .ReactTable .rt-thead .rt-th {
   border-right: 1px solid rgba(0,0,0,0.45);
 }

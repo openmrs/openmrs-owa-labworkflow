@@ -6,11 +6,12 @@ import {
 } from '@openmrs/react-components';
 import ReactToPrint from "react-to-print";
 import moment from 'moment';
+import classNames from 'classnames';
 import { injectIntl, FormattedMessage } from 'react-intl';
 import { isLabSet, isTest } from "./util";
 import patientAction from '../../actions/patientAction';
 import filtersAction from '../../actions/filtersAction';
-import { fetchLabResultsToDisplayConceptSet } from '../../actions/labConceptsAction';
+import { fetchLabResultsToDisplayConceptSet, fetchLabCategoriesSet } from '../../actions/labConceptsAction';
 import Patientheader from '../shared/PatientHeader';
 import { loadGlobalProperties, selectProperty } from '../../utils/globalProperty';
 import {
@@ -76,12 +77,18 @@ class LabResultsList extends PureComponent {
       labResultsEntryEncounterType,
       labResultsEncounterTypes,
       labResultsToDisplayConceptSetUUID,
+      labOrderablesConceptSetUUID,
       dispatch,
     } = this.props;
 
     const {
       globalPropertiesFetched,
     } = this.state;
+
+    // load the laboratory categories
+    if (labOrderablesConceptSetUUID && !prevProps.labOrderablesConceptSetUUID) {
+      dispatch(fetchLabCategoriesSet(labOrderablesConceptSetUUID));
+    }
 
     // load the concept set to display when (and if) that global property is loaded
     if (labResultsToDisplayConceptSetUUID && !prevProps.labResultsToDisplayConceptSetUUID) {
@@ -96,6 +103,38 @@ class LabResultsList extends PureComponent {
       });
       dispatch(patientAction.fetchPatientLabTestResults(patientUUID));
     }
+  }
+
+  handleLabCategorySelection(panel) {
+    const { labResultListFilters, labCategoriesSet, dispatch } = this.props;
+
+    let categoryFilter = {};
+    let panelPresent = false;
+    if (labResultListFilters.labCategory) {
+      for (const [key, value] of Object.entries(labResultListFilters.labCategory)) {
+        if (key != panel.uuid) {
+          categoryFilter[key] = value;
+        } else {
+          //if the filter was already present when the button was clicked then remove the filter when the button is un-clicked
+          panelPresent = true;
+        }
+      }
+    }
+    if (!panelPresent) {
+      categoryFilter[panel.uuid]=panel;
+    }
+    let newFilters = {
+      ...labResultListFilters,
+      labCategory: categoryFilter,
+      page: 0,
+    };
+
+    // create a new cellsLoadingPromise because some new cells might have to load
+    this.cellsLoadingPromise = new Promise((resolve) => {
+      this.resolveCellsLoadingPromise = resolve;
+    });
+
+    return dispatch(filtersAction.setLabResultListFilters(newFilters));
   }
 
   handleFilterChange(field, value) {
@@ -185,6 +224,33 @@ class LabResultsList extends PureComponent {
         placeholder={selectFromListMsg}
         handleSelect={(field, value) => this.handleFilterChange(field, value)}
       />
+    );
+  }
+
+  renderLabCategories() {
+    const {
+      labCategoriesSet,
+    } = this.props;
+
+    return (
+      <fieldset className="fieldset">
+        <div className="panel-box">
+          { labCategoriesSet.length ? (
+            labCategoriesSet.map( panel => (
+              <button
+                id="panel-button"
+                type="button"
+                key={`${panel.uuid}`}
+                onClick={() => this.handleLabCategorySelection(panel)}
+                className={ classNames('lab-tests-btn') }
+              > { panel.display }
+              </button>
+            ))
+          ) : (
+            <p>Loading lab categories</p>
+          )}
+        </div>
+      </fieldset>
     );
   }
 
@@ -291,6 +357,11 @@ class LabResultsList extends PureComponent {
               {this.renderDatePickerFilters()}
               {this.renderTestTypeFilter(labTestAndPanelTypes)}
             </div>
+            <div class="lab-selection-form">
+              <form>
+                { this.renderLabCategories() }
+              </form>
+            </div>
             {this.state.isPrinting
               ? divideIntoChunks(labResults, 20).map(
                 // eslint-disable-next-line max-len
@@ -365,7 +436,9 @@ export const mapStateToProps = (state) => ({
   labResultsEntryEncounterType: selectProperty(state, 'labResultsEntryEncounterType') || '',
   labResultsEncounterTypes: selectProperty(state, 'labResultsEncounterTypes') || '',
   labResultsToDisplayConceptSetUUID: selectProperty(state, 'labResultsToDisplayConceptSet') || '',
+  labOrderablesConceptSetUUID: selectProperty(state, 'labOrderablesConceptSet') || '',
   labResultsToDisplayConceptSet: state.CONSTANTS.labResultsToDisplayConceptSet,
+  labCategoriesSet: state.CONSTANTS.labCategoriesSet,
   labResultListFilters: state.filters.labResultListFilters,
   locale: state.openmrs.session.locale,
 });

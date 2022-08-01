@@ -15,8 +15,9 @@ import {
   FETCH_CONCEPT_SUCCEEDED,
   FETCH_CONCEPT_FAILED,
   FETCH_LAB_RESULTS_TO_DISPLAY_CONCEPT_SET,
+  FETCH_LAB_CATEGORIES_SET,
 } from '../actions/actionTypes';
-import { setMember, setFetchStatus, setLabResultsToDisplayConceptSet } from '../actions/labConceptsAction';
+import { setMember, setFetchStatus, setLabResultsToDisplayConceptSet, setLabCategoriestSet } from '../actions/labConceptsAction';
 import { CONCEPT_REP } from '../actions/constantsAction';
 
 export function* getConcept({ concept, count }) {
@@ -108,9 +109,34 @@ export function* fetchAndSetLabResultsToDisplayConceptSet(action) {
   }
 }
 
+export function* fetchAndSetLabCategoriesSet(action) {
+  const { conceptUuid } = action;
+
+  const CONCEPT_SET_REP = 'custom:(id,uuid,display,setMembers:(id,uuid,display,set,setMembers:(id,uuid,display))';
+
+  try {
+    const response = yield call(conceptRest.getConcept, conceptUuid, CONCEPT_SET_REP);
+
+    let concepts = response.setMembers;
+
+    yield put(setLabCategoriestSet(concepts));
+
+
+  } catch (e) {
+    console.log("failed to retrieve the laboratory categories");
+  }
+}
+
 export function* fetchLabResultsToDisplayConceptSet() {
   yield takeEvery(
     FETCH_LAB_RESULTS_TO_DISPLAY_CONCEPT_SET,
     fetchAndSetLabResultsToDisplayConceptSet,
+  );
+}
+
+export function* fetchLabCategoriesSet() {
+  yield takeEvery(
+    FETCH_LAB_CATEGORIES_SET,
+    fetchAndSetLabCategoriesSet,
   );
 }
