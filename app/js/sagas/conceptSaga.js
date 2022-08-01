@@ -17,7 +17,10 @@ import {
   FETCH_LAB_RESULTS_TO_DISPLAY_CONCEPT_SET,
   FETCH_LAB_CATEGORIES_SET,
 } from '../actions/actionTypes';
-import { setMember, setFetchStatus, setLabResultsToDisplayConceptSet, setLabCategoriestSet } from '../actions/labConceptsAction';
+
+import {
+  setMember, setFetchStatus, setLabResultsToDisplayConceptSet, setLabCategoriestSet, 
+} from '../actions/labConceptsAction';
 import { CONCEPT_REP } from '../actions/constantsAction';
 
 export function* getConcept({ concept, count }) {
@@ -117,11 +120,9 @@ export function* fetchAndSetLabCategoriesSet(action) {
   try {
     const response = yield call(conceptRest.getConcept, conceptUuid, CONCEPT_SET_REP);
 
-    let concepts = response.setMembers;
+    const concepts = response.setMembers;
 
     yield put(setLabCategoriestSet(concepts));
-
-
   } catch (e) {
     console.log("failed to retrieve the laboratory categories");
   }

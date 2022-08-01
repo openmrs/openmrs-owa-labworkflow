@@ -34,20 +34,18 @@ function filterData(filters, data) {
 
   if (filters.labCategory) {
     const categ = Object.values(filters.labCategory);
-    let testFilter = [];
+    const testFilter = [];
     if (categ && categ.length > 0) {
-      categ.forEach(item => {
+      categ.forEach((item) => {
         if (item.setMembers && item.setMembers.length > 0) {
-          item.setMembers.forEach( member => {
+          item.setMembers.forEach((member) => {
             testFilter.push(member.uuid);
           });
         }
       });
     }
-    if (testFilter.length > 0 ) {
-      filteredData = filteredData.filter((labTest) =>
-        testFilter.includes(labTest.concept.uuid)
-      );
+    if (testFilter.length > 0) {
+      filteredData = filteredData.filter((labTest) => testFilter.includes(labTest.concept.uuid));
     }
   }
 

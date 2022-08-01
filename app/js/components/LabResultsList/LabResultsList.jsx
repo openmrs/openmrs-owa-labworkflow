@@ -106,24 +106,26 @@ class LabResultsList extends PureComponent {
   }
 
   handleLabCategorySelection(panel) {
-    const { labResultListFilters, labCategoriesSet, dispatch } = this.props;
+    const { labResultListFilters, dispatch } = this.props;
 
-    let categoryFilter = {};
+    const categoryFilter = {};
     let panelPresent = false;
     if (labResultListFilters.labCategory) {
-      for (const [key, value] of Object.entries(labResultListFilters.labCategory)) {
-        if (key != panel.uuid) {
-          categoryFilter[key] = value;
+      const labCategIds = Object.keys(labResultListFilters.labCategory);
+      for (let i = 0; i < labCategIds.length; i += 1) {
+        if (labCategIds[i] !== panel.uuid) {
+          categoryFilter[labCategIds[i]] = labResultListFilters.labCategory[labCategIds[i]];
         } else {
-          //if the filter was already present when the button was clicked then remove the filter when the button is un-clicked
+          // if the filter was already present when the button was clicked
+          // then remove the filter when the button is un-clicked
           panelPresent = true;
         }
       }
     }
     if (!panelPresent) {
-      categoryFilter[panel.uuid]=panel;
+      categoryFilter[panel.uuid] = panel;
     }
-    let newFilters = {
+    const newFilters = {
       ...labResultListFilters,
       labCategory: categoryFilter,
       page: 0,
@@ -236,14 +238,16 @@ class LabResultsList extends PureComponent {
       <fieldset className="fieldset">
         <div className="panel-box">
           { labCategoriesSet.length ? (
-            labCategoriesSet.map( panel => (
+            labCategoriesSet.map((panel) => (
               <button
                 id="panel-button"
                 type="button"
                 key={`${panel.uuid}`}
                 onClick={() => this.handleLabCategorySelection(panel)}
-                className={ classNames('lab-tests-btn') }
-              > { panel.display }
+                className={classNames('lab-tests-btn')}
+              > 
+                {' '}
+                { panel.display }
               </button>
             ))
           ) : (
@@ -357,7 +361,7 @@ class LabResultsList extends PureComponent {
               {this.renderDatePickerFilters()}
               {this.renderTestTypeFilter(labTestAndPanelTypes)}
             </div>
-            <div class="lab-selection-form">
+            <div className="lab-selection-form">
               <form>
                 { this.renderLabCategories() }
               </form>
