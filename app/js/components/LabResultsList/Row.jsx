@@ -4,7 +4,7 @@ import { isLabSet } from "./util";
 import Cell from "./Cell";
 
 export default function Row(rowData, handleShowLabTrendsPage) {
-  const isPanel = isLabSet(rowData.original);
+  const isPanel = isLabSet(rowData.rowData.original);
   const rowFields = ["TEST TYPE", "RESULT", "NORMAL RANGE"];
   const rowColumnMetadata = rowFields.map((columnName) => ({
     accessor: "",
@@ -27,11 +27,11 @@ export default function Row(rowData, handleShowLabTrendsPage) {
     return (
       <div className="collapsible-panel">
         <SortableTable
-          data={rowData.original.groupMembers}
+          data={rowData.rowData.original.groupMembers}
           columnMetadata={rowColumnMetadata}
           collapseOnDataChange={false}
           collapseOnPageChange={false}
-          defaultPageSize={rowData.original.groupMembers.length}
+          defaultPageSize={rowData.rowData.original.groupMembers.length}
           showPagination={false}
           rowOnClick={handleShowLabTrendsPage}
           defaultClassName=""
