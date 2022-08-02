@@ -11,7 +11,9 @@ import {
   setLabOrderablesSetting,
   updateTestTypeFilter,
 } from './labOrdersSaga';
-import { setLabConcepts, fetchConcept, fetchLabResultsToDisplayConceptSet } from './conceptSaga';
+import {
+  setLabConcepts, fetchConcept, fetchLabResultsToDisplayConceptSet, fetchLabCategoriesSet, 
+} from './conceptSaga';
 import { clearFormFieldsSaga } from './formSaga';
 
 const sagas = {
@@ -31,6 +33,7 @@ const sagas = {
   setLabOrderablesSetting,
   updateTestTypeFilter,
   fetchLabResultsToDisplayConceptSet,
+  fetchLabCategoriesSet,
 };
 
 const initSagas = (sagaMiddleware) => {

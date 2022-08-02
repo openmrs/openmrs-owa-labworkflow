@@ -7,6 +7,8 @@ import {
   FETCH_CONCEPT,
   FETCH_LAB_RESULTS_TO_DISPLAY_CONCEPT_SET,
   SET_LAB_RESULTS_TO_DISPLAY_CONCEPT_SET,
+  FETCH_LAB_CATEGORIES_SET,
+  SET_LAB_CATEGORIES_SET,
 } from './actionTypes';
 import { CONCEPT_REP } from './constantsAction';
 
@@ -41,5 +43,15 @@ export const fetchLabResultsToDisplayConceptSet = (conceptUuid) => ({
 
 export const setLabResultsToDisplayConceptSet = (set) => ({
   type: SET_LAB_RESULTS_TO_DISPLAY_CONCEPT_SET,
+  set,
+});
+
+export const fetchLabCategoriesSet = (conceptUuid) => ({
+  type: FETCH_LAB_CATEGORIES_SET,
+  conceptUuid,
+});
+
+export const setLabCategoriestSet = (set) => ({
+  type: SET_LAB_CATEGORIES_SET,
   set,
 });
