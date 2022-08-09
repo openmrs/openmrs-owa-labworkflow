@@ -17,6 +17,7 @@ import { loadGlobalProperties, selectProperty } from '../../utils/globalProperty
 import {
   sortByDate,
   filterDuplicates,
+  getConceptShortName,
 } from '../../utils/helpers';
 import "../../../css/lab-results-view.scss";
 import LabResultsTable from './LabResultsTable';
@@ -242,7 +243,7 @@ class LabResultsList extends PureComponent {
 
   renderLabCategories() {
     const {
-      labCategoriesSet, labResultListFilters,
+      labCategoriesSet, labResultListFilters, locale,
     } = this.props;
 
     return (
@@ -260,7 +261,7 @@ class LabResultsList extends PureComponent {
                 })}
               > 
                 {' '}
-                { panel.display }
+                { getConceptShortName(panel, locale) }
               </button>
             ))
           ) : (
