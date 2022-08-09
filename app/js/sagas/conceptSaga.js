@@ -115,7 +115,7 @@ export function* fetchAndSetLabResultsToDisplayConceptSet(action) {
 export function* fetchAndSetLabCategoriesSet(action) {
   const { conceptUuid } = action;
 
-  const CONCEPT_SET_REP = 'custom:(id,uuid,display,setMembers:(id,uuid,display,set,setMembers:(id,uuid,display))';
+  const CONCEPT_SET_REP = 'custom:(id,uuid,display,setMembers:(id,uuid,display,names:(uuid,name,locale,localePreferred,voided,conceptNameType),set,setMembers:(id,uuid,display))';
 
   try {
     const response = yield call(conceptRest.getConcept, conceptUuid, CONCEPT_SET_REP);

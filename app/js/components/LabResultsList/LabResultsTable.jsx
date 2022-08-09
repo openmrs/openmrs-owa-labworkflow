@@ -187,7 +187,7 @@ class LabResultsTable extends PureComponent {
 }
 
 LabResultsTable.propTypes = {
-  labResults: PropTypes.object.isRequired,
+  labResults: PropTypes.array.isRequired,
   fetched: PropTypes.bool.isRequired,
   handleCellLoaded: PropTypes.func.isRequired,
   handleFilterChange: PropTypes.func.isRequired,
