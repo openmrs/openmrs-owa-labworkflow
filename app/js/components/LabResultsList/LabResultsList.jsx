@@ -11,7 +11,7 @@ import { injectIntl, FormattedMessage } from 'react-intl';
 import { isLabSet, isTest } from "./util";
 import patientAction from '../../actions/patientAction';
 import filtersAction from '../../actions/filtersAction';
-import { fetchLabResultsToDisplayConceptSet, fetchLabCategoriesSet } from '../../actions/labConceptsAction';
+import { fetchLabCategoriesSet } from '../../actions/labConceptsAction';
 import Patientheader from '../shared/PatientHeader';
 import { loadGlobalProperties, selectProperty } from '../../utils/globalProperty';
 import {
@@ -88,8 +88,7 @@ class LabResultsList extends PureComponent {
     const {
       labResultsEntryEncounterType,
       labResultsEncounterTypes,
-      labResultsToDisplayConceptSetUUID,
-      labOrderablesConceptSetUUID,
+      labCategoriesConceptSetUUID,
       dispatch,
     } = this.props;
 
@@ -98,13 +97,8 @@ class LabResultsList extends PureComponent {
     } = this.state;
 
     // load the laboratory categories
-    if (labOrderablesConceptSetUUID && !prevProps.labOrderablesConceptSetUUID) {
-      dispatch(fetchLabCategoriesSet(labOrderablesConceptSetUUID));
-    }
-
-    // load the concept set to display when (and if) that global property is loaded
-    if (labResultsToDisplayConceptSetUUID && !prevProps.labResultsToDisplayConceptSetUUID) {
-      dispatch(fetchLabResultsToDisplayConceptSet(labResultsToDisplayConceptSetUUID));
+    if (labCategoriesConceptSetUUID && !prevProps.labCategoriesConceptSetUUID) {
+      dispatch(fetchLabCategoriesSet(labCategoriesConceptSetUUID));
     }
 
     // load test results after the encounter types GPs have been loaded
@@ -276,8 +270,8 @@ class LabResultsList extends PureComponent {
     const {
       history,
       patients,
-      labResultsToDisplayConceptSet,
       labResultListFilters,
+      labCategoriesFlattenedSet,
     } = this.props;
 
     const { patientUUID, isPrinting } = this.state;
@@ -285,9 +279,9 @@ class LabResultsList extends PureComponent {
     const selectedPatient = patients[patientUUID] || {};
 
     // returns "true" if concept set not defined
-    const inLabResultsToDisplayConceptSet = ((o) => !labResultsToDisplayConceptSet
-      || !(labResultsToDisplayConceptSet instanceof Set)
-      || labResultsToDisplayConceptSet.has(o.concept.uuid));
+    const inLabCategoriesSet = ((o) => !labCategoriesFlattenedSet
+        || !(labCategoriesFlattenedSet instanceof Set)
+      || labCategoriesFlattenedSet.has(o.concept.uuid));
 
     const {
       encounters = [],
@@ -304,7 +298,7 @@ class LabResultsList extends PureComponent {
         while (obs.some((o) => o.groupMembers && !isLabSet(o))) {
           obs = obs.flatMap((o) => (o.groupMembers && !isLabSet(o) ? o.groupMembers : o));
         }
-        obs = obs.filter((o) => (isLabSet(o) || isTest(o)) && inLabResultsToDisplayConceptSet(o));
+        obs = obs.filter((o) => (isLabSet(o) || isTest(o)) && inLabCategoriesSet(o));
         return [...acc, ...obs];
       }, {});
       const sorted = sortByDate('obsDatetime')(unfiltered).reverse();
@@ -453,10 +447,9 @@ export const mapStateToProps = (state) => ({
   patients: state.patients,
   labResultsEntryEncounterType: selectProperty(state, 'labResultsEntryEncounterType') || '',
   labResultsEncounterTypes: selectProperty(state, 'labResultsEncounterTypes') || '',
-  labResultsToDisplayConceptSetUUID: selectProperty(state, 'labResultsToDisplayConceptSet') || '',
-  labOrderablesConceptSetUUID: selectProperty(state, 'labOrderablesConceptSet') || '',
-  labResultsToDisplayConceptSet: state.CONSTANTS.labResultsToDisplayConceptSet,
+  labCategoriesConceptSetUUID: selectProperty(state, 'labCategoriesConceptSet') || '',
   labCategoriesSet: state.CONSTANTS.labCategoriesSet,
+  labCategoriesFlattenedSet: state.CONSTANTS.labCategoriesFlattenedSet,
   labResultListFilters: state.filters.labResultListFilters,
   locale: state.openmrs.session.locale,
 });

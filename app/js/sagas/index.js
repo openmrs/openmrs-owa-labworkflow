@@ -12,7 +12,7 @@ import {
   updateTestTypeFilter,
 } from './labOrdersSaga';
 import {
-  setLabConcepts, fetchConcept, fetchLabResultsToDisplayConceptSet, fetchLabCategoriesSet, 
+  setLabConcepts, fetchConcept, fetchLabCategoriesSet,
 } from './conceptSaga';
 import { clearFormFieldsSaga } from './formSaga';
 
@@ -32,7 +32,6 @@ const sagas = {
   saveFulfillerStatus,
   setLabOrderablesSetting,
   updateTestTypeFilter,
-  fetchLabResultsToDisplayConceptSet,
   fetchLabCategoriesSet,
 };
 

@@ -14,12 +14,11 @@ import {
   FETCH_CONCEPT,
   FETCH_CONCEPT_SUCCEEDED,
   FETCH_CONCEPT_FAILED,
-  FETCH_LAB_RESULTS_TO_DISPLAY_CONCEPT_SET,
   FETCH_LAB_CATEGORIES_SET,
 } from '../actions/actionTypes';
 
 import {
-  setMember, setFetchStatus, setLabResultsToDisplayConceptSet, setLabCategoriestSet, 
+  setMember, setFetchStatus, setLabCategoriestSet,
 } from '../actions/labConceptsAction';
 import { CONCEPT_REP } from '../actions/constantsAction';
 
@@ -79,39 +78,6 @@ export function* fetchConcept() {
   yield takeEvery(FETCH_CONCEPT, fetchAndSetConcept);
 }
 
-export function* fetchAndSetLabResultsToDisplayConceptSet(action) {
-  const { conceptUuid } = action;
-
-  try {
-    // hacky, only goes 5 levels deep
-    const CONCEPT_SET_REP = 'custom:(uuid,set,setMembers:(uuid,set,setMembers:(uuid,set,setMembers:(uuid,set,setMembers:(uuid,set,setMembers:(uuid,set,conceptClass:(name)),conceptClass:(name)),conceptClass:(name)),conceptClass:(name)),conceptClass:(name)),conceptClass:(name))';
-
-    const response = yield call(conceptRest.getConcept, conceptUuid, CONCEPT_SET_REP);
-
-    let concepts = response.setMembers;
-
-    // flatten the concept set
-    while (concepts.some((c) => c.set)) {
-      concepts = concepts.flatMap((c) => (c.set ? [...c.setMembers, {
-        uuid: c.uuid,
-        set: false,
-        conceptClass: c.conceptClass,
-      }] : c));
-    }
-
-    // filter out all that aren't lab tests or tests
-    concepts = concepts.filter((c) => c.conceptClass.name === 'Test' || c.conceptClass.name === 'LabSet');
-
-    // create a set for easy lookup
-    const conceptSet = new Set();
-    concepts.forEach((c) => conceptSet.add(c.uuid));
-
-    yield put(setLabResultsToDisplayConceptSet(conceptSet));
-  } catch (e) {
-    // TODO actually do something in failure case
-  }
-}
-
 export function* fetchAndSetLabCategoriesSet(action) {
   const { conceptUuid } = action;
 
@@ -120,19 +86,29 @@ export function* fetchAndSetLabCategoriesSet(action) {
   try {
     const response = yield call(conceptRest.getConcept, conceptUuid, CONCEPT_SET_REP);
 
+    // keep the categorized concept
     const concepts = response.setMembers;
 
-    yield put(setLabCategoriestSet(concepts));
+    // but also flatten the concept set to a set of uuids to use as a top-level filter
+    let conceptsFlattened  = []
+    Object.assign(conceptsFlattened, concepts);
+
+    while (conceptsFlattened.some((c) => c.set)) {
+      conceptsFlattened = conceptsFlattened.flatMap((c) => (c.set ? [...c.setMembers, {
+        uuid: c.uuid,
+        set: false,
+        conceptClass: c.conceptClass,
+      }] : c));
+    }
+
+    // create a set for easy lookup
+    const conceptSetFlattened = new Set();
+    conceptsFlattened.forEach((c) => conceptSetFlattened.add(c.uuid));
+
+    yield put(setLabCategoriestSet(concepts, conceptSetFlattened));
   } catch (e) {
     console.log("failed to retrieve the laboratory categories");
   }
-}
-
-export function* fetchLabResultsToDisplayConceptSet() {
-  yield takeEvery(
-    FETCH_LAB_RESULTS_TO_DISPLAY_CONCEPT_SET,
-    fetchAndSetLabResultsToDisplayConceptSet,
-  );
 }
 
 export function* fetchLabCategoriesSet() {
