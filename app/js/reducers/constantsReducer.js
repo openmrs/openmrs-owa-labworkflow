@@ -23,7 +23,7 @@ export default (state = initialState, action) => {
       return {
         ...state,
         labCategoriesSet: action.set,
-        labCategoriesFlattenedSet: action.flattenedSet
+        labCategoriesFlattenedSet: action.flattenedSet,
       };
     }
 

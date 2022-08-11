@@ -90,7 +90,7 @@ export function* fetchAndSetLabCategoriesSet(action) {
     const concepts = response.setMembers;
 
     // but also flatten the concept set to a set of uuids to use as a top-level filter
-    let conceptsFlattened  = []
+    let conceptsFlattened = []
     Object.assign(conceptsFlattened, concepts);
 
     while (conceptsFlattened.some((c) => c.set)) {

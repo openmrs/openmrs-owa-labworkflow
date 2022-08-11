@@ -42,5 +42,5 @@ export const fetchLabCategoriesSet = (conceptUuid) => ({
 export const setLabCategoriestSet = (set, flattenedSet) => ({
   type: SET_LAB_CATEGORIES_SET,
   set,
-  flattenedSet
+  flattenedSet,
 });

@@ -5,8 +5,9 @@ import R from "ramda";
     * labResultsEntryEncounterType: encounter type to use when creating and editing lab results
     * labResultsEntryEncounterTypes: encounter types to search through when displaying lab results
       (not mandatory, will default to encounter type specified in labResultsEntryEncounterType)
-    * labCategoriesConceptSet: if set, will add category filters to the Lab Results List based on top-level sets
-    * within this set, and will limit labs displayed to those LabSets and Tests in this concept set (not mandatory)
+    * labCategoriesConceptSet: if set, will add category filters to the Lab Results List based on
+    *   top-level sets within this set, and will limit labs displayed to those LabSets and Tests
+    *   in this concept set (not mandatory)
  */
 
 export const APP_GLOBAL_PROPERTIES = {
