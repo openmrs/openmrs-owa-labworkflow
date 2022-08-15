@@ -5,8 +5,6 @@ import {
   SET_FETCH_STATUS,
   SET_CONCEPT,
   FETCH_CONCEPT,
-  FETCH_LAB_RESULTS_TO_DISPLAY_CONCEPT_SET,
-  SET_LAB_RESULTS_TO_DISPLAY_CONCEPT_SET,
   FETCH_LAB_CATEGORIES_SET,
   SET_LAB_CATEGORIES_SET,
 } from './actionTypes';
@@ -36,22 +34,13 @@ export const fetchConcept = (conceptUUID) => ({
   conceptUUID,
 });
 
-export const fetchLabResultsToDisplayConceptSet = (conceptUuid) => ({
-  type: FETCH_LAB_RESULTS_TO_DISPLAY_CONCEPT_SET,
-  conceptUuid,
-});
-
-export const setLabResultsToDisplayConceptSet = (set) => ({
-  type: SET_LAB_RESULTS_TO_DISPLAY_CONCEPT_SET,
-  set,
-});
-
 export const fetchLabCategoriesSet = (conceptUuid) => ({
   type: FETCH_LAB_CATEGORIES_SET,
   conceptUuid,
 });
 
-export const setLabCategoriestSet = (set) => ({
+export const setLabCategoriestSet = (set, flattenedSet) => ({
   type: SET_LAB_CATEGORIES_SET,
   set,
+  flattenedSet,
 });
