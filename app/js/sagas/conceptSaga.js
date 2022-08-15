@@ -81,7 +81,16 @@ export function* fetchConcept() {
 export function* fetchAndSetLabCategoriesSet(action) {
   const { conceptUuid } = action;
 
-  const CONCEPT_SET_REP = 'custom:(id,uuid,display,setMembers:(id,uuid,display,names:(uuid,name,locale,localePreferred,voided,conceptNameType),set,setMembers:(id,uuid,display))';
+  // goes three levels deep, so supports top-level categories, and then each category can contain
+  // individual tests and/or panels that themselves contain individual tests; labs nest deeper than
+  // this will not be fetched (and therefore will not be displayed)
+  // for example LAB CONCEPT SET (Concept the global property GP points to)
+  //  ->HEMATOLOGY SET (Defines lab results page filters)
+  //  ->COMPLETE HEMOGRAM 3-PART DIFF (A panel in the hematology category)
+  //  ->WHITE BLOOD CELLS (A test within the Hemogram panel)
+  const CONCEPT_SET_REP = 'custom:(id,uuid,display,setMembers:'
+      + '(id,uuid,display,names:(uuid,name,locale,localePreferred,voided,conceptNameType),set,setMembers:'
+      + '(id,uuid,display,setMembers:(id,uuid,display),set))';
 
   try {
     const response = yield call(conceptRest.getConcept, conceptUuid, CONCEPT_SET_REP);

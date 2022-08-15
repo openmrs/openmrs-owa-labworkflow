@@ -33,13 +33,19 @@ function filterData(filters, data) {
   }
 
   if (filters.labCategory) {
-    const categ = Object.values(filters.labCategory);
+    const categories = Object.values(filters.labCategory);
     const testFilter = [];
-    if (categ && categ.length > 0) {
-      categ.forEach((item) => {
-        if (item.setMembers && item.setMembers.length > 0) {
-          item.setMembers.forEach((member) => {
-            testFilter.push(member.uuid);
+    if (categories && categories.length > 0) {
+      categories.forEach((category) => {
+        if (category.setMembers && category.setMembers.length > 0) {
+          category.setMembers.forEach((testOrPanel) => {
+            testFilter.push(testOrPanel.uuid);
+            // handle panels, which will have nested tests
+            if (testOrPanel.setMembers && testOrPanel.setMembers.length > 0) {
+              testOrPanel.setMembers.forEach((test) => {
+                testFilter.push(test.uuid)
+              })
+            }
           });
         }
       });
