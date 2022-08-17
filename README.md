@@ -136,3 +136,4 @@ See instructions [here](http://enable-cors.org/server_tomcat.html) for Tomcat 7 
 ## License
 
 [MPL 2.0 w/ HD](http://openmrs.org/license/)
+
