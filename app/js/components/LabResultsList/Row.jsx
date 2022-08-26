@@ -15,7 +15,7 @@ export default function Row({ rowData, handleShowLabTrendsPage }) {
         obs={data.value}
         columnName={columnName}
         type="panel"
-
+        navigate={handleShowLabTrendsPage}
       />
     ),
     className: `lab-results-list-cell-${columnName
