@@ -3,8 +3,8 @@ import { SortableTable } from "@openmrs/react-components";
 import { isLabSet } from "./util";
 import Cell from "./Cell";
 
-export default function Row(rowData, handleShowLabTrendsPage) {
-  const isPanel = isLabSet(rowData.rowData.original);
+export default function Row({ rowData, handleShowLabTrendsPage }) {
+  const isPanel = isLabSet(rowData.original);
   const rowFields = ["TEST TYPE", "RESULT", "NORMAL RANGE"];
   const rowColumnMetadata = rowFields.map((columnName) => ({
     accessor: "",
@@ -15,7 +15,7 @@ export default function Row(rowData, handleShowLabTrendsPage) {
         obs={data.value}
         columnName={columnName}
         type="panel"
-        navigate={handleShowLabTrendsPage}
+
       />
     ),
     className: `lab-results-list-cell-${columnName
@@ -27,11 +27,11 @@ export default function Row(rowData, handleShowLabTrendsPage) {
     return (
       <div className="collapsible-panel">
         <SortableTable
-          data={rowData.rowData.original.groupMembers}
+          data={rowData.original.groupMembers}
           columnMetadata={rowColumnMetadata}
           collapseOnDataChange={false}
           collapseOnPageChange={false}
-          defaultPageSize={rowData.rowData.original.groupMembers.length}
+          defaultPageSize={rowData.original.groupMembers.length}
           showPagination={false}
           rowOnClick={handleShowLabTrendsPage}
           defaultClassName=""
