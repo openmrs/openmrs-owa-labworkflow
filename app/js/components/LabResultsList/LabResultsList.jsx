@@ -22,21 +22,6 @@ import {
 import "../../../css/lab-results-view.scss";
 import LabResultsTable from './LabResultsTable';
 
-function divideIntoChunks(array, chunkSize) {
-  return array.reduce((resultArray, item, index) => { 
-    const chunkIndex = Math.floor(index / chunkSize);
-  
-    if (!resultArray[chunkIndex]) {
-      // eslint-disable-next-line no-param-reassign
-      resultArray[chunkIndex] = []; // start a new chunk
-    }
-  
-    resultArray[chunkIndex].push(item);
-  
-    return resultArray;
-  }, []);
-}
-
 function isLabCategSelected(filters, uuid) {
   let selected = false;
   if (filters && filters.labCategory) {
@@ -374,27 +359,12 @@ class LabResultsList extends PureComponent {
                 { this.renderLabCategories() }
               </form>
             </div>
-            {this.state.isPrinting
-              ? divideIntoChunks(labResults, 20).map(
-                // eslint-disable-next-line max-len
-                (labResultsChunk, i) => (
-                  <LabResultsTable
-                    // eslint-disable-next-line react/no-array-index-key
-                    key={`lab-results-chunk-${i}`}
-                    labResults={labResultsChunk}
-                    fetched={labResultFetchStatus}
-                    handleCellLoaded={this.handleCellLoaded}
-                    handleFilterChange={this.handleFilterChange} />
-                ),
-              )
-              : (
-                <LabResultsTable
-                  labResults={labResults}
-                  fetched={labResultFetchStatus}
-                  handleCellLoaded={this.handleCellLoaded}
-                  handleFilterChange={this.handleFilterChange}
-                  history={history} />
-              )}
+              <LabResultsTable
+                labResults={labResults}
+                fetched={labResultFetchStatus}
+                handleCellLoaded={this.handleCellLoaded}
+                handleFilterChange={this.handleFilterChange}
+                history={history} />
           </div>
           <br />
           <button type="button" className="btn btn-lg btn-danger" onClick={() => this.handleNavigateBack()}>Back</button>
