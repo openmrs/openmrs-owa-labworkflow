@@ -359,12 +359,12 @@ class LabResultsList extends PureComponent {
                 { this.renderLabCategories() }
               </form>
             </div>
-              <LabResultsTable
-                labResults={labResults}
-                fetched={labResultFetchStatus}
-                handleCellLoaded={this.handleCellLoaded}
-                handleFilterChange={this.handleFilterChange}
-                history={history} />
+            <LabResultsTable
+              labResults={labResults}
+              fetched={labResultFetchStatus}
+              handleCellLoaded={this.handleCellLoaded}
+              handleFilterChange={this.handleFilterChange}
+              history={history} />
           </div>
           <br />
           <button type="button" className="btn btn-lg btn-danger" onClick={() => this.handleNavigateBack()}>Back</button>
