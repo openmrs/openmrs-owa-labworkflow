@@ -152,7 +152,6 @@ class LabOrderListFilters extends PureComponent {
   renderTestStatusFilter() {
     const { handleFieldChange, testStatusField, intl } = this.props;
     const allMsg = intl.formatMessage({ id: "reactcomponents.all", defaultMessage: "All" });
-    const selectFromListMsg = intl.formatMessage({ id: "reactcomponents.select.from.list", defaultMessage: "Select from the list" });
     const statusMessage = intl.formatMessage({ id: "app.labOrdersListFilters.statusDropdownLabel", defaultMessage: "Status" });
 
     const statusOptions = [
