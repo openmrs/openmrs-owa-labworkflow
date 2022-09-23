@@ -108,7 +108,7 @@ function OrdersTable({
         noDataMessage={noDataMessage}
         rowsText={rowsMessage}
         minRows={0}
-        page={labOrdersListFilters.page}
+        page={ labOrdersListFilters.page || 0 }
         defaultPageSize={
           labOrdersListFilters.pageSize || calculateTableRows(orders.length)
         }

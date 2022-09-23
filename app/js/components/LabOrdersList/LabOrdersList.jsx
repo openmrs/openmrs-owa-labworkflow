@@ -295,8 +295,8 @@ export class LabOrdersList extends PureComponent {
       }
     }
 
-    await dispatch(fetchLabOrders(labResultsTestOrderType, newFilters));
     await dispatch(filtersAction.setLabOrdersListFilters(newFilters));
+    await dispatch(fetchLabOrders(labResultsTestOrderType, newFilters));
   }
 
   loadOrders() {
