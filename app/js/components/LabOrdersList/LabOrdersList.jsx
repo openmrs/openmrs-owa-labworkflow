@@ -255,6 +255,7 @@ export class LabOrdersList extends PureComponent {
           ...newFilters,
           includeNullFulfillerStatus: true,
           fulfillerStatus: FULFILLER_STATUS.RECEIVED,
+          excludeCanceledAndExpired: true,
         };
       } else if (value === FULFILLER_STATUS.CANCELED_EXPIRED) {
         newFilters = {
