@@ -25,6 +25,7 @@ import {
   calculateTableRows,
   sortByDate,
   filterDuplicates,
+  getConceptShortName,
 } from '../utils/helpers';
 
 import "../../css/lab-results-trends-page.scss";
@@ -82,6 +83,7 @@ export class LabTrendsPage extends PureComponent {
       labTestResults: { results },
       history,
       intl,
+      locale,
     } = this.props;
     const { location: { state } } = history;
     const { defaultPageSize } = this.state;
@@ -149,7 +151,7 @@ export class LabTrendsPage extends PureComponent {
     return (
       <div>
         <h1>
-          {`${state.display} `}
+          { `${getConceptShortName(state, locale)} `}
           <FormattedMessage
             id="app.lab.results.trend"
             defaultMessage="Trend" />
@@ -201,9 +203,11 @@ const mapStateToProps = ({
   selectedPatient,
   patients,
   labTestResults,
+  openmrs,
 }) => ({
   labTestResults,
   patient: patients[selectedPatient],
+  locale: openmrs.session.locale,
 });
 
 export default connect(mapStateToProps)(injectIntl(LabTrendsPage));
