@@ -1,5 +1,4 @@
 import R from 'ramda';
-import moment from 'moment';
 import toastr from 'toastr';
 import {
   takeEvery,
@@ -187,9 +186,7 @@ function* updateOrders() {
   const labResultsTestOrderType = selectProperty(state, 'labResultsTestOrderType');
   const ordersBatchSize = selectProperty(state, 'ordersBatchSize');
   const options = {
-    dateToField: moment(labOrdersListFilters.dateToField).format('YYYY-MM-DD'),
-    dateFromField: moment(labOrdersListFilters.dateFromField).format('YYYY-MM-DD'),
-    excludeCanceledAndExpired: true,
+    ...labOrdersListFilters,
     ordersBatchSize: (ordersBatchSize || DEFAULT_ORDERS_BATCH_SIZE),
   };
   yield put(fetchLabOrders(labResultsTestOrderType, options));

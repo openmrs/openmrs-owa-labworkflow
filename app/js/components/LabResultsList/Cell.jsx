@@ -13,7 +13,7 @@ function Cell({
   if (columnName === 'TEST TYPE') {
     return (
       <div className="table_cell type">
-        <span>{obs.concept ? obs.concept.display : ''}</span>
+        <span>{obs.concept ? getConceptShortName(obs.concept, locale) : ''}</span>
       </div>
     );
   }
