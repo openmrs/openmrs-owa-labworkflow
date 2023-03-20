@@ -43,6 +43,7 @@
     "app.labResultEntry.orderNumberlabel": "Numéro de commande:",
     "app.labResultEntry.orderDatelabel": "Date de commande:",
     "app.labResultEntry.labId": "Lab ID",
+    "app.labResultEntry.return": "Retour",
     "app.labResultsList.title": "Résultats des tests de laboratoire",
     "app.labResultsList.TYPE": "TYPES",
     "app.labResultsList.STATUS": "STATUT",

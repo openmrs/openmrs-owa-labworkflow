@@ -68,18 +68,18 @@ export class LabResultEntry extends PureComponent {
   UNSAFE_componentWillMount() {
     const {
       dispatch,
-      history: { location: { state } },
+      history: { location: { state: { order } } },
       labResultsDidNotPerformReasonQuestion,
       labResultsTestLocationQuestion,
     } = this.props;
-    if (state) {
-      const conceptUUID = state.concept.uuid;
-      const patientUUID = state.patient.uuid;
+    if (order) {
+      const conceptUUID = order.concept.uuid;
+      const patientUUID = order.patient.uuid;
       this.setState({
-        labOrder: state,
-        accessionNumber: state.accessionNumber || "",
+        labOrder: order,
+        accessionNumber: order.accessionNumber || "",
       });
-      dispatch(updateLabOrderWithEncounter(state));
+      dispatch(updateLabOrderWithEncounter(order));
       dispatch(patientAction.getPatient(patientUUID));
       dispatch(constantsActions.fetchConceptAsConstant(labResultsDidNotPerformReasonQuestion, 'labResultsDidNotPerformReasonAnswer'));
       dispatch(constantsActions.fetchConceptAsConstant(labResultsTestLocationQuestion, 'labResultsTestLocationAnswer'));
@@ -185,7 +185,7 @@ export class LabResultEntry extends PureComponent {
       conceptMembers,
       selectedPatient,
       patients,
-      history: { location: { state } },
+      history: { location: { state: { order, afterSubmitLink } } },
       isDidNotPerformCheckboxSelected,
       dispatch,
       formId,
@@ -208,14 +208,14 @@ export class LabResultEntry extends PureComponent {
       uuid: labResultsEntryEncounterType,
     };
 
-    const selectedOrder = state;
+    const selectedOrder = order;
 
     const encounterFormPageDefaultValues = [
       {
         type: "obs",
         path: "test-order-number",
         concept: labResultsTestOrderNumberConcept,
-        value: state.orderNumber,
+        value: order.orderNumber,
       },
     ];
 
@@ -414,7 +414,7 @@ export class LabResultEntry extends PureComponent {
                       encounter={encounter}
                       defaultValues={encounterFormPageDefaultValues}
                       backLink="/"
-                      afterSubmitLink="/"
+                      afterSubmitLink={afterSubmitLink}
                       encounterType={encounterType}
                       formContent={observations}
                       formSubmittedActionCreators={[saveFulfillerStatus]}
@@ -549,13 +549,13 @@ export class LabResultEntry extends PureComponent {
   render() {
     const { redirect } = this.state;
     const {
-      location,
+      location: { state: { order }},
       selectedLabConcept,
       returnUrl,
       locale,
     } = this.props;
 
-    if (!location.state || redirect) {
+    if (!order || redirect) {
       return <Redirect to="/" />;
     }
 
@@ -563,20 +563,20 @@ export class LabResultEntry extends PureComponent {
       const urgencyClassName = cn({
         urgencyDetails: true,
         urgency: true,
-        stat: location.state.urgency === 'STAT',
-        routine: location.state.urgency === 'ROUTINE',
+        stat: order.urgency === 'STAT',
+        routine: order.urgency === 'ROUTINE',
       });
 
       return (
         <div className="container-fluid">
-          {location.state && (
+          {order && (
             <div>
               <h2 className="lab-entry-page-title">
                 <FormattedMessage
                   id="app.labResultEntry.title"
                   defaultMessage="Test Results -"
                 />
-                {` ${getConceptShortName(location.state.concept, locale)}`}
+                {` ${getConceptShortName(order.concept, locale)}`}
               </h2>
               <div className="lab-result-detail-fieldset-container">
                 {/* Specimen Details box -- content is down below in the DOM,
@@ -610,7 +610,7 @@ export class LabResultEntry extends PureComponent {
                         />
                         {" "}
                         <span className="test-details">
-                          {location.state.orderNumber}
+                          {order.orderNumber}
                         </span>
                       </span>
                     </div>
@@ -622,7 +622,7 @@ export class LabResultEntry extends PureComponent {
                         />
                         {": "}
                         <span className={urgencyClassName}>
-                          {location.state.urgency}
+                          {order.urgency}
                         </span>
                       </span>
                     </div>
@@ -634,7 +634,7 @@ export class LabResultEntry extends PureComponent {
                         />
                         {" "}
                         <span className="test-details">
-                          {moment(location.state.dateActivated).format(
+                          {moment(order.dateActivated).format(
                             "MMM DD h:mm A",
                           )}
                         </span>
@@ -671,7 +671,7 @@ export class LabResultEntry extends PureComponent {
           <br />
           <br />
           <div>{this.renderForm(selectedLabConcept)}</div>
-          {returnUrl && (
+          {returnUrl && (  // TODO does this whole block do anything?
             <div>
               <br />
               <br />
@@ -680,7 +680,10 @@ export class LabResultEntry extends PureComponent {
                 type="button"
                 onClick={() => window.location.assign(returnUrl)}
               >
-                Return
+                <FormattedMessage
+                    id="app.labResultEntry.return"
+                    defaultMessage="Return"
+                />
               </button>
             </div>
           )}
