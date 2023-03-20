@@ -87,15 +87,16 @@ export class LabOrdersList extends PureComponent {
     }
 
     // if a specific order uuid (or set of order uuids) has been specified, redirect to the display
-    // page for first order after the orders have been fetched; set a "afterSubmitLink" with the remaining order ids so we cycle through them
-    // this provides a way for our Order Entry app to redirect to the entry pages for a set of orders after placing the orderr
+    // page for first order after the orders have been fetched; set a "afterSubmitLink" with the
+    // remaining order ids so we cycle through them; this provides a way for our Order Entry app to
+    // redirect to the entry pages for a set of orders after placing the order
     if (fetched && !prevProps.fetched && match.params.orderUuids && orders) {
-      const [ orderUuid, ...otherOrderUuids ] = match.params.orderUuids.split(",");
+      const [orderUuid, ...otherOrderUuids] = match.params.orderUuids.split(",");
       const orderToDisplay = this.props.orders.find(
         (o) => o.uuid === orderUuid,
       );
       if (orderToDisplay) {
-        this.handleShowResultsEntryPage(orderToDisplay, otherOrderUuids && otherOrderUuids.length > 0 ?  "/order/" + otherOrderUuids.join(",")  : "/");
+        this.handleShowResultsEntryPage(orderToDisplay, otherOrderUuids && otherOrderUuids.length > 0 ? `/order/${otherOrderUuids.join(",")}` : "/");
       }
     }
   }
@@ -108,9 +109,9 @@ export class LabOrdersList extends PureComponent {
         pathname: "/LabResultEntry",
         state: {
           order,
-          afterSubmitLink: afterSubmitLink ? afterSubmitLink : "/"
+          afterSubmitLink: afterSubmitLink || "/",
         },
-        returnUrl,  // TODO: does this even do anything
+        returnUrl, // TODO: does this even do anything
       });
     }
   }

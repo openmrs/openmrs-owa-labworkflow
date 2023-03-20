@@ -549,7 +549,7 @@ export class LabResultEntry extends PureComponent {
   render() {
     const { redirect } = this.state;
     const {
-      location: { state: { order }},
+      location: { state: { order } },
       selectedLabConcept,
       returnUrl,
       locale,
@@ -671,7 +671,7 @@ export class LabResultEntry extends PureComponent {
           <br />
           <br />
           <div>{this.renderForm(selectedLabConcept)}</div>
-          {returnUrl && (  // TODO does this whole block do anything?
+          {returnUrl && ( // TODO does this whole block do anything?
             <div>
               <br />
               <br />
