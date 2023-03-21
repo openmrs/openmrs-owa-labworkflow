@@ -118,7 +118,19 @@ export const getConceptShortName = (concept, locale) => {
         );
       }
       if (!foundConcept) {
-        // could not find any locale preferred name
+        // attempt to find the preferred short name in English
+        foundConcept = concept.names.find(name =>
+            !name.voided && name.conceptNameType === 'SHORT' && name.locale === 'en' && name.localePreferred
+        );
+      }
+      if (!foundConcept) {
+        // attempt to find any short name in English
+        foundConcept = concept.names.find(name =>
+            !name.voided && name.conceptNameType === 'SHORT' && name.locale === 'en'
+        );
+      }
+      if (!foundConcept) {
+        // fall back to display
         conceptName = concept.display;
       } else {
         conceptName = foundConcept.name;
