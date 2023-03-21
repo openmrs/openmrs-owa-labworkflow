@@ -28,17 +28,16 @@ export default function Row({ locale, rowData, handleShowLabTrendsPage }) {
     headerClassName: "lab-results-list-header",
   }));
   if (isPanel) {
-
-    const sortedData = rowData.original.groupMembers && [...rowData.original.groupMembers].sort((obs1, obs2) => {
+    const sortedData = rowData.original.groupMembers
+        && [...rowData.original.groupMembers].sort((obs1, obs2) => {
       if (!obs1 || !obs2.concept) {
         return 1
       }
-      else if (!obs2 || !obs2.concept) {
+      if (!obs2 || !obs2.concept) {
         return -1;
       }
-      else {
-        return getConceptShortName(obs1.concept, locale).localeCompare(getConceptShortName(obs2.concept, locale))
-      }
+      return getConceptShortName(obs1.concept, locale)
+          .localeCompare(getConceptShortName(obs2.concept, locale))
     })
 
     return (

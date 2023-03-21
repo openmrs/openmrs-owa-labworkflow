@@ -182,7 +182,11 @@ class LabResultsTable extends PureComponent {
             subComponent={
               // eslint-disable-next-line react/no-unstable-nested-components
               (data) => (
-                <Row locale={locale} rowData={data} handleShowLabTrendsPage={this.handleShowLabTrendsPage} />
+                <Row
+                  locale={locale}
+                  rowData={data}
+                  handleShowLabTrendsPage={this.handleShowLabTrendsPage}
+                />
               )
             }
           />
