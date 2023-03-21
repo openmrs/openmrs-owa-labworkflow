@@ -1,9 +1,12 @@
 import React from "react";
 import { SortableTable } from "@openmrs/react-components";
 import { isLabSet } from "./util";
+import {
+  getConceptShortName,
+} from '../../utils/helpers';
 import Cell from "./Cell";
 
-export default function Row({ rowData, handleShowLabTrendsPage }) {
+export default function Row({ locale, rowData, handleShowLabTrendsPage }) {
   const isPanel = isLabSet(rowData.original);
   const rowFields = ["TEST TYPE", "RESULT", "NORMAL RANGE"];
   const rowColumnMetadata = rowFields.map((columnName) => ({
@@ -12,6 +15,7 @@ export default function Row({ rowData, handleShowLabTrendsPage }) {
     Cell: (data) => (
       <Cell
       {...data} // eslint-disable-line
+        locale={locale}
         obs={data.value}
         columnName={columnName}
         type="panel"
@@ -24,10 +28,23 @@ export default function Row({ rowData, handleShowLabTrendsPage }) {
     headerClassName: "lab-results-list-header",
   }));
   if (isPanel) {
+
+    const sortedData = rowData.original.groupMembers && [...rowData.original.groupMembers].sort((obs1, obs2) => {
+      if (!obs1 || !obs2.concept) {
+        return 1
+      }
+      else if (!obs2 || !obs2.concept) {
+        return -1;
+      }
+      else {
+        return getConceptShortName(obs1.concept, locale).localeCompare(getConceptShortName(obs2.concept, locale))
+      }
+    })
+
     return (
       <div className="collapsible-panel">
         <SortableTable
-          data={rowData.original.groupMembers}
+          data={sortedData}
           columnMetadata={rowColumnMetadata}
           collapseOnDataChange={false}
           collapseOnPageChange={false}
