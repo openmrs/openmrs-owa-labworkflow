@@ -44,6 +44,7 @@
     "app.labResultEntry.orderDatelabel": "Order Date:",
     "app.labResultEntry.labId": "Lab ID",
     "app.labResultEntry.return": "Return",
+    "app.labResultEntry.next": "Next",
     "app.labResultsList.title": "Lab Test Results",
     "app.labResultsList.TYPE": "TYPE",
     "app.labResultsList.STATUS": "STATUS",

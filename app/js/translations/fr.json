@@ -44,6 +44,7 @@
     "app.labResultEntry.orderDatelabel": "Date de commande:",
     "app.labResultEntry.labId": "Lab ID",
     "app.labResultEntry.return": "Retour",
+    "app.labResultEntry.next": "Suivant",
     "app.labResultsList.title": "Résultats des tests de laboratoire",
     "app.labResultsList.TYPE": "TYPES",
     "app.labResultsList.STATUS": "STATUT",
@@ -73,5 +74,6 @@
     "app.lab.create.success":"Commande créée avec succès",
     "app.lab.order.cancel.success":"Annulé",
     "app.orders.tooManyOrders": "Impossible de récupérer toutes les commandes. Veuillez réduire la plage de dates.",
-    "app.labOrders.addOrder.button":"Ajouter une commande"
+    "app.labOrders.addOrder.button":"Ajouter une commande",
+    "app.orders.panels":"Panneaux"
 }

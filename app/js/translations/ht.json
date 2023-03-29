@@ -43,7 +43,8 @@
     "app.labResultEntry.orderNumberlabel": "Numéro de commande:",
     "app.labResultEntry.orderDatelabel": "Date de commande:",
     "app.labResultEntry.labId": "Lab ID",
-    "app.labResultEntry.return": "Retour",
+    "app.labResultEntry.return": "Retounen",
+    "app.labResultEntry.next": "Suivan",
     "app.labResultsList.title": "Résultats des tests de laboratoire",
     "app.labResultsList.TYPE": "TYPES",
     "app.labResultsList.STATUS": "STATUT",
@@ -73,5 +74,6 @@
     "app.lab.create.success":"Order Successfully Created",
     "app.lab.order.cancel.success":"Order Canceled",
     "app.orders.tooManyOrders": "Unable to retrieve all orders.  Please reduce the date range.",
-    "app.labOrders.addOrder.button":"Add Order"
+    "app.labOrders.addOrder.button":"Add Order",
+    "app.orders.panels":"Panels"
 }

@@ -1,9 +1,9 @@
 [main]
 host = https://www.transifex.com/
 
-[OpenMRS.labworkflow-owa]
+[o:openmrs:p:OpenMRS:r:labworkflow-owa]
 file_filter = app/js/translations/<lang>.json
 source_file = app/js/translations/en.json
 source_lang = en
-type = KEYVALUEJSON
+type        = KEYVALUEJSON
 
