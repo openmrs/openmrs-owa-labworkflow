@@ -421,6 +421,7 @@ export class LabResultEntry extends PureComponent {
                       patient={patient}
                       formId="result-entry-form"
                       orderForObs={selectedOrder}
+                      submitButtonLabelCode={afterSubmitLink === '/' ? undefined : "app.labResultEntry.next"}
                       timestampNewEncounterIfCurrentDay
                     />
                   )
@@ -434,6 +435,7 @@ export class LabResultEntry extends PureComponent {
                       patient={patient}
                       formId="result-entry-form"
                       orderForObs={selectedOrder}
+                      submitButtonLabelCode={afterSubmitLink === '/' ? undefined : "app.labResultEntry.next"}
                       timestampNewEncounterIfCurrentDay
                     />
                   )}
