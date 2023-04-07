@@ -329,6 +329,14 @@ export class LabOrdersList extends PureComponent {
 
   render() {
     const {
+      match,
+    } = this.props;
+
+    // hack (see below) to hide any display if we know we are going
+    // to be redirecting to the results entry page after loading
+    const willRedirectToResultsEntry = match.params.orderUuids;
+
+    const {
       labTests,
       orders,
       fetched,
@@ -350,7 +358,8 @@ export class LabOrdersList extends PureComponent {
     } = labOrdersListFilters;
     const { returnUrl } = this.state;
     const hasData = !R.isEmpty(orders) && !R.isEmpty(labTests);
-    return (
+    // eslint-disable-next-line
+    return (!willRedirectToResultsEntry &&
       <div
         className="main-container"
         ref={(el) => {
