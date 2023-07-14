@@ -384,6 +384,11 @@ export class LabResultEntry extends PureComponent {
         && (this.renderFormContent(selectedLabConcept))}
           </Row>
         )}
+        {isDidNotPerformCheckboxSelected
+        && (
+          <Row className="result-entry">            
+          </Row>
+        )}
       </div>
     );
 
@@ -395,9 +400,14 @@ export class LabResultEntry extends PureComponent {
               id="app.labResultEntry.resultDetails"
               defaultMessage="Result Details" />
           </span>
+          <span>
+            <FormattedMessage
+              id="app.labResultEntry.resultDebug"
+              defaultMessage="Result DetaDebug" />
+          </span>
         </div>
         <div className="fieldset-body">
-          {hasRanges
+          { (hasRanges && !isDidNotPerformCheckboxSelected)
             && (
               <span className="range-header-text">
                 <FormattedMessage
