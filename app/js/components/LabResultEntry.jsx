@@ -400,11 +400,6 @@ export class LabResultEntry extends PureComponent {
               id="app.labResultEntry.resultDetails"
               defaultMessage="Result Details" />
           </span>
-          <span>
-            <FormattedMessage
-              id="app.labResultEntry.resultDebug"
-              defaultMessage="Result DetaDebug" />
-          </span>
         </div>
         <div className="fieldset-body">
           { (hasRanges && !isDidNotPerformCheckboxSelected)
