@@ -56,8 +56,15 @@ class BreadCrumb extends Component {
     }
     let outputBreadcrumb;
     const contextPath = window.location.href.split('/')[3];
-    const url = localStorage.getItem('returnUrl');
-    const returnUrl = `/${contextPath}/${url}`;
+    let url = localStorage.getItem('returnUrl');
+    if (url && (url !== 'null') && (url.length > 1)) {
+      if (url.startsWith("/")) {
+        url = url.substring(1); // skip the leading "/"
+      }
+    } else {
+      url = '';
+    }
+    const returnUrl = url ? `/${contextPath}/${url}` : `/${contextPath}`;
 
     const homePageBreadcrumb = (
       <span>
