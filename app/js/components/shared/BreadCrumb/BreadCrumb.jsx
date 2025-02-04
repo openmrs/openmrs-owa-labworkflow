@@ -55,6 +55,16 @@ class BreadCrumb extends Component {
       familyName = patientHeaderDetail.person.personName.familyName;
     }
     let outputBreadcrumb;
+    const contextPath = window.location.href.split('/')[3];
+    let url = localStorage.getItem('returnUrl');
+    if (url && (url !== 'null') && (url.length > 1)) {
+      if (url.startsWith("/")) {
+        url = url.substring(1); // skip the leading "/"
+      }
+    } else {
+      url = '';
+    }
+    const returnUrl = url ? `/${contextPath}/${url}` : `/${contextPath}`;
 
     const homePageBreadcrumb = (
       <span>
@@ -91,7 +101,7 @@ class BreadCrumb extends Component {
         break;
 
       case '/labresults': {
-        const returnUrl = localStorage.getItem('returnUrl');
+
         outputBreadcrumb = (
           <span>
             <a href={returnUrl}>
@@ -120,7 +130,6 @@ class BreadCrumb extends Component {
         if (history.location.state) {
           trendDisplay = history.location.state.display;
         }
-        const returnUrl = localStorage.getItem('returnUrl');
         outputBreadcrumb = (
           <span>
             <a href={returnUrl}>
