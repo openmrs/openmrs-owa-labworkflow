@@ -101,7 +101,6 @@ class BreadCrumb extends Component {
         break;
 
       case '/labresults': {
-
         outputBreadcrumb = (
           <span>
             <a href={returnUrl}>
