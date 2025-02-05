@@ -18,6 +18,7 @@ import {
   sortByDate,
   filterDuplicates,
   getConceptShortName,
+  computeUrl,
 } from '../../utils/helpers';
 import "../../../css/lab-results-view.scss";
 import LabResultsTable from './LabResultsTable';
@@ -152,8 +153,9 @@ class LabResultsList extends PureComponent {
   }
 
   handleNavigateBack() {
+    const contextPath = window.location.href.split('/')[3];
     const { returnUrl } = this.state;
-    window.location = returnUrl;
+    window.location = computeUrl(contextPath, returnUrl);
   }
 
   handleCellLoaded(name, obs) {

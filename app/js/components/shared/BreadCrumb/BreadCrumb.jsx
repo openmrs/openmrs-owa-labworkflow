@@ -15,6 +15,7 @@ import { Link, withRouter } from 'react-router-dom';
 import { injectIntl } from 'react-intl';
 
 import './breadCrumb.css';
+import { computeUrl } from '../../../utils/helpers'
 
 class BreadCrumb extends Component {
   constructor(props) {
@@ -56,15 +57,8 @@ class BreadCrumb extends Component {
     }
     let outputBreadcrumb;
     const contextPath = window.location.href.split('/')[3];
-    let url = localStorage.getItem('returnUrl');
-    if (url && (url !== 'null') && (url.length > 1)) {
-      if (url.startsWith("/")) {
-        url = url.substring(1); // skip the leading "/"
-      }
-    } else {
-      url = '';
-    }
-    const returnUrl = url ? `/${contextPath}/${url}` : `/${contextPath}`;
+    const url = localStorage.getItem('returnUrl');
+    const returnUrl = computeUrl(contextPath, url);
 
     const homePageBreadcrumb = (
       <span>
