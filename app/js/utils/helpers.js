@@ -94,6 +94,16 @@ export const getResultValue = (data) => {
   return resultValue;
 };
 
+export const computeUrl = (contextPath, url) => {
+  if (url && (url !== 'null') && (url.length > 1)) {
+    if (url.startsWith("/")) {
+      url = url.substring(1); // skip the leading "/"
+    }
+  } else {
+    url = '';
+  }
+  return url ? `/${contextPath}/${url}` : `/${contextPath}`;
+}
 export const getConceptShortName = (concept, locale) => {
   let conceptName = null;
   const localeShort = locale ? (locale.split('_'))[0] : "en";
