@@ -32,10 +32,13 @@ With an OpenMRS server running locally, run
 npm run watch
 ```
 
-This will launch [Browersync](https://www.browsersync.io/).
 
-If no `config.json` exists, you will be prompted to edit the auto-generated one.
-Adjust `APP_ENTRY_POINT` for your local server.
+
+This will build and deploy the app to the `owa` directory in your server's
+application data directory and launch [Browersync](https://www.browsersync.io/). Your application data directory must be set using the
+`LOCAL_OWA_FOLDER` entry in `config.json`. If you don't have a `config.json`,
+you will need to create one in the `app` directory.  See `test-config.json` as an example. Adjust APP_ENTRY_POINT for your local server.
+
 
 ### Production Build
 
@@ -57,7 +60,7 @@ npm run build:deploy
 This will build and deploy the app to the `owa` directory in your server's
 application data directory. This must be set using the
 `LOCAL_OWA_FOLDER` entry in `config.json`. If you don't have a `config.json`,
-you will need to create one in the `app` directory.  See `test-config.json` as an example.
+you will need to create one in the `app` directory.  See `test-config.json` as an example. Adjust APP_ENTRY_POINT for your local server.
 
 ## Running Cypress tests
 
