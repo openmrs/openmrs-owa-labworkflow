@@ -57,7 +57,7 @@ npm run build:deploy
 This will build and deploy the app to the `owa` directory in your server's
 application data directory. This must be set using the
 `LOCAL_OWA_FOLDER` entry in `config.json`. If you don't have a `config.json`,
-this command will initialize it.
+you will need to create one in the `app` directory.  See `test-config.json` as an example.
 
 ## Running Cypress tests
 

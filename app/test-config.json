@@ -1,0 +1,4 @@
+{
+  "LOCAL_OWA_FOLDER": "/home/{username}/openmrs/{server-id}/owa",
+  "APP_ENTRY_POINT": "http://localhost:8081/openmrs/owa/labworkflow/index.html"
+}

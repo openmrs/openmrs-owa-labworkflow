@@ -1,7 +1,7 @@
 node_modules
 bower_components
 dist
-config.json
+app/config.json
 npm-debug.log**
 *.zip
 coverage

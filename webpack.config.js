@@ -82,16 +82,9 @@ if (env === 'deploy' || env === 'development') {
 
     try {
       // look for config file
-      config = require('./config.json');
+      config = require('./app/config.json');
     } catch (err) {
-      // create file with defaults if not found
-      config = {
-        'LOCAL_OWA_FOLDER': '/Users/your-user/referenceapplication-standalone-2.8.0/appdata\\owa/',
-        'APP_ENTRY_POINT': 'http://localhost:8081/openmrs/owa/labworkflow/index.html'
-      };
-
-      fs.writeFile('config.json', JSON.stringify(config));
-      console.log(chalk.yellow("No file 'config.json' found. Creating a default. Please fix the values and re-run."));
+      console.log(chalk.yellow("No file 'config.json' found. Please create and re-run."));
       process.exit(1);
     } finally {
       return config;
