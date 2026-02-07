@@ -35,6 +35,7 @@
     "app.labResultEntry.resultDetails": "Result Details",
     "app.labResultEntry.specimenCollectionDatelabel": "Specimen Collection Date: ",
     "app.labResultEntry.estimatedlabel": "estimated",
+    "app.labResultEntry.specimenReceivedDateLabel": "Date specimen received at laboratory: ",
     "app.labResultEntry.testLocationlabel": "Test location:",
     "app.labResultEntry.resultDatelabel": "Result Date:",
     "app.labResultEntry.didNotPerformlabel": "Did not perform",
