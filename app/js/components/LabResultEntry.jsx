@@ -40,7 +40,7 @@ import { updateLabOrderWithEncounter, saveFulfillerStatus } from '../actions/lab
 import '../../css/lab-result-entry.scss';
 import { formatRangeDisplayText, hasMaxAndMinValues, getConceptShortName } from '../utils/helpers';
 import { selectProperty, selectLocale } from '../utils/globalProperty';
-import {SPECIMEN_RECEIVED_DATE_CONCEPT_UUID} from "../constants";
+import { SPECIMEN_RECEIVED_DATE_CONCEPT_UUID } from "../constants";
 
 const {
   minValue,

@@ -26,7 +26,7 @@ import { getLabOrderablesConceptSet, getLabOrderablesSuccess } from '../actions/
 import { setSelectedConcept } from '../actions/labConceptsAction';
 import { selectProperty, selectLocale, getMessage } from '../utils/globalProperty';
 import { getConceptShortName } from '../utils/helpers';
-import {FULFILLER_STATUS, DEFAULT_ORDERS_BATCH_SIZE, SPECIMEN_RECEIVED_DATE_CONCEPT_UUID} from '../constants';
+import { FULFILLER_STATUS, DEFAULT_ORDERS_BATCH_SIZE, SPECIMEN_RECEIVED_DATE_CONCEPT_UUID } from '../constants';
 
 const getOrderNumber = (encounter, state) => {
   const orderNumberConceptUUID = selectProperty(state, 'labResultsTestOrderNumberConcept');
