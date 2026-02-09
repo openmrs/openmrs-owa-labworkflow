@@ -40,6 +40,7 @@ import { updateLabOrderWithEncounter, saveFulfillerStatus } from '../actions/lab
 import '../../css/lab-result-entry.scss';
 import { formatRangeDisplayText, hasMaxAndMinValues, getConceptShortName } from '../utils/helpers';
 import { selectProperty, selectLocale } from '../utils/globalProperty';
+import { SPECIMEN_RECEIVED_DATE_CONCEPT_UUID } from "../constants";
 
 const {
   minValue,
@@ -280,8 +281,7 @@ export class LabResultEntry extends PureComponent {
               <FormattedMessage
                 id="app.labResultEntry.reasonlabel"
                 defaultMessage="Reason:" />
-&nbsp;
-
+                &nbsp;
             </span>
             <Obs
               conceptAnswers={labResultsDidNotPerformReasonAnswer || []}
@@ -336,7 +336,7 @@ export class LabResultEntry extends PureComponent {
               <FormattedMessage
                 id="app.labResultEntry.testLocationlabel"
                 defaultMessage="Test location: " />
-&nbsp;
+                &nbsp;
             </span>
             <Obs
               conceptAnswers={labResultsTestLocationAnswer}
@@ -346,13 +346,28 @@ export class LabResultEntry extends PureComponent {
               dropDownStyle={{ width: '100%' }}
             />
           </div>
+          <div className="specimen-received-date">
+            <span className="specimen-received-date-label">
+              <FormattedMessage
+                  id="app.labResultEntry.specimenReceivedDateLabel"
+                  defaultMessage="Date specimen received at laboratory: " />
+              &nbsp;
+            </span>
+            <Obs
+                datatype="date"
+                defaultDate={undefined}
+                concept={SPECIMEN_RECEIVED_DATE_CONCEPT_UUID}
+                path="specimen-received-date"
+                validate={[maxDateRange, collectionDateRange]}
+            />
+          </div>
           <div className="specimen-collection-date">
             <div className="col-xs-10 encounter-date-container" style={{ padding: '0px' }}>
               <span className="encounter-date-label">
                 <FormattedMessage
                   id="app.labResultEntry.specimenCollectionDatelabel"
                   defaultMessage="Specimen Collection Date: " />
-&nbsp;
+                &nbsp;
               </span>
               <span className="encounter-date-field">
                 <EncounterDate

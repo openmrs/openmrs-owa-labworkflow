@@ -25,7 +25,7 @@ fieldset {
 .lab-result-detail-fieldset {
     width: 48%;
     display: inline-table;
-    min-height: 120px;
+    min-height: 200px;
     margin-left: 1%;
     margin-right: 1%;
 }
@@ -207,7 +207,7 @@ button.pull-right.btn-success {
 }
 
 .test-details-label {
-    font-size: 14px;
+    padding-top: 10px;
 }
 
 .lab-entry-result-details {
@@ -244,20 +244,19 @@ button.pull-right.btn-success {
     padding: 0px;
 
     .encounter-date-label {
-        font-size: 14px;
         position: absolute;
         top: 11px;
     }
     .encounter-date-field {
         position: absolute;
-        left: 180px;
+        left: 200px;
     }
 
     span {
         white-space: nowrap;
         .field-error {
             position: absolute;
-            left: -90px;
+            left: -120px;
         }
     }
 }
@@ -268,22 +267,33 @@ button.pull-right.btn-success {
     }
 }
 
+.specimen-received-date {
+    display: flex;
+    position: absolute;
+    white-space: nowrap;
+    top: 60px;
+    span.field-error {
+        position: absolute;
+        left: 0px;
+    }
+}
+
 .test-location {
     display: flex;
     position: absolute;
     white-space: nowrap;
-    top: 130px;
+    top: 125px;
 }
 
 .specimen-collection-date {
     position: absolute;
-    top: 65px;
+    top: -10px;
 }
 
 .estimated-checkbox {
     position: absolute;
-    top: 67px;
-    left: 328px;
+    top: -5px;
+    left: 355px;
     white-space: nowrap;
     span {
         position: relative;
