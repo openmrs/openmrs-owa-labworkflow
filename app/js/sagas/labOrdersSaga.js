@@ -160,9 +160,8 @@ export function* fetchAndSetTestResultEncounter(args) {
     const labResultsTestOrderNumberConcept = selectProperty(state, 'labResultsTestOrderNumberConcept');
 
     const matchedEncounter = encounters.filter((encounter) => {
-      const testOrderObs = encounter.obs.filter((item) =>
-          item.concept.uuid === labResultsTestOrderNumberConcept &&
-          item.value === olabResultsTestOrder.orderNumber
+      const testOrderObs = encounter.obs.filter(
+        (item) => item.concept.uuid === labResultsTestOrderNumberConcept && item.value === order.orderNumber,
       );
       return testOrderObs && testOrderObs.length > 0;
     });

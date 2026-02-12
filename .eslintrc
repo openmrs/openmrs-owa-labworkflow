@@ -26,6 +26,8 @@
     },
     "rules": {
         "curly": 2,
+        "comma-dangle": ["warn"],
+        "max-len": "off",
         "default-param-last": 1,
         "indent": [
         1,
