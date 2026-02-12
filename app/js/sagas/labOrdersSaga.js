@@ -161,14 +161,9 @@ export function* fetchAndSetTestResultEncounter(args) {
 
     const matchedEncounter = encounters.filter((encounter) => {
       const testOrderObs = encounter.obs.filter(
-        (item) => item.concept.uuid === labResultsTestOrderNumberConcept,
+        (item) => item.concept.uuid === labResultsTestOrderNumberConcept && item.value === order.orderNumber
       );
-
-      if (testOrderObs.length <= 0) return false;
-
-      const testOrderNumber = testOrderObs[0].value;
-      const matched = testOrderNumber === order.orderNumber;
-      return matched;
+      return testOrderObs && testOrderObs.length > 0;
     });
 
     yield put(setLabResultsEncounter(order, matchedEncounter[0] || null));
