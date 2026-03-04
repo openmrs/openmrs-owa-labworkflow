@@ -20,6 +20,7 @@
     "app.labOrdersList.URGENCY": "URGENCY",
     "app.labOrdersList.TEST_TYPE": "TEST TYPE",
     "app.labOrdersList.ORDER_DATE": "ORDERED",
+    "app.labOrdersList.ORDER_LOCATION": "ORDER LOCATION",
     "app.labOrdersList.RESULT": "RESULT",
     "app.labOrdersList.NORMAL_RANGE": "NORMAL RANGE",
     "app.labOrdersListFilters.textSearchTitle": "Search for patient",

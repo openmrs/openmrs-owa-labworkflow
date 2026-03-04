@@ -50,14 +50,14 @@ i.scale:hover {
 
 .lab-order-list-cell-emr-id,
 .lab-order-list-header-emr-id {
-  min-width: 80px;
-  max-width: 80px;
+  min-width: 120px;
+  max-width: 120px;
 }
 
 .lab-order-list-cell-name,
 .lab-order-list-header-name {
-  min-width: 150px;
-  max-width: 150px;
+  min-width: 220px;
+  max-width: 220px;
 }
 
 .lab-order-list-cell-order-id,
@@ -72,22 +72,28 @@ i.scale:hover {
   max-width: 110px;
 }
 
+.lab-order-list-cell-order-location,
+.lab-order-list-header-order-location {
+  min-width: 220px;
+  max-width: 220px;
+}
+
 .lab-order-list-cell-lab-id,
 .lab-order-list-header-lab-id {
-  min-width: 80px;
-  max-width: 80px;
+  min-width: 100px;
+  max-width: 100px;
 }
 
 .lab-order-list-cell-status,
 .lab-order-list-header-status {
-  min-width: 90px;
-  max-width: 90px;
+  min-width: 120px;
+  max-width: 120px;
 }
 
 .lab-order-list-cell-urgency,
 .lab-order-list-header-urgency {
-  min-width: 80px;
-  max-width: 80px;
+  min-width: 110px;
+  max-width: 110px;
 }
 
 .lab-order-list-cell-test-type,
@@ -290,6 +296,12 @@ i.scale:hover {
 
   .lab-order-list-cell-order-date,
   .lab-order-list-header-order-date {
+    min-width: 100px;
+    max-width: 100px;
+  }
+
+  .lab-order-list-cell-order-location,
+  .lab-order-list-header-order-location {
     min-width: 100px;
     max-width: 100px;
   }

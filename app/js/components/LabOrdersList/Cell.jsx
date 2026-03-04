@@ -48,6 +48,12 @@ function Cell({
           <span>{moment(value.dateActivated).format("DD-MMM-YYYY")}</span>
         </div>
       );
+    case 'ORDER LOCATION':
+      return (
+        <div className="table_cell order-location">
+          <span>{value.encounter.location.display}</span>
+        </div>
+      );
     case 'LAB ID':
       return (
         <div className="table_cell lab-id">

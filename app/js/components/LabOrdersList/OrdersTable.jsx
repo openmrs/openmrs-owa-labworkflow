@@ -24,6 +24,7 @@ function OrdersTable({
     "NAME",
     "ORDER ID",
     "ORDER DATE",
+    "ORDER LOCATION",
     "LAB ID",
     "STATUS",
     "URGENCY",

@@ -20,6 +20,7 @@
     "app.labOrdersList.URGENCY": "URGENCE",
     "app.labOrdersList.TEST_TYPE": "TYPE DE TEST",
     "app.labOrdersList.ORDER_DATE": "Commandé",
+    "app.labOrdersList.ORDER_LOCATION": "LIEU DE COMMANDE",
     "app.labOrdersList.RESULT": "RÉSULTAT",
     "app.labOrdersList.NORMAL_RANGE": "PLAGE NORMALE",
     "app.labOrdersListFilters.textSearchTitle": "Rechercher un patient\n \n \n \n \n ",
