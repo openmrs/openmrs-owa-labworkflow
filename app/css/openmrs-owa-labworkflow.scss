@@ -9,11 +9,18 @@
 body {
     font-family: "OpenSans", Arial, sans-serif;
     -webkit-font-smoothing: subpixel-antialiased;
-    max-width: 1000px;
+    max-width: unset;
     margin: 10px auto;
     background: #eeeeee;
     color: #363463;
     font-size: 16px;
+}
+
+/* Styles for larger screens (e.g., tablets and desktops) */
+@media screen and (min-width: 1440px) {
+    body {
+        max-width: 1440px;
+    }
 }
 
 a {
