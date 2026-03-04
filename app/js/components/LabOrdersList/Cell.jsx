@@ -50,9 +50,9 @@ function Cell({
       );
     case 'ORDER LOCATION':
       return (
-          <div className="table_cell order-location">
-            <span>{value.encounter.location.display}</span>
-          </div>
+        <div className="table_cell order-location">
+          <span>{value.encounter.location.display}</span>
+        </div>
       );
     case 'LAB ID':
       return (
