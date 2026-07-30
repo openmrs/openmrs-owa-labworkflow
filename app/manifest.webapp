@@ -1,5 +1,5 @@
 {
-  "version": "1.4.0-SNAPSHOT",
+  "version": "2.0.0-SNAPSHOT",
   "name": "Lab Workflow",
   "description": "Allows for entering lab results for existing orders and viewing existing lab results",
   "launch_path": "index.html",
