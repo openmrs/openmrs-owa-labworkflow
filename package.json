@@ -1,13 +1,13 @@
 {
   "name": "@openmrs/labworkflow-owa",
-  "version": "1.4.0-SNAPSHOT",
+  "version": "2.0.0-SNAPSHOT",
   "description": "The is used to manage the workflow of lab orders",
   "repository": {
     "type": "git",
     "url": "https://github.com/openmrs/openmrs-owa-labworkflow.git"
   },
   "dependencies": {
-    "@openmrs/react-components": "^1.5.3-pre.28",
+    "@openmrs/react-components": "^2.0.0-pre.31",
     "@openmrs/style-referenceapplication": "^0.1.0",
     "axios": "^0.21.1",
     "babel-eslint": "^9.0.0",

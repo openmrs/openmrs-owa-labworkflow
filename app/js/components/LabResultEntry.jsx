@@ -440,6 +440,7 @@ export class LabResultEntry extends PureComponent {
                       formSubmittedActionCreators={[saveFulfillerStatus]}
                       patient={patient}
                       formId="result-entry-form"
+                      formNamespace="labworkflow"
                       orderForObs={selectedOrder}
                       submitButtonLabelCode={afterSubmitLink === '/' ? undefined : "app.labResultEntry.next"}
                       timestampNewEncounterIfCurrentDay
@@ -454,6 +455,7 @@ export class LabResultEntry extends PureComponent {
                       formSubmittedActionCreators={[saveFulfillerStatus]}
                       patient={patient}
                       formId="result-entry-form"
+                      formNamespace="labworkflow"
                       orderForObs={selectedOrder}
                       submitButtonLabelCode={afterSubmitLink === '/' ? undefined : "app.labResultEntry.next"}
                       timestampNewEncounterIfCurrentDay
